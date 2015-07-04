@@ -1,8 +1,8 @@
-package Model;
+package model;
 
 import java.util.HashMap;
 
-public class ItaloAdapter implements AziendaTrasportoAdapter {
+public class TrenitaliaAdapter implements AziendaTrasportoAdapter {
 
 	@Override
 	public Biglietto[] ricerca(HashMap<String, String> parametri) {

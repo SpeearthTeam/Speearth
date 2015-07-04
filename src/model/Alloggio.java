@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -52,8 +52,7 @@ public class Alloggio extends ServizioComponent {
 	}
 
 	public HashMap<String, Integer> getStanze() {
-		// TODO - implement Alloggio.getStanze
-		throw new UnsupportedOperationException();
+		return this.stanze;
 	}
 
 	/**
@@ -61,8 +60,7 @@ public class Alloggio extends ServizioComponent {
 	 * @param stanze
 	 */
 	public void setStanze(HashMap<String, Integer> stanze) {
-		// TODO - implement Alloggio.setStanze
-		throw new UnsupportedOperationException();
+		this.stanze = stanze;
 	}
 
 	@Override
