@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.HashMap;
+
 public class RicercaAlloggiCommand implements SistemaEsternoCommand {
 
 	/**
@@ -11,4 +13,4 @@ public class RicercaAlloggiCommand implements SistemaEsternoCommand {
 		throw new UnsupportedOperationException();
 	}
 
-}
+}	

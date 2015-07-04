@@ -7,4 +7,10 @@ public class PacchettoComposite extends ServizioComponent {
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
+	public float getTotale() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

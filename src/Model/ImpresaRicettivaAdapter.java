@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.HashMap;
+
 public interface ImpresaRicettivaAdapter extends SistemaEsterno {
 
 	/**

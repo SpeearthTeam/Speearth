@@ -1,11 +1,13 @@
 package Model;
 
+import java.util.HashMap;
+
 public interface SistemaEsternoCommand {
 
 	/**
 	 * 
 	 * @param parametri
 	 */
-	Servizio[] esegui(HashMap<String, String> parametri);
+	ServizioComponent[] esegui(HashMap<String, String> parametri);
 
 }

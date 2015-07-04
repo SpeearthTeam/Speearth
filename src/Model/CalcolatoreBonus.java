@@ -22,7 +22,7 @@ public class CalcolatoreBonus {
 	 * @param servizio
 	 * @param bonus
 	 */
-	public void applicaBonus(Servizio servizio, Bonus bonus) {
+	public void applicaBonus(ServizioComponent servizio, Bonus bonus) {
 		// TODO - implement CalcolatoreBonus.applicaBonus
 		throw new UnsupportedOperationException();
 	}

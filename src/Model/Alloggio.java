@@ -1,8 +1,11 @@
 package Model;
 
+import java.util.Date;
+import java.util.HashMap;
+
 public class Alloggio extends ServizioComponent {
 
-	private string localita;
+	private String localita;
 	private Date data_arrivo;
 	private Date data_partenza;
 	private java.util.HashMap<String, Integer> stanze;
@@ -12,7 +15,7 @@ public class Alloggio extends ServizioComponent {
 		throw new UnsupportedOperationException();
 	}
 
-	public string getLocalita() {
+	public String getLocalita() {
 		return this.localita;
 	}
 
@@ -20,7 +23,7 @@ public class Alloggio extends ServizioComponent {
 	 * 
 	 * @param localita
 	 */
-	public void setLocalita(string localita) {
+	public void setLocalita(String localita) {
 		this.localita = localita;
 	}
 
@@ -60,6 +63,12 @@ public class Alloggio extends ServizioComponent {
 	public void setStanze(HashMap<String, Integer> stanze) {
 		// TODO - implement Alloggio.setStanze
 		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public float getTotale() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

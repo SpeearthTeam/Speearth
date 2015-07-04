@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Date;
+
 public class Pagamento {
 
 	private int id;

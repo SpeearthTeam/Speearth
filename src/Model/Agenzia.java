@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.HashMap;
+
 public class Agenzia {
 
 	private Agenzia instance;

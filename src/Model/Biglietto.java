@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Date;
+
 public class Biglietto extends ServizioComponent {
 
 	private String partenza;
@@ -97,6 +99,12 @@ public class Biglietto extends ServizioComponent {
 	 */
 	public void setMezzo(String mezzo) {
 		this.mezzo = mezzo;
+	}
+
+	@Override
+	public float getTotale() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
