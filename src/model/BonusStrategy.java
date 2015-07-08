@@ -8,16 +8,10 @@ import java.util.ArrayList;
 public interface BonusStrategy {
 
 	/**
-	 * Calcola i bonus del cliente
+	 * Calcola il Bonus per il cliente
+	 * 
 	 * @param cliente
 	 */
-	public ArrayList<Bonus> calcola(Cliente cliente);
-	
-	/**
-	 * Applica un bonus a un servizio
-	 * @param servizio
-	 * @param bonus
-	 */
-	public void applica(ServizioComponent servizio, Bonus bonus);
+	public Bonus calcola(ArrayList<Vendita> vendite);
 
 }

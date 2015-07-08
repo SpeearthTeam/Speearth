@@ -13,8 +13,18 @@ public class Biglietto extends ServizioComponent {
 	private String mezzo;
 
 	public Biglietto() {
-		// TODO - implement Biglietto.Biglietto
-		throw new UnsupportedOperationException();
+	}
+
+	public Biglietto(String partenza, String destinazione, Date data_andata, Date data_ritorno, int numero_adulti,
+			int numero_bambini, String mezzo) {
+		super();
+		this.partenza = partenza;
+		this.destinazione = destinazione;
+		this.data_andata = data_andata;
+		this.data_ritorno = data_ritorno;
+		this.numero_adulti = numero_adulti;
+		this.numero_bambini = numero_bambini;
+		this.mezzo = mezzo;
 	}
 
 	public String getPartenza() {
@@ -103,8 +113,7 @@ public class Biglietto extends ServizioComponent {
 
 	@Override
 	public float getTotale() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.getPrezzo();
 	}
 
 }

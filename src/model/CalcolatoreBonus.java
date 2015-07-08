@@ -11,14 +11,16 @@ public class CalcolatoreBonus {
 	 * Instanza della classe
 	 */
 	private static CalcolatoreBonus instance;
-	
+
 	/**
 	 * Metodo costruttore
 	 */
-	protected CalcolatoreBonus() {}
+	protected CalcolatoreBonus() {
+	}
 
 	/**
 	 * Restituisce la singola instanza della classe
+	 * 
 	 * @return CalcolatoreBonus
 	 */
 	public static CalcolatoreBonus getInstance() {
@@ -28,27 +30,41 @@ public class CalcolatoreBonus {
 	}
 
 	/**
-	 * Restituisce i bonus del cliente
+	 * Restituisce il Bonus più vantaggioso per il Cliente
+	 * 
 	 * @param cliente
-	 * @return ArrayList<Bonus>
+	 * @return Bonus
 	 */
-	public ArrayList<Bonus> getBonus(Cliente cliente) {
-		ScontoConcreteStrategy bonus_strategy = new ScontoConcreteStrategy();
-		return bonus_strategy.calcola(cliente);
+	public Bonus getBonus(Cliente cliente) {
+		// inzializza una lista di Bonus
+		ArrayList<Bonus> lista_bonus = new ArrayList<Bonus>();
+		ArrayList<Vendita> vendite = Agenzia.getInstance().getRegistroVendite().getVendite(cliente);
+
+		// crea le Strategy disponibili
+		ScontoConcreteStrategy sconto_strategy = new ScontoConcreteStrategy();
+
+		// aggiunge i Bonus calcolati dalle Strategy alla lista
+		lista_bonus.add(sconto_strategy.calcola(vendite));
+
+		// calcola il Bonus migliore tra quelli calcolati
+		
+		// Prima iterazione: evitiamo il calcolo del Bonus migliore in quanto
+		// disponiamo di una sola Strategy
+		return lista_bonus.get(0);
 	}
 
 	/**
-	 * Applica un bonus a un servizio
+	 * Applica un Bonus a un Servizio
+	 * 
 	 * @param servizio
 	 * @param bonus
 	 */
 	public void applicaBonus(ServizioComponent servizio, Bonus bonus) {
-		BonusStrategy bonus_strategy = null;
+		if (bonus.getServizio() != null) {
+			// aggiungi il Servizio al Pacchetto
+		}
 		
-		if (bonus instanceof ScontoBonus)
-			bonus_strategy = new ScontoConcreteStrategy();
-		
-		bonus_strategy.applica(servizio, bonus);
+		servizio.setTotale(servizio.getPrezzo() * ((ScontoBonus) bonus).getSconto() / 100);
 	}
 
 }

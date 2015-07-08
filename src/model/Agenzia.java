@@ -12,34 +12,34 @@ public class Agenzia {
 	 * Instanza della classe
 	 */
 	private static Agenzia instance;
-	
-	
+
 	/**
 	 * Registro delle vendite
 	 */
 	private RegistroVendite registro_vendite;
-	
+
 	/**
 	 * Registro dei clienti
 	 */
 	private RegistroClienti registro_clienti;
-	
+
 	/**
 	 * Registratore di cassa
 	 */
-	private RegistratoreDiCassa cassa;
-	
+	private RegistratoreDiCassa registratore_cassa;
+
 	/**
 	 * Metodo costruttore
 	 */
 	protected Agenzia() {
-		setRegistroVendite(RegistroVendite.getInstance());
-		setRegistroClienti(RegistroClienti.getInstance());
-		setCassa(RegistratoreDiCassa.getInstance());
+		this.registro_vendite = RegistroVendite.getInstance();
+		this.registro_clienti = RegistroClienti.getInstance();
+		this.registratore_cassa = RegistratoreDiCassa.getInstance();
 	}
 
 	/**
 	 * Restituisce la singola instanza della classe
+	 * 
 	 * @return Agenzia
 	 */
 	public static Agenzia getInstance() {
@@ -50,6 +50,7 @@ public class Agenzia {
 
 	/**
 	 * Ricerca gli alloggi
+	 * 
 	 * @param criteria
 	 * @return ArrayList<Alloggio>
 	 */
@@ -60,6 +61,7 @@ public class Agenzia {
 
 	/**
 	 * Ricerca i biglietti
+	 * 
 	 * @param criteria
 	 * @return ArrayList<Biglietto>
 	 */
@@ -70,24 +72,26 @@ public class Agenzia {
 
 	/**
 	 * Restituisce il registratore di cassa
+	 * 
 	 * @return RegistratoreDiCassa
 	 */
 	public RegistratoreDiCassa getCassa() {
-		return cassa;
+		return registratore_cassa;
 	}
 
 	/**
 	 * Imposta il registratore di cassa
+	 * 
 	 * @param cassa
 	 * @return Agenzia
 	 */
-	public Agenzia setCassa(RegistratoreDiCassa cassa) {
-		this.cassa = cassa;
-		return this;
+	public void setRegistratoreDiCassa(RegistratoreDiCassa cassa) {
+		this.registratore_cassa = cassa;
 	}
 
 	/**
 	 * Restituisce il registro dei clienti
+	 * 
 	 * @return RegistroClienti
 	 */
 	public RegistroClienti getRegistroClienti() {
@@ -96,16 +100,17 @@ public class Agenzia {
 
 	/**
 	 * Imposta il registro dei clienti
+	 * 
 	 * @param registro_clienti
 	 * @return Agenzia
 	 */
-	public Agenzia setRegistroClienti(RegistroClienti registro_clienti) {
+	public void setRegistroClienti(RegistroClienti registro_clienti) {
 		this.registro_clienti = registro_clienti;
-		return this;
 	}
 
 	/**
 	 * Restituisce il registro delle vendite
+	 * 
 	 * @return RegistroVendite
 	 */
 	public RegistroVendite getRegistroVendite() {
@@ -114,12 +119,12 @@ public class Agenzia {
 
 	/**
 	 * Imposta il registro delle vendite
+	 * 
 	 * @param registro_vendite
 	 * @return Agenzia
 	 */
-	public Agenzia setRegistroVendite(RegistroVendite registro_vendite) {
+	public void setRegistroVendite(RegistroVendite registro_vendite) {
 		this.registro_vendite = registro_vendite;
-		return this;
 	}
 
 }

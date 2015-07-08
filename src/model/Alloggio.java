@@ -11,8 +11,14 @@ public class Alloggio extends ServizioComponent {
 	private java.util.HashMap<String, Integer> stanze;
 
 	public Alloggio() {
-		// TODO - implement Alloggio.Alloggio
-		throw new UnsupportedOperationException();
+	}
+
+	public Alloggio(String localita, Date data_arrivo, Date data_partenza, HashMap<String, Integer> stanze) {
+		super();
+		this.localita = localita;
+		this.data_arrivo = data_arrivo;
+		this.data_partenza = data_partenza;
+		this.stanze = stanze;
 	}
 
 	public String getLocalita() {
@@ -65,8 +71,7 @@ public class Alloggio extends ServizioComponent {
 
 	@Override
 	public float getTotale() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.getPrezzo();
 	}
 
 }
