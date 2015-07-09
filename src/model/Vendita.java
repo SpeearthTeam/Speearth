@@ -2,6 +2,9 @@ package model;
 
 import java.util.Date;
 
+/**
+ * Classe rappresentante una Vendita effettuata dall'Agenzia
+ */
 public class Vendita {
 
 	/**

@@ -2,18 +2,21 @@ package model;
 
 import java.util.Date;
 
+/**
+ * Classe rappresentante un Pagamento per un Servizio offerto dall'Agenzia
+ */
 public class Pagamento {
 
 	/**
 	 * Id
 	 */
 	private int id;
-	
+
 	/**
 	 * Ammontare
 	 */
 	private float ammontare;
-	
+
 	/**
 	 * Data
 	 */

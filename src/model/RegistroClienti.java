@@ -2,6 +2,9 @@ package model;
 
 import java.util.ArrayList;
 
+/**
+ * Classe addetta alla gestione dei Clienti dell'Agenzia
+ */
 public class RegistroClienti {
 
 	/**
@@ -32,7 +35,7 @@ public class RegistroClienti {
 	 * @param id
 	 * @return Cliente
 	 */
-	public Cliente getCliente(int id) {
+	public Cliente getClienteDaID(int id) {
 		// TODO - implement RegistroClienti.getCliente
 		return null;
 	}
@@ -43,7 +46,7 @@ public class RegistroClienti {
 	 * @param nome
 	 * @return ArrayList<Cliente>
 	 */
-	public ArrayList<Cliente> getClienteDaNome(String nome) {
+	public ArrayList<Cliente> getClientiDaNome(String nome) {
 		return null;
 	}
 

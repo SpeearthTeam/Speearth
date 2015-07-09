@@ -2,10 +2,8 @@ package model;
 
 import java.util.ArrayList;
 
-import jdk.internal.dynalink.beans.StaticClass;
-
 /**
- * Classe addetta alla gestione delle vendite
+ * Classe addetta alla gestione delle Vendite
  */
 public class RegistroVendite {
 
@@ -37,8 +35,17 @@ public class RegistroVendite {
 	 * @param cliente
 	 * @return ArrayList<Vendita>
 	 */
-	public ArrayList<Vendita> getVendite(Cliente cliente) {
+	public ArrayList<Vendita> getVenditeDaCliente(Cliente cliente) {
 		// TODO - implement RegistroVendite.getVendite
+		return null;
+	}
+	
+	/**
+	 * Restituisce una Vendita dal suo id
+	 * 
+	 * @return Vendita
+	 */
+	public Vendita getVenditaDaID(int id) {
 		return null;
 	}
 

@@ -3,7 +3,11 @@ package model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public interface ImpresaRicettivaAdapter extends SistemaEsterno {
+/**
+ * Interfaccia rappresentante un'Impresa Ricettiva che fornisce Alloggi per
+ * l'Agenzia
+ */
+public interface ImpresaRicettivaAdapter extends SistemaEsterno<Alloggio> {
 	/**
 	 * Restituisce una lista di Alloggi secondo i parametri di ricerca
 	 * 

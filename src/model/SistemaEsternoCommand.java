@@ -1,13 +1,17 @@
 package model;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
-public interface SistemaEsternoCommand {
-
+/**
+ * Interfaccia rappresentante un generico comando verso un Sistema Esterno
+ */
+@SuppressWarnings("hiding")
+public interface SistemaEsternoCommand<ServizioComponent> {
 	/**
+	 * Fa eseguire il Comando
 	 * 
-	 * @param parametri
+	 * @return ArrayList<ServizioComponent>
 	 */
-	ServizioComponent[] esegui(HashMap<String, String> parametri);
+	public ArrayList<ServizioComponent> esegui();
 
 }

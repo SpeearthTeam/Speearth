@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 
 /**
- * Classe addetta alla gestione dei bonus
+ * Classe addetta alla gestione dei Bonus
  */
 public class CalcolatoreBonus {
 
@@ -38,7 +38,7 @@ public class CalcolatoreBonus {
 	public Bonus getBonus(Cliente cliente) {
 		// inzializza una lista di Bonus
 		ArrayList<Bonus> lista_bonus = new ArrayList<Bonus>();
-		ArrayList<Vendita> vendite = Agenzia.getInstance().getRegistroVendite().getVendite(cliente);
+		ArrayList<Vendita> vendite = Agenzia.getInstance().getRegistroVendite().getVenditeDaCliente(cliente);
 
 		// crea le Strategy disponibili
 		ScontoConcreteStrategy sconto_strategy = new ScontoConcreteStrategy();
@@ -47,7 +47,7 @@ public class CalcolatoreBonus {
 		lista_bonus.add(sconto_strategy.calcola(vendite));
 
 		// calcola il Bonus migliore tra quelli calcolati
-		
+
 		// Prima iterazione: evitiamo il calcolo del Bonus migliore in quanto
 		// disponiamo di una sola Strategy
 		return lista_bonus.get(0);

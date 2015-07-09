@@ -1,10 +1,9 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
- * Classe che gestisce l'agenzia
+ * Classe che rappresenta l'Agenzia
  */
 public class Agenzia {
 
@@ -14,22 +13,28 @@ public class Agenzia {
 	private static Agenzia instance;
 
 	/**
-	 * Registro delle vendite
+	 * Registro delle Vendite
 	 */
 	private RegistroVendite registro_vendite;
 
 	/**
-	 * Registro dei clienti
+	 * Registro dei Clienti
 	 */
 	private RegistroClienti registro_clienti;
 
 	/**
-	 * Registratore di cassa
+	 * Registratore di Cassa
 	 */
 	private RegistratoreDiCassa registratore_cassa;
 
 	/**
-	 * Metodo costruttore
+	 * Lista di Comandi da eseguire far eseguire ai Sistemi Esterni secondo le
+	 * richieste del Cliente
+	 */
+	private ArrayList<SistemaEsternoCommand<ServizioComponent>> comandi;
+
+	/**
+	 * Costruttore
 	 */
 	protected Agenzia() {
 		this.registro_vendite = RegistroVendite.getInstance();
@@ -49,29 +54,7 @@ public class Agenzia {
 	}
 
 	/**
-	 * Ricerca gli alloggi
-	 * 
-	 * @param criteria
-	 * @return ArrayList<Alloggio>
-	 */
-	public ArrayList<Alloggio> ricercaAlloggi(HashMap<String, String> criteria) {
-		// TODO - implement Agenzia.ricercaAlloggi
-		return null;
-	}
-
-	/**
-	 * Ricerca i biglietti
-	 * 
-	 * @param criteria
-	 * @return ArrayList<Biglietto>
-	 */
-	public ArrayList<Biglietto> ricercaBiglietti(HashMap<String, String> criteria) {
-		// TODO - implement Agenzia.ricercaBiglietti
-		return null;
-	}
-
-	/**
-	 * Restituisce il registratore di cassa
+	 * Restituisce il Registratore di Cassa
 	 * 
 	 * @return RegistratoreDiCassa
 	 */
@@ -80,7 +63,7 @@ public class Agenzia {
 	}
 
 	/**
-	 * Imposta il registratore di cassa
+	 * Imposta il Registratore di Cassa
 	 * 
 	 * @param cassa
 	 * @return Agenzia
@@ -90,7 +73,7 @@ public class Agenzia {
 	}
 
 	/**
-	 * Restituisce il registro dei clienti
+	 * Restituisce il Registro dei Clienti
 	 * 
 	 * @return RegistroClienti
 	 */
@@ -99,7 +82,7 @@ public class Agenzia {
 	}
 
 	/**
-	 * Imposta il registro dei clienti
+	 * Imposta il Registro dei Clienti
 	 * 
 	 * @param registro_clienti
 	 * @return Agenzia
@@ -109,7 +92,7 @@ public class Agenzia {
 	}
 
 	/**
-	 * Restituisce il registro delle vendite
+	 * Restituisce il Registro delle Vendite
 	 * 
 	 * @return RegistroVendite
 	 */
@@ -118,13 +101,23 @@ public class Agenzia {
 	}
 
 	/**
-	 * Imposta il registro delle vendite
+	 * Imposta il Registro delle Vendite
 	 * 
 	 * @param registro_vendite
 	 * @return Agenzia
 	 */
 	public void setRegistroVendite(RegistroVendite registro_vendite) {
 		this.registro_vendite = registro_vendite;
+	}
+
+	/**
+	 * Aggiunge un nuovo Comando alla lista di Comandi
+	 * 
+	 * @param comando
+	 */
+	public void aggiungiComando(SistemaEsternoCommand<ServizioComponent> comando) {
+		this.comandi.add(comando);
+		this.comandi.remove(0).esegui();
 	}
 
 }
