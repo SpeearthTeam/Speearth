@@ -1,105 +1,39 @@
 package model;
 
 /**
- * Classe astratta di un servizio
+ * Interfaccia di un Servizio
  */
-public abstract class ServizioComponent {
-
+public interface ServizioComponent {
 	/**
-	 * Id
-	 */
-	private int id;
-	
-	/**
-	 * Fornitore
-	 */
-	private String fornitore;
-	
-	/**
-	 * Prezzo
-	 */
-	private float prezzo;
-	
-	/**
-	 * Totale
-	 */
-	private float totale;
-
-	/**
-	 * Metodo costruttore
-	 */
-	public ServizioComponent() {}
-
-	/**
-	 * Restituisce l'id
-	 * @return int
-	 */
-	public int getId() {
-		return this.id;
-	}
-
-	/**
-	 * Imposta l'id
-	 * @param id
-	 * @return ServizioComponent
-	 */
-	public ServizioComponent setId(int id) {
-		this.id = id;
-		return this;
-	}
-
-	/**
-	 * Restituisce il nome del fornitore
-	 * @return String
-	 */
-	public String getFornitore() {
-		return this.fornitore;
-	}
-
-	/**
-	 * Imposta il nome del fornitore
-	 * @param fornitore
-	 * @return ServizioComponent
-	 */
-	public ServizioComponent setFornitore(String fornitore) {
-		this.fornitore = fornitore;
-		return this;
-	}
-
-	/**
-	 * Restituisce il prezzo
+	 * Restituisce il prezzo totale del Servizio
+	 * 
 	 * @return float
 	 */
-	public float getPrezzo() {
-		return this.prezzo;
-	}
+	public float getTotale();
 
 	/**
-	 * Imposta il prezzo
-	 * @param prezzo
-	 * @return ServizioComponent
-	 */
-	public ServizioComponent setPrezzo(float prezzo) {
-		this.prezzo = prezzo;
-		return this;
-	}
-	
-	/**
-	 * Restituisce il totale
-	 * @return float
-	 */
-	public float getTotale() {
-		return this.totale;
-	}
-	
-	/**
-	 * Imposta il totale
+	 * Imposta il prezzo totale del Servizio
+	 * 
 	 * @param totale
+	 */
+	public void setTotale(float totale);
+
+	/**
+	 * Aggiunge un Componente al Servizio composito
+	 * 
+	 * @param ServizioComponent
+	 */
+	public void aggiungi(ServizioComponent servizio);
+
+	/**
+	 * Rimuove un Componente dal Servizio composito
+	 */
+	public void rimuovi(ServizioComponent servizio);
+
+	/**
+	 * Restituisce un Componente incluso nel Servizio composito
+	 * 
 	 * @return ServizioComponent
 	 */
-	public ServizioComponent setTotale(float totale) {
-		this.totale = totale;
-		return this;
-	}
-
+	public ServizioComponent getServizio(int indice);
 }

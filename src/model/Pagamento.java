@@ -2,9 +2,6 @@ package model;
 
 import java.util.Date;
 
-/**
- * Classe che descrive il pagamento
- */
 public class Pagamento {
 
 	/**
@@ -23,12 +20,14 @@ public class Pagamento {
 	private Date data;
 
 	/**
-	 * Metodo costruttore
+	 * Costruttore di default
 	 */
-	public Pagamento() {}
+	public Pagamento() {
+	}
 
 	/**
-	 * Restituisce l'id
+	 * Restituisce l'id del Pagamento
+	 * 
 	 * @return int
 	 */
 	public int getId() {
@@ -36,17 +35,17 @@ public class Pagamento {
 	}
 
 	/**
-	 * Imposta l'id
+	 * Imposta l'id del Pagamento
+	 * 
 	 * @param id
-	 * @return Pagamento
 	 */
-	public Pagamento setId(int id) {
+	public void setId(int id) {
 		this.id = id;
-		return this;
 	}
 
 	/**
-	 * Restituisce l'ammontare
+	 * Restituisce l'Ammontare del Pagamento
+	 * 
 	 * @return float
 	 */
 	public float getAmmontare() {
@@ -54,17 +53,17 @@ public class Pagamento {
 	}
 
 	/**
-	 * Imposta l'ammontare
+	 * Imposta l'Ammontare del Pagamento
+	 * 
 	 * @param ammontare
-	 * @return Pagamento
 	 */
-	public Pagamento setAmmontare(float ammontare) {
+	public void setAmmontare(float ammontare) {
 		this.ammontare = ammontare;
-		return this;
 	}
 
 	/**
-	 * Restituisce la data
+	 * Restituisce la Data del Pagamento
+	 * 
 	 * @return Date
 	 */
 	public Date getData() {
@@ -72,17 +71,17 @@ public class Pagamento {
 	}
 
 	/**
-	 * Imposta la data
+	 * Imposta la Data del Pagamento
+	 * 
 	 * @param data
-	 * @return Pagamento
 	 */
-	public Pagamento setData(Date data) {
+	public void setData(Date data) {
 		this.data = data;
-		return this;
 	}
 
 	/**
-	 * Restituisce la ricevuta
+	 * Restituisce la Ricevuta del Pagamento
+	 * 
 	 * @return String
 	 */
 	public String generaRicevuta() {

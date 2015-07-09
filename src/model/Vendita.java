@@ -2,63 +2,68 @@ package model;
 
 import java.util.Date;
 
-/**
- * Classe che descrive la vendita
- */
 public class Vendita {
 
 	/**
 	 * Id
 	 */
 	private int id;
-	
+
 	/**
 	 * Data
 	 */
 	private Date data;
-	
+
 	/**
 	 * Cliente
 	 */
 	private Cliente cliente;
-	
+
 	/**
 	 * Pagamento relativo alla vendita
 	 */
 	private Pagamento pagamento;
-	
+
 	/**
 	 * Commesso
 	 */
 	private Commesso commesso;
-	
+
 	/**
 	 * Servizio
 	 */
 	private ServizioComponent servizio;
 
 	/**
-	 * Metodo costruttore
+	 * Costruttore di default
 	 */
-	public Vendita() {}
-	
-	/**
-	 * Metodo costruttore
-	 * @param servizio
-	 * @param cliente
-	 * @param pagamento
-	 * @param commesso
-	 */
-	public Vendita(ServizioComponent servizio, Cliente cliente, Pagamento pagamento, Commesso commesso) {
-		setServizio(servizio);
-		setCliente(cliente);
-		setPagamento(pagamento);
-		setCommesso(commesso);
-		setData(new Date());
+	public Vendita() {
 	}
 
 	/**
-	 * Restituisce l'id della vendita
+	 * Costruttore completo
+	 * 
+	 * @param id
+	 * @param data
+	 * @param cliente
+	 * @param pagamento
+	 * @param commesso
+	 * @param servizio
+	 */
+	public Vendita(int id, Date data, Cliente cliente, Pagamento pagamento, Commesso commesso,
+			ServizioComponent servizio) {
+		super();
+		this.id = id;
+		this.data = data;
+		this.cliente = cliente;
+		this.pagamento = pagamento;
+		this.commesso = commesso;
+		this.servizio = servizio;
+	}
+
+	/**
+	 * Restituisce l'id della Vendita
+	 * 
 	 * @return int
 	 */
 	public int getId() {
@@ -66,17 +71,17 @@ public class Vendita {
 	}
 
 	/**
-	 * Imposta l'id della vendita
+	 * Imposta l'id della Vendita
+	 * 
 	 * @param id
-	 * @return Vendita
 	 */
-	public Vendita setId(int id) {
+	public void setId(int id) {
 		this.id = id;
-		return this;
 	}
-	
+
 	/**
-	 * Restituisce la data della vendita
+	 * Restituisce la data della Vendita
+	 * 
 	 * @return Date
 	 */
 	public Date getData() {
@@ -84,53 +89,53 @@ public class Vendita {
 	}
 
 	/**
-	 * Imposta la data della vendita
+	 * Imposta la data della Vendita
+	 * 
 	 * @param data
-	 * @return Vendita
 	 */
-	public Vendita setData(Date data) {
+	public void setData(Date data) {
 		this.data = data;
-		return this;
 	}
-	
+
 	/**
-	 * Restituisce il cliente
+	 * Restituisce il Cliente della Vendita
+	 * 
 	 * @return Cliente
 	 */
 	public Cliente getCliente() {
 		return cliente;
 	}
-	
+
 	/**
-	 * Imposta il cliente
+	 * Imposta il Cliente che della Vendita
+	 * 
 	 * @param cliente
-	 * @return Vendita
 	 */
-	public Vendita setCliente(Cliente cliente) {
+	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
-		return this;
 	}
-	
+
 	/**
-	 * Restituisce il pagamento
+	 * Restituisce il Pagamento della Vendita
+	 * 
 	 * @return Pagamento
 	 */
 	public Pagamento getPagamento() {
 		return this.pagamento;
 	}
-	
+
 	/**
-	 * Imposta il pagamento
+	 * Imposta il Pagamento della Vendita
+	 * 
 	 * @param pagamento
-	 * @return Vendita
 	 */
-	public Vendita setPagamento(Pagamento pagamento) {
+	public void setPagamento(Pagamento pagamento) {
 		this.pagamento = pagamento;
-		return this;
 	}
 
 	/**
-	 * Restituisce il commesso
+	 * Restituisce il Commesso che ha effettuato la Vendita
+	 * 
 	 * @return Commesso
 	 */
 	public Commesso getCommesso() {
@@ -138,17 +143,17 @@ public class Vendita {
 	}
 
 	/**
-	 * Imposta il commesso
+	 * Imposta il Commesso che ha effettuato la Vendita
+	 * 
 	 * @param commesso
-	 * @return Vendita
 	 */
-	public Vendita setCommesso(Commesso commesso) {
+	public void setCommesso(Commesso commesso) {
 		this.commesso = commesso;
-		return this;
 	}
 
 	/**
-	 * Restituisce il servizio
+	 * Restituisce il Servizio della Vendita
+	 * 
 	 * @return ServizioComponent
 	 */
 	public ServizioComponent getServizio() {
@@ -156,13 +161,12 @@ public class Vendita {
 	}
 
 	/**
-	 * Imposta il servizio
+	 * Imposta il Servizio della Vendita
+	 * 
 	 * @param servizio
-	 * @return Vendita
 	 */
-	public Vendita setServizio(ServizioComponent servizio) {
+	public void setServizio(ServizioComponent servizio) {
 		this.servizio = servizio;
-		return this;
 	}
 
 }

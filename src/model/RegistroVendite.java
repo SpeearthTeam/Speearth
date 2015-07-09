@@ -10,17 +10,19 @@ import jdk.internal.dynalink.beans.StaticClass;
 public class RegistroVendite {
 
 	/**
-	 * Instanza della classe
+	 * Istanza della classe
 	 */
 	private static RegistroVendite instance;
 
 	/**
-	 * Metodo costruttore
+	 * Costruttore di default
 	 */
-	protected RegistroVendite() {}
+	protected RegistroVendite() {
+	}
 
 	/**
-	 * Restituisce la singola instanza della classe
+	 * Restituisce la singola istanza della classe
+	 * 
 	 * @return RegistroVendite
 	 */
 	public static RegistroVendite getInstance() {
@@ -30,7 +32,8 @@ public class RegistroVendite {
 	}
 
 	/**
-	 * Restituisce le vendite associate al cliente
+	 * Restituisce le Vendite associate al Cliente
+	 * 
 	 * @param cliente
 	 * @return ArrayList<Vendita>
 	 */
@@ -40,7 +43,8 @@ public class RegistroVendite {
 	}
 
 	/**
-	 * Registra una vendita
+	 * Registra una Vendita
+	 * 
 	 * @param vendita
 	 */
 	public void registraVendita(Vendita vendita) {

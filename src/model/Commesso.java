@@ -9,34 +9,55 @@ public class Commesso {
 	 * Id
 	 */
 	private int id;
-	
+
 	/**
 	 * Nome
 	 */
 	private String nome;
-	
+
 	/**
 	 * Cognome
 	 */
 	private String cognome;
-	
+
 	/**
 	 * Username
 	 */
 	private String username;
-	
+
 	/**
 	 * Password
 	 */
 	private String password;
 
 	/**
-	 * Metodo costruttore
+	 * Costruttore di default
 	 */
-	public Commesso() {}
+	public Commesso() {
+
+	}
 
 	/**
-	 * Restituisce l'id
+	 * Costruttore completo
+	 * 
+	 * @param id
+	 * @param nome
+	 * @param cognome
+	 * @param username
+	 * @param password
+	 */
+	public Commesso(int id, String nome, String cognome, String username, String password) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.username = username;
+		this.password = password;
+	}
+
+	/**
+	 * Restituisce l'id del Commesso
+	 * 
 	 * @return int
 	 */
 	public int getId() {
@@ -44,7 +65,8 @@ public class Commesso {
 	}
 
 	/**
-	 * Imposta l'id
+	 * Imposta l'id del Commesso
+	 * 
 	 * @param id
 	 * @return Commesso
 	 */
@@ -54,7 +76,8 @@ public class Commesso {
 	}
 
 	/**
-	 * Restituisce il nome
+	 * Restituisce il nome del Commesso
+	 * 
 	 * @return String
 	 */
 	public String getNome() {
@@ -62,7 +85,8 @@ public class Commesso {
 	}
 
 	/**
-	 * Imposta il nome
+	 * Imposta il nome del Commesso
+	 * 
 	 * @param nome
 	 * @return Commesso
 	 */
@@ -72,15 +96,17 @@ public class Commesso {
 	}
 
 	/**
-	 * Restituisce il cognome
+	 * Restituisce il cognome del Commesso
+	 * 
 	 * @return String
 	 */
 	public String getCognome() {
 		return cognome;
 	}
-	
+
 	/**
-	 * Imposta il cognome
+	 * Imposta il cognome del Commesso
+	 * 
 	 * @param cognome
 	 * @return Commesso
 	 */
@@ -88,9 +114,10 @@ public class Commesso {
 		this.cognome = cognome;
 		return this;
 	}
-	
+
 	/**
-	 * Restituisce lo username
+	 * Restituisce lo username del Commesso
+	 * 
 	 * @return String
 	 */
 	public String getUsername() {
@@ -98,7 +125,8 @@ public class Commesso {
 	}
 
 	/**
-	 * Imposta lo username
+	 * Imposta lo username del Commesso
+	 * 
 	 * @param username
 	 * @return Commesso
 	 */
@@ -108,7 +136,8 @@ public class Commesso {
 	}
 
 	/**
-	 * Restituisce la password
+	 * Restituisce la password del Commesso
+	 * 
 	 * @return String
 	 */
 	public String getPassword() {
@@ -116,7 +145,8 @@ public class Commesso {
 	}
 
 	/**
-	 * Imposta la password
+	 * Imposta la password del Commesso
+	 * 
 	 * @param password
 	 * @return Commesso
 	 */
@@ -124,6 +154,5 @@ public class Commesso {
 		this.password = password;
 		return this;
 	}
-
 
 }

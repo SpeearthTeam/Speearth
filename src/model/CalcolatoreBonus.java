@@ -13,13 +13,13 @@ public class CalcolatoreBonus {
 	private static CalcolatoreBonus instance;
 
 	/**
-	 * Metodo costruttore
+	 * Costruttore di default
 	 */
 	protected CalcolatoreBonus() {
 	}
 
 	/**
-	 * Restituisce la singola instanza della classe
+	 * Restituisce la singola istanza della classe
 	 * 
 	 * @return CalcolatoreBonus
 	 */
@@ -63,8 +63,7 @@ public class CalcolatoreBonus {
 		if (bonus.getServizio() != null) {
 			// aggiungi il Servizio al Pacchetto
 		}
-		
-		servizio.setTotale(servizio.getPrezzo() * ((ScontoBonus) bonus).getSconto() / 100);
+		servizio.setTotale(servizio.getTotale() * ((ScontoBonus) bonus).getSconto() / 100);
 	}
 
 }
