@@ -1,49 +1,78 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
+/**
+ * Servizio alloggio
+ */
 public class Alloggio implements ServizioComponent {
 
+	/**
+	 * Id
+	 */
 	private int id;
+	
+	/**
+	 * Fornitore
+	 */
 	private String fornitore;
+	
+	/**
+	 * Località
+	 */
 	private String localita;
+	
+	/**
+	 * Data di arrivo
+	 */
 	private Date data_arrivo;
+	
+	/**
+	 * Data di partenza
+	 */
 	private Date data_partenza;
-	private java.util.HashMap<String, Integer> stanze;
+	
+	/**
+	 * Stanze dell'alloggio
+	 */
+	private HashMap<String, Integer> stanze;
+	
+	/**
+	 * Prezzo
+	 */
 	private float prezzo;
+
+	/**
+	 * Prezzo totale
+	 */
+	private float totale;
 
 	/**
 	 * Costruttore di default
 	 */
 	public Alloggio() {
+		setPrezzo(0);
+		setTotale(0);
 	}
 
 	/**
-	 * Costruttore completo
+	 * Costruttore
 	 * 
-	 * @param id
 	 * @param fornitore
 	 * @param localita
-	 * @param data_arrivo
-	 * @param data_partenza
 	 * @param stanze
-	 * @param prezzo
 	 */
-	public Alloggio(int id, String fornitore, String localita, Date data_arrivo, Date data_partenza,
-			HashMap<String, Integer> stanze, float prezzo) {
-		super();
-		this.id = id;
-		this.fornitore = fornitore;
-		this.localita = localita;
-		this.data_arrivo = data_arrivo;
-		this.data_partenza = data_partenza;
-		this.stanze = stanze;
-		this.prezzo = prezzo;
+	public Alloggio(String fornitore, String localita, HashMap<String, Integer> stanze) {
+		this();
+		setFornitore(fornitore);
+		setLocalita(localita);
+		setStanze(stanze);
 	}
 
 	/**
-	 * Restituisce l'id dell'Alloggio
+	 * Restituisce l'id dell'alloggio
 	 * 
 	 * @return int
 	 */
@@ -52,7 +81,7 @@ public class Alloggio implements ServizioComponent {
 	}
 
 	/**
-	 * Imposta l'id dell'Alloggio
+	 * Imposta l'id dell'alloggio
 	 * 
 	 * @param id
 	 */
@@ -61,7 +90,7 @@ public class Alloggio implements ServizioComponent {
 	}
 
 	/**
-	 * Restituisce il Fornitore dell'Alloggio
+	 * Restituisce il fornitore dell'alloggio
 	 * 
 	 * @return String
 	 */
@@ -70,7 +99,7 @@ public class Alloggio implements ServizioComponent {
 	}
 
 	/**
-	 * Imposta il Fornitore dell'Alloggio
+	 * Imposta il fornitore dell'alloggio
 	 * 
 	 * @param fornitore
 	 */
@@ -79,7 +108,7 @@ public class Alloggio implements ServizioComponent {
 	}
 
 	/**
-	 * Restituisce la Data di arrivo
+	 * Restituisce la località dell'alloggio
 	 * 
 	 * @return Date
 	 */
@@ -88,7 +117,7 @@ public class Alloggio implements ServizioComponent {
 	}
 
 	/**
-	 * Imposta la località dell'Alloggio
+	 * Imposta la località dell'alloggio
 	 * 
 	 * @param localita
 	 */
@@ -97,43 +126,43 @@ public class Alloggio implements ServizioComponent {
 	}
 
 	/**
-	 * Restituisce la Data di arrivo
+	 * Restituisce la data di arrivo
 	 * 
 	 * @return Date
 	 */
-	public Date getData_arrivo() {
+	public Date getDataArrivo() {
 		return this.data_arrivo;
 	}
 
 	/**
-	 * Imposta la Data di arrivo
+	 * Imposta la data di arrivo
 	 * 
 	 * @param data_arrivo
 	 */
-	public void setData_arrivo(Date data_arrivo) {
+	public void setDataArrivo(Date data_arrivo) {
 		this.data_arrivo = data_arrivo;
 	}
 
 	/**
-	 * Restituisce la Data di partenza
+	 * Restituisce la data di partenza
 	 * 
 	 * @return Date
 	 */
-	public Date getData_partenza() {
+	public Date getDataPartenza() {
 		return this.data_partenza;
 	}
 
 	/**
-	 * Imposta la Data di partenza
+	 * Imposta la data di partenza
 	 * 
 	 * @param data_partenza
 	 */
-	public void setData_partenza(Date data_partenza) {
+	public void setDataPartenza(Date data_partenza) {
 		this.data_partenza = data_partenza;
 	}
 
 	/**
-	 * Restituisce l'insieme di Stanze dell'Alloggio
+	 * Restituisce l'insieme di stanze dell'alloggio
 	 * 
 	 * @return HashMap<String, Integer>
 	 */
@@ -142,7 +171,7 @@ public class Alloggio implements ServizioComponent {
 	}
 
 	/**
-	 * Imposta l'insieme di Stanze dell'Alloggio
+	 * Imposta l'insieme di stanze dell'alloggio
 	 * 
 	 * @param stanze
 	 */
@@ -151,62 +180,63 @@ public class Alloggio implements ServizioComponent {
 	}
 
 	/**
-	 * Restituisce il prezzo totale dell'Alloggio
+	 * Restituisce il prezzo totale dell'alloggio
 	 * 
 	 * @return float
 	 */
 	@Override
 	public float getTotale() {
-		return this.getPrezzo();
+		return this.totale;
 	}
 
 	/**
-	 * Imposta il prezzo totale dell'Alloggio
+	 * Imposta il prezzo totale dell'alloggio
 	 * 
 	 * @param totale
 	 */
 	@Override
 	public void setTotale(float totale) {
-		this.setPrezzo(totale);
+		this.totale = totale;
 	}
 
 	/**
-	 * Restituisce il prezzo dell'Alloggio
+	 * Restituisce il prezzo dell'alloggio
 	 * 
 	 * @return
 	 */
+	@Override
 	public float getPrezzo() {
-		return prezzo;
+		return this.prezzo;
 	}
 
 	/**
-	 * Imposta il prezzo dell'Alloggio
+	 * Imposta il prezzo dell'alloggio
 	 * 
 	 * @param prezzo
 	 */
+	@Override
 	public void setPrezzo(float prezzo) {
 		this.prezzo = prezzo;
 	}
 
-	/**
-	 * Il metodo non si applica in quanto classe Foglia
-	 */
 	@Override
 	public void aggiungi(ServizioComponent servizio) {
+		// Il metodo è vuoto in quanto classe foglia
 	}
 
-	/**
-	 * Il metodo non si applica in quanto classe Foglia
-	 */
 	@Override
 	public void rimuovi(ServizioComponent servizio) {
+		// Il metodo è vuoto in quanto classe foglia
 	}
 
-	/**
-	 * Il metodo non si applica in quanto classe Foglia
-	 */
 	@Override
-	public ServizioComponent getServizio(int indice) {
+	public void setServiziAnnidati(ArrayList<ServizioComponent> servizi) {
+		// Il metodo è vuoto in quanto classe foglia
+	}
+
+	@Override
+	public ArrayList<ServizioComponent> getServiziAnnidati() {
+		// Il metodo restituisce null in quanto classe foglia
 		return null;
 	}
 

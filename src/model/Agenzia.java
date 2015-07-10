@@ -31,7 +31,7 @@ public class Agenzia {
 	 * Lista di Comandi da eseguire far eseguire ai Sistemi Esterni secondo le
 	 * richieste del Cliente
 	 */
-	private ArrayList<SistemaEsternoCommand<ServizioComponent>> comandi;
+	private ArrayList<RicercaCommand> comandi;
 
 	/**
 	 * Costruttore
@@ -115,7 +115,7 @@ public class Agenzia {
 	 * 
 	 * @param comando
 	 */
-	public void aggiungiComando(SistemaEsternoCommand<ServizioComponent> comando) {
+	public void aggiungiComando(RicercaCommand comando) {
 		this.comandi.add(comando);
 		this.comandi.remove(0).esegui();
 	}

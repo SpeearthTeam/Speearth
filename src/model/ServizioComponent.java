@@ -1,9 +1,26 @@
 package model;
 
+import java.util.ArrayList;
+
 /**
  * Interfaccia di un Servizio
  */
 public interface ServizioComponent {
+	
+	/**
+	 * Restituisce il prezzo del servizio
+	 * 
+	 * @return float
+	 */
+	public float getPrezzo();
+	
+	/**
+	 * Imposta il prezzo del servizio
+	 * 
+	 * @param prezzo
+	 */
+	public void setPrezzo(float prezzo);
+	
 	/**
 	 * Restituisce il prezzo totale del Servizio
 	 * 
@@ -29,11 +46,18 @@ public interface ServizioComponent {
 	 * Rimuove un Componente dal Servizio composito
 	 */
 	public void rimuovi(ServizioComponent servizio);
+	
+	/**
+	 * Imposta i servizi annidati
+	 * 
+	 * @param servizi
+	 */
+	public void setServiziAnnidati(ArrayList<ServizioComponent> servizi);
 
 	/**
-	 * Restituisce un Componente incluso nel Servizio composito
+	 * Restituisce i servizi annidati di un servizio
 	 * 
 	 * @return ServizioComponent
 	 */
-	public ServizioComponent getServizio(int indice);
+	public ArrayList<ServizioComponent> getServiziAnnidati();
 }

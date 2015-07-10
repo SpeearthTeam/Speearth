@@ -4,20 +4,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Interfaccia rappresentante un Sistema Esterno che fornisce Servizi per l'Agenzia
+ * Interfaccia rappresentante un sistema esterno che fornisce servizi per l'agenzia
  */
-@SuppressWarnings("hiding")
-public interface SistemaEsterno<ServizioComponent> {
+public interface SistemaEsterno {
 	/**
 	 * Effettua l'autenticazione da parte dell'Agenzia verso il Sistema
-	 * 
-	 * @param username
-	 * @param password
 	 */
-	public boolean autentica(String username, String password);
+	public boolean autentica();
 	
 	/**
-	 * Effettua una ricerca di Servizi offerti dal Sistema Esterno secondo i parametri
+	 * Effettua una ricerca di servizi offerti dal sistema esterno secondo i parametri
 	 * 
 	 * @param parametri
 	 * @return ArrayList<ServizioComponent>

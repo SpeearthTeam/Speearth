@@ -1,57 +1,96 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * Servizio biglietto
+ */
 public class Biglietto implements ServizioComponent {
 
+	/**
+	 * Id
+	 */
 	private int id;
+	
+	/**
+	 * Fornitore
+	 */
 	private String fornitore;
+	
+	/**
+	 * Partenza
+	 */
 	private String partenza;
+	
+	/**
+	 * Destinazione
+	 */
 	private String destinazione;
+	
+	/**
+	 * Data di andata
+	 */
 	private Date data_andata;
+	
+	/**
+	 * Data di ritorno
+	 */
 	private Date data_ritorno;
+	
+	/**
+	 * Numero di adulti
+	 */
 	private int numero_adulti;
+	
+	/**
+	 * Numero di bambini
+	 */
 	private int numero_bambini;
+	
+	/**
+	 * Prezzo
+	 */
 	private float prezzo;
+	
+	/**
+	 * Prezzo totale
+	 */
+	private float totale;
+	
+	/**
+	 * Mezzo
+	 */
 	private String mezzo;
 
 	/**
 	 * Costruttore di default
 	 */
 	public Biglietto() {
+		setPrezzo(0);
+		setTotale(0);
+		setNumerBambini(0);
+		setNumeroAdulti(0);
 	}
 
 	/**
-	 * Costruttore completo
+	 * Costruttore
 	 * 
-	 * @param id
 	 * @param fornitore
 	 * @param partenza
 	 * @param destinazione
-	 * @param data_andata
-	 * @param data_ritorno
-	 * @param numero_adulti
-	 * @param numero_bambini
-	 * @param prezzo
 	 * @param mezzo
 	 */
-	public Biglietto(int id, String fornitore, String partenza, String destinazione, Date data_andata,
-			Date data_ritorno, int numero_adulti, int numero_bambini, float prezzo, String mezzo) {
-		super();
-		this.id = id;
-		this.fornitore = fornitore;
-		this.partenza = partenza;
-		this.destinazione = destinazione;
-		this.data_andata = data_andata;
-		this.data_ritorno = data_ritorno;
-		this.numero_adulti = numero_adulti;
-		this.numero_bambini = numero_bambini;
-		this.prezzo = prezzo;
-		this.mezzo = mezzo;
+	public Biglietto(String fornitore, String partenza, String destinazione, String mezzo) {
+		this();
+		setFornitore(fornitore);
+		setPartenza(partenza);
+		setDestinazione(destinazione);
+		setMezzo(mezzo);
 	}
 
 	/**
-	 * Restituisce l'id del Biglietto
+	 * Restituisce l'id del biglietto
 	 * 
 	 * @return int
 	 */
@@ -60,7 +99,7 @@ public class Biglietto implements ServizioComponent {
 	}
 
 	/**
-	 * Imposta l'id del Biglietto
+	 * Imposta l'id del biglietto
 	 * 
 	 * @param id
 	 */
@@ -69,7 +108,7 @@ public class Biglietto implements ServizioComponent {
 	}
 
 	/**
-	 * Restituisce il Fornitore del Biglietto
+	 * Restituisce il Fornitore del biglietto
 	 * 
 	 * @return String
 	 */
@@ -78,7 +117,7 @@ public class Biglietto implements ServizioComponent {
 	}
 
 	/**
-	 * Imposta il Fornitore del Biglietto
+	 * Imposta il Fornitore del biglietto
 	 * 
 	 * @param fornitore
 	 */
@@ -87,16 +126,16 @@ public class Biglietto implements ServizioComponent {
 	}
 
 	/**
-	 * Restituisce la partenza del Biglietto
+	 * Restituisce la partenza del biglietto
 	 * 
-	 * @return
+	 * @return String
 	 */
 	public String getPartenza() {
 		return this.partenza;
 	}
 
 	/**
-	 * Imposta la partenza del Biglietto
+	 * Imposta la partenza del biglietto
 	 * 
 	 * @param partenza
 	 */
@@ -105,7 +144,7 @@ public class Biglietto implements ServizioComponent {
 	}
 
 	/**
-	 * Restituisce la destinazione del Biglietto
+	 * Restituisce la destinazione del biglietto
 	 * 
 	 * @return String
 	 */
@@ -114,7 +153,7 @@ public class Biglietto implements ServizioComponent {
 	}
 
 	/**
-	 * Imposta la destinazione del Biglietto
+	 * Imposta la destinazione del biglietto
 	 * 
 	 * @param destinazione
 	 */
@@ -123,78 +162,79 @@ public class Biglietto implements ServizioComponent {
 	}
 
 	/**
-	 * Restituisce la data di andata del Biglietto
+	 * Restituisce la data di andata del biglietto
 	 * 
 	 * @return Date
 	 */
-	public Date getData_andata() {
+	public Date getDataAndata() {
 		return this.data_andata;
 	}
 
 	/**
-	 * Imposta la data di andata del Biglietto
+	 * Imposta la data di andata del biglietto
 	 * 
 	 * @param data_andata
 	 */
-	public void setData_andata(Date data_andata) {
+	public void setDataAndata(Date data_andata) {
 		this.data_andata = data_andata;
 	}
 
 	/**
-	 * Restituisce la data di ritorno del Biglietto
+	 * Restituisce la data di ritorno del biglietto
 	 * 
 	 * @return Date
 	 */
-	public Date getData_ritorno() {
+	public Date getDataRitorno() {
 		return this.data_ritorno;
 	}
 
 	/**
+	 * Imposta la data di ritorno del biglietto
 	 * 
 	 * @param data_ritorno
 	 */
-	public void setData_ritorno(Date data_ritorno) {
+	public void setDataRitorno(Date data_ritorno) {
 		this.data_ritorno = data_ritorno;
 	}
 
 	/**
-	 * Restituisce il numero di adulti del Biglietto
+	 * Restituisce il numero di adulti del biglietto
 	 * 
 	 * @return int
 	 */
-	public int getNumero_adulti() {
+	public int getNumeroAdulti() {
 		return this.numero_adulti;
 	}
 
 	/**
-	 * Imposta il numero di adulti del Biglietto
+	 * Imposta il numero di adulti del biglietto
 	 * 
 	 * @param numero_adulti
 	 */
-	public void setNumero_adulti(int numero_adulti) {
+	public void setNumeroAdulti(int numero_adulti) {
 		this.numero_adulti = numero_adulti;
 	}
 
 	/**
-	 * Restituisce il numero di bambini del Biglietto
+	 * Restituisce il numero di bambini del biglietto
 	 * 
 	 * @return int
 	 */
-	public int getNumero_bambini() {
+	public int getNumeroBambini() {
 		return this.numero_bambini;
 	}
 
 	/**
-	 * Imposta il numero di bambini del Biglietto
+	 * Imposta il numero di bambini del biglietto
 	 * 
 	 * @param numero_bambini
 	 */
-	public void setNumero_bambini(int numero_bambini) {
+	public void setNumerBambini(int numero_bambini) {
 		this.numero_bambini = numero_bambini;
 	}
 
 	/**
-	 * Restituisce il mezzo di trasporto del Biglietto
+	 * Restituisce il mezzo di trasporto del biglietto
 	 * 
 	 * @return String
 	 */
@@ -203,7 +243,7 @@ public class Biglietto implements ServizioComponent {
 	}
 
 	/**
-	 * Imposta il mezzo di trasporto del Biglietto
+	 * Imposta il mezzo di trasporto del biglietto
 	 * 
 	 * @param mezzo
 	 */
@@ -212,62 +252,63 @@ public class Biglietto implements ServizioComponent {
 	}
 
 	/**
-	 * Restituisce il prezzo totale del Biglietto
+	 * Restituisce il prezzo totale del biglietto
 	 * 
 	 * @return float
 	 */
 	@Override
 	public float getTotale() {
-		return this.getPrezzo();
+		return this.totale;
 	}
 
 	/**
-	 * Imposta il prezzo totale del Biglietto
+	 * Imposta il prezzo totale del biglietto
 	 * 
 	 * @param totale
 	 */
 	@Override
 	public void setTotale(float totale) {
-		this.setPrezzo(totale);
+		this.totale = totale;
 	}
 
 	/**
-	 * Restituisce il prezzo del Biglietto
+	 * Restituisce il prezzo del biglietto
 	 * 
 	 * @return float
 	 */
+	@Override
 	public float getPrezzo() {
-		return prezzo;
+		return this.prezzo;
 	}
 
 	/**
-	 * Imposta il prezzo del Biglietto
+	 * Imposta il prezzo del biglietto
 	 * 
 	 * @param prezzo
 	 */
+	@Override
 	public void setPrezzo(float prezzo) {
 		this.prezzo = prezzo;
 	}
 
-	/**
-	 * Il metodo non si applica in quanto classe Foglia
-	 */
 	@Override
 	public void aggiungi(ServizioComponent servizio) {
+		// Il metodo è vuoto in quanto classe foglia
 	}
 
-	/**
-	 * Il metodo non si applica in quanto classe Foglia
-	 */
 	@Override
 	public void rimuovi(ServizioComponent servizio) {
+		// Il metodo è vuoto in quanto classe foglia
 	}
 
-	/**
-	 * Il metodo non si applica in quanto classe Foglia
-	 */
 	@Override
-	public ServizioComponent getServizio(int indice) {
+	public void setServiziAnnidati(ArrayList<ServizioComponent> servizi) {
+		// Il metodo è vuoto in quanto classe foglia
+	}
+
+	@Override
+	public ArrayList<ServizioComponent> getServiziAnnidati() {
+		// Il metodo restituisce null in quanto classe foglia
 		return null;
 	}
 

@@ -3,6 +3,9 @@ package model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Adapter per l'azienda di trasporto Trenitalia
+ */
 public class TrenitaliaAdapter implements AziendaTrasportoAdapter {
 	/**
 	 * Istanza della classe
@@ -23,31 +26,28 @@ public class TrenitaliaAdapter implements AziendaTrasportoAdapter {
 	/**
 	 * Costruttore di default
 	 */
-	public TrenitaliaAdapter() {
+	protected TrenitaliaAdapter() {
 	}
 
 	/**
-	 * Effettua l'autenticazione da parte dell'Agenzia verso il Sistema
-	 * 
-	 * @param username
-	 * @param password
+	 * Effettua l'autenticazione da parte dell'agenzia verso il sistema
 	 */
 	@Override
-	public boolean autentica(String username, String password) {
-		// effettua il login sul Sistema con le credenziali dell'Agenzia
+	public boolean autentica() {
+		// effettua il login sul sistema con le credenziali dell'agenzia
 		return true;
 	}
 
 	/**
-	 * Effettua una ricerca di Biglietti offerti da Trenitalia secondo i
+	 * Effettua una ricerca di biglietti offerti da Trenitalia secondo i
 	 * parametri
 	 * 
 	 * @param parametri
 	 * @return ArrayList<ServizioComponent>
 	 */
 	@Override
-	public ArrayList<Biglietto> ricerca(HashMap<String, String> parametri) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<ServizioComponent> ricerca(HashMap<String, String> parametri) {
+		ArrayList<ServizioComponent> biglietti = new ArrayList<ServizioComponent>();
+		return biglietti;
 	}
 }

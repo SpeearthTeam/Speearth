@@ -3,6 +3,9 @@ package model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Receiver del sistema di ricerca
+ */
 public class RicercaReceiver {
 	/**
 	 * Istanza della classe
@@ -10,9 +13,9 @@ public class RicercaReceiver {
 	private static RicercaReceiver instance;
 	
 	/**
-	 * Lista di Sistemi Esterni sui quali effettuare la ricerca
+	 * Factory dei sistemi esterni
 	 */
-	private ArrayList<SistemaEsterno> sistemi;
+	private SistemaEsternoFactory sistema_esterno_factory;
 	
 	/**
 	 * Restituisce la singola istanza della classe
@@ -28,9 +31,8 @@ public class RicercaReceiver {
 	/**
 	 * Costruttore di default
 	 */
-	public RicercaReceiver() {
-		//una volta che l'Agenzia è autenticata vengono caricati i Sistemi Esterni nella lista
-		//prima iterazione: i Sistemi Esterni sono già connessi
+	protected RicercaReceiver() {
+		this.sistema_esterno_factory = SistemaEsternoFactory.getInstance();
 	}
 	
 	/**
@@ -40,25 +42,39 @@ public class RicercaReceiver {
 	 * @return ArrayList<Alloggio>
 	 */
 	public ArrayList<Alloggio> ricercaAlloggi(HashMap<String, String> parametri) {
-		return null;
+		
+		ArrayList<ImpresaRicettivaAdapter> imprese_ricettive = this.sistema_esterno_factory.getImpreseRicettive();
+		ArrayList<Alloggio> alloggi = new ArrayList<Alloggio>();
+		
+		for (ImpresaRicettivaAdapter impresa_ricettiva : imprese_ricettive) {
+			
+			ArrayList<ServizioComponent> servizi = impresa_ricettiva.ricerca(parametri);
+			for (ServizioComponent servizio : servizi)
+				alloggi.add((Alloggio) servizio);
+		}
+		
+		return alloggi;
 	}
 
 	/**
-	 * Effettua una ricerca di Biglietti secondo i parametri
+	 * Effettua una ricerca di biglietti secondo i parametri
 	 * 
 	 * @param parametri
 	 * @return ArrayList<Biglietto>
 	 */
 	public ArrayList<Biglietto> ricercaBiglietti(HashMap<String, String> parametri) {
-		return null;
-	}
-
-	public ArrayList<SistemaEsterno> getSistemi() {
-		return sistemi;
-	}
-
-	public void setSistemi(ArrayList<SistemaEsterno> sistemi) {
-		this.sistemi = sistemi;
+		
+		ArrayList<AziendaTrasportoAdapter> aziende_trasporto = this.sistema_esterno_factory.getAziendeDiTrasporto();
+		ArrayList<Biglietto> biglietti = new ArrayList<Biglietto>();
+		
+		for (AziendaTrasportoAdapter azienda_trasporto : aziende_trasporto) {
+			
+			ArrayList<ServizioComponent> servizi = azienda_trasporto.ricerca(parametri);
+			for (ServizioComponent servizio : servizi)
+				biglietti.add((Biglietto) servizio);
+		}
+		
+		return biglietti;
 	}
 
 }

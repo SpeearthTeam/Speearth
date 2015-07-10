@@ -3,6 +3,9 @@ package model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Adapter per l'azienda di trasporto Italo
+ */
 public class ItaloAdapter implements AziendaTrasportoAdapter {
 	/**
 	 * Istanza della classe
@@ -23,30 +26,27 @@ public class ItaloAdapter implements AziendaTrasportoAdapter {
 	/**
 	 * Costruttore di default
 	 */
-	public ItaloAdapter() {
+	protected ItaloAdapter() {
 	}
 
 	/**
-	 * Effettua l'autenticazione da parte dell'Agenzia verso il Sistema
-	 * 
-	 * @param username
-	 * @param password
+	 * Effettua l'autenticazione da parte dell'agenzia verso il sistema
 	 */
 	@Override
-	public boolean autentica(String username, String password) {
-		// effettua il login sul Sistema con le credenziali dell'Agenzia
+	public boolean autentica() {
+		// effettua il login sul sistema con le credenziali dell'agenzia
 		return true;
 	}
 
 	/**
-	 * Effettua una ricerca di Biglietti offerti da Italo secondo i parametri
+	 * Effettua una ricerca di biglietti offerti da Italo secondo i parametri
 	 * 
 	 * @param parametri
-	 * @return ArrayList<Biglietto>
+	 * @return ArrayList<ServizioComponent>
 	 */
 	@Override
-	public ArrayList<Biglietto> ricerca(HashMap<String, String> parametri) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<ServizioComponent> ricerca(HashMap<String, String> parametri) {
+		ArrayList<ServizioComponent> biglietti = new ArrayList<ServizioComponent>();
+		return biglietti;
 	}
 }

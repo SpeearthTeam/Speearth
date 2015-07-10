@@ -2,103 +2,151 @@ package model;
 
 import java.util.ArrayList;
 
+/**
+ * Il pacchetto è un insieme di servizi eterogenei
+ */
 public class PacchettoComposite implements ServizioComponent {
 
+	/**
+	 * Id
+	 */
 	private int id;
+	
+	/**
+	 * Prezzo
+	 */
 	private float prezzo;
+	
+	/**
+	 * Prezzo totale
+	 */
+	private float totale;
+	
+	/**
+	 * Servizi che compongono il pacchetto
+	 */
 	private ArrayList<ServizioComponent> servizi;
 
 	/**
 	 * Costruttore di deafault
 	 */
 	public PacchettoComposite() {
+		setPrezzo(0);
+		setTotale(0);
 	}
-
+	
 	/**
-	 * Restituisce il prezzo totale del Pacchetto
+	 * Costruisce un pacchetto da una lista di servizi
 	 * 
-	 * @return float
+	 * @param servizi
 	 */
-	@Override
-	public float getTotale() {
-		for (ServizioComponent servizio : this.servizi) {
-			this.prezzo += servizio.getTotale();
-		}
-		return this.getPrezzo();
+	public PacchettoComposite(ArrayList<ServizioComponent> servizi) {
+		setServiziAnnidati(servizi);
 	}
-
+	
 	/**
-	 * Imposta il prezzo totale del Pacchetto
-	 * 
-	 * @param totale
-	 */
-	@Override
-	public void setTotale(float totale) {
-		this.setPrezzo(totale);
-	}
-
-	/**
-	 * Aggiunge un Servizio al Pacchetto
-	 * 
-	 * @param ServizioComponent
-	 */
-	@Override
-	public void aggiungi(ServizioComponent servizio) {
-		this.servizi.add(servizio);
-	}
-
-	/**
-	 * Rimuove un Servizio dal Pacchetto
-	 */
-	@Override
-	public void rimuovi(ServizioComponent servizio) {
-		this.servizi.remove(servizio);
-	}
-
-	/**
-	 * Restituisce un Servizio incluso nel Pacchetto
-	 * 
-	 * @return ServizioComponent
-	 */
-	@Override
-	public ServizioComponent getServizio(int indice) {
-		return this.servizi.get(indice);
-	}
-
-	/**
-	 * Restituisce l'id del Pacchetto
+	 * Restituisce l'id del pacchetto
 	 * 
 	 * @return int
 	 */
 	public int getId() {
 		return id;
 	}
-
+	
 	/**
-	 * Imposta l'id del Pacchetto
+	 * Imposta l'id del pacchetto
 	 * 
 	 * @param id
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
-
+	
 	/**
-	 * Restituisce il prezzo del Pacchetto
+	 * Restituisce il prezzo del pacchetto
 	 * 
 	 * @return float
 	 */
+	@Override
 	public float getPrezzo() {
-		return prezzo;
+		return this.prezzo;
 	}
-
+	
 	/**
-	 * Imposta il prezzo del Pacchetto
+	 * Imposta il prezzo del pacchetto
 	 * 
 	 * @param prezzo
 	 */
+	@Override
 	public void setPrezzo(float prezzo) {
 		this.prezzo = prezzo;
+	}
+
+	/**
+	 * Restituisce il prezzo totale del pacchetto
+	 * 
+	 * @return float
+	 */
+	@Override
+	public float getTotale() {
+		return this.totale;
+	}
+
+	/**
+	 * Imposta il prezzo totale del pacchetto
+	 * 
+	 * @param totale
+	 */
+	@Override
+	public void setTotale(float totale) {
+		this.totale = totale;
+	}
+
+	/**
+	 * Aggiunge un Servizio al pacchetto
+	 * 
+	 * @param ServizioComponent
+	 */
+	@Override
+	public void aggiungi(ServizioComponent servizio) {
+		this.servizi.add(servizio);
+		
+		this.prezzo += servizio.getPrezzo();
+		this.totale += servizio.getTotale();
+	}
+
+	/**
+	 * Rimuove un Servizio dal pacchetto
+	 */
+	@Override
+	public void rimuovi(ServizioComponent servizio) {
+		if (this.servizi.contains(servizio)) {
+			this.prezzo -= servizio.getPrezzo();
+			this.totale -= servizio.getTotale();
+			
+			this.servizi.remove(servizio);
+		}
+	}
+
+	@Override
+	public void setServiziAnnidati(ArrayList<ServizioComponent> servizi) {
+		this.servizi = servizi;
+		
+		float prezzo = 0;
+		
+		for (ServizioComponent servizio : this.servizi)
+			prezzo += servizio.getPrezzo();
+		
+		setPrezzo(prezzo);
+		setTotale(prezzo);
+	}
+	
+	/**
+	 * Restituisce i servizi relativi al pacchetto
+	 */
+	@Override
+	public ArrayList<ServizioComponent> getServiziAnnidati() {
+		return this.servizi;
 	}
 
 }
