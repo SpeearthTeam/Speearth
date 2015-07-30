@@ -40,15 +40,12 @@ public class Commesso {
 	/**
 	 * Costruttore completo
 	 * 
-	 * @param id
 	 * @param nome
 	 * @param cognome
 	 * @param username
 	 * @param password
 	 */
-	public Commesso(int id, String nome, String cognome, String username, String password) {
-		super();
-		this.id = id;
+	public Commesso(String nome, String cognome, String username, String password) {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.username = username;
@@ -68,11 +65,9 @@ public class Commesso {
 	 * Imposta l'id del Commesso
 	 * 
 	 * @param id
-	 * @return Commesso
 	 */
-	public Commesso setId(int id) {
+	public void setId(int id) {
 		this.id = id;
-		return this;
 	}
 
 	/**
@@ -88,11 +83,9 @@ public class Commesso {
 	 * Imposta il nome del Commesso
 	 * 
 	 * @param nome
-	 * @return Commesso
 	 */
-	public Commesso setNome(String nome) {
+	public void setNome(String nome) {
 		this.nome = nome;
-		return this;
 	}
 
 	/**
@@ -101,18 +94,16 @@ public class Commesso {
 	 * @return String
 	 */
 	public String getCognome() {
-		return cognome;
+		return this.cognome;
 	}
 
 	/**
 	 * Imposta il cognome del Commesso
 	 * 
 	 * @param cognome
-	 * @return Commesso
 	 */
-	public Commesso setCognome(String cognome) {
+	public void setCognome(String cognome) {
 		this.cognome = cognome;
-		return this;
 	}
 
 	/**
@@ -128,11 +119,9 @@ public class Commesso {
 	 * Imposta lo username del Commesso
 	 * 
 	 * @param username
-	 * @return Commesso
 	 */
-	public Commesso setUsername(String username) {
+	public void setUsername(String username) {
 		this.username = username;
-		return this;
 	}
 
 	/**
@@ -148,11 +137,9 @@ public class Commesso {
 	 * Imposta la password del Commesso
 	 * 
 	 * @param password
-	 * @return Commesso
 	 */
-	public Commesso setPassword(String password) {
+	public void setPassword(String password) {
 		this.password = password;
-		return this;
 	}
 
 }

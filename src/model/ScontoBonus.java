@@ -14,7 +14,7 @@ public class ScontoBonus extends Bonus {
 	 * Costruttore
 	 */
 	public ScontoBonus() {
-		this.sconto = 0;
+		
 	}
 
 	/**
@@ -28,7 +28,6 @@ public class ScontoBonus extends Bonus {
 	/**
 	 * Imposta lo sconto
 	 * @param sconto
-	 * @return ScontoBonus
 	 */
 	public void setSconto(int sconto) {
 		this.sconto = sconto;

@@ -8,25 +8,17 @@ import java.util.ArrayList;
 public class CalcolatoreBonus {
 
 	/**
-	 * Instanza della classe
+	 * Strategia di bonus: BonusSconto o Servizio
 	 */
-	private static CalcolatoreBonus instance;
-
+	private BonusStrategy strategy;	
+	
 	/**
-	 * Costruttore di default
-	 */
-	protected CalcolatoreBonus() {
-	}
-
-	/**
-	 * Restituisce la singola istanza della classe
+	 * Costruttore
 	 * 
-	 * @return CalcolatoreBonus
+	 * @param strategy
 	 */
-	public static CalcolatoreBonus getInstance() {
-		if (instance == null)
-			instance = new CalcolatoreBonus();
-		return instance;
+	public CalcolatoreBonus(BonusStrategy strategy) {
+		this.strategy = strategy;
 	}
 
 	/**
@@ -36,21 +28,8 @@ public class CalcolatoreBonus {
 	 * @return Bonus
 	 */
 	public Bonus getBonus(Cliente cliente) {
-		// inzializza una lista di Bonus
-		ArrayList<Bonus> lista_bonus = new ArrayList<Bonus>();
 		ArrayList<Vendita> vendite = Agenzia.getInstance().getRegistroVendite().getVenditeDaCliente(cliente);
-
-		// crea le Strategy disponibili
-		ScontoConcreteStrategy sconto_strategy = new ScontoConcreteStrategy();
-
-		// aggiunge i Bonus calcolati dalle Strategy alla lista
-		lista_bonus.add(sconto_strategy.calcola(vendite));
-
-		// calcola il Bonus migliore tra quelli calcolati
-
-		// Prima iterazione: evitiamo il calcolo del Bonus migliore in quanto
-		// disponiamo di una sola Strategy
-		return lista_bonus.get(0);
+		return this.strategy.calcola(vendite);
 	}
 
 	/**
@@ -60,10 +39,7 @@ public class CalcolatoreBonus {
 	 * @param bonus
 	 */
 	public void applicaBonus(ServizioComponent servizio, Bonus bonus) {
-		if (bonus.getServizio() != null) {
-			// aggiungi il Servizio al Pacchetto
-		}
-		servizio.setTotale(servizio.getTotale() * ((ScontoBonus) bonus).getSconto() / 100);
+		this.strategy.applica(servizio, bonus);
 	}
 
 }

@@ -46,7 +46,6 @@ public class Vendita {
 	/**
 	 * Costruttore completo
 	 * 
-	 * @param id
 	 * @param data
 	 * @param cliente
 	 * @param pagamento
@@ -55,8 +54,6 @@ public class Vendita {
 	 */
 	public Vendita(int id, Date data, Cliente cliente, Pagamento pagamento, Commesso commesso,
 			ServizioComponent servizio) {
-		super();
-		this.id = id;
 		this.data = data;
 		this.cliente = cliente;
 		this.pagamento = pagamento;
@@ -106,11 +103,11 @@ public class Vendita {
 	 * @return Cliente
 	 */
 	public Cliente getCliente() {
-		return cliente;
+		return this.cliente;
 	}
 
 	/**
-	 * Imposta il Cliente che della Vendita
+	 * Imposta il Cliente alla Vendita
 	 * 
 	 * @param cliente
 	 */
@@ -142,11 +139,11 @@ public class Vendita {
 	 * @return Commesso
 	 */
 	public Commesso getCommesso() {
-		return commesso;
+		return this.commesso;
 	}
 
 	/**
-	 * Imposta il Commesso che ha effettuato la Vendita
+	 * Imposta il Commesso che sta effettuando la Vendita
 	 * 
 	 * @param commesso
 	 */
@@ -160,11 +157,11 @@ public class Vendita {
 	 * @return ServizioComponent
 	 */
 	public ServizioComponent getServizio() {
-		return servizio;
+		return this.servizio;
 	}
 
 	/**
-	 * Imposta il Servizio della Vendita
+	 * Imposta il Servizio alla Vendita
 	 * 
 	 * @param servizio
 	 */

@@ -53,5 +53,15 @@ public class ScontoConcreteStrategy implements BonusStrategy {
 
 		return null;
 	}
+	
+	/**
+	 * Applica il Bonus al Servizio di un cliente
+	 * 
+	 * @param servizio
+	 * @param bonus
+	 */
+	public void applica(ServizioComponent servizio, Bonus bonus){
+		// da implementare
+	}
 
 }

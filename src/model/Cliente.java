@@ -46,16 +46,13 @@ public class Cliente {
 	/**
 	 * Costruttore completo
 	 * 
-	 * @param id
 	 * @param nome
 	 * @param cognome
 	 * @param data_nascita
 	 * @param codice_fiscale
 	 * @param codice_tessera
 	 */
-	public Cliente(int id, String nome, String cognome, Date data_nascita, String codice_fiscale, int codice_tessera) {
-		super();
-		this.id = id;
+	public Cliente(String nome, String cognome, Date data_nascita, String codice_fiscale, int codice_tessera) {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.data_nascita = data_nascita;
@@ -76,11 +73,9 @@ public class Cliente {
 	 * Imposta l'id del Cliente
 	 * 
 	 * @param id
-	 * @return Cliente
 	 */
-	public Cliente setId(int id) {
+	public void setId(int id) {
 		this.id = id;
-		return this;
 	}
 
 	/**
@@ -96,11 +91,9 @@ public class Cliente {
 	 * Imposta il nome del Cliente
 	 * 
 	 * @param nome
-	 * @return Cliente
 	 */
-	public Cliente setNome(String nome) {
+	public void setNome(String nome) {
 		this.nome = nome;
-		return this;
 	}
 
 	/**
@@ -109,18 +102,16 @@ public class Cliente {
 	 * @return String
 	 */
 	public String getCognome() {
-		return cognome;
+		return this.cognome;
 	}
 
 	/**
 	 * Imposta il cognome del Cliente
 	 * 
 	 * @param cognome
-	 * @return Cliente
 	 */
-	public Cliente setCognome(String cognome) {
+	public void setCognome(String cognome) {
 		this.cognome = cognome;
-		return this;
 	}
 
 	/**
@@ -129,18 +120,16 @@ public class Cliente {
 	 * @return Date
 	 */
 	public Date getDataNascita() {
-		return data_nascita;
+		return this.data_nascita;
 	}
 
 	/**
 	 * Imposta la data di nascita del Cliente
 	 * 
 	 * @param data_nascita
-	 * @return Cliente
 	 */
-	public Cliente setDataNascita(Date data_nascita) {
+	public void setDataNascita(Date data_nascita) {
 		this.data_nascita = data_nascita;
-		return this;
 	}
 
 	/**
@@ -149,18 +138,16 @@ public class Cliente {
 	 * @return String
 	 */
 	public String getCodiceFiscale() {
-		return codice_fiscale;
+		return this.codice_fiscale;
 	}
 
 	/**
 	 * Imposta il codice fiscale del Cliente
 	 * 
 	 * @param codice_fiscale
-	 * @return Cliente
 	 */
-	public Cliente setCodiceFiscale(String codice_fiscale) {
+	public void setCodiceFiscale(String codice_fiscale) {
 		this.codice_fiscale = codice_fiscale;
-		return this;
 	}
 
 	/**
@@ -176,11 +163,9 @@ public class Cliente {
 	 * Imposta il codice della tessera del Cliente
 	 * 
 	 * @param codice_tessera
-	 * @return Cliente
 	 */
-	public Cliente setCodiceTessera(int codice_tessera) {
+	public void setCodiceTessera(int codice_tessera) {
 		this.codice_tessera = codice_tessera;
-		return this;
 	}
 
 }

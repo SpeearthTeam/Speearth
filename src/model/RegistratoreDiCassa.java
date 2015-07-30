@@ -6,12 +6,12 @@ package model;
 public class RegistratoreDiCassa {
 
 	/**
-	 * Instanza della classe
+	 * Istanza della classe
 	 */
 	private static RegistratoreDiCassa instance;
 
 	/**
-	 * Restiuisce la singola instanza della classe
+	 * Restiuisce la singola istanza della classe
 	 * @return RegistratoreDiCassa
 	 */
 	public static RegistratoreDiCassa getInstance() {
