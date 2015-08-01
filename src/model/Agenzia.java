@@ -58,17 +58,8 @@ public class Agenzia {
 	 * 
 	 * @return RegistratoreDiCassa
 	 */
-	public RegistratoreDiCassa getCassa() {
+	public RegistratoreDiCassa getRegistratoreDiCassa() {
 		return this.registratore_cassa;
-	}
-
-	/**
-	 * Imposta il Registratore di Cassa
-	 * 
-	 * @param cassa
-	 */
-	public void setRegistratoreDiCassa(RegistratoreDiCassa cassa) {
-		this.registratore_cassa = cassa;
 	}
 
 	/**
@@ -81,30 +72,12 @@ public class Agenzia {
 	}
 
 	/**
-	 * Imposta il Registro dei Clienti
-	 * 
-	 * @param registro_clienti
-	 */
-	public void setRegistroClienti(RegistroClienti registro_clienti) {
-		this.registro_clienti = registro_clienti;
-	}
-
-	/**
 	 * Restituisce il Registro delle Vendite
 	 * 
 	 * @return RegistroVendite
 	 */
 	public RegistroVendite getRegistroVendite() {
 		return this.registro_vendite;
-	}
-
-	/**
-	 * Imposta il Registro delle Vendite
-	 * 
-	 * @param registro_vendite
-	 */
-	public void setRegistroVendite(RegistroVendite registro_vendite) {
-		this.registro_vendite = registro_vendite;
 	}
 
 	/**

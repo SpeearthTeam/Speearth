@@ -44,17 +44,15 @@ public class Vendita {
 	}
 
 	/**
-	 * Costruttore completo
+	 * Costruttore con parametri
 	 * 
-	 * @param data
 	 * @param cliente
 	 * @param pagamento
 	 * @param commesso
 	 * @param servizio
 	 */
-	public Vendita(int id, Date data, Cliente cliente, Pagamento pagamento, Commesso commesso,
+	public Vendita(Cliente cliente, Pagamento pagamento, Commesso commesso,
 			ServizioComponent servizio) {
-		this.data = data;
 		this.cliente = cliente;
 		this.pagamento = pagamento;
 		this.commesso = commesso;

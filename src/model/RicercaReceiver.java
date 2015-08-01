@@ -1,5 +1,6 @@
 package model;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -12,11 +13,6 @@ public class RicercaReceiver {
 	 */
 	private static RicercaReceiver instance;
 
-	// /**
-	// * Factory dei sistemi esterni
-	// */
-	// private SistemaEsternoFactory sistema_esterno_factory;
-
 	/**
 	 * Restituisce la singola istanza della classe
 	 * 
@@ -27,13 +23,6 @@ public class RicercaReceiver {
 			instance = new RicercaReceiver();
 		return instance;
 	}
-
-	// /**
-	// * Costruttore di default
-	// */
-	// protected RicercaReceiver() {
-	// this.sistema_esterno_factory = SistemaEsternoFactory.getInstance();
-	// }
 
 	/**
 	 * Effettua una ricerca di Alloggi secondo i parametri
@@ -49,9 +38,15 @@ public class RicercaReceiver {
 
 		for (ImpresaRicettivaAdapter impresa_ricettiva : imprese_ricettive) {
 
-			ArrayList<ServizioComponent> servizi = impresa_ricettiva.ricerca(parametri);
-			for (ServizioComponent servizio : servizi)
-				alloggi.add((Alloggio) servizio);
+			ArrayList<ServizioComponent> servizi;
+			try {
+				servizi = impresa_ricettiva.ricerca(parametri);
+				for (ServizioComponent servizio : servizi)
+					alloggi.add((Alloggio) servizio);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
 		}
 
 		return alloggi;
@@ -71,9 +66,15 @@ public class RicercaReceiver {
 
 		for (AziendaTrasportoAdapter azienda_trasporto : aziende_trasporto) {
 
-			ArrayList<ServizioComponent> servizi = azienda_trasporto.ricerca(parametri);
-			for (ServizioComponent servizio : servizi)
-				biglietti.add((Biglietto) servizio);
+			ArrayList<ServizioComponent> servizi;
+			try {
+				servizi = azienda_trasporto.ricerca(parametri);
+				for (ServizioComponent servizio : servizi)
+					biglietti.add((Biglietto) servizio);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
 		}
 
 		return biglietti;

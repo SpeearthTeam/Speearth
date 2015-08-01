@@ -16,6 +16,11 @@ public class Pagamento {
 	 * Ammontare
 	 */
 	private float ammontare;
+	
+	/**
+	 * Metodo di Pagamento
+	 */
+	private String metodo;
 
 	/**
 	 * Data
@@ -26,6 +31,17 @@ public class Pagamento {
 	 * Costruttore di default
 	 */
 	public Pagamento() {
+	}
+
+	/**
+	 * Costruttore con parametri
+	 * 
+	 * @param ammontare
+	 * @param metodo
+	 */
+	public Pagamento(float ammontare, String metodo) {
+		this.ammontare = ammontare;
+		this.metodo = metodo;
 	}
 
 	/**
@@ -53,6 +69,24 @@ public class Pagamento {
 	 */
 	public float getAmmontare() {
 		return this.ammontare;
+	}
+	
+	/**
+	 * Restituisce il metodo di Pagamento
+	 * 
+	 * @return String
+	 */
+	public String getMetodo() {
+		return metodo;
+	}
+
+	/**
+	 * Imposta il metodo di Pagamento
+	 * 
+	 * @param metodo
+	 */
+	public void setMetodo(String metodo) {
+		this.metodo = metodo;
 	}
 
 	/**

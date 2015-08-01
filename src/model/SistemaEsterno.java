@@ -1,5 +1,6 @@
 package model;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -18,5 +19,5 @@ public interface SistemaEsterno {
 	 * @param parametri
 	 * @return ArrayList<ServizioComponent>
 	 */
-	public ArrayList<ServizioComponent> ricerca(HashMap<String, String> parametri);
+	public ArrayList<ServizioComponent> ricerca(HashMap<String, String> parametri) throws IOException;
 }
