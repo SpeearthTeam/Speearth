@@ -11,39 +11,37 @@ public class PacchettoComposite implements ServizioComponent {
 	 * Id
 	 */
 	private int id;
-	
+
 	/**
 	 * Prezzo
 	 */
-	private float prezzo;
-	
+	private float prezzo = 0;
+
 	/**
 	 * Prezzo totale
 	 */
-	private float totale;
-	
+	private float totale = 0;
+
 	/**
 	 * Servizi che compongono il pacchetto
 	 */
-	private ArrayList<ServizioComponent> servizi;
+	private ArrayList<ServizioComponent> lista_servizi;
 
 	/**
 	 * Costruttore di deafault
 	 */
 	public PacchettoComposite() {
-		setPrezzo(0);
-		setTotale(0);
 	}
-	
+
 	/**
 	 * Costruisce un pacchetto da una lista di servizi
 	 * 
 	 * @param servizi
 	 */
 	public PacchettoComposite(ArrayList<ServizioComponent> servizi) {
-		setServiziAnnidati(servizi);
+		this.lista_servizi = servizi;
 	}
-	
+
 	/**
 	 * Restituisce l'id del pacchetto
 	 * 
@@ -52,7 +50,7 @@ public class PacchettoComposite implements ServizioComponent {
 	public int getId() {
 		return id;
 	}
-	
+
 	/**
 	 * Imposta l'id del pacchetto
 	 * 
@@ -61,7 +59,7 @@ public class PacchettoComposite implements ServizioComponent {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	/**
 	 * Restituisce il prezzo del pacchetto
 	 * 
@@ -71,7 +69,7 @@ public class PacchettoComposite implements ServizioComponent {
 	public float getPrezzo() {
 		return this.prezzo;
 	}
-	
+
 	/**
 	 * Imposta il prezzo del pacchetto
 	 * 
@@ -109,8 +107,7 @@ public class PacchettoComposite implements ServizioComponent {
 	 */
 	@Override
 	public void aggiungi(ServizioComponent servizio) {
-		this.servizi.add(servizio);
-		
+		this.lista_servizi.add(servizio);
 		this.prezzo += servizio.getPrezzo();
 		this.totale += servizio.getTotale();
 	}
@@ -120,33 +117,42 @@ public class PacchettoComposite implements ServizioComponent {
 	 */
 	@Override
 	public void rimuovi(ServizioComponent servizio) {
-		if (this.servizi.contains(servizio)) {
+		if (this.lista_servizi.contains(servizio)) {
 			this.prezzo -= servizio.getPrezzo();
 			this.totale -= servizio.getTotale();
-			
-			this.servizi.remove(servizio);
+			this.lista_servizi.remove(servizio);
 		}
 	}
 
+	/**
+	 * Restituisce un particolare Servizio del Pacchetto
+	 * 
+	 * @return ServizioComponent
+	 */
 	@Override
-	public void setServiziAnnidati(ArrayList<ServizioComponent> servizi) {
-		this.servizi = servizi;
-		
+	public ServizioComponent getServizio(int i) {
+		return this.lista_servizi.get(i);
+	}
+
+	@Override
+	public void setListaServizi(ArrayList<ServizioComponent> servizi) {
+		this.lista_servizi = servizi;
+
 		float prezzo = 0;
-		
-		for (ServizioComponent servizio : this.servizi)
+
+		for (ServizioComponent servizio : this.lista_servizi)
 			prezzo += servizio.getPrezzo();
-		
+
 		setPrezzo(prezzo);
 		setTotale(prezzo);
 	}
-	
+
 	/**
 	 * Restituisce i servizi relativi al pacchetto
 	 */
 	@Override
-	public ArrayList<ServizioComponent> getServiziAnnidati() {
-		return this.servizi;
+	public ArrayList<ServizioComponent> getListaServizi() {
+		return this.lista_servizi;
 	}
 
 }

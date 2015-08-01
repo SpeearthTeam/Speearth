@@ -24,8 +24,8 @@ public class RicercaAlloggiCommand implements RicercaCommand {
 	 * @param parametri
 	 */
 	public RicercaAlloggiCommand(RicercaReceiver receiver, HashMap<String, String> parametri) {
-		setReceiver(receiver);
-		setParametri(parametri);
+		this.receiver = receiver;
+		this.parametri = parametri;
 	}
 	
 	/**
@@ -66,13 +66,14 @@ public class RicercaAlloggiCommand implements RicercaCommand {
 
 	@Override
 	public ArrayList<ServizioComponent> esegui() {
-		ArrayList<ServizioComponent> servizi = new ArrayList<ServizioComponent>();
-		ArrayList<Alloggio> alloggi = this.receiver.ricercaAlloggi(this.parametri);
-		
-		for (Alloggio alloggio : alloggi)
-			servizi.add(alloggio);
-		
-		return servizi;
+//		ArrayList<ServizioComponent> servizi = new ArrayList<ServizioComponent>();
+//		ArrayList<Alloggio> alloggi = this.receiver.ricercaAlloggi(this.parametri);
+//		
+//		for (Alloggio alloggio : alloggi)
+//			servizi.add(alloggio);
+//		
+//		return servizi;
+		return this.receiver.ricercaAlloggi(this.parametri);
 	}
 
 }

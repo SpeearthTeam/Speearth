@@ -12,52 +12,52 @@ public class Biglietto implements ServizioComponent {
 	 * Id
 	 */
 	private int id;
-	
+
 	/**
 	 * Fornitore
 	 */
 	private String fornitore;
-	
+
 	/**
 	 * Partenza
 	 */
 	private String partenza;
-	
+
 	/**
 	 * Destinazione
 	 */
 	private String destinazione;
-	
+
 	/**
 	 * Data di andata
 	 */
 	private Date data_andata;
-	
+
 	/**
 	 * Data di ritorno
 	 */
 	private Date data_ritorno;
-	
+
 	/**
 	 * Numero di adulti
 	 */
-	private int numero_adulti;
-	
+	private int numero_adulti = 0;
+
 	/**
 	 * Numero di bambini
 	 */
-	private int numero_bambini;
-	
+	private int numero_bambini = 0;
+
 	/**
 	 * Prezzo
 	 */
-	private float prezzo;
-	
+	private float prezzo = 0;
+
 	/**
 	 * Prezzo totale
 	 */
-	private float totale;
-	
+	private float totale = 0;
+
 	/**
 	 * Mezzo
 	 */
@@ -67,26 +67,21 @@ public class Biglietto implements ServizioComponent {
 	 * Costruttore di default
 	 */
 	public Biglietto() {
-		setPrezzo(0);
-		setTotale(0);
-		setNumerBambini(0);
-		setNumeroAdulti(0);
 	}
 
 	/**
 	 * Costruttore
-	 * 
+	 *
 	 * @param fornitore
 	 * @param partenza
 	 * @param destinazione
 	 * @param mezzo
 	 */
 	public Biglietto(String fornitore, String partenza, String destinazione, String mezzo) {
-		this();
-		setFornitore(fornitore);
-		setPartenza(partenza);
-		setDestinazione(destinazione);
-		setMezzo(mezzo);
+		this.fornitore = fornitore;
+		this.partenza = partenza;
+		this.destinazione = destinazione;
+		this.mezzo = mezzo;
 	}
 
 	/**
@@ -291,24 +286,40 @@ public class Biglietto implements ServizioComponent {
 		this.prezzo = prezzo;
 	}
 
+	/**
+	 * Il metodo non si applica in quanto questa classe non è composita
+	 */
 	@Override
 	public void aggiungi(ServizioComponent servizio) {
-		// Il metodo è vuoto in quanto classe foglia
 	}
 
+	/**
+	 * Il metodo non si applica in quanto questa classe non è composita
+	 */
 	@Override
 	public void rimuovi(ServizioComponent servizio) {
-		// Il metodo è vuoto in quanto classe foglia
 	}
 
+	/**
+	 * Il metodo non si applica in quanto questa classe non è composita
+	 */
 	@Override
-	public void setServiziAnnidati(ArrayList<ServizioComponent> servizi) {
-		// Il metodo è vuoto in quanto classe foglia
+	public ServizioComponent getServizio(int i) {
+		return null;
 	}
 
+	/**
+	 * Il metodo non si applica in quanto questa classe non è composita
+	 */
 	@Override
-	public ArrayList<ServizioComponent> getServiziAnnidati() {
-		// Il metodo restituisce null in quanto classe foglia
+	public void setListaServizi(ArrayList<ServizioComponent> servizi) {
+	}
+
+	/**
+	 * Il metodo non si applica in quanto questa classe non è composita
+	 */
+	@Override
+	public ArrayList<ServizioComponent> getListaServizi() {
 		return null;
 	}
 

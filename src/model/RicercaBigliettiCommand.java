@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Classe rappresentante un comando di ricerca biglietti verso un'azienda di trasporto
+ * Classe rappresentante un comando di ricerca biglietti verso un'azienda di
+ * trasporto
  */
 public class RicercaBigliettiCommand implements RicercaCommand {
 	/**
@@ -24,10 +25,10 @@ public class RicercaBigliettiCommand implements RicercaCommand {
 	 * @param parametri
 	 */
 	public RicercaBigliettiCommand(RicercaReceiver receiver, HashMap<String, String> parametri) {
-		setReceiver(receiver);
-		setParametri(parametri);
+		this.receiver = receiver;
+		this.parametri = parametri;
 	}
-	
+
 	/**
 	 * Restituisce il receiver
 	 * 
@@ -36,7 +37,7 @@ public class RicercaBigliettiCommand implements RicercaCommand {
 	public RicercaReceiver getReceiver() {
 		return this.receiver;
 	}
-	
+
 	/**
 	 * Imposta il receiver
 	 * 
@@ -45,7 +46,7 @@ public class RicercaBigliettiCommand implements RicercaCommand {
 	public void setReceiver(RicercaReceiver receiver) {
 		this.receiver = receiver;
 	}
-	
+
 	/**
 	 * Restituisce i parametri
 	 * 
@@ -54,7 +55,7 @@ public class RicercaBigliettiCommand implements RicercaCommand {
 	public HashMap<String, String> getParametri() {
 		return this.parametri;
 	}
-	
+
 	/**
 	 * Imposta i parametri
 	 * 
@@ -66,13 +67,14 @@ public class RicercaBigliettiCommand implements RicercaCommand {
 
 	@Override
 	public ArrayList<ServizioComponent> esegui() {
-		ArrayList<ServizioComponent> servizi = new ArrayList<ServizioComponent>();
-		ArrayList<Biglietto> biglietti = this.receiver.ricercaBiglietti(this.parametri);
-		
-		for (Biglietto biglietto : biglietti)
-			servizi.add(biglietto);
-		
-		return servizi;
+//		ArrayList<ServizioComponent> servizi = new ArrayList<ServizioComponent>();
+//		ArrayList<Biglietto> biglietti = this.receiver.ricercaBiglietti(this.parametri);
+//
+//		for (Biglietto biglietto : biglietti)
+//			servizi.add(biglietto);
+//
+//		return servizi;
+		return this.receiver.ricercaBiglietti(this.parametri);
 	}
 
 }

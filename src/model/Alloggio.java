@@ -13,48 +13,46 @@ public class Alloggio implements ServizioComponent {
 	 * Id
 	 */
 	private int id;
-	
+
 	/**
 	 * Fornitore
 	 */
 	private String fornitore;
-	
+
 	/**
 	 * Località
 	 */
 	private String localita;
-	
+
 	/**
 	 * Data di arrivo
 	 */
 	private Date data_arrivo;
-	
+
 	/**
 	 * Data di partenza
 	 */
 	private Date data_partenza;
-	
+
 	/**
 	 * Stanze dell'alloggio
 	 */
 	private HashMap<String, Integer> stanze;
-	
+
 	/**
 	 * Prezzo
 	 */
-	private float prezzo;
+	private float prezzo = 0;
 
 	/**
 	 * Prezzo totale
 	 */
-	private float totale;
+	private float totale = 0;
 
 	/**
 	 * Costruttore di default
 	 */
 	public Alloggio() {
-		setPrezzo(0);
-		setTotale(0);
 	}
 
 	/**
@@ -65,10 +63,9 @@ public class Alloggio implements ServizioComponent {
 	 * @param stanze
 	 */
 	public Alloggio(String fornitore, String localita, HashMap<String, Integer> stanze) {
-		this();
-		setFornitore(fornitore);
-		setLocalita(localita);
-		setStanze(stanze);
+		this.fornitore = fornitore;
+		this.localita = localita;
+		this.stanze = stanze;
 	}
 
 	/**
@@ -219,24 +216,40 @@ public class Alloggio implements ServizioComponent {
 		this.prezzo = prezzo;
 	}
 
+	/**
+	 * Il metodo non si applica in quanto questa classe non è composita
+	 */
 	@Override
 	public void aggiungi(ServizioComponent servizio) {
-		// Il metodo è vuoto in quanto classe foglia
 	}
 
+	/**
+	 * Il metodo non si applica in quanto questa classe non è composita
+	 */
 	@Override
 	public void rimuovi(ServizioComponent servizio) {
-		// Il metodo è vuoto in quanto classe foglia
 	}
 
+	/**
+	 * Il metodo non si applica in quanto questa classe non è composita
+	 */
 	@Override
-	public void setServiziAnnidati(ArrayList<ServizioComponent> servizi) {
-		// Il metodo è vuoto in quanto classe foglia
+	public ServizioComponent getServizio(int i) {
+		return null;
 	}
 
+	/**
+	 * Il metodo non si applica in quanto questa classe non è composita
+	 */
 	@Override
-	public ArrayList<ServizioComponent> getServiziAnnidati() {
-		// Il metodo restituisce null in quanto classe foglia
+	public void setListaServizi(ArrayList<ServizioComponent> servizi) {
+	}
+
+	/**
+	 * Il metodo non si applica in quanto questa classe non è composita
+	 */
+	@Override
+	public ArrayList<ServizioComponent> getListaServizi() {
 		return null;
 	}
 

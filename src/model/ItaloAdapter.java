@@ -47,6 +47,8 @@ public class ItaloAdapter implements AziendaTrasportoAdapter {
 	@Override
 	public ArrayList<ServizioComponent> ricerca(HashMap<String, String> parametri) {
 		ArrayList<ServizioComponent> biglietti = new ArrayList<ServizioComponent>();
+		biglietti.add(new Biglietto());
+		
 		return biglietti;
 	}
 }
