@@ -1,24 +1,23 @@
 package model;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
 
-import jdk.nashorn.internal.parser.JSONParser;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Adapter per l'azienda di trasporto Trenitalia
  */
-public class TrenitaliaAdapter implements AziendaTrasportoAdapter {
+public class TrenitaliaAdapter extends AziendaTrasportoAdapter {
 	/**
 	 * Istanza della classe
 	 */
 	private static TrenitaliaAdapter instance;
+
+	/**
+	 * URL di accesso alle API del Sistema Esterno Trenitalia
+	 */
+	private String url = "file://bo";
 
 	/**
 	 * Restituisce la signola istanza della classe
@@ -38,49 +37,56 @@ public class TrenitaliaAdapter implements AziendaTrasportoAdapter {
 	}
 
 	/**
+	 * Formatta l'URL completo per la richiesta REST in base ai parametri
+	 * 
+	 * @param parametri
+	 * @return String
+	 */
+	@Override
+	protected String formattaURL(HashMap<String, String> parametri) {
+		// impostare le chiavi di ricerca nell'url
+		// in un modo possibilmente più elegante :)
+		String url = this.getUrl() + "q=" + parametri.get("partenza");
+		return url;
+	}
+
+	/**
+	 * Crea un Biglietto da un oggetto JSON
+	 * 
+	 * @param jsonBiglietto
+	 * @return Biglietto
+	 * @throws JSONException
+	 */
+	@Override
+	protected Biglietto creaBigliettoDaJSON(JSONObject jsonBiglietto) throws JSONException {
+		return new Biglietto(jsonBiglietto.getString("fornitore"), jsonBiglietto.getString("partenza"),
+				jsonBiglietto.getString("destinazione"), jsonBiglietto.getString("mezzo"));
+	}
+
+	/**
+	 * Restituisce l'URL
+	 * 
+	 * @return String
+	 */
+	public String getUrl() {
+		return this.url;
+	}
+
+	/**
+	 * Imposta l'URL
+	 * 
+	 * @param url
+	 */
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	/**
 	 * Effettua l'autenticazione da parte dell'agenzia verso il sistema
 	 */
 	@Override
 	public boolean autentica() {
 		// effettua il login sul sistema con le credenziali dell'agenzia
 		return true;
-	}
-
-	/**
-	 * Effettua una ricerca di biglietti offerti da Trenitalia secondo i
-	 * parametri
-	 * 
-	 * @param parametri
-	 * @return ArrayList<ServizioComponent>
-	 * @throws IOException
-	 */
-	@Override
-	public ArrayList<ServizioComponent> ricerca(HashMap<String, String> parametri) throws IOException {
-		try {
-			URL url = new URL("file://bo");
-			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-			connection.setRequestMethod("GET");
-			connection.setRequestProperty("Accept", "application/json");
-			if (connection.getResponseCode() != 200) {
-				throw new RuntimeException("Failed: HTTP error code: " + connection.getResponseCode());
-			}
-			BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-			String output = "";
-			String buffer;
-			while ((buffer = reader.readLine()) != null) {
-				output += buffer;			
-			}
-			
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		
-
-		ArrayList<ServizioComponent> biglietti = new ArrayList<ServizioComponent>();
-
-		return biglietti;
 	}
 }

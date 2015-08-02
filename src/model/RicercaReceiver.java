@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.json.JSONException;
+
 /**
  * Receiver del sistema di ricerca
  */
@@ -45,6 +47,9 @@ public class RicercaReceiver {
 					alloggi.add((Alloggio) servizio);
 			} catch (IOException e) {
 				e.printStackTrace();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 
 		}
@@ -72,6 +77,9 @@ public class RicercaReceiver {
 				for (ServizioComponent servizio : servizi)
 					biglietti.add((Biglietto) servizio);
 			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 

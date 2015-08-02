@@ -67,13 +67,6 @@ public class RicercaBigliettiCommand implements RicercaCommand {
 
 	@Override
 	public ArrayList<ServizioComponent> esegui() {
-//		ArrayList<ServizioComponent> servizi = new ArrayList<ServizioComponent>();
-//		ArrayList<Biglietto> biglietti = this.receiver.ricercaBiglietti(this.parametri);
-//
-//		for (Biglietto biglietto : biglietti)
-//			servizi.add(biglietto);
-//
-//		return servizi;
 		return this.receiver.ricercaBiglietti(this.parametri);
 	}
 
