@@ -29,8 +29,7 @@ public class RegistratoreDiCassa {
 	 * @param metodo
 	 */
 	public String effettuaPagamento(ServizioComponent servizio, Cliente cliente, String metodo) {
-		// andrebbe recuperato dalla Sessione dell'agenzia
-		Commesso commesso = new Commesso();
+		Commesso commesso = Agenzia.getInstance().getUtente();
 
 		float ammontare = servizio.getPrezzo();
 		Pagamento pagamento = new Pagamento(ammontare, metodo);

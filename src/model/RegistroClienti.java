@@ -6,12 +6,11 @@ import java.util.ArrayList;
  * Classe addetta alla gestione dei Clienti dell'Agenzia
  */
 public class RegistroClienti {
-
 	/**
 	 * Istanza della classe
 	 */
 	private static RegistroClienti instance;
-	
+
 	/**
 	 * Costruttore di default
 	 */
@@ -36,10 +35,10 @@ public class RegistroClienti {
 	 * @return Cliente
 	 */
 	public Cliente getClienteDaID(int id) {
-		// TODO - implement RegistroClienti.getCliente
+		// TODO
 		return null;
 	}
-	
+
 	/**
 	 * Restituisce una lista di possibili Clienti in base alla Stringa inserita
 	 * 
@@ -47,6 +46,18 @@ public class RegistroClienti {
 	 * @return ArrayList<Cliente>
 	 */
 	public ArrayList<Cliente> getClientiDaNome(String nome) {
+		// TODO
+		return null;
+	}
+
+	/**
+	 * Restituisce un Cliente dal Codice della sua Tessera
+	 * 
+	 * @param codice
+	 * @return Cliente
+	 */
+	public Cliente getClienteDaCodiceTessera(String codice) {
+		// TODO
 		return null;
 	}
 
