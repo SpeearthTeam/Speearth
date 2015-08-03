@@ -45,11 +45,6 @@ public class Alloggio implements ServizioComponent {
 	private float prezzo = 0;
 
 	/**
-	 * Prezzo totale
-	 */
-	private float totale = 0;
-
-	/**
 	 * Costruttore di default
 	 */
 	public Alloggio() {
@@ -174,26 +169,6 @@ public class Alloggio implements ServizioComponent {
 	 */
 	public void setStanze(HashMap<String, Integer> stanze) {
 		this.stanze = stanze;
-	}
-
-	/**
-	 * Restituisce il prezzo totale dell'alloggio
-	 * 
-	 * @return float
-	 */
-	@Override
-	public float getTotale() {
-		return this.totale;
-	}
-
-	/**
-	 * Imposta il prezzo totale dell'alloggio
-	 * 
-	 * @param totale
-	 */
-	@Override
-	public void setTotale(float totale) {
-		this.totale = totale;
 	}
 
 	/**

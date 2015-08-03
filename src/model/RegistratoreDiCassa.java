@@ -32,10 +32,10 @@ public class RegistratoreDiCassa {
 		// andrebbe recuperato dalla Sessione dell'agenzia
 		Commesso commesso = new Commesso();
 
-		float ammontare = servizio.getTotale();
+		float ammontare = servizio.getPrezzo();
 		Pagamento pagamento = new Pagamento(ammontare, metodo);
 		Vendita vendita = new Vendita(cliente, pagamento, commesso, servizio);
-		
+
 		Agenzia.getInstance().getRegistroVendite().registraVendita(vendita);
 		return pagamento.generaRicevuta();
 	}

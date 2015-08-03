@@ -54,11 +54,6 @@ public class Biglietto implements ServizioComponent {
 	private float prezzo = 0;
 
 	/**
-	 * Prezzo totale
-	 */
-	private float totale = 0;
-
-	/**
 	 * Mezzo
 	 */
 	private String mezzo;
@@ -244,26 +239,6 @@ public class Biglietto implements ServizioComponent {
 	 */
 	public void setMezzo(String mezzo) {
 		this.mezzo = mezzo;
-	}
-
-	/**
-	 * Restituisce il prezzo totale del biglietto
-	 * 
-	 * @return float
-	 */
-	@Override
-	public float getTotale() {
-		return this.totale;
-	}
-
-	/**
-	 * Imposta il prezzo totale del biglietto
-	 * 
-	 * @param totale
-	 */
-	@Override
-	public void setTotale(float totale) {
-		this.totale = totale;
 	}
 
 	/**

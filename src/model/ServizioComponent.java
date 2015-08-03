@@ -22,20 +22,6 @@ public interface ServizioComponent {
 	public void setPrezzo(float prezzo);
 
 	/**
-	 * Restituisce il prezzo totale del Servizio
-	 * 
-	 * @return float
-	 */
-	public float getTotale();
-
-	/**
-	 * Imposta il prezzo totale del Servizio
-	 * 
-	 * @param totale
-	 */
-	public void setTotale(float totale);
-
-	/**
 	 * Aggiunge un Componente al Servizio composito
 	 * 
 	 * @param servizio
@@ -55,16 +41,16 @@ public interface ServizioComponent {
 	public ServizioComponent getServizio(int i);
 
 	/**
-	 * Imposta i servizi annidati
+	 * Imposta la lista di Servizi che compongono il Pacchetto
 	 * 
 	 * @param servizi
 	 */
 	public void setListaServizi(ArrayList<ServizioComponent> servizi);
 
 	/**
-	 * Restituisce i servizi annidati di un servizio
+	 * Restituisce la lista di Servizi che compongono il Pacchetto
 	 * 
-	 * @return ServizioComponent
+	 * @return ArrayList<ServizioComponent>
 	 */
 	public ArrayList<ServizioComponent> getListaServizi();
 }

@@ -30,21 +30,21 @@ public class SistemaEsternoFactory {
 	}
 	
 	/**
-	 * Restituisce tutti i sistemi esterni
+	 * Restituisce tutti i Sistemi Esterni supportati dal Software
 	 * 
 	 * @return ArrayList<SistemaEsterno>
 	 */
 	public ArrayList<SistemaEsterno> getSistemiEsterni() {
 		ArrayList<SistemaEsterno> sistemi_esterni = new ArrayList<SistemaEsterno>();
 		
-		sistemi_esterni.add(TrenitaliaAdapter.getInstance());
-		sistemi_esterni.add(ItaloAdapter.getInstance());
+		sistemi_esterni.addAll(this.getAziendeDiTrasporto());
+		sistemi_esterni.addAll(this.getImpreseRicettive());
 		
 		return sistemi_esterni;
 	}
 	
 	/**
-	 * Restituisce le aziende di trasporto
+	 * Restituisce le Aziende di Trasporto supportate dal Software
 	 * 
 	 * @return ArrayList<AziendaTrasportoAdapter>
 	 */
@@ -58,12 +58,15 @@ public class SistemaEsternoFactory {
 	}
 	
 	/**
-	 * Restituisce le imprese ricettive
+	 * Restituisce le Imprese Ricettive supportate dal Software
 	 * 
 	 * @return ArrayList<ImpresaRicettivaAdapter>
 	 */
 	public ArrayList<ImpresaRicettivaAdapter> getImpreseRicettive() {
 		ArrayList<ImpresaRicettivaAdapter> imprese_ricettive = new ArrayList<ImpresaRicettivaAdapter>();
+		
+		imprese_ricettive.add(BookingAdapter.getInstance());
+		
 		return imprese_ricettive;
 	}
 

@@ -62,8 +62,8 @@ public class ScontoConcreteStrategy implements BonusStrategy {
 	 */
 	public void applica(ServizioComponent servizio, Bonus bonus) {
 		int sconto = bonus.getSconto();
-		float totale = servizio.getTotale();
-		servizio.setTotale(totale - (totale * sconto) / 100);
+		float totale = servizio.getPrezzo();
+		servizio.setPrezzo(totale - (totale * sconto) / 100);
 	}
 
 }

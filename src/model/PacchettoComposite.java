@@ -13,14 +13,9 @@ public class PacchettoComposite implements ServizioComponent {
 	private int id;
 
 	/**
-	 * Prezzo
+	 * Prezzo del Pacchetto, comprensivo dei prezzi dei singoli Servizi
 	 */
 	private float prezzo = 0;
-
-	/**
-	 * Prezzo totale
-	 */
-	private float totale = 0;
 
 	/**
 	 * Servizi che compongono il pacchetto
@@ -81,26 +76,6 @@ public class PacchettoComposite implements ServizioComponent {
 	}
 
 	/**
-	 * Restituisce il prezzo totale del pacchetto
-	 * 
-	 * @return float
-	 */
-	@Override
-	public float getTotale() {
-		return this.totale;
-	}
-
-	/**
-	 * Imposta il prezzo totale del pacchetto
-	 * 
-	 * @param totale
-	 */
-	@Override
-	public void setTotale(float totale) {
-		this.totale = totale;
-	}
-
-	/**
 	 * Aggiunge un Servizio al pacchetto
 	 * 
 	 * @param ServizioComponent
@@ -109,7 +84,6 @@ public class PacchettoComposite implements ServizioComponent {
 	public void aggiungi(ServizioComponent servizio) {
 		this.lista_servizi.add(servizio);
 		this.prezzo += servizio.getPrezzo();
-		this.totale += servizio.getTotale();
 	}
 
 	/**
@@ -119,7 +93,6 @@ public class PacchettoComposite implements ServizioComponent {
 	public void rimuovi(ServizioComponent servizio) {
 		if (this.lista_servizi.contains(servizio)) {
 			this.prezzo -= servizio.getPrezzo();
-			this.totale -= servizio.getTotale();
 			this.lista_servizi.remove(servizio);
 		}
 	}
@@ -134,21 +107,25 @@ public class PacchettoComposite implements ServizioComponent {
 		return this.lista_servizi.get(i);
 	}
 
+	/**
+	 * Imposta la lista di Servizi che compongono il Pacchetto
+	 * 
+	 * @param servizi
+	 */
 	@Override
 	public void setListaServizi(ArrayList<ServizioComponent> servizi) {
 		this.lista_servizi = servizi;
 
 		float prezzo = 0;
-
 		for (ServizioComponent servizio : this.lista_servizi)
 			prezzo += servizio.getPrezzo();
-
-		setPrezzo(prezzo);
-		setTotale(prezzo);
+		this.setPrezzo(prezzo);
 	}
 
 	/**
-	 * Restituisce i servizi relativi al pacchetto
+	 * Restituisce la lista di Servizi che compongono il Pacchetto
+	 * 
+	 * @return ArrayList<ServizioComponent>
 	 */
 	@Override
 	public ArrayList<ServizioComponent> getListaServizi() {
