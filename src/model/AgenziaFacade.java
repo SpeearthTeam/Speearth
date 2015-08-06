@@ -48,7 +48,7 @@ public class AgenziaFacade {
 	}
 
 	/**
-	 * Restituisce la singola instanza della classe
+	 * Restituisce la singola istanza della classe
 	 * 
 	 * @return Agenzia
 	 */
