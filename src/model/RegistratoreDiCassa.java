@@ -22,20 +22,19 @@ public class RegistratoreDiCassa {
 	}
 
 	/**
-	 * Effettua un Pagamento di un Servizio
+	 * Effettua un Pagamento di un Servizio TODO il Commesso va recuperato dalla Sessione =======> Controller
 	 * 
 	 * @param servizio
 	 * @param cliente
+	 * @param commesso
 	 * @param metodo
 	 */
-	public String effettuaPagamento(ServizioComponent servizio, Cliente cliente, String metodo) {
-		Commesso commesso = Agenzia.getInstance().getUtente();
-
+	public String effettuaPagamento(ServizioComponent servizio, Cliente cliente, Commesso commesso, String metodo) {
 		float ammontare = servizio.getPrezzo();
 		Pagamento pagamento = new Pagamento(ammontare, metodo);
 		Vendita vendita = new Vendita(cliente, pagamento, commesso, servizio);
 
-		Agenzia.getInstance().getRegistroVendite().registraVendita(vendita);
+		AgenziaFacade.getInstance().getRegistroVendite().registraVendita(vendita);
 		return pagamento.generaRicevuta();
 	}
 

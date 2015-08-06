@@ -28,7 +28,7 @@ public class CalcolatoreBonus {
 	 * @return Bonus
 	 */
 	public Bonus getBonus(Cliente cliente) {
-		ArrayList<Vendita> vendite = Agenzia.getInstance().getRegistroVendite().getVenditeDaCliente(cliente);
+		ArrayList<Vendita> vendite = AgenziaFacade.getInstance().getRegistroVendite().getVenditeDaCliente(cliente);
 		return this.strategy.calcola(vendite);
 	}
 

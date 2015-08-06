@@ -5,11 +5,11 @@ import java.util.ArrayList;
 /**
  * Classe che rappresenta l'Agenzia
  */
-public class Agenzia {
+public class AgenziaFacade {
 	/**
 	 * Istanza della classe
 	 */
-	private static Agenzia instance;
+	private static AgenziaFacade instance;
 
 	/**
 	 * Registro delle Vendite
@@ -38,14 +38,9 @@ public class Agenzia {
 	private ArrayList<RicercaCommand> comandi;
 
 	/**
-	 * Utente che sta utilizzando il Software al momento
-	 */
-	private Commesso utente = null;
-
-	/**
 	 * Costruttore
 	 */
-	protected Agenzia() {
+	protected AgenziaFacade() {
 		this.registro_vendite = RegistroVendite.getInstance();
 		this.registro_clienti = RegistroClienti.getInstance();
 		this.registratore_cassa = RegistratoreDiCassa.getInstance();
@@ -57,9 +52,9 @@ public class Agenzia {
 	 * 
 	 * @return Agenzia
 	 */
-	public static Agenzia getInstance() {
+	public static AgenziaFacade getInstance() {
 		if (instance == null)
-			instance = new Agenzia();
+			instance = new AgenziaFacade();
 		return instance;
 	}
 
@@ -97,49 +92,6 @@ public class Agenzia {
 	 */
 	public RegistroImpiegati getRegistroImpiegati() {
 		return this.registro_impiegati;
-	}
-
-	/**
-	 * Restituisce l'Utente che sta utilizzando il Software al momento
-	 * 
-	 * @return RegistroVendite
-	 */
-	public Commesso getUtente() {
-		return utente;
-	}
-
-	/**
-	 * Imposta l'Utente che sta utilizzando il Software al momento
-	 * 
-	 * @param utente
-	 */
-	public void setUtente(Commesso utente) {
-		this.utente = utente;
-	}
-
-	/**
-	 * Autentica un Utente del Software tramite username e password
-	 * 
-	 * @param username
-	 * @param password
-	 * @return boolean
-	 */
-	public boolean autenticaUtente(String username, String password) {
-		Commesso commesso = this.registro_impiegati.getCommessoDaUsername(username);
-		if (commesso != null) {
-			if (commesso.getPassword() == password) {
-				this.setUtente(commesso);
-				return true;
-			}
-		}
-		return false;
-	}
-
-	/**
-	 * Disautentica un Utente del Software
-	 */
-	public void disautenticaUtente() {
-		this.setUtente(null);
 	}
 
 	/**
