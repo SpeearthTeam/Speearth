@@ -54,8 +54,9 @@ public class PrenotaAlloggioController implements EstensioneController {
 	/**
 	 * Conferma la scelta dell'Alloggio
 	 */
-	public void conferma() {
-		// TODO
+	public Alloggio conferma() {
+		this.getBase().setServizio(this.alloggio);
+		return this.alloggio;
 	}
 
 	/**
@@ -64,7 +65,7 @@ public class PrenotaAlloggioController implements EstensioneController {
 	 * @return Biglietto
 	 */
 	public Alloggio getAlloggio() {
-		return alloggio;
+		return this.alloggio;
 	}
 
 	/**
@@ -74,6 +75,31 @@ public class PrenotaAlloggioController implements EstensioneController {
 	 */
 	public void setAlloggio(Alloggio alloggio) {
 		this.alloggio = alloggio;
+	}
+
+	/**
+	 * Restituisce il Caso d'Uso base al quale appartiene
+	 * 
+	 * @return CasoDUsoController
+	 */
+	@Override
+	public PrenotaServizioController getBase() {
+		return PrenotaServizioController.getInstance();
+	}
+
+	/**
+	 * Il metodo non si applica in quanto questa classe non è composita
+	 */
+	@Override
+	public GancioController getGancio(int i) {
+		return null;
+	}
+
+	/**
+	 * Il metodo non si applica in quanto questa classe non è composita
+	 */
+	@Override
+	public void rimuoviGancio(GancioController gancio) {
 	}
 
 }

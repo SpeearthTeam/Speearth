@@ -17,7 +17,7 @@ public class PrenotaBigliettoController implements EstensioneController {
 	 * Biglietto in prenotazione
 	 */
 	private Biglietto biglietto;
-	
+
 	/**
 	 * Costruttore di default
 	 */
@@ -39,7 +39,7 @@ public class PrenotaBigliettoController implements EstensioneController {
 	public void chiudi() {
 		// TODO
 	}
-	
+
 	/**
 	 * Effettua una ricerca di Biglietti secondo i parametri
 	 * 
@@ -50,12 +50,13 @@ public class PrenotaBigliettoController implements EstensioneController {
 		return AgenziaFacade.getInstance()
 				.effettuaRicerca(new RicercaBigliettiCommand(RicercaReceiver.getInstance(), parametri));
 	}
-	
+
 	/**
 	 * Conferma la scelta del Biglietto
 	 */
-	public void conferma() {
-		// TODO
+	public Biglietto conferma() {
+		this.getBase().setServizio(this.biglietto);
+		return this.biglietto;
 	}
 
 	/**
@@ -64,7 +65,7 @@ public class PrenotaBigliettoController implements EstensioneController {
 	 * @return Biglietto
 	 */
 	public Biglietto getBiglietto() {
-		return biglietto;
+		return this.biglietto;
 	}
 
 	/**
@@ -74,6 +75,31 @@ public class PrenotaBigliettoController implements EstensioneController {
 	 */
 	public void setBiglietto(Biglietto biglietto) {
 		this.biglietto = biglietto;
+	}
+
+	/**
+	 * Restituisce il Caso d'Uso base al quale appartiene
+	 * 
+	 * @return CasoDUsoController
+	 */
+	@Override
+	public PrenotaServizioController getBase() {
+		return PrenotaServizioController.getInstance();
+	}
+
+	/**
+	 * Il metodo non si applica in quanto questa classe non è composita
+	 */
+	@Override
+	public GancioController getGancio(int i) {
+		return null;
+	}
+
+	/**
+	 * Il metodo non si applica in quanto questa classe non è composita
+	 */
+	@Override
+	public void rimuoviGancio(GancioController gancio) {
 	}
 
 }

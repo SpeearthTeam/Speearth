@@ -84,8 +84,9 @@ public class PrenotaPacchettoController implements EstensioneController {
 	/**
 	 * Conferma la scelta del Pacchetto
 	 */
-	public void conferma() {
-		// TODO
+	public PacchettoComposite conferma() {
+		this.getBase().setServizio(this.pacchetto);
+		return this.pacchetto;
 	}
 
 	/**
@@ -104,6 +105,31 @@ public class PrenotaPacchettoController implements EstensioneController {
 	 */
 	public void setPacchetto(PacchettoComposite pacchetto) {
 		this.pacchetto = pacchetto;
+	}
+
+	/**
+	 * Restituisce il Caso d'Uso base al quale appartiene
+	 * 
+	 * @return CasoDUsoController
+	 */
+	@Override
+	public PrenotaServizioController getBase() {
+		return PrenotaServizioController.getInstance();
+	}
+
+	/**
+	 * Il metodo non si applica in quanto questa classe non è composita
+	 */
+	@Override
+	public GancioController getGancio(int i) {
+		return null;
+	}
+
+	/**
+	 * Il metodo non si applica in quanto questa classe non è composita
+	 */
+	@Override
+	public void rimuoviGancio(GancioController gancio) {
 	}
 
 }

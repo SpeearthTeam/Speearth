@@ -1,4 +1,7 @@
 package controller;
 
-public interface EstensioneController extends Gancio {
+/**
+ * Interfaccia che rappresenta un'Estensione di un Caso d'Uso
+ */
+public interface EstensioneController extends GancioController {
 }
