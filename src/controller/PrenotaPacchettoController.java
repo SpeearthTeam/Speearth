@@ -13,7 +13,7 @@ import model.ServizioComponent;
 /**
  * Controller per l'Estensione PrenotaPacchetto
  */
-public class PrenotaPacchettoController implements EstensioneController {
+public class PrenotaPacchettoController implements CasoDUsoController {
 	/**
 	 * Pacchetto in prenotazione
 	 */
@@ -85,7 +85,7 @@ public class PrenotaPacchettoController implements EstensioneController {
 	 * Conferma la scelta del Pacchetto
 	 */
 	public PacchettoComposite conferma() {
-		this.getBase().setServizio(this.pacchetto);
+//		this.getBase().setServizio(this.pacchetto);
 		return this.pacchetto;
 	}
 
@@ -108,28 +108,35 @@ public class PrenotaPacchettoController implements EstensioneController {
 	}
 
 	/**
-	 * Restituisce il Caso d'Uso base al quale appartiene
-	 * 
-	 * @return CasoDUsoController
+	 * Il metodo non si applica in quanto non ha Estensioni o Inclusioni
 	 */
 	@Override
-	public PrenotaServizioController getBase() {
-		return PrenotaServizioController.getInstance();
-	}
-
-	/**
-	 * Il metodo non si applica in quanto questa classe non è composita
-	 */
-	@Override
-	public GancioController getGancio(int i) {
+	public CasoDUsoController getFrammento(int i) {
 		return null;
 	}
 
 	/**
-	 * Il metodo non si applica in quanto questa classe non è composita
+	 * Il metodo non si applica in quanto non ha Estensioni o Inclusioni
 	 */
 	@Override
-	public void rimuoviGancio(GancioController gancio) {
+	public void aggiungiFrammento(CasoDUsoController gancio) {
+	}
+
+	/**
+	 * Il metodo non si applica in quanto non ha Estensioni o Inclusioni
+	 */
+	@Override
+	public void rimuoviFrammento(CasoDUsoController frammento) {
+	}
+
+	/**
+	 * Restituisce il Caso D'Uso base dell'Estensione
+	 * 
+	 * @return PrenotaServizioController
+	 */
+	@Override
+	public PrenotaServizioController getCasoDUsoBase() {
+		return PrenotaServizioController.getInstance();
 	}
 
 }

@@ -8,6 +8,11 @@ import javafx.stage.Stage;
 
 public class AppFacadeView extends Application {
 	/**
+	 * Istanza della classe
+	 */
+	private static AppFacadeView instance;
+	
+	/**
 	 * Stage primario
 	 */
 	private Stage stage_primario;
@@ -16,6 +21,15 @@ public class AppFacadeView extends Application {
 	 * Layout radice
 	 */
 	private BorderPane root_layout;
+	
+	public static AppFacadeView getInstance() {
+		if (instance == null)
+			return new AppFacadeView();
+		return instance;
+	}
+	
+	public AppFacadeView() {
+	}
 
 	/**
 	 * Avvia l'interfaccia dell'Applicazione

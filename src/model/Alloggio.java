@@ -8,7 +8,6 @@ import java.util.HashMap;
  * Servizio alloggio
  */
 public class Alloggio implements ServizioComponent {
-
 	/**
 	 * Id
 	 */

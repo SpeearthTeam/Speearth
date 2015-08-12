@@ -20,9 +20,9 @@ public class PrenotaServizioController implements CasoDUsoController {
 	private static PrenotaServizioController instance;
 
 	/**
-	 * Elenco di Estensioni e/o Inclusioni nel Caso d'Uso
+	 * Elenco di Frammenti (Estensioni e/o Inclusioni) del Caso d'Uso
 	 */
-	private ArrayList<GancioController> ganci;
+	private ArrayList<CasoDUsoController> frammenti;
 
 	/**
 	 * Servizio in prenotazione
@@ -59,7 +59,7 @@ public class PrenotaServizioController implements CasoDUsoController {
 	 */
 	@Override
 	public void chiudi() {
-		this.ganci.clear();
+		this.frammenti.clear();
 		this.servizio = null;
 	}
 
@@ -67,24 +67,24 @@ public class PrenotaServizioController implements CasoDUsoController {
 	 * Avvia l'Estensione PrenotaBiglietto
 	 */
 	public void prenotaBiglietto() {
-		this.ganci.add(new PrenotaBigliettoController());
-		this.ganci.get(this.ganci.size()).avvia();
+		this.frammenti.add(new PrenotaBigliettoController());
+		this.frammenti.get(this.frammenti.size()).avvia();
 	}
 
 	/**
 	 * Avvia l'Estensione PrenotaAlloggio
 	 */
 	public void prenotaAlloggio() {
-		this.ganci.add(new PrenotaAlloggioController());
-		this.ganci.get(this.ganci.size()).avvia();
+		this.frammenti.add(new PrenotaAlloggioController());
+		this.frammenti.get(this.frammenti.size()).avvia();
 	}
 
 	/**
 	 * Avvia l'Estensione PrenotaPacchetto
 	 */
 	public void prenotaPacchetto() {
-		this.ganci.add(new PrenotaPacchettoController());
-		this.ganci.get(this.ganci.size()).avvia();
+		this.frammenti.add(new PrenotaPacchettoController());
+		this.frammenti.get(this.frammenti.size()).avvia();
 	}
 
 	/**
@@ -138,22 +138,6 @@ public class PrenotaServizioController implements CasoDUsoController {
 	}
 
 	/**
-	 * Restituisce l'elenco di Ganci
-	 */
-	public ArrayList<GancioController> getGanci() {
-		return ganci;
-	}
-
-	/**
-	 * Imposta l'elenco di Ganci
-	 * 
-	 * @param ganci
-	 */
-	public void setGanci(ArrayList<GancioController> ganci) {
-		this.ganci = ganci;
-	}
-
-	/**
 	 * Restituisce il Servizio in prenotazione
 	 * 
 	 * @return ServizioComponent
@@ -172,23 +156,41 @@ public class PrenotaServizioController implements CasoDUsoController {
 	}
 
 	/**
-	 * Restituisce un Gancio del Caso d'Uso
+	 * Restituisce un Frammento (Estensione o Inclusione) del Caso D'Uso
 	 * 
 	 * @param i
-	 * @return GancioController
+	 * @return CasoDUsoController
 	 */
 	@Override
-	public GancioController getGancio(int i) {
-		return this.ganci.get(i);
+	public CasoDUsoController getFrammento(int i) {
+		return this.frammenti.get(i);
 	}
 
 	/**
-	 * Rimuove un Gancio da un Caso d'Uso
+	 * Aggiunge un Frammento (Estensione o Inclusione) al Caso D'Uso
 	 * 
 	 * @param gancio
 	 */
 	@Override
-	public void rimuoviGancio(GancioController gancio) {
-		this.ganci.remove(gancio);
+	public void aggiungiFrammento(CasoDUsoController gancio) {
+		this.frammenti.add(gancio);
+	}
+
+	/**
+	 * Rimuove un Frammento (Estensione o Inclusione) dal Caso D'Uso
+	 * 
+	 * @param gancio
+	 */
+	@Override
+	public void rimuoviFrammento(CasoDUsoController frammento) {
+		this.frammenti.remove(frammento);
+	}
+
+	/**
+	 * Il metodo non si applica in quanto Caso D'Uso base
+	 */
+	@Override
+	public CasoDUsoController getCasoDUsoBase() {
+		return null;
 	}
 }
