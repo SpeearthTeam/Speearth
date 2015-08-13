@@ -3,16 +3,16 @@ package controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import model.business.AgenziaFacade;
-import model.business.Biglietto;
-import model.business.ServizioComponent;
-import model.tools.RicercaBigliettiCommand;
-import model.tools.ToolsFacade;
+import model.core.AgenziaFacade;
+import model.core.Biglietto;
+import model.core.IServizioComponent;
+import model.ricerca.RicercaBigliettiCommand;
+import model.ricerca.RicercaReceiver;
 
 /**
  * Controller per l'estensione PrenotaBiglietto
  */
-public class PrenotaBigliettoController implements CasoDUsoController {
+public class PrenotaBigliettoController implements ICasoDUsoController {
 	/**
 	 * Biglietto in prenotazione
 	 */
@@ -46,9 +46,9 @@ public class PrenotaBigliettoController implements CasoDUsoController {
 	 * @param parametri
 	 * @return ArrayList<ServizioComponent>
 	 */
-	public ArrayList<ServizioComponent> ricerca(HashMap<String, String> parametri) {
+	public ArrayList<IServizioComponent> ricerca(HashMap<String, String> parametri) {
 		return AgenziaFacade.getInstance().effettuaRicerca(
-				new RicercaBigliettiCommand(ToolsFacade.getInstance().getRicercaRiceiver(), parametri));
+				new RicercaBigliettiCommand(RicercaReceiver.getInstance(), parametri));
 	}
 
 	/**
@@ -81,14 +81,14 @@ public class PrenotaBigliettoController implements CasoDUsoController {
 	 * Il metodo non si applica in quanto non ha Estensioni o Inclusioni
 	 */
 	@Override
-	public void avviaFrammento(CasoDUsoController frammento) {
+	public void avviaFrammento(ICasoDUsoController frammento) {
 	}
 
 	/**
 	 * Il metodo non si applica in quanto non ha Estensioni o Inclusioni
 	 */
 	@Override
-	public void rimuoviFrammento(CasoDUsoController frammento) {
+	public void rimuoviFrammento(ICasoDUsoController frammento) {
 	}
 
 }

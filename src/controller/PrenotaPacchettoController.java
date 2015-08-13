@@ -1,12 +1,12 @@
 package controller;
 
-import model.business.PacchettoComposite;
-import model.business.ServizioComponent;
+import model.core.IServizioComponent;
+import model.core.PacchettoComposite;
 
 /**
  * Controller per l'Estensione PrenotaPacchetto
  */
-public class PrenotaPacchettoController implements CasoDUsoController {
+public class PrenotaPacchettoController implements ICasoDUsoController {
 	/**
 	 * Pacchetto in prenotazione
 	 */
@@ -15,7 +15,7 @@ public class PrenotaPacchettoController implements CasoDUsoController {
 	/**
 	 * Elenco di Frammenti (Estensioni e/o Inclusioni) del Caso d'Uso
 	 */
-	private CasoDUsoController frammento;
+	private ICasoDUsoController frammento;
 
 	/**
 	 * Costruttore di default
@@ -58,7 +58,7 @@ public class PrenotaPacchettoController implements CasoDUsoController {
 	 * 
 	 * @param servizio
 	 */
-	public void aggiungiServizio(ServizioComponent servizio) {
+	public void aggiungiServizio(IServizioComponent servizio) {
 		this.pacchetto.aggiungi(servizio);
 	}
 
@@ -67,7 +67,7 @@ public class PrenotaPacchettoController implements CasoDUsoController {
 	 * 
 	 * @param servizio
 	 */
-	public void rimuoviServizio(ServizioComponent servizio) {
+	public void rimuoviServizio(IServizioComponent servizio) {
 		this.pacchetto.rimuovi(servizio);
 	}
 
@@ -103,7 +103,7 @@ public class PrenotaPacchettoController implements CasoDUsoController {
 	 * @param frammento
 	 */
 	@Override
-	public void avviaFrammento(CasoDUsoController frammento) {
+	public void avviaFrammento(ICasoDUsoController frammento) {
 		this.frammento = frammento;
 		this.frammento.avvia();
 	}
@@ -114,7 +114,7 @@ public class PrenotaPacchettoController implements CasoDUsoController {
 	 * @param frammento
 	 */
 	@Override
-	public void rimuoviFrammento(CasoDUsoController frammento) {
+	public void rimuoviFrammento(ICasoDUsoController frammento) {
 		this.frammento = null;
 	}
 

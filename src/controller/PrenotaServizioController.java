@@ -1,17 +1,17 @@
 package controller;
 
-import model.business.AgenziaFacade;
-import model.business.Bonus;
-import model.business.Cliente;
-import model.business.ServizioComponent;
-import model.tools.BonusStrategy;
-import model.tools.CalcolatoreBonus;
-import model.tools.ScontoConcreteStrategy;
+import model.bonus.CalcolatoreBonus;
+import model.bonus.IBonus;
+import model.bonus.IBonusStrategy;
+import model.bonus.ScontoConcreteStrategy;
+import model.core.AgenziaFacade;
+import model.core.Cliente;
+import model.core.IServizioComponent;
 
 /**
  * Controller per il Caso d'Uso PrenotaServizio
  */
-public class PrenotaServizioController implements CasoDUsoController {
+public class PrenotaServizioController implements ICasoDUsoController {
 	/**
 	 * Istanza della classe
 	 */
@@ -20,12 +20,12 @@ public class PrenotaServizioController implements CasoDUsoController {
 	/**
 	 * Eventuale Frammento (Estensione e/o Inclusione) del Caso d'Uso
 	 */
-	private CasoDUsoController frammento;
+	private ICasoDUsoController frammento;
 
 	/**
 	 * Servizio in prenotazione
 	 */
-	private ServizioComponent servizio;
+	private IServizioComponent servizio;
 
 	/**
 	 * Costruttore di default
@@ -99,7 +99,7 @@ public class PrenotaServizioController implements CasoDUsoController {
 	 * @param cliente
 	 * @return Bonus
 	 */
-	public Bonus calcolaBonus(Cliente cliente) {
+	public IBonus calcolaBonus(Cliente cliente) {
 		ScontoConcreteStrategy strategy_sconto = new ScontoConcreteStrategy();
 		CalcolatoreBonus calcolatore_sconto = new CalcolatoreBonus(strategy_sconto);
 		return calcolatore_sconto.getBonus(cliente);
@@ -110,7 +110,7 @@ public class PrenotaServizioController implements CasoDUsoController {
 	 * 
 	 * @param bonus
 	 */
-	public ServizioComponent applicaBonus(Bonus bonus, BonusStrategy strategy) {
+	public IServizioComponent applicaBonus(IBonus bonus, IBonusStrategy strategy) {
 		CalcolatoreBonus calcolatore = new CalcolatoreBonus(strategy);
 		calcolatore.applicaBonus(this.servizio, bonus);
 		return this.servizio;
@@ -133,7 +133,7 @@ public class PrenotaServizioController implements CasoDUsoController {
 	 * 
 	 * @return ServizioComponent
 	 */
-	public ServizioComponent getServizio() {
+	public IServizioComponent getServizio() {
 		return this.servizio;
 	}
 
@@ -142,7 +142,7 @@ public class PrenotaServizioController implements CasoDUsoController {
 	 * 
 	 * @param servizio
 	 */
-	public void setServizio(ServizioComponent servizio) {
+	public void setServizio(IServizioComponent servizio) {
 		this.servizio = servizio;
 	}
 
@@ -152,7 +152,7 @@ public class PrenotaServizioController implements CasoDUsoController {
 	 * @param frammento
 	 */
 	@Override
-	public void avviaFrammento(CasoDUsoController frammento) {
+	public void avviaFrammento(ICasoDUsoController frammento) {
 		this.frammento = frammento;
 		this.frammento.avvia();
 	}
@@ -163,7 +163,7 @@ public class PrenotaServizioController implements CasoDUsoController {
 	 * @param frammento
 	 */
 	@Override
-	public void rimuoviFrammento(CasoDUsoController frammento) {
+	public void rimuoviFrammento(ICasoDUsoController frammento) {
 		this.frammento = null;
 	}
 }

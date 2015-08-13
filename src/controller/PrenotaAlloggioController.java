@@ -3,16 +3,16 @@ package controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import model.business.AgenziaFacade;
-import model.business.Alloggio;
-import model.business.ServizioComponent;
-import model.tools.RicercaAlloggiCommand;
-import model.tools.ToolsFacade;
+import model.core.AgenziaFacade;
+import model.core.Alloggio;
+import model.core.IServizioComponent;
+import model.ricerca.RicercaAlloggiCommand;
+import model.ricerca.RicercaReceiver;
 
 /**
  * Controller per l'Estensione PrenotaAlloggio
  */
-public class PrenotaAlloggioController implements CasoDUsoController {
+public class PrenotaAlloggioController implements ICasoDUsoController {
 	/**
 	 * Alloggio in prenotazione
 	 */
@@ -46,9 +46,9 @@ public class PrenotaAlloggioController implements CasoDUsoController {
 	 * @param parametri
 	 * @return ArrayList<ServizioComponent>
 	 */
-	public ArrayList<ServizioComponent> ricerca(HashMap<String, String> parametri) {
+	public ArrayList<IServizioComponent> ricerca(HashMap<String, String> parametri) {
 		return AgenziaFacade.getInstance()
-				.effettuaRicerca(new RicercaAlloggiCommand(ToolsFacade.getInstance().getRicercaRiceiver(), parametri));
+				.effettuaRicerca(new RicercaAlloggiCommand(RicercaReceiver.getInstance(), parametri));
 	}
 
 	/**
@@ -83,14 +83,14 @@ public class PrenotaAlloggioController implements CasoDUsoController {
 	 * Il metodo non si applica in quanto non ha Estensioni o Inclusioni
 	 */
 	@Override
-	public void avviaFrammento(CasoDUsoController frammento) {
+	public void avviaFrammento(ICasoDUsoController frammento) {
 	}
 
 	/**
 	 * Il metodo non si applica in quanto non ha Estensioni o Inclusioni
 	 */
 	@Override
-	public void rimuoviFrammento(CasoDUsoController gancio) {
+	public void rimuoviFrammento(ICasoDUsoController gancio) {
 	}
 
 }
