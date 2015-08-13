@@ -1,9 +1,11 @@
-package model;
+package model.tools;
 
 import java.util.HashMap;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import model.business.Alloggio;
 
 public class BookingAdapter extends ImpresaRicettivaAdapter {
 	/**

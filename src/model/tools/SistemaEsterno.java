@@ -1,10 +1,12 @@
-package model;
+package model.tools;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.json.JSONException;
+
+import model.business.ServizioComponent;
 
 /**
  * Interfaccia rappresentante un sistema esterno che fornisce servizi per

@@ -1,14 +1,12 @@
 package controller;
 
-import java.util.ArrayList;
-
-import model.AgenziaFacade;
-import model.Bonus;
-import model.BonusStrategy;
-import model.CalcolatoreBonus;
-import model.Cliente;
-import model.ScontoConcreteStrategy;
-import model.ServizioComponent;
+import model.business.AgenziaFacade;
+import model.business.Bonus;
+import model.business.Cliente;
+import model.business.ServizioComponent;
+import model.tools.BonusStrategy;
+import model.tools.CalcolatoreBonus;
+import model.tools.ScontoConcreteStrategy;
 
 /**
  * Controller per il Caso d'Uso PrenotaServizio
@@ -20,9 +18,9 @@ public class PrenotaServizioController implements CasoDUsoController {
 	private static PrenotaServizioController instance;
 
 	/**
-	 * Elenco di Frammenti (Estensioni e/o Inclusioni) del Caso d'Uso
+	 * Eventuale Frammento (Estensione e/o Inclusione) del Caso d'Uso
 	 */
-	private ArrayList<CasoDUsoController> frammenti;
+	private CasoDUsoController frammento;
 
 	/**
 	 * Servizio in prenotazione
@@ -59,7 +57,7 @@ public class PrenotaServizioController implements CasoDUsoController {
 	 */
 	@Override
 	public void chiudi() {
-		this.frammenti.clear();
+		// TODO
 		this.servizio = null;
 	}
 
@@ -67,24 +65,21 @@ public class PrenotaServizioController implements CasoDUsoController {
 	 * Avvia l'Estensione PrenotaBiglietto
 	 */
 	public void prenotaBiglietto() {
-		this.frammenti.add(new PrenotaBigliettoController());
-		this.frammenti.get(this.frammenti.size()).avvia();
+		this.avviaFrammento(new PrenotaBigliettoController());
 	}
 
 	/**
 	 * Avvia l'Estensione PrenotaAlloggio
 	 */
 	public void prenotaAlloggio() {
-		this.frammenti.add(new PrenotaAlloggioController());
-		this.frammenti.get(this.frammenti.size()).avvia();
+		this.avviaFrammento(new PrenotaAlloggioController());
 	}
 
 	/**
 	 * Avvia l'Estensione PrenotaPacchetto
 	 */
 	public void prenotaPacchetto() {
-		this.frammenti.add(new PrenotaPacchettoController());
-		this.frammenti.get(this.frammenti.size()).avvia();
+		this.avviaFrammento(new PrenotaPacchettoController());
 	}
 
 	/**
@@ -105,8 +100,6 @@ public class PrenotaServizioController implements CasoDUsoController {
 	 * @return Bonus
 	 */
 	public Bonus calcolaBonus(Cliente cliente) {
-		// TODO - a livello di MODEL non c'è ancora un metodo per scegliere il
-		// bonus migliore tra più strategy
 		ScontoConcreteStrategy strategy_sconto = new ScontoConcreteStrategy();
 		CalcolatoreBonus calcolatore_sconto = new CalcolatoreBonus(strategy_sconto);
 		return calcolatore_sconto.getBonus(cliente);
@@ -118,8 +111,6 @@ public class PrenotaServizioController implements CasoDUsoController {
 	 * @param bonus
 	 */
 	public ServizioComponent applicaBonus(Bonus bonus, BonusStrategy strategy) {
-		// TODO - come faccio a sapere quale strategy mi serve per applicare il
-		// bonus?
 		CalcolatoreBonus calcolatore = new CalcolatoreBonus(strategy);
 		calcolatore.applicaBonus(this.servizio, bonus);
 		return this.servizio;
@@ -156,41 +147,23 @@ public class PrenotaServizioController implements CasoDUsoController {
 	}
 
 	/**
-	 * Restituisce un Frammento (Estensione o Inclusione) del Caso D'Uso
-	 * 
-	 * @param i
-	 * @return CasoDUsoController
-	 */
-	@Override
-	public CasoDUsoController getFrammento(int i) {
-		return this.frammenti.get(i);
-	}
-
-	/**
 	 * Aggiunge un Frammento (Estensione o Inclusione) al Caso D'Uso
 	 * 
-	 * @param gancio
+	 * @param frammento
 	 */
 	@Override
-	public void aggiungiFrammento(CasoDUsoController gancio) {
-		this.frammenti.add(gancio);
+	public void avviaFrammento(CasoDUsoController frammento) {
+		this.frammento = frammento;
+		this.frammento.avvia();
 	}
 
 	/**
 	 * Rimuove un Frammento (Estensione o Inclusione) dal Caso D'Uso
 	 * 
-	 * @param gancio
+	 * @param frammento
 	 */
 	@Override
 	public void rimuoviFrammento(CasoDUsoController frammento) {
-		this.frammenti.remove(frammento);
-	}
-
-	/**
-	 * Il metodo non si applica in quanto Caso D'Uso base
-	 */
-	@Override
-	public CasoDUsoController getCasoDUsoBase() {
-		return null;
+		this.frammento = null;
 	}
 }

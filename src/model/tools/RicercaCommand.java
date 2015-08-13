@@ -1,6 +1,8 @@
-package model;
+package model.tools;
 
 import java.util.ArrayList;
+
+import model.business.ServizioComponent;
 
 /**
  * Interfaccia rappresentante un generico comando di ricerca

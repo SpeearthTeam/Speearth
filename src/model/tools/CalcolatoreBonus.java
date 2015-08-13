@@ -1,17 +1,22 @@
-package model;
+package model.tools;
 
 import java.util.ArrayList;
+
+import model.business.AgenziaFacade;
+import model.business.Bonus;
+import model.business.Cliente;
+import model.business.ServizioComponent;
+import model.business.Vendita;
 
 /**
  * Classe addetta alla gestione dei Bonus
  */
 public class CalcolatoreBonus {
-
 	/**
 	 * Strategia di bonus: BonusSconto o Servizio
 	 */
-	private BonusStrategy strategy;	
-	
+	private BonusStrategy strategy;
+
 	/**
 	 * Costruttore
 	 * 

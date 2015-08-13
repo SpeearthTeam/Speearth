@@ -3,11 +3,11 @@ package controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import model.AgenziaFacade;
-import model.Alloggio;
-import model.RicercaAlloggiCommand;
-import model.RicercaReceiver;
-import model.ServizioComponent;
+import model.business.AgenziaFacade;
+import model.business.Alloggio;
+import model.business.ServizioComponent;
+import model.tools.RicercaAlloggiCommand;
+import model.tools.ToolsFacade;
 
 /**
  * Controller per l'Estensione PrenotaAlloggio
@@ -17,7 +17,7 @@ public class PrenotaAlloggioController implements CasoDUsoController {
 	 * Alloggio in prenotazione
 	 */
 	private Alloggio alloggio;
-	
+
 	/**
 	 * Costruttore di default
 	 */
@@ -48,16 +48,16 @@ public class PrenotaAlloggioController implements CasoDUsoController {
 	 */
 	public ArrayList<ServizioComponent> ricerca(HashMap<String, String> parametri) {
 		return AgenziaFacade.getInstance()
-				.effettuaRicerca(new RicercaAlloggiCommand(RicercaReceiver.getInstance(), parametri));
+				.effettuaRicerca(new RicercaAlloggiCommand(ToolsFacade.getInstance().getRicercaRiceiver(), parametri));
 	}
-	
+
 	/**
 	 * Conferma la scelta dell'Alloggio
 	 * 
 	 * @return Alloggio
 	 */
 	public Alloggio conferma() {
-		this.getCasoDUsoBase().setServizio(this.alloggio);
+		this.chiudi();
 		return this.alloggio;
 	}
 
@@ -79,16 +79,11 @@ public class PrenotaAlloggioController implements CasoDUsoController {
 		this.alloggio = alloggio;
 	}
 
-	@Override
-	public CasoDUsoController getFrammento(int i) {
-		return null;
-	}
-
 	/**
 	 * Il metodo non si applica in quanto non ha Estensioni o Inclusioni
 	 */
 	@Override
-	public void aggiungiFrammento(CasoDUsoController gancio) {
+	public void avviaFrammento(CasoDUsoController frammento) {
 	}
 
 	/**
@@ -96,16 +91,6 @@ public class PrenotaAlloggioController implements CasoDUsoController {
 	 */
 	@Override
 	public void rimuoviFrammento(CasoDUsoController gancio) {
-	}
-
-	/**
-	 * Restituisce il Caso D'Uso base dell'Estensione
-	 * 
-	 * @return PrenotaServizioController
-	 */
-	@Override
-	public PrenotaServizioController getCasoDUsoBase() {
-		return PrenotaServizioController.getInstance();
 	}
 
 }

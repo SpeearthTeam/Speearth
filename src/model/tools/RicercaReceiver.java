@@ -1,10 +1,14 @@
-package model;
+package model.tools;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.json.JSONException;
+
+import model.business.Alloggio;
+import model.business.Biglietto;
+import model.business.ServizioComponent;
 
 /**
  * Receiver del sistema di ricerca

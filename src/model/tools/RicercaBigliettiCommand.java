@@ -1,12 +1,15 @@
-package model;
+package model.tools;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import model.business.ServizioComponent;
+
 /**
- * Classe rappresentante un comando di ricerca alloggi verso un'impresa ricettiva
+ * Classe rappresentante un comando di ricerca biglietti verso un'azienda di
+ * trasporto
  */
-public class RicercaAlloggiCommand implements RicercaCommand {
+public class RicercaBigliettiCommand implements RicercaCommand {
 	/**
 	 * Oggetto che deve eseguire il comando
 	 */
@@ -23,11 +26,11 @@ public class RicercaAlloggiCommand implements RicercaCommand {
 	 * @param receiver
 	 * @param parametri
 	 */
-	public RicercaAlloggiCommand(RicercaReceiver receiver, HashMap<String, String> parametri) {
+	public RicercaBigliettiCommand(RicercaReceiver receiver, HashMap<String, String> parametri) {
 		this.receiver = receiver;
 		this.parametri = parametri;
 	}
-	
+
 	/**
 	 * Restituisce il receiver
 	 * 
@@ -36,7 +39,7 @@ public class RicercaAlloggiCommand implements RicercaCommand {
 	public RicercaReceiver getReceiver() {
 		return this.receiver;
 	}
-	
+
 	/**
 	 * Imposta il receiver
 	 * 
@@ -45,7 +48,7 @@ public class RicercaAlloggiCommand implements RicercaCommand {
 	public void setReceiver(RicercaReceiver receiver) {
 		this.receiver = receiver;
 	}
-	
+
 	/**
 	 * Restituisce i parametri
 	 * 
@@ -54,7 +57,7 @@ public class RicercaAlloggiCommand implements RicercaCommand {
 	public HashMap<String, String> getParametri() {
 		return this.parametri;
 	}
-	
+
 	/**
 	 * Imposta i parametri
 	 * 
@@ -66,14 +69,7 @@ public class RicercaAlloggiCommand implements RicercaCommand {
 
 	@Override
 	public ArrayList<ServizioComponent> esegui() {
-//		ArrayList<ServizioComponent> servizi = new ArrayList<ServizioComponent>();
-//		ArrayList<Alloggio> alloggi = this.receiver.ricercaAlloggi(this.parametri);
-//		
-//		for (Alloggio alloggio : alloggi)
-//			servizi.add(alloggio);
-//		
-//		return servizi;
-		return this.receiver.ricercaAlloggi(this.parametri);
+		return this.receiver.ricercaBiglietti(this.parametri);
 	}
 
 }

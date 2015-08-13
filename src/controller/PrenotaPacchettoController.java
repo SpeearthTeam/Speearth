@@ -1,14 +1,7 @@
 package controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import model.AgenziaFacade;
-import model.PacchettoComposite;
-import model.RicercaAlloggiCommand;
-import model.RicercaBigliettiCommand;
-import model.RicercaReceiver;
-import model.ServizioComponent;
+import model.business.PacchettoComposite;
+import model.business.ServizioComponent;
 
 /**
  * Controller per l'Estensione PrenotaPacchetto
@@ -18,7 +11,12 @@ public class PrenotaPacchettoController implements CasoDUsoController {
 	 * Pacchetto in prenotazione
 	 */
 	private PacchettoComposite pacchetto;
-	
+
+	/**
+	 * Elenco di Frammenti (Estensioni e/o Inclusioni) del Caso d'Uso
+	 */
+	private CasoDUsoController frammento;
+
 	/**
 	 * Costruttore di default
 	 */
@@ -42,27 +40,19 @@ public class PrenotaPacchettoController implements CasoDUsoController {
 	}
 
 	/**
-	 * Effettua una ricerca di Biglietti secondo i parametri
-	 * 
-	 * @param parametri
-	 * @return ArrayList<ServizioComponent>
+	 * Avvia l'Inclusione PrenotaBiglietto
 	 */
-	public ArrayList<ServizioComponent> ricercaBiglietti(HashMap<String, String> parametri) {
-		return AgenziaFacade.getInstance()
-				.effettuaRicerca(new RicercaBigliettiCommand(RicercaReceiver.getInstance(), parametri));
+	public void prenotaBiglietto() {
+		this.avviaFrammento(new PrenotaBigliettoController());
 	}
 
 	/**
-	 * Effettua una ricerca di Alloggi secondo i parametri
-	 * 
-	 * @param parametri
-	 * @return ArrayList<ServizioComponent>
+	 * Avvia l'Inclusione PrenotaAlloggio
 	 */
-	public ArrayList<ServizioComponent> ricercaAlloggi(HashMap<String, String> parametri) {
-		return AgenziaFacade.getInstance()
-				.effettuaRicerca(new RicercaAlloggiCommand(RicercaReceiver.getInstance(), parametri));
+	public void prenotaAlloggio() {
+		this.avviaFrammento(new PrenotaAlloggioController());
 	}
-	
+
 	/**
 	 * Aggiunge un Servizio al Pacchetto
 	 * 
@@ -71,7 +61,7 @@ public class PrenotaPacchettoController implements CasoDUsoController {
 	public void aggiungiServizio(ServizioComponent servizio) {
 		this.pacchetto.aggiungi(servizio);
 	}
-	
+
 	/**
 	 * Rimuove un Servizio dal Pacchetto
 	 * 
@@ -80,12 +70,12 @@ public class PrenotaPacchettoController implements CasoDUsoController {
 	public void rimuoviServizio(ServizioComponent servizio) {
 		this.pacchetto.rimuovi(servizio);
 	}
-	
+
 	/**
 	 * Conferma la scelta del Pacchetto
 	 */
 	public PacchettoComposite conferma() {
-//		this.getBase().setServizio(this.pacchetto);
+		this.chiudi();
 		return this.pacchetto;
 	}
 
@@ -108,35 +98,24 @@ public class PrenotaPacchettoController implements CasoDUsoController {
 	}
 
 	/**
-	 * Il metodo non si applica in quanto non ha Estensioni o Inclusioni
+	 * Aggiunge un Frammento (Estensione o Inclusione) al Caso D'Uso
+	 * 
+	 * @param frammento
 	 */
 	@Override
-	public CasoDUsoController getFrammento(int i) {
-		return null;
+	public void avviaFrammento(CasoDUsoController frammento) {
+		this.frammento = frammento;
+		this.frammento.avvia();
 	}
 
 	/**
-	 * Il metodo non si applica in quanto non ha Estensioni o Inclusioni
-	 */
-	@Override
-	public void aggiungiFrammento(CasoDUsoController gancio) {
-	}
-
-	/**
-	 * Il metodo non si applica in quanto non ha Estensioni o Inclusioni
+	 * Rimuove un Frammento (Estensione o Inclusione) dal Caso D'Uso
+	 * 
+	 * @param frammento
 	 */
 	@Override
 	public void rimuoviFrammento(CasoDUsoController frammento) {
-	}
-
-	/**
-	 * Restituisce il Caso D'Uso base dell'Estensione
-	 * 
-	 * @return PrenotaServizioController
-	 */
-	@Override
-	public PrenotaServizioController getCasoDUsoBase() {
-		return PrenotaServizioController.getInstance();
+		this.frammento = null;
 	}
 
 }

@@ -1,12 +1,16 @@
-package model;
+package model.tools;
 
 import java.util.ArrayList;
+
+import model.business.Bonus;
+import model.business.ScontoBonus;
+import model.business.ServizioComponent;
+import model.business.Vendita;
 
 /**
  * Strategy per il bonus sconto
  */
 public class ScontoConcreteStrategy implements BonusStrategy {
-
 	/**
 	 * Metodo costruttore
 	 */
@@ -61,7 +65,7 @@ public class ScontoConcreteStrategy implements BonusStrategy {
 	 * @param bonus
 	 */
 	public void applica(ServizioComponent servizio, Bonus bonus) {
-		int sconto = bonus.getSconto();
+		int sconto = ((ScontoBonus) bonus).getSconto();
 		float totale = servizio.getPrezzo();
 		servizio.setPrezzo(totale - (totale * sconto) / 100);
 	}

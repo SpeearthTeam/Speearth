@@ -1,15 +1,22 @@
-package model;
+package model.business;
 
 /**
  * Bonus di tipologia sconto
  */
-public class ScontoBonus extends Bonus {
+public class ScontoBonus implements Bonus {
+	/**
+	 * Sconto in percentuale
+	 */
+	private int sconto;
 
 	/**
 	 * Costruttore
 	 */
 	public ScontoBonus() {
+	}
 
+	public int getSconto() {
+		return sconto;
 	}
 
 	/**

@@ -1,6 +1,8 @@
-package model;
+package model.business;
 
 import java.util.ArrayList;
+
+import model.tools.RicercaCommand;
 
 /**
  * Classe che rappresenta l'Agenzia
@@ -50,7 +52,7 @@ public class AgenziaFacade {
 	/**
 	 * Restituisce la singola istanza della classe
 	 * 
-	 * @return Agenzia
+	 * @return AgenziaFacade
 	 */
 	public static AgenziaFacade getInstance() {
 		if (instance == null)

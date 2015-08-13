@@ -1,9 +1,11 @@
-package model;
+package model.tools;
 
 import java.util.HashMap;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import model.business.Biglietto;
 
 /**
  * Adapter per l'azienda di trasporto Trenitalia

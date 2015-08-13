@@ -1,4 +1,4 @@
-package model;
+package model.business;
 
 /**
  * Classe addetta alla gestione del Personale dell'Agenzia

@@ -1,13 +1,14 @@
-package model;
+package model.tools;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import model.business.ServizioComponent;
+
 /**
- * Classe rappresentante un comando di ricerca biglietti verso un'azienda di
- * trasporto
+ * Classe rappresentante un comando di ricerca alloggi verso un'impresa ricettiva
  */
-public class RicercaBigliettiCommand implements RicercaCommand {
+public class RicercaAlloggiCommand implements RicercaCommand {
 	/**
 	 * Oggetto che deve eseguire il comando
 	 */
@@ -24,11 +25,11 @@ public class RicercaBigliettiCommand implements RicercaCommand {
 	 * @param receiver
 	 * @param parametri
 	 */
-	public RicercaBigliettiCommand(RicercaReceiver receiver, HashMap<String, String> parametri) {
+	public RicercaAlloggiCommand(RicercaReceiver receiver, HashMap<String, String> parametri) {
 		this.receiver = receiver;
 		this.parametri = parametri;
 	}
-
+	
 	/**
 	 * Restituisce il receiver
 	 * 
@@ -37,7 +38,7 @@ public class RicercaBigliettiCommand implements RicercaCommand {
 	public RicercaReceiver getReceiver() {
 		return this.receiver;
 	}
-
+	
 	/**
 	 * Imposta il receiver
 	 * 
@@ -46,7 +47,7 @@ public class RicercaBigliettiCommand implements RicercaCommand {
 	public void setReceiver(RicercaReceiver receiver) {
 		this.receiver = receiver;
 	}
-
+	
 	/**
 	 * Restituisce i parametri
 	 * 
@@ -55,7 +56,7 @@ public class RicercaBigliettiCommand implements RicercaCommand {
 	public HashMap<String, String> getParametri() {
 		return this.parametri;
 	}
-
+	
 	/**
 	 * Imposta i parametri
 	 * 
@@ -67,7 +68,14 @@ public class RicercaBigliettiCommand implements RicercaCommand {
 
 	@Override
 	public ArrayList<ServizioComponent> esegui() {
-		return this.receiver.ricercaBiglietti(this.parametri);
+//		ArrayList<ServizioComponent> servizi = new ArrayList<ServizioComponent>();
+//		ArrayList<Alloggio> alloggi = this.receiver.ricercaAlloggi(this.parametri);
+//		
+//		for (Alloggio alloggio : alloggi)
+//			servizi.add(alloggio);
+//		
+//		return servizi;
+		return this.receiver.ricercaAlloggi(this.parametri);
 	}
 
 }

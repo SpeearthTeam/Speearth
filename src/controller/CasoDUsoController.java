@@ -13,33 +13,19 @@ public interface CasoDUsoController {
 	 * Chiude il Caso d'Uso
 	 */
 	public void chiudi();
-	
+
 	/**
-	 * Restituisce un Frammento (Estensione o Inclusione) del Caso D'Uso
+	 * Avvia un Frammento (Estensione o Inclusione) del Caso D'Uso
 	 * 
-	 * @param i
-	 * @return CasoDUsoController
+	 * @param frammento
 	 */
-	public CasoDUsoController getFrammento(int i);
-	
-	/**
-	 * Aggiunge un Frammento (Estensione o Inclusione) al Caso D'Uso
-	 * 
-	 * @param gancio
-	 */
-	public void aggiungiFrammento(CasoDUsoController frammento);
-	
+	public void avviaFrammento(CasoDUsoController frammento);
+
 	/**
 	 * Rimuove un Frammento (Estensione o Inclusione) dal Caso D'Uso
 	 * 
-	 * @param gancio
+	 * @param frammento
 	 */
 	public void rimuoviFrammento(CasoDUsoController frammento);
-	
-	/**
-	 * Restituisce il Caso D'Uso base di un Frammento (Estensione o Inclusione)
-	 * 
-	 * @return CasoDUsoController
-	 */
-	public CasoDUsoController getCasoDUsoBase();
+
 }

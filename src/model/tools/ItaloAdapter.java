@@ -1,4 +1,4 @@
-package model;
+package model.tools;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,6 +7,9 @@ import java.util.HashMap;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import model.business.Biglietto;
+import model.business.ServizioComponent;
 
 /**
  * Adapter per l'azienda di trasporto Italo

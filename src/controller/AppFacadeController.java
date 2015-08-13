@@ -1,6 +1,6 @@
 package controller;
 
-import model.Commesso;
+import model.business.Commesso;
 
 /**
  * Classe di accesso alle funzionalità del layer Controller

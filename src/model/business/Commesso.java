@@ -1,4 +1,4 @@
-package model;
+package model.business;
 
 /**
  * Classe che descrive il commesso

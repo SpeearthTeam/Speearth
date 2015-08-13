@@ -3,11 +3,11 @@ package controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import model.AgenziaFacade;
-import model.Biglietto;
-import model.RicercaBigliettiCommand;
-import model.RicercaReceiver;
-import model.ServizioComponent;
+import model.business.AgenziaFacade;
+import model.business.Biglietto;
+import model.business.ServizioComponent;
+import model.tools.RicercaBigliettiCommand;
+import model.tools.ToolsFacade;
 
 /**
  * Controller per l'estensione PrenotaBiglietto
@@ -47,15 +47,15 @@ public class PrenotaBigliettoController implements CasoDUsoController {
 	 * @return ArrayList<ServizioComponent>
 	 */
 	public ArrayList<ServizioComponent> ricerca(HashMap<String, String> parametri) {
-		return AgenziaFacade.getInstance()
-				.effettuaRicerca(new RicercaBigliettiCommand(RicercaReceiver.getInstance(), parametri));
+		return AgenziaFacade.getInstance().effettuaRicerca(
+				new RicercaBigliettiCommand(ToolsFacade.getInstance().getRicercaRiceiver(), parametri));
 	}
 
 	/**
 	 * Conferma la scelta del Biglietto
 	 */
 	public Biglietto conferma() {
-//		this.getBase().setServizio(this.biglietto);
+		this.chiudi();
 		return this.biglietto;
 	}
 
@@ -81,15 +81,7 @@ public class PrenotaBigliettoController implements CasoDUsoController {
 	 * Il metodo non si applica in quanto non ha Estensioni o Inclusioni
 	 */
 	@Override
-	public CasoDUsoController getFrammento(int i) {
-		return null;
-	}
-
-	/**
-	 * Il metodo non si applica in quanto non ha Estensioni o Inclusioni
-	 */
-	@Override
-	public void aggiungiFrammento(CasoDUsoController gancio) {
+	public void avviaFrammento(CasoDUsoController frammento) {
 	}
 
 	/**
@@ -97,16 +89,6 @@ public class PrenotaBigliettoController implements CasoDUsoController {
 	 */
 	@Override
 	public void rimuoviFrammento(CasoDUsoController frammento) {
-	}
-
-	/**
-	 * Restituisce il Caso D'Uso base dell'Estensione
-	 * 
-	 * @return PrenotaServizioController
-	 */
-	@Override
-	public PrenotaServizioController getCasoDUsoBase() {
-		return PrenotaServizioController.getInstance();
 	}
 
 }

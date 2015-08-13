@@ -1,4 +1,4 @@
-package model;
+package model.tools;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,6 +13,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+
+import model.business.Alloggio;
+import model.business.ServizioComponent;
 
 /**
  * Interfaccia rappresentante un'Impresa Ricettiva che fornisce Alloggi per
