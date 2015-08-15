@@ -97,12 +97,11 @@ public class AgenziaFacade {
 	}
 
 	/**
-	 * Effettua una ricerca di Servizi aggiungendo un nuovo Comando di Ricerca
-	 * alla lista di Comandi
+	 * Effettua una generica Transazione aggiungendo un nuovo Comando alla lista di Comandi
 	 * 
 	 * @param comando
 	 */
-	public void effettuaRicerca(ITransazioniCommand comando) {
+	public void effettuaTransazione(ITransazioniCommand comando) {
 		this.comandi.add(comando);
 		this.comandi.remove(0).esegui();
 	}

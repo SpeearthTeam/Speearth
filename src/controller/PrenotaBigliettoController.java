@@ -49,7 +49,7 @@ public class PrenotaBigliettoController implements ICasoDUsoController {
 	public ArrayList<IServizioComponent> ricerca(HashMap<String, String> parametri) {
 
 		RicercaReceiver ricerca_receiver = RicercaReceiver.getInstance();
-		AgenziaFacade.getInstance().effettuaRicerca(new RicercaBigliettiCommand(ricerca_receiver, parametri));
+		AgenziaFacade.getInstance().effettuaTransazione(new RicercaBigliettiCommand(ricerca_receiver, parametri));
 		return ricerca_receiver.getRisultatoRicerca();
 		
 	}
