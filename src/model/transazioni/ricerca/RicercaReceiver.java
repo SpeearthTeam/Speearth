@@ -1,4 +1,4 @@
-package model.ricerca;
+package model.transazioni.ricerca;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,10 +17,16 @@ import model.sistemi_esterni.SistemaEsternoFactory;
  * Receiver del sistema di ricerca
  */
 public class RicercaReceiver {
+	
 	/**
 	 * Istanza della classe
 	 */
 	private static RicercaReceiver instance;
+	
+	/**
+	 * Risultato del comando Ricerca
+	 */
+	private ArrayList<IServizioComponent> risultato_ricerca;
 
 	/**
 	 * Restituisce la singola istanza della classe
@@ -37,6 +43,42 @@ public class RicercaReceiver {
 	 * Costruttore di default
 	 */
 	private RicercaReceiver(){}
+	
+	/**
+	 * Restituisce il risultato di un comando di Ricerca
+	 * 
+	 * @return ArrayList<IServizioComponent>
+	 */
+	public ArrayList<IServizioComponent> getRisultatoRicerca(){
+		return this.risultato_ricerca;
+	}
+	
+	/**
+	 * Imposta il risultato di un comando di Ricerca Alloggi
+	 * 
+	 * @param parametri
+	 */
+	private void setRisultatoRicercaAlloggi(HashMap<String, String> parametri){
+		
+		ArrayList<ImpresaRicettivaAdapter> imprese_ricettive = SistemaEsternoFactory.getInstance()
+				.getImpreseRicettive();
+
+		for (ImpresaRicettivaAdapter impresa_ricettiva : imprese_ricettive) {
+
+			ArrayList<IServizioComponent> servizi;
+			try {
+				servizi = impresa_ricettiva.ricerca(parametri);
+				for (IServizioComponent servizio : servizi)
+					this.risultato_ricerca.add((Alloggio) servizio);
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+	}
 
 	/**
 	 * Effettua una ricerca di Alloggi secondo i parametri
@@ -45,18 +87,29 @@ public class RicercaReceiver {
 	 * @return ArrayList<Alloggio>
 	 */
 	public ArrayList<IServizioComponent> ricercaAlloggi(HashMap<String, String> parametri) {
+		
+		this.setRisultatoRicercaAlloggi(parametri);
+		return this.risultato_ricerca;
+		
+	}
 
-		ArrayList<ImpresaRicettivaAdapter> imprese_ricettive = SistemaEsternoFactory.getInstance()
-				.getImpreseRicettive();
-		ArrayList<IServizioComponent> alloggi = new ArrayList<IServizioComponent>();
+	/**
+	 * Imposta il risultato di un comando di Ricerca Biglietti
+	 * 
+	 * @param parametri
+	 */
+	private void setRisultatoRicercaBiglietti(HashMap<String, String> parametri){
+		
+		ArrayList<AziendaTrasportoAdapter> aziende_trasporto = SistemaEsternoFactory.getInstance()
+				.getAziendeDiTrasporto();
 
-		for (ImpresaRicettivaAdapter impresa_ricettiva : imprese_ricettive) {
+		for (AziendaTrasportoAdapter azienda_trasporto : aziende_trasporto) {
 
 			ArrayList<IServizioComponent> servizi;
 			try {
-				servizi = impresa_ricettiva.ricerca(parametri);
+				servizi = azienda_trasporto.ricerca(parametri);
 				for (IServizioComponent servizio : servizi)
-					alloggi.add((Alloggio) servizio);
+					this.risultato_ricerca.add((Biglietto) servizio);
 			} catch (IOException e) {
 				e.printStackTrace();
 			} catch (JSONException e) {
@@ -65,10 +118,8 @@ public class RicercaReceiver {
 			}
 
 		}
-
-		return alloggi;
 	}
-
+	
 	/**
 	 * Effettua una ricerca di biglietti secondo i parametri
 	 * 
@@ -77,27 +128,9 @@ public class RicercaReceiver {
 	 */
 	public ArrayList<IServizioComponent> ricercaBiglietti(HashMap<String, String> parametri) {
 
-		ArrayList<AziendaTrasportoAdapter> aziende_trasporto = SistemaEsternoFactory.getInstance()
-				.getAziendeDiTrasporto();
-		ArrayList<IServizioComponent> biglietti = new ArrayList<IServizioComponent>();
-
-		for (AziendaTrasportoAdapter azienda_trasporto : aziende_trasporto) {
-
-			ArrayList<IServizioComponent> servizi;
-			try {
-				servizi = azienda_trasporto.ricerca(parametri);
-				for (IServizioComponent servizio : servizi)
-					biglietti.add((Biglietto) servizio);
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-		}
-
-		return biglietti;
+		this.setRisultatoRicercaBiglietti(parametri);
+		return this.risultato_ricerca;
+		
 	}
 
 }

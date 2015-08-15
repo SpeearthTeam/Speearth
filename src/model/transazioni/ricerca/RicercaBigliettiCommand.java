@@ -1,15 +1,14 @@
-package model.ricerca;
+package model.transazioni.ricerca;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
-import model.core.IServizioComponent;
+import model.transazioni.ITransazioniCommand;
 
 /**
  * Classe rappresentante un comando di ricerca biglietti verso un'azienda di
  * trasporto
  */
-public class RicercaBigliettiCommand implements IRicercaCommand {
+public class RicercaBigliettiCommand implements ITransazioniCommand {
 	/**
 	 * Oggetto che deve eseguire il comando
 	 */
@@ -68,8 +67,8 @@ public class RicercaBigliettiCommand implements IRicercaCommand {
 	}
 
 	@Override
-	public ArrayList<IServizioComponent> esegui() {
-		return this.receiver.ricercaBiglietti(this.parametri);
+	public void esegui() {
+		this.receiver.ricercaBiglietti(this.parametri);
 	}
 
 }

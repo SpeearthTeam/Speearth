@@ -6,8 +6,8 @@ import java.util.HashMap;
 import model.core.AgenziaFacade;
 import model.core.Biglietto;
 import model.core.IServizioComponent;
-import model.ricerca.RicercaBigliettiCommand;
-import model.ricerca.RicercaReceiver;
+import model.transazioni.ricerca.RicercaBigliettiCommand;
+import model.transazioni.ricerca.RicercaReceiver;
 
 /**
  * Controller per l'estensione PrenotaBiglietto
@@ -47,8 +47,11 @@ public class PrenotaBigliettoController implements ICasoDUsoController {
 	 * @return ArrayList<ServizioComponent>
 	 */
 	public ArrayList<IServizioComponent> ricerca(HashMap<String, String> parametri) {
-		return AgenziaFacade.getInstance().effettuaRicerca(
-				new RicercaBigliettiCommand(RicercaReceiver.getInstance(), parametri));
+
+		RicercaReceiver ricerca_receiver = RicercaReceiver.getInstance();
+		AgenziaFacade.getInstance().effettuaRicerca(new RicercaBigliettiCommand(ricerca_receiver, parametri));
+		return ricerca_receiver.getRisultatoRicerca();
+		
 	}
 
 	/**

@@ -1,12 +1,12 @@
 package controller;
 
-import model.bonus.CalcolatoreBonus;
-import model.bonus.IBonus;
-import model.bonus.IBonusStrategy;
-import model.bonus.ScontoConcreteStrategy;
 import model.core.AgenziaFacade;
 import model.core.Cliente;
 import model.core.IServizioComponent;
+import model.core.bonus.CalcolatoreBonus;
+import model.core.bonus.IBonus;
+import model.core.bonus.IBonusStrategy;
+import model.core.bonus.ScontoConcreteStrategy;
 
 /**
  * Controller per il Caso d'Uso PrenotaServizio

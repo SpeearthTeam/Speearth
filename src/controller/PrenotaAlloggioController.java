@@ -6,8 +6,8 @@ import java.util.HashMap;
 import model.core.AgenziaFacade;
 import model.core.Alloggio;
 import model.core.IServizioComponent;
-import model.ricerca.RicercaAlloggiCommand;
-import model.ricerca.RicercaReceiver;
+import model.transazioni.ricerca.RicercaAlloggiCommand;
+import model.transazioni.ricerca.RicercaReceiver;
 
 /**
  * Controller per l'Estensione PrenotaAlloggio
@@ -47,8 +47,11 @@ public class PrenotaAlloggioController implements ICasoDUsoController {
 	 * @return ArrayList<ServizioComponent>
 	 */
 	public ArrayList<IServizioComponent> ricerca(HashMap<String, String> parametri) {
-		return AgenziaFacade.getInstance()
-				.effettuaRicerca(new RicercaAlloggiCommand(RicercaReceiver.getInstance(), parametri));
+		
+		RicercaReceiver ricerca_receiver = RicercaReceiver.getInstance();
+		AgenziaFacade.getInstance().effettuaRicerca(new RicercaAlloggiCommand(ricerca_receiver, parametri));
+		return ricerca_receiver.getRisultatoRicerca();
+		
 	}
 
 	/**

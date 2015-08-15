@@ -2,7 +2,7 @@ package model.core;
 
 import java.util.ArrayList;
 
-import model.ricerca.IRicercaCommand;
+import model.transazioni.ITransazioniCommand;
 
 /**
  * Classe che rappresenta l'Agenzia
@@ -34,10 +34,10 @@ public class AgenziaFacade {
 	private RegistroImpiegati registro_impiegati;
 
 	/**
-	 * Lista di Comandi da eseguire far eseguire ai Sistemi Esterni secondo le
+	 * Lista di Transazioni generiche da far eseguire ai Sistemi Esterni secondo le
 	 * richieste del Cliente
 	 */
-	private ArrayList<IRicercaCommand> comandi;
+	private ArrayList<ITransazioniCommand> comandi;
 
 	/**
 	 * Costruttore
@@ -101,11 +101,10 @@ public class AgenziaFacade {
 	 * alla lista di Comandi
 	 * 
 	 * @param comando
-	 * @return ArrayList<ServizioComponent>
 	 */
-	public ArrayList<IServizioComponent> effettuaRicerca(IRicercaCommand comando) {
+	public void effettuaRicerca(ITransazioniCommand comando) {
 		this.comandi.add(comando);
-		return this.comandi.remove(0).esegui();
+		this.comandi.remove(0).esegui();
 	}
 
 }

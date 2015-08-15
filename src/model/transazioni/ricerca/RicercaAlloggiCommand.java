@@ -1,14 +1,13 @@
-package model.ricerca;
+package model.transazioni.ricerca;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
-import model.core.IServizioComponent;
+import model.transazioni.ITransazioniCommand;
 
 /**
  * Classe rappresentante un comando di ricerca alloggi verso un'impresa ricettiva
  */
-public class RicercaAlloggiCommand implements IRicercaCommand {
+public class RicercaAlloggiCommand implements ITransazioniCommand {
 	/**
 	 * Oggetto che deve eseguire il comando
 	 */
@@ -67,15 +66,8 @@ public class RicercaAlloggiCommand implements IRicercaCommand {
 	}
 
 	@Override
-	public ArrayList<IServizioComponent> esegui() {
-//		ArrayList<ServizioComponent> servizi = new ArrayList<ServizioComponent>();
-//		ArrayList<Alloggio> alloggi = this.receiver.ricercaAlloggi(this.parametri);
-//		
-//		for (Alloggio alloggio : alloggi)
-//			servizi.add(alloggio);
-//		
-//		return servizi;
-		return this.receiver.ricercaAlloggi(this.parametri);
+	public void esegui() {
+		this.receiver.ricercaAlloggi(this.parametri);
 	}
 
 }

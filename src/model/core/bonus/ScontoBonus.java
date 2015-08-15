@@ -1,4 +1,4 @@
-package model.bonus;
+package model.core.bonus;
 
 /**
  * Bonus di tipologia sconto
