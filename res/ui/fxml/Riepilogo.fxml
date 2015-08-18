@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="872.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox layoutX="-1.0" prefHeight="71.0" prefWidth="872.0">
+         <children>
+            <Label prefHeight="74.0" prefWidth="137.0" text="Scegli servizio" />
+            <Label prefHeight="74.0" prefWidth="137.0" text="Ricerca" />
+            <Label prefHeight="74.0" prefWidth="137.0" text="Riepilogo" />
+         </children>
+      </HBox>
+      <SplitPane dividerPositions="0.29770114942528736, 0.6563218390804598" layoutX="1.0" layoutY="64.0" prefHeight="480.0" prefWidth="872.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="475.0" prefWidth="227.0">
+               <children>
+                  <Label layoutX="59.0" layoutY="14.0" text="Riepilogo dati " />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="472.0" prefWidth="595.0">
+               <children>
+                  <Label layoutX="110.0" layoutY="14.0" text="Dati cliete" />
+                  <Label layoutX="15.0" layoutY="68.0" text="N. Tessera" />
+                  <Label layoutX="14.0" layoutY="102.0" text="Nome" />
+                  <Label layoutX="14.0" layoutY="137.0" text="Cognome" />
+                  <Label layoutX="14.0" layoutY="183.0" text="Data di nascita" />
+                  <Label layoutX="14.0" layoutY="216.0" text="Cod.Fiscale" />
+                  <TextField layoutX="103.0" layoutY="63.0" prefHeight="31.0" prefWidth="166.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="0.0" minWidth="0.0" prefHeight="474.0" prefWidth="281.0">
+               <children>
+                  <Button layoutX="89.0" layoutY="305.0" mnemonicParsing="false" text="Conferma pagamento" />
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
