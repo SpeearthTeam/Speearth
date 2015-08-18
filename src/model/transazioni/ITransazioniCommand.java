@@ -2,7 +2,7 @@ package model.transazioni;
 
 /**
  * 
- * Interfaccia rappresentante una generica Transazioni che l'Agenzia deve effettuare
+ * Interfaccia rappresentante una generica Transazione che l'Agenzia deve effettuare
  * 
  */
 public interface ITransazioniCommand {

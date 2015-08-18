@@ -4,6 +4,7 @@ package model.core.bonus;
  * Bonus di tipologia sconto
  */
 public class ScontoBonus implements IBonus {
+	
 	/**
 	 * Sconto in percentuale
 	 */
@@ -15,8 +16,13 @@ public class ScontoBonus implements IBonus {
 	public ScontoBonus() {
 	}
 
+	/**
+	 * Ritorna lo sconto
+	 * 
+	 * @return int
+	 */
 	public int getSconto() {
-		return sconto;
+		return this.sconto;
 	}
 
 	/**
