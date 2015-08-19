@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<BorderPane onMouseClicked="#selezionaBiglietto" prefHeight="274.0" prefWidth="867.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <center>
+      <GridPane prefHeight="164.0" prefWidth="740.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="186.0" minWidth="10.0" prefWidth="127.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="353.0" minWidth="10.0" prefWidth="211.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="366.0" minWidth="10.0" prefWidth="214.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="223.0" minWidth="10.0" prefWidth="162.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="136.0" minHeight="10.0" prefHeight="105.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="158.0" minHeight="10.0" prefHeight="97.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+               <children>
+                  <Label text="Partenza" />
+                  <Label fx:id="output_partenza_andata" text="partenza" />
+                  <Label fx:id="output_data_partenza_andata" text="data_partenza" />
+                  <Label fx:id="output_ora_partenza_andata" text="ora_partenza" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
+               <children>
+                  <Label text="Destinazione" />
+                  <Label fx:id="output_destinazione_andata" text="destinazione" />
+                  <Label fx:id="output_data_destinazione_andata" text="data_destinazione" />
+                  <Label fx:id="output_ora_destinazione_andata" text="ora_destinazione" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3">
+               <children>
+                  <Label text="Passeggeri" />
+                  <HBox prefHeight="24.0" prefWidth="191.0">
+                     <children>
+                        <Label fx:id="output_n_adulti_andata" text="n_adulti" />
+                        <Label text=" Adulti" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="20.0" prefWidth="191.0">
+                     <children>
+                        <Label fx:id="output_n_bambini_andata" text="n_bambini" />
+                        <Label text=" Bambini" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <Label text="Partenza" />
+                  <Label fx:id="output_partenza_ritorno" text="partenza" />
+                  <Label fx:id="output_data_partenza_ritorno" text="data_partenza" />
+                  <Label fx:id="output_ora_partenza_ritorno" text="ora_partenza" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <children>
+                  <Label text="Destinazione" />
+                  <Label fx:id="output_destinazione_ritorno" text="destinazione" />
+                  <Label fx:id="output_data_destinazione_ritorno" text="data_destinazione" />
+                  <Label fx:id="output_ora_destinazione_ritorno" text="ora_destinazione" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <children>
+                  <Label text="Passeggeri" />
+                  <HBox prefHeight="24.0" prefWidth="191.0">
+                     <children>
+                        <Label fx:id="output_n_adulti_ritorno" text="n_adulti" />
+                        <Label text=" Adulti" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="20.0" prefWidth="191.0">
+                     <children>
+                        <Label fx:id="output_n_bambini_ritorno" text="n_bambini" />
+                        <Label text=" Bambini" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <Label text="Andata" />
+            <Label text="Ritorno" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+   </center>
+   <top>
+      <HBox prefHeight="39.0" prefWidth="867.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Fornitore: " />
+            <Label fx:id="output_nome_fornitore" text="nome_fornitore" />
+         </children>
+      </HBox>
+   </top>
+   <bottom>
+      <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="867.0" BorderPane.alignment="BOTTOM_RIGHT">
+         <children>
+            <Button fx:id="bottone_annulla" alignment="CENTER_RIGHT" mnemonicParsing="false" onMouseClicked="#deselezionaBiglietto" text="Annulla" />
+            <Button fx:id="bottone_conferma" alignment="CENTER_RIGHT" mnemonicParsing="false" onMouseClicked="#confermaBiglietto" text="Conferma" />
+         </children>
+      </HBox>
+   </bottom>
+   <right>
+      <VBox alignment="CENTER" prefHeight="164.0" prefWidth="154.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Prezzo" />
+            <Label fx:id="output_prezzo" text="prezzo_biglietto" />
+         </children>
+      </VBox>
+   </right>
+</BorderPane>

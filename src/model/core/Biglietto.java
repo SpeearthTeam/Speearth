@@ -1,7 +1,7 @@
 package model.core;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Servizio biglietto
@@ -31,12 +31,22 @@ public class Biglietto implements IServizioComponent {
 	/**
 	 * Data di andata
 	 */
-	private Date data_andata;
+	private LocalDateTime data_partenza_andata;
 
 	/**
 	 * Data di ritorno
 	 */
-	private Date data_ritorno;
+	private LocalDateTime data_partenza_ritorno;
+
+	/**
+	 * Data di andata
+	 */
+	private LocalDateTime data_arrivo_andata;
+
+	/**
+	 * Data di ritorno
+	 */
+	private LocalDateTime data_arrivo_ritorno;
 
 	/**
 	 * Numero di adulti
@@ -80,7 +90,7 @@ public class Biglietto implements IServizioComponent {
 	}
 
 	/**
-	 * Restituisce l'id del biglietto
+	 * Restituisce l'id del Biglietto
 	 * 
 	 * @return int
 	 */
@@ -89,7 +99,7 @@ public class Biglietto implements IServizioComponent {
 	}
 
 	/**
-	 * Imposta l'id del biglietto
+	 * Imposta l'id del Biglietto
 	 * 
 	 * @param id
 	 */
@@ -98,7 +108,7 @@ public class Biglietto implements IServizioComponent {
 	}
 
 	/**
-	 * Restituisce il Fornitore del biglietto
+	 * Restituisce il Fornitore del Biglietto
 	 * 
 	 * @return String
 	 */
@@ -107,7 +117,7 @@ public class Biglietto implements IServizioComponent {
 	}
 
 	/**
-	 * Imposta il Fornitore del biglietto
+	 * Imposta il Fornitore del Biglietto
 	 * 
 	 * @param fornitore
 	 */
@@ -116,7 +126,7 @@ public class Biglietto implements IServizioComponent {
 	}
 
 	/**
-	 * Restituisce la partenza del biglietto
+	 * Restituisce la partenza del Biglietto
 	 * 
 	 * @return String
 	 */
@@ -125,7 +135,7 @@ public class Biglietto implements IServizioComponent {
 	}
 
 	/**
-	 * Imposta la partenza del biglietto
+	 * Imposta la partenza del Biglietto
 	 * 
 	 * @param partenza
 	 */
@@ -134,7 +144,7 @@ public class Biglietto implements IServizioComponent {
 	}
 
 	/**
-	 * Restituisce la destinazione del biglietto
+	 * Restituisce la destinazione del Biglietto
 	 * 
 	 * @return String
 	 */
@@ -143,7 +153,7 @@ public class Biglietto implements IServizioComponent {
 	}
 
 	/**
-	 * Imposta la destinazione del biglietto
+	 * Imposta la destinazione del Biglietto
 	 * 
 	 * @param destinazione
 	 */
@@ -152,43 +162,79 @@ public class Biglietto implements IServizioComponent {
 	}
 
 	/**
-	 * Restituisce la data di andata del biglietto
+	 * Restituisce la data di partenza nell'andata del Biglietto
 	 * 
-	 * @return Date
+	 * @return LocalDateTime
 	 */
-	public Date getDataAndata() {
-		return this.data_andata;
+	public LocalDateTime getDataPartenzaAndata() {
+		return this.data_partenza_andata;
 	}
 
 	/**
-	 * Imposta la data di andata del biglietto
+	 * Imposta la data di partenza nell'andata del Biglietto
 	 * 
-	 * @param data_andata
+	 * @param data_partenza_andata
 	 */
-	public void setDataAndata(Date data_andata) {
-		this.data_andata = data_andata;
+	public void setDataPartenzaAndata(LocalDateTime data_andata) {
+		this.data_partenza_andata = data_andata;
 	}
 
 	/**
-	 * Restituisce la data di ritorno del biglietto
+	 * Restituisce la data di partenza nel ritorno del Biglietto
 	 * 
-	 * @return Date
+	 * @return LocalDateTime
 	 */
-	public Date getDataRitorno() {
-		return this.data_ritorno;
+	public LocalDateTime getDataPartenzaRitorno() {
+		return this.data_partenza_ritorno;
 	}
 
 	/**
-	 * Imposta la data di ritorno del biglietto
+	 * Imposta la data di partenza nel ritorno del Biglietto
 	 * 
-	 * @param data_ritorno
+	 * @param data_partenza_ritorno
 	 */
-	public void setDataRitorno(Date data_ritorno) {
-		this.data_ritorno = data_ritorno;
+	public void setDataPartenzaRitorno(LocalDateTime data_ritorno) {
+		this.data_partenza_ritorno = data_ritorno;
 	}
 
 	/**
-	 * Restituisce il numero di adulti del biglietto
+	 * Restituisce la data di arrivo nell'andata del Biglietto
+	 * 
+	 * @return LocalDateTime
+	 */
+	public LocalDateTime getDataArrivoAndata() {
+		return data_arrivo_andata;
+	}
+
+	/**
+	 * Imposta la data di partenza nel ritorno del Biglietto
+	 * 
+	 * @param data_arrivo_andata
+	 */
+	public void setDataArrivoAndata(LocalDateTime data_arrivo_andata) {
+		this.data_arrivo_andata = data_arrivo_andata;
+	}
+
+	/**
+	 * Restituisce la data di arrivo nel ritorno del Biglietto
+	 * 
+	 * @return LocalDateTime
+	 */
+	public LocalDateTime getDataArrivoRitorno() {
+		return data_arrivo_ritorno;
+	}
+
+	/**
+	 * Imposta la data di arrivo nel ritorno del Biglietto
+	 * 
+	 * @param data_arrivo_ritorno
+	 */
+	public void setDataArrivoRitorno(LocalDateTime data_arrivo_ritorno) {
+		this.data_arrivo_ritorno = data_arrivo_ritorno;
+	}
+
+	/**
+	 * Restituisce il numero di adulti del Biglietto
 	 * 
 	 * @return int
 	 */
@@ -197,7 +243,7 @@ public class Biglietto implements IServizioComponent {
 	}
 
 	/**
-	 * Imposta il numero di adulti del biglietto
+	 * Imposta il numero di adulti del Biglietto
 	 * 
 	 * @param numero_adulti
 	 */
@@ -206,7 +252,7 @@ public class Biglietto implements IServizioComponent {
 	}
 
 	/**
-	 * Restituisce il numero di bambini del biglietto
+	 * Restituisce il numero di bambini del Biglietto
 	 * 
 	 * @return int
 	 */
@@ -215,7 +261,7 @@ public class Biglietto implements IServizioComponent {
 	}
 
 	/**
-	 * Imposta il numero di bambini del biglietto
+	 * Imposta il numero di bambini del Biglietto
 	 * 
 	 * @param numero_bambini
 	 */
@@ -224,7 +270,7 @@ public class Biglietto implements IServizioComponent {
 	}
 
 	/**
-	 * Restituisce il mezzo di trasporto del biglietto
+	 * Restituisce il mezzo di trasporto del Biglietto
 	 * 
 	 * @return String
 	 */
@@ -233,7 +279,7 @@ public class Biglietto implements IServizioComponent {
 	}
 
 	/**
-	 * Imposta il mezzo di trasporto del biglietto
+	 * Imposta il mezzo di trasporto del Biglietto
 	 * 
 	 * @param mezzo
 	 */
@@ -242,7 +288,7 @@ public class Biglietto implements IServizioComponent {
 	}
 
 	/**
-	 * Restituisce il prezzo del biglietto
+	 * Restituisce il prezzo del Biglietto
 	 * 
 	 * @return float
 	 */
@@ -252,7 +298,7 @@ public class Biglietto implements IServizioComponent {
 	}
 
 	/**
-	 * Imposta il prezzo del biglietto
+	 * Imposta il prezzo del Biglietto
 	 * 
 	 * @param prezzo
 	 */

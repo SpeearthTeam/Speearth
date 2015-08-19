@@ -1,7 +1,7 @@
 package model.core;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 
 /**
@@ -26,12 +26,12 @@ public class Alloggio implements IServizioComponent {
 	/**
 	 * Data di arrivo
 	 */
-	private Date data_arrivo;
+	private LocalDateTime data_arrivo;
 
 	/**
 	 * Data di partenza
 	 */
-	private Date data_partenza;
+	private LocalDateTime data_partenza;
 
 	/**
 	 * Stanze dell'alloggio
@@ -119,9 +119,9 @@ public class Alloggio implements IServizioComponent {
 	/**
 	 * Restituisce la data di arrivo
 	 * 
-	 * @return Date
+	 * @return LocalDateTime
 	 */
-	public Date getDataArrivo() {
+	public LocalDateTime getDataArrivo() {
 		return this.data_arrivo;
 	}
 
@@ -130,16 +130,16 @@ public class Alloggio implements IServizioComponent {
 	 * 
 	 * @param data_arrivo
 	 */
-	public void setDataArrivo(Date data_arrivo) {
+	public void setDataArrivo(LocalDateTime data_arrivo) {
 		this.data_arrivo = data_arrivo;
 	}
 
 	/**
 	 * Restituisce la data di partenza
 	 * 
-	 * @return Date
+	 * @return LocalDateTime
 	 */
-	public Date getDataPartenza() {
+	public LocalDateTime getDataPartenza() {
 		return this.data_partenza;
 	}
 
@@ -148,7 +148,7 @@ public class Alloggio implements IServizioComponent {
 	 * 
 	 * @param data_partenza
 	 */
-	public void setDataPartenza(Date data_partenza) {
+	public void setDataPartenza(LocalDateTime data_partenza) {
 		this.data_partenza = data_partenza;
 	}
 
