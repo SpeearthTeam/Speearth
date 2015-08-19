@@ -1,44 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
+<?import org.controlsfx.control.textfield.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="872.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <HBox layoutX="-1.0" prefHeight="71.0" prefWidth="872.0">
-         <children>
-            <Label prefHeight="74.0" prefWidth="137.0" text="Scegli servizio" />
-            <Label prefHeight="74.0" prefWidth="137.0" text="Ricerca" />
-            <Label prefHeight="74.0" prefWidth="137.0" text="Riepilogo" />
-         </children>
-      </HBox>
-      <SplitPane dividerPositions="0.3482758620689655, 0.7114942528735633" layoutX="1.0" layoutY="64.0" prefHeight="480.0" prefWidth="872.0">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="478.0" prefWidth="338.0" />
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="478.0" prefWidth="344.0">
-               <children>
-                  <Label layoutX="110.0" layoutY="14.0" text="Dati cliete" />
-                  <Label layoutX="13.0" layoutY="58.0" text="N. Tessera" />
-                  <Label layoutX="14.0" layoutY="102.0" text="Nome" />
-                  <Label layoutX="15.0" layoutY="147.0" text="Cognome" />
-                  <Label layoutX="6.0" layoutY="196.0" text="Data di nascita" />
-                  <Label layoutX="11.0" layoutY="244.0" text="Cod.Fiscale" />
-                  <TextField fx:id="input_tessera" layoutX="123.0" layoutY="53.0" prefHeight="31.0" prefWidth="166.0" />
-                  <Label fx:id="output_nome" layoutX="169.0" layoutY="102.0" text="Label" visible="false" />
-                  <Label fx:id="output_cognome" layoutX="169.0" layoutY="147.0" text="Label" visible="false" />
-                  <Label fx:id="output_dataNascita" layoutX="169.0" layoutY="196.0" text="Label" visible="false" />
-                  <Label fx:id="output_codFiscale" layoutX="169.0" layoutY="244.0" text="Label" visible="false" />
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="0.0" minWidth="0.0" prefHeight="474.0" prefWidth="281.0">
-               <children>
-                  <Button fx:id="conferma_pagamento" layoutX="37.0" layoutY="389.0" mnemonicParsing="false" onAction="#confermaPagamento" prefHeight="63.0" prefWidth="166.0" text="Conferma pagamento" textAlignment="JUSTIFY" />
-                  <Label layoutX="88.0" layoutY="315.0" text="Totale" />
-                  <Label fx:id="output_totale" layoutX="91.0" layoutY="353.0" text="Label" visible="false" />
-               </children></AnchorPane>
+          <Button fx:id="bottone_scegli_servizio" mnemonicParsing="false" onAction="#vaiAScegliServizio" text="Scegli Servizio" />
+            <Button fx:id="bottone_ricerca" mnemonicParsing="false" onAction="#vaiARicerca" text="Ricerca" />
+            <Button fx:id="bottone_riepilogo" mnemonicParsing="false" onAction="#vaiARiepilogo" text="Riepilogo" />
         </items>
-      </SplitPane>
-   </children>
-</AnchorPane>
+      </ToolBar>
+   </top>
+   <center>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+               <children>
+                  <Label text="Dati del Cliente" />
+                  <GridPane alignment="CENTER" prefHeight="274.0" prefWidth="427.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="10.0" prefWidth="122.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="305.0" minWidth="10.0" prefWidth="305.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Codice Tessera" />
+                        <Label text="Nome" GridPane.rowIndex="1" />
+                        <Label text="Codice Fiscale" GridPane.rowIndex="4" />
+                        <Label text="Data di Nascita" GridPane.rowIndex="3" />
+                        <Label text="Cognome" GridPane.rowIndex="2" />
+                        <Label fx:id="output_nome_cliente" text="nome_cliente" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="output_cognome_cliente" text="cognome_cliente" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="output_data_nascita_cliente" text="data_nascita_cliente" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="output_cf_cliente" text="cf_cliente" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                           <children>
+                              <TextField prefHeight="31.0" prefWidth="237.0" />
+                              <Button fx:id="bottone_identifica_cliente" mnemonicParsing="false" onAction="#identificaCliente" prefHeight="31.0" prefWidth="100.0" text="Identifica" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </GridPane>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
+               <children>
+                  <Label text="Prezzo Totale" />
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="output_totale" text="totale" />
+                        <Label text=" €" />
+                     </children>
+                  </HBox>
+                  <Button fx:id="bottone_conferma_pagamento" mnemonicParsing="false" onAction="#effettuaPagamento" text="Conferma Pagamento" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Riepilogo Prenotazione" />
+                  <ListView prefHeight="200.0" prefWidth="306.0" />
+               </children>
+            </VBox>
+         </children>
+      </GridPane>
+   </center>
+</BorderPane>

@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-
-<BorderPane onMouseClicked="#selezionaBiglietto" prefHeight="274.0" prefWidth="867.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<BorderPane onMouseClicked="#selezionaBiglietto" prefHeight="274.0" prefWidth="867.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <GridPane prefHeight="164.0" prefWidth="740.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -103,8 +102,8 @@
    <bottom>
       <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="867.0" BorderPane.alignment="BOTTOM_RIGHT">
          <children>
-            <Button fx:id="bottone_annulla" alignment="CENTER_RIGHT" mnemonicParsing="false" onMouseClicked="#deselezionaBiglietto" text="Annulla" />
-            <Button fx:id="bottone_conferma" alignment="CENTER_RIGHT" mnemonicParsing="false" onMouseClicked="#confermaBiglietto" text="Conferma" />
+            <Button fx:id="bottone_annulla" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#deselezionaBiglietto" text="Annulla" />
+            <Button fx:id="bottone_conferma" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#confermaBiglietto" text="Conferma" />
          </children>
       </HBox>
    </bottom>

@@ -1,60 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="541.0" prefWidth="988.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <GridPane layoutX="2.0" prefHeight="541.0" prefWidth="988.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints maxHeight="177.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="474.0" minHeight="10.0" prefHeight="474.0" vgrow="SOMETIMES" />
-         </rowConstraints>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <items>
+          <Button fx:id="bottone_scegli_servizio" mnemonicParsing="false" onAction="#vaiAScegliServizio" text="Scegli Servizio" />
+            <Button fx:id="bottone_ricerca" mnemonicParsing="false" onAction="#vaiARicerca" text="Ricerca" />
+            <Button fx:id="bottone_ricerca" mnemonicParsing="false" onAction="#vaiARicerca" text="Riepilogo" />
+        </items>
+      </ToolBar>
+   </top>
+   <center>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
          <children>
-            <GridPane layoutX="106.0" layoutY="203.0" prefHeight="278.0" prefWidth="795.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="106.0" AnchorPane.rightAnchor="87.0" AnchorPane.topAnchor="203.0" GridPane.rowIndex="1">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints maxHeight="304.0" minHeight="10.0" prefHeight="265.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="458.0" minHeight="10.0" prefHeight="276.0" vgrow="SOMETIMES" />
-               </rowConstraints>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button fx:id="prenota_biglietto" layoutX="136.0" layoutY="289.0" mnemonicParsing="false" onAction="#prenotaBiglietto" text="Prenota Biglietto" GridPane.rowIndex="1" />
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="387.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
-                     <image>
-                        <Image url="@hotel.jpg" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="prenota_alloggio" layoutX="455.0" layoutY="289.0" mnemonicParsing="false" onAction="#prenotaAlloggio" text="Prenota Aloggio" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="101.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@biglietti.jpg" />
                      </image>
                   </ImageView>
-                  <Button fx:id="prenota_pacchetto" layoutX="745.0" layoutY="289.0" mnemonicParsing="false" onAction="#prenotaPachetto" text="Prenota Pacchetto" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="677.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
+                  <Button mnemonicParsing="false" text="Prenota un Biglietto" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@hotel.jpg" />
+                     </image>
+                  </ImageView>
+                  <Button mnemonicParsing="false" text="Prenota un Alloggio" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@pacchetti-vacanza.jpg" />
                      </image>
                   </ImageView>
+                  <Button mnemonicParsing="false" text="Prenota un Pacchetto di Servizi" />
                </children>
-            </GridPane>
-            <HBox fx:id="briciole_pane" layoutX="2.0" prefHeight="100.0" prefWidth="988.0">
-               <children>
-                  <Label prefHeight="74.0" prefWidth="137.0" text="Scegli servizio" />
-                  <Label prefHeight="74.0" prefWidth="137.0" text="Ricerca" />
-                  <Label prefHeight="74.0" prefWidth="137.0" text="Riepilogo" />
-               </children>
-            </HBox>
+            </VBox>
          </children>
       </GridPane>
-   </children>
-</AnchorPane>
+   </center>
+</BorderPane>
