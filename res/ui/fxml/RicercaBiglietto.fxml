@@ -13,48 +13,48 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
                   <Label layoutX="14.0" layoutY="68.0" text="Partenza" />
-                  <Label layoutX="14.0" layoutY="117.0" text="Destionazione" />
+                  <Label layoutX="14.0" layoutY="117.0" text="Destinazione" />
                   <Label layoutX="14.0" layoutY="171.0" text="Andata" />
                   <Label layoutX="14.0" layoutY="288.0" text="Adulti" />
                   <Label layoutX="13.0" layoutY="217.0" text="Ritorno" />
                   <Label layoutX="14.0" layoutY="380.0" text="Mezzo" />
                   <Label layoutX="14.0" layoutY="333.0" text="Bambini" />
-                  <TextField layoutX="178.0" layoutY="64.0" />
-                  <TextField layoutX="178.0" layoutY="113.0" />
+                  <TextField fx:id="input_partenza" layoutX="178.0" layoutY="64.0" />
+                  <TextField fx:id="input_destinazione" layoutX="178.0" layoutY="113.0" />
                   <Label layoutX="196.0" layoutY="168.0" text="Ore" />
                   <Label layoutX="196.0" layoutY="217.0" text="Ore" />
-                  <DatePicker layoutX="72.0" layoutY="167.0" prefHeight="25.0" prefWidth="93.0" />
-                  <DatePicker layoutX="72.0" layoutY="213.0" prefHeight="25.0" prefWidth="93.0" />
+                  <DatePicker fx:id="input_data_andata" layoutX="72.0" layoutY="167.0" prefHeight="25.0" prefWidth="93.0" />
+                  <DatePicker fx:id="input_data_ritorno" layoutX="72.0" layoutY="213.0" prefHeight="25.0" prefWidth="93.0" />
                   <Button fx:id="ricerca_biglietti" layoutX="121.0" layoutY="531.0" mnemonicParsing="false" onAction="#ricercaBiglietti" prefHeight="48.0" prefWidth="101.0" text="Cerca">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <MenuButton layoutX="74.0" layoutY="376.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0">
+                  <MenuButton fx:id="input_mezzo" layoutX="178.0" layoutY="376.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0">
                     <items>
                       <MenuItem mnemonicParsing="false" text="Treno" />
                       <MenuItem mnemonicParsing="false" text="Aereo" />
                     </items>
                   </MenuButton>
-                  <MenuButton layoutX="72.0" layoutY="329.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0">
+                  <MenuButton fx:id="input_bambini" layoutX="178.0" layoutY="329.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0">
                     <items>
                       <MenuItem mnemonicParsing="false" text="1" />
                       <MenuItem mnemonicParsing="false" text="2" />
                     </items>
                   </MenuButton>
-                  <MenuButton layoutX="72.0" layoutY="284.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0">
+                  <MenuButton fx:id="input_adulti" layoutX="178.0" layoutY="284.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0">
                     <items>
                       <MenuItem mnemonicParsing="false" text="1" />
                       <MenuItem mnemonicParsing="false" text="2" />
                     </items>
                   </MenuButton>
-                  <MenuButton layoutX="229.0" layoutY="213.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="93.0">
+                  <MenuButton fx:id="input_ora_ritorno" layoutX="229.0" layoutY="213.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="93.0">
                     <items>
                       <MenuItem mnemonicParsing="false" text="15" />
                       <MenuItem mnemonicParsing="false" text="16" />
                     </items>
                   </MenuButton>
-                  <MenuButton layoutX="229.0" layoutY="164.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="93.0">
+                  <MenuButton fx:id="input_ora_andata" layoutX="229.0" layoutY="164.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="93.0">
                     <items>
                       <MenuItem mnemonicParsing="false" text="8" />
                       <MenuItem mnemonicParsing="false" text="9" />
@@ -63,7 +63,7 @@
                </children></AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="198.0" prefWidth="395.0">
                <children>
-                  <ListView prefHeight="621.0" prefWidth="581.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <ListView fx:id="lista_risultati" prefHeight="621.0" prefWidth="581.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children></AnchorPane>
         </items>
       </SplitPane>
