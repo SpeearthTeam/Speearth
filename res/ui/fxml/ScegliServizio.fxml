@@ -31,7 +31,7 @@
                <children>
                   <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@biglietti.jpg" />
+                        <Image url="@../img/biglietti.jpg" />
                      </image>
                   </ImageView>
                   <Button mnemonicParsing="false" text="Prenota un Biglietto" />
@@ -41,7 +41,7 @@
                <children>
                   <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@hotel.jpg" />
+                        <Image url="@../img/hotel.jpg" />
                      </image>
                   </ImageView>
                   <Button mnemonicParsing="false" text="Prenota un Alloggio" />
@@ -51,7 +51,7 @@
                <children>
                   <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@pacchetti-vacanza.jpg" />
+                        <Image url="@../img/pacchetti-vacanza.jpg" />
                      </image>
                   </ImageView>
                   <Button mnemonicParsing="false" text="Prenota un Pacchetto di Servizi" />
