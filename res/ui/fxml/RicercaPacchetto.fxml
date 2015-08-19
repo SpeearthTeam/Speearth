@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.media.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="931.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <SplitPane dividerPositions="0.12430167597765363" orientation="VERTICAL" prefHeight="718.0" prefWidth="931.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <SplitPane dividerPositions="0.3713670613562971" prefHeight="623.0" prefWidth="931.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <TabPane layoutX="32.0" layoutY="14.0" prefHeight="621.0" prefWidth="342.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <tabs>
+                                  <Tab text="Biglietti">
+                                    <content>
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <MenuButton fx:id="input_ora_andata" layoutX="230.0" layoutY="137.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="93.0">
+                                                   <items>
+                                                      <MenuItem mnemonicParsing="false" text="8" />
+                                                      <MenuItem mnemonicParsing="false" text="9" />
+                                                   </items>
+                                                </MenuButton>
+                                                <MenuButton fx:id="input_ora_ritorno" layoutX="230.0" layoutY="186.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="93.0">
+                                                   <items>
+                                                      <MenuItem mnemonicParsing="false" text="15" />
+                                                      <MenuItem mnemonicParsing="false" text="16" />
+                                                   </items>
+                                                </MenuButton>
+                                                <MenuButton fx:id="input_adulti" layoutX="179.0" layoutY="257.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0">
+                                                   <items>
+                                                      <MenuItem mnemonicParsing="false" text="1" />
+                                                      <MenuItem mnemonicParsing="false" text="2" />
+                                                   </items>
+                                                </MenuButton>
+                                                <MenuButton fx:id="input_bambini" layoutX="179.0" layoutY="302.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0">
+                                                   <items>
+                                                      <MenuItem mnemonicParsing="false" text="1" />
+                                                      <MenuItem mnemonicParsing="false" text="2" />
+                                                   </items>
+                                                </MenuButton>
+                                                <MenuButton fx:id="input_mezzo" layoutX="179.0" layoutY="349.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0">
+                                                   <items>
+                                                      <MenuItem mnemonicParsing="false" text="Treno" />
+                                                      <MenuItem mnemonicParsing="false" text="Aereo" />
+                                                   </items>
+                                                </MenuButton>
+                                                <Button fx:id="ricerca_biglietti" layoutX="122.0" layoutY="504.0" mnemonicParsing="false" onAction="#ricercaBiglietti" prefHeight="48.0" prefWidth="101.0" text="Cerca">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </Button>
+                                                <DatePicker fx:id="input_data_ritorno" layoutX="73.0" layoutY="186.0" prefHeight="25.0" prefWidth="93.0" />
+                                                <DatePicker fx:id="input_data_andata" layoutX="73.0" layoutY="140.0" prefHeight="25.0" prefWidth="93.0" />
+                                                <Label layoutX="197.0" layoutY="190.0" text="Ore" />
+                                                <Label layoutX="197.0" layoutY="141.0" text="Ore" />
+                                                <TextField fx:id="input_destinazione" layoutX="179.0" layoutY="86.0" />
+                                                <TextField fx:id="input_partenza" layoutX="179.0" layoutY="37.0" />
+                                                <Label layoutX="15.0" layoutY="306.0" text="Bambini" />
+                                                <Label layoutX="15.0" layoutY="353.0" text="Mezzo" />
+                                                <Label layoutX="14.0" layoutY="190.0" text="Ritorno" />
+                                                <Label layoutX="15.0" layoutY="261.0" text="Adulti" />
+                                                <Label layoutX="15.0" layoutY="144.0" text="Andata" />
+                                                <Label layoutX="15.0" layoutY="90.0" text="Destinazione" />
+                                                <Label layoutX="15.0" layoutY="41.0" text="Partenza" />
+                                             </children>
+                                          </AnchorPane>
+                                    </content>
+                                  </Tab>
+                                  <Tab text="Alloggi">
+                                    <content>
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <MenuButton fx:id="input_numero_quadruple" layoutX="230.0" layoutY="392.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="93.0">
+                                                   <items>
+                                                      <MenuItem mnemonicParsing="false" text="1" />
+                                                      <MenuItem mnemonicParsing="false" text="2" />
+                                                   </items>
+                                                </MenuButton>
+                                                <MenuButton fx:id="input_numero_triple" layoutX="230.0" layoutY="357.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="93.0">
+                                                   <items>
+                                                      <MenuItem mnemonicParsing="false" text="1" />
+                                                      <MenuItem mnemonicParsing="false" text="2" />
+                                                   </items>
+                                                </MenuButton>
+                                                <MenuButton fx:id="input_numero_doppie" layoutX="230.0" layoutY="323.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="93.0">
+                                                   <items>
+                                                      <MenuItem mnemonicParsing="false" text="1" />
+                                                      <MenuItem mnemonicParsing="false" text="2" />
+                                                   </items>
+                                                </MenuButton>
+                                                <CheckBox fx:id="input_quadrupla" layoutX="34.0" layoutY="396.0" mnemonicParsing="false" text="Quadrupla" />
+                                                <CheckBox fx:id="input_tripla" layoutX="34.0" layoutY="361.0" mnemonicParsing="false" text="Tripla" />
+                                                <CheckBox fx:id="input_doppia" layoutX="34.0" layoutY="327.0" mnemonicParsing="false" text="Doppia" />
+                                                <CheckBox fx:id="input_singola" layoutX="34.0" layoutY="295.0" mnemonicParsing="false" text="Singola" />
+                                                <MenuButton fx:id="input_ora_arrivo" layoutX="230.0" layoutY="137.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="93.0">
+                                                   <items>
+                                                      <MenuItem mnemonicParsing="false" text="8" />
+                                                      <MenuItem mnemonicParsing="false" text="9" />
+                                                   </items>
+                                                </MenuButton>
+                                                <MenuButton fx:id="input_ora_partenza" layoutX="230.0" layoutY="186.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="93.0">
+                                                   <items>
+                                                      <MenuItem mnemonicParsing="false" text="15" />
+                                                      <MenuItem mnemonicParsing="false" text="16" />
+                                                   </items>
+                                                </MenuButton>
+                                                <MenuButton fx:id="input_numero_singole" layoutX="230.0" layoutY="291.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="93.0">
+                                                   <items>
+                                                      <MenuItem mnemonicParsing="false" text="1" />
+                                                      <MenuItem mnemonicParsing="false" text="2" />
+                                                   </items>
+                                                </MenuButton>
+                                                <Button fx:id="ricerca_alloggi" layoutX="122.0" layoutY="504.0" mnemonicParsing="false" onAction="#ricercaAlloggi" prefHeight="48.0" prefWidth="101.0" text="Cerca">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </Button>
+                                                <DatePicker fx:id="input_data_partenza" layoutX="73.0" layoutY="186.0" prefHeight="25.0" prefWidth="93.0" />
+                                                <DatePicker fx:id="input_data_arrivo" layoutX="73.0" layoutY="140.0" prefHeight="25.0" prefWidth="93.0" />
+                                                <Label layoutX="197.0" layoutY="190.0" text="Ore" />
+                                                <Label layoutX="197.0" layoutY="141.0" text="Ore" />
+                                                <TextField fx:id="input_localita" layoutX="179.0" layoutY="37.0" />
+                                                <Label layoutX="14.0" layoutY="190.0" text="Partenza" />
+                                                <Label layoutX="15.0" layoutY="261.0" text="Stanze" />
+                                                <Label layoutX="15.0" layoutY="144.0" text="Arrivo" />
+                                                <Label layoutX="15.0" layoutY="41.0" text="Località" />
+                                             </children>
+                                          </AnchorPane>
+                                    </content>
+                                  </Tab>
+                                </tabs>
+                              </TabPane>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="198.0" prefWidth="395.0">
+                           <children>
+                              <ListView fx:id="lista_risultati" prefHeight="621.0" prefWidth="581.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <HBox layoutX="281.0" prefHeight="95.0" prefWidth="931.0" AnchorPane.bottomAnchor="623.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label prefHeight="94.0" prefWidth="157.0" text="Scegli Servizio" />
+            <Label prefHeight="94.0" prefWidth="157.0" text="Scegli Servizio" />
+            <Label prefHeight="94.0" prefWidth="157.0" text="Scegli Servizio" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
