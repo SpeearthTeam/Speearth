@@ -5,7 +5,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="541.0" prefWidth="988.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane layoutX="2.0" prefHeight="541.0" prefWidth="988.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -31,19 +30,19 @@
                   <Button fx:id="prenota_biglietto" layoutX="136.0" layoutY="289.0" mnemonicParsing="false" onAction="#prenotaBiglietto" text="Prenota Biglietto" GridPane.rowIndex="1" />
                   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="387.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
                      <image>
-                        <Image url="@../../../../../Pictures/girasoli.jpg" />
+                        <Image url="@hotel.jpg" />
                      </image>
                   </ImageView>
                   <Button fx:id="prenota_alloggio" layoutX="455.0" layoutY="289.0" mnemonicParsing="false" onAction="#prenotaAlloggio" text="Prenota Aloggio" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="101.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../Pictures/girasoli.jpg" />
+                        <Image url="@biglietti.jpg" />
                      </image>
                   </ImageView>
                   <Button fx:id="prenota_pacchetto" layoutX="745.0" layoutY="289.0" mnemonicParsing="false" onAction="#prenotaPachetto" text="Prenota Pacchetto" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="677.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
                      <image>
-                        <Image url="@../../../../../Pictures/girasoli.jpg" />
+                        <Image url="@pacchetti-vacanza.jpg" />
                      </image>
                   </ImageView>
                </children>
