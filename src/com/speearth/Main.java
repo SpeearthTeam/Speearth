@@ -7,8 +7,9 @@ public class Main {
 	 * Avvia l'Applicazione
 	 * 
 	 * @param args
+	 * @throws Exception 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		AppFacadeController.getInstance().avvia(args);
 	}
 

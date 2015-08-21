@@ -1,6 +1,7 @@
 package com.speearth.controller;
 
 import com.speearth.model.core.Commesso;
+import com.speearth.view.AppFacadeView;
 
 /**
  * Classe di accesso alle funzionalità del layer Controller
@@ -53,9 +54,11 @@ public class AppFacadeController {
 
 	/**
 	 * Avvia l'Applicazione
+	 * @throws Exception 
 	 */
-	public void avvia(String[] args) {
+	public void avvia(String[] args) throws Exception {
 		// TODO
+		AppFacadeView.launch(args);
 	}
 
 	/**
@@ -68,7 +71,7 @@ public class AppFacadeController {
 	/**
 	 * Avvia il Caso d'Uso PrenotaServizio
 	 */
-	public void prenotaServizio() {
-		PrenotaServizioController.getInstance().avvia();
+	public PrenotaServizioController prenotaServizio() {
+		return new PrenotaServizioController();
 	}
 }

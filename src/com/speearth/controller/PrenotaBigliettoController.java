@@ -12,7 +12,7 @@ import com.speearth.model.transazioni.ricerca.RicercaReceiver;
 /**
  * Controller per l'estensione PrenotaBiglietto
  */
-public class PrenotaBigliettoController implements ICasoDUsoController {
+public class PrenotaBigliettoController implements IFrammentoController {
 	/**
 	 * Biglietto in prenotazione
 	 */
@@ -51,7 +51,7 @@ public class PrenotaBigliettoController implements ICasoDUsoController {
 		RicercaReceiver ricerca_receiver = RicercaReceiver.getInstance();
 		AgenziaFacade.getInstance().effettuaTransazione(new RicercaBigliettiCommand(ricerca_receiver, parametri));
 		return ricerca_receiver.getRisultatoRicerca();
-		
+
 	}
 
 	/**
@@ -78,20 +78,6 @@ public class PrenotaBigliettoController implements ICasoDUsoController {
 	 */
 	public void setBiglietto(Biglietto biglietto) {
 		this.biglietto = biglietto;
-	}
-
-	/**
-	 * Il metodo non si applica in quanto non ha Estensioni o Inclusioni
-	 */
-	@Override
-	public void avviaFrammento(ICasoDUsoController frammento) {
-	}
-
-	/**
-	 * Il metodo non si applica in quanto non ha Estensioni o Inclusioni
-	 */
-	@Override
-	public void rimuoviFrammento(ICasoDUsoController frammento) {
 	}
 
 }

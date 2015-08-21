@@ -12,7 +12,7 @@ import com.speearth.model.transazioni.ricerca.RicercaReceiver;
 /**
  * Controller per l'Estensione PrenotaAlloggio
  */
-public class PrenotaAlloggioController implements ICasoDUsoController {
+public class PrenotaAlloggioController implements IFrammentoController {
 	/**
 	 * Alloggio in prenotazione
 	 */
@@ -47,11 +47,11 @@ public class PrenotaAlloggioController implements ICasoDUsoController {
 	 * @return ArrayList<ServizioComponent>
 	 */
 	public ArrayList<IServizioComponent> ricerca(HashMap<String, String> parametri) {
-		
+
 		RicercaReceiver ricerca_receiver = RicercaReceiver.getInstance();
 		AgenziaFacade.getInstance().effettuaTransazione(new RicercaAlloggiCommand(ricerca_receiver, parametri));
 		return ricerca_receiver.getRisultatoRicerca();
-		
+
 	}
 
 	/**
@@ -80,20 +80,6 @@ public class PrenotaAlloggioController implements ICasoDUsoController {
 	 */
 	public void setAlloggio(Alloggio alloggio) {
 		this.alloggio = alloggio;
-	}
-
-	/**
-	 * Il metodo non si applica in quanto non ha Estensioni o Inclusioni
-	 */
-	@Override
-	public void avviaFrammento(ICasoDUsoController frammento) {
-	}
-
-	/**
-	 * Il metodo non si applica in quanto non ha Estensioni o Inclusioni
-	 */
-	@Override
-	public void rimuoviFrammento(ICasoDUsoController gancio) {
 	}
 
 }

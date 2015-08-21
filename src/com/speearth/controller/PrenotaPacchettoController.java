@@ -6,16 +6,11 @@ import com.speearth.model.core.PacchettoComposite;
 /**
  * Controller per l'Estensione PrenotaPacchetto
  */
-public class PrenotaPacchettoController implements ICasoDUsoController {
+public class PrenotaPacchettoController implements IFrammentoController {
 	/**
 	 * Pacchetto in prenotazione
 	 */
 	private PacchettoComposite pacchetto;
-
-	/**
-	 * Elenco di Frammenti (Estensioni e/o Inclusioni) del Caso d'Uso
-	 */
-	private ICasoDUsoController frammento;
 
 	/**
 	 * Costruttore di default
@@ -42,15 +37,15 @@ public class PrenotaPacchettoController implements ICasoDUsoController {
 	/**
 	 * Avvia l'Inclusione PrenotaBiglietto
 	 */
-	public void prenotaBiglietto() {
-		this.avviaFrammento(new PrenotaBigliettoController());
+	public PrenotaBigliettoController prenotaBiglietto() {
+		return new PrenotaBigliettoController();
 	}
 
 	/**
 	 * Avvia l'Inclusione PrenotaAlloggio
 	 */
-	public void prenotaAlloggio() {
-		this.avviaFrammento(new PrenotaAlloggioController());
+	public PrenotaAlloggioController prenotaAlloggio() {
+		return new PrenotaAlloggioController();
 	}
 
 	/**
@@ -95,27 +90,6 @@ public class PrenotaPacchettoController implements ICasoDUsoController {
 	 */
 	public void setPacchetto(PacchettoComposite pacchetto) {
 		this.pacchetto = pacchetto;
-	}
-
-	/**
-	 * Aggiunge un Frammento (Estensione o Inclusione) al Caso D'Uso
-	 * 
-	 * @param frammento
-	 */
-	@Override
-	public void avviaFrammento(ICasoDUsoController frammento) {
-		this.frammento = frammento;
-		this.frammento.avvia();
-	}
-
-	/**
-	 * Rimuove un Frammento (Estensione o Inclusione) dal Caso D'Uso
-	 * 
-	 * @param frammento
-	 */
-	@Override
-	public void rimuoviFrammento(ICasoDUsoController frammento) {
-		this.frammento = null;
 	}
 
 }

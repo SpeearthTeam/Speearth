@@ -12,15 +12,6 @@ import com.speearth.model.core.bonus.ScontoConcreteStrategy;
  * Controller per il Caso d'Uso PrenotaServizio
  */
 public class PrenotaServizioController implements ICasoDUsoController {
-	/**
-	 * Istanza della classe
-	 */
-	private static PrenotaServizioController instance;
-
-	/**
-	 * Eventuale Frammento (Estensione e/o Inclusione) del Caso d'Uso
-	 */
-	private ICasoDUsoController frammento;
 
 	/**
 	 * Servizio in prenotazione
@@ -31,17 +22,6 @@ public class PrenotaServizioController implements ICasoDUsoController {
 	 * Costruttore di default
 	 */
 	public PrenotaServizioController() {
-	}
-
-	/**
-	 * Restituisce la singola instanza della classe
-	 * 
-	 * @return AppFacadeController
-	 */
-	public static PrenotaServizioController getInstance() {
-		if (instance == null)
-			instance = new PrenotaServizioController();
-		return instance;
 	}
 
 	/**
@@ -64,22 +44,22 @@ public class PrenotaServizioController implements ICasoDUsoController {
 	/**
 	 * Avvia l'Estensione PrenotaBiglietto
 	 */
-	public void prenotaBiglietto() {
-		this.avviaFrammento(new PrenotaBigliettoController());
+	public PrenotaBigliettoController prenotaBiglietto() {
+		return new PrenotaBigliettoController();
 	}
 
 	/**
 	 * Avvia l'Estensione PrenotaAlloggio
 	 */
-	public void prenotaAlloggio() {
-		this.avviaFrammento(new PrenotaAlloggioController());
+	public PrenotaAlloggioController prenotaAlloggio() {
+		return new PrenotaAlloggioController();
 	}
 
 	/**
 	 * Avvia l'Estensione PrenotaPacchetto
 	 */
-	public void prenotaPacchetto() {
-		this.avviaFrammento(new PrenotaPacchettoController());
+	public PrenotaPacchettoController prenotaPacchetto() {
+		return new PrenotaPacchettoController();
 	}
 
 	/**
@@ -144,26 +124,5 @@ public class PrenotaServizioController implements ICasoDUsoController {
 	 */
 	public void setServizio(IServizioComponent servizio) {
 		this.servizio = servizio;
-	}
-
-	/**
-	 * Aggiunge un Frammento (Estensione o Inclusione) al Caso D'Uso
-	 * 
-	 * @param frammento
-	 */
-	@Override
-	public void avviaFrammento(ICasoDUsoController frammento) {
-		this.frammento = frammento;
-		this.frammento.avvia();
-	}
-
-	/**
-	 * Rimuove un Frammento (Estensione o Inclusione) dal Caso D'Uso
-	 * 
-	 * @param frammento
-	 */
-	@Override
-	public void rimuoviFrammento(ICasoDUsoController frammento) {
-		this.frammento = null;
 	}
 }

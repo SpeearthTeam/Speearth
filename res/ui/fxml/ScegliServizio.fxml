@@ -10,9 +10,9 @@
    <top>
       <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <items>
-          <Button fx:id="bottone_scegli_servizio" mnemonicParsing="false" onAction="#vaiAScegliServizio" text="Scegli Servizio" />
+          <Button mnemonicParsing="false" text="Scegli Servizio" />
             <Button fx:id="bottone_ricerca" mnemonicParsing="false" onAction="#vaiARicerca" text="Ricerca" />
-            <Button fx:id="bottone_ricerca" mnemonicParsing="false" onAction="#vaiARicerca" text="Riepilogo" />
+            <Button fx:id="bottone_riepilogo" mnemonicParsing="false" onAction="#vaiARiepilogo" text="Riepilogo" />
         </items>
       </ToolBar>
    </top>
@@ -34,7 +34,7 @@
                         <Image url="@../img/biglietti.jpg" />
                      </image>
                   </ImageView>
-                  <Button mnemonicParsing="false" text="Prenota un Biglietto" />
+                  <Button fx:id="bottone_prenota_biglietto" mnemonicParsing="false" onAction="#prenotaBiglietto" text="Prenota un Biglietto" />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
@@ -44,7 +44,7 @@
                         <Image url="@../img/hotel.jpg" />
                      </image>
                   </ImageView>
-                  <Button mnemonicParsing="false" text="Prenota un Alloggio" />
+                  <Button fx:id="bottone_prenota_alloggio" mnemonicParsing="false" onAction="#prenotaAlloggio" text="Prenota un Alloggio" />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
@@ -54,7 +54,7 @@
                         <Image url="@../img/pacchetti-vacanza.jpg" />
                      </image>
                   </ImageView>
-                  <Button mnemonicParsing="false" text="Prenota un Pacchetto di Servizi" />
+                  <Button fx:id="bottone_prenota_pacchetto" mnemonicParsing="false" onAction="#prenotaPacchetto" text="Prenota un Pacchetto di Servizi" />
                </children>
             </VBox>
          </children>
