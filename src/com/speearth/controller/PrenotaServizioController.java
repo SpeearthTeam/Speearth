@@ -44,21 +44,21 @@ public class PrenotaServizioController implements ICasoDUsoController {
 	/**
 	 * Avvia l'Estensione PrenotaBiglietto
 	 */
-	public PrenotaBigliettoController prenotaBiglietto() {
+	public PrenotaBigliettoController getPrenotaBigliettoController() {
 		return new PrenotaBigliettoController();
 	}
 
 	/**
 	 * Avvia l'Estensione PrenotaAlloggio
 	 */
-	public PrenotaAlloggioController prenotaAlloggio() {
+	public PrenotaAlloggioController getPrenotaAlloggioController() {
 		return new PrenotaAlloggioController();
 	}
 
 	/**
 	 * Avvia l'Estensione PrenotaPacchetto
 	 */
-	public PrenotaPacchettoController prenotaPacchetto() {
+	public PrenotaPacchettoController getPrenotaPacchettoController() {
 		return new PrenotaPacchettoController();
 	}
 

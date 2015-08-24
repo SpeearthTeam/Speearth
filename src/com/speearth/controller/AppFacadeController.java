@@ -71,7 +71,7 @@ public class AppFacadeController {
 	/**
 	 * Avvia il Caso d'Uso PrenotaServizio
 	 */
-	public PrenotaServizioController prenotaServizio() {
+	public PrenotaServizioController getPrenotaServizioController() {
 		return new PrenotaServizioController();
 	}
 }
