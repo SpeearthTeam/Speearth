@@ -31,7 +31,7 @@ public class AppFacadeController {
 	/**
 	 * Costruttore di default
 	 */
-	public AppFacadeController() {
+	private AppFacadeController() {
 	}
 
 	/**
@@ -72,6 +72,6 @@ public class AppFacadeController {
 	 * Avvia il Caso d'Uso PrenotaServizio
 	 */
 	public PrenotaServizioController getPrenotaServizioController() {
-		return new PrenotaServizioController();
+		return PrenotaServizioController.getInstance();
 	}
 }

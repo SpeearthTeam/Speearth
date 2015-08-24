@@ -11,11 +11,25 @@ public class PrenotaPacchettoController implements IFrammentoController {
 	 * Pacchetto in prenotazione
 	 */
 	private PacchettoComposite pacchetto;
+	
+	/**
+	 * Unica instanza del controller
+	 */
+	private static PrenotaPacchettoController instance;
 
 	/**
 	 * Costruttore di default
 	 */
-	public PrenotaPacchettoController() {
+	private PrenotaPacchettoController() {
+	}
+	
+	/**
+	 * Restituisce l'instanza del controller
+	 */
+	public static PrenotaPacchettoController getInstance() {
+		if (instance == null)
+			instance = new PrenotaPacchettoController();
+		return instance;
 	}
 
 	/**
@@ -38,14 +52,14 @@ public class PrenotaPacchettoController implements IFrammentoController {
 	 * Avvia l'Inclusione PrenotaBiglietto
 	 */
 	public PrenotaBigliettoController prenotaBiglietto() {
-		return new PrenotaBigliettoController();
+		return PrenotaBigliettoController.getInstance();
 	}
 
 	/**
 	 * Avvia l'Inclusione PrenotaAlloggio
 	 */
 	public PrenotaAlloggioController prenotaAlloggio() {
-		return new PrenotaAlloggioController();
+		return PrenotaAlloggioController.getInstance();
 	}
 
 	/**

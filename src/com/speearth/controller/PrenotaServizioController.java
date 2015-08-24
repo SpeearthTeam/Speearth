@@ -17,11 +17,25 @@ public class PrenotaServizioController implements ICasoDUsoController {
 	 * Servizio in prenotazione
 	 */
 	private IServizioComponent servizio;
+	
+	/**
+	 * Unica instanza del controller
+	 */
+	private static PrenotaServizioController instance;
 
 	/**
 	 * Costruttore di default
 	 */
-	public PrenotaServizioController() {
+	private PrenotaServizioController() {
+	}
+	
+	/**
+	 * Restituisce l'instanza del controller
+	 */
+	public static PrenotaServizioController getInstance() {
+		if (instance == null)
+			instance = new PrenotaServizioController();
+		return instance;
 	}
 
 	/**
@@ -45,21 +59,21 @@ public class PrenotaServizioController implements ICasoDUsoController {
 	 * Avvia l'Estensione PrenotaBiglietto
 	 */
 	public PrenotaBigliettoController getPrenotaBigliettoController() {
-		return new PrenotaBigliettoController();
+		return PrenotaBigliettoController.getInstance();
 	}
 
 	/**
 	 * Avvia l'Estensione PrenotaAlloggio
 	 */
 	public PrenotaAlloggioController getPrenotaAlloggioController() {
-		return new PrenotaAlloggioController();
+		return PrenotaAlloggioController.getInstance();
 	}
 
 	/**
 	 * Avvia l'Estensione PrenotaPacchetto
 	 */
 	public PrenotaPacchettoController getPrenotaPacchettoController() {
-		return new PrenotaPacchettoController();
+		return PrenotaPacchettoController.getInstance();
 	}
 
 	/**

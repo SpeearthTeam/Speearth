@@ -17,11 +17,25 @@ public class PrenotaBigliettoController implements IFrammentoController {
 	 * Biglietto in prenotazione
 	 */
 	private Biglietto biglietto;
+	
+	/**
+	 * Unica instanza del controller
+	 */
+	private static PrenotaBigliettoController instance;
 
 	/**
 	 * Costruttore di default
 	 */
-	public PrenotaBigliettoController() {
+	private PrenotaBigliettoController() {
+	}
+	
+	/**
+	 * Restituisce l'instanza del controller
+	 */
+	public static PrenotaBigliettoController getInstance() {
+		if (instance == null)
+			instance = new PrenotaBigliettoController();
+		return instance;
 	}
 
 	/**

@@ -17,11 +17,25 @@ public class PrenotaAlloggioController implements IFrammentoController {
 	 * Alloggio in prenotazione
 	 */
 	private Alloggio alloggio;
+	
+	/**
+	 * Unica instanza del controller
+	 */
+	private static PrenotaAlloggioController instance;
 
 	/**
 	 * Costruttore di default
 	 */
-	public PrenotaAlloggioController() {
+	private PrenotaAlloggioController() {
+	}
+	
+	/**
+	 * Restituisce l'instanza del controller
+	 */
+	public static PrenotaAlloggioController getInstance() {
+		if (instance == null)
+			instance = new PrenotaAlloggioController();
+		return instance;
 	}
 
 	/**
