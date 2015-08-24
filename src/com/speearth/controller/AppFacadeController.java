@@ -54,11 +54,9 @@ public class AppFacadeController {
 
 	/**
 	 * Avvia l'Applicazione
-	 * @throws Exception 
 	 */
-	public void avvia(String[] args) throws Exception {
+	public void avvia() {
 		// TODO
-		AppFacadeView.launch(args);
 	}
 
 	/**
