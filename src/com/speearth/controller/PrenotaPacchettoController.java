@@ -33,30 +33,14 @@ public class PrenotaPacchettoController implements IFrammentoController {
 	}
 
 	/**
-	 * Avvia l'Estensione
-	 */
-	@Override
-	public void avvia() {
-		// TODO
-	}
-
-	/**
-	 * Chiude L'Estensione
-	 */
-	@Override
-	public void chiudi() {
-		// TODO
-	}
-
-	/**
-	 * Avvia l'Inclusione PrenotaBiglietto
+	 * Restituisce il Controller di PrenotaBiglietto
 	 */
 	public PrenotaBigliettoController prenotaBiglietto() {
 		return PrenotaBigliettoController.getInstance();
 	}
 
 	/**
-	 * Avvia l'Inclusione PrenotaAlloggio
+	 * Restituisce il Controller di PrenotaAlloggio
 	 */
 	public PrenotaAlloggioController prenotaAlloggio() {
 		return PrenotaAlloggioController.getInstance();
@@ -84,7 +68,6 @@ public class PrenotaPacchettoController implements IFrammentoController {
 	 * Conferma la scelta del Pacchetto
 	 */
 	public PacchettoComposite conferma() {
-		this.chiudi();
 		return this.pacchetto;
 	}
 

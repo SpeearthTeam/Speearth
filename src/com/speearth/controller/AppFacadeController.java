@@ -69,7 +69,7 @@ public class AppFacadeController {
 	}
 
 	/**
-	 * Avvia il Caso d'Uso PrenotaServizio
+	 * Restituisce il Controller di PrenotaServizio
 	 */
 	public PrenotaServizioController getPrenotaServizioController() {
 		return PrenotaServizioController.getInstance();

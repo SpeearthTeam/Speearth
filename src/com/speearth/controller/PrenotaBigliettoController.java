@@ -39,22 +39,6 @@ public class PrenotaBigliettoController implements IFrammentoController {
 	}
 
 	/**
-	 * Avvia l'Estensione
-	 */
-	@Override
-	public void avvia() {
-		// TODO
-	}
-
-	/**
-	 * Chiude l'Estensione
-	 */
-	@Override
-	public void chiudi() {
-		// TODO
-	}
-
-	/**
 	 * Effettua una ricerca di Biglietti secondo i parametri
 	 * 
 	 * @param parametri
@@ -72,7 +56,6 @@ public class PrenotaBigliettoController implements IFrammentoController {
 	 * Conferma la scelta del Biglietto
 	 */
 	public Biglietto conferma() {
-		this.chiudi();
 		return this.biglietto;
 	}
 

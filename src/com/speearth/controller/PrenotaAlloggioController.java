@@ -19,7 +19,7 @@ public class PrenotaAlloggioController implements IFrammentoController {
 	private Alloggio alloggio;
 	
 	/**
-	 * Unica instanza del controller
+	 * Istanza della classe
 	 */
 	private static PrenotaAlloggioController instance;
 
@@ -30,28 +30,14 @@ public class PrenotaAlloggioController implements IFrammentoController {
 	}
 	
 	/**
-	 * Restituisce l'instanza del controller
+	 * Restituisce la singola instanza della classe
+	 * 
+	 * @return PrenotaAlloggioController
 	 */
 	public static PrenotaAlloggioController getInstance() {
 		if (instance == null)
 			instance = new PrenotaAlloggioController();
 		return instance;
-	}
-
-	/**
-	 * Avvia l'Estensione
-	 */
-	@Override
-	public void avvia() {
-		// TODO
-	}
-
-	/**
-	 * Chiude l'Estensione
-	 */
-	@Override
-	public void chiudi() {
-		// TODO
 	}
 
 	/**
@@ -61,11 +47,9 @@ public class PrenotaAlloggioController implements IFrammentoController {
 	 * @return ArrayList<ServizioComponent>
 	 */
 	public ArrayList<IServizioComponent> ricerca(HashMap<String, String> parametri) {
-
 		RicercaReceiver ricerca_receiver = RicercaReceiver.getInstance();
 		AgenziaFacade.getInstance().effettuaTransazione(new RicercaAlloggiCommand(ricerca_receiver, parametri));
 		return ricerca_receiver.getRisultatoRicerca();
-
 	}
 
 	/**
@@ -74,7 +58,6 @@ public class PrenotaAlloggioController implements IFrammentoController {
 	 * @return Alloggio
 	 */
 	public Alloggio conferma() {
-		this.chiudi();
 		return this.alloggio;
 	}
 

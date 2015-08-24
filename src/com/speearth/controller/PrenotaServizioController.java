@@ -39,38 +39,21 @@ public class PrenotaServizioController implements ICasoDUsoController {
 	}
 
 	/**
-	 * Avvia il Caso d'Uso
-	 */
-	@Override
-	public void avvia() {
-		// TODO
-	}
-
-	/**
-	 * Chiude il Caso D'Uso
-	 */
-	@Override
-	public void chiudi() {
-		// TODO
-		this.servizio = null;
-	}
-
-	/**
-	 * Avvia l'Estensione PrenotaBiglietto
+	 * Restituisce il Controller di PrenotaBiglietto
 	 */
 	public PrenotaBigliettoController getPrenotaBigliettoController() {
 		return PrenotaBigliettoController.getInstance();
 	}
 
 	/**
-	 * Avvia l'Estensione PrenotaAlloggio
+	 * Restituisce il Controller di PrenotaAlloggio
 	 */
 	public PrenotaAlloggioController getPrenotaAlloggioController() {
 		return PrenotaAlloggioController.getInstance();
 	}
 
 	/**
-	 * Avvia l'Estensione PrenotaPacchetto
+	 * Restituisce il Controller di PrenotaPacchetto
 	 */
 	public PrenotaPacchettoController getPrenotaPacchettoController() {
 		return PrenotaPacchettoController.getInstance();

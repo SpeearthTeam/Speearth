@@ -18,7 +18,7 @@
    <center>
       <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <center>
-            <ListView minWidth="854.0" prefHeight="200.0" prefWidth="854.0" BorderPane.alignment="CENTER" />
+            <ListView fx:id="lista_risultati" minWidth="854.0" prefHeight="200.0" prefWidth="854.0" BorderPane.alignment="CENTER" />
          </center>
          <top>
             <Accordion BorderPane.alignment="CENTER">
@@ -37,7 +37,7 @@
                                     </VBox>
                                  </right>
                                  <center>
-                                    <TableView BorderPane.alignment="CENTER">
+                                    <TableView fx:id="tabella_pacchetto" BorderPane.alignment="CENTER">
                                       <columns>
                                         <TableColumn text="Tipo" />
                                         <TableColumn text="Fornitore" />
