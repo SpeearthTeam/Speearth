@@ -1,7 +1,6 @@
 package com.speearth.controller;
 
 import com.speearth.model.core.Commesso;
-import com.speearth.view.AppFacadeView;
 
 /**
  * Classe di accesso alle funzionalità del layer Controller
