@@ -1,13 +1,19 @@
 package com.speearth.view.prenotaservizio;
 
+import java.io.IOException;
+
+import com.speearth.model.core.Alloggio;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 
-public class RisultatoAlloggioView {
+public class RisultatoAlloggioView extends BorderPane {
 	@FXML
 	private Label output_data_arrivo;
 	@FXML
@@ -28,6 +34,41 @@ public class RisultatoAlloggioView {
 	private Button bottone_conferma;
 	@FXML
 	private Label output_prezzo;
+	
+	/**
+	 * Costruttore con parametro
+	 * 
+	 * @param alloggio
+	 */
+	public RisultatoAlloggioView(Alloggio alloggio) {
+		
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../res/ui/fxml/RisultatoAlloggio"));
+		loader.setController(this);
+		this.impostaInfo(alloggio);
+		try {
+			loader.load();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Imposta nelle Label i dati dell'alloggio
+	 * 
+	 * @param biglietto
+	 */
+	
+	public void impostaInfo(Alloggio alloggio) {
+		this.output_data_arrivo.setText(alloggio.getDataArrivo().toString());
+		this.output_data_partenza.setText(alloggio.getDataPartenza().toString());
+		this.output_localita.setText(alloggio.getLocalita().toString());
+		this.output_nome_fornitore.setText(alloggio.getFornitore().toString());
+		this.output_prezzo.setText(Float.toString(alloggio.getPrezzo()));
+		//this.output_stanze.setItems(alloggio);
+		//this.output_ora_arrivo
+		//this.output_ora_partenza
+		
+	}
 
 	// Event Listener on BorderPane.onMouseClicked
 	@FXML

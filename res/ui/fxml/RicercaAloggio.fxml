@@ -10,7 +10,7 @@
    <center>
       <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <center>
-            <ListView minWidth="854.0" prefHeight="200.0" prefWidth="854.0" BorderPane.alignment="CENTER" />
+            <ListView fx:id="lista_risultati" minWidth="854.0" prefHeight="200.0" prefWidth="854.0" BorderPane.alignment="CENTER" />
          </center>
          <left>
             <AnchorPane minWidth="426.0" prefWidth="426.0" BorderPane.alignment="CENTER">
