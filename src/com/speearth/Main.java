@@ -1,7 +1,5 @@
 package com.speearth;
 
-import com.speearth.view.prenotaservizio.ScegliServizioView;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

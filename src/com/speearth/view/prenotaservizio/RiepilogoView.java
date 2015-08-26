@@ -1,9 +1,12 @@
 package com.speearth.view.prenotaservizio;
 
 import java.awt.TextField;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import com.speearth.controller.AppFacadeController;
 import com.speearth.model.core.Cliente;
+import com.speearth.view.View;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,7 +15,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-public class RiepilogoView {
+public class RiepilogoView extends View {
 	@FXML
 	private Button bottone_scegli_servizio;
 	@FXML
@@ -90,5 +93,11 @@ public class RiepilogoView {
 		alert.setHeaderText("Il Pagamento è andato a buon fine!");
 		alert.setContentText(ricevuta);
 		alert.showAndWait();
+	}
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		
 	}
 }
