@@ -17,7 +17,7 @@ public class AppFacadeController {
 	private Commesso utente;
 
 	/**
-	 * Restituisce la singola instanza della classe
+	 * Restituisce la singola istanza della classe
 	 * 
 	 * @return AppFacadeController
 	 */

@@ -1,5 +1,7 @@
 package com.speearth;
 
+import com.speearth.utility.Costanti;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -26,7 +28,7 @@ public class Main extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		this.primaryStage = primaryStage;
-		this.primaryStage.setTitle("Speearth");
+		this.primaryStage.setTitle(Costanti.getInstance().TITOLO_SCEGLI_SERVIZIO);
 		
 		initRootLayout();
 	}
