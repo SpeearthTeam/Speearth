@@ -42,7 +42,9 @@ public class RicercaReceiver {
 	/**
 	 * Costruttore di default
 	 */
-	private RicercaReceiver(){}
+	private RicercaReceiver() {
+		this.risultato_ricerca = new ArrayList<IServizioComponent>();
+	}
 	
 	/**
 	 * Restituisce il risultato di un comando di Ricerca

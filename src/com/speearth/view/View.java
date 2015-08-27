@@ -1,23 +1,38 @@
 package com.speearth.view;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.Optional;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public abstract class View implements Initializable {
+	
 	/**
-	 * Inizializza la Classe
+	 * Crea un alert e rimane in attesa di essere consumato
+	 * 
+	 * @param type
+	 * @param title
+	 * @param text
+	 * @return Restituisce il risultatp dell'alert
 	 */
-	@Override
-	public abstract void initialize(URL arg0, ResourceBundle arg1);
+	public Optional<ButtonType> mostraAlert(AlertType type, String title, String text) {
+		Alert alert = new Alert(type);
+		
+		alert.setTitle(title);
+		alert.setHeaderText(null);
+		alert.setContentText(text);
+		
+		return alert.showAndWait();
+	}
 
 	/**
 	 * Cambia la schermata da visualizzare nella finestra
@@ -27,7 +42,7 @@ public abstract class View implements Initializable {
 	 * @param src
 	 * @throws IOException
 	 */
-	protected void cambiaScena(ActionEvent event, String titolo, String src) throws IOException {
+	public void cambiaScena(ActionEvent event, String titolo, String src) throws IOException {
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		stage.setTitle(titolo);
 		Pane pane = FXMLLoader.load(getClass().getResource(src));

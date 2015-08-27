@@ -1,11 +1,15 @@
 package com.speearth.model.sistemi_esterni;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
+import java.util.Set;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.speearth.model.core.Alloggio;
+
 
 public class BookingAdapter extends ImpresaRicettivaAdapter {
 	/**
@@ -16,7 +20,7 @@ public class BookingAdapter extends ImpresaRicettivaAdapter {
 	/**
 	 * URL di accesso alle API del Sistema Esterno Booking
 	 */
-	private String url = "file://bo";
+	private String url = "http://h4ck1n6.altervista.org/booking.json";
 
 	/**
 	 * Restituisce la signola istanza della classe
@@ -45,8 +49,8 @@ public class BookingAdapter extends ImpresaRicettivaAdapter {
 	protected String formattaURL(HashMap<String, String> parametri) {
 		// impostare le chiavi di ricerca nell'url
 		// in un modo possibilmente più elegante :)
-		String url = this.getUrl() + "q=" + parametri.get("localita");
-		return url;
+		// String url = this.getUrl() + "q=" + parametri.get("localita");
+		return getUrl();
 	}
 
 	/**
@@ -58,9 +62,27 @@ public class BookingAdapter extends ImpresaRicettivaAdapter {
 	 */
 	@Override
 	protected Alloggio creaAlloggioDaJSON(JSONObject jsonBiglietto) throws JSONException {
-		// l'attributo stanze va convertito appositamente prima di creare
-		// l'oggetto Alloggio
-		return null;
+		Alloggio alloggio = new Alloggio();
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
+		
+		JSONObject rooms = jsonBiglietto.optJSONObject("rooms");
+		Set<String> roomTypes = rooms.keySet();
+		
+		HashMap<String, Integer> stanze = new HashMap<String, Integer>();
+		
+		for (String type : roomTypes)
+			stanze.put(type, jsonBiglietto.optInt(type));
+		
+		alloggio.setId(jsonBiglietto.optInt("id", 0));
+		alloggio.setFornitore(jsonBiglietto.optString("provider"));
+		alloggio.setLocalita(jsonBiglietto.optString("city"));
+		alloggio.setDataPartenza(LocalDateTime.parse(jsonBiglietto.optString("departure_date"), formatter));
+		alloggio.setDataArrivo(LocalDateTime.parse(jsonBiglietto.optString("arrival_date"), formatter));
+		alloggio.setStanze(stanze);
+		alloggio.setPrezzo((float) jsonBiglietto.optInt("price"));
+		
+		return alloggio;
 	}
 
 	/**

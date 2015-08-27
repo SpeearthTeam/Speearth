@@ -47,6 +47,7 @@ public class AgenziaFacade {
 		this.registro_clienti = RegistroClienti.getInstance();
 		this.registratore_cassa = RegistratoreDiCassa.getInstance();
 		this.registro_impiegati = RegistroImpiegati.getInstance();
+		this.comandi = new ArrayList<ITransazioniCommand>();
 	}
 
 	/**

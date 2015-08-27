@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import com.speearth.controller.AppFacadeController;
+import com.speearth.controller.PrenotaAlloggioController;
 import com.speearth.model.core.Alloggio;
 import com.speearth.model.core.IServizioComponent;
 import com.speearth.view.View;
@@ -21,6 +22,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 
 public class RicercaAlloggioView extends View {
 	@FXML
@@ -58,15 +60,20 @@ public class RicercaAlloggioView extends View {
 	@FXML
 	private Button bottone_riepilogo;
 	@FXML
-	private ListView<RisultatoAlloggioView> lista_risultati;
+	private ListView<Alloggio> lista_risultati;
+	
+	private ObservableList<Alloggio> lista_alloggi = FXCollections.observableArrayList();
+	
+	private PrenotaAlloggioController controller;
 	
 	/**
 	 * Recupera i dati inseriti dall'Utente nella form di ricerca
 	 * 
 	 * @return HashMap<String, String>
 	 */
-	private HashMap<String, String> recuperaDati() {
+	private HashMap<String, String> recuperaDati() throws NullPointerException {
 		HashMap<String, String> parametri = new HashMap<String, String>();
+		
 		parametri.put("data_arrivo", this.input_data_arrivo.toString());
 		parametri.put("data_partenza", this.input_data_partenza.toString());
 		parametri.put("stanza_doppia", this.input_doppia.getText());
@@ -80,6 +87,7 @@ public class RicercaAlloggioView extends View {
 		parametri.put("stanza_quadrupla", this.input_quadrupla.getText());
 		parametri.put("stanza_singola", this.input_singola.getText());
 		parametri.put("stanza_tripla", this.input_tripla.getText());
+		
 		return parametri;
 	}
 
@@ -87,14 +95,22 @@ public class RicercaAlloggioView extends View {
 	// Event Listener on Button[#ricerca_alloggi].onAction
 	@FXML
 	public void ricercaAlloggi(ActionEvent event) {
-		ArrayList<IServizioComponent> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
-				.getPrenotaAlloggioController().ricerca(this.recuperaDati());
-		
-		ObservableList<RisultatoAlloggioView> lista = FXCollections.observableArrayList();
-		for (IServizioComponent alloggio : risultati) {
-			lista.add(new RisultatoAlloggioView((Alloggio) alloggio));
+		try {
+			HashMap<String, String> dati = this.recuperaDati();
+			ArrayList<IServizioComponent> risultati = this.controller.ricerca(dati);
+			
+			this.lista_alloggi.clear();
+			
+			for (int i = 0; i < risultati.size(); i++)
+				this.lista_alloggi.add((Alloggio) risultati.get(i));
+				
+			this.lista_risultati.setItems(lista_alloggi);
+			
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+			mostraAlert(AlertType.ERROR, "Errore", "Parametri mancanti");
 		}
-		this.lista_risultati.setItems(lista);
+		
 	}
 
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
@@ -118,6 +134,11 @@ public class RicercaAlloggioView extends View {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub	
+		this.controller = AppFacadeController.getInstance()
+				.getPrenotaServizioController()
+				.getPrenotaAlloggioController();
+		
+		this.lista_risultati.setItems(lista_alloggi);
+		this.lista_risultati.setCellFactory(param -> new RicercaAlloggioListView());
 	}
 }
