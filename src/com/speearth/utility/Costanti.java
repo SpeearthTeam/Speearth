@@ -27,7 +27,7 @@ public final class Costanti {
 	public final static String FXML_RIEPILOGO = "/ui/fxml/Riepilogo.fxml";
 
 	/**
-	 * Messaggi popup
+	 * Messaggi dei Dialog
 	 */
 	public final static String MESSAGGIO_PARAMETRI_MANCANTI = "Mancano alcuni parametri di ricerca.";
 	public final static String MESSAGGIO_SVUOTA_PACCHETTO = "Vuoi davvero rimuovere tutti i Servizi scelti dal Pacchetto?";
@@ -37,7 +37,7 @@ public final class Costanti {
 	/**
 	 * URL dei Sistemi Esterni
 	 */
-	public final static String URL_TRENITALIA = "";
-	public final static String URL_ITALO = "";
+	public final static String URL_TRENITALIA = "http://h4ck1n6.altervista.org/trenitalia.json";
+	public final static String URL_ITALO = "http://h4ck1n6.altervista.org/italo.json";
 	public final static String URL_BOOKING = "http://h4ck1n6.altervista.org/booking.json";
 }

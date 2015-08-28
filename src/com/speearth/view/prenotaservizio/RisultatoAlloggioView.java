@@ -105,9 +105,11 @@ public class RisultatoAlloggioView {
 	}
 
 	/**
-	 * Restituisce il border pane
+	 * Restituisce la BorderPane
+	 * 
+	 * @return BorderPane
 	 */
 	public BorderPane getBorderPane() {
-		return risultato_alloggio;
+		return this.risultato_alloggio;
 	}
 }

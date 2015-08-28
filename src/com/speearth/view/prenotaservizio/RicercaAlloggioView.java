@@ -102,7 +102,7 @@ public class RicercaAlloggioView extends View {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		this.controller = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getPrenotaAlloggioController();
-		this.lista_risultati.setItems(lista_alloggi);
+		this.lista_risultati.setItems(this.lista_alloggi);
 		this.lista_risultati.setCellFactory(param -> new RicercaAlloggioListView());
 	}
 
@@ -125,7 +125,6 @@ public class RicercaAlloggioView extends View {
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE,
 					Costanti.MESSAGGIO_PARAMETRI_MANCANTI);
 		}
-
 	}
 
 	// Event Listener on Button[#bottone_scegli_servizio].onAction

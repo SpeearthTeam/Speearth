@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import com.speearth.controller.AppFacadeController;
+import com.speearth.controller.PrenotaBigliettoController;
 import com.speearth.model.core.Biglietto;
 import com.speearth.model.core.IServizioComponent;
 import com.speearth.utility.Costanti;
@@ -16,6 +17,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
@@ -48,7 +50,11 @@ public class RicercaBigliettoView extends View {
 	@FXML
 	private Button bottone_riepilogo;
 	@FXML
-	private ListView<RisultatoBigliettoView> lista_risultati;
+	private ListView<Biglietto> lista_risultati;
+
+	private ObservableList<Biglietto> lista_biglietti = FXCollections.observableArrayList();
+
+	private PrenotaBigliettoController controller;
 
 	/**
 	 * Recupera i dati inseriti dall'Utente nella form di ricerca
@@ -77,20 +83,31 @@ public class RicercaBigliettoView extends View {
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
+		this.controller = AppFacadeController.getInstance().getPrenotaServizioController()
+				.getPrenotaBigliettoController();
+		this.lista_risultati.setItems(this.lista_biglietti);
+		this.lista_risultati.setCellFactory(param -> new RicercaBigliettoListView());
 	}
 
 	// Event Listener on Button[#ricerca_biglietti].onAction
 	@FXML
 	public void ricercaBiglietti(ActionEvent event) {
-		ArrayList<IServizioComponent> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
-				.getPrenotaBigliettoController().ricerca(this.recuperaDati());
+		try {
+			HashMap<String, String> dati = this.recuperaDati();
+			ArrayList<IServizioComponent> risultati = this.controller.ricerca(dati);
 
-		ObservableList<RisultatoBigliettoView> lista = FXCollections.observableArrayList();
-		for (IServizioComponent biglietto : risultati) {
-			lista.add(new RisultatoBigliettoView((Biglietto) biglietto));
+			this.lista_biglietti.clear();
+
+			for (int i = 0; i < risultati.size(); i++)
+				this.lista_biglietti.add((Biglietto) risultati.get(i));
+
+			this.lista_risultati.setItems(this.lista_biglietti);
+
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE,
+					Costanti.MESSAGGIO_PARAMETRI_MANCANTI);
 		}
-		this.lista_risultati.setItems(lista);
 	}
 
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
