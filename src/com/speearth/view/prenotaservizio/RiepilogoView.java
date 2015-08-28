@@ -83,8 +83,8 @@ public class RiepilogoView extends View {
 			this.impostaInfoCliente(cliente);
 		else {
 			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle(Costanti.getInstance().TITOLO_ERRORE);
-			alert.setContentText(Costanti.getInstance().MESSAGGIO_CLIENTE_NON_TROVATO);
+			alert.setTitle(Costanti.TITOLO_ERRORE);
+			alert.setContentText(Costanti.MESSAGGIO_CLIENTE_NON_TROVATO);
 			alert.showAndWait();
 		}
 	}
@@ -96,7 +96,7 @@ public class RiepilogoView extends View {
 				this.input_metodo_pagamento.getText());
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Pagamento effettuato");
-		alert.setHeaderText(Costanti.getInstance().MESSAGGIO_PAGAMENTO_EFFETTUATO);
+		alert.setHeaderText(Costanti.MESSAGGIO_PAGAMENTO_EFFETTUATO);
 		alert.setContentText(ricevuta);
 		alert.showAndWait();
 	}

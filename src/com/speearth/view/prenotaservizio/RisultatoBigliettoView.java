@@ -62,7 +62,7 @@ public class RisultatoBigliettoView extends BorderPane {
 	 */
 	public RisultatoBigliettoView(Biglietto biglietto) {
 		// TODO Auto-generated constructor stub
-		FXMLLoader loader = new FXMLLoader(getClass().getResource(Costanti.getInstance().FXML_RISULTATO_BIGLIETTO));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource(Costanti.FXML_RISULTATO_BIGLIETTO));
 		loader.setController(this);
 		this.impostaInfo(biglietto);
 		try {

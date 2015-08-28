@@ -122,8 +122,8 @@ public class RicercaAlloggioView extends View {
 
 		} catch (NullPointerException e) {
 			e.printStackTrace();
-			mostraAlert(AlertType.ERROR, Costanti.getInstance().TITOLO_ERRORE,
-					Costanti.getInstance().MESSAGGIO_PARAMETRI_MANCANTI);
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE,
+					Costanti.MESSAGGIO_PARAMETRI_MANCANTI);
 		}
 
 	}
@@ -131,8 +131,8 @@ public class RicercaAlloggioView extends View {
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
 	@FXML
 	public void vaiAScegliServizio(ActionEvent event) throws IOException {
-		this.cambiaScena(event, Costanti.getInstance().TITOLO_SCEGLI_SERVIZIO,
-				Costanti.getInstance().FXML_SCEGLI_SERVIZIO);
+		this.cambiaScena(event, Costanti.TITOLO_SCEGLI_SERVIZIO,
+				Costanti.FXML_SCEGLI_SERVIZIO);
 	}
 
 	// Event Listener on Button[#bottone_ricerca].onAction

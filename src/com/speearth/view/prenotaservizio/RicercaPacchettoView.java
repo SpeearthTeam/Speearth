@@ -126,8 +126,8 @@ public class RicercaPacchettoView extends View {
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
 	@FXML
 	public void vaiAScegliServizio(ActionEvent event) throws IOException {
-		this.cambiaScena(event, Costanti.getInstance().TITOLO_SCEGLI_SERVIZIO,
-				Costanti.getInstance().FXML_SCEGLI_SERVIZIO);
+		this.cambiaScena(event, Costanti.TITOLO_SCEGLI_SERVIZIO,
+				Costanti.FXML_SCEGLI_SERVIZIO);
 	}
 
 	// Event Listener on Button[#bottone_ricerca].onAction
@@ -146,8 +146,8 @@ public class RicercaPacchettoView extends View {
 	@FXML
 	public void svuotaPacchetto(ActionEvent event) {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle(Costanti.getInstance().TITOLO_SVUOTA_PACCHETTO);
-		alert.setHeaderText(Costanti.getInstance().MESSAGGIO_SVUOTA_PACCHETTO);
+		alert.setTitle(Costanti.TITOLO_SVUOTA_PACCHETTO);
+		alert.setHeaderText(Costanti.MESSAGGIO_SVUOTA_PACCHETTO);
 
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == ButtonType.OK) {

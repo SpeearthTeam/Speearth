@@ -51,7 +51,7 @@ public class RisultatoAlloggioView {
 	 */
 	public RisultatoAlloggioView() {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource(Costanti.getInstance().FXML_RISULTATO_ALLOGGIO));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(Costanti.FXML_RISULTATO_ALLOGGIO));
 			loader.setController(this);
 			loader.load();
 		} catch (IOException e) {

@@ -49,21 +49,21 @@ public class ScegliServizioView extends View {
 	// Event Listener on Button[#bottone_prenota_biglietto].onAction
 	@FXML
 	public void prenotaBiglietto(ActionEvent event) throws IOException {
-		this.cambiaScena(event, Costanti.getInstance().TITOLO_PRENOTA_BIGLIETTO,
-				Costanti.getInstance().FXML_RICERCA_BIGLIETTO);
+		this.cambiaScena(event, Costanti.TITOLO_PRENOTA_BIGLIETTO,
+				Costanti.FXML_RICERCA_BIGLIETTO);
 	}
 
 	// Event Listener on Button[#bottone_prenota_alloggio].onAction
 	@FXML
 	public void prenotaAlloggio(ActionEvent event) throws IOException {
-		this.cambiaScena(event, Costanti.getInstance().TITOLO_PRENOTA_ALLOGGIO,
-				Costanti.getInstance().FXML_RICERCA_ALLOGGIO);
+		this.cambiaScena(event, Costanti.TITOLO_PRENOTA_ALLOGGIO,
+				Costanti.FXML_RICERCA_ALLOGGIO);
 	}
 
 	// Event Listener on Button[#bottone_prenota_pacchetto].onAction
 	@FXML
 	public void prenotaPacchetto(ActionEvent event) throws IOException {
-		this.cambiaScena(event, Costanti.getInstance().TITOLO_PRENOTA_PACCHETTO,
-				Costanti.getInstance().FXML_RICERCA_PACCHETTO);
+		this.cambiaScena(event, Costanti.TITOLO_PRENOTA_PACCHETTO,
+				Costanti.FXML_RICERCA_PACCHETTO);
 	}
 }

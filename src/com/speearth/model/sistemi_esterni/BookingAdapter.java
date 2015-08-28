@@ -9,6 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.speearth.model.core.Alloggio;
+import com.speearth.utility.Costanti;
 
 
 public class BookingAdapter extends ImpresaRicettivaAdapter {
@@ -16,11 +17,6 @@ public class BookingAdapter extends ImpresaRicettivaAdapter {
 	 * Istanza della classe
 	 */
 	private static BookingAdapter instance;
-
-	/**
-	 * URL di accesso alle API del Sistema Esterno Booking
-	 */
-	private String url = "http://h4ck1n6.altervista.org/booking.json";
 
 	/**
 	 * Restituisce la signola istanza della classe
@@ -50,7 +46,7 @@ public class BookingAdapter extends ImpresaRicettivaAdapter {
 		// impostare le chiavi di ricerca nell'url
 		// in un modo possibilmente più elegante :)
 		// String url = this.getUrl() + "q=" + parametri.get("localita");
-		return getUrl();
+		return Costanti.URL_BOOKING;
 	}
 
 	/**
@@ -83,24 +79,6 @@ public class BookingAdapter extends ImpresaRicettivaAdapter {
 		alloggio.setPrezzo((float) jsonBiglietto.optInt("price"));
 		
 		return alloggio;
-	}
-
-	/**
-	 * Restituisce l'URL
-	 * 
-	 * @return String
-	 */
-	public String getUrl() {
-		return this.url;
-	}
-
-	/**
-	 * Imposta l'URL
-	 * 
-	 * @param url
-	 */
-	public void setUrl(String url) {
-		this.url = url;
 	}
 
 	/**

@@ -28,7 +28,7 @@ public class Main extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		this.primaryStage = primaryStage;
-		this.primaryStage.setTitle(Costanti.getInstance().TITOLO_SCEGLI_SERVIZIO);
+		this.primaryStage.setTitle(Costanti.TITOLO_SCEGLI_SERVIZIO);
 		
 		initRootLayout();
 	}
