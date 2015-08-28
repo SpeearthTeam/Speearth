@@ -14,23 +14,23 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+/**
+ * Classe che rappresenta una schermata dell'Applicazione
+ */
 public abstract class View implements Initializable {
-	
 	/**
-	 * Crea un alert e rimane in attesa di essere consumato
+	 * Crea un Alert Dialog e rimane in attesa di essere consumato
 	 * 
 	 * @param type
 	 * @param title
 	 * @param text
-	 * @return Restituisce il risultatp dell'alert
+	 * @return Optional<ButtonType>
 	 */
 	public Optional<ButtonType> mostraAlert(AlertType type, String title, String text) {
 		Alert alert = new Alert(type);
-		
 		alert.setTitle(title);
 		alert.setHeaderText(null);
 		alert.setContentText(text);
-		
 		return alert.showAndWait();
 	}
 

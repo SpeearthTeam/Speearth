@@ -5,7 +5,7 @@ public class Costanti {
 	 * Istanza della classe
 	 */
 	private static Costanti instance;
-	
+
 	/**
 	 * Costruttore di default
 	 */
@@ -32,6 +32,9 @@ public class Costanti {
 	public final String TITOLO_PRENOTA_ALLOGGIO = "Prenota Alloggio - Speearth";
 	public final String TITOLO_PRENOTA_PACCHETTO = "Prenota Pacchetto - Speearth";
 	public final String TITOLO_RIEPILOGO = "Riepilogo Prenotazione - Speearth";
+	public final String TITOLO_ERRORE = "Errore";
+	public final String TITOLO_SVUOTA_PACCHETTO = "Svuota il Pacchetto";
+	public final String TITOLO_PAGAMENTO_EFFETTUATO = "Pagamento effettuato";
 
 	/**
 	 * Path degli FXML
@@ -41,8 +44,16 @@ public class Costanti {
 	public final String FXML_RICERCA_ALLOGGIO = "/ui/fxml/RicercaAlloggio.fxml";
 	public final String FXML_RICERCA_PACCHETTO = "/ui/fxml/RicercaPacchetto.fxml";
 	public final String FXML_RISULTATO_BIGLIETTO = "/ui/fxml/RisultatoBiglietto.fxml";
-	public final String FXML_RISULTATO_ALLOGGIO = "/ui/fxml/RisultatoBiglietto.fxml";
+	public final String FXML_RISULTATO_ALLOGGIO = "/ui/fxml/RisultatoAlloggio.fxml";
 	public final String FXML_RIEPILOGO = "/ui/fxml/Riepilogo.fxml";
+
+	/**
+	 * Messaggi popup
+	 */
+	public final String MESSAGGIO_PARAMETRI_MANCANTI = "Mancano alcuni parametri di ricerca.";
+	public final String MESSAGGIO_SVUOTA_PACCHETTO = "Vuoi davvero rimuovere tutti i Servizi scelti dal Pacchetto?";
+	public final String MESSAGGIO_CLIENTE_NON_TROVATO = "Non è stato trovato alcun Cliente con questo codice Tessera.";
+	public final String MESSAGGIO_PAGAMENTO_EFFETTUATO = "Il Pagamento è andato a buon fine!";
 
 	/**
 	 * URL dei Sistemi Esterni

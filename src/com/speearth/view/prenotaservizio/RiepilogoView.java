@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import com.speearth.controller.AppFacadeController;
 import com.speearth.model.core.Cliente;
+import com.speearth.utility.Costanti;
 import com.speearth.view.View;
 
 import javafx.event.ActionEvent;
@@ -50,6 +51,11 @@ public class RiepilogoView extends View {
 		this.output_nome_cliente.setText(cliente.getNome());
 	}
 
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub	
+	}
+
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
 	@FXML
 	public void vaiAScegliServizio(ActionEvent event) {
@@ -77,8 +83,8 @@ public class RiepilogoView extends View {
 			this.impostaInfoCliente(cliente);
 		else {
 			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Cliente non trovato");
-			alert.setContentText("Non è stato trovato alcun Cliente con questo codice Tessera.");
+			alert.setTitle(Costanti.getInstance().TITOLO_ERRORE);
+			alert.setContentText(Costanti.getInstance().MESSAGGIO_CLIENTE_NON_TROVATO);
 			alert.showAndWait();
 		}
 	}
@@ -90,14 +96,8 @@ public class RiepilogoView extends View {
 				this.input_metodo_pagamento.getText());
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Pagamento effettuato");
-		alert.setHeaderText("Il Pagamento è andato a buon fine!");
+		alert.setHeaderText(Costanti.getInstance().MESSAGGIO_PAGAMENTO_EFFETTUATO);
 		alert.setContentText(ricevuta);
 		alert.showAndWait();
-	}
-
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-		
 	}
 }

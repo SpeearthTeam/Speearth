@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.speearth.utility.Costanti;
 import com.speearth.view.View;
 
 import javafx.event.ActionEvent;
@@ -22,6 +23,12 @@ public class ScegliServizioView extends View {
 	@FXML
 	private Button bottone_prenota_pacchetto;
 
+	/**
+	 * Inizializza la classe
+	 * 
+	 * @param arg0
+	 * @param arg1
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -42,18 +49,21 @@ public class ScegliServizioView extends View {
 	// Event Listener on Button[#bottone_prenota_biglietto].onAction
 	@FXML
 	public void prenotaBiglietto(ActionEvent event) throws IOException {
-		this.cambiaScena(event, "Prenota Biglietto - Speearth", "/ui/fxml/RicercaBiglietto.fxml");
+		this.cambiaScena(event, Costanti.getInstance().TITOLO_PRENOTA_BIGLIETTO,
+				Costanti.getInstance().FXML_RICERCA_BIGLIETTO);
 	}
 
 	// Event Listener on Button[#bottone_prenota_alloggio].onAction
 	@FXML
 	public void prenotaAlloggio(ActionEvent event) throws IOException {
-		this.cambiaScena(event, "Prenota Alloggio - Speearth", "/ui/fxml/RicercaAlloggio.fxml");
+		this.cambiaScena(event, Costanti.getInstance().TITOLO_PRENOTA_ALLOGGIO,
+				Costanti.getInstance().FXML_RICERCA_ALLOGGIO);
 	}
 
 	// Event Listener on Button[#bottone_prenota_pacchetto].onAction
 	@FXML
 	public void prenotaPacchetto(ActionEvent event) throws IOException {
-		this.cambiaScena(event, "Prenota Pacchetto - Speearth", "/ui/fxml/RicercaPacchetto.fxml");
+		this.cambiaScena(event, Costanti.getInstance().TITOLO_PRENOTA_PACCHETTO,
+				Costanti.getInstance().FXML_RICERCA_PACCHETTO);
 	}
 }

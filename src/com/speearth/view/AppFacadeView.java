@@ -1,7 +1,9 @@
 package com.speearth.view;
 
+/**
+ * Classe di accesso alle funzionalità del layer View
+ */
 public class AppFacadeView {
-	
 	/**
 	 * Unica instanza della facade
 	 */

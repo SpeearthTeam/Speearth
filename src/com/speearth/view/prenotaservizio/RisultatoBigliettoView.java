@@ -3,6 +3,7 @@ package com.speearth.view.prenotaservizio;
 import java.io.IOException;
 
 import com.speearth.model.core.Biglietto;
+import com.speearth.utility.Costanti;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -53,7 +54,7 @@ public class RisultatoBigliettoView extends BorderPane {
 	private Button bottone_conferma;
 	@FXML
 	private Label output_prezzo;
-	
+
 	/**
 	 * Costruttore con parametro
 	 * 
@@ -61,7 +62,7 @@ public class RisultatoBigliettoView extends BorderPane {
 	 */
 	public RisultatoBigliettoView(Biglietto biglietto) {
 		// TODO Auto-generated constructor stub
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../res/ui/fxml/RisultatoBiglietto"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource(Costanti.getInstance().FXML_RISULTATO_BIGLIETTO));
 		loader.setController(this);
 		this.impostaInfo(biglietto);
 		try {
@@ -70,7 +71,7 @@ public class RisultatoBigliettoView extends BorderPane {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Imposta nelle Label i dati del Biglietto
 	 * 
