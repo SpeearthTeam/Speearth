@@ -1,0 +1,13 @@
+.tool-bar{
+ -fx-background-color: #011F40 ;
+ }
+ .tool-bar .button {  
+  -fx-background-color: #97F6F6
+  }
+  .AnchorPane{
+  -fx-background-color:#CCFDFD;
+  }
+  
+  .button {  
+  -fx-background-color:#00AFFF;
+  }
