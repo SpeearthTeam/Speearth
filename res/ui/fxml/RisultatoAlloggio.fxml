@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane fx:id="risultato_alloggio" onMouseClicked="#selezionaBiglietto" prefHeight="178.0" prefWidth="867.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="risultato_alloggio" onMouseClicked="#selezionaAlloggio" prefHeight="178.0" prefWidth="867.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <GridPane prefHeight="150.0" prefWidth="713.0" BorderPane.alignment="CENTER">
         <columnConstraints>

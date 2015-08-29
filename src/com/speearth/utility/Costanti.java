@@ -14,6 +14,8 @@ public final class Costanti {
 	public final static String TITOLO_ERRORE = "Errore";
 	public final static String TITOLO_SVUOTA_PACCHETTO = "Svuota il Pacchetto";
 	public final static String TITOLO_PAGAMENTO_EFFETTUATO = "Pagamento effettuato";
+	public final static String TITOLO_TORNA_A_SCEGLI_SERVIZIO = "Torna alla Scelta del Servizio";
+	public final static String TITOLO_NESSUN_SERVIZIO = "Nessun Servizio prenotato.";
 
 	/**
 	 * Path degli FXML
@@ -33,6 +35,8 @@ public final class Costanti {
 	public final static String MESSAGGIO_SVUOTA_PACCHETTO = "Vuoi davvero rimuovere tutti i Servizi scelti dal Pacchetto?";
 	public final static String MESSAGGIO_CLIENTE_NON_TROVATO = "Non è stato trovato alcun Cliente con questo codice Tessera.";
 	public final static String MESSAGGIO_PAGAMENTO_EFFETTUATO = "Il Pagamento è andato a buon fine!";
+	public final static String MESSAGGIO_TORNA_A_SCELTA_SERVIZIO = "La tua prenotazione verrà cancellata. Vuoi procedere?";
+	public final static String MESSAGGIO_NESSUN_SERVIZIO = "Non è stato scelto nessun Servizio.";
 
 	/**
 	 * URL dei Sistemi Esterni
