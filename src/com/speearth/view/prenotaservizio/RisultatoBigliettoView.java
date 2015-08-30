@@ -1,20 +1,23 @@
 package com.speearth.view.prenotaservizio;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import com.speearth.controller.AppFacadeController;
 import com.speearth.model.core.Biglietto;
 import com.speearth.utility.Costanti;
+import com.speearth.view.View;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
-public class RisultatoBigliettoView extends BorderPane {
+public class RisultatoBigliettoView extends View {
 	@FXML
 	private BorderPane risultato_biglietto;
 	@FXML
@@ -62,20 +65,15 @@ public class RisultatoBigliettoView extends BorderPane {
 	 * Biglietto contenuto nella SubView
 	 */
 	private Biglietto biglietto;
-
+	
 	/**
-	 * Costruttore con parametro
+	 * Costruttore di default
 	 * 
-	 * @param biglietto
+	 * @param stage
+	 * @throws IOException
 	 */
-	public RisultatoBigliettoView() {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource(Costanti.FXML_RISULTATO_ALLOGGIO));
-			loader.setController(this);
-			loader.load();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	public RisultatoBigliettoView(Stage stage) throws IOException {
+		super(stage);
 	}
 
 	/**
@@ -123,5 +121,16 @@ public class RisultatoBigliettoView extends BorderPane {
 	 */
 	public BorderPane getBorderPane() {
 		return this.risultato_biglietto;
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getResourceName() {
+		return Costanti.FXML_RISULTATO_ALLOGGIO;
 	}
 }

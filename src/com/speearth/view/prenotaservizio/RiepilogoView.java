@@ -1,6 +1,5 @@
 package com.speearth.view.prenotaservizio;
 
-import java.awt.TextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -14,11 +13,12 @@ import com.speearth.view.View;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class RiepilogoView extends View {
 	@FXML
@@ -55,6 +55,11 @@ public class RiepilogoView extends View {
 	 * Servizio in prenotazione
 	 */
 	private IServizioComponent servizio;
+	
+	public RiepilogoView(Stage stage) throws IOException {
+		super(stage);
+		getStage().setTitle(Costanti.TITOLO_RIEPILOGO);
+	}
 
 	/**
 	 * Imposta le informazioni del Cliente nella View
@@ -77,16 +82,12 @@ public class RiepilogoView extends View {
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
 	@FXML
 	public void vaiAScegliServizio(ActionEvent event) throws IOException {
-		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle(Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO);
-		alert.setContentText(Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
-
-		Optional<ButtonType> result = alert.showAndWait();
+		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO, 
+				Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
+				
 		if (result.get() == ButtonType.OK) {
-			AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
-			this.cambiaScena(event, Costanti.TITOLO_SCEGLI_SERVIZIO, Costanti.FXML_SCEGLI_SERVIZIO);
-		} else {
-			alert.close();
+			ScegliServizioView view = new ScegliServizioView(getStage());
+			view.mostra();
 		}
 	}
 
@@ -109,12 +110,8 @@ public class RiepilogoView extends View {
 				.identificaCliente(this.input_codice_tessera.getText());
 		if (cliente != null)
 			this.impostaInfoCliente(cliente);
-		else {
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle(Costanti.TITOLO_ERRORE);
-			alert.setHeaderText(Costanti.MESSAGGIO_CLIENTE_NON_TROVATO);
-			alert.showAndWait();
-		}
+		else
+			mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_ERRORE, Costanti.MESSAGGIO_CLIENTE_NON_TROVATO);
 	}
 
 	// Event Listener on Button[#bottone_conferma_pagamento].onAction
@@ -122,10 +119,11 @@ public class RiepilogoView extends View {
 	public void effettuaPagamento(ActionEvent event) {
 		String ricevuta = AppFacadeController.getInstance().getPrenotaServizioController()
 				.effettuaPagamento(this.cliente, this.input_metodo_pagamento.getText());
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle(Costanti.TITOLO_PAGAMENTO_EFFETTUATO);
-		alert.setHeaderText(Costanti.MESSAGGIO_PAGAMENTO_EFFETTUATO);
-		alert.setContentText(ricevuta);
-		alert.showAndWait();
+		mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_PAGAMENTO_EFFETTUATO, Costanti.MESSAGGIO_PAGAMENTO_EFFETTUATO);
+	}
+
+	@Override
+	public String getResourceName() {
+		return Costanti.FXML_RIEPILOGO;
 	}
 }

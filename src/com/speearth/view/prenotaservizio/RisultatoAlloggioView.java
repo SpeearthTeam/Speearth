@@ -1,27 +1,30 @@
 package com.speearth.view.prenotaservizio;
 
 import java.io.IOException;
+import java.net.URL;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.ResourceBundle;
 import java.util.Set;
 
 import com.speearth.controller.AppFacadeController;
 import com.speearth.model.core.Alloggio;
 import com.speearth.utility.Costanti;
+import com.speearth.view.View;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
-public class RisultatoAlloggioView {
+public class RisultatoAlloggioView extends View {
 	@FXML
 	private BorderPane risultato_alloggio;
 	@FXML
@@ -55,14 +58,8 @@ public class RisultatoAlloggioView {
 	 * 
 	 * @param alloggio
 	 */
-	public RisultatoAlloggioView() {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource(Costanti.FXML_RISULTATO_ALLOGGIO));
-			loader.setController(this);
-			loader.load();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	public RisultatoAlloggioView(Stage stage) throws IOException {
+		super(stage);
 	}
 
 	/**
@@ -117,5 +114,15 @@ public class RisultatoAlloggioView {
 	 */
 	public BorderPane getBorderPane() {
 		return this.risultato_alloggio;
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public String getResourceName() {
+		return Costanti.FXML_RISULTATO_ALLOGGIO;
 	}
 }

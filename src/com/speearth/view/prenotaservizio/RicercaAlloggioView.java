@@ -18,7 +18,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
@@ -26,6 +25,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
 
 public class RicercaAlloggioView extends View {
@@ -70,6 +70,14 @@ public class RicercaAlloggioView extends View {
 
 	private PrenotaAlloggioController controller;
 
+	public RicercaAlloggioView(Stage stage) throws IOException {
+		super(stage);
+		getStage().setTitle(Costanti.TITOLO_PRENOTA_ALLOGGIO);
+		
+		this.controller = AppFacadeController.getInstance().getPrenotaServizioController()
+				.getPrenotaAlloggioController();
+	}
+	
 	/**
 	 * Recupera i dati inseriti dall'Utente nella form di ricerca
 	 * 
@@ -96,17 +104,16 @@ public class RicercaAlloggioView extends View {
 	}
 
 	/**
-	 * Inizializza la classe
+	 * Inizializza la view
 	 * 
 	 * @param arg0
 	 * @param arg1
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		this.controller = AppFacadeController.getInstance().getPrenotaServizioController()
-				.getPrenotaAlloggioController();
+		this.lista_risultati.setCellFactory(param -> new RicercaAlloggioListView(getStage()));
 		this.lista_risultati.setItems(this.lista_alloggi);
-		this.lista_risultati.setCellFactory(param -> new RicercaAlloggioListView());
+		this.bottone_ricerca.setDisable(true);
 	}
 
 	// Event Listener on Button[#ricerca_alloggi].onAction
@@ -132,16 +139,11 @@ public class RicercaAlloggioView extends View {
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
 	@FXML
 	public void vaiAScegliServizio(ActionEvent event) throws IOException {
-		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle(Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO);
-		alert.setHeaderText(Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
-
-		Optional<ButtonType> result = alert.showAndWait();
-		if (result.get() == ButtonType.OK) {
-			this.cambiaScena(event, Costanti.TITOLO_SCEGLI_SERVIZIO, Costanti.FXML_SCEGLI_SERVIZIO);
-		} else {
-			alert.close();
-		}
+		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO, 
+				Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
+		
+		if (result.get() == ButtonType.OK)
+			mostraPrecedente();
 	}
 
 	// Event Listener on Button[#bottone_ricerca].onAction
@@ -153,12 +155,17 @@ public class RicercaAlloggioView extends View {
 	// Event Listener on Button[#bottone_riepilogo].onAction
 	@FXML
 	public void vaiARiepilogo(ActionEvent event) throws IOException {
-		if (AppFacadeController.getInstance().getPrenotaServizioController().getServizio() == null) {
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle(Costanti.TITOLO_NESSUN_SERVIZIO);
-			alert.setHeaderText(Costanti.MESSAGGIO_NESSUN_SERVIZIO);
-			alert.showAndWait();
-		} else
-			this.cambiaScena(event, Costanti.TITOLO_RIEPILOGO, Costanti.FXML_RIEPILOGO);
+		if (AppFacadeController.getInstance().getPrenotaServizioController().getServizio() == null)
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, Costanti.MESSAGGIO_NESSUN_SERVIZIO);
+		else {
+			RiepilogoView view = new RiepilogoView(getStage());
+			view.setPreaviousView(this);
+			view.mostra();
+		}
+	}
+
+	@Override
+	public String getResourceName() {
+		return Costanti.FXML_RICERCA_ALLOGGIO;
 	}
 }

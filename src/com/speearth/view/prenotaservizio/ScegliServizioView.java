@@ -10,6 +10,7 @@ import com.speearth.view.View;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 public class ScegliServizioView extends View {
 	@FXML
@@ -23,6 +24,11 @@ public class ScegliServizioView extends View {
 	@FXML
 	private Button bottone_prenota_pacchetto;
 
+	public ScegliServizioView(Stage stage) throws IOException {
+		super(stage);
+		getStage().setTitle(Costanti.TITOLO_SCEGLI_SERVIZIO);
+	}
+	
 	/**
 	 * Inizializza la classe
 	 * 
@@ -49,21 +55,29 @@ public class ScegliServizioView extends View {
 	// Event Listener on Button[#bottone_prenota_biglietto].onAction
 	@FXML
 	public void prenotaBiglietto(ActionEvent event) throws IOException {
-		this.cambiaScena(event, Costanti.TITOLO_PRENOTA_BIGLIETTO,
-				Costanti.FXML_RICERCA_BIGLIETTO);
+		RicercaBigliettoView view = new RicercaBigliettoView(getStage());
+		view.setPreaviousView(this);
+		view.mostra();
 	}
 
 	// Event Listener on Button[#bottone_prenota_alloggio].onAction
 	@FXML
 	public void prenotaAlloggio(ActionEvent event) throws IOException {
-		this.cambiaScena(event, Costanti.TITOLO_PRENOTA_ALLOGGIO,
-				Costanti.FXML_RICERCA_ALLOGGIO);
+		RicercaAlloggioView view = new RicercaAlloggioView(getStage());
+		view.setPreaviousView(this);
+		view.mostra();
 	}
 
 	// Event Listener on Button[#bottone_prenota_pacchetto].onAction
 	@FXML
 	public void prenotaPacchetto(ActionEvent event) throws IOException {
-		this.cambiaScena(event, Costanti.TITOLO_PRENOTA_PACCHETTO,
-				Costanti.FXML_RICERCA_PACCHETTO);
+		RicercaPacchettoView view = new RicercaPacchettoView(getStage());
+		view.setPreaviousView(this);
+		view.mostra();
+	}
+
+	@Override
+	public String getResourceName() {
+		return Costanti.FXML_SCEGLI_SERVIZIO;
 	}
 }
