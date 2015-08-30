@@ -2,6 +2,8 @@ package com.speearth.model.sistemi_esterni;
 
 import java.util.ArrayList;
 
+import com.speearth.utility.Costanti;
+
 /**
  * Factory dei sistemi esterni
  */
@@ -26,7 +28,7 @@ public class SistemaEsternoFactory {
 	/**
 	 * Costruttore di default
 	 */
-	protected SistemaEsternoFactory() {
+	private SistemaEsternoFactory() {
 	}
 	
 	/**
@@ -51,8 +53,9 @@ public class SistemaEsternoFactory {
 	public ArrayList<AziendaTrasportoAdapter> getAziendeDiTrasporto() {
 		ArrayList<AziendaTrasportoAdapter> aziende_trasporto = new ArrayList<AziendaTrasportoAdapter>();
 		
-		aziende_trasporto.add(TrenitaliaAdapter.getInstance());
-		aziende_trasporto.add(ItaloAdapter.getInstance());
+		for (AziendaTrasportoAdapter azienda_trasporto : Costanti.SISTEMI_ESTERNI_AZIENDE_TRASPORTO) {
+			aziende_trasporto.add(azienda_trasporto);
+		}
 		
 		return aziende_trasporto;
 	}
@@ -65,7 +68,9 @@ public class SistemaEsternoFactory {
 	public ArrayList<ImpresaRicettivaAdapter> getImpreseRicettive() {
 		ArrayList<ImpresaRicettivaAdapter> imprese_ricettive = new ArrayList<ImpresaRicettivaAdapter>();
 		
-		imprese_ricettive.add(BookingAdapter.getInstance());
+		for (ImpresaRicettivaAdapter impresa_ricettiva : Costanti.SISTEMI_ESTERNI_IMPRESE_RICETTIVE) {
+			imprese_ricettive.add(impresa_ricettiva);
+		}
 		
 		return imprese_ricettive;
 	}

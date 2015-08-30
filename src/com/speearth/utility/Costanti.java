@@ -1,5 +1,11 @@
 package com.speearth.utility;
 
+import com.speearth.model.sistemi_esterni.AziendaTrasportoAdapter;
+import com.speearth.model.sistemi_esterni.BookingAdapter;
+import com.speearth.model.sistemi_esterni.ImpresaRicettivaAdapter;
+import com.speearth.model.sistemi_esterni.ItaloAdapter;
+import com.speearth.model.sistemi_esterni.TrenitaliaAdapter;
+
 public final class Costanti {
 
 	/**
@@ -38,6 +44,21 @@ public final class Costanti {
 	public final static String MESSAGGIO_TORNA_A_SCELTA_SERVIZIO = "La tua prenotazione verrà cancellata. Vuoi procedere?";
 	public final static String MESSAGGIO_NESSUN_SERVIZIO = "Non è stato scelto nessun Servizio.";
 
+	/**
+	 * Sistemi Esterni: Aziende di Trasporto
+	 */
+	public final static AziendaTrasportoAdapter[] SISTEMI_ESTERNI_AZIENDE_TRASPORTO = {
+			ItaloAdapter.getInstance(),
+			TrenitaliaAdapter.getInstance()
+	};
+	
+	/**
+	 * Sistemi Esterni: Imprese Ricettive
+	 */
+	public final static ImpresaRicettivaAdapter[] SISTEMI_ESTERNI_IMPRESE_RICETTIVE = {
+			BookingAdapter.getInstance()
+	};
+	
 	/**
 	 * URL dei Sistemi Esterni
 	 */
