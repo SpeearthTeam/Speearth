@@ -7,7 +7,7 @@ import java.util.ResourceBundle;
 import com.speearth.controller.AppFacadeController;
 import com.speearth.model.core.Biglietto;
 import com.speearth.utility.Costanti;
-import com.speearth.view.View;
+import com.speearth.view.SubView;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,7 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-public class RisultatoBigliettoView extends View {
+public class RisultatoBigliettoSubView extends SubView {
 	@FXML
 	private BorderPane risultato_biglietto;
 	@FXML
@@ -72,7 +72,7 @@ public class RisultatoBigliettoView extends View {
 	 * @param stage
 	 * @throws IOException
 	 */
-	public RisultatoBigliettoView(Stage stage) throws IOException {
+	public RisultatoBigliettoSubView(Stage stage) throws IOException {
 		super(stage);
 	}
 
@@ -126,9 +126,13 @@ public class RisultatoBigliettoView extends View {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		
 	}
 
+	/**
+	 * Restituisce il nome della Risorsa associata alla View
+	 * 
+	 * @return String
+	 */
 	@Override
 	public String getResourceName() {
 		return Costanti.FXML_RISULTATO_ALLOGGIO;

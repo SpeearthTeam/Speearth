@@ -3,6 +3,8 @@ package com.speearth.view;
 import java.io.IOException;
 import java.util.Optional;
 
+import com.speearth.utility.Costanti;
+
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -16,29 +18,29 @@ import javafx.stage.Stage;
  * Classe che rappresenta una schermata dell'Applicazione
  */
 public abstract class View implements Initializable {
-	
+
 	/**
-	 * Stage della view
+	 * Stage della View
 	 */
 	protected Stage stage;
-	
+
 	/**
 	 * View precedente
 	 */
 	protected View previous_view;
-	
+
 	/**
-	 * Nodo genitore della view
+	 * Nodo genitore della View
 	 */
 	protected Parent parent_node;
-	
+
 	/**
 	 * Scena corrente
 	 */
 	protected Scene scene;
-	
+
 	/**
-	 * Costruttore della view
+	 * Costruttore della View
 	 * 
 	 * @param stage
 	 * @throws IOException
@@ -50,80 +52,85 @@ public abstract class View implements Initializable {
 		this.parent_node = loader.load();
 		this.stage = stage;
 	}
-	
+
 	/**
-	 * Restituisce il nome della risorsa associata alla view
+	 * Restituisce il nome della Risorsa associata alla View
+	 * 
+	 * @return String
 	 */
 	public abstract String getResourceName();
-	
+
 	/**
 	 * Mostra la view
 	 */
 	public void mostra() {
-		getStage().setScene(getScene());
-		getStage().show();
+		this.stage.setScene(this.scene);
+		this.stage.show();
 	}
-	
+
 	/**
-	 * Mostra la view precedente
+	 * Mostra la View precedente
 	 */
 	public void mostraPrecedente() {
-		if (getPreaviousView() == null)
-			mostraAlert(AlertType.ERROR, "Errore", "Non esiste una view precedente");
+		// a livello di interazione questo alert non ha senso...
+		if (this.previous_view == null)
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, "Non esiste una view precedente", null);
 		else
-			getPreaviousView().mostra();
+			this.previous_view.mostra();
 	}
-		
+
 	/**
-	 * Restituisce lo stage principale 
+	 * Restituisce lo Stage principale
+	 * 
+	 * @return Stage
 	 */
 	public Stage getStage() {
 		return stage;
 	}
 
 	/**
-	 * Imposta lo stage principale
+	 * Imposta lo Stage principale
 	 * 
 	 * @param stage
 	 */
 	public void setStage(Stage stage) {
 		this.stage = stage;
 	}
-	
+
 	/**
-	 * Restituisce la view precedente 
+	 * Restituisce la View precedente
 	 */
-	public View getPreaviousView() {
+	public View getPreviousView() {
 		return previous_view;
 	}
-	
+
 	/**
-	 * Imposta la view precedente
+	 * Imposta la View precedente
 	 * 
-	 * @param preavious_view
+	 * @param previous_view
 	 */
-	public void setPreaviousView(View preavious_view) {
-		this.previous_view = preavious_view;
+	public void setPreviousView(View previous_view) {
+		this.previous_view = previous_view;
 	}
-	
+
 	/**
-	 * Restitusce il nodo genitore
+	 * Restitusce il Nodo genitore
 	 */
 	public Parent getParentNode() {
-		return parent_node;
+		return this.parent_node;
 	}
-	
+
 	/**
-	 * Restituisce la singola istanza della scena della view
+	 * Restituisce la singola istanza della Scena della View
 	 */
 	public Scene getScene() {
-		if (scene == null)
-			scene = new Scene(parent_node);
-		return scene;
+		if (this.scene == null)
+			this.scene = new Scene(this.parent_node);
+		return this.scene;
 	}
-	
+
 	/**
-	 * Imposta la singola scena della view
+	 * Imposta la singola Scena della View
 	 * 
 	 * @param scene
 	 */
@@ -131,21 +138,21 @@ public abstract class View implements Initializable {
 		if (scene == null)
 			this.scene = scene;
 	}
-	
+
 	/**
 	 * Crea un Alert Dialog e rimane in attesa di essere consumato
 	 * 
 	 * @param type
 	 * @param title
-	 * @param text
+	 * @param header_text
 	 * @return Optional<ButtonType>
 	 */
-	public Optional<ButtonType> mostraAlert(AlertType type, String title, String text) {
+	public Optional<ButtonType> mostraAlert(AlertType type, String title, String header_text, String content_text) {
 		Alert alert = new Alert(type);
 		alert.setTitle(title);
-		alert.setHeaderText(null);
-		alert.setContentText(text);
+		alert.setHeaderText(header_text);
+		alert.setContentText(content_text);
 		return alert.showAndWait();
 	}
-	
+
 }

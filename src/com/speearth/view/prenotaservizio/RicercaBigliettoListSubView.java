@@ -10,11 +10,11 @@ import javafx.stage.Stage;
 /**
  * Classe che modella la Lista di risultati della ricerca di Alloggi
  */
-public class RicercaBigliettoListView extends ListCell<Biglietto> {
+public class RicercaBigliettoListSubView extends ListCell<Biglietto> {
 	
 	private Stage stage;
 	
-	public RicercaBigliettoListView(Stage stage) {
+	public RicercaBigliettoListSubView(Stage stage) {
 		this.stage = stage;
 	}
 	
@@ -29,9 +29,9 @@ public class RicercaBigliettoListView extends ListCell<Biglietto> {
 		super.updateItem(biglietto, empty);
 		
 		if (biglietto != null) {
-			RisultatoBigliettoView risultato_biglietto_view;
+			RisultatoBigliettoSubView risultato_biglietto_view;
 			try {
-				risultato_biglietto_view = new RisultatoBigliettoView(this.stage);
+				risultato_biglietto_view = new RisultatoBigliettoSubView(this.stage);
 				risultato_biglietto_view.impostaInfo(biglietto);
 				setGraphic(risultato_biglietto_view.getBorderPane());
 			} catch (IOException e) {

@@ -11,7 +11,7 @@ import java.util.Set;
 import com.speearth.controller.AppFacadeController;
 import com.speearth.model.core.Alloggio;
 import com.speearth.utility.Costanti;
-import com.speearth.view.View;
+import com.speearth.view.SubView;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,7 +24,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-public class RisultatoAlloggioView extends View {
+public class RisultatoAlloggioSubView extends SubView {
 	@FXML
 	private BorderPane risultato_alloggio;
 	@FXML
@@ -58,7 +58,7 @@ public class RisultatoAlloggioView extends View {
 	 * 
 	 * @param alloggio
 	 */
-	public RisultatoAlloggioView(Stage stage) throws IOException {
+	public RisultatoAlloggioSubView(Stage stage) throws IOException {
 		super(stage);
 	}
 
@@ -121,6 +121,11 @@ public class RisultatoAlloggioView extends View {
 		// TODO Auto-generated method stub
 	}
 
+	/**
+	 * Restituisce il nome della Risorsa associata alla View
+	 * 
+	 * @return String
+	 */
 	@Override
 	public String getResourceName() {
 		return Costanti.FXML_RISULTATO_ALLOGGIO;

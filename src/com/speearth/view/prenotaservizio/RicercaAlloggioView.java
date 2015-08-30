@@ -73,11 +73,11 @@ public class RicercaAlloggioView extends View {
 	public RicercaAlloggioView(Stage stage) throws IOException {
 		super(stage);
 		getStage().setTitle(Costanti.TITOLO_PRENOTA_ALLOGGIO);
-		
+
 		this.controller = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getPrenotaAlloggioController();
 	}
-	
+
 	/**
 	 * Recupera i dati inseriti dall'Utente nella form di ricerca
 	 * 
@@ -111,7 +111,7 @@ public class RicercaAlloggioView extends View {
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		this.lista_risultati.setCellFactory(param -> new RicercaAlloggioListView(getStage()));
+		this.lista_risultati.setCellFactory(param -> new RicercaAlloggioListSubView(getStage()));
 		this.lista_risultati.setItems(this.lista_alloggi);
 		this.bottone_ricerca.setDisable(true);
 	}
@@ -132,16 +132,16 @@ public class RicercaAlloggioView extends View {
 
 		} catch (NullPointerException e) {
 			e.printStackTrace();
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, Costanti.MESSAGGIO_PARAMETRI_MANCANTI);
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, Costanti.MESSAGGIO_PARAMETRI_MANCANTI, null);
 		}
 	}
 
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
 	@FXML
 	public void vaiAScegliServizio(ActionEvent event) throws IOException {
-		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO, 
-				Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
-		
+		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
+				Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO, null);
+
 		if (result.get() == ButtonType.OK)
 			mostraPrecedente();
 	}
@@ -156,10 +156,10 @@ public class RicercaAlloggioView extends View {
 	@FXML
 	public void vaiARiepilogo(ActionEvent event) throws IOException {
 		if (AppFacadeController.getInstance().getPrenotaServizioController().getServizio() == null)
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, Costanti.MESSAGGIO_NESSUN_SERVIZIO);
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, Costanti.MESSAGGIO_NESSUN_SERVIZIO, null);
 		else {
 			RiepilogoView view = new RiepilogoView(getStage());
-			view.setPreaviousView(this);
+			view.setPreviousView(this);
 			view.mostra();
 		}
 	}

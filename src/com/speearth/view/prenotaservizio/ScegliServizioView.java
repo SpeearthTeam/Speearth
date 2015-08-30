@@ -56,7 +56,7 @@ public class ScegliServizioView extends View {
 	@FXML
 	public void prenotaBiglietto(ActionEvent event) throws IOException {
 		RicercaBigliettoView view = new RicercaBigliettoView(getStage());
-		view.setPreaviousView(this);
+		view.setPreviousView(this);
 		view.mostra();
 	}
 
@@ -64,7 +64,7 @@ public class ScegliServizioView extends View {
 	@FXML
 	public void prenotaAlloggio(ActionEvent event) throws IOException {
 		RicercaAlloggioView view = new RicercaAlloggioView(getStage());
-		view.setPreaviousView(this);
+		view.setPreviousView(this);
 		view.mostra();
 	}
 
@@ -72,7 +72,7 @@ public class ScegliServizioView extends View {
 	@FXML
 	public void prenotaPacchetto(ActionEvent event) throws IOException {
 		RicercaPacchettoView view = new RicercaPacchettoView(getStage());
-		view.setPreaviousView(this);
+		view.setPreviousView(this);
 		view.mostra();
 	}
 

@@ -55,10 +55,10 @@ public class RiepilogoView extends View {
 	 * Servizio in prenotazione
 	 */
 	private IServizioComponent servizio;
-	
+
 	public RiepilogoView(Stage stage) throws IOException {
 		super(stage);
-		getStage().setTitle(Costanti.TITOLO_RIEPILOGO);
+		this.stage.setTitle(Costanti.TITOLO_RIEPILOGO);
 	}
 
 	/**
@@ -77,14 +77,15 @@ public class RiepilogoView extends View {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		this.servizio = AppFacadeController.getInstance().getPrenotaServizioController().getServizio();
+		this.output_totale.setText(Float.toString(this.servizio.getPrezzo()));
 	}
 
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
 	@FXML
 	public void vaiAScegliServizio(ActionEvent event) throws IOException {
-		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO, 
-				Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
-				
+		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
+				Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO, null);
+
 		if (result.get() == ButtonType.OK) {
 			ScegliServizioView view = new ScegliServizioView(getStage());
 			view.mostra();
@@ -111,7 +112,7 @@ public class RiepilogoView extends View {
 		if (cliente != null)
 			this.impostaInfoCliente(cliente);
 		else
-			mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_ERRORE, Costanti.MESSAGGIO_CLIENTE_NON_TROVATO);
+			mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_ERRORE, Costanti.MESSAGGIO_CLIENTE_NON_TROVATO, null);
 	}
 
 	// Event Listener on Button[#bottone_conferma_pagamento].onAction
@@ -119,9 +120,15 @@ public class RiepilogoView extends View {
 	public void effettuaPagamento(ActionEvent event) {
 		String ricevuta = AppFacadeController.getInstance().getPrenotaServizioController()
 				.effettuaPagamento(this.cliente, this.input_metodo_pagamento.getText());
-		mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_PAGAMENTO_EFFETTUATO, Costanti.MESSAGGIO_PAGAMENTO_EFFETTUATO);
+		mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_PAGAMENTO_EFFETTUATO,
+				Costanti.MESSAGGIO_PAGAMENTO_EFFETTUATO, ricevuta);
 	}
 
+	/**
+	 * Restituisce il nome della Risorsa associata alla View
+	 * 
+	 * @return String
+	 */
 	@Override
 	public String getResourceName() {
 		return Costanti.FXML_RIEPILOGO;

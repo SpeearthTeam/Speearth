@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 /**
  * Classe che modella la Lista di risultati della ricerca di Alloggi
  */
-public class RicercaAlloggioListView extends ListCell<Alloggio> {
+public class RicercaAlloggioListSubView extends ListCell<Alloggio> {
 	
 	/**
 	 * Stage della list view
@@ -22,7 +22,7 @@ public class RicercaAlloggioListView extends ListCell<Alloggio> {
 	 * 
 	 * @param stage
 	 */
-	public RicercaAlloggioListView(Stage stage) {
+	public RicercaAlloggioListSubView(Stage stage) {
 		this.stage = stage;
 	}
 	
@@ -38,7 +38,7 @@ public class RicercaAlloggioListView extends ListCell<Alloggio> {
 		
 		if (alloggio != null) {
 			try {
-				RisultatoAlloggioView risultato_alloggio_view = new RisultatoAlloggioView(this.stage);
+				RisultatoAlloggioSubView risultato_alloggio_view = new RisultatoAlloggioSubView(this.stage);
 				risultato_alloggio_view.impostaInfo(alloggio);
 				setGraphic(risultato_alloggio_view.getBorderPane());
 			} catch (IOException e) {
