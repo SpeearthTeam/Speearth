@@ -64,7 +64,9 @@ public abstract class View implements Initializable {
 	 * Mostra la view
 	 */
 	public void mostra() {
-		this.stage.setScene(this.scene);
+		// prendo la singola istanza della scena e se non esiste la creo
+		Scene scene = getScene();
+		this.stage.setScene(scene);
 		this.stage.show();
 	}
 
