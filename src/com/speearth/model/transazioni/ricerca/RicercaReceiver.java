@@ -134,5 +134,12 @@ public class RicercaReceiver {
 		return this.risultato_ricerca;
 		
 	}
+	
+	/**
+	 * Svuota i risultati di ricerca
+	 */
+	public void svuotaRisultatiRicerca() {
+		this.risultato_ricerca.clear();
+	}
 
 }

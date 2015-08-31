@@ -51,7 +51,7 @@ public class ItaloAdapter extends AziendaTrasportoAdapter {
 		// impostare le chiavi di ricerca nell'url
 		// in un modo possibilmente più elegante :)
 		// String url = this.getUrl() + "q=" + parametri.get("partenza");
-		return Costanti.URL_ITALO;
+		return Costanti.URL_ITALO + "index.php?action=search&category=tickets&provider=Italo";
 	}
 
 	/**

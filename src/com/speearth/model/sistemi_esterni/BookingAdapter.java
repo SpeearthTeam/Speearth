@@ -46,7 +46,7 @@ public class BookingAdapter extends ImpresaRicettivaAdapter {
 		// impostare le chiavi di ricerca nell'url
 		// in un modo possibilmente più elegante :)
 		// String url = this.getUrl() + "q=" + parametri.get("localita");
-		return Costanti.URL_BOOKING;
+		return Costanti.URL_BOOKING + "index.php?action=search&category=accomodations";
 	}
 
 	/**

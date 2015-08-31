@@ -2,6 +2,7 @@ package com.speearth.view.prenotaservizio;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import com.speearth.controller.AppFacadeController;
@@ -82,10 +83,12 @@ public class RisultatoBigliettoSubView extends SubView {
 	 * @param biglietto
 	 */
 	public void impostaInfo(Biglietto biglietto) {
-		this.output_data_destinazione_andata.setText(biglietto.getDataArrivoAndata().toString());
-		this.output_data_destinazione_ritorno.setText(biglietto.getDataArrivoRitorno().toString());
-		this.output_data_partenza_andata.setText(biglietto.getDataPartenzaAndata().toString());
-		this.output_data_partenza_ritorno.setText(biglietto.getDataPartenzaRitorno().toString());
+		this.output_data_destinazione_andata.setText(biglietto.getDataArrivoAndata().format(DateTimeFormatter.ISO_DATE));
+		this.output_data_destinazione_ritorno.setText(biglietto.getDataArrivoRitorno().format(DateTimeFormatter.ISO_DATE));
+		this.output_data_partenza_andata.setText(biglietto.getDataPartenzaAndata().format(DateTimeFormatter.ISO_DATE));
+		this.output_data_partenza_ritorno.setText(biglietto.getDataPartenzaRitorno().format(DateTimeFormatter.ISO_DATE));
+		this.output_partenza_andata.setText(biglietto.getPartenza());
+		this.output_data_partenza_ritorno.setText(biglietto.getDestinazione());
 		this.output_destinazione_andata.setText(biglietto.getDestinazione());
 		this.output_destinazione_ritorno.setText(biglietto.getPartenza());
 		this.output_n_adulti_andata.setText(Integer.toString(biglietto.getNumeroAdulti()));
@@ -93,6 +96,7 @@ public class RisultatoBigliettoSubView extends SubView {
 		this.output_n_bambini_andata.setText(Integer.toString(biglietto.getNumeroBambini()));
 		this.output_n_bambini_ritorno.setText(Integer.toString(biglietto.getNumeroBambini()));
 		this.output_nome_fornitore.setText(biglietto.getFornitore());
+		this.output_prezzo.setText(biglietto.getPrezzo() + " €");
 		// e gli orari...
 	}
 
@@ -135,6 +139,6 @@ public class RisultatoBigliettoSubView extends SubView {
 	 */
 	@Override
 	public String getResourceName() {
-		return Costanti.FXML_RISULTATO_ALLOGGIO;
+		return Costanti.FXML_RISULTATO_BIGLIETTO;
 	}
 }

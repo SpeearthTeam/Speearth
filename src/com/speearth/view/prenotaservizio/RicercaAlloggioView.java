@@ -10,7 +10,6 @@ import java.util.ResourceBundle;
 import com.speearth.controller.AppFacadeController;
 import com.speearth.controller.PrenotaAlloggioController;
 import com.speearth.model.core.Alloggio;
-import com.speearth.model.core.IServizioComponent;
 import com.speearth.utility.Costanti;
 import com.speearth.view.View;
 
@@ -121,13 +120,10 @@ public class RicercaAlloggioView extends View {
 	public void ricercaAlloggi(ActionEvent event) {
 		try {
 			HashMap<String, String> dati = this.recuperaDati();
-			ArrayList<IServizioComponent> risultati = this.controller.ricerca(dati);
+			ArrayList<Alloggio> risultati = this.controller.ricerca(dati);
 
 			this.lista_alloggi.clear();
-
-			for (int i = 0; i < risultati.size(); i++)
-				this.lista_alloggi.add((Alloggio) risultati.get(i));
-
+			this.lista_alloggi.setAll(risultati);
 			this.lista_risultati.setItems(lista_alloggi);
 
 		} catch (NullPointerException e) {

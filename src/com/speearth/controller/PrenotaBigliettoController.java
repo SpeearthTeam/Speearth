@@ -42,14 +42,19 @@ public class PrenotaBigliettoController implements IFrammentoController {
 	 * Effettua una ricerca di Biglietti secondo i parametri
 	 * 
 	 * @param parametri
-	 * @return ArrayList<ServizioComponent>
+	 * @return ArrayList<Biglietto>
 	 */
-	public ArrayList<IServizioComponent> ricerca(HashMap<String, String> parametri) {
+	public ArrayList<Biglietto> ricerca(HashMap<String, String> parametri) {
 
 		RicercaReceiver ricerca_receiver = RicercaReceiver.getInstance();
 		AgenziaFacade.getInstance().effettuaTransazione(new RicercaBigliettiCommand(ricerca_receiver, parametri));
-		return ricerca_receiver.getRisultatoRicerca();
+		ArrayList<IServizioComponent> risultati = ricerca_receiver.getRisultatoRicerca();
+		ArrayList<Biglietto> biglietti = new ArrayList<Biglietto>();
+		
+		for (IServizioComponent risultato : risultati)
+			biglietti.add((Biglietto) risultato);
 
+		return biglietti;
 	}
 
 	/**

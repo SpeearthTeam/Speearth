@@ -62,7 +62,7 @@ public final class Costanti {
 	/**
 	 * URL dei Sistemi Esterni
 	 */
-	public final static String URL_TRENITALIA = "http://h4ck1n6.altervista.org/trenitalia.json";
-	public final static String URL_ITALO = "http://h4ck1n6.altervista.org/italo.json";
-	public final static String URL_BOOKING = "http://h4ck1n6.altervista.org/booking.json";
+	public final static String URL_TRENITALIA = "http://h4ck1n6.altervista.org/";
+	public final static String URL_ITALO = "http://h4ck1n6.altervista.org/";
+	public final static String URL_BOOKING = "http://h4ck1n6.altervista.org/";
 }

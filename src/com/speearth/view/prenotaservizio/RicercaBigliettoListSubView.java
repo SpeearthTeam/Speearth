@@ -29,9 +29,8 @@ public class RicercaBigliettoListSubView extends ListCell<Biglietto> {
 		super.updateItem(biglietto, empty);
 		
 		if (biglietto != null) {
-			RisultatoBigliettoSubView risultato_biglietto_view;
 			try {
-				risultato_biglietto_view = new RisultatoBigliettoSubView(this.stage);
+				RisultatoBigliettoSubView risultato_biglietto_view = new RisultatoBigliettoSubView(this.stage);
 				risultato_biglietto_view.impostaInfo(biglietto);
 				setGraphic(risultato_biglietto_view.getBorderPane());
 			} catch (IOException e) {
