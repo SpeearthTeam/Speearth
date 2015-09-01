@@ -85,7 +85,9 @@ public class RicercaPacchettoView extends View {
 	@FXML
 	private MenuButton input_numero_quadruple;
 	@FXML
-	private ListView<BorderPane> lista_risultati;
+	private ListView<BorderPane> lista_risultati_biglietti;
+	@FXML
+	private ListView<BorderPane> lista_risultati_alloggi;
 	@FXML
 	private TableView<String> tabella_pacchetto;
 

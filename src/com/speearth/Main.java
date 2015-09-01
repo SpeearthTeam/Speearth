@@ -3,6 +3,7 @@ package com.speearth;
 import com.speearth.view.prenotaservizio.ScegliServizioView;
 
 import javafx.application.Application;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Main extends Application{
@@ -20,6 +21,7 @@ public class Main extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		ScegliServizioView view = new ScegliServizioView(primaryStage);
+		primaryStage.getIcons().add(new Image(this.getClass().getResourceAsStream("/ui/img/logo.jpg")));
 		view.mostra();
 	}
 
