@@ -5,7 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
 	<top>
 		<ToolBar prefHeight="40.0" prefWidth="200.0" stylesheets="@../css/RicercaPacchetto.css" BorderPane.alignment="CENTER">
 			<items>
@@ -16,7 +16,7 @@
 		</ToolBar>
 	</top>
 	<center>
-		<BorderPane BorderPane.alignment="CENTER">
+		<BorderPane minWidth="1280.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
 			<top>
 				<Accordion stylesheets="@../css/RicercaPacchetto.css" BorderPane.alignment="CENTER">
 					<panes>
@@ -50,8 +50,8 @@
 					</panes>
 				</Accordion>
 			</top>
-			<left>
-				<TabPane maxWidth="1280.0" minWidth="1280.0" prefWidth="1280.0" stylesheets="@../css/RicercaPacchetto.css" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+         <center>
+				<TabPane stylesheets="@../css/RicercaPacchetto.css" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
 					<tabs>
 						<Tab text="Biglietti">
                      <content>
@@ -187,7 +187,7 @@
 						</Tab>
 					</tabs>
 				</TabPane>
-			</left>
+         </center>
 		</BorderPane>
 	</center>
 </BorderPane>
