@@ -135,7 +135,7 @@ public class RicercaBigliettoView extends View {
 		if (AppFacadeController.getInstance().getPrenotaServizioController().getServizio() == null)
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, Costanti.MESSAGGIO_NESSUN_SERVIZIO, null);
 		else {
-			RiepilogoView view = new RiepilogoView(getStage());
+			RiepilogoPacchettoView view = new RiepilogoPacchettoView(getStage());
 			view.setPreviousView(this);
 			view.mostra();
 		}

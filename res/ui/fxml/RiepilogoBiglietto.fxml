@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import org.controlsfx.control.textfield.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <items>
+          <Button fx:id="bottone_scegli_servizio" mnemonicParsing="false" onAction="#vaiAScegliServizio" text="Scegli Servizio" />
+            <Button fx:id="bottone_ricerca" mnemonicParsing="false" onAction="#vaiARicerca" text="Ricerca" />
+            <Button fx:id="bottone_riepilogo" mnemonicParsing="false" onAction="#vaiARiepilogo" text="Riepilogo" />
+        </items>
+      </ToolBar>
+   </top>
+   <center>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+               <children>
+                  <Label text="Dati del Cliente" />
+                  <GridPane alignment="CENTER" prefHeight="274.0" prefWidth="427.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="10.0" prefWidth="122.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="305.0" minWidth="10.0" prefWidth="305.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Codice Tessera" />
+                        <Label text="Nome" GridPane.rowIndex="1" />
+                        <Label text="Codice Fiscale" GridPane.rowIndex="4" />
+                        <Label text="Data di Nascita" GridPane.rowIndex="3" />
+                        <Label text="Cognome" GridPane.rowIndex="2" />
+                        <Label fx:id="output_nome_cliente" text="nome_cliente" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="output_cognome_cliente" text="cognome_cliente" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="output_data_nascita_cliente" text="data_nascita_cliente" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="output_cf_cliente" text="cf_cliente" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                           <children>
+                              <TextField fx:id="input_codice_tessera" prefHeight="31.0" prefWidth="237.0" />
+                              <Button fx:id="bottone_identifica_cliente" mnemonicParsing="false" onAction="#identificaCliente" prefHeight="31.0" prefWidth="100.0" text="Identifica" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </GridPane>
+                  <VBox alignment="CENTER" prefHeight="146.0" prefWidth="427.0">
+                     <children>
+                        <Label text="Questo Cliente ha diritto ad un Bonus:" />
+                        <Label fx:id="output_tipo_bonus" text="tipo_bonus" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
+               <children>
+                  <Label text="Prezzo Totale" />
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="output_totale" text="totale" />
+                        <Label text=" €" />
+                     </children>
+                  </HBox>
+                  <Button fx:id="bottone_conferma_pagamento" mnemonicParsing="false" onAction="#effettuaPagamento" text="Conferma Pagamento" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Riepilogo Prenotazione" />
+               </children>
+            </VBox>
+         </children>
+      </GridPane>
+   </center>
+</BorderPane>
