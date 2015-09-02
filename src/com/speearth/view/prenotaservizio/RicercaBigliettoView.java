@@ -50,6 +50,8 @@ public class RicercaBigliettoView extends View {
 	@FXML
 	private Button bottone_scegli_servizio;
 	@FXML
+	private Button bottone_ricerca;
+	@FXML
 	private Button bottone_riepilogo;
 	@FXML
 	private ListView<Biglietto> lista_risultati;
@@ -92,8 +94,9 @@ public class RicercaBigliettoView extends View {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		this.controller = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getPrenotaBigliettoController();
-		this.lista_risultati.setItems(this.lista_biglietti);
 		this.lista_risultati.setCellFactory(param -> new RicercaBigliettoListSubView(getStage()));
+		this.lista_risultati.setItems(this.lista_biglietti);
+		this.bottone_ricerca.setDisable(true);
 	}
 
 	// Event Listener on Button[#ricerca_biglietti].onAction
