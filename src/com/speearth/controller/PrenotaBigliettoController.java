@@ -17,7 +17,7 @@ public class PrenotaBigliettoController implements IFrammentoController {
 	 * Biglietto in prenotazione
 	 */
 	private Biglietto biglietto;
-	
+
 	/**
 	 * Unica instanza del controller
 	 */
@@ -28,7 +28,7 @@ public class PrenotaBigliettoController implements IFrammentoController {
 	 */
 	private PrenotaBigliettoController() {
 	}
-	
+
 	/**
 	 * Restituisce l'instanza del controller
 	 */
@@ -45,12 +45,12 @@ public class PrenotaBigliettoController implements IFrammentoController {
 	 * @return ArrayList<Biglietto>
 	 */
 	public ArrayList<Biglietto> ricerca(HashMap<String, String> parametri) {
-
 		RicercaReceiver ricerca_receiver = RicercaReceiver.getInstance();
-		AgenziaFacade.getInstance().effettuaTransazione(new RicercaBigliettiCommand(ricerca_receiver, parametri));
+		RicercaBigliettiCommand command = new RicercaBigliettiCommand(ricerca_receiver, parametri);
+		AgenziaFacade.getInstance().effettuaTransazione(command);
 		ArrayList<IServizioComponent> risultati = ricerca_receiver.getRisultatoRicerca();
 		ArrayList<Biglietto> biglietti = new ArrayList<Biglietto>();
-		
+
 		for (IServizioComponent risultato : risultati)
 			biglietti.add((Biglietto) risultato);
 

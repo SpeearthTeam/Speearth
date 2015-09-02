@@ -128,17 +128,20 @@ public class RicercaAlloggioView extends View {
 
 		} catch (NullPointerException e) {
 			e.printStackTrace();
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, Costanti.MESSAGGIO_PARAMETRI_MANCANTI, null);
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PARAMETRI_MANCANTI);
 		}
 	}
 
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
 	@FXML
 	public void vaiAScegliServizio(ActionEvent event) throws IOException {
-		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
-				Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO, null);
+		if (!this.lista_alloggi.isEmpty()) {
+			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
+					null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
 
-		if (result.get() == ButtonType.OK)
+			if (result.get() == ButtonType.OK)
+				mostraPrecedente();
+		} else
 			mostraPrecedente();
 	}
 
@@ -152,7 +155,7 @@ public class RicercaAlloggioView extends View {
 	@FXML
 	public void vaiARiepilogo(ActionEvent event) throws IOException {
 		if (AppFacadeController.getInstance().getPrenotaServizioController().getServizio() == null)
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, Costanti.MESSAGGIO_NESSUN_SERVIZIO, null);
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null, Costanti.MESSAGGIO_NESSUN_SERVIZIO);
 		else {
 			RiepilogoPacchettoView view = new RiepilogoPacchettoView(getStage());
 			view.setPreviousView(this);

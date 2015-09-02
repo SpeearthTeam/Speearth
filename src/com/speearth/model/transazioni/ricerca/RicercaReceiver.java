@@ -17,12 +17,12 @@ import com.speearth.model.sistemi_esterni.SistemaEsternoFactory;
  * Receiver del sistema di ricerca
  */
 public class RicercaReceiver {
-	
+
 	/**
 	 * Istanza della classe
 	 */
 	private static RicercaReceiver instance;
-	
+
 	/**
 	 * Risultato del comando Ricerca
 	 */
@@ -38,30 +38,30 @@ public class RicercaReceiver {
 			instance = new RicercaReceiver();
 		return instance;
 	}
-	
+
 	/**
 	 * Costruttore di default
 	 */
 	private RicercaReceiver() {
 		this.risultato_ricerca = new ArrayList<IServizioComponent>();
 	}
-	
+
 	/**
 	 * Restituisce il risultato di un comando di Ricerca
 	 * 
 	 * @return ArrayList<IServizioComponent>
 	 */
-	public ArrayList<IServizioComponent> getRisultatoRicerca(){
+	public ArrayList<IServizioComponent> getRisultatoRicerca() {
 		return this.risultato_ricerca;
 	}
-	
+
 	/**
 	 * Imposta il risultato di un comando di Ricerca Alloggi
 	 * 
 	 * @param parametri
 	 */
-	private void setRisultatoRicercaAlloggi(HashMap<String, String> parametri){
-		
+	private void setRisultatoRicercaAlloggi(HashMap<String, String> parametri) {
+
 		ArrayList<ImpresaRicettivaAdapter> imprese_ricettive = SistemaEsternoFactory.getInstance()
 				.getImpreseRicettive();
 
@@ -89,10 +89,9 @@ public class RicercaReceiver {
 	 * @return ArrayList<Alloggio>
 	 */
 	public ArrayList<IServizioComponent> ricercaAlloggi(HashMap<String, String> parametri) {
-		
+		this.svuotaRisultatiRicerca();
 		this.setRisultatoRicercaAlloggi(parametri);
 		return this.risultato_ricerca;
-		
 	}
 
 	/**
@@ -100,8 +99,8 @@ public class RicercaReceiver {
 	 * 
 	 * @param parametri
 	 */
-	private void setRisultatoRicercaBiglietti(HashMap<String, String> parametri){
-		
+	private void setRisultatoRicercaBiglietti(HashMap<String, String> parametri) {
+
 		ArrayList<AziendaTrasportoAdapter> aziende_trasporto = SistemaEsternoFactory.getInstance()
 				.getAziendeDiTrasporto();
 
@@ -121,7 +120,7 @@ public class RicercaReceiver {
 
 		}
 	}
-	
+
 	/**
 	 * Effettua una ricerca di biglietti secondo i parametri
 	 * 
@@ -129,16 +128,15 @@ public class RicercaReceiver {
 	 * @return ArrayList<Biglietto>
 	 */
 	public ArrayList<IServizioComponent> ricercaBiglietti(HashMap<String, String> parametri) {
-
+		this.svuotaRisultatiRicerca();
 		this.setRisultatoRicercaBiglietti(parametri);
 		return this.risultato_ricerca;
-		
 	}
-	
+
 	/**
 	 * Svuota i risultati di ricerca
 	 */
-	public void svuotaRisultatiRicerca() {
+	private void svuotaRisultatiRicerca() {
 		this.risultato_ricerca.clear();
 	}
 

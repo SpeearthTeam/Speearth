@@ -48,7 +48,6 @@ public class PrenotaAlloggioController implements IFrammentoController {
 	 */
 	public ArrayList<Alloggio> ricerca(HashMap<String, String> parametri) {
 		RicercaReceiver ricerca_receiver = RicercaReceiver.getInstance();
-		ricerca_receiver.svuotaRisultatiRicerca();
 		RicercaAlloggiCommand command = new RicercaAlloggiCommand(ricerca_receiver, parametri);
 		AgenziaFacade.getInstance().effettuaTransazione(command);
 		ArrayList<IServizioComponent> risultati = ricerca_receiver.getRisultatoRicerca();

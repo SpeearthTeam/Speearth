@@ -95,9 +95,9 @@ public class RicercaPacchettoView extends View {
 	private ListView<Alloggio> lista_risultati_alloggi;
 	@FXML
 	private TableView<String> tabella_pacchetto;
-	
+
 	private ObservableList<Biglietto> lista_biglietti = FXCollections.observableArrayList();
-	
+
 	private ObservableList<Alloggio> lista_alloggi = FXCollections.observableArrayList();
 
 	/**
@@ -126,27 +126,34 @@ public class RicercaPacchettoView extends View {
 		// TODO Auto-generated method stub
 		this.controller = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getPrenotaPacchettoController();
-		
+
 		this.lista_risultati_biglietti.setCellFactory(param -> new RicercaBigliettoListSubView(getStage()));
 		this.lista_risultati_biglietti.setItems(this.lista_biglietti);
-		
+
 		this.lista_risultati_alloggi.setCellFactory(param -> new RicercaAlloggioListSubView(getStage()));
 		this.lista_risultati_alloggi.setItems(this.lista_alloggi);
-		
+
 		this.bottone_ricerca.setDisable(true);
 	}
 
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
 	@FXML
 	public void vaiAScegliServizio(ActionEvent event) throws IOException {
-		if (this.pacchetto != null) {
+		if (!this.lista_biglietti.isEmpty() || !this.lista_alloggi.isEmpty()) {
 			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
-					Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO, null);
+					null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
+
+			if (result.get() == ButtonType.OK)
+				mostraPrecedente();
+
+		} else if (this.pacchetto != null) {
+			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
+					null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
 
 			if (result.get() != ButtonType.OK)
 				return;
-		}
-		mostraPrecedente();
+		} else
+			mostraPrecedente();
 	}
 
 	// Event Listener on Button[#bottone_ricerca].onAction
@@ -159,7 +166,7 @@ public class RicercaPacchettoView extends View {
 	@FXML
 	public void vaiARiepilogo(ActionEvent event) throws IOException {
 		if (AppFacadeController.getInstance().getPrenotaServizioController().getServizio() == null)
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, Costanti.MESSAGGIO_NESSUN_SERVIZIO, null);
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null, Costanti.MESSAGGIO_NESSUN_SERVIZIO);
 		else {
 			RiepilogoPacchettoView view = new RiepilogoPacchettoView(getStage());
 			view.setPreviousView(this);
@@ -171,7 +178,7 @@ public class RicercaPacchettoView extends View {
 	@FXML
 	public void svuotaPacchetto(ActionEvent event) {
 		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_SVUOTA_PACCHETTO,
-				Costanti.MESSAGGIO_SVUOTA_PACCHETTO, null);
+				null, Costanti.MESSAGGIO_SVUOTA_PACCHETTO);
 
 		if (result.get() == ButtonType.OK) {
 			// cancellare la TableView
@@ -186,7 +193,8 @@ public class RicercaPacchettoView extends View {
 	}
 
 	/**
-	 * Recupera i dati inseriti dall'Utente nella form di ricerca della tab Biglietti
+	 * Recupera i dati inseriti dall'Utente nella form di ricerca della tab
+	 * Biglietti
 	 * 
 	 * @return HashMap<String, String>
 	 */
@@ -203,7 +211,7 @@ public class RicercaPacchettoView extends View {
 		parametri.put("mezzo", this.input_mezzo.getText());
 		return parametri;
 	}
-	
+
 	// Event Listener on Button[#ricerca_biglietti].onAction
 	@FXML
 	public void ricercaBiglietti(ActionEvent event) {
@@ -217,12 +225,13 @@ public class RicercaPacchettoView extends View {
 
 		} catch (NullPointerException e) {
 			e.printStackTrace();
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, Costanti.MESSAGGIO_PARAMETRI_MANCANTI, null);
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PARAMETRI_MANCANTI);
 		}
 	}
 
 	/**
-	 * Recupera i dati inseriti dall'Utente nella form di ricerca della tab Alloggi
+	 * Recupera i dati inseriti dall'Utente nella form di ricerca della tab
+	 * Alloggi
 	 * 
 	 * @return HashMap<String, String>
 	 */
@@ -245,7 +254,7 @@ public class RicercaPacchettoView extends View {
 
 		return parametri;
 	}
-	
+
 	// Event Listener on Button[#ricerca_alloggi].onAction
 	@FXML
 	public void ricercaAlloggi(ActionEvent event) {
@@ -259,7 +268,7 @@ public class RicercaPacchettoView extends View {
 
 		} catch (NullPointerException e) {
 			e.printStackTrace();
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, Costanti.MESSAGGIO_PARAMETRI_MANCANTI, null);
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PARAMETRI_MANCANTI);
 		}
 	}
 
