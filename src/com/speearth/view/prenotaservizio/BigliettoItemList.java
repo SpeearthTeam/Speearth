@@ -10,11 +10,19 @@ import javafx.stage.Stage;
 /**
  * Classe che modella la Lista di risultati della ricerca di Alloggi
  */
-public class RicercaBigliettoListSubView extends ListCell<Biglietto> {
+public class BigliettoItemList extends ListCell<Biglietto> {
 	
+	/**
+	 * Lo stage della finestra
+	 */
 	private Stage stage;
 	
-	public RicercaBigliettoListSubView(Stage stage) {
+	/**
+	 * Costruttore di default
+	 * 
+	 * @param stage
+	 */
+	public BigliettoItemList(Stage stage) {
 		this.stage = stage;
 	}
 	
@@ -30,9 +38,8 @@ public class RicercaBigliettoListSubView extends ListCell<Biglietto> {
 		
 		if (biglietto != null) {
 			try {
-				RisultatoBigliettoSubView risultato_biglietto_view = new RisultatoBigliettoSubView(this.stage);
-				risultato_biglietto_view.impostaInfo(biglietto);
-				setGraphic(risultato_biglietto_view.getBorderPane());
+				RisultatoBigliettoItem biglietto_item = new RisultatoBigliettoItem(this.stage, biglietto);
+				setGraphic(biglietto_item.getParentNode());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

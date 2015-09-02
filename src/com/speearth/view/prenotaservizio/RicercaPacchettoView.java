@@ -127,10 +127,10 @@ public class RicercaPacchettoView extends View {
 		this.controller = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getPrenotaPacchettoController();
 
-		this.lista_risultati_biglietti.setCellFactory(param -> new RicercaBigliettoListSubView(getStage()));
+		this.lista_risultati_biglietti.setCellFactory(param -> new BigliettoItemList(getStage()));
 		this.lista_risultati_biglietti.setItems(this.lista_biglietti);
 
-		this.lista_risultati_alloggi.setCellFactory(param -> new RicercaAlloggioListSubView(getStage()));
+		this.lista_risultati_alloggi.setCellFactory(param -> new AlloggioItemList(getStage()));
 		this.lista_risultati_alloggi.setItems(this.lista_alloggi);
 
 		this.bottone_ricerca.setDisable(true);

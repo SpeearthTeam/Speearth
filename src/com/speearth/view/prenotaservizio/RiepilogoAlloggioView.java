@@ -2,10 +2,12 @@ package com.speearth.view.prenotaservizio;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 import com.speearth.controller.AppFacadeController;
+import com.speearth.controller.PrenotaAlloggioController;
 import com.speearth.model.core.Alloggio;
 import com.speearth.model.core.Cliente;
 import com.speearth.utility.Costanti;
@@ -46,6 +48,14 @@ public class RiepilogoAlloggioView extends View {
 	@FXML
 	private Label output_totale;
 	@FXML
+	private Label output_fonitore;
+	@FXML
+	private Label output_localita;
+	@FXML
+	private Label output_data_andata;
+	@FXML
+	private Label output_data_ritorno;
+	@FXML
 	private Button bottone_conferma_pagamento;
 
 	/**
@@ -58,6 +68,35 @@ public class RiepilogoAlloggioView extends View {
 	 */
 	private Alloggio alloggio;
 
+
+	/**
+	 * Costruttore della View
+	 * 
+	 * @param stage
+	 * @throws IOException
+	 */
+	public RiepilogoAlloggioView(Stage stage) throws IOException {
+		super(stage);
+		this.stage.setTitle(Costanti.TITOLO_RIEPILOGO);
+		
+		PrenotaAlloggioController controller = AppFacadeController.getInstance().getPrenotaServizioController().
+				getPrenotaAlloggioController();
+		
+		this.alloggio = controller.getAlloggio();
+		impostaInfoAlloggio();
+	}
+
+	/**
+	 * Inizializza la View
+	 * 
+	 * @param arg0
+	 * @param arg1
+	 */
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		
+	}
+	
 	/**
 	 * Imposta le informazioni del Cliente nella View
 	 * 
@@ -69,29 +108,16 @@ public class RiepilogoAlloggioView extends View {
 		this.output_data_nascita_cliente.setText(cliente.getDataNascita().toString());
 		this.output_nome_cliente.setText(cliente.getNome());
 	}
-
+	
 	/**
-	 * Costruttore della View
-	 * 
-	 * @param stage
-	 * @throws IOException
+	 * Imposta le informazioni dell'Alloggio nella View
 	 */
-	public RiepilogoAlloggioView(Stage stage) throws IOException {
-		super(stage);
-		this.stage.setTitle(Costanti.TITOLO_RIEPILOGO);
-	}
-
-	/**
-	 * Inizializza la View
-	 * 
-	 * @param arg0
-	 * @param arg1
-	 */
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		// TODO caricare le info del servizio
-		this.alloggio = (Alloggio) AppFacadeController.getInstance().getPrenotaServizioController().getServizio();
+	public void impostaInfoAlloggio() {
 		this.output_totale.setText(Float.toString(this.alloggio.getPrezzo()));
+		this.output_fonitore.setText(this.alloggio.getFornitore());
+		this.output_localita.setText(this.alloggio.getLocalita());
+		this.output_data_andata.setText(this.alloggio.getDataPartenza().format(DateTimeFormatter.ISO_TIME));
+		this.output_data_ritorno.setText(this.alloggio.getDataArrivo().format(DateTimeFormatter.ISO_TIME));
 	}
 
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
@@ -108,8 +134,7 @@ public class RiepilogoAlloggioView extends View {
 	// Event Listener on Button[#bottone_ricerca].onAction
 	@FXML
 	public void vaiARicerca(ActionEvent event) throws IOException {
-		RicercaAlloggioView view = new RicercaAlloggioView(this.getStage());
-		view.mostra();
+		mostraPrecedente();
 	}
 
 	// Event Listener on Button[#bottone_identifica_cliente].onAction

@@ -73,7 +73,7 @@
 			<items>
 				<Button fx:id="bottone_scegli_servizio" mnemonicParsing="false" onAction="#vaiAScegliServizio" text="Scegli Servizio" />
 				<Button fx:id="bottone_ricerca" mnemonicParsing="false" onAction="#vaiARicerca" text="Ricerca" />
-				<Button fx:id="bottone_riepilogo" mnemonicParsing="false" onAction="#vaiARiepilogo" text="Riepilogo" />
+				<Button fx:id="bottone_riepilogo" mnemonicParsing="false" onAction="#vaiARiepilogoButtonClick" text="Riepilogo" />
 			</items>
 		</ToolBar>
 	</top>

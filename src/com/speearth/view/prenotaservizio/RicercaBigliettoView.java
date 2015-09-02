@@ -11,11 +11,13 @@ import com.speearth.controller.AppFacadeController;
 import com.speearth.controller.PrenotaBigliettoController;
 import com.speearth.model.core.Biglietto;
 import com.speearth.utility.Costanti;
+import com.speearth.view.EventoConferma;
 import com.speearth.view.View;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -63,6 +65,19 @@ public class RicercaBigliettoView extends View {
 	public RicercaBigliettoView(Stage stage) throws IOException {
 		super(stage);
 		getStage().setTitle(Costanti.TITOLO_PRENOTA_BIGLIETTO);
+		
+		getParentNode().addEventHandler(EventoConferma.PRENOTAZIONE_CONFERMATA, new EventHandler<EventoConferma>() {
+
+			@Override
+			public void handle(EventoConferma event) {
+				try {
+					vaiARiepilogo();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			
+		});
 	}
 
 	/**
@@ -94,7 +109,7 @@ public class RicercaBigliettoView extends View {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		this.controller = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getPrenotaBigliettoController();
-		this.lista_risultati.setCellFactory(param -> new RicercaBigliettoListSubView(getStage()));
+		this.lista_risultati.setCellFactory(param -> new BigliettoItemList(getStage()));
 		this.lista_risultati.setItems(this.lista_biglietti);
 		this.bottone_ricerca.setDisable(true);
 	}
@@ -137,11 +152,15 @@ public class RicercaBigliettoView extends View {
 
 	// Event Listener on Button[#bottone_riepilogo].onAction
 	@FXML
-	public void vaiARiepilogo(ActionEvent event) throws IOException {
-		if (AppFacadeController.getInstance().getPrenotaServizioController().getServizio() == null)
+	public void vaiARiepilogoButtonClick(ActionEvent event) throws IOException {
+		vaiARiepilogo();
+	}
+	
+	public void vaiARiepilogo() throws IOException {
+		if (controller.getBiglietto() == null)
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null, Costanti.MESSAGGIO_NESSUN_SERVIZIO);
 		else {
-			RiepilogoPacchettoView view = new RiepilogoPacchettoView(getStage());
+			RiepilogoBigliettoView view = new RiepilogoBigliettoView(getStage());
 			view.setPreviousView(this);
 			view.mostra();
 		}

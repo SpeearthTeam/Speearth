@@ -20,10 +20,7 @@ public abstract class SubView extends View {
 	}
 
 	/**
-	 * Restituisce il nome della Risorsa associata alla SubView
-	 * 
-	 * @return String
+	 * Aggiorna l'interfaccia grafica della subview
 	 */
-	@Override
-	public abstract String getResourceName();
+	public abstract void updateUI();
 }

@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import com.speearth.controller.AppFacadeController;
+import com.speearth.controller.PrenotaBigliettoController;
 import com.speearth.model.core.Biglietto;
 import com.speearth.model.core.Cliente;
 import com.speearth.utility.Costanti;
@@ -79,6 +80,12 @@ public class RiepilogoBigliettoView extends View {
 	public RiepilogoBigliettoView(Stage stage) throws IOException {
 		super(stage);
 		this.stage.setTitle(Costanti.TITOLO_RIEPILOGO);
+		
+		PrenotaBigliettoController controller = AppFacadeController.getInstance().getPrenotaServizioController().
+				getPrenotaBigliettoController();
+		this.biglietto = controller.getBiglietto();
+		
+		this.output_totale.setText(Float.toString(this.biglietto.getPrezzo()));
 	}
 
 	/**
@@ -90,8 +97,6 @@ public class RiepilogoBigliettoView extends View {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO caricare le info del servizio
-		this.biglietto = (Biglietto) AppFacadeController.getInstance().getPrenotaServizioController().getServizio();
-		this.output_totale.setText(Float.toString(this.biglietto.getPrezzo()));
 	}
 
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
@@ -108,8 +113,7 @@ public class RiepilogoBigliettoView extends View {
 	// Event Listener on Button[#bottone_ricerca].onAction
 	@FXML
 	public void vaiARicerca(ActionEvent event) throws IOException {
-		RicercaBigliettoView view = new RicercaBigliettoView(this.getStage());
-		view.mostra();
+		mostraPrecedente();
 	}
 
 	// Event Listener on Button[#bottone_identifica_cliente].onAction
