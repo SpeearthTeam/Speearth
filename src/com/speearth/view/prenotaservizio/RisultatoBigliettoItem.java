@@ -5,11 +5,9 @@ import java.net.URL;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-import com.speearth.controller.AppFacadeController;
-import com.speearth.controller.PrenotaBigliettoController;
 import com.speearth.model.core.Biglietto;
 import com.speearth.utility.Costanti;
-import com.speearth.view.EventoConferma;
+import com.speearth.view.EventoSelezionaServizio;
 import com.speearth.view.SubView;
 
 import javafx.event.ActionEvent;
@@ -122,11 +120,8 @@ public class RisultatoBigliettoItem extends SubView {
 	// Event Listener on Button[#bottone_conferma].onAction
 	@FXML
 	public void confermaBiglietto(ActionEvent event) throws IOException {
-		PrenotaBigliettoController controller = AppFacadeController.getInstance().getPrenotaServizioController().
-				getPrenotaBigliettoController();
-		controller.setBiglietto(biglietto);
-		
-		getParentNode().fireEvent(new EventoConferma(EventoConferma.PRENOTAZIONE_CONFERMATA));
+		EventoSelezionaServizio evento_seleziona_servizio = new EventoSelezionaServizio(EventoSelezionaServizio.SERVIZIO_SELEZIONATO, biglietto);
+		getParentNode().fireEvent(evento_seleziona_servizio);
 	}
 
 	@Override

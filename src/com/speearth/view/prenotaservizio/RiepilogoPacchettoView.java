@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import com.speearth.controller.AppFacadeController;
+import com.speearth.controller.PrenotaPacchettoController;
 import com.speearth.model.core.Cliente;
 import com.speearth.model.core.PacchettoComposite;
 import com.speearth.utility.Costanti;
@@ -67,6 +68,12 @@ public class RiepilogoPacchettoView extends View {
 	public RiepilogoPacchettoView(Stage stage) throws IOException {
 		super(stage);
 		this.stage.setTitle(Costanti.TITOLO_RIEPILOGO);
+		
+		PrenotaPacchettoController controller = AppFacadeController.getInstance().getPrenotaServizioController().
+				getPrenotaPacchettoController();
+		
+		this.pacchetto = controller.getPacchetto();
+		this.output_totale.setText(Float.toString(this.pacchetto.getPrezzo()));
 	}
 
 	/**
@@ -90,9 +97,6 @@ public class RiepilogoPacchettoView extends View {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO caricare le info del servizio
-		this.pacchetto = (PacchettoComposite) AppFacadeController.getInstance().getPrenotaServizioController()
-				.getServizio();
-		this.output_totale.setText(Float.toString(this.pacchetto.getPrezzo()));
 	}
 
 	// Event Listener on Button[#bottone_scegli_servizio].onAction

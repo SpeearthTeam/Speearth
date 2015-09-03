@@ -11,7 +11,7 @@ import com.speearth.controller.AppFacadeController;
 import com.speearth.controller.PrenotaAlloggioController;
 import com.speearth.model.core.Alloggio;
 import com.speearth.utility.Costanti;
-import com.speearth.view.EventoConferma;
+import com.speearth.view.EventoSelezionaServizio;
 import com.speearth.view.View;
 
 import javafx.collections.FXCollections;
@@ -78,11 +78,12 @@ public class RicercaAlloggioView extends View {
 		this.controller = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getPrenotaAlloggioController();
 		
-		getParentNode().addEventHandler(EventoConferma.PRENOTAZIONE_CONFERMATA, new EventHandler<EventoConferma>() {
+		getParentNode().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO, new EventHandler<EventoSelezionaServizio>() {
 
 			@Override
-			public void handle(EventoConferma event) {
+			public void handle(EventoSelezionaServizio event) {
 				try {
+					controller.setAlloggio((Alloggio) event.getServizio());
 					vaiARiepilogo();
 				} catch (IOException e) {
 					e.printStackTrace();

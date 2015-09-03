@@ -26,6 +26,7 @@ public class PacchettoComposite implements IServizioComponent {
 	 * Costruttore di deafault
 	 */
 	public PacchettoComposite() {
+		this.lista_servizi = new ArrayList<IServizioComponent>();
 	}
 
 	/**

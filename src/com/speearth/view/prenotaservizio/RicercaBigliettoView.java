@@ -11,7 +11,7 @@ import com.speearth.controller.AppFacadeController;
 import com.speearth.controller.PrenotaBigliettoController;
 import com.speearth.model.core.Biglietto;
 import com.speearth.utility.Costanti;
-import com.speearth.view.EventoConferma;
+import com.speearth.view.EventoSelezionaServizio;
 import com.speearth.view.View;
 
 import javafx.collections.FXCollections;
@@ -66,11 +66,15 @@ public class RicercaBigliettoView extends View {
 		super(stage);
 		getStage().setTitle(Costanti.TITOLO_PRENOTA_BIGLIETTO);
 		
-		getParentNode().addEventHandler(EventoConferma.PRENOTAZIONE_CONFERMATA, new EventHandler<EventoConferma>() {
+		this.controller = AppFacadeController.getInstance().getPrenotaServizioController()
+				.getPrenotaBigliettoController();
+		
+		getParentNode().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO, new EventHandler<EventoSelezionaServizio>() {
 
 			@Override
-			public void handle(EventoConferma event) {
+			public void handle(EventoSelezionaServizio event) {
 				try {
+					controller.setBiglietto((Biglietto) event.getServizio());
 					vaiARiepilogo();
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -107,8 +111,6 @@ public class RicercaBigliettoView extends View {
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		this.controller = AppFacadeController.getInstance().getPrenotaServizioController()
-				.getPrenotaBigliettoController();
 		this.lista_risultati.setCellFactory(param -> new BigliettoItemList(getStage()));
 		this.lista_risultati.setItems(this.lista_biglietti);
 		this.bottone_ricerca.setDisable(true);

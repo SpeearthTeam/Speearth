@@ -8,11 +8,9 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.Set;
 
-import com.speearth.controller.AppFacadeController;
-import com.speearth.controller.PrenotaAlloggioController;
 import com.speearth.model.core.Alloggio;
 import com.speearth.utility.Costanti;
-import com.speearth.view.EventoConferma;
+import com.speearth.view.EventoSelezionaServizio;
 import com.speearth.view.SubView;
 
 import javafx.collections.FXCollections;
@@ -135,11 +133,8 @@ public class RisultatoAlloggioItem extends SubView {
 	// Event Listener on Button[#bottone_conferma].onAction
 	@FXML
 	public void confermaAlloggio(ActionEvent event) throws IOException {
-		PrenotaAlloggioController controller = AppFacadeController.getInstance().getPrenotaServizioController().
-				getPrenotaAlloggioController();
-		controller.setAlloggio(alloggio);
-		
-		getParentNode().fireEvent(new EventoConferma(EventoConferma.PRENOTAZIONE_CONFERMATA));
+		EventoSelezionaServizio evento_seleziona_servizio = new EventoSelezionaServizio(EventoSelezionaServizio.SERVIZIO_SELEZIONATO, alloggio);
+		getParentNode().fireEvent(evento_seleziona_servizio);
 	}
 
 	@Override

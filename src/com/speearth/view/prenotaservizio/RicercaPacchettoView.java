@@ -11,13 +11,16 @@ import com.speearth.controller.AppFacadeController;
 import com.speearth.controller.PrenotaPacchettoController;
 import com.speearth.model.core.Alloggio;
 import com.speearth.model.core.Biglietto;
+import com.speearth.model.core.IServizioComponent;
 import com.speearth.model.core.PacchettoComposite;
 import com.speearth.utility.Costanti;
+import com.speearth.view.EventoSelezionaServizio;
 import com.speearth.view.View;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -26,8 +29,10 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 public class RicercaPacchettoView extends View {
@@ -94,11 +99,19 @@ public class RicercaPacchettoView extends View {
 	@FXML
 	private ListView<Alloggio> lista_risultati_alloggi;
 	@FXML
-	private TableView<String> tabella_pacchetto;
+	private TableView<IServizioComponent> tabella_pacchetto;
+	@FXML
+	private TableColumn tipo_servizio_col;
+	@FXML
+	private TableColumn fornitore_servizio_col;
+	@FXML
+	private TableColumn prezzo_servizio_col;
 
 	private ObservableList<Biglietto> lista_biglietti = FXCollections.observableArrayList();
 
 	private ObservableList<Alloggio> lista_alloggi = FXCollections.observableArrayList();
+	
+	private ObservableList<IServizioComponent> list_servizi = FXCollections.observableArrayList();
 
 	/**
 	 * Controller del Caso d'Uso Prenota Pacchetto
@@ -109,10 +122,30 @@ public class RicercaPacchettoView extends View {
 	 * Pacchetto contenuto nella SubView
 	 */
 	private PacchettoComposite pacchetto;
+	
 
 	public RicercaPacchettoView(Stage stage) throws IOException {
 		super(stage);
 		getStage().setTitle(Costanti.TITOLO_PRENOTA_PACCHETTO);
+		
+		this.controller = AppFacadeController.getInstance().getPrenotaServizioController()
+				.getPrenotaPacchettoController();
+		
+		this.pacchetto = new PacchettoComposite();
+		
+		getParentNode().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO, new EventHandler<EventoSelezionaServizio>() {
+
+			@Override
+			public void handle(EventoSelezionaServizio event) {
+				pacchetto.aggiungi(event.getServizio());
+			}
+			
+		});
+		
+		this.fornitore_servizio_col.setCellValueFactory(
+				new PropertyValueFactory<IServizioComponent, String>("fornitore"));
+		this.tabella_pacchetto.setItems(this.list_servizi);
+		this.list_servizi.setAll(this.pacchetto.getListaServizi());
 	}
 
 	/**
@@ -123,10 +156,6 @@ public class RicercaPacchettoView extends View {
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-		this.controller = AppFacadeController.getInstance().getPrenotaServizioController()
-				.getPrenotaPacchettoController();
-
 		this.lista_risultati_biglietti.setCellFactory(param -> new BigliettoItemList(getStage()));
 		this.lista_risultati_biglietti.setItems(this.lista_biglietti);
 
@@ -165,7 +194,7 @@ public class RicercaPacchettoView extends View {
 	// Event Listener on Button[#bottone_ricerca].onAction
 	@FXML
 	public void vaiARiepilogo(ActionEvent event) throws IOException {
-		if (AppFacadeController.getInstance().getPrenotaServizioController().getServizio() == null)
+		if (this.controller.getPacchetto() == null)
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null, Costanti.MESSAGGIO_NESSUN_SERVIZIO);
 		else {
 			RiepilogoPacchettoView view = new RiepilogoPacchettoView(getStage());
@@ -188,8 +217,10 @@ public class RicercaPacchettoView extends View {
 
 	// Event Listener on Button[#bottone_conferma].onAction
 	@FXML
-	public void confermaPacchetto(ActionEvent event) {
-		AppFacadeController.getInstance().getPrenotaServizioController().setServizio(this.pacchetto);
+	public void confermaPacchetto(ActionEvent event) throws IOException {
+		if (!this.pacchetto.getListaServizi().isEmpty())
+			this.controller.setPacchetto(this.pacchetto);
+		vaiARiepilogo(event);
 	}
 
 	/**
