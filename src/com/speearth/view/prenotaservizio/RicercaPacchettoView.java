@@ -140,12 +140,13 @@ public class RicercaPacchettoView extends View {
 
 			@Override
 			public void handle(EventoSelezionaServizio event) {
+				list_servizi.add(event.getServizio());
 				pacchetto.aggiungi(event.getServizio());
 			}
 			
 		});
 		
-		initializeTable();
+		initializeServiceTable();
 	}
 
 	/**
@@ -168,7 +169,7 @@ public class RicercaPacchettoView extends View {
 	/**
 	 * Inizializza la tabella dei servizi scelti
 	 */
-	public void initializeTable() {
+	public void initializeServiceTable() {
 		this.tipo_servizio_col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<IServizioComponent,String>, ObservableValue<String>>() {
 			
 			@Override
@@ -193,9 +194,9 @@ public class RicercaPacchettoView extends View {
 				SimpleStringProperty fornitore = null;
 				
 				if (servizio instanceof Alloggio)
-					fornitore = new SimpleStringProperty("asdsad");
+					fornitore = new SimpleStringProperty(((Alloggio) servizio).getFornitore());
 				else if (servizio instanceof Biglietto)
-					fornitore = new SimpleStringProperty("asdsad");
+					fornitore = new SimpleStringProperty(((Biglietto) servizio).getFornitore());
 				
 				return fornitore;
 			}
@@ -205,7 +206,13 @@ public class RicercaPacchettoView extends View {
 
 			@Override
 			public ObservableValue<String> call(CellDataFeatures<IServizioComponent, String> param) {
-				SimpleStringProperty prezzo = new SimpleStringProperty("4");
+				IServizioComponent servizio = param.getValue();
+				SimpleStringProperty prezzo = null;
+				
+				if (servizio instanceof Alloggio)
+					prezzo = new SimpleStringProperty(Float.toString(((Alloggio) servizio).getPrezzo()));
+				else if (servizio instanceof Biglietto)
+					prezzo = new SimpleStringProperty(Float.toString(((Biglietto) servizio).getPrezzo()));
 				
 				return prezzo;
 			}
