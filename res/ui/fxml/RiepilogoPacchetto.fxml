@@ -12,7 +12,7 @@
         <items>
           <Button fx:id="bottone_scegli_servizio" mnemonicParsing="false" onAction="#vaiAScegliServizio" text="Scegli Servizio" />
             <Button fx:id="bottone_ricerca" mnemonicParsing="false" onAction="#vaiARicerca" text="Ricerca" />
-            <Button fx:id="bottone_riepilogo" mnemonicParsing="false" disable="true" text="Riepilogo" />
+            <Button fx:id="bottone_riepilogo" disable="true" mnemonicParsing="false" text="Riepilogo" />
         </items>
       </ToolBar>
    </top>
@@ -83,7 +83,7 @@
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
                   <Label text="Riepilogo Prenotazione" />
-                  <ListView prefHeight="200.0" prefWidth="306.0" />
+                  <ListView fx:id="riepilogo_servizi" prefHeight="200.0" prefWidth="306.0" />
                </children>
             </VBox>
          </children>

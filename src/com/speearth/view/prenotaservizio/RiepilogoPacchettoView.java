@@ -8,16 +8,20 @@ import java.util.ResourceBundle;
 import com.speearth.controller.AppFacadeController;
 import com.speearth.controller.PrenotaPacchettoController;
 import com.speearth.model.core.Cliente;
+import com.speearth.model.core.IServizioComponent;
 import com.speearth.model.core.PacchettoComposite;
 import com.speearth.utility.Costanti;
 import com.speearth.view.View;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -48,6 +52,8 @@ public class RiepilogoPacchettoView extends View {
 	private Button bottone_conferma_pagamento;
 	@FXML
 	private Label input_metodo_pagamento;
+	@FXML
+	private ListView<IServizioComponent> riepilogo_servizi;
 
 	/**
 	 * Cliente
@@ -58,6 +64,8 @@ public class RiepilogoPacchettoView extends View {
 	 * Pacchetto in prenotazione
 	 */
 	private PacchettoComposite pacchetto;
+	
+	private ObservableList<IServizioComponent> lista_servizi = FXCollections.observableArrayList();
 
 	/**
 	 * Costruttore
@@ -73,6 +81,8 @@ public class RiepilogoPacchettoView extends View {
 				getPrenotaPacchettoController();
 		
 		this.pacchetto = controller.getPacchetto();
+		this.lista_servizi.setAll(this.pacchetto.getListaServizi());
+		this.riepilogo_servizi.setItems(this.lista_servizi);
 		this.output_totale.setText(Float.toString(this.pacchetto.getPrezzo()));
 	}
 
@@ -96,8 +106,10 @@ public class RiepilogoPacchettoView extends View {
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO caricare le info del servizio
+		this.riepilogo_servizi.setCellFactory(param -> new PacchettoItemList(getStage()));
+		this.riepilogo_servizi.setItems(this.lista_servizi);
 	}
+	
 
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
 	@FXML

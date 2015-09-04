@@ -59,17 +59,6 @@ public class RiepilogoBigliettoView extends View {
 	 */
 	private Biglietto biglietto;
 
-	/**
-	 * Imposta le informazioni del Cliente nella View
-	 * 
-	 * @param cliente
-	 */
-	private void impostaInfoCliente(Cliente cliente) {
-		this.output_cf_cliente.setText(cliente.getCodiceFiscale());
-		this.output_cognome_cliente.setText(cliente.getCognome());
-		this.output_data_nascita_cliente.setText(cliente.getDataNascita().toString());
-		this.output_nome_cliente.setText(cliente.getNome());
-	}
 
 	/**
 	 * Costruttore della View
@@ -99,6 +88,18 @@ public class RiepilogoBigliettoView extends View {
 		// TODO caricare le info del servizio
 	}
 
+	/**
+	 * Imposta le informazioni del Cliente nella View
+	 * 
+	 * @param cliente
+	 */
+	private void impostaInfoCliente(Cliente cliente) {
+		this.output_cf_cliente.setText(cliente.getCodiceFiscale());
+		this.output_cognome_cliente.setText(cliente.getCognome());
+		this.output_data_nascita_cliente.setText(cliente.getDataNascita().toString());
+		this.output_nome_cliente.setText(cliente.getNome());
+	}
+	
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
 	@FXML
 	public void vaiAScegliServizio(ActionEvent event) throws IOException {
