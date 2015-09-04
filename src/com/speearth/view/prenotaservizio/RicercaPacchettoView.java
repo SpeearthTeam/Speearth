@@ -225,21 +225,16 @@ public class RicercaPacchettoView extends View {
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
 	@FXML
 	public void vaiAScegliServizio(ActionEvent event) throws IOException {
-		if (!this.lista_biglietti.isEmpty() || !this.lista_alloggi.isEmpty()) {
+		if (this.lista_biglietti.isEmpty() && this.lista_alloggi.isEmpty()) {
+			mostraPrecedente();
+		} else {
 			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
 					null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
 
 			if (result.get() == ButtonType.OK)
 				mostraPrecedente();
 
-		} else if (this.pacchetto != null) {
-			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
-					null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
-
-			if (result.get() != ButtonType.OK)
-				return;
-		} else
-			mostraPrecedente();
+		}
 	}
 
 	// Event Listener on Button[#bottone_ricerca].onAction

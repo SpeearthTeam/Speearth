@@ -125,8 +125,7 @@ public class RiepilogoPacchettoView extends View {
 	// Event Listener on Button[#bottone_ricerca].onAction
 	@FXML
 	public void vaiARicerca(ActionEvent event) throws IOException {
-		RicercaPacchettoView view = new RicercaPacchettoView(this.getStage());
-		view.mostra();
+		mostraPrecedente();
 	}
 
 	// Event Listener on Button[#bottone_identifica_cliente].onAction
