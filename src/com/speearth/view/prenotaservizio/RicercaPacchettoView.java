@@ -116,27 +116,65 @@ public class RicercaPacchettoView extends View {
 	private ObservableList<IServizioComponent> list_servizi = FXCollections.observableArrayList();
 
 	/**
-	 * Pacchetto contenuto nella SubView
+	 * Recupera i dati inseriti dall'Utente nella form di ricerca della tab
+	 * Biglietti
+	 * 
+	 * @return HashMap<String, String>
 	 */
-	private PacchettoComposite pacchetto;
+	private HashMap<String, String> recuperaDatiBiglietti() {
+		HashMap<String, String> parametri = new HashMap<String, String>();
+		parametri.put("numero_adulti", this.input_adulti.getText());
+		parametri.put("numero_bambini", this.input_bambini.getText());
+		parametri.put("partenza", this.input_partenza.getText());
+		parametri.put("destinazione", this.input_destinazione.getText());
+		parametri.put("data_andata", this.input_data_andata.toString());
+		parametri.put("data_ritorno", this.input_data_ritorno.toString());
+		parametri.put("ora_andata", this.input_ora_andata.getText());
+		parametri.put("ora_ritorno", this.input_ora_ritorno.getText());
+		parametri.put("mezzo", this.input_mezzo.getText());
+		return parametri;
+	}
+
+	/**
+	 * Recupera i dati inseriti dall'Utente nella form di ricerca della tab
+	 * Alloggi
+	 * 
+	 * @return HashMap<String, String>
+	 */
+	private HashMap<String, String> recuperaDatiAlloggi() {
+		HashMap<String, String> parametri = new HashMap<String, String>();
+
+		parametri.put("data_arrivo", this.input_data_arrivo.toString());
+		parametri.put("data_partenza", this.input_data_partenza.toString());
+		parametri.put("stanza_doppia", this.input_doppia.getText());
+		parametri.put("località", this.input_localita.getText());
+		parametri.put("numero_doppie", this.input_numero_doppie.getText());
+		parametri.put("numero_quadruple", this.input_numero_quadruple.getText());
+		parametri.put("numero_singole", this.input_numero_singole.getText());
+		parametri.put("numero_triple", this.input_numero_triple.getText());
+		parametri.put("ora_arrivo", this.input_ora_arrivo.getText());
+		parametri.put("ora_partenza", this.input_ora_partenza.getText());
+		parametri.put("stanza_quadrupla", this.input_quadrupla.getText());
+		parametri.put("stanza_singola", this.input_singola.getText());
+		parametri.put("stanza_tripla", this.input_tripla.getText());
+
+		return parametri;
+	}
 
 	public RicercaPacchettoView(Stage stage) throws IOException {
 		super(stage);
+		AppFacadeController.getInstance().getPrenotaServizioController().setServizio(new PacchettoComposite());
 		getStage().setTitle(Costanti.TITOLO_PRENOTA_PACCHETTO);
-
-		this.pacchetto = new PacchettoComposite();
-
 		getParentNode().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO,
 				new EventHandler<EventoSelezionaServizio>() {
 
 					@Override
 					public void handle(EventoSelezionaServizio event) {
 						list_servizi.add(event.getServizio());
-						pacchetto.aggiungi(event.getServizio());
+						AppFacadeController.getInstance().getPrenotaServizioController().getServizio()
+								.aggiungi(event.getServizio());
 					}
-
 				});
-
 		initializeServiceTable();
 	}
 
@@ -212,7 +250,8 @@ public class RicercaPacchettoView extends View {
 					}
 				});
 
-		this.list_servizi.setAll(this.pacchetto.getListaServizi());
+		this.list_servizi.setAll(
+				AppFacadeController.getInstance().getPrenotaServizioController().getServizio().getListaServizi());
 		this.tabella_pacchetto.setItems(this.list_servizi);
 	}
 
@@ -225,8 +264,6 @@ public class RicercaPacchettoView extends View {
 			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
 					null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
 			if (result.get() == ButtonType.OK) {
-				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
-						.setPacchetto(null);
 				AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
 				mostraPrecedente();
 			}
@@ -242,8 +279,7 @@ public class RicercaPacchettoView extends View {
 	// Event Listener on Button[#bottone_ricerca].onAction
 	@FXML
 	public void vaiARiepilogo(ActionEvent event) throws IOException {
-		if (AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
-				.getPacchetto() == null)
+		if (AppFacadeController.getInstance().getPrenotaServizioController().getServizio().getListaServizi().isEmpty())
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null, Costanti.MESSAGGIO_NESSUN_SERVIZIO);
 		else {
 			RiepilogoPacchettoView view = new RiepilogoPacchettoView(getStage());
@@ -255,13 +291,11 @@ public class RicercaPacchettoView extends View {
 	// Event Listener on Button[#bottone_svuota].onAction
 	@FXML
 	public void svuotaPacchetto(ActionEvent event) {
+		// TODO
 		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_SVUOTA_PACCHETTO, null,
 				Costanti.MESSAGGIO_SVUOTA_PACCHETTO);
 		if (result.get() == ButtonType.OK) {
-			this.pacchetto.getListaServizi().clear();
-			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
-					.setPacchetto(null);
-			AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
+			AppFacadeController.getInstance().getPrenotaServizioController().getServizio().getListaServizi().clear();
 			this.list_servizi.clear();
 		}
 	}
@@ -269,30 +303,12 @@ public class RicercaPacchettoView extends View {
 	// Event Listener on Button[#bottone_conferma].onAction
 	@FXML
 	public void confermaPacchetto(ActionEvent event) throws IOException {
-		if (!this.pacchetto.getListaServizi().isEmpty())
-			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
-					.setPacchetto(this.pacchetto);
+		// TODO
+		// if
+		// (AppFacadeController.getInstance().getPrenotaServizioController().getServizio().getListaServizi().isEmpty())
+		// AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
+		// .setPacchetto(this.pacchetto);
 		vaiARiepilogo(event);
-	}
-
-	/**
-	 * Recupera i dati inseriti dall'Utente nella form di ricerca della tab
-	 * Biglietti
-	 * 
-	 * @return HashMap<String, String>
-	 */
-	private HashMap<String, String> recuperaDatiBiglietti() {
-		HashMap<String, String> parametri = new HashMap<String, String>();
-		parametri.put("numero_adulti", this.input_adulti.getText());
-		parametri.put("numero_bambini", this.input_bambini.getText());
-		parametri.put("partenza", this.input_partenza.getText());
-		parametri.put("destinazione", this.input_destinazione.getText());
-		parametri.put("data_andata", this.input_data_andata.toString());
-		parametri.put("data_ritorno", this.input_data_ritorno.toString());
-		parametri.put("ora_andata", this.input_ora_andata.getText());
-		parametri.put("ora_ritorno", this.input_ora_ritorno.getText());
-		parametri.put("mezzo", this.input_mezzo.getText());
-		return parametri;
 	}
 
 	// Event Listener on Button[#ricerca_biglietti].onAction
@@ -301,7 +317,7 @@ public class RicercaPacchettoView extends View {
 		try {
 			HashMap<String, String> dati = this.recuperaDatiBiglietti();
 			ArrayList<Biglietto> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
-					.getPrenotaPacchettoController().prenotaBigliettoController().ricerca(dati);
+					.getPrenotaPacchettoController().getPrenotaBigliettoController().ricerca(dati);
 
 			this.lista_biglietti.clear();
 			this.lista_biglietti.setAll(risultati);
@@ -313,39 +329,13 @@ public class RicercaPacchettoView extends View {
 		}
 	}
 
-	/**
-	 * Recupera i dati inseriti dall'Utente nella form di ricerca della tab
-	 * Alloggi
-	 * 
-	 * @return HashMap<String, String>
-	 */
-	private HashMap<String, String> recuperaDatiAlloggi() {
-		HashMap<String, String> parametri = new HashMap<String, String>();
-
-		parametri.put("data_arrivo", this.input_data_arrivo.toString());
-		parametri.put("data_partenza", this.input_data_partenza.toString());
-		parametri.put("stanza_doppia", this.input_doppia.getText());
-		parametri.put("località", this.input_localita.getText());
-		parametri.put("numero_doppie", this.input_numero_doppie.getText());
-		parametri.put("numero_quadruple", this.input_numero_quadruple.getText());
-		parametri.put("numero_singole", this.input_numero_singole.getText());
-		parametri.put("numero_triple", this.input_numero_triple.getText());
-		parametri.put("ora_arrivo", this.input_ora_arrivo.getText());
-		parametri.put("ora_partenza", this.input_ora_partenza.getText());
-		parametri.put("stanza_quadrupla", this.input_quadrupla.getText());
-		parametri.put("stanza_singola", this.input_singola.getText());
-		parametri.put("stanza_tripla", this.input_tripla.getText());
-
-		return parametri;
-	}
-
 	// Event Listener on Button[#ricerca_alloggi].onAction
 	@FXML
 	public void ricercaAlloggi(ActionEvent event) {
 		try {
 			HashMap<String, String> dati = this.recuperaDatiAlloggi();
 			ArrayList<Alloggio> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
-					.getPrenotaPacchettoController().prenotaAlloggioController().ricerca(dati);
+					.getPrenotaPacchettoController().getPrenotaAlloggioController().ricerca(dati);
 
 			this.lista_alloggi.clear();
 			this.lista_alloggi.setAll(risultati);

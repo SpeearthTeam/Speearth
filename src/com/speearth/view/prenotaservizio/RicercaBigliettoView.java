@@ -91,7 +91,7 @@ public class RicercaBigliettoView extends View {
 					public void handle(EventoSelezionaServizio event) {
 						try {
 							AppFacadeController.getInstance().getPrenotaServizioController()
-									.getPrenotaBigliettoController().setBiglietto((Biglietto) event.getServizio());
+									.setServizio(event.getServizio());
 							vaiARiepilogo();
 						} catch (IOException e) {
 							e.printStackTrace();
@@ -140,8 +140,6 @@ public class RicercaBigliettoView extends View {
 			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
 					null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
 			if (result.get() == ButtonType.OK) {
-				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
-						.setBiglietto(null);
 				AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
 				mostraPrecedente();
 			}
@@ -161,8 +159,7 @@ public class RicercaBigliettoView extends View {
 	}
 
 	public void vaiARiepilogo() throws IOException {
-		if (AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
-				.getBiglietto() == null)
+		if (AppFacadeController.getInstance().getPrenotaServizioController().getServizio() == null)
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null, Costanti.MESSAGGIO_NESSUN_SERVIZIO);
 		else {
 			RiepilogoBigliettoView view = new RiepilogoBigliettoView(getStage());

@@ -8,7 +8,6 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import com.speearth.controller.AppFacadeController;
-import com.speearth.controller.PrenotaAlloggioController;
 import com.speearth.model.core.Alloggio;
 import com.speearth.utility.Costanti;
 import com.speearth.view.EventoSelezionaServizio;
@@ -19,6 +18,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
@@ -27,7 +27,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.scene.control.Alert.AlertType;
 
 public class RicercaAlloggioView extends View {
 	@FXML
@@ -69,31 +68,6 @@ public class RicercaAlloggioView extends View {
 
 	private ObservableList<Alloggio> lista_alloggi = FXCollections.observableArrayList();
 
-	private PrenotaAlloggioController controller;
-
-	public RicercaAlloggioView(Stage stage) throws IOException {
-		super(stage);
-		getStage().setTitle(Costanti.TITOLO_PRENOTA_ALLOGGIO);
-
-		this.controller = AppFacadeController.getInstance().getPrenotaServizioController()
-				.getPrenotaAlloggioController();
-
-		getParentNode().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO,
-				new EventHandler<EventoSelezionaServizio>() {
-
-					@Override
-					public void handle(EventoSelezionaServizio event) {
-						try {
-							controller.setAlloggio((Alloggio) event.getServizio());
-							vaiARiepilogo();
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
-					}
-
-				});
-	}
-
 	/**
 	 * Recupera i dati inseriti dall'Utente nella form di ricerca
 	 * 
@@ -119,6 +93,25 @@ public class RicercaAlloggioView extends View {
 		return parametri;
 	}
 
+	public RicercaAlloggioView(Stage stage) throws IOException {
+		super(stage);
+		getStage().setTitle(Costanti.TITOLO_PRENOTA_ALLOGGIO);
+		getParentNode().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO,
+				new EventHandler<EventoSelezionaServizio>() {
+
+					@Override
+					public void handle(EventoSelezionaServizio event) {
+						try {
+							AppFacadeController.getInstance().getPrenotaServizioController()
+									.setServizio(event.getServizio());
+							vaiARiepilogo();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
+				});
+	}
+
 	/**
 	 * Inizializza la view
 	 * 
@@ -137,8 +130,8 @@ public class RicercaAlloggioView extends View {
 	public void ricercaAlloggi(ActionEvent event) {
 		try {
 			HashMap<String, String> dati = this.recuperaDati();
-			ArrayList<Alloggio> risultati = this.controller.ricerca(dati);
-
+			ArrayList<Alloggio> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
+					.getPrenotaAlloggioController().ricerca(dati);
 			this.lista_alloggi.clear();
 			this.lista_alloggi.setAll(risultati);
 			this.lista_risultati.setItems(lista_alloggi);
@@ -158,8 +151,6 @@ public class RicercaAlloggioView extends View {
 			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
 					null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
 			if (result.get() == ButtonType.OK) {
-				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController()
-						.setAlloggio(null);
 				AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
 				mostraPrecedente();
 			}
@@ -179,7 +170,7 @@ public class RicercaAlloggioView extends View {
 	}
 
 	public void vaiARiepilogo() throws IOException {
-		if (controller.getAlloggio() == null)
+		if (AppFacadeController.getInstance().getPrenotaServizioController().getServizio() == null)
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null, Costanti.MESSAGGIO_NESSUN_SERVIZIO);
 		else {
 			RiepilogoAlloggioView view = new RiepilogoAlloggioView(getStage());

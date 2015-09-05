@@ -35,14 +35,14 @@ public class PrenotaPacchettoController implements IFrammentoController {
 	/**
 	 * Restituisce il Controller di PrenotaBiglietto
 	 */
-	public PrenotaBigliettoController prenotaBigliettoController() {
+	public PrenotaBigliettoController getPrenotaBigliettoController() {
 		return PrenotaBigliettoController.getInstance();
 	}
 
 	/**
 	 * Restituisce il Controller di PrenotaAlloggio
 	 */
-	public PrenotaAlloggioController prenotaAlloggioController() {
+	public PrenotaAlloggioController getPrenotaAlloggioController() {
 		return PrenotaAlloggioController.getInstance();
 	}
 
