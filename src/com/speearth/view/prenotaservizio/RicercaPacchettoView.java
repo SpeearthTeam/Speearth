@@ -8,7 +8,6 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import com.speearth.controller.AppFacadeController;
-import com.speearth.controller.PrenotaPacchettoController;
 import com.speearth.model.core.Alloggio;
 import com.speearth.model.core.Biglietto;
 import com.speearth.model.core.IServizioComponent;
@@ -25,7 +24,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
@@ -33,6 +31,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -113,39 +112,31 @@ public class RicercaPacchettoView extends View {
 	private ObservableList<Biglietto> lista_biglietti = FXCollections.observableArrayList();
 
 	private ObservableList<Alloggio> lista_alloggi = FXCollections.observableArrayList();
-	
-	private ObservableList<IServizioComponent> list_servizi = FXCollections.observableArrayList();
 
-	/**
-	 * Controller del Caso d'Uso Prenota Pacchetto
-	 */
-	private PrenotaPacchettoController controller;
+	private ObservableList<IServizioComponent> list_servizi = FXCollections.observableArrayList();
 
 	/**
 	 * Pacchetto contenuto nella SubView
 	 */
 	private PacchettoComposite pacchetto;
-	
 
 	public RicercaPacchettoView(Stage stage) throws IOException {
 		super(stage);
 		getStage().setTitle(Costanti.TITOLO_PRENOTA_PACCHETTO);
-		
-		this.controller = AppFacadeController.getInstance().getPrenotaServizioController()
-				.getPrenotaPacchettoController();
-		
-		this.pacchetto = new PacchettoComposite();
-		
-		getParentNode().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO, new EventHandler<EventoSelezionaServizio>() {
 
-			@Override
-			public void handle(EventoSelezionaServizio event) {
-				list_servizi.add(event.getServizio());
-				pacchetto.aggiungi(event.getServizio());
-			}
-			
-		});
-		
+		this.pacchetto = new PacchettoComposite();
+
+		getParentNode().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO,
+				new EventHandler<EventoSelezionaServizio>() {
+
+					@Override
+					public void handle(EventoSelezionaServizio event) {
+						list_servizi.add(event.getServizio());
+						pacchetto.aggiungi(event.getServizio());
+					}
+
+				});
+
 		initializeServiceTable();
 	}
 
@@ -165,59 +156,62 @@ public class RicercaPacchettoView extends View {
 
 		this.bottone_ricerca.setDisable(true);
 	}
-	
+
 	/**
 	 * Inizializza la tabella dei servizi scelti
 	 */
 	public void initializeServiceTable() {
-		this.tipo_servizio_col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<IServizioComponent,String>, ObservableValue<String>>() {
-			
-			@Override
-			public ObservableValue<String> call(CellDataFeatures<IServizioComponent, String> param) {
-				IServizioComponent servizio = param.getValue();
-				SimpleStringProperty tipo = null;
-				
-				if (servizio instanceof Alloggio)
-					tipo = new SimpleStringProperty("Alloggio");
-				else if (servizio instanceof Biglietto)
-					tipo = new SimpleStringProperty("Biglietto");
-				
-				return tipo;
-			}
-		});
+		this.tipo_servizio_col.setCellValueFactory(
+				new Callback<TableColumn.CellDataFeatures<IServizioComponent, String>, ObservableValue<String>>() {
 
-		this.fornitore_servizio_col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<IServizioComponent,String>, ObservableValue<String>>() {
+					@Override
+					public ObservableValue<String> call(CellDataFeatures<IServizioComponent, String> param) {
+						IServizioComponent servizio = param.getValue();
+						SimpleStringProperty tipo = null;
 
-			@Override
-			public ObservableValue<String> call(CellDataFeatures<IServizioComponent, String> param) {
-				IServizioComponent servizio = param.getValue();
-				SimpleStringProperty fornitore = null;
-				
-				if (servizio instanceof Alloggio)
-					fornitore = new SimpleStringProperty(((Alloggio) servizio).getFornitore());
-				else if (servizio instanceof Biglietto)
-					fornitore = new SimpleStringProperty(((Biglietto) servizio).getFornitore());
-				
-				return fornitore;
-			}
-		});
-		
-		this.prezzo_servizio_col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<IServizioComponent,String>, ObservableValue<String>>() {
+						if (servizio instanceof Alloggio)
+							tipo = new SimpleStringProperty("Alloggio");
+						else if (servizio instanceof Biglietto)
+							tipo = new SimpleStringProperty("Biglietto");
 
-			@Override
-			public ObservableValue<String> call(CellDataFeatures<IServizioComponent, String> param) {
-				IServizioComponent servizio = param.getValue();
-				SimpleStringProperty prezzo = null;
-				
-				if (servizio instanceof Alloggio)
-					prezzo = new SimpleStringProperty(Float.toString(((Alloggio) servizio).getPrezzo()));
-				else if (servizio instanceof Biglietto)
-					prezzo = new SimpleStringProperty(Float.toString(((Biglietto) servizio).getPrezzo()));
-				
-				return prezzo;
-			}
-		});
-		
+						return tipo;
+					}
+				});
+
+		this.fornitore_servizio_col.setCellValueFactory(
+				new Callback<TableColumn.CellDataFeatures<IServizioComponent, String>, ObservableValue<String>>() {
+
+					@Override
+					public ObservableValue<String> call(CellDataFeatures<IServizioComponent, String> param) {
+						IServizioComponent servizio = param.getValue();
+						SimpleStringProperty fornitore = null;
+
+						if (servizio instanceof Alloggio)
+							fornitore = new SimpleStringProperty(((Alloggio) servizio).getFornitore());
+						else if (servizio instanceof Biglietto)
+							fornitore = new SimpleStringProperty(((Biglietto) servizio).getFornitore());
+
+						return fornitore;
+					}
+				});
+
+		this.prezzo_servizio_col.setCellValueFactory(
+				new Callback<TableColumn.CellDataFeatures<IServizioComponent, String>, ObservableValue<String>>() {
+
+					@Override
+					public ObservableValue<String> call(CellDataFeatures<IServizioComponent, String> param) {
+						IServizioComponent servizio = param.getValue();
+						SimpleStringProperty prezzo = null;
+
+						if (servizio instanceof Alloggio)
+							prezzo = new SimpleStringProperty(Float.toString(((Alloggio) servizio).getPrezzo()));
+						else if (servizio instanceof Biglietto)
+							prezzo = new SimpleStringProperty(Float.toString(((Biglietto) servizio).getPrezzo()));
+
+						return prezzo;
+					}
+				});
+
 		this.list_servizi.setAll(this.pacchetto.getListaServizi());
 		this.tabella_pacchetto.setItems(this.list_servizi);
 	}
@@ -225,15 +219,16 @@ public class RicercaPacchettoView extends View {
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
 	@FXML
 	public void vaiAScegliServizio(ActionEvent event) throws IOException {
-		if (this.lista_biglietti.isEmpty() && this.lista_alloggi.isEmpty()) {
+		if (this.lista_biglietti.isEmpty() && this.lista_alloggi.isEmpty())
 			mostraPrecedente();
-		} else {
+		else {
 			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
 					null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
-
-			if (result.get() == ButtonType.OK)
+			if (result.get() == ButtonType.OK) {
+				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
+						.setPacchetto(null);
 				mostraPrecedente();
-
+			}
 		}
 	}
 
@@ -246,7 +241,8 @@ public class RicercaPacchettoView extends View {
 	// Event Listener on Button[#bottone_ricerca].onAction
 	@FXML
 	public void vaiARiepilogo(ActionEvent event) throws IOException {
-		if (this.controller.getPacchetto() == null)
+		if (AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
+				.getPacchetto() == null)
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null, Costanti.MESSAGGIO_NESSUN_SERVIZIO);
 		else {
 			RiepilogoPacchettoView view = new RiepilogoPacchettoView(getStage());
@@ -258,12 +254,12 @@ public class RicercaPacchettoView extends View {
 	// Event Listener on Button[#bottone_svuota].onAction
 	@FXML
 	public void svuotaPacchetto(ActionEvent event) {
-		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_SVUOTA_PACCHETTO,
-				null, Costanti.MESSAGGIO_SVUOTA_PACCHETTO);
-
+		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_SVUOTA_PACCHETTO, null,
+				Costanti.MESSAGGIO_SVUOTA_PACCHETTO);
 		if (result.get() == ButtonType.OK) {
 			// cancellare la TableView
-			this.controller.setPacchetto(null);
+			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
+					.setPacchetto(null);
 		}
 	}
 
@@ -271,7 +267,8 @@ public class RicercaPacchettoView extends View {
 	@FXML
 	public void confermaPacchetto(ActionEvent event) throws IOException {
 		if (!this.pacchetto.getListaServizi().isEmpty())
-			this.controller.setPacchetto(this.pacchetto);
+			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
+					.setPacchetto(this.pacchetto);
 		vaiARiepilogo(event);
 	}
 
@@ -300,7 +297,8 @@ public class RicercaPacchettoView extends View {
 	public void ricercaBiglietti(ActionEvent event) {
 		try {
 			HashMap<String, String> dati = this.recuperaDatiBiglietti();
-			ArrayList<Biglietto> risultati = this.controller.prenotaBigliettoController().ricerca(dati);
+			ArrayList<Biglietto> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
+					.getPrenotaPacchettoController().prenotaBigliettoController().ricerca(dati);
 
 			this.lista_biglietti.clear();
 			this.lista_biglietti.setAll(risultati);
@@ -343,7 +341,8 @@ public class RicercaPacchettoView extends View {
 	public void ricercaAlloggi(ActionEvent event) {
 		try {
 			HashMap<String, String> dati = this.recuperaDatiAlloggi();
-			ArrayList<Alloggio> risultati = this.controller.prenotaAlloggioController().ricerca(dati);
+			ArrayList<Alloggio> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
+					.getPrenotaPacchettoController().prenotaAlloggioController().ricerca(dati);
 
 			this.lista_alloggi.clear();
 			this.lista_alloggi.setAll(risultati);

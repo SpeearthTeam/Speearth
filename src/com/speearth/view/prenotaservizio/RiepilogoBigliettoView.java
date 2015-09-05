@@ -2,11 +2,11 @@ package com.speearth.view.prenotaservizio;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 import com.speearth.controller.AppFacadeController;
-import com.speearth.controller.PrenotaBigliettoController;
 import com.speearth.model.core.Biglietto;
 import com.speearth.model.core.Cliente;
 import com.speearth.utility.Costanti;
@@ -29,6 +29,14 @@ public class RiepilogoBigliettoView extends View {
 	@FXML
 	private Button bottone_riepilogo;
 	@FXML
+	private Button bottone_conferma_pagamento;
+	@FXML
+	private Button bottone_identifica_cliente;
+	@FXML
+	private Label input_metodo_pagamento;
+	@FXML
+	private TextField input_codice_tessera;
+	@FXML
 	private Label output_nome_cliente;
 	@FXML
 	private Label output_cognome_cliente;
@@ -37,17 +45,27 @@ public class RiepilogoBigliettoView extends View {
 	@FXML
 	private Label output_cf_cliente;
 	@FXML
-	private TextField input_codice_tessera;
-	@FXML
-	private Button bottone_identifica_cliente;
-	@FXML
 	private Label output_tipo_bonus;
 	@FXML
 	private Label output_totale;
 	@FXML
-	private Button bottone_conferma_pagamento;
+	private Label output_fornitore;
 	@FXML
-	private Label input_metodo_pagamento;
+	private Label output_partenza;
+	@FXML
+	private Label output_destinazione;
+	@FXML
+	private Label output_partenza_andata;
+	@FXML
+	private Label output_arrivo_andata;
+	@FXML
+	private Label output_partenza_ritorno;
+	@FXML
+	private Label output_arrivo_ritorno;
+	@FXML
+	private Label output_adulti;
+	@FXML
+	private Label output_bambini;
 
 	/**
 	 * Cliente
@@ -55,10 +73,35 @@ public class RiepilogoBigliettoView extends View {
 	private Cliente cliente = null;
 
 	/**
-	 * Biglietto in prenotazione
+	 * Imposta le informazioni del Cliente nella View
+	 * 
+	 * @param cliente
 	 */
-	private Biglietto biglietto;
+	private void impostaInfoCliente(Cliente cliente) {
+		this.output_cf_cliente.setText(cliente.getCodiceFiscale());
+		this.output_cognome_cliente.setText(cliente.getCognome());
+		this.output_data_nascita_cliente.setText(cliente.getDataNascita().toString());
+		this.output_nome_cliente.setText(cliente.getNome());
+	}
 
+	/**
+	 * Imposta le informazioni del Biglietto prenotato nella View
+	 * 
+	 * @param biglietto
+	 */
+	private void impostaInfoBiglietto(Biglietto biglietto) {
+		this.output_totale.setText(Float.toString(biglietto.getPrezzo()));
+		this.output_adulti.setText(Integer.toString(biglietto.getNumeroAdulti()));
+		this.output_arrivo_andata.setText(biglietto.getDataArrivoAndata().format(DateTimeFormatter.ISO_DATE_TIME));
+		this.output_arrivo_ritorno.setText(biglietto.getDataArrivoRitorno().format(DateTimeFormatter.ISO_DATE_TIME));
+		this.output_bambini.setText(Integer.toString(biglietto.getNumeroBambini()));
+		this.output_destinazione.setText(biglietto.getDestinazione());
+		this.output_fornitore.setText(biglietto.getFornitore());
+		this.output_partenza.setText(biglietto.getPartenza());
+		this.output_partenza_andata.setText(biglietto.getDataPartenzaAndata().format(DateTimeFormatter.ISO_DATE_TIME));
+		this.output_partenza_ritorno
+				.setText(biglietto.getDataPartenzaRitorno().format(DateTimeFormatter.ISO_DATE_TIME));
+	}
 
 	/**
 	 * Costruttore della View
@@ -69,12 +112,8 @@ public class RiepilogoBigliettoView extends View {
 	public RiepilogoBigliettoView(Stage stage) throws IOException {
 		super(stage);
 		this.stage.setTitle(Costanti.TITOLO_RIEPILOGO);
-		
-		PrenotaBigliettoController controller = AppFacadeController.getInstance().getPrenotaServizioController().
-				getPrenotaBigliettoController();
-		this.biglietto = controller.getBiglietto();
-		
-		this.output_totale.setText(Float.toString(this.biglietto.getPrezzo()));
+		this.impostaInfoBiglietto(AppFacadeController.getInstance().getPrenotaServizioController()
+				.getPrenotaBigliettoController().getBiglietto());
 	}
 
 	/**
@@ -88,24 +127,15 @@ public class RiepilogoBigliettoView extends View {
 		// TODO caricare le info del servizio
 	}
 
-	/**
-	 * Imposta le informazioni del Cliente nella View
-	 * 
-	 * @param cliente
-	 */
-	private void impostaInfoCliente(Cliente cliente) {
-		this.output_cf_cliente.setText(cliente.getCodiceFiscale());
-		this.output_cognome_cliente.setText(cliente.getCognome());
-		this.output_data_nascita_cliente.setText(cliente.getDataNascita().toString());
-		this.output_nome_cliente.setText(cliente.getNome());
-	}
-	
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
 	@FXML
 	public void vaiAScegliServizio(ActionEvent event) throws IOException {
 		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
 				Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO, null);
 		if (result.get() == ButtonType.OK) {
+			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
+					.setBiglietto(null);
+			AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
 			ScegliServizioView view = new ScegliServizioView(getStage());
 			view.mostra();
 		}

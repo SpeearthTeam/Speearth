@@ -7,7 +7,6 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import com.speearth.controller.AppFacadeController;
-import com.speearth.controller.PrenotaAlloggioController;
 import com.speearth.model.core.Alloggio;
 import com.speearth.model.core.Cliente;
 import com.speearth.utility.Costanti;
@@ -15,11 +14,11 @@ import com.speearth.view.View;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class RiepilogoAlloggioView extends View {
@@ -64,40 +63,6 @@ public class RiepilogoAlloggioView extends View {
 	private Cliente cliente = null;
 
 	/**
-	 * Alloggio in prenotazione
-	 */
-	private Alloggio alloggio;
-
-
-	/**
-	 * Costruttore della View
-	 * 
-	 * @param stage
-	 * @throws IOException
-	 */
-	public RiepilogoAlloggioView(Stage stage) throws IOException {
-		super(stage);
-		this.stage.setTitle(Costanti.TITOLO_RIEPILOGO);
-		
-		PrenotaAlloggioController controller = AppFacadeController.getInstance().getPrenotaServizioController().
-				getPrenotaAlloggioController();
-		
-		this.alloggio = controller.getAlloggio();
-		impostaInfoAlloggio();
-	}
-
-	/**
-	 * Inizializza la View
-	 * 
-	 * @param arg0
-	 * @param arg1
-	 */
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		
-	}
-	
-	/**
 	 * Imposta le informazioni del Cliente nella View
 	 * 
 	 * @param cliente
@@ -108,16 +73,42 @@ public class RiepilogoAlloggioView extends View {
 		this.output_data_nascita_cliente.setText(cliente.getDataNascita().toString());
 		this.output_nome_cliente.setText(cliente.getNome());
 	}
-	
+
 	/**
 	 * Imposta le informazioni dell'Alloggio nella View
+	 * 
+	 * @param alloggio
 	 */
-	public void impostaInfoAlloggio() {
-		this.output_totale.setText(Float.toString(this.alloggio.getPrezzo()));
-		this.output_fonitore.setText(this.alloggio.getFornitore());
-		this.output_localita.setText(this.alloggio.getLocalita());
-		this.output_data_andata.setText(this.alloggio.getDataPartenza().format(DateTimeFormatter.ISO_TIME));
-		this.output_data_ritorno.setText(this.alloggio.getDataArrivo().format(DateTimeFormatter.ISO_TIME));
+	private void impostaInfoAlloggio(Alloggio alloggio) {
+		this.output_totale.setText(Float.toString(alloggio.getPrezzo()));
+		this.output_fonitore.setText(alloggio.getFornitore());
+		this.output_localita.setText(alloggio.getLocalita());
+		this.output_data_andata.setText(alloggio.getDataPartenza().format(DateTimeFormatter.ISO_TIME));
+		this.output_data_ritorno.setText(alloggio.getDataArrivo().format(DateTimeFormatter.ISO_TIME));
+	}
+
+	/**
+	 * Costruttore della View
+	 * 
+	 * @param stage
+	 * @throws IOException
+	 */
+	public RiepilogoAlloggioView(Stage stage) throws IOException {
+		super(stage);
+		this.stage.setTitle(Costanti.TITOLO_RIEPILOGO);
+		this.impostaInfoAlloggio(AppFacadeController.getInstance().getPrenotaServizioController()
+				.getPrenotaAlloggioController().getAlloggio());
+	}
+
+	/**
+	 * Inizializza la View
+	 * 
+	 * @param arg0
+	 * @param arg1
+	 */
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+
 	}
 
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
@@ -126,6 +117,9 @@ public class RiepilogoAlloggioView extends View {
 		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
 				Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO, null);
 		if (result.get() == ButtonType.OK) {
+			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController()
+					.setAlloggio(null);
+			AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
 			ScegliServizioView view = new ScegliServizioView(getStage());
 			view.mostra();
 		}

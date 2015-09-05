@@ -12,7 +12,7 @@
         <items>
           <Button fx:id="bottone_scegli_servizio" mnemonicParsing="false" onAction="#vaiAScegliServizio" text="Scegli Servizio" />
             <Button fx:id="bottone_ricerca" mnemonicParsing="false" onAction="#vaiARicerca" text="Ricerca" />
-            <Button fx:id="bottone_riepilogo" mnemonicParsing="false" disable="true" text="Riepilogo" />
+            <Button fx:id="bottone_riepilogo" disable="true" mnemonicParsing="false" text="Riepilogo" />
         </items>
       </ToolBar>
    </top>
@@ -83,6 +83,43 @@
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
                   <Label text="Riepilogo Prenotazione" />
+                  <GridPane>
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Fornitore" />
+                        <Label text="Partenza" GridPane.rowIndex="1" />
+                        <Label text="Orario Partenza (Andata)" GridPane.rowIndex="3" />
+                        <Label text="Destinazione" GridPane.rowIndex="2" />
+                        <Label text="Orario Arrivo (Andata)" GridPane.rowIndex="4" />
+                        <Label text="Orario Partenza (Ritorno)" GridPane.rowIndex="5" />
+                        <Label text="Orario Arrivo (Ritorno)" GridPane.rowIndex="6" />
+                        <Label text="Adulti" GridPane.rowIndex="7" />
+                        <Label text="Bambini" GridPane.rowIndex="8" />
+                        <Label fx:id="output_arrivo_andata" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label fx:id="output_partenza_ritorno" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Label fx:id="output_fornitore" text="Label" GridPane.columnIndex="1" />
+                        <Label fx:id="output_partenza" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="output_destinazione" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="output_partenza_andata" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="output_arrivo_ritorno" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Label fx:id="output_adulti" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <Label fx:id="output_bambini" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                     </children>
+                  </GridPane>
                </children>
             </VBox>
          </children>

@@ -8,7 +8,6 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import com.speearth.controller.AppFacadeController;
-import com.speearth.controller.PrenotaBigliettoController;
 import com.speearth.model.core.Biglietto;
 import com.speearth.utility.Costanti;
 import com.speearth.view.EventoSelezionaServizio;
@@ -58,30 +57,28 @@ public class RicercaBigliettoView extends View {
 	@FXML
 	private ListView<Biglietto> lista_risultati;
 
+	/**
+	 * Lista di Biglietti che va a riempire lista_risultati
+	 */
 	private ObservableList<Biglietto> lista_biglietti = FXCollections.observableArrayList();
-
-	private PrenotaBigliettoController controller;
 
 	public RicercaBigliettoView(Stage stage) throws IOException {
 		super(stage);
 		getStage().setTitle(Costanti.TITOLO_PRENOTA_BIGLIETTO);
-		
-		this.controller = AppFacadeController.getInstance().getPrenotaServizioController()
-				.getPrenotaBigliettoController();
-		
-		getParentNode().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO, new EventHandler<EventoSelezionaServizio>() {
+		getParentNode().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO,
+				new EventHandler<EventoSelezionaServizio>() {
 
-			@Override
-			public void handle(EventoSelezionaServizio event) {
-				try {
-					controller.setBiglietto((Biglietto) event.getServizio());
-					vaiARiepilogo();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-			
-		});
+					@Override
+					public void handle(EventoSelezionaServizio event) {
+						try {
+							AppFacadeController.getInstance().getPrenotaServizioController()
+									.getPrenotaBigliettoController().setBiglietto((Biglietto) event.getServizio());
+							vaiARiepilogo();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
+				});
 	}
 
 	/**
@@ -121,7 +118,8 @@ public class RicercaBigliettoView extends View {
 	public void ricercaBiglietti(ActionEvent event) {
 		try {
 			HashMap<String, String> dati = this.recuperaDati();
-			ArrayList<Biglietto> risultati = this.controller.ricerca(dati);
+			ArrayList<Biglietto> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
+					.getPrenotaBigliettoController().ricerca(dati);
 
 			this.lista_biglietti.clear();
 			this.lista_biglietti.setAll(risultati);
@@ -136,14 +134,17 @@ public class RicercaBigliettoView extends View {
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
 	@FXML
 	public void vaiAScegliServizio(ActionEvent event) throws IOException {
-		if (!this.lista_biglietti.isEmpty()) {
+		if (this.lista_biglietti.isEmpty())
+			mostraPrecedente();
+		else {
 			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
 					null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
-
-			if (result.get() == ButtonType.OK)
+			if (result.get() == ButtonType.OK) {
+				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
+						.setBiglietto(null);
 				mostraPrecedente();
-		} else
-			mostraPrecedente();
+			}
+		}
 	}
 
 	// Event Listener on Button[#bottone_ricerca].onAction
@@ -157,9 +158,10 @@ public class RicercaBigliettoView extends View {
 	public void vaiARiepilogoButtonClick(ActionEvent event) throws IOException {
 		vaiARiepilogo();
 	}
-	
+
 	public void vaiARiepilogo() throws IOException {
-		if (controller.getBiglietto() == null)
+		if (AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
+				.getBiglietto() == null)
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null, Costanti.MESSAGGIO_NESSUN_SERVIZIO);
 		else {
 			RiepilogoBigliettoView view = new RiepilogoBigliettoView(getStage());

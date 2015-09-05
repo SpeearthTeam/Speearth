@@ -6,7 +6,6 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import com.speearth.controller.AppFacadeController;
-import com.speearth.controller.PrenotaPacchettoController;
 import com.speearth.model.core.Cliente;
 import com.speearth.model.core.IServizioComponent;
 import com.speearth.model.core.PacchettoComposite;
@@ -60,31 +59,7 @@ public class RiepilogoPacchettoView extends View {
 	 */
 	private Cliente cliente = null;
 
-	/**
-	 * Pacchetto in prenotazione
-	 */
-	private PacchettoComposite pacchetto;
-	
 	private ObservableList<IServizioComponent> lista_servizi = FXCollections.observableArrayList();
-
-	/**
-	 * Costruttore
-	 * 
-	 * @param stage
-	 * @throws IOException
-	 */
-	public RiepilogoPacchettoView(Stage stage) throws IOException {
-		super(stage);
-		this.stage.setTitle(Costanti.TITOLO_RIEPILOGO);
-		
-		PrenotaPacchettoController controller = AppFacadeController.getInstance().getPrenotaServizioController().
-				getPrenotaPacchettoController();
-		
-		this.pacchetto = controller.getPacchetto();
-		this.lista_servizi.setAll(this.pacchetto.getListaServizi());
-		this.riepilogo_servizi.setItems(this.lista_servizi);
-		this.output_totale.setText(Float.toString(this.pacchetto.getPrezzo()));
-	}
 
 	/**
 	 * Imposta le informazioni del Cliente nella View
@@ -99,6 +74,30 @@ public class RiepilogoPacchettoView extends View {
 	}
 
 	/**
+	 * Imposta le informazioni del Pacchetto prenotato nella View
+	 * 
+	 * @param pacchetto
+	 */
+	private void impostaInfoPacchetto(PacchettoComposite pacchetto) {
+		this.lista_servizi.setAll(pacchetto.getListaServizi());
+		this.riepilogo_servizi.setItems(this.lista_servizi);
+		this.output_totale.setText(Float.toString(pacchetto.getPrezzo()));
+	}
+
+	/**
+	 * Costruttore
+	 * 
+	 * @param stage
+	 * @throws IOException
+	 */
+	public RiepilogoPacchettoView(Stage stage) throws IOException {
+		super(stage);
+		this.stage.setTitle(Costanti.TITOLO_RIEPILOGO);
+		this.impostaInfoPacchetto(AppFacadeController.getInstance().getPrenotaServizioController()
+				.getPrenotaPacchettoController().getPacchetto());
+	}
+
+	/**
 	 * Inizializza la View
 	 * 
 	 * @param arg0
@@ -109,7 +108,6 @@ public class RiepilogoPacchettoView extends View {
 		this.riepilogo_servizi.setCellFactory(param -> new PacchettoItemList(getStage()));
 		this.riepilogo_servizi.setItems(this.lista_servizi);
 	}
-	
 
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
 	@FXML
@@ -117,6 +115,9 @@ public class RiepilogoPacchettoView extends View {
 		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
 				Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO, null);
 		if (result.get() == ButtonType.OK) {
+			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
+					.setPacchetto(null);
+			AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
 			ScegliServizioView view = new ScegliServizioView(this.getStage());
 			view.mostra();
 		}
