@@ -257,9 +257,12 @@ public class RicercaPacchettoView extends View {
 		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_SVUOTA_PACCHETTO, null,
 				Costanti.MESSAGGIO_SVUOTA_PACCHETTO);
 		if (result.get() == ButtonType.OK) {
+			
 			// cancellare la TableView
+			this.pacchetto.getListaServizi().clear();
 			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
 					.setPacchetto(null);
+			this.list_servizi.clear();
 		}
 	}
 
