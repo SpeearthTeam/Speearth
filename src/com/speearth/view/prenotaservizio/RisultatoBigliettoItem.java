@@ -61,12 +61,12 @@ public class RisultatoBigliettoItem extends SubView {
 	private Button bottone_conferma;
 	@FXML
 	private Label output_prezzo;
-	
+
 	/**
 	 * Biglietto contenuto nella SubView
 	 */
 	private Biglietto biglietto;
-	
+
 	/**
 	 * Costruttore di default
 	 * 
@@ -78,14 +78,14 @@ public class RisultatoBigliettoItem extends SubView {
 		this.biglietto = biglietto;
 		updateUI();
 	}
-	
+
 	/**
 	 * Restituisce il biglietto
 	 */
 	public Biglietto getBiglietto() {
 		return biglietto;
 	}
-	
+
 	/**
 	 * Imposta il biglietto
 	 * 
@@ -94,7 +94,7 @@ public class RisultatoBigliettoItem extends SubView {
 	public void setBiglietto(Biglietto biglietto) {
 		this.biglietto = biglietto;
 	}
-	
+
 	/**
 	 * Aggiorna il biglietto
 	 * 
@@ -120,7 +120,8 @@ public class RisultatoBigliettoItem extends SubView {
 	// Event Listener on Button[#bottone_conferma].onAction
 	@FXML
 	public void confermaBiglietto(ActionEvent event) throws IOException {
-		EventoSelezionaServizio evento_seleziona_servizio = new EventoSelezionaServizio(EventoSelezionaServizio.SERVIZIO_SELEZIONATO, biglietto);
+		EventoSelezionaServizio evento_seleziona_servizio = new EventoSelezionaServizio(
+				EventoSelezionaServizio.SERVIZIO_SELEZIONATO, biglietto);
 		getParentNode().fireEvent(evento_seleziona_servizio);
 	}
 
@@ -141,10 +142,13 @@ public class RisultatoBigliettoItem extends SubView {
 
 	@Override
 	public void updateUI() {
-		this.output_data_destinazione_andata.setText(biglietto.getDataArrivoAndata().format(DateTimeFormatter.ISO_DATE));
-		this.output_data_destinazione_ritorno.setText(biglietto.getDataArrivoRitorno().format(DateTimeFormatter.ISO_DATE));
+		this.output_data_destinazione_andata
+				.setText(biglietto.getDataArrivoAndata().format(DateTimeFormatter.ISO_DATE));
+		this.output_data_destinazione_ritorno
+				.setText(biglietto.getDataArrivoRitorno().format(DateTimeFormatter.ISO_DATE));
 		this.output_data_partenza_andata.setText(biglietto.getDataPartenzaAndata().format(DateTimeFormatter.ISO_DATE));
-		this.output_data_partenza_ritorno.setText(biglietto.getDataPartenzaRitorno().format(DateTimeFormatter.ISO_DATE));
+		this.output_data_partenza_ritorno
+				.setText(biglietto.getDataPartenzaRitorno().format(DateTimeFormatter.ISO_DATE));
 		this.output_partenza_andata.setText(biglietto.getPartenza());
 		this.output_data_partenza_ritorno.setText(biglietto.getDestinazione());
 		this.output_destinazione_andata.setText(biglietto.getDestinazione());

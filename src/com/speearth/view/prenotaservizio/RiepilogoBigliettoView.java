@@ -112,8 +112,8 @@ public class RiepilogoBigliettoView extends View {
 	public RiepilogoBigliettoView(Stage stage) throws IOException {
 		super(stage);
 		this.stage.setTitle(Costanti.TITOLO_RIEPILOGO);
-		this.impostaInfoBiglietto(AppFacadeController.getInstance().getPrenotaServizioController()
-				.getPrenotaBigliettoController().getBiglietto());
+		this.impostaInfoBiglietto(
+				(Biglietto) AppFacadeController.getInstance().getPrenotaServizioController().getServizio());
 	}
 
 	/**

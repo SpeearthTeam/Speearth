@@ -62,25 +62,6 @@ public class RicercaBigliettoView extends View {
 	 */
 	private ObservableList<Biglietto> lista_biglietti = FXCollections.observableArrayList();
 
-	public RicercaBigliettoView(Stage stage) throws IOException {
-		super(stage);
-		getStage().setTitle(Costanti.TITOLO_PRENOTA_BIGLIETTO);
-		getParentNode().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO,
-				new EventHandler<EventoSelezionaServizio>() {
-
-					@Override
-					public void handle(EventoSelezionaServizio event) {
-						try {
-							AppFacadeController.getInstance().getPrenotaServizioController()
-									.getPrenotaBigliettoController().setBiglietto((Biglietto) event.getServizio());
-							vaiARiepilogo();
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
-					}
-				});
-	}
-
 	/**
 	 * Recupera i dati inseriti dall'Utente nella form di ricerca
 	 * 
@@ -98,6 +79,25 @@ public class RicercaBigliettoView extends View {
 		parametri.put("ora_ritorno", this.input_ora_ritorno.getText());
 		parametri.put("mezzo", this.input_mezzo.getText());
 		return parametri;
+	}
+
+	public RicercaBigliettoView(Stage stage) throws IOException {
+		super(stage);
+		getStage().setTitle(Costanti.TITOLO_PRENOTA_BIGLIETTO);
+		getParentNode().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO,
+				new EventHandler<EventoSelezionaServizio>() {
+
+					@Override
+					public void handle(EventoSelezionaServizio event) {
+						try {
+							AppFacadeController.getInstance().getPrenotaServizioController()
+									.getPrenotaBigliettoController().setBiglietto((Biglietto) event.getServizio());
+							vaiARiepilogo();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
+				});
 	}
 
 	/**
@@ -142,6 +142,7 @@ public class RicercaBigliettoView extends View {
 			if (result.get() == ButtonType.OK) {
 				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
 						.setBiglietto(null);
+				AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
 				mostraPrecedente();
 			}
 		}

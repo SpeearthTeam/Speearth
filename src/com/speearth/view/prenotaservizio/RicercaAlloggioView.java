@@ -160,6 +160,7 @@ public class RicercaAlloggioView extends View {
 			if (result.get() == ButtonType.OK) {
 				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController()
 						.setAlloggio(null);
+				AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
 				mostraPrecedente();
 			}
 		}

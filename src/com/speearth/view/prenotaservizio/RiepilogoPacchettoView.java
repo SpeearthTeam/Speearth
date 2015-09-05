@@ -93,8 +93,8 @@ public class RiepilogoPacchettoView extends View {
 	public RiepilogoPacchettoView(Stage stage) throws IOException {
 		super(stage);
 		this.stage.setTitle(Costanti.TITOLO_RIEPILOGO);
-		this.impostaInfoPacchetto(AppFacadeController.getInstance().getPrenotaServizioController()
-				.getPrenotaPacchettoController().getPacchetto());
+		this.impostaInfoPacchetto(
+				(PacchettoComposite) AppFacadeController.getInstance().getPrenotaServizioController().getServizio());
 	}
 
 	/**

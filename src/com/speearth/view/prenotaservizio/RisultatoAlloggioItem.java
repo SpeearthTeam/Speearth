@@ -47,7 +47,7 @@ public class RisultatoAlloggioItem extends SubView {
 	private Button bottone_conferma;
 	@FXML
 	private Label output_prezzo;
-	
+
 	/**
 	 * Alloggio contenuto nella SubView
 	 */
@@ -63,14 +63,19 @@ public class RisultatoAlloggioItem extends SubView {
 		this.alloggio = alloggio;
 		updateUI();
 	}
-	
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+	}
+
 	/**
-	 * Restituisce l'alloggio 
+	 * Restituisce l'alloggio
 	 */
 	public Alloggio getAlloggio() {
 		return alloggio;
 	}
-	
+
 	/**
 	 * Imposta l'alloggio
 	 * 
@@ -79,7 +84,7 @@ public class RisultatoAlloggioItem extends SubView {
 	public void setAlloggio(Alloggio alloggio) {
 		this.alloggio = alloggio;
 	}
-	
+
 	/**
 	 * Aggiorna l'alloggio
 	 * 
@@ -133,13 +138,9 @@ public class RisultatoAlloggioItem extends SubView {
 	// Event Listener on Button[#bottone_conferma].onAction
 	@FXML
 	public void confermaAlloggio(ActionEvent event) throws IOException {
-		EventoSelezionaServizio evento_seleziona_servizio = new EventoSelezionaServizio(EventoSelezionaServizio.SERVIZIO_SELEZIONATO, alloggio);
+		EventoSelezionaServizio evento_seleziona_servizio = new EventoSelezionaServizio(
+				EventoSelezionaServizio.SERVIZIO_SELEZIONATO, alloggio);
 		getParentNode().fireEvent(evento_seleziona_servizio);
-	}
-
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 	}
 
 	/**
