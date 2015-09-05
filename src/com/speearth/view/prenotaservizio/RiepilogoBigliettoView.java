@@ -124,7 +124,6 @@ public class RiepilogoBigliettoView extends View {
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO caricare le info del servizio
 	}
 
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
@@ -133,8 +132,6 @@ public class RiepilogoBigliettoView extends View {
 		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
 				Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO, null);
 		if (result.get() == ButtonType.OK) {
-			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
-					.setBiglietto(null);
 			AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
 			ScegliServizioView view = new ScegliServizioView(getStage());
 			view.mostra();
@@ -161,8 +158,9 @@ public class RiepilogoBigliettoView extends View {
 	// Event Listener on Button[#bottone_conferma_pagamento].onAction
 	@FXML
 	public void effettuaPagamento(ActionEvent event) {
+		// TODO - Ipotesi semplificativa: pagamento in contanti
 		String ricevuta = AppFacadeController.getInstance().getPrenotaServizioController()
-				.effettuaPagamento(this.cliente, this.input_metodo_pagamento.getText());
+				.effettuaPagamento("contanti");
 		mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_PAGAMENTO_EFFETTUATO,
 				Costanti.MESSAGGIO_PAGAMENTO_EFFETTUATO, ricevuta);
 	}

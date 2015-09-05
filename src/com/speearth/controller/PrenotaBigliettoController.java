@@ -13,13 +13,9 @@ import com.speearth.model.transazioni.ricerca.RicercaReceiver;
  * Controller per l'estensione PrenotaBiglietto
  */
 public class PrenotaBigliettoController implements IFrammentoController {
-	/**
-	 * Biglietto in prenotazione
-	 */
-	private Biglietto biglietto;
 
 	/**
-	 * Unica instanza del controller
+	 * Unica istanza del controller
 	 */
 	private static PrenotaBigliettoController instance;
 
@@ -30,7 +26,7 @@ public class PrenotaBigliettoController implements IFrammentoController {
 	}
 
 	/**
-	 * Restituisce l'instanza del controller
+	 * Restituisce l'istanza del controller
 	 */
 	public static PrenotaBigliettoController getInstance() {
 		if (instance == null)
@@ -56,30 +52,4 @@ public class PrenotaBigliettoController implements IFrammentoController {
 
 		return biglietti;
 	}
-
-	/**
-	 * Conferma la scelta del Biglietto
-	 */
-	public Biglietto conferma() {
-		return this.biglietto;
-	}
-
-	/**
-	 * Restituisce il Biglietto in prenotazione
-	 * 
-	 * @return Biglietto
-	 */
-	public Biglietto getBiglietto() {
-		return this.biglietto;
-	}
-
-	/**
-	 * Imposta il Biglietto in prenotazione
-	 * 
-	 * @param biglietto
-	 */
-	public void setBiglietto(Biglietto biglietto) {
-		this.biglietto = biglietto;
-	}
-
 }

@@ -14,12 +14,7 @@ import com.speearth.model.transazioni.ricerca.RicercaReceiver;
  */
 public class PrenotaAlloggioController implements IFrammentoController {
 	/**
-	 * Alloggio in prenotazione
-	 */
-	private Alloggio alloggio;
-	
-	/**
-	 * Istanza della classe
+	 * Unica istanza della classe
 	 */
 	private static PrenotaAlloggioController instance;
 
@@ -28,9 +23,9 @@ public class PrenotaAlloggioController implements IFrammentoController {
 	 */
 	private PrenotaAlloggioController() {
 	}
-	
+
 	/**
-	 * Restituisce la singola instanza della classe
+	 * Restituisce la singola istanza della classe
 	 * 
 	 * @return PrenotaAlloggioController
 	 */
@@ -52,38 +47,10 @@ public class PrenotaAlloggioController implements IFrammentoController {
 		AgenziaFacade.getInstance().effettuaTransazione(command);
 		ArrayList<IServizioComponent> risultati = ricerca_receiver.getRisultatoRicerca();
 		ArrayList<Alloggio> alloggi = new ArrayList<Alloggio>();
-		
+
 		for (IServizioComponent risultato : risultati)
 			alloggi.add((Alloggio) risultato);
-		
+
 		return alloggi;
 	}
-
-	/**
-	 * Conferma la scelta dell'Alloggio
-	 * 
-	 * @return Alloggio
-	 */
-	public Alloggio conferma() {
-		return this.alloggio;
-	}
-
-	/**
-	 * Restituisce l'Allogggio in prenotazione
-	 * 
-	 * @return Biglietto
-	 */
-	public Alloggio getAlloggio() {
-		return this.alloggio;
-	}
-
-	/**
-	 * Imposta l'Alloggio in prenotazione
-	 * 
-	 * @param biglietto
-	 */
-	public void setAlloggio(Alloggio alloggio) {
-		this.alloggio = alloggio;
-	}
-
 }

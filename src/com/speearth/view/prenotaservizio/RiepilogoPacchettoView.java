@@ -115,8 +115,6 @@ public class RiepilogoPacchettoView extends View {
 		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
 				Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO, null);
 		if (result.get() == ButtonType.OK) {
-			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
-					.setPacchetto(null);
 			AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
 			ScegliServizioView view = new ScegliServizioView(this.getStage());
 			view.mostra();
@@ -144,8 +142,9 @@ public class RiepilogoPacchettoView extends View {
 	// Event Listener on Button[#bottone_conferma_pagamento].onAction
 	@FXML
 	public void effettuaPagamento(ActionEvent event) {
+		// TODO - Ipotesi semplificativa: pagamento in contanti
 		String ricevuta = AppFacadeController.getInstance().getPrenotaServizioController()
-				.effettuaPagamento(this.cliente, this.input_metodo_pagamento.getText());
+				.effettuaPagamento("contanti");
 		mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_PAGAMENTO_EFFETTUATO,
 				Costanti.MESSAGGIO_PAGAMENTO_EFFETTUATO, ricevuta);
 	}

@@ -12,14 +12,18 @@ import com.speearth.model.core.bonus.ScontoConcreteStrategy;
  * Controller per il Caso d'Uso PrenotaServizio
  */
 public class PrenotaServizioController implements ICasoDUsoController {
-
 	/**
 	 * Servizio in prenotazione
 	 */
 	private IServizioComponent servizio;
-	
+
 	/**
-	 * Unica instanza del controller
+	 * Cliente che sta per acquistare il Servizio
+	 */
+	private Cliente cliente;
+
+	/**
+	 * Unica istanza del controller
 	 */
 	private static PrenotaServizioController instance;
 
@@ -28,9 +32,9 @@ public class PrenotaServizioController implements ICasoDUsoController {
 	 */
 	private PrenotaServizioController() {
 	}
-	
+
 	/**
-	 * Restituisce l'instanza del controller
+	 * Restituisce l'istanza del controller
 	 */
 	public static PrenotaServizioController getInstance() {
 		if (instance == null)
@@ -67,7 +71,8 @@ public class PrenotaServizioController implements ICasoDUsoController {
 	 * @return Cliente
 	 */
 	public Cliente identificaCliente(String codice_tessera) {
-		return AgenziaFacade.getInstance().getRegistroClienti().getClienteDaCodiceTessera(codice_tessera);
+		this.setCliente(AgenziaFacade.getInstance().getRegistroClienti().getClienteDaCodiceTessera(codice_tessera));
+		return this.cliente;
 	}
 
 	/**
@@ -100,8 +105,8 @@ public class PrenotaServizioController implements ICasoDUsoController {
 	 * @param metodo
 	 * @return String
 	 */
-	public String effettuaPagamento(Cliente cliente, String metodo) {
-		return AgenziaFacade.getInstance().getRegistratoreDiCassa().effettuaPagamento(this.servizio, cliente,
+	public String effettuaPagamento(String metodo) {
+		return AgenziaFacade.getInstance().getRegistratoreDiCassa().effettuaPagamento(this.servizio, this.cliente,
 				AppFacadeController.getInstance().getUtente(), metodo);
 	}
 
@@ -121,5 +126,23 @@ public class PrenotaServizioController implements ICasoDUsoController {
 	 */
 	public void setServizio(IServizioComponent servizio) {
 		this.servizio = servizio;
+	}
+
+	/**
+	 * Restituisce il Cliente
+	 * 
+	 * @return Cliente
+	 */
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	/**
+	 * Imposta il Cliente
+	 * 
+	 * @param cliente
+	 */
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 }

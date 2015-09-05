@@ -123,6 +123,6 @@ public class Pagamento {
 	 */
 	public String generaRicevuta() {
 		// TODO - implement Pagamento.generaRicevuta
-		return null;
+		return "Hey";
 	}
 }

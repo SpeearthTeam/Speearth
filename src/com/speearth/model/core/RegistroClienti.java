@@ -1,6 +1,7 @@
 package com.speearth.model.core;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Classe addetta alla gestione dei Clienti dell'Agenzia
@@ -57,8 +58,8 @@ public class RegistroClienti {
 	 * @return Cliente
 	 */
 	public Cliente getClienteDaCodiceTessera(String codice) {
-		// TODO
-		return null;
+		// TODO - Cliente fittizio
+		Cliente cliente = new Cliente("Mario", "Rossi", new Date(), "MRARSS80A01I804J", 123456);
+		return cliente;
 	}
-
 }
