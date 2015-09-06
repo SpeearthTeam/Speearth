@@ -57,9 +57,12 @@ public class RegistroClienti {
 	 * @param codice
 	 * @return Cliente
 	 */
-	public Cliente getClienteDaCodiceTessera(String codice) {
+	public Cliente getClienteDaCodiceTessera(int codice) {
 		// TODO - Cliente fittizio
-		Cliente cliente = new Cliente("Mario", "Rossi", new Date(), "MRARSS80A01I804J", 123456);
-		return cliente;
+		if (codice == 123456) {
+			Cliente cliente = new Cliente("Mario", "Rossi", new Date(), "MRARSS80A01I804J", 123456);
+			return cliente;
+		}
+		return null;
 	}
 }

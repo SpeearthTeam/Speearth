@@ -281,6 +281,9 @@ public class RicercaPacchettoView extends View {
 	public void vaiARiepilogo(ActionEvent event) throws IOException {
 		if (AppFacadeController.getInstance().getPrenotaServizioController().getServizio().getListaServizi().isEmpty())
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null, Costanti.MESSAGGIO_NESSUN_SERVIZIO);
+		else if (!(AppFacadeController.getInstance().getPrenotaServizioController().getServizio().getListaServizi()
+				.size() > 1))
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PACCHETTO_UN_ELEMENTO);
 		else {
 			RiepilogoPacchettoView view = new RiepilogoPacchettoView(getStage());
 			view.setPreviousView(this);
@@ -303,11 +306,6 @@ public class RicercaPacchettoView extends View {
 	// Event Listener on Button[#bottone_conferma].onAction
 	@FXML
 	public void confermaPacchetto(ActionEvent event) throws IOException {
-		// TODO
-		// if
-		// (AppFacadeController.getInstance().getPrenotaServizioController().getServizio().getListaServizi().isEmpty())
-		// AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
-		// .setPacchetto(this.pacchetto);
 		vaiARiepilogo(event);
 	}
 

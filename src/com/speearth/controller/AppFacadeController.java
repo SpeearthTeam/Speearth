@@ -31,6 +31,7 @@ public class AppFacadeController {
 	 * Costruttore di default
 	 */
 	private AppFacadeController() {
+		this.utente = new Commesso("Tizio", "Caio", "tiziocaio85", "vbaybzvn");
 	}
 
 	/**

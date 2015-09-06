@@ -16,7 +16,7 @@ public class Pagamento {
 	 * Ammontare
 	 */
 	private float ammontare;
-	
+
 	/**
 	 * Metodo di Pagamento
 	 */
@@ -40,8 +40,10 @@ public class Pagamento {
 	 * @param metodo
 	 */
 	public Pagamento(float ammontare, String metodo) {
+		this.id = 0;
 		this.ammontare = ammontare;
 		this.metodo = metodo;
+		this.data = new Date();
 	}
 
 	/**
@@ -70,7 +72,7 @@ public class Pagamento {
 	public float getAmmontare() {
 		return this.ammontare;
 	}
-	
+
 	/**
 	 * Restituisce il metodo di Pagamento
 	 * 
@@ -123,6 +125,8 @@ public class Pagamento {
 	 */
 	public String generaRicevuta() {
 		// TODO - implement Pagamento.generaRicevuta
-		return "Hey";
+		String ricevuta = "Pagamento n°: " + this.id + "\n" + "Ammontare: " + this.ammontare + " €\n"
+				+ "Metodo di pagamento: " + this.metodo + "\n" + "Data: " + this.data.toString() + "\n";
+		return ricevuta;
 	}
 }

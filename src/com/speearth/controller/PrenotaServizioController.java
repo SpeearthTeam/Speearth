@@ -70,7 +70,7 @@ public class PrenotaServizioController implements ICasoDUsoController {
 	 * @param codice_tessera
 	 * @return Cliente
 	 */
-	public Cliente identificaCliente(String codice_tessera) {
+	public Cliente identificaCliente(int codice_tessera) {
 		this.setCliente(AgenziaFacade.getInstance().getRegistroClienti().getClienteDaCodiceTessera(codice_tessera));
 		return this.cliente;
 	}
@@ -144,5 +144,13 @@ public class PrenotaServizioController implements ICasoDUsoController {
 	 */
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+	
+	/**
+	 * Ristabilisce lo stato di partenza del Caso D'Uso
+	 */
+	public void reset() {
+		this.cliente = null;
+		this.servizio = null;
 	}
 }

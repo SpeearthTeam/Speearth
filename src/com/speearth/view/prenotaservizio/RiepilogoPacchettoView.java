@@ -130,23 +130,37 @@ public class RiepilogoPacchettoView extends View {
 	// Event Listener on Button[#bottone_identifica_cliente].onAction
 	@FXML
 	public void identificaCliente(ActionEvent event) {
-		this.cliente = AppFacadeController.getInstance().getPrenotaServizioController()
-				.identificaCliente(this.input_codice_tessera.getText());
-		if (cliente != null)
-			this.impostaInfoCliente(cliente);
-		else
-			this.mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_ERRORE, Costanti.MESSAGGIO_CLIENTE_NON_TROVATO,
-					null);
+		if (!this.input_codice_tessera.getText().isEmpty()) {
+			this.cliente = AppFacadeController.getInstance().getPrenotaServizioController()
+					.identificaCliente(Integer.parseInt(this.input_codice_tessera.getText()));
+			if (cliente != null) {
+				this.impostaInfoCliente(cliente);
+				AppFacadeController.getInstance().getPrenotaServizioController().setCliente(cliente);
+			} else
+				mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_NON_TROVATO, null,
+						Costanti.MESSAGGIO_CLIENTE_NON_TROVATO);
+		} else
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_NESSUN_CODICE);
 	}
 
 	// Event Listener on Button[#bottone_conferma_pagamento].onAction
 	@FXML
-	public void effettuaPagamento(ActionEvent event) {
+	public void effettuaPagamento(ActionEvent event) throws IOException {
 		// TODO - Ipotesi semplificativa: pagamento in contanti
+		if (AppFacadeController.getInstance().getPrenotaServizioController().getCliente() == null) {
+			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_NESSUN_CLIENTE, null,
+					Costanti.MESSAGGIO_NESSUN_CLIENTE);
+			if (result.get() == ButtonType.CANCEL) {
+				return;
+			}
+		}
 		String ricevuta = AppFacadeController.getInstance().getPrenotaServizioController()
 				.effettuaPagamento("contanti");
 		mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_PAGAMENTO_EFFETTUATO,
 				Costanti.MESSAGGIO_PAGAMENTO_EFFETTUATO, ricevuta);
+		AppFacadeController.getInstance().getPrenotaServizioController().reset();
+		ScegliServizioView view = new ScegliServizioView(getStage());
+		view.mostra();
 	}
 
 	/**

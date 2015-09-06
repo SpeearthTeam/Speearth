@@ -18,10 +18,12 @@ public final class Costanti {
 	public final static String TITOLO_PRENOTA_PACCHETTO = "Prenota Pacchetto - Speearth";
 	public final static String TITOLO_RIEPILOGO = "Riepilogo Prenotazione - Speearth";
 	public final static String TITOLO_ERRORE = "Errore";
+	public final static String TITOLO_NON_TROVATO = "Non Trovato";
 	public final static String TITOLO_SVUOTA_PACCHETTO = "Svuota il Pacchetto";
 	public final static String TITOLO_PAGAMENTO_EFFETTUATO = "Pagamento effettuato";
 	public final static String TITOLO_TORNA_A_SCEGLI_SERVIZIO = "Torna alla Scelta del Servizio";
 	public final static String TITOLO_NESSUN_SERVIZIO = "Nessun Servizio prenotato.";
+	public final static String TITOLO_NESSUN_CLIENTE = "Nessun Cliente";
 
 	/**
 	 * Path degli FXML
@@ -42,25 +44,24 @@ public final class Costanti {
 	public final static String MESSAGGIO_PARAMETRI_MANCANTI = "Mancano alcuni parametri di ricerca.";
 	public final static String MESSAGGIO_SVUOTA_PACCHETTO = "Vuoi davvero rimuovere tutti i Servizi scelti dal Pacchetto?";
 	public final static String MESSAGGIO_CLIENTE_NON_TROVATO = "Non è stato trovato alcun Cliente con questo codice Tessera.";
+	public final static String MESSAGGIO_NESSUN_CODICE = "Non è stato inserito nessun codice Tessera.";
 	public final static String MESSAGGIO_PAGAMENTO_EFFETTUATO = "Il Pagamento è andato a buon fine!";
 	public final static String MESSAGGIO_TORNA_A_SCELTA_SERVIZIO = "La tua prenotazione verrà cancellata. Vuoi procedere?";
 	public final static String MESSAGGIO_NESSUN_SERVIZIO = "Non è stato scelto nessun Servizio.";
+	public final static String MESSAGGIO_PACCHETTO_UN_ELEMENTO = "Il Pacchetto deve contenere almeno 2 Servizi.";
+	public final static String MESSAGGIO_NESSUN_CLIENTE = "Non è stato identificato nessun Cliente. Procedere?";
 
 	/**
 	 * Sistemi Esterni: Aziende di Trasporto
 	 */
-	public final static AziendaTrasportoAdapter[] SISTEMI_ESTERNI_AZIENDE_TRASPORTO = {
-			ItaloAdapter.getInstance(),
-			TrenitaliaAdapter.getInstance()
-	};
-	
+	public final static AziendaTrasportoAdapter[] SISTEMI_ESTERNI_AZIENDE_TRASPORTO = { ItaloAdapter.getInstance(),
+			TrenitaliaAdapter.getInstance() };
+
 	/**
 	 * Sistemi Esterni: Imprese Ricettive
 	 */
-	public final static ImpresaRicettivaAdapter[] SISTEMI_ESTERNI_IMPRESE_RICETTIVE = {
-			BookingAdapter.getInstance()
-	};
-	
+	public final static ImpresaRicettivaAdapter[] SISTEMI_ESTERNI_IMPRESE_RICETTIVE = { BookingAdapter.getInstance() };
+
 	/**
 	 * URL dei Sistemi Esterni
 	 */
