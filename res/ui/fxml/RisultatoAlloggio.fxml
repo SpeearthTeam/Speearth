@@ -10,8 +10,8 @@
    <center>
       <GridPane prefHeight="150.0" prefWidth="713.0" BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="186.0" minWidth="10.0" prefWidth="127.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="353.0" minWidth="10.0" prefWidth="211.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="186.0" minWidth="10.0" prefWidth="143.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="353.0" minWidth="10.0" prefWidth="194.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="366.0" minWidth="10.0" prefWidth="214.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="223.0" minWidth="10.0" prefWidth="162.0" />
         </columnConstraints>
@@ -21,28 +21,28 @@
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
                <children>
-                  <Label text="Arrivo" />
-                  <Label fx:id="output_data_arrivo" text="data_arrivo" />
-                  <Label fx:id="output_ora_arrivo" text="ora_arrivo" />
+                  <Label alignment="CENTER" prefHeight="21.0" prefWidth="220.0" text="Arrivo" />
+                  <Label fx:id="output_data_arrivo" alignment="CENTER" prefHeight="21.0" prefWidth="236.0" text="data_arrivo" />
+                  <Label fx:id="output_ora_arrivo" alignment="CENTER" prefHeight="21.0" prefWidth="197.0" text="ora_arrivo" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
                <children>
-                  <Label text="Partenza" />
-                  <Label fx:id="output_data_partenza" text="data_partenza" />
-                  <Label fx:id="output_ora_partenza" text="ora_partenza" />
+                  <Label alignment="CENTER" prefHeight="21.0" prefWidth="217.0" text="Partenza" />
+                  <Label fx:id="output_data_partenza" alignment="CENTER" prefHeight="21.0" prefWidth="211.0" text="data_partenza" />
+                  <Label fx:id="output_ora_partenza" alignment="CENTER" prefHeight="21.0" prefWidth="217.0" text="ora_partenza" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3">
                <children>
-                  <Label text="Stanze" />
+                  <Label prefHeight="21.0" prefWidth="169.0" text="Stanze" />
                   <ListView fx:id="output_stanze" prefHeight="63.0" prefWidth="162.0" />
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <VBox prefHeight="99.0" prefWidth="153.0">
                <children>
-                  <Label text="Località" />
-                  <Label fx:id="output_localita" text="localita" />
+                  <Label alignment="CENTER" prefHeight="21.0" prefWidth="141.0" text="Località" />
+                  <Label fx:id="output_localita" alignment="CENTER" prefHeight="21.0" prefWidth="146.0" text="localita" />
                </children>
             </VBox>
          </children>
@@ -65,10 +65,10 @@
       </HBox>
    </bottom>
    <right>
-      <VBox alignment="CENTER" prefHeight="164.0" prefWidth="154.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="164.0" prefWidth="154.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Prezzo" />
-            <Label fx:id="output_prezzo" text="prezzo_alloggio" />
+            <Label alignment="CENTER" prefHeight="21.0" prefWidth="158.0" text="Prezzo" />
+            <Label fx:id="output_prezzo" alignment="CENTER" prefHeight="21.0" prefWidth="159.0" text="prezzo_alloggio" />
          </children>
       </VBox>
    </right>

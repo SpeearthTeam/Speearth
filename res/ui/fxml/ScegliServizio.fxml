@@ -6,18 +6,18 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../css/ScegliServizio.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <top>
-      <ToolBar prefHeight="40.0" prefWidth="200.0" stylesheets="@../css/ScegliServizio.css" BorderPane.alignment="CENTER">
+      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <items>
-          <Button mnemonicParsing="false" stylesheets="@../css/ScegliServizio.css" text="Scegli Servizio" />
-            <Button fx:id="bottone_ricerca" mnemonicParsing="false" onAction="#vaiARicerca" stylesheets="@../css/ScegliServizio.css" text="Ricerca" />
-            <Button fx:id="bottone_riepilogo" mnemonicParsing="false" onAction="#vaiARiepilogo" text="Riepilogo" />
+          <Button disable="true" mnemonicParsing="false" text="Scegli Servizio" />
+            <Button fx:id="bottone_ricerca" disable="true" mnemonicParsing="false" onAction="#vaiARicerca" text="Ricerca" />
+            <Button fx:id="bottone_riepilogo" disable="true" mnemonicParsing="false" onAction="#vaiARiepilogo" text="Riepilogo" />
         </items>
       </ToolBar>
    </top>
    <center>
-      <GridPane styleClass="grid" stylesheets="@../css/ScegliServizio.css" BorderPane.alignment="CENTER">
+      <GridPane styleClass="grid" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -27,14 +27,14 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="VBox" stylesheets="@../css/ScegliServizio.css">
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="VBox">
                <children>
                   <ImageView fitHeight="146.0" fitWidth="188.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/biglietti.jpg" />
                      </image>
                   </ImageView>
-                  <Button fx:id="bottone_prenota_biglietto" mnemonicParsing="false" onAction="#prenotaBiglietto" stylesheets="@../css/ScegliServizio.css" text="Prenota un Biglietto" />
+                  <Button fx:id="bottone_prenota_biglietto" mnemonicParsing="false" onAction="#prenotaBiglietto" text="Prenota un Biglietto" />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
@@ -44,7 +44,7 @@
                         <Image url="@../img/hotel.jpg" />
                      </image>
                   </ImageView>
-                  <Button fx:id="bottone_prenota_alloggio" mnemonicParsing="false" onAction="#prenotaAlloggio" stylesheets="@../css/ScegliServizio.css" text="Prenota un Alloggio" />
+                  <Button fx:id="bottone_prenota_alloggio" mnemonicParsing="false" onAction="#prenotaAlloggio" text="Prenota un Alloggio" />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
@@ -54,7 +54,7 @@
                         <Image url="@../img/pacchetti-vacanza.jpg" />
                      </image>
                   </ImageView>
-                  <Button fx:id="bottone_prenota_pacchetto" mnemonicParsing="false" onAction="#prenotaPacchetto" stylesheets="@../css/ScegliServizio.css" text="Prenota un Pacchetto di Servizi" />
+                  <Button fx:id="bottone_prenota_pacchetto" mnemonicParsing="false" onAction="#prenotaPacchetto" text="Prenota un Pacchetto di Servizi" />
                </children>
             </VBox>
          </children>

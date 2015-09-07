@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import org.controlsfx.control.textfield.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
@@ -19,15 +20,15 @@
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="630.0" minWidth="10.0" prefWidth="467.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="616.0" minWidth="10.0" prefWidth="524.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="377.0" minWidth="10.0" prefWidth="289.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
                <children>
                   <Label text="Dati del Cliente" />
                   <GridPane alignment="CENTER" prefHeight="274.0" prefWidth="427.0">
@@ -48,10 +49,10 @@
                         <Label text="Codice Fiscale" GridPane.rowIndex="4" />
                         <Label text="Data di Nascita" GridPane.rowIndex="3" />
                         <Label text="Cognome" GridPane.rowIndex="2" />
-                        <Label fx:id="output_nome_cliente" text="nome_cliente" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label fx:id="output_cognome_cliente" text="cognome_cliente" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label fx:id="output_data_nascita_cliente" text="data_nascita_cliente" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label fx:id="output_cf_cliente" text="cf_cliente" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label fx:id="output_nome_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="306.0" text="nome_cliente" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="output_cognome_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="306.0" text="cognome_cliente" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="output_data_nascita_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="307.0" text="data_nascita_cliente" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="output_cf_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="305.0" text="cf_cliente" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <children>
                               <TextField fx:id="input_codice_tessera" prefHeight="31.0" prefWidth="237.0" />
@@ -68,22 +69,25 @@
                   </VBox>
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
+            <VBox alignment="TOP_CENTER" prefHeight="669.0" prefWidth="312.0" GridPane.columnIndex="2">
                <children>
                   <Label text="Prezzo Totale" />
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="CENTER" prefHeight="52.0" prefWidth="403.0">
                      <children>
-                        <Label fx:id="output_totale" text="totale" />
-                        <Label text=" €" />
+                        <Label fx:id="output_totale" prefHeight="21.0" prefWidth="70.0" text="totale" />
+                        <Label prefHeight="21.0" prefWidth="19.0" text=" €" />
+                        <Button fx:id="bottone_conferma_pagamento" mnemonicParsing="false" onAction="#effettuaPagamento" text="Conferma Pagamento" />
                      </children>
                   </HBox>
-                  <Button fx:id="bottone_conferma_pagamento" mnemonicParsing="false" onAction="#effettuaPagamento" text="Conferma Pagamento" />
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
                   <Label text="Riepilogo Prenotazione" />
-                  <ListView fx:id="riepilogo_servizi" prefHeight="200.0" prefWidth="306.0" />
+                  <ListView fx:id="riepilogo_servizi" prefHeight="218.0" prefWidth="314.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin></ListView>
                </children>
             </VBox>
          </children>
