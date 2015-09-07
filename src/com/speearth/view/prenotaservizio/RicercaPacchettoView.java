@@ -263,11 +263,10 @@ public class RicercaPacchettoView extends View {
 		else {
 			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
 					null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
-			if (result.get() == ButtonType.OK) {
-				AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
+			if (result.get() == ButtonType.OK)
 				mostraPrecedente();
-			}
 		}
+		AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
 	}
 
 	// Event Listener on Button[#bottone_ricerca].onAction
