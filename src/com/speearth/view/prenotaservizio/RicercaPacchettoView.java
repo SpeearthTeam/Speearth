@@ -170,9 +170,12 @@ public class RicercaPacchettoView extends View {
 
 					@Override
 					public void handle(EventoSelezionaServizio event) {
-						list_servizi.add(event.getServizio());
-						AppFacadeController.getInstance().getPrenotaServizioController().getServizio()
-								.aggiungi(event.getServizio());
+						IServizioComponent servizio = event.getServizio();
+						if (!list_servizi.contains(servizio)) {
+							list_servizi.add(servizio);
+							AppFacadeController.getInstance().getPrenotaServizioController().getServizio()
+									.aggiungi(servizio);
+						}
 					}
 				});
 		initializeServiceTable();
