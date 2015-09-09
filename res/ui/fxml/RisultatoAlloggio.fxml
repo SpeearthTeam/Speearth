@@ -6,14 +6,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane fx:id="risultato_alloggio" onMouseClicked="#selezionaAlloggio" prefHeight="178.0" prefWidth="867.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="risultato_alloggio" onMouseClicked="#selezionaAlloggio" prefHeight="178.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <GridPane prefHeight="150.0" prefWidth="713.0" BorderPane.alignment="CENTER">
+      <GridPane prefHeight="150.0" BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="186.0" minWidth="10.0" prefWidth="143.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="353.0" minWidth="10.0" prefWidth="194.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="366.0" minWidth="10.0" prefWidth="214.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="223.0" minWidth="10.0" prefWidth="162.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="186.0" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="353.0" minWidth="10.0" prefWidth="200.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="366.0" minWidth="10.0" prefWidth="200.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="223.0" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="136.0" minHeight="10.0" prefHeight="105.0" vgrow="SOMETIMES" />
@@ -35,21 +35,21 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3">
                <children>
-                  <Label prefHeight="21.0" prefWidth="169.0" text="Stanze" />
-                  <ListView fx:id="output_stanze" prefHeight="63.0" prefWidth="162.0" />
+                  <Label prefHeight="21.0" prefWidth="100.0" text="Stanze" />
+                  <ListView fx:id="output_stanze" prefHeight="63.0" prefWidth="100.0" />
                </children>
             </VBox>
-            <VBox prefHeight="99.0" prefWidth="153.0">
+            <VBox prefHeight="99.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="21.0" prefWidth="141.0" text="Località" />
-                  <Label fx:id="output_localita" alignment="CENTER" prefHeight="21.0" prefWidth="146.0" text="localita" />
+                  <Label alignment="CENTER" prefHeight="21.0" prefWidth="100.0" text="Località" />
+                  <Label fx:id="output_localita" alignment="CENTER" prefHeight="21.0" prefWidth="100.0" text="localita" />
                </children>
             </VBox>
          </children>
       </GridPane>
    </center>
    <top>
-      <HBox prefHeight="39.0" prefWidth="867.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="39.0" BorderPane.alignment="CENTER">
          <children>
             <Label text="Fornitore: " />
             <Label fx:id="output_nome_fornitore" text="nome_fornitore" />
@@ -57,7 +57,7 @@
       </HBox>
    </top>
    <bottom>
-      <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="867.0" BorderPane.alignment="BOTTOM_RIGHT">
+      <HBox alignment="CENTER_RIGHT" prefHeight="42.0" BorderPane.alignment="BOTTOM_RIGHT">
          <children>
             <Button fx:id="bottone_annulla" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#deselezionaAlloggio" text="Annulla" />
             <Button fx:id="bottone_conferma" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#confermaAlloggio" text="Conferma" />
@@ -65,10 +65,10 @@
       </HBox>
    </bottom>
    <right>
-      <VBox prefHeight="164.0" prefWidth="154.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="164.0" prefWidth="125.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" prefHeight="21.0" prefWidth="158.0" text="Prezzo" />
-            <Label fx:id="output_prezzo" alignment="CENTER" prefHeight="21.0" prefWidth="159.0" text="prezzo_alloggio" />
+            <Label alignment="CENTER" prefHeight="21.0" prefWidth="125.0" text="Prezzo" />
+            <Label fx:id="output_prezzo" alignment="CENTER" prefHeight="21.0" prefWidth="125.0" text="prezzo_alloggio" />
          </children>
       </VBox>
    </right>
