@@ -21,7 +21,7 @@ public class Main extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		ScegliServizioView view = new ScegliServizioView(primaryStage);
-		primaryStage.getIcons().add(new Image(this.getClass().getResourceAsStream("/ui/img/logo.jpg")));
+		primaryStage.getIcons().add(new Image(this.getClass().getResourceAsStream("/ui/img/icona_app.png")));
 		view.mostra();
 	}
 
