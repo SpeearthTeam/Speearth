@@ -59,7 +59,6 @@
    <bottom>
       <HBox alignment="CENTER_RIGHT" prefHeight="42.0" BorderPane.alignment="BOTTOM_RIGHT">
          <children>
-            <Button fx:id="bottone_annulla" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#deselezionaAlloggio" text="Annulla" />
             <Button fx:id="bottone_conferma" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#confermaAlloggio" text="Conferma" />
          </children>
       </HBox>
