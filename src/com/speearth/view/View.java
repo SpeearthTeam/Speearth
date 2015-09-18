@@ -64,9 +64,11 @@ public abstract class View implements Initializable {
 	 * Mostra la view
 	 */
 	public void mostra() {
-		// prendo la singola istanza della scena e se non esiste la creo
-		Scene scene = getScene();
-		this.stage.setScene(scene);
+		// se la scena non esiste la creo
+		if (this.scene == null)
+			this.scene = new Scene(this.parent_node);
+		
+		this.stage.setScene(this.scene);
 		this.stage.show();
 	}
 
@@ -123,22 +125,19 @@ public abstract class View implements Initializable {
 	}
 
 	/**
-	 * Restituisce la singola istanza della Scena della View
+	 * Restituisce la Scena della View
 	 */
 	public Scene getScene() {
-		if (this.scene == null)
-			this.scene = new Scene(this.parent_node);
 		return this.scene;
 	}
 
 	/**
-	 * Imposta la singola Scena della View
+	 * Imposta la Scena della View
 	 * 
 	 * @param scene
 	 */
 	public void setScene(Scene scene) {
-		if (scene == null)
-			this.scene = scene;
+		this.scene = scene;
 	}
 
 	/**

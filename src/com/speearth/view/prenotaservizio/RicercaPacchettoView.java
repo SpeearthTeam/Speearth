@@ -161,23 +161,29 @@ public class RicercaPacchettoView extends View {
 		return parametri;
 	}
 
+	/**
+	 * Costruttore di default
+	 * 
+	 * @param stage
+	 * @throws IOException
+	 */
 	public RicercaPacchettoView(Stage stage) throws IOException {
 		super(stage);
 		AppFacadeController.getInstance().getPrenotaServizioController().setServizio(new PacchettoComposite());
 		getStage().setTitle(Costanti.TITOLO_PRENOTA_PACCHETTO);
-		getParentNode().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO,
-				new EventHandler<EventoSelezionaServizio>() {
+		getParentNode().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO, new EventHandler<EventoSelezionaServizio>() {
 
-					@Override
-					public void handle(EventoSelezionaServizio event) {
-						IServizioComponent servizio = event.getServizio();
-						if (!list_servizi.contains(servizio)) {
-							list_servizi.add(servizio);
-							AppFacadeController.getInstance().getPrenotaServizioController().getServizio()
-									.aggiungi(servizio);
-						}
-					}
-				});
+			@Override
+			public void handle(EventoSelezionaServizio event) {
+				IServizioComponent servizio = event.getServizio();
+				if (!list_servizi.contains(servizio)) {
+					list_servizi.add(servizio);
+					AppFacadeController.getInstance().getPrenotaServizioController().getServizio()
+							.aggiungi(servizio);
+				}
+			}
+		});
+		
 		initializeServiceTable();
 	}
 
@@ -274,12 +280,6 @@ public class RicercaPacchettoView extends View {
 
 	// Event Listener on Button[#bottone_ricerca].onAction
 	@FXML
-	public void vaiARicerca(ActionEvent event) throws IOException {
-		// TODO ricerca
-	}
-
-	// Event Listener on Button[#bottone_ricerca].onAction
-	@FXML
 	public void vaiARiepilogo(ActionEvent event) throws IOException {
 		if (AppFacadeController.getInstance().getPrenotaServizioController().getServizio().getListaServizi().isEmpty())
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null, Costanti.MESSAGGIO_NESSUN_SERVIZIO);
@@ -296,7 +296,6 @@ public class RicercaPacchettoView extends View {
 	// Event Listener on Button[#bottone_svuota].onAction
 	@FXML
 	public void svuotaPacchetto(ActionEvent event) {
-		// TODO
 		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_SVUOTA_PACCHETTO, null,
 				Costanti.MESSAGGIO_SVUOTA_PACCHETTO);
 		if (result.get() == ButtonType.OK) {
