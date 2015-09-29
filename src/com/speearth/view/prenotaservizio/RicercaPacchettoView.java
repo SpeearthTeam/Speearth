@@ -13,8 +13,8 @@ import com.speearth.model.core.Biglietto;
 import com.speearth.model.core.IServizioComponent;
 import com.speearth.model.core.PacchettoComposite;
 import com.speearth.utility.Costanti;
-import com.speearth.view.EventoSelezionaServizio;
 import com.speearth.view.View;
+import com.speearth.view.prenotaservizio.events.EventoSelezionaServizio;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;

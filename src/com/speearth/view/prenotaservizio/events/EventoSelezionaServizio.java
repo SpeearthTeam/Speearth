@@ -1,4 +1,4 @@
-package com.speearth.view;
+package com.speearth.view.prenotaservizio.events;
 
 import com.speearth.model.core.IServizioComponent;
 

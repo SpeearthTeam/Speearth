@@ -10,8 +10,8 @@ import java.util.ResourceBundle;
 import com.speearth.controller.AppFacadeController;
 import com.speearth.model.core.Alloggio;
 import com.speearth.utility.Costanti;
-import com.speearth.view.EventoSelezionaServizio;
 import com.speearth.view.View;
+import com.speearth.view.prenotaservizio.events.EventoSelezionaServizio;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
