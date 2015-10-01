@@ -79,7 +79,7 @@ public class RicercaAlloggioView extends View {
 		parametri.put("data_arrivo", this.input_data_arrivo.toString());
 		parametri.put("data_partenza", this.input_data_partenza.toString());
 		parametri.put("stanza_doppia", this.input_doppia.getText());
-		parametri.put("località", this.input_localita.getText());
+		parametri.put("zona", this.input_localita.getText());
 		parametri.put("numero_doppie", this.input_numero_doppie.getText());
 		parametri.put("numero_quadruple", this.input_numero_quadruple.getText());
 		parametri.put("numero_singole", this.input_numero_singole.getText());

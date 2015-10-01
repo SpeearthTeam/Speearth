@@ -36,8 +36,8 @@ public class SistemaEsternoFactory {
 	 * 
 	 * @return ArrayList<SistemaEsterno>
 	 */
-	public ArrayList<ISistemaEsterno> getSistemiEsterni() {
-		ArrayList<ISistemaEsterno> sistemi_esterni = new ArrayList<ISistemaEsterno>();
+	public ArrayList<SistemaEsterno> getSistemiEsterni() {
+		ArrayList<SistemaEsterno> sistemi_esterni = new ArrayList<SistemaEsterno>();
 		
 		sistemi_esterni.addAll(this.getAziendeDiTrasporto());
 		sistemi_esterni.addAll(this.getImpreseRicettive());

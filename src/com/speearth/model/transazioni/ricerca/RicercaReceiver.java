@@ -72,10 +72,7 @@ public class RicercaReceiver {
 				servizi = impresa_ricettiva.ricerca(parametri);
 				for (IServizioComponent servizio : servizi)
 					this.risultato_ricerca.add((Alloggio) servizio);
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 
@@ -114,7 +111,8 @@ public class RicercaReceiver {
 			} catch (IOException e) {
 				e.printStackTrace();
 			} catch (JSONException e) {
-				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 

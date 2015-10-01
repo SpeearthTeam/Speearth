@@ -1,17 +1,13 @@
 package com.speearth.model.sistemi_esterni;
 
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.speearth.model.core.Biglietto;
-import com.speearth.model.core.IServizioComponent;
 import com.speearth.utility.Costanti;
 
 /**
@@ -38,20 +34,6 @@ public class ItaloAdapter extends AziendaTrasportoAdapter {
 	 * Costruttore di default
 	 */
 	protected ItaloAdapter() {
-	}
-
-	/**
-	 * Formatta l'URL completo per la richiesta REST in base ai parametri
-	 * 
-	 * @param parametri
-	 * @return String
-	 */
-	@Override
-	protected String formattaURL(HashMap<String, String> parametri) {
-		// impostare le chiavi di ricerca nell'url
-		// in un modo possibilmente più elegante :)
-		// String url = this.getUrl() + "q=" + parametri.get("partenza");
-		return Costanti.URL_ITALO + "index.php?action=search&category=tickets&provider=Italo";
 	}
 
 	/**
@@ -93,23 +75,18 @@ public class ItaloAdapter extends AziendaTrasportoAdapter {
 		return true;
 	}
 
-	/**
-	 * Effettua una ricerca di biglietti offerti da Italo secondo i
-	 * parametri e ne restituisce un elenco usufruibile dall'Agenzia
-	 * 
-	 * @param parametri
-	 * @return ArrayList<ServizioComponent>
-	 * @throws IOException
-	 * @throws JSONException
-	 */
 	@Override
-	public ArrayList<IServizioComponent> ricerca(HashMap<String, String> parametri) throws IOException, JSONException {
-		JSONArray jsonArray = this.effettuaQuery(parametri);
-		ArrayList<IServizioComponent> biglietti = new ArrayList<IServizioComponent>();
-
-		for (int i = 0; i < jsonArray.length(); i++) {
-			biglietti.add(this.creaBigliettoDaJSON(jsonArray.getJSONObject(i)));
-		}
-		return biglietti;
+	protected String getSearchUrl() {
+		return Costanti.URL_ITALO;
+	}
+	
+	@Override
+	protected String serializeParameters(HashMap<String, String> parameters) {
+		String parametri_serializzati = super.serializeParameters(parameters);
+		
+		if (!parametri_serializzati.isEmpty())
+			parametri_serializzati += "&";
+		
+		return parametri_serializzati + "action=search&category=tickets&provider=Italo";
 	}
 }

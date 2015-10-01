@@ -36,20 +36,6 @@ public class BookingAdapter extends ImpresaRicettivaAdapter {
 	}
 
 	/**
-	 * Formatta l'URL completo per la richiesta REST in base ai parametri
-	 * 
-	 * @param parametri
-	 * @return String
-	 */
-	@Override
-	protected String formattaURL(HashMap<String, String> parametri) {
-		// impostare le chiavi di ricerca nell'url
-		// in un modo possibilmente più elegante :)
-		// String url = this.getUrl() + "q=" + parametri.get("localita");
-		return Costanti.URL_BOOKING + "index.php?action=search&category=accomodations";
-	}
-
-	/**
 	 * Crea un Alloggio da un oggetto JSON
 	 * 
 	 * @param jsonAlloggio
@@ -88,5 +74,20 @@ public class BookingAdapter extends ImpresaRicettivaAdapter {
 	public boolean autentica() {
 		// effettua il login sul sistema con le credenziali dell'agenzia
 		return true;
+	}
+
+	@Override
+	protected String getSearchUrl() {
+		return Costanti.URL_BOOKING;
+	}
+	
+	@Override
+	protected String serializeParameters(HashMap<String, String> parameters) {
+		String parametri_serializzati = super.serializeParameters(parameters);
+		
+		if (!parametri_serializzati.isEmpty())
+			parametri_serializzati += "&";
+		
+		return parametri_serializzati + "action=search&category=accomodations";
 	}
 }

@@ -37,20 +37,6 @@ public class TrenitaliaAdapter extends AziendaTrasportoAdapter {
 	}
 
 	/**
-	 * Formatta l'URL completo per la richiesta REST in base ai parametri
-	 * 
-	 * @param parametri
-	 * @return String
-	 */
-	@Override
-	protected String formattaURL(HashMap<String, String> parametri) {
-		// impostare le chiavi di ricerca nell'url
-		// in un modo possibilmente più elegante :)
-		// String url = this.getUrl() + "q=" + parametri.get("partenza");
-		return Costanti.URL_TRENITALIA + "index.php?action=search&category=tickets&provider=Trenitalia";
-	}
-
-	/**
 	 * Crea un Biglietto da un oggetto JSON
 	 * 
 	 * @param jsonBiglietto
@@ -87,5 +73,20 @@ public class TrenitaliaAdapter extends AziendaTrasportoAdapter {
 	public boolean autentica() {
 		// effettua il login sul sistema con le credenziali dell'agenzia
 		return true;
+	}
+
+	@Override
+	protected String getSearchUrl() {
+		return Costanti.URL_TRENITALIA;
+	}
+	
+	@Override
+	protected String serializeParameters(HashMap<String, String> parameters) {
+		String parametri_serializzati = super.serializeParameters(parameters);
+		
+		if (!parametri_serializzati.isEmpty())
+			parametri_serializzati += "&";
+		
+		return parametri_serializzati + "action=search&category=tickets&provider=Trenitalia";
 	}
 }
