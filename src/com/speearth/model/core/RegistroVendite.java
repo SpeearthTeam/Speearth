@@ -37,9 +37,17 @@ public class RegistroVendite {
 	 */
 	public ArrayList<Vendita> getVenditeDaCliente(Cliente cliente) {
 		// TODO - implement RegistroVendite.getVendite
-		return null;
+		ArrayList<Vendita> vendite = new ArrayList<>();
+		Commesso commesso = new Commesso();
+		Pagamento pagamento = new Pagamento();
+		pagamento.setAmmontare(600);
+		Biglietto biglietto = new Biglietto();
+		vendite.add(new Vendita(cliente, pagamento, commesso, biglietto));
+		vendite.add(new Vendita(cliente, pagamento, commesso, biglietto));
+		vendite.add(new Vendita(cliente, pagamento, commesso, biglietto));
+		return vendite;
 	}
-	
+
 	/**
 	 * Restituisce una Vendita dal suo id
 	 * 

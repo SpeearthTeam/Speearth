@@ -9,6 +9,8 @@ import java.util.ResourceBundle;
 import com.speearth.controller.AppFacadeController;
 import com.speearth.model.core.Alloggio;
 import com.speearth.model.core.Cliente;
+import com.speearth.model.core.bonus.IBonus;
+import com.speearth.model.core.bonus.ScontoConcreteStrategy;
 import com.speearth.utility.Costanti;
 import com.speearth.view.View;
 
@@ -54,6 +56,8 @@ public class RiepilogoAlloggioView extends View {
 	private Label output_data_ritorno;
 	@FXML
 	private Button bottone_conferma_pagamento;
+	@FXML
+	private Label label_bonus;
 
 	/**
 	 * Cliente
@@ -135,6 +139,13 @@ public class RiepilogoAlloggioView extends View {
 			if (cliente != null) {
 				this.impostaInfoCliente(cliente);
 				AppFacadeController.getInstance().getPrenotaServizioController().setCliente(cliente);
+				IBonus bonus = AppFacadeController.getInstance().getPrenotaServizioController().calcolaBonus(cliente);
+				if (bonus != null) {
+					this.label_bonus.setVisible(true);
+					this.output_totale
+							.setText(Float.toString(AppFacadeController.getInstance().getPrenotaServizioController()
+									.applicaBonus(bonus, new ScontoConcreteStrategy()).getPrezzo()));
+				}
 			} else
 				mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_NON_TROVATO, null,
 						Costanti.MESSAGGIO_CLIENTE_NON_TROVATO);

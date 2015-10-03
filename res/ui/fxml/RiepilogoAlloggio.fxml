@@ -62,8 +62,7 @@
                   </GridPane>
                   <VBox alignment="CENTER" prefHeight="146.0" prefWidth="427.0">
                      <children>
-                        <Label text="Questo Cliente ha diritto ad un Bonus:" />
-                        <Label fx:id="output_tipo_bonus" text="tipo_bonus" />
+                        <Label fx:id="label_bonus" text="Questo Cliente ha diritto ad un Bonus!" visible="false" />
                      </children>
                   </VBox>
                </children>
