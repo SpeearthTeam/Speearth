@@ -12,7 +12,7 @@ import com.speearth.model.core.Alloggio;
 import com.speearth.utility.Costanti;
 import com.speearth.view.View;
 import com.speearth.view.prenotaservizio.eventi.EventoSelezionaServizio;
-import com.speearth.view.prenotaservizio.schermate.componenti.AlloggioItemList;
+import com.speearth.view.prenotaservizio.schermate.componenti.AlloggioListItem;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -126,7 +126,7 @@ public class RicercaAlloggioView extends View {
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		this.lista_risultati.setCellFactory(param -> new AlloggioItemList(getStage()));
+		this.lista_risultati.setCellFactory(param -> new AlloggioListItem(getStage()));
 		this.lista_risultati.setItems(this.lista_alloggi);
 	}
 

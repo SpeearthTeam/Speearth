@@ -2,7 +2,7 @@ package com.speearth.view.prenotaservizio.schermate.componenti;
 
 import java.io.IOException;
 
-import com.speearth.model.core.Biglietto;
+import com.speearth.model.core.Alloggio;
 
 import javafx.scene.control.ListCell;
 import javafx.stage.Stage;
@@ -10,10 +10,10 @@ import javafx.stage.Stage;
 /**
  * Classe che modella la Lista di risultati della ricerca di Alloggi
  */
-public class BigliettoItemList extends ListCell<Biglietto> {
+public class AlloggioListItem extends ListCell<Alloggio> {
 	
 	/**
-	 * Lo stage della finestra
+	 * Stage della list view
 	 */
 	private Stage stage;
 	
@@ -22,27 +22,28 @@ public class BigliettoItemList extends ListCell<Biglietto> {
 	 * 
 	 * @param stage
 	 */
-	public BigliettoItemList(Stage stage) {
+	public AlloggioListItem(Stage stage) {
 		this.stage = stage;
 	}
 	
 	/**
 	 * Aggiorna un elemento della Lista
 	 * 
-	 * @param biglietto
+	 * @param alloggio
 	 * @param empty
 	 */
 	@Override
-	protected void updateItem(Biglietto biglietto, boolean empty) {
-		super.updateItem(biglietto, empty);
+	protected void updateItem(Alloggio alloggio, boolean empty) {
+		super.updateItem(alloggio, empty);
 		
-		if (biglietto != null) {
+		if (alloggio != null) {
 			try {
-				RisultatoBigliettoItem biglietto_item = new RisultatoBigliettoItem(this.stage, biglietto);
-				setGraphic(biglietto_item.getParentNode());
+				RisultatoAlloggioItem alloggio_item = new RisultatoAlloggioItem(this.stage, alloggio);
+				setGraphic(alloggio_item.getParentNode());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
 	}
+
 }

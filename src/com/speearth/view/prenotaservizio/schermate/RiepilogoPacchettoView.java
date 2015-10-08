@@ -13,7 +13,7 @@ import com.speearth.model.core.bonus.IBonus;
 import com.speearth.model.core.bonus.ScontoConcreteStrategy;
 import com.speearth.utility.Costanti;
 import com.speearth.view.View;
-import com.speearth.view.prenotaservizio.schermate.componenti.PacchettoItemList;
+import com.speearth.view.prenotaservizio.schermate.componenti.PacchettoListItem;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -110,7 +110,7 @@ public class RiepilogoPacchettoView extends View {
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		this.riepilogo_servizi.setCellFactory(param -> new PacchettoItemList(getStage()));
+		this.riepilogo_servizi.setCellFactory(param -> new PacchettoListItem(getStage()));
 		this.riepilogo_servizi.setItems(this.lista_servizi);
 	}
 

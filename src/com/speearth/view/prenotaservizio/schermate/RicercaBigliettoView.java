@@ -12,7 +12,7 @@ import com.speearth.model.core.Biglietto;
 import com.speearth.utility.Costanti;
 import com.speearth.view.View;
 import com.speearth.view.prenotaservizio.eventi.EventoSelezionaServizio;
-import com.speearth.view.prenotaservizio.schermate.componenti.BigliettoItemList;
+import com.speearth.view.prenotaservizio.schermate.componenti.BigliettoListItem;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -115,7 +115,7 @@ public class RicercaBigliettoView extends View {
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		this.lista_risultati.setCellFactory(param -> new BigliettoItemList(getStage()));
+		this.lista_risultati.setCellFactory(param -> new BigliettoListItem(getStage()));
 		this.lista_risultati.setItems(this.lista_biglietti);
 		this.bottone_ricerca.setDisable(true);
 	}

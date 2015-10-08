@@ -15,8 +15,8 @@ import com.speearth.model.core.PacchettoComposite;
 import com.speearth.utility.Costanti;
 import com.speearth.view.View;
 import com.speearth.view.prenotaservizio.eventi.EventoSelezionaServizio;
-import com.speearth.view.prenotaservizio.schermate.componenti.AlloggioItemList;
-import com.speearth.view.prenotaservizio.schermate.componenti.BigliettoItemList;
+import com.speearth.view.prenotaservizio.schermate.componenti.AlloggioListItem;
+import com.speearth.view.prenotaservizio.schermate.componenti.BigliettoListItem;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -201,10 +201,10 @@ public class RicercaPacchettoView extends View {
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		this.lista_risultati_biglietti.setCellFactory(param -> new BigliettoItemList(getStage()));
+		this.lista_risultati_biglietti.setCellFactory(param -> new BigliettoListItem(getStage()));
 		this.lista_risultati_biglietti.setItems(this.lista_biglietti);
 
-		this.lista_risultati_alloggi.setCellFactory(param -> new AlloggioItemList(getStage()));
+		this.lista_risultati_alloggi.setCellFactory(param -> new AlloggioListItem(getStage()));
 		this.lista_risultati_alloggi.setItems(this.lista_alloggi);
 
 		this.bottone_ricerca.setDisable(true);
@@ -407,6 +407,7 @@ public class RicercaPacchettoView extends View {
 							.get(ButtonCell.this.getIndex());
 					// remove selected item from the table list
 					list_servizi.remove(servizio);
+					AppFacadeController.getInstance().getPrenotaServizioController().getServizio().rimuovi(servizio);
 				}
 			});
 		}
