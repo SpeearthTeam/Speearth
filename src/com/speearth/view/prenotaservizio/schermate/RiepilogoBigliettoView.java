@@ -1,38 +1,41 @@
-package com.speearth.view.prenotaservizio;
+package com.speearth.view.prenotaservizio.schermate;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 import com.speearth.controller.AppFacadeController;
+import com.speearth.model.core.Biglietto;
 import com.speearth.model.core.Cliente;
-import com.speearth.model.core.IServizioComponent;
-import com.speearth.model.core.PacchettoComposite;
 import com.speearth.model.core.bonus.IBonus;
 import com.speearth.model.core.bonus.ScontoConcreteStrategy;
 import com.speearth.utility.Costanti;
 import com.speearth.view.View;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class RiepilogoPacchettoView extends View {
+public class RiepilogoBigliettoView extends View {
 	@FXML
 	private Button bottone_scegli_servizio;
 	@FXML
 	private Button bottone_ricerca;
 	@FXML
 	private Button bottone_riepilogo;
+	@FXML
+	private Button bottone_conferma_pagamento;
+	@FXML
+	private Button bottone_identifica_cliente;
+	@FXML
+	private Label input_metodo_pagamento;
 	@FXML
 	private TextField input_codice_tessera;
 	@FXML
@@ -44,17 +47,27 @@ public class RiepilogoPacchettoView extends View {
 	@FXML
 	private Label output_cf_cliente;
 	@FXML
-	private Label output_totale;
-	@FXML
 	private Label output_tipo_bonus;
 	@FXML
-	private Button bottone_identifica_cliente;
+	private Label output_totale;
 	@FXML
-	private Button bottone_conferma_pagamento;
+	private Label output_fornitore;
 	@FXML
-	private Label input_metodo_pagamento;
+	private Label output_partenza;
 	@FXML
-	private ListView<IServizioComponent> riepilogo_servizi;
+	private Label output_destinazione;
+	@FXML
+	private Label output_partenza_andata;
+	@FXML
+	private Label output_arrivo_andata;
+	@FXML
+	private Label output_partenza_ritorno;
+	@FXML
+	private Label output_arrivo_ritorno;
+	@FXML
+	private Label output_adulti;
+	@FXML
+	private Label output_bambini;
 	@FXML
 	private Label label_bonus;
 
@@ -62,8 +75,6 @@ public class RiepilogoPacchettoView extends View {
 	 * Cliente
 	 */
 	private Cliente cliente = null;
-
-	private ObservableList<IServizioComponent> lista_servizi = FXCollections.observableArrayList();
 
 	/**
 	 * Imposta le informazioni del Cliente nella View
@@ -78,27 +89,35 @@ public class RiepilogoPacchettoView extends View {
 	}
 
 	/**
-	 * Imposta le informazioni del Pacchetto prenotato nella View
+	 * Imposta le informazioni del Biglietto prenotato nella View
 	 * 
-	 * @param pacchetto
+	 * @param biglietto
 	 */
-	private void impostaInfoPacchetto(PacchettoComposite pacchetto) {
-		this.lista_servizi.setAll(pacchetto.getListaServizi());
-		this.riepilogo_servizi.setItems(this.lista_servizi);
-		this.output_totale.setText(Float.toString(pacchetto.getPrezzo()));
+	private void impostaInfoBiglietto(Biglietto biglietto) {
+		this.output_totale.setText(Float.toString(biglietto.getPrezzo()));
+		this.output_adulti.setText(Integer.toString(biglietto.getNumeroAdulti()));
+		this.output_arrivo_andata.setText(biglietto.getDataArrivoAndata().format(DateTimeFormatter.ISO_DATE_TIME));
+		this.output_arrivo_ritorno.setText(biglietto.getDataArrivoRitorno().format(DateTimeFormatter.ISO_DATE_TIME));
+		this.output_bambini.setText(Integer.toString(biglietto.getNumeroBambini()));
+		this.output_destinazione.setText(biglietto.getDestinazione());
+		this.output_fornitore.setText(biglietto.getFornitore());
+		this.output_partenza.setText(biglietto.getPartenza());
+		this.output_partenza_andata.setText(biglietto.getDataPartenzaAndata().format(DateTimeFormatter.ISO_DATE_TIME));
+		this.output_partenza_ritorno
+				.setText(biglietto.getDataPartenzaRitorno().format(DateTimeFormatter.ISO_DATE_TIME));
 	}
 
 	/**
-	 * Costruttore
+	 * Costruttore della View
 	 * 
 	 * @param stage
 	 * @throws IOException
 	 */
-	public RiepilogoPacchettoView(Stage stage) throws IOException {
+	public RiepilogoBigliettoView(Stage stage) throws IOException {
 		super(stage);
 		this.stage.setTitle(Costanti.TITOLO_RIEPILOGO);
-		this.impostaInfoPacchetto(
-				(PacchettoComposite) AppFacadeController.getInstance().getPrenotaServizioController().getServizio());
+		this.impostaInfoBiglietto(
+				(Biglietto) AppFacadeController.getInstance().getPrenotaServizioController().getServizio());
 	}
 
 	/**
@@ -109,8 +128,6 @@ public class RiepilogoPacchettoView extends View {
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		this.riepilogo_servizi.setCellFactory(param -> new PacchettoItemList(getStage()));
-		this.riepilogo_servizi.setItems(this.lista_servizi);
 	}
 
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
@@ -120,7 +137,7 @@ public class RiepilogoPacchettoView extends View {
 				Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO, null);
 		if (result.get() == ButtonType.OK) {
 			AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
-			ScegliServizioView view = new ScegliServizioView(this.getStage());
+			ScegliServizioView view = new ScegliServizioView(getStage());
 			view.mostra();
 		}
 	}
@@ -181,6 +198,6 @@ public class RiepilogoPacchettoView extends View {
 	 */
 	@Override
 	public String getResourceName() {
-		return Costanti.FXML_RIEPILOGO_PACCHETTO;
+		return Costanti.FXML_RIEPILOGO_BIGLIETTO;
 	}
 }

@@ -1,4 +1,4 @@
-package com.speearth.view.prenotaservizio;
+package com.speearth.view.prenotaservizio.schermate;
 
 import java.io.IOException;
 import java.net.URL;

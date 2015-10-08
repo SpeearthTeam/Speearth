@@ -1,4 +1,4 @@
-package com.speearth.view.prenotaservizio;
+package com.speearth.view.prenotaservizio.schermate.componenti;
 
 import java.io.IOException;
 import java.net.URL;
@@ -8,7 +8,7 @@ import java.util.ResourceBundle;
 import com.speearth.model.core.Biglietto;
 import com.speearth.utility.Costanti;
 import com.speearth.view.SubView;
-import com.speearth.view.prenotaservizio.events.EventoSelezionaServizio;
+import com.speearth.view.prenotaservizio.eventi.EventoSelezionaServizio;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

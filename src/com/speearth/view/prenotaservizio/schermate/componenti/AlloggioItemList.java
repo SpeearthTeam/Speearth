@@ -1,4 +1,4 @@
-package com.speearth.view.prenotaservizio;
+package com.speearth.view.prenotaservizio.schermate.componenti;
 
 import java.io.IOException;
 

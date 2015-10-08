@@ -1,4 +1,4 @@
-package com.speearth.view.prenotaservizio;
+package com.speearth.view.prenotaservizio.schermate;
 
 import java.io.IOException;
 import java.net.URL;
@@ -11,7 +11,8 @@ import com.speearth.controller.AppFacadeController;
 import com.speearth.model.core.Alloggio;
 import com.speearth.utility.Costanti;
 import com.speearth.view.View;
-import com.speearth.view.prenotaservizio.events.EventoSelezionaServizio;
+import com.speearth.view.prenotaservizio.eventi.EventoSelezionaServizio;
+import com.speearth.view.prenotaservizio.schermate.componenti.AlloggioItemList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

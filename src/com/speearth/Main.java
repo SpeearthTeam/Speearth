@@ -1,6 +1,6 @@
 package com.speearth;
 
-import com.speearth.view.prenotaservizio.ScegliServizioView;
+import com.speearth.view.prenotaservizio.schermate.ScegliServizioView;
 
 import javafx.application.Application;
 import javafx.scene.image.Image;
