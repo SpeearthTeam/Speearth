@@ -67,7 +67,7 @@ public abstract class View implements Initializable {
 		// se la scena non esiste la creo
 		if (this.scene == null)
 			this.scene = new Scene(this.parent_node);
-		
+
 		this.stage.setScene(this.scene);
 		this.stage.show();
 	}

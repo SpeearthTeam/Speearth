@@ -6,13 +6,13 @@ import javafx.application.Application;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-public class Main extends Application{
-	
+public class Main extends Application {
+
 	/**
 	 * Avvia l'Applicazione
 	 * 
 	 * @param args
-	 * @throws Exception 
+	 * @throws Exception
 	 */
 	public static void main(String[] args) throws Exception {
 		launch(args);

@@ -90,19 +90,20 @@ public class RicercaBigliettoView extends View {
 	public RicercaBigliettoView(Stage stage) throws IOException {
 		super(stage);
 		getStage().setTitle(Costanti.TITOLO_PRENOTA_BIGLIETTO);
-		getParentNode().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO, new EventHandler<EventoSelezionaServizio>() {
+		getParentNode().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO,
+				new EventHandler<EventoSelezionaServizio>() {
 
-			@Override
-			public void handle(EventoSelezionaServizio event) {
-				try {
-					AppFacadeController.getInstance().getPrenotaServizioController()
-							.setServizio(event.getServizio());
-					vaiARiepilogo();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		});
+					@Override
+					public void handle(EventoSelezionaServizio event) {
+						try {
+							AppFacadeController.getInstance().getPrenotaServizioController()
+									.setServizio(event.getServizio());
+							vaiARiepilogo();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
+				});
 	}
 
 	/**

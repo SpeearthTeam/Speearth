@@ -30,6 +30,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
@@ -115,6 +116,8 @@ public class RicercaPacchettoView extends View {
 
 	private ObservableList<IServizioComponent> list_servizi = FXCollections.observableArrayList();
 
+	private TableColumn<IServizioComponent, Boolean> cancella_servizio_col = new TableColumn<>("Cancella");
+
 	/**
 	 * Recupera i dati inseriti dall'Utente nella form di ricerca della tab
 	 * Biglietti
@@ -171,19 +174,20 @@ public class RicercaPacchettoView extends View {
 		super(stage);
 		AppFacadeController.getInstance().getPrenotaServizioController().setServizio(new PacchettoComposite());
 		getStage().setTitle(Costanti.TITOLO_PRENOTA_PACCHETTO);
-		getParentNode().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO, new EventHandler<EventoSelezionaServizio>() {
+		getParentNode().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO,
+				new EventHandler<EventoSelezionaServizio>() {
 
-			@Override
-			public void handle(EventoSelezionaServizio event) {
-				IServizioComponent servizio = event.getServizio();
-				if (!list_servizi.contains(servizio)) {
-					list_servizi.add(servizio);
-					AppFacadeController.getInstance().getPrenotaServizioController().getServizio()
-							.aggiungi(servizio);
-				}
-			}
-		});
-		
+					@Override
+					public void handle(EventoSelezionaServizio event) {
+						IServizioComponent servizio = event.getServizio();
+						if (!list_servizi.contains(servizio)) {
+							list_servizi.add(servizio);
+							AppFacadeController.getInstance().getPrenotaServizioController().getServizio()
+									.aggiungi(servizio);
+						}
+					}
+				});
+
 		initializeServiceTable();
 	}
 
@@ -256,6 +260,35 @@ public class RicercaPacchettoView extends View {
 							prezzo = new SimpleStringProperty(Float.toString(((Biglietto) servizio).getPrezzo()));
 
 						return prezzo;
+					}
+				});
+				// per inserire i button delete sui servizi singoli del
+				// pacchetto
+				// this.cancella_servizio_col.setCellValueFactory(new
+				// Callback<TableColumn.CellDataFeatures<IServizioComponent,
+				// Button>, ObservableValue<Button>>() {
+				// @Override public ObservableValue<Button>
+				// call(TableColumn.CellDataFeatures<IServizioComponent, Button>
+				// features) {
+				// return ObservableValue<Button>;
+				// }
+				// });
+
+		// this.cancella_servizio_col.setCellFactory(new
+		// Callback<TableColumn<IServizioComponent, Button>,
+		// TableCell<IServizioComponent, Button>>() {
+		// return new Button();
+		// });
+
+		// aggiungo la colonna per i pulsanti Cancella
+		this.tabella_pacchetto.getColumns().add(this.cancella_servizio_col);
+		// aggiungo il pulsante alla tabella
+		this.cancella_servizio_col.setCellFactory(
+				new Callback<TableColumn<IServizioComponent, Boolean>, TableCell<IServizioComponent, Boolean>>() {
+
+					@Override
+					public TableCell<IServizioComponent, Boolean> call(TableColumn<IServizioComponent, Boolean> p) {
+						return new ButtonCell();
 					}
 				});
 
@@ -355,4 +388,37 @@ public class RicercaPacchettoView extends View {
 	public String getResourceName() {
 		return Costanti.FXML_RICERCA_PACCHETTO;
 	}
+
+	// Define the button cell
+	private class ButtonCell extends TableCell<IServizioComponent, Boolean> {
+		final Button cellButton = new Button("Cancella");
+
+		ButtonCell() {
+
+			// Action when the button is pressed
+			cellButton.setOnAction(new EventHandler<ActionEvent>() {
+
+				@Override
+				public void handle(ActionEvent t) {
+					// get Selected Item
+					IServizioComponent servizio = ButtonCell.this.getTableView().getItems()
+							.get(ButtonCell.this.getIndex());
+					// remove selected item from the table list
+					list_servizi.remove(servizio);
+				}
+			});
+		}
+
+		// Display button if the row is not empty
+		@Override
+		protected void updateItem(Boolean t, boolean empty) {
+			super.updateItem(t, empty);
+			if (!empty) {
+				setGraphic(cellButton);
+			} else {
+				setGraphic(null);
+			}
+		}
+	}
+
 }
