@@ -1,4 +1,4 @@
-package com.speearth.view.prenotaservizio;
+package com.speearth.view.prenotaservizio.schermate.componenti;
 
 import java.io.IOException;
 
@@ -9,7 +9,7 @@ import com.speearth.model.core.IServizioComponent;
 import javafx.scene.control.ListCell;
 import javafx.stage.Stage;
 
-public class PacchettoItemList extends ListCell<IServizioComponent> {
+public class PacchettoListItem extends ListCell<IServizioComponent> {
 	
 	/**
 	 * Stage della list view
@@ -21,7 +21,7 @@ public class PacchettoItemList extends ListCell<IServizioComponent> {
 	 * 
 	 * @param stage
 	 */
-	public PacchettoItemList(Stage stage) {
+	public PacchettoListItem(Stage stage) {
 		this.stage = stage;
 	}
 

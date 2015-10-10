@@ -1,4 +1,4 @@
-package com.speearth.view.prenotaservizio;
+package com.speearth.view.prenotaservizio.schermate.componenti;
 
 import java.io.IOException;
 
@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 /**
  * Classe che modella la Lista di risultati della ricerca di Alloggi
  */
-public class BigliettoItemList extends ListCell<Biglietto> {
+public class BigliettoListItem extends ListCell<Biglietto> {
 	
 	/**
 	 * Lo stage della finestra
@@ -22,7 +22,7 @@ public class BigliettoItemList extends ListCell<Biglietto> {
 	 * 
 	 * @param stage
 	 */
-	public BigliettoItemList(Stage stage) {
+	public BigliettoListItem(Stage stage) {
 		this.stage = stage;
 	}
 	
