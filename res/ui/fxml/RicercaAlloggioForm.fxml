@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane prefHeight="513.0" prefWidth="370.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="25.0" layoutY="42.0" text="Località" />
+      <Label layoutX="25.0" layoutY="99.0" text="Arrivo" />
+      <Label layoutX="225.0" layoutY="99.0" text="Ore" />
+      <Label layoutX="26.0" layoutY="148.0" text="Partenza" />
+      <Label layoutX="225.0" layoutY="148.0" text="Ore" />
+      <Label layoutX="27.0" layoutY="198.0" text="Stanze" />
+      <TextField fx:id="input_localita" layoutX="93.0" layoutY="38.0" prefHeight="25.0" prefWidth="246.0" />
+      <DatePicker fx:id="input_data_arrivo" layoutX="93.0" layoutY="95.0" prefHeight="25.0" prefWidth="98.0" />
+      <DatePicker fx:id="input_data_partenza" layoutX="93.0" layoutY="144.0" prefHeight="25.0" prefWidth="98.0" />
+      <ChoiceBox fx:id="input_ora_arrivo" layoutX="262.0" layoutY="95.0" prefHeight="25.0" prefWidth="77.0" />
+      <ChoiceBox fx:id="input_ora_partenza" layoutX="262.0" layoutY="144.0" prefHeight="25.0" prefWidth="77.0" />
+      <ChoiceBox fx:id="input_numero_singole" layoutX="262.0" layoutY="230.0" prefHeight="25.0" prefWidth="77.0" />
+      <ChoiceBox fx:id="input_numero_doppie" layoutX="262.0" layoutY="279.0" prefHeight="25.0" prefWidth="77.0" />
+      <ChoiceBox fx:id="input_numero_triple" layoutX="262.0" layoutY="327.0" prefHeight="25.0" prefWidth="77.0" />
+      <ChoiceBox fx:id="input_numero_quadruple" layoutX="262.0" layoutY="374.0" prefHeight="25.0" prefWidth="77.0" />
+      <CheckBox fx:id="input_singola" layoutX="93.0" layoutY="234.0" mnemonicParsing="false" text="Singola" />
+      <CheckBox fx:id="input_doppia" layoutX="93.0" layoutY="283.0" mnemonicParsing="false" text="Doppia" />
+      <CheckBox fx:id="input_tripla" layoutX="93.0" layoutY="331.0" mnemonicParsing="false" text="Tripla" />
+      <CheckBox fx:id="input_quadrupla" layoutX="93.0" layoutY="378.0" mnemonicParsing="false" text="Quadrupla" />
+      <Button layoutX="29.0" layoutY="445.0" mnemonicParsing="false" onAction="#ricercaAlloggi" prefHeight="45.0" prefWidth="316.0" text="Cerca">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+   </children>
+</Pane>

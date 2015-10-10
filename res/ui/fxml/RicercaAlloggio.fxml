@@ -13,34 +13,7 @@
 				<ListView fx:id="lista_risultati" minWidth="854.0" prefHeight="200.0" prefWidth="854.0" BorderPane.alignment="CENTER" />
 			</center>
 			<left>
-				<AnchorPane minWidth="426.0" prefWidth="426.0" styleClass="AnchorPane" BorderPane.alignment="CENTER">
-					<children>
-						<Label layoutX="14.0" layoutY="68.0" text="Località" />
-						<Label layoutX="14.0" layoutY="171.0" text="Arrivo" />
-						<Label layoutX="14.0" layoutY="288.0" text="Stanze" />
-						<Label layoutX="13.0" layoutY="217.0" text="Partenza" />
-						<TextField fx:id="input_localita" layoutX="99.0" layoutY="63.0" prefHeight="31.0" prefWidth="285.0" />
-						<Label layoutX="229.0" layoutY="171.0" text="Ore" />
-						<Label layoutX="229.0" layoutY="217.0" text="Ore" />
-						<DatePicker fx:id="input_data_arrivo" layoutX="98.0" layoutY="166.0" prefHeight="25.0" prefWidth="93.0" />
-						<DatePicker fx:id="input_data_partenza" layoutX="98.0" layoutY="213.0" prefHeight="25.0" prefWidth="93.0" />
-						<Button fx:id="ricerca_alloggi" layoutX="287.0" layoutY="573.0" mnemonicParsing="false" onAction="#ricercaAlloggi" prefHeight="48.0" prefWidth="101.0" text="Cerca">
-							<font>
-								<Font size="18.0" />
-							</font>
-						</Button>
-						<CheckBox fx:id="input_singola" layoutX="99.0" layoutY="314.0" mnemonicParsing="false" text="Singola" />
-						<CheckBox fx:id="input_doppia" layoutX="99.0" layoutY="373.0" mnemonicParsing="false" text="Doppia" />
-						<CheckBox fx:id="input_tripla" layoutX="98.0" layoutY="423.0" mnemonicParsing="false" text="Tripla" />
-						<CheckBox fx:id="input_quadrupla" layoutX="99.0" layoutY="480.0" mnemonicParsing="false" text="Quadrupla" />
-                  <ChoiceBox fx:id="input_ora_arrivo" layoutX="290.0" layoutY="167.0" prefHeight="25.0" prefWidth="93.0" />
-                  <ChoiceBox fx:id="input_ora_partenza" layoutX="289.0" layoutY="213.0" prefWidth="95.0" />
-                  <ChoiceBox fx:id="input_numero_singole" layoutX="290.0" layoutY="310.0" prefWidth="95.0" />
-                  <ChoiceBox fx:id="input_numero_doppie" layoutX="289.0" layoutY="369.0" prefWidth="95.0" />
-                  <ChoiceBox fx:id="input_numero_triple" layoutX="290.0" layoutY="419.0" prefWidth="95.0" />
-                  <ChoiceBox fx:id="input_numero_quadruple" layoutX="289.0" layoutY="476.0" prefWidth="95.0" />
-					</children>
-				</AnchorPane>
+				<AnchorPane fx:id="form_container" styleClass="AnchorPane" BorderPane.alignment="CENTER" />
 			</left>
 		</BorderPane>
 	</center>
