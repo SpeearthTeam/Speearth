@@ -40,6 +40,13 @@ public abstract class View implements Initializable {
 	protected Scene scene;
 
 	/**
+	 * Costruttore di default
+	 */
+	public View() {
+
+	}
+
+	/**
 	 * Costruttore della View
 	 * 
 	 * @param stage

@@ -17,6 +17,7 @@ import com.speearth.view.View;
 import com.speearth.view.prenotaservizio.eventi.EventoSelezionaServizio;
 import com.speearth.view.prenotaservizio.schermate.componenti.AlloggioListItem;
 import com.speearth.view.prenotaservizio.schermate.componenti.BigliettoListItem;
+import com.speearth.view.prenotaservizio.schermate.componenti.ButtonCell;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -116,7 +117,7 @@ public class RicercaPacchettoView extends View {
 
 	private ObservableList<Alloggio> lista_alloggi = FXCollections.observableArrayList();
 
-	private ObservableList<IServizioComponent> list_servizi = FXCollections.observableArrayList();
+	private ObservableList<IServizioComponent> lista_servizi = FXCollections.observableArrayList();
 
 	private TableColumn<IServizioComponent, Boolean> cancella_servizio_col = new TableColumn<>("Cancella");
 
@@ -167,6 +168,13 @@ public class RicercaPacchettoView extends View {
 	}
 
 	/**
+	 * Costrutture di default
+	 */
+	public RicercaPacchettoView() {
+
+	}
+
+	/**
 	 * Costruttore di default
 	 * 
 	 * @param stage
@@ -182,8 +190,8 @@ public class RicercaPacchettoView extends View {
 					@Override
 					public void handle(EventoSelezionaServizio event) {
 						IServizioComponent servizio = event.getServizio();
-						if (!list_servizi.contains(servizio)) {
-							list_servizi.add(servizio);
+						if (!lista_servizi.contains(servizio)) {
+							lista_servizi.add(servizio);
 							AppFacadeController.getInstance().getPrenotaServizioController().getServizio()
 									.aggiungi(servizio);
 						}
@@ -264,23 +272,6 @@ public class RicercaPacchettoView extends View {
 						return prezzo;
 					}
 				});
-				// per inserire i button delete sui servizi singoli del
-				// pacchetto
-				// this.cancella_servizio_col.setCellValueFactory(new
-				// Callback<TableColumn.CellDataFeatures<IServizioComponent,
-				// Button>, ObservableValue<Button>>() {
-				// @Override public ObservableValue<Button>
-				// call(TableColumn.CellDataFeatures<IServizioComponent, Button>
-				// features) {
-				// return ObservableValue<Button>;
-				// }
-				// });
-
-		// this.cancella_servizio_col.setCellFactory(new
-		// Callback<TableColumn<IServizioComponent, Button>,
-		// TableCell<IServizioComponent, Button>>() {
-		// return new Button();
-		// });
 
 		// aggiungo la colonna per i pulsanti Cancella
 		this.tabella_pacchetto.getColumns().add(this.cancella_servizio_col);
@@ -290,13 +281,14 @@ public class RicercaPacchettoView extends View {
 
 					@Override
 					public TableCell<IServizioComponent, Boolean> call(TableColumn<IServizioComponent, Boolean> p) {
-						return new ButtonCell();
+						ButtonCell button_cell = new ButtonCell(); 
+						return button_cell;
 					}
 				});
 
-		this.list_servizi.setAll(
+		this.lista_servizi.setAll(
 				AppFacadeController.getInstance().getPrenotaServizioController().getServizio().getListaServizi());
-		this.tabella_pacchetto.setItems(this.list_servizi);
+		this.tabella_pacchetto.setItems(this.lista_servizi);
 	}
 
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
@@ -335,7 +327,7 @@ public class RicercaPacchettoView extends View {
 				Costanti.MESSAGGIO_SVUOTA_PACCHETTO);
 		if (result.get() == ButtonType.OK) {
 			AppFacadeController.getInstance().getPrenotaServizioController().getServizio().getListaServizi().clear();
-			this.list_servizi.clear();
+			this.lista_servizi.clear();
 		}
 	}
 
@@ -391,37 +383,8 @@ public class RicercaPacchettoView extends View {
 		return Costanti.FXML_RICERCA_PACCHETTO;
 	}
 
-	// Define the button cell
-	private class ButtonCell extends TableCell<IServizioComponent, Boolean> {
-		final Button cellButton = new Button("Cancella");
-
-		ButtonCell() {
-
-			// Action when the button is pressed
-			cellButton.setOnAction(new EventHandler<ActionEvent>() {
-
-				@Override
-				public void handle(ActionEvent t) {
-					// get Selected Item
-					IServizioComponent servizio = ButtonCell.this.getTableView().getItems()
-							.get(ButtonCell.this.getIndex());
-					// remove selected item from the table list
-					list_servizi.remove(servizio);
-					AppFacadeController.getInstance().getPrenotaServizioController().getServizio().rimuovi(servizio);
-				}
-			});
-		}
-
-		// Display button if the row is not empty
-		@Override
-		protected void updateItem(Boolean t, boolean empty) {
-			super.updateItem(t, empty);
-			if (!empty) {
-				setGraphic(cellButton);
-			} else {
-				setGraphic(null);
-			}
-		}
+	public ObservableList<IServizioComponent> getListaServizi() {
+		return this.lista_servizi;
 	}
 
 }
