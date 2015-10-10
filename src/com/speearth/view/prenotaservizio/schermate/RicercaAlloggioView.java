@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
 
 import com.speearth.controller.AppFacadeController;
 import com.speearth.model.core.Alloggio;
+import com.speearth.model.core.IServizioComponent;
 import com.speearth.utility.Costanti;
 import com.speearth.view.View;
 import com.speearth.view.prenotaservizio.eventi.EventoSelezionaServizio;
@@ -83,8 +84,10 @@ public class RicercaAlloggioView extends View {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		this.lista_risultati.setCellFactory(param -> new AlloggioListItem(getStage()));
 		this.lista_risultati.setItems(this.lista_alloggi);
-		this.input_ora_arrivo.setItems(FXCollections.observableArrayList("00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"));
-		this.input_ora_partenza.setItems(FXCollections.observableArrayList("00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"));
+		this.input_ora_arrivo.setItems(FXCollections.observableArrayList("00", "01", "02", "03", "04", "05", "06", "07",
+				"08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"));
+		this.input_ora_partenza.setItems(FXCollections.observableArrayList("00", "01", "02", "03", "04", "05", "06",
+				"07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"));
 		this.input_numero_singole.setItems(FXCollections.observableArrayList("0", "1", "2"));
 		this.input_numero_doppie.setItems(FXCollections.observableArrayList("0", "1", "2"));
 		this.input_numero_triple.setItems(FXCollections.observableArrayList("0", "1", "2"));
@@ -95,7 +98,7 @@ public class RicercaAlloggioView extends View {
 		this.input_numero_triple.getSelectionModel().select(0);
 		this.input_numero_quadruple.getSelectionModel().select(0);
 	}
-	
+
 	/**
 	 * Recupera i dati inseriti dall'Utente nella form di ricerca
 	 * 
@@ -103,65 +106,65 @@ public class RicercaAlloggioView extends View {
 	 */
 	private HashMap<String, String> recuperaDati() throws NullPointerException {
 		int hour = 0;
-		
+
 		// Controllo della zona
 		if (input_localita.getText() == null || input_localita.getText().isEmpty()) {
 			throw new InvalidParameterException("Definire la località");
 		}
-		
+
 		// Controllo stanze
-		if (!input_singola.isSelected() && !input_doppia.isSelected() && !input_tripla.isSelected() && !input_quadrupla.isSelected()) {
+		if (!input_singola.isSelected() && !input_doppia.isSelected() && !input_tripla.isSelected()
+				&& !input_quadrupla.isSelected()) {
 			throw new InvalidParameterException("Scegliere almeno una stanza");
 		}
-		
+
 		// Controllo singola
 		if (input_singola.isSelected() && input_numero_singole.getValue().equals("0")) {
 			throw new InvalidParameterException("Selezionare almeno una singola");
 		}
-		
+
 		// Controllo doppia
 		if (input_doppia.isSelected() && input_numero_doppie.getValue().equals("0")) {
 			throw new InvalidParameterException("Selezionare almeno una doppia");
 		}
-		
+
 		// Controllo tripla
 		if (input_tripla.isSelected() && input_numero_triple.getValue().equals("0")) {
 			throw new InvalidParameterException("Selezionare almeno una tripla");
 		}
-		
+
 		// Controllo quadrupla
 		if (input_quadrupla.isSelected() && input_numero_quadruple.getValue().equals("0")) {
 			throw new InvalidParameterException("Selezionare almeno una quadrupla");
 		}
-				
-		
+
 		// Controllo e calcolo della data di arrivo
 		LocalDate local_date_arrivo = input_data_arrivo.getValue();
-		
+
 		if (local_date_arrivo == null) {
 			throw new InvalidParameterException("Definire la data di arrivo");
 		}
-		
+
 		hour = (input_ora_arrivo.getValue() != null) ? Integer.parseInt(input_ora_arrivo.getValue()) : 0;
 		LocalDateTime local_date_time_arrivo = local_date_arrivo.atTime(hour, 0, 0);
 		String data_arrivo = local_date_time_arrivo.format(DateTimeFormatter.ISO_DATE_TIME);
-		
+
 		// Controllo e calcolo della data di partenza
 		LocalDate local_date_partenza = input_data_partenza.getValue();
-		
+
 		if (local_date_partenza == null) {
 			throw new InvalidParameterException("Definire la data di partenza");
 		}
-		
+
 		hour = (input_ora_partenza.getValue() != null) ? Integer.parseInt(input_ora_partenza.getValue()) : 0;
 		LocalDateTime local_date_time_partenza = local_date_partenza.atTime(hour, 0, 0);
 		String data_partenza = local_date_time_partenza.format(DateTimeFormatter.ISO_DATE_TIME);
-		
+
 		// Controllo validità delle date
-		if (local_date_time_arrivo.isAfter(local_date_time_partenza) || local_date_time_arrivo.isEqual(local_date_time_partenza))
-			throw new InvalidParameterException("Definire una data di partenza corretta"); 
-		
-		
+		if (local_date_time_arrivo.isAfter(local_date_time_partenza)
+				|| local_date_time_arrivo.isEqual(local_date_time_partenza))
+			throw new InvalidParameterException("Definire una data di partenza corretta");
+
 		// Costruisco i parametri
 		HashMap<String, String> parametri = new HashMap<String, String>();
 
@@ -193,21 +196,29 @@ public class RicercaAlloggioView extends View {
 	public RicercaAlloggioView(Stage stage) throws IOException {
 		super(stage);
 		getStage().setTitle(Costanti.TITOLO_PRENOTA_ALLOGGIO);
-		getParentNode().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO, new EventHandler<EventoSelezionaServizio>() {
+		getParentNode().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO,
+				new EventHandler<EventoSelezionaServizio>() {
 
-			@Override
-			public void handle(EventoSelezionaServizio event) {
-				try {
-					AppFacadeController.getInstance().getPrenotaServizioController()
-							.setServizio(event.getServizio());
-					vaiARiepilogo();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		});
+					@Override
+					public void handle(EventoSelezionaServizio event) {
+						try {
+							IServizioComponent servizio = AppFacadeController.getInstance()
+									.getPrenotaServizioController().getServizio();
+							if (servizio != null && servizio.equals(event.getServizio()))
+								mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_SERVIZIO_PRESENTE, null,
+										Costanti.MESSAGGIO_SERVIZIO_PRESENTE);
+							else {
+								AppFacadeController.getInstance().getPrenotaServizioController()
+										.setServizio(event.getServizio());
+								vaiARiepilogo();
+							}
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
+				});
 	}
-	
+
 	// Event Listener on Button[#ricerca_alloggi].onAction
 	@FXML
 	public void ricercaAlloggi(ActionEvent event) {

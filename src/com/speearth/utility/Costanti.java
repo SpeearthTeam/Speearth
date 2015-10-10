@@ -24,6 +24,7 @@ public final class Costanti {
 	public final static String TITOLO_TORNA_A_SCEGLI_SERVIZIO = "Torna alla Scelta del Servizio";
 	public final static String TITOLO_NESSUN_SERVIZIO = "Nessun Servizio prenotato.";
 	public final static String TITOLO_NESSUN_CLIENTE = "Nessun Cliente";
+	public final static String TITOLO_SERVIZIO_PRESENTE = "Servizio già presente";
 
 	/**
 	 * Path degli FXML
@@ -50,6 +51,7 @@ public final class Costanti {
 	public final static String MESSAGGIO_NESSUN_SERVIZIO = "Non è stato scelto nessun Servizio.";
 	public final static String MESSAGGIO_PACCHETTO_UN_ELEMENTO = "Il Pacchetto deve contenere almeno 2 Servizi.";
 	public final static String MESSAGGIO_NESSUN_CLIENTE = "Non è stato identificato nessun Cliente. Procedere?";
+	public final static String MESSAGGIO_SERVIZIO_PRESENTE = "Hai già selezionato questo Servizio.";
 
 	/**
 	 * Sistemi Esterni: Aziende di Trasporto
