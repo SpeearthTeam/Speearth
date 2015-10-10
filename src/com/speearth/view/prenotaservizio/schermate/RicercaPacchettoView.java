@@ -21,7 +21,6 @@ import com.speearth.view.View;
 import com.speearth.view.prenotaservizio.eventi.EventoSelezionaServizio;
 import com.speearth.view.prenotaservizio.schermate.componenti.AlloggioListItem;
 import com.speearth.view.prenotaservizio.schermate.componenti.BigliettoListItem;
-import com.speearth.view.prenotaservizio.schermate.componenti.ButtonCell;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -318,7 +317,7 @@ public class RicercaPacchettoView extends View {
 
 		return parametri;
 	}
-	
+
 	/**
 	 * Costrutture di default
 	 */
@@ -416,8 +415,7 @@ public class RicercaPacchettoView extends View {
 
 					@Override
 					public TableCell<IServizioComponent, Boolean> call(TableColumn<IServizioComponent, Boolean> p) {
-						ButtonCell button_cell = new ButtonCell();
-						return button_cell;
+						return new ButtonCell();
 					}
 				});
 
@@ -518,8 +516,36 @@ public class RicercaPacchettoView extends View {
 		return Costanti.FXML_RICERCA_PACCHETTO;
 	}
 
-	public ObservableList<IServizioComponent> getListaServizi() {
-		return this.lista_servizi;
+	// Define the button cell
+	private class ButtonCell extends TableCell<IServizioComponent, Boolean> {
+		final Button cellButton = new Button("Cancella");
+
+		ButtonCell() {
+
+			// Action when the button is pressed
+			cellButton.setOnAction(new EventHandler<ActionEvent>() {
+
+				@Override
+				public void handle(ActionEvent t) {
+					// get Selected Item
+					IServizioComponent servizio = ButtonCell.this.getTableView().getItems()
+							.get(ButtonCell.this.getIndex());
+					// remove selected item from the table list
+					lista_servizi.remove(servizio);
+				}
+			});
+		}
+
+		// Display button if the row is not empty
+		@Override
+		protected void updateItem(Boolean t, boolean empty) {
+			super.updateItem(t, empty);
+			if (!empty) {
+				setGraphic(cellButton);
+			} else {
+				setGraphic(null);
+			}
+		}
 	}
 
 }

@@ -34,7 +34,7 @@ public class ScegliServizioView extends View {
 		super(stage);
 		getStage().setTitle(Costanti.TITOLO_SCEGLI_SERVIZIO);
 	}
-	
+
 	/**
 	 * Inizializza la classe
 	 * 
@@ -56,9 +56,9 @@ public class ScegliServizioView extends View {
 	// Event Listener on Button[#bottone_prenota_alloggio].onAction
 	@FXML
 	public void prenotaAlloggio(ActionEvent event) throws IOException {
-//		RicercaAlloggioView view = new RicercaAlloggioView(getStage());
-//		view.setPreviousView(this);
-//		view.mostra();
+		RicercaAlloggioView view = new RicercaAlloggioView(getStage());
+		view.setPreviousView(this);
+		view.mostra();
 	}
 
 	// Event Listener on Button[#bottone_prenota_pacchetto].onAction
