@@ -57,10 +57,13 @@ public abstract class SistemaEsterno {
 		
 		for (String parameter_name : parameters_name) {
 			String value = parameters.get(parameter_name);
-			try {
-				parameters_buffer.append(parameter_name + "=" + URLEncoder.encode(value, "UTF-8") + "&");
-			} catch (UnsupportedEncodingException e) {
-				e.printStackTrace();
+			
+			if (value != null) {
+				try {
+					parameters_buffer.append(parameter_name + "=" + URLEncoder.encode(value, "UTF-8") + "&");
+				} catch (UnsupportedEncodingException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 		
