@@ -49,15 +49,22 @@ public class TrenitaliaAdapter extends AziendaTrasportoAdapter {
 		Biglietto biglietto = new Biglietto();
 		
 		DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
-		
 		biglietto.setId(jsonBiglietto.optInt("id", 0));
 		biglietto.setFornitore(jsonBiglietto.optString("fornitore"));
 		biglietto.setPartenza(jsonBiglietto.optString("partenza"));
 		biglietto.setDestinazione(jsonBiglietto.optString("destinazione"));
 		biglietto.setDataPartenzaAndata(LocalDateTime.parse(jsonBiglietto.optString("data_partenza_andata"), formatter));
-		biglietto.setDataPartenzaRitorno(LocalDateTime.parse(jsonBiglietto.optString("data_partenza_andata"), formatter));
+		
+		if (!jsonBiglietto.optString("data_partenza_ritorno").isEmpty()) {
+			biglietto.setDataPartenzaRitorno(LocalDateTime.parse(jsonBiglietto.optString("data_partenza_ritorno"), formatter));
+		}
+		
 		biglietto.setDataArrivoAndata(LocalDateTime.parse(jsonBiglietto.optString("data_arrivo_andata"), formatter));
-		biglietto.setDataArrivoRitorno(LocalDateTime.parse(jsonBiglietto.optString("data_arrivo_andata"), formatter));
+		
+		if (!jsonBiglietto.optString("data_arrivo_ritorno").isEmpty()) {
+			biglietto.setDataArrivoRitorno(LocalDateTime.parse(jsonBiglietto.optString("data_arrivo_ritorno"), formatter));
+		}
+		
 		biglietto.setNumeroAdulti(jsonBiglietto.optInt("numero_adulti"));
 		biglietto.setNumerBambini(jsonBiglietto.optInt("numero_bambini"));
 		biglietto.setPrezzo((float) jsonBiglietto.optInt("prezzo"));

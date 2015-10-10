@@ -33,36 +33,11 @@
 								<Font size="18.0" />
 							</font>
 						</Button>
-						<MenuButton fx:id="input_mezzo" layoutX="253.0" layoutY="375.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0">
-							<items>
-								<MenuItem mnemonicParsing="false" text="Treno" />
-								<MenuItem mnemonicParsing="false" text="Aereo" />
-							</items>
-						</MenuButton>
-						<MenuButton fx:id="input_bambini" layoutX="253.0" layoutY="328.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0">
-							<items>
-								<MenuItem mnemonicParsing="false" text="1" />
-								<MenuItem mnemonicParsing="false" text="2" />
-							</items>
-						</MenuButton>
-						<MenuButton fx:id="input_adulti" layoutX="251.0" layoutY="283.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0">
-							<items>
-								<MenuItem mnemonicParsing="false" text="1" />
-								<MenuItem mnemonicParsing="false" text="2" />
-							</items>
-						</MenuButton>
-						<MenuButton fx:id="input_ora_ritorno" layoutX="251.0" layoutY="212.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="148.0">
-							<items>
-								<MenuItem mnemonicParsing="false" text="15" />
-								<MenuItem mnemonicParsing="false" text="16" />
-							</items>
-						</MenuButton>
-						<MenuButton fx:id="input_ora_andata" layoutX="251.0" layoutY="166.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="148.0">
-							<items>
-								<MenuItem mnemonicParsing="false" text="8" />
-								<MenuItem mnemonicParsing="false" text="9" />
-							</items>
-						</MenuButton>
+						<ChoiceBox fx:id="input_ora_andata" layoutX="253.0" layoutY="167.0" prefWidth="150.0" />
+						<ChoiceBox fx:id="input_ora_ritorno" layoutX="253.0" layoutY="213.0" prefWidth="150.0" />
+						<ChoiceBox fx:id="input_adulti" layoutX="253.0" layoutY="276.0" prefWidth="150.0" />
+						<ChoiceBox fx:id="input_mezzo" layoutX="253.0" layoutY="376.0" prefWidth="150.0" />
+						<ChoiceBox fx:id="input_bambini" layoutX="253.0" layoutY="329.0" prefWidth="150.0" />
 					</children>
 				</AnchorPane>
 			</left>
@@ -72,7 +47,7 @@
 		<ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
 			<items>
 				<Button fx:id="bottone_scegli_servizio" mnemonicParsing="false" onAction="#vaiAScegliServizio" text="Scegli Servizio" />
-				<Button fx:id="bottone_ricerca" mnemonicParsing="false" text="Ricerca" />
+				<Button fx:id="bottone_ricerca" disable="true" mnemonicParsing="false" text="Ricerca" />
 				<Button fx:id="bottone_riepilogo" mnemonicParsing="false" onAction="#vaiARiepilogoButtonClick" text="Riepilogo" />
 			</items>
 		</ToolBar>

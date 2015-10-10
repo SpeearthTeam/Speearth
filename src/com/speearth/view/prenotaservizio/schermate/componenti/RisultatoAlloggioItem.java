@@ -127,6 +127,7 @@ public class RisultatoAlloggioItem extends SubView {
 		EventoSelezionaServizio evento_seleziona_servizio = new EventoSelezionaServizio(
 				EventoSelezionaServizio.SERVIZIO_SELEZIONATO, alloggio);
 		getParentNode().fireEvent(evento_seleziona_servizio);
+		this.bottone_conferma.setDisable(true);
 	}
 
 	/**
