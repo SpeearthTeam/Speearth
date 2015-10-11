@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import com.speearth.controller.AppFacadeController;
 import com.speearth.model.core.Biglietto;
+import com.speearth.model.core.IServizioComponent;
 import com.speearth.utility.Costanti;
 import com.speearth.view.View;
 import com.speearth.view.prenotaservizio.eventi.EventoSelezionaServizio;
@@ -34,7 +35,7 @@ public class RicercaBigliettoView extends View {
 	private ListView<Biglietto> lista_risultati;
 	@FXML
 	private AnchorPane form_container;
-	
+
 	private RicercaBigliettoForm ricerca_biglietto_form;
 
 	/**
@@ -54,7 +55,7 @@ public class RicercaBigliettoView extends View {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Costruttore di default
 	 * 
@@ -70,9 +71,16 @@ public class RicercaBigliettoView extends View {
 					@Override
 					public void handle(EventoSelezionaServizio event) {
 						try {
-							AppFacadeController.getInstance().getPrenotaServizioController()
-									.setServizio(event.getServizio());
-							vaiARiepilogo();
+							IServizioComponent servizio = AppFacadeController.getInstance()
+									.getPrenotaServizioController().getServizio();
+							if (servizio != null && servizio.equals(event.getServizio()))
+								mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_SERVIZIO_PRESENTE, null,
+										Costanti.MESSAGGIO_SERVIZIO_PRESENTE);
+							else {
+								AppFacadeController.getInstance().getPrenotaServizioController()
+										.setServizio(event.getServizio());
+								vaiARiepilogo();
+							}
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
