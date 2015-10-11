@@ -2,8 +2,10 @@ package com.speearth.model.sistemi_esterni;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.net.HttpRetryException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -31,9 +33,9 @@ public abstract class SistemaEsterno {
 	 * 
 	 * @param parametri
 	 * @return ArrayList<ServizioComponent>
-	 * @throws Exception 
+	 * @throws HttpRetryException
 	 */
-	public ArrayList<IServizioComponent> ricerca(HashMap<String, String> parametri) throws Exception {
+	public ArrayList<IServizioComponent> ricerca(HashMap<String, String> parametri) throws IOException {
 		String url = getSearchUrl();
 		String parameters = serializeParameters(parametri);
 		String response = sendRequest(url, parameters);
@@ -80,9 +82,9 @@ public abstract class SistemaEsterno {
 	 * @param url
 	 * @param parameters  Parametri serializzati
 	 * @return Restituisce la risposta del sistema esterno
-	 * @throws Exception
+	 * @throws IOException
 	 */
-	protected String sendRequest(String url, String parameters) throws Exception {
+	protected String sendRequest(String url, String parameters) throws IOException {
 		try {
 			URL uri = new URL(url);
 			HttpURLConnection connection = (HttpURLConnection) uri.openConnection();
@@ -99,7 +101,7 @@ public abstract class SistemaEsterno {
 			writer.close();
 
 			if (connection.getResponseCode() != 200) {
-				throw new RuntimeException("Failed: HTTP error code: " + connection.getResponseCode());
+				throw new HttpRetryException("Connection response: " + connection.getResponseMessage(), connection.getResponseCode());
 			}
 			
 			BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));

@@ -1,10 +1,9 @@
 package com.speearth.model.transazioni.ricerca;
 
 import java.io.IOException;
+import java.net.HttpRetryException;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import org.json.JSONException;
 
 import com.speearth.model.core.Alloggio;
 import com.speearth.model.core.Biglietto;
@@ -59,8 +58,9 @@ public class RicercaReceiver {
 	 * Imposta il risultato di un comando di Ricerca Alloggi
 	 * 
 	 * @param parametri
+	 * @throws IOException 
 	 */
-	private void setRisultatoRicercaAlloggi(HashMap<String, String> parametri) {
+	private void setRisultatoRicercaAlloggi(HashMap<String, String> parametri) throws IOException {
 
 		ArrayList<ImpresaRicettivaAdapter> imprese_ricettive = SistemaEsternoFactory.getInstance()
 				.getImpreseRicettive();
@@ -68,14 +68,11 @@ public class RicercaReceiver {
 		for (ImpresaRicettivaAdapter impresa_ricettiva : imprese_ricettive) {
 
 			ArrayList<IServizioComponent> servizi;
-			try {
-				servizi = impresa_ricettiva.ricerca(parametri);
-				for (IServizioComponent servizio : servizi)
-					this.risultato_ricerca.add((Alloggio) servizio);
-			} catch (Exception e) {
-				e.printStackTrace();
+			servizi = impresa_ricettiva.ricerca(parametri);
+			
+			for (IServizioComponent servizio : servizi) {
+				this.risultato_ricerca.add((Alloggio) servizio);
 			}
-
 		}
 	}
 
@@ -84,8 +81,9 @@ public class RicercaReceiver {
 	 * 
 	 * @param parametri
 	 * @return ArrayList<Alloggio>
+	 * @throws HttpRetryException 
 	 */
-	public ArrayList<IServizioComponent> ricercaAlloggi(HashMap<String, String> parametri) {
+	public ArrayList<IServizioComponent> ricercaAlloggi(HashMap<String, String> parametri) throws IOException {
 		this.svuotaRisultatiRicerca();
 		this.setRisultatoRicercaAlloggi(parametri);
 		return this.risultato_ricerca;
@@ -95,8 +93,9 @@ public class RicercaReceiver {
 	 * Imposta il risultato di un comando di Ricerca Biglietti
 	 * 
 	 * @param parametri
+	 * @throws IOException 
 	 */
-	private void setRisultatoRicercaBiglietti(HashMap<String, String> parametri) {
+	private void setRisultatoRicercaBiglietti(HashMap<String, String> parametri) throws IOException {
 
 		ArrayList<AziendaTrasportoAdapter> aziende_trasporto = SistemaEsternoFactory.getInstance()
 				.getAziendeDiTrasporto();
@@ -104,18 +103,11 @@ public class RicercaReceiver {
 		for (AziendaTrasportoAdapter azienda_trasporto : aziende_trasporto) {
 
 			ArrayList<IServizioComponent> servizi;
-			try {
-				servizi = azienda_trasporto.ricerca(parametri);
-				for (IServizioComponent servizio : servizi)
-					this.risultato_ricerca.add((Biglietto) servizio);
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (JSONException e) {
-				e.printStackTrace();
-			} catch (Exception e) {
-				e.printStackTrace();
+			servizi = azienda_trasporto.ricerca(parametri);
+			
+			for (IServizioComponent servizio : servizi) {
+				this.risultato_ricerca.add((Biglietto) servizio);
 			}
-
 		}
 	}
 
@@ -124,8 +116,9 @@ public class RicercaReceiver {
 	 * 
 	 * @param parametri
 	 * @return ArrayList<Biglietto>
+	 * @throws HttpRetryException 
 	 */
-	public ArrayList<IServizioComponent> ricercaBiglietti(HashMap<String, String> parametri) {
+	public ArrayList<IServizioComponent> ricercaBiglietti(HashMap<String, String> parametri) throws IOException {
 		this.svuotaRisultatiRicerca();
 		this.setRisultatoRicercaBiglietti(parametri);
 		return this.risultato_ricerca;

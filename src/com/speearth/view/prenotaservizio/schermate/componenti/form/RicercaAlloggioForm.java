@@ -127,8 +127,12 @@ public class RicercaAlloggioForm extends FormView {
 		}
 
 		// Controllo validità delle date
-		if (local_date_arrivo.isAfter(local_date_partenza) || local_date_arrivo.isEqual(local_date_partenza)) {
+		if (local_date_arrivo.isAfter(local_date_partenza)) {
 			throw new InvalidParameterException("Definire una data di partenza corretta");
+		}
+		
+		if (local_date_arrivo.isBefore(LocalDate.now())) {
+			throw new InvalidParameterException("Definire una data di arrivo corretta");
 		}
 	}
 
@@ -171,7 +175,7 @@ public class RicercaAlloggioForm extends FormView {
 	}
 	
 	@Override
-	public void send(HashMap<String, String> parameters) {
+	public void send(HashMap<String, String> parameters) throws IOException {
 		ArrayList<Alloggio> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getPrenotaAlloggioController().ricerca(parameters);
 		this.alloggi.clear();
@@ -188,10 +192,11 @@ public class RicercaAlloggioForm extends FormView {
 			validate();
 			send(getParameters());
 		} catch (NullPointerException e) {
-			e.printStackTrace();
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PARAMETRI_MANCANTI);
 		} catch (InvalidParameterException e) {
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, e.getMessage());
+		} catch (IOException e) {
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE_HTTP, null, e.getMessage());
 		}
 	}
 	

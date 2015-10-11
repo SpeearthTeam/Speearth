@@ -27,10 +27,12 @@ public abstract class AziendaTrasportoAdapter extends SistemaEsterno {
 	@Override
 	protected ArrayList<IServizioComponent> processServicesFromResponse(String response) {
 		ArrayList<IServizioComponent> biglietti = new ArrayList<IServizioComponent>();
-		JSONArray jsonArray = new JSONArray(response);
-
-		for (int i = 0; i < jsonArray.length(); i++) {
-			biglietti.add(creaBigliettoDaJSON(jsonArray.getJSONObject(i)));
+		if (response != null) {
+			JSONArray jsonArray = new JSONArray(response);
+			
+			for (int i = 0; i < jsonArray.length(); i++) {
+				biglietti.add(creaBigliettoDaJSON(jsonArray.getJSONObject(i)));
+			}
 		}
 		
 		return biglietti;

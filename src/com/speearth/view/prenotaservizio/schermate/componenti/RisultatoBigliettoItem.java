@@ -130,11 +130,18 @@ public class RisultatoBigliettoItem extends SubView {
 	public void updateUI() {
 		this.output_data_destinazione_andata
 				.setText(biglietto.getDataArrivoAndata().format(DateTimeFormatter.ISO_DATE));
-		this.output_data_destinazione_ritorno
-				.setText(biglietto.getDataArrivoRitorno().format(DateTimeFormatter.ISO_DATE));
 		this.output_data_partenza_andata.setText(biglietto.getDataPartenzaAndata().format(DateTimeFormatter.ISO_DATE));
-		this.output_data_partenza_ritorno
+		
+		if (biglietto.getDataArrivoRitorno() != null) {
+			this.output_data_destinazione_ritorno
+				.setText(biglietto.getDataArrivoRitorno().format(DateTimeFormatter.ISO_DATE));
+		}
+		
+		if (biglietto.getDataPartenzaRitorno() != null) {
+			this.output_data_partenza_ritorno
 				.setText(biglietto.getDataPartenzaRitorno().format(DateTimeFormatter.ISO_DATE));
+		}
+		
 		this.output_partenza_andata.setText(biglietto.getPartenza());
 		this.output_data_partenza_ritorno.setText(biglietto.getDestinazione());
 		this.output_destinazione_andata.setText(biglietto.getDestinazione());

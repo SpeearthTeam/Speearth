@@ -1,5 +1,6 @@
 package com.speearth.model.transazioni.ricerca;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 import com.speearth.model.transazioni.ITransazioniCommand;
@@ -66,7 +67,7 @@ public class RicercaAlloggiCommand implements ITransazioniCommand {
 	}
 
 	@Override
-	public void esegui() {
+	public void esegui() throws IOException {
 		this.receiver.ricercaAlloggi(this.parametri);
 	}
 

@@ -1,5 +1,6 @@
 package com.speearth.model.core;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import com.speearth.model.transazioni.ITransazioniCommand;
@@ -101,8 +102,9 @@ public class AgenziaFacade {
 	 * Effettua una generica Transazione aggiungendo un nuovo Comando alla lista di Comandi
 	 * 
 	 * @param comando
+	 * @throws IOException 
 	 */
-	public void effettuaTransazione(ITransazioniCommand comando) {
+	public void effettuaTransazione(ITransazioniCommand comando) throws IOException {
 		this.comandi.add(comando);
 		this.comandi.remove(0).esegui();
 	}

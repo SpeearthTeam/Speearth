@@ -90,6 +90,10 @@ public class RicercaBigliettoForm extends FormView {
 			throw new InvalidParameterException("Definire la data di partenza");
 		}
 		
+		if (local_date_andata.isBefore(LocalDate.now())) {
+			throw new InvalidParameterException("Definire una data di partenza corretta");
+		}
+		
 		// Controllo della data di ritorno
 		LocalDate local_date_ritorno = input_data_ritorno.getValue();
 		
@@ -137,7 +141,7 @@ public class RicercaBigliettoForm extends FormView {
 	}
 
 	@Override
-	public void send(HashMap<String, String> parameters) {
+	public void send(HashMap<String, String> parameters) throws IOException {
 		ArrayList<Biglietto> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getPrenotaBigliettoController().ricerca(parameters);
 		this.biglietti.clear();
@@ -156,6 +160,8 @@ public class RicercaBigliettoForm extends FormView {
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PARAMETRI_MANCANTI);
+		} catch (IOException e) {
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE_HTTP, null, e.getMessage());
 		} catch (InvalidParameterException e) {
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, e.getMessage());
 		}

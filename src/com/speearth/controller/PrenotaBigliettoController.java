@@ -1,5 +1,6 @@
 package com.speearth.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -39,8 +40,9 @@ public class PrenotaBigliettoController implements IFrammentoController {
 	 * 
 	 * @param parametri
 	 * @return ArrayList<Biglietto>
+	 * @throws IOException 
 	 */
-	public ArrayList<Biglietto> ricerca(HashMap<String, String> parametri) {
+	public ArrayList<Biglietto> ricerca(HashMap<String, String> parametri) throws IOException {
 		RicercaReceiver ricerca_receiver = RicercaReceiver.getInstance();
 		RicercaBigliettiCommand command = new RicercaBigliettiCommand(ricerca_receiver, parametri);
 		AgenziaFacade.getInstance().effettuaTransazione(command);

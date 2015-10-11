@@ -18,6 +18,7 @@ public final class Costanti {
 	public final static String TITOLO_PRENOTA_PACCHETTO = "Prenota Pacchetto - Speearth";
 	public final static String TITOLO_RIEPILOGO = "Riepilogo Prenotazione - Speearth";
 	public final static String TITOLO_ERRORE = "Errore";
+	public final static String TITOLO_ERRORE_HTTP = "Errore Http";
 	public final static String TITOLO_NON_TROVATO = "Non Trovato";
 	public final static String TITOLO_SVUOTA_PACCHETTO = "Svuota il Pacchetto";
 	public final static String TITOLO_PAGAMENTO_EFFETTUATO = "Pagamento effettuato";

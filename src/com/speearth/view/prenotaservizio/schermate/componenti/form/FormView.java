@@ -26,7 +26,8 @@ public abstract class FormView extends SubView {
 	/**
 	 * Invia la richiesta
 	 * @param parameters
+	 * @throws IOException
 	 */
-	public abstract void send(HashMap<String, String> parameters);
+	public abstract void send(HashMap<String, String> parameters) throws IOException;
 
 }
