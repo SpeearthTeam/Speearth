@@ -56,9 +56,9 @@ public class RicercaPacchettoView extends View {
 	private AnchorPane biglietto_form_container;
 
 	private ObservableList<IServizioComponent> lista_servizi = FXCollections.observableArrayList();
-	
+
 	private RicercaAlloggioForm ricerca_alloggio_form;
-	
+
 	private RicercaBigliettoForm ricerca_biglietto_form;
 
 	private TableColumn<IServizioComponent, Boolean> cancella_servizio_col = new TableColumn<>("Cancella");
@@ -93,7 +93,7 @@ public class RicercaPacchettoView extends View {
 
 		initializeServiceTable();
 	}
-	
+
 	/**
 	 * Inizializza la classe
 	 * 
@@ -109,7 +109,7 @@ public class RicercaPacchettoView extends View {
 			this.ricerca_biglietto_form = new RicercaBigliettoForm(getStage());
 			this.ricerca_biglietto_form.bind(lista_risultati_biglietti);
 			this.biglietto_form_container.getChildren().add(this.ricerca_biglietto_form.getParentNode());
-			
+
 			this.ricerca_alloggio_form = new RicercaAlloggioForm(getStage());
 			this.ricerca_alloggio_form.bind(this.lista_risultati_alloggi);
 			this.alloggio_form_container.getChildren().add(this.ricerca_alloggio_form.getParentNode());
@@ -246,27 +246,31 @@ public class RicercaPacchettoView extends View {
 		return Costanti.FXML_RICERCA_PACCHETTO;
 	}
 
-	// Define the button cell
+	// Definisco la classe privata ButtonCell
 	private class ButtonCell extends TableCell<IServizioComponent, Boolean> {
 		final Button cellButton = new Button("Cancella");
 
 		ButtonCell() {
-
-			// Action when the button is pressed
+			// Azione associata all'event handler della pressione del Button
+			// Cancella
 			cellButton.setOnAction(new EventHandler<ActionEvent>() {
 
 				@Override
 				public void handle(ActionEvent t) {
-					// get Selected Item
+					// Recupero il servizio relativo all'indice di riga
 					IServizioComponent servizio = ButtonCell.this.getTableView().getItems()
 							.get(ButtonCell.this.getIndex());
-					// remove selected item from the table list
+
+					// Rimuovo il servizio dalla lista servizi
 					lista_servizi.remove(servizio);
+					// Rimuovo il servizio dal servizio in prenotazione
+					AppFacadeController.getInstance().getPrenotaServizioController().getServizio().rimuovi(servizio);
+
 				}
 			});
 		}
 
-		// Display button if the row is not empty
+		// Visualizzo il Button se la riga non è vuota
 		@Override
 		protected void updateItem(Boolean t, boolean empty) {
 			super.updateItem(t, empty);
