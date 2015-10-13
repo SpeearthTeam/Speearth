@@ -23,17 +23,17 @@
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
                <children>
                   <Label alignment="CENTER" prefHeight="21.0" prefWidth="214.0" text="Partenza" />
-                  <Label fx:id="output_partenza_andata" alignment="CENTER" prefHeight="21.0" prefWidth="214.0" text="partenza" />
-                  <Label fx:id="output_data_partenza_andata" alignment="CENTER" prefHeight="21.0" prefWidth="218.0" text="data_partenza" />
-                  <Label fx:id="output_ora_partenza_andata" alignment="CENTER" prefHeight="21.0" prefWidth="211.0" text="ora_partenza" />
+                  <Label fx:id="output_partenza_andata" alignment="CENTER" prefHeight="21.0" prefWidth="214.0" />
+                  <Label fx:id="output_data_partenza_andata" alignment="CENTER" prefHeight="21.0" prefWidth="218.0" />
+                  <Label fx:id="output_ora_partenza_andata" alignment="CENTER" prefHeight="21.0" prefWidth="211.0" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
                <children>
                   <Label alignment="CENTER" prefHeight="21.0" prefWidth="212.0" text="Destinazione" />
-                  <Label fx:id="output_destinazione_andata" alignment="CENTER" prefHeight="21.0" prefWidth="229.0" text="destinazione" />
-                  <Label fx:id="output_data_destinazione_andata" alignment="CENTER" prefHeight="21.0" prefWidth="232.0" text="data_destinazione" />
-                  <Label fx:id="output_ora_destinazione_andata" alignment="CENTER" prefHeight="21.0" prefWidth="227.0" text="ora_destinazione" />
+                  <Label fx:id="output_destinazione_andata" alignment="CENTER" prefHeight="21.0" prefWidth="229.0" />
+                  <Label fx:id="output_data_destinazione_andata" alignment="CENTER" prefHeight="21.0" prefWidth="232.0" />
+                  <Label fx:id="output_ora_destinazione_andata" alignment="CENTER" prefHeight="21.0" prefWidth="227.0" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3">
@@ -41,14 +41,14 @@
                   <Label alignment="CENTER" prefHeight="21.0" prefWidth="167.0" text="Passeggeri" />
                   <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="191.0">
                      <children>
-                        <Label fx:id="output_n_adulti_andata" alignment="CENTER_RIGHT" prefHeight="21.0" prefWidth="83.0" text="n_adulti" />
-                        <Label prefHeight="21.0" prefWidth="88.0" text=" Adulti" />
+                        <Label fx:id="output_n_adulti_andata" alignment="CENTER_RIGHT" prefHeight="21.0" prefWidth="83.0" />
+                        <Label prefHeight="21.0" prefWidth="88.0" />
                      </children>
                   </HBox>
                   <HBox prefHeight="20.0" prefWidth="191.0">
                      <children>
-                        <Label fx:id="output_n_bambini_andata" alignment="CENTER_RIGHT" prefHeight="21.0" prefWidth="75.0" text="n_bambini" />
-                        <Label prefHeight="21.0" prefWidth="86.0" text=" Bambini" />
+                        <Label fx:id="output_n_bambini_andata" alignment="CENTER_RIGHT" prefHeight="21.0" prefWidth="75.0" />
+                        <Label prefHeight="21.0" prefWidth="86.0" />
                      </children>
                   </HBox>
                </children>
@@ -56,17 +56,17 @@
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
                   <Label alignment="CENTER" prefHeight="21.0" prefWidth="223.0" text="Partenza" />
-                  <Label fx:id="output_partenza_ritorno" alignment="CENTER" prefHeight="21.0" prefWidth="228.0" text="partenza" />
-                  <Label fx:id="output_data_partenza_ritorno" alignment="CENTER" prefHeight="21.0" prefWidth="230.0" text="data_partenza" />
-                  <Label fx:id="output_ora_partenza_ritorno" alignment="CENTER" prefHeight="21.0" prefWidth="224.0" text="ora_partenza" />
+                  <Label fx:id="output_partenza_ritorno" alignment="CENTER" prefHeight="21.0" prefWidth="228.0" />
+                  <Label fx:id="output_data_partenza_ritorno" alignment="CENTER" prefHeight="21.0" prefWidth="230.0" />
+                  <Label fx:id="output_ora_partenza_ritorno" alignment="CENTER" prefHeight="21.0" prefWidth="224.0" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <children>
                   <Label alignment="CENTER" prefHeight="21.0" prefWidth="217.0" text="Destinazione" />
-                  <Label fx:id="output_destinazione_ritorno" alignment="CENTER" prefHeight="21.0" prefWidth="224.0" text="destinazione" />
-                  <Label fx:id="output_data_destinazione_ritorno" alignment="CENTER" prefHeight="21.0" prefWidth="218.0" text="data_destinazione" />
-                  <Label fx:id="output_ora_destinazione_ritorno" alignment="CENTER" prefHeight="21.0" prefWidth="219.0" text="ora_destinazione" />
+                  <Label fx:id="output_destinazione_ritorno" alignment="CENTER" prefHeight="21.0" prefWidth="224.0" />
+                  <Label fx:id="output_data_destinazione_ritorno" alignment="CENTER" prefHeight="21.0" prefWidth="218.0" />
+                  <Label fx:id="output_ora_destinazione_ritorno" alignment="CENTER" prefHeight="21.0" prefWidth="219.0" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
@@ -74,14 +74,14 @@
                   <Label alignment="CENTER" prefHeight="21.0" prefWidth="167.0" text="Passeggeri" />
                   <HBox prefHeight="24.0" prefWidth="191.0">
                      <children>
-                        <Label fx:id="output_n_adulti_ritorno" alignment="CENTER_RIGHT" prefHeight="21.0" prefWidth="76.0" text="n_adulti" />
-                        <Label prefHeight="21.0" prefWidth="83.0" text=" Adulti" />
+                        <Label fx:id="output_n_adulti_ritorno" alignment="CENTER_RIGHT" prefHeight="21.0" prefWidth="76.0" />
+                        <Label prefHeight="21.0" prefWidth="83.0" />
                      </children>
                   </HBox>
                   <HBox prefHeight="22.0" prefWidth="176.0">
                      <children>
-                        <Label fx:id="output_n_bambini_ritorno" alignment="CENTER_RIGHT" prefHeight="21.0" prefWidth="71.0" text="n_bambini" />
-                        <Label prefHeight="21.0" prefWidth="84.0" text=" Bambini" />
+                        <Label fx:id="output_n_bambini_ritorno" alignment="CENTER_RIGHT" prefHeight="21.0" prefWidth="71.0" />
+                        <Label prefHeight="21.0" prefWidth="84.0" />
                      </children>
                   </HBox>
                </children>
@@ -95,7 +95,7 @@
       <HBox prefHeight="39.0" BorderPane.alignment="CENTER">
          <children>
             <Label text="Fornitore: " />
-            <Label fx:id="output_nome_fornitore" text="nome_fornitore" />
+            <Label fx:id="output_nome_fornitore" />
          </children>
       </HBox>
    </top>
@@ -110,7 +110,7 @@
       <VBox alignment="CENTER" prefHeight="164.0" prefWidth="125.0" BorderPane.alignment="CENTER">
          <children>
             <Label text="Prezzo" />
-            <Label fx:id="output_prezzo" text="prezzo_biglietto" />
+            <Label fx:id="output_prezzo" />
          </children>
       </VBox>
    </right>

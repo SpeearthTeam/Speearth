@@ -48,10 +48,10 @@
                         <Label prefHeight="21.0" prefWidth="121.0" text="Codice Fiscale" GridPane.rowIndex="4" />
                         <Label prefHeight="21.0" prefWidth="118.0" text="Data di Nascita" GridPane.rowIndex="3" />
                         <Label prefHeight="21.0" prefWidth="111.0" text="Cognome" GridPane.rowIndex="2" />
-                        <Label fx:id="output_nome_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="303.0" text="nome_cliente" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label fx:id="output_cognome_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="304.0" text="cognome_cliente" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label fx:id="output_data_nascita_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="299.0" text="data_nascita_cliente" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label fx:id="output_cf_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="299.0" text="cf_cliente" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label fx:id="output_nome_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="303.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="output_cognome_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="304.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="output_data_nascita_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="299.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="output_cf_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="299.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <HBox alignment="CENTER" prefHeight="60.0" prefWidth="313.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <children>
                               <TextField fx:id="input_codice_tessera" prefHeight="31.0" prefWidth="237.0" />
@@ -72,7 +72,7 @@
                   <Label text="Prezzo Totale" />
                   <HBox alignment="CENTER" prefHeight="55.0" prefWidth="432.0">
                      <children>
-                        <Label fx:id="output_totale" alignment="CENTER" prefHeight="21.0" prefWidth="65.0" text="totale" />
+                        <Label fx:id="output_totale" alignment="CENTER" prefHeight="21.0" prefWidth="65.0" />
                         <Label prefHeight="21.0" prefWidth="25.0" text=" €" />
                         <Button fx:id="bottone_conferma_pagamento" alignment="CENTER" mnemonicParsing="false" onAction="#effettuaPagamento" prefHeight="31.0" prefWidth="173.0" text="Conferma Pagamento" />
                      </children>
@@ -98,10 +98,10 @@
                         <Label alignment="CENTER" prefHeight="21.0" prefWidth="211.0" text="Città" GridPane.rowIndex="1" />
                         <Label alignment="CENTER" contentDisplay="TOP" prefHeight="21.0" prefWidth="210.0" text="Dal" GridPane.rowIndex="2" />
                         <Label alignment="CENTER" prefHeight="21.0" prefWidth="210.0" text="Al" GridPane.rowIndex="3" />
-                        <Label fx:id="output_fonitore" text="fornitore" GridPane.columnIndex="1" />
-                        <Label fx:id="output_localita" text="localita" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label fx:id="output_data_andata" text="data_andata" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label fx:id="output_data_ritorno" text="data_ritorno" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="output_fonitore" GridPane.columnIndex="1" />
+                        <Label fx:id="output_localita" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="output_data_andata" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="output_data_ritorno" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                </children>

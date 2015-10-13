@@ -49,10 +49,10 @@
                         <Label text="Codice Fiscale" GridPane.rowIndex="4" />
                         <Label text="Data di Nascita" GridPane.rowIndex="3" />
                         <Label text="Cognome" GridPane.rowIndex="2" />
-                        <Label fx:id="output_nome_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="306.0" text="nome_cliente" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label fx:id="output_cognome_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="306.0" text="cognome_cliente" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label fx:id="output_data_nascita_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="307.0" text="data_nascita_cliente" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label fx:id="output_cf_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="305.0" text="cf_cliente" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label fx:id="output_nome_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="306.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="output_cognome_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="306.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="output_data_nascita_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="307.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="output_cf_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="305.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <children>
                               <TextField fx:id="input_codice_tessera" prefHeight="31.0" prefWidth="237.0" />
@@ -73,7 +73,7 @@
                   <Label text="Prezzo Totale" />
                   <HBox alignment="CENTER" prefHeight="52.0" prefWidth="403.0">
                      <children>
-                        <Label fx:id="output_totale" prefHeight="21.0" prefWidth="70.0" text="totale" />
+                        <Label fx:id="output_totale" prefHeight="21.0" prefWidth="70.0" />
                         <Label prefHeight="21.0" prefWidth="19.0" text=" €" />
                      </children>
                   </HBox>
