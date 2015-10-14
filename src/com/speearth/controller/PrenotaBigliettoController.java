@@ -21,6 +21,17 @@ public class PrenotaBigliettoController implements IFrammentoController {
 	private static PrenotaBigliettoController instance;
 
 	/**
+	 * Memorizza i biglietti cercati. Serve alla View per recuperarli quando si
+	 * torna indietro dalla schermata Riepilogo alla schermata Ricerca.
+	 */
+	private ArrayList<Biglietto> biglietti;
+	
+	/**
+	 * Sempre per la View
+	 */
+	private HashMap<String, String> parametri;
+
+	/**
 	 * Costruttore di default
 	 */
 	private PrenotaBigliettoController() {
@@ -40,7 +51,7 @@ public class PrenotaBigliettoController implements IFrammentoController {
 	 * 
 	 * @param parametri
 	 * @return ArrayList<Biglietto>
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	public ArrayList<Biglietto> ricerca(HashMap<String, String> parametri) throws IOException {
 		RicercaReceiver ricerca_receiver = RicercaReceiver.getInstance();
@@ -51,7 +62,28 @@ public class PrenotaBigliettoController implements IFrammentoController {
 
 		for (IServizioComponent risultato : risultati)
 			biglietti.add((Biglietto) risultato);
+		
+		this.parametri = parametri;
+		
+		return (this.biglietti = biglietti);
+	}
 
-		return biglietti;
+	/**
+	 * Serve alla View per recuperare i biglietti quando si torna indietro dalla
+	 * schermata Riepilogo alla schermata Ricerca.
+	 * 
+	 * @return biglietti
+	 */
+	public ArrayList<Biglietto> getBiglietti() {
+		return this.biglietti;
+	}
+	
+	/**
+	 * Sempre per la View
+	 * 
+	 * @return parametri
+	 */
+	public HashMap<String, String> getParametri(){
+		return this.parametri;
 	}
 }

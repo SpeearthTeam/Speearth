@@ -32,7 +32,7 @@ public class ScegliServizioView extends View {
 	 */
 	public ScegliServizioView(Stage stage) throws IOException {
 		super(stage);
-		getStage().setTitle(Costanti.TITOLO_SCEGLI_SERVIZIO);
+		stage.setTitle(Costanti.TITOLO_SCEGLI_SERVIZIO);
 	}
 
 	/**
@@ -49,7 +49,6 @@ public class ScegliServizioView extends View {
 	@FXML
 	public void prenotaBiglietto(ActionEvent event) throws IOException {
 		RicercaBigliettoView view = new RicercaBigliettoView(getStage());
-		view.setPreviousView(this);
 		view.mostra();
 	}
 
@@ -57,7 +56,6 @@ public class ScegliServizioView extends View {
 	@FXML
 	public void prenotaAlloggio(ActionEvent event) throws IOException {
 		RicercaAlloggioView view = new RicercaAlloggioView(getStage());
-		view.setPreviousView(this);
 		view.mostra();
 	}
 
@@ -65,7 +63,6 @@ public class ScegliServizioView extends View {
 	@FXML
 	public void prenotaPacchetto(ActionEvent event) throws IOException {
 		RicercaPacchettoView view = new RicercaPacchettoView(getStage());
-		view.setPreviousView(this);
 		view.mostra();
 	}
 

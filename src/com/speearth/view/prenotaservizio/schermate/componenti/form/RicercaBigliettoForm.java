@@ -44,9 +44,9 @@ public class RicercaBigliettoForm extends FormView {
 	private ChoiceBox<String> input_ora_ritorno;
 	@FXML
 	private ChoiceBox<String> input_ora_andata;
-	
+
 	private ObservableList<Biglietto> biglietti = FXCollections.observableArrayList();
-	
+
 	private ListView<Biglietto> list_view = null;
 
 	public RicercaBigliettoForm(Stage stage) throws IOException {
@@ -55,8 +55,10 @@ public class RicercaBigliettoForm extends FormView {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		this.input_ora_andata.setItems(FXCollections.observableArrayList("00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"));
-		this.input_ora_ritorno.setItems(FXCollections.observableArrayList("00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"));
+		this.input_ora_andata.setItems(FXCollections.observableArrayList("00", "01", "02", "03", "04", "05", "06", "07",
+				"08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"));
+		this.input_ora_ritorno.setItems(FXCollections.observableArrayList("00", "01", "02", "03", "04", "05", "06",
+				"07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"));
 		this.input_adulti.setItems(FXCollections.observableArrayList("1", "2", "3", "4"));
 		this.input_bambini.setItems(FXCollections.observableArrayList("0", "1", "2", "3", "4"));
 		this.input_mezzo.setItems(FXCollections.observableArrayList("treno", "aereo"));
@@ -67,17 +69,17 @@ public class RicercaBigliettoForm extends FormView {
 
 	@Override
 	public void validate() {
-		
+
 		// Controllo del luogo di partenza
 		if (input_partenza.getText() == null || input_partenza.getText().isEmpty()) {
 			throw new InvalidParameterException("Definire il luogo di partenza");
 		}
-		
+
 		// Controllo del luogo di destinazione
 		if (input_destinazione.getText() == null || input_destinazione.getText().isEmpty()) {
 			throw new InvalidParameterException("Definire il luogo di destinazione");
 		}
-		
+
 		// Controllo del mezzo
 		if (input_mezzo.getValue() == null) {
 			throw new InvalidParameterException("Definire il mezzo di trasporto");
@@ -85,19 +87,20 @@ public class RicercaBigliettoForm extends FormView {
 
 		// Controllo della data di andata
 		LocalDate local_date_andata = input_data_andata.getValue();
-		
+
 		if (local_date_andata == null) {
 			throw new InvalidParameterException("Definire la data di partenza");
 		}
-		
+
 		if (local_date_andata.isBefore(LocalDate.now())) {
 			throw new InvalidParameterException("Definire una data di partenza corretta");
 		}
-		
+
 		// Controllo della data di ritorno
 		LocalDate local_date_ritorno = input_data_ritorno.getValue();
-		
-		if (local_date_ritorno != null && (local_date_ritorno.isBefore(local_date_andata) || local_date_ritorno.isEqual(local_date_andata))) {
+
+		if (local_date_ritorno != null
+				&& (local_date_ritorno.isBefore(local_date_andata) || local_date_ritorno.isEqual(local_date_andata))) {
 			throw new InvalidParameterException("Definire una data di ritorno valida");
 		}
 	}
@@ -110,24 +113,23 @@ public class RicercaBigliettoForm extends FormView {
 		hour = (input_ora_andata.getValue() != null) ? Integer.parseInt(input_ora_andata.getValue()) : 0;
 		LocalDateTime local_date_time_andata = local_date_andata.atTime(hour, 0, 0);
 		String data_andata = local_date_time_andata.format(DateTimeFormatter.ISO_DATE_TIME);
-		
+
 		// Calcolo della data di ritorno
 		String data_ritorno = null;
 		LocalDate local_date_ritorno = input_data_ritorno.getValue();
-		
+
 		if (local_date_ritorno != null) {
 			hour = (input_ora_ritorno.getValue() != null) ? Integer.parseInt(input_ora_ritorno.getValue()) : 0;
 			LocalDateTime local_date_time_ritorno = local_date_ritorno.atTime(hour, 0, 0);
 			data_ritorno = local_date_time_ritorno.format(DateTimeFormatter.ISO_DATE_TIME);
 		}
-		
+
 		// Calcolo numero adulti
 		String numero_adulti = (input_adulti.getValue() != null) ? input_adulti.getValue() : "0";
-		
+
 		// Calcolo numero bambini
 		String numero_bambini = (input_bambini.getValue() != null) ? input_bambini.getValue() : "0";
-		
-		
+
 		// Costruzione dei parametri
 		HashMap<String, String> parametri = new HashMap<String, String>();
 		parametri.put("numero_adulti", numero_adulti);
@@ -142,16 +144,25 @@ public class RicercaBigliettoForm extends FormView {
 
 	@Override
 	public void send(HashMap<String, String> parameters) throws IOException {
+		// ottengo i biglietti dal controller
 		ArrayList<Biglietto> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
-				.getPrenotaBigliettoController().ricerca(parameters);
+				.getPrenotaBigliettoController().getBiglietti();
+		// se il risultato non contiene biglietti, allora effettuo la ricerca
+		if (risultati == null || risultati.isEmpty()) {
+			risultati = AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
+					.ricerca(parameters);
+		}
+		// altrimenti ho ottenuto i biglietti da una ricerca precedente e procedo
+//		ArrayList<Biglietto> risultati = AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
+//				.ricerca(parameters);
 		this.biglietti.clear();
 		this.biglietti.setAll(risultati);
-		
+
 		if (this.list_view != null) {
 			this.list_view.setItems(this.biglietti);
 		}
 	}
-	
+
 	@FXML
 	public void ricercaBiglietti(ActionEvent event) {
 		try {
@@ -166,11 +177,11 @@ public class RicercaBigliettoForm extends FormView {
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, e.getMessage());
 		}
 	}
-	
+
 	public ObservableList<Biglietto> getBiglietti() {
 		return biglietti;
 	}
-	
+
 	public void bind(ListView<Biglietto> view) {
 		this.list_view = view;
 		this.list_view.setItems(this.biglietti);
@@ -178,7 +189,7 @@ public class RicercaBigliettoForm extends FormView {
 
 	@Override
 	public void updateUI() {
-		
+
 	}
 
 	@Override

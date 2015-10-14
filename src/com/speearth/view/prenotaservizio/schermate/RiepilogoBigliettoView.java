@@ -115,7 +115,7 @@ public class RiepilogoBigliettoView extends View {
 	 */
 	public RiepilogoBigliettoView(Stage stage) throws IOException {
 		super(stage);
-		this.stage.setTitle(Costanti.TITOLO_RIEPILOGO);
+		getStage().setTitle(Costanti.TITOLO_RIEPILOGO);
 		this.impostaInfoBiglietto(
 				(Biglietto) AppFacadeController.getInstance().getPrenotaServizioController().getServizio());
 	}
@@ -145,7 +145,10 @@ public class RiepilogoBigliettoView extends View {
 	// Event Listener on Button[#bottone_ricerca].onAction
 	@FXML
 	public void vaiARicerca(ActionEvent event) throws IOException {
-		mostraPrecedente();
+		RicercaBigliettoView view = new RicercaBigliettoView(getStage());
+		//view.setListaRisultati();
+		view.mostra();
+		view.initialize(null, null);
 	}
 
 	// Event Listener on Button[#bottone_identifica_cliente].onAction

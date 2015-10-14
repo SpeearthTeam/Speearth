@@ -39,7 +39,7 @@ public class AlloggioListItem extends ListCell<Alloggio> {
 		if (alloggio != null) {
 			try {
 				RisultatoAlloggioItem alloggio_item = new RisultatoAlloggioItem(this.stage, alloggio);
-				setGraphic(alloggio_item.getParentNode());
+				setGraphic(alloggio_item.getRoot());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

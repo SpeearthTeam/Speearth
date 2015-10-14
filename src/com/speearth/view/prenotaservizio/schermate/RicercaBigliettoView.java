@@ -2,6 +2,7 @@ package com.speearth.view.prenotaservizio.schermate;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -14,6 +15,8 @@ import com.speearth.view.prenotaservizio.eventi.EventoSelezionaServizio;
 import com.speearth.view.prenotaservizio.schermate.componenti.BigliettoListItem;
 import com.speearth.view.prenotaservizio.schermate.componenti.form.RicercaBigliettoForm;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -50,10 +53,17 @@ public class RicercaBigliettoView extends View {
 		try {
 			this.ricerca_biglietto_form = new RicercaBigliettoForm(getStage());
 			this.ricerca_biglietto_form.bind(this.lista_risultati);
-			this.form_container.getChildren().add(this.ricerca_biglietto_form.getParentNode());
+			this.form_container.getChildren().add(this.ricerca_biglietto_form.getRoot());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void setListaRisultati(){
+		ArrayList<Biglietto> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
+				.getPrenotaBigliettoController().getBiglietti();
+		ObservableList<Biglietto> list = FXCollections.observableArrayList(risultati);
+		lista_risultati = new ListView<Biglietto>(list);
 	}
 
 	/**
@@ -65,7 +75,7 @@ public class RicercaBigliettoView extends View {
 	public RicercaBigliettoView(Stage stage) throws IOException {
 		super(stage);
 		getStage().setTitle(Costanti.TITOLO_PRENOTA_BIGLIETTO);
-		getParentNode().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO,
+		getRoot().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO,
 				new EventHandler<EventoSelezionaServizio>() {
 
 					@Override
@@ -91,16 +101,17 @@ public class RicercaBigliettoView extends View {
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
 	@FXML
 	public void vaiAScegliServizio(ActionEvent event) throws IOException {
-		if (this.ricerca_biglietto_form.getBiglietti().isEmpty())
-			mostraPrecedente();
-		else {
+		ArrayList<Biglietto> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
+				.getPrenotaBigliettoController().getBiglietti();
+		if (!risultati.isEmpty()) {
 			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
 					null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
 			if (result.get() == ButtonType.OK) {
 				AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
-				mostraPrecedente();
 			}
 		}
+		ScegliServizioView view = new ScegliServizioView(getStage());
+		view.mostra();
 	}
 
 	// Event Listener on Button[#bottone_riepilogo].onAction
@@ -119,7 +130,6 @@ public class RicercaBigliettoView extends View {
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null, Costanti.MESSAGGIO_NESSUN_SERVIZIO);
 		else {
 			RiepilogoBigliettoView view = new RiepilogoBigliettoView(getStage());
-			view.setPreviousView(this);
 			view.mostra();
 		}
 	}

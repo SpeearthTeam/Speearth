@@ -97,7 +97,7 @@ public class RiepilogoPacchettoView extends View {
 	 */
 	public RiepilogoPacchettoView(Stage stage) throws IOException {
 		super(stage);
-		this.stage.setTitle(Costanti.TITOLO_RIEPILOGO);
+		getStage().setTitle(Costanti.TITOLO_RIEPILOGO);
 		this.impostaInfoPacchetto(
 				(PacchettoComposite) AppFacadeController.getInstance().getPrenotaServizioController().getServizio());
 	}
@@ -129,7 +129,8 @@ public class RiepilogoPacchettoView extends View {
 	// Event Listener on Button[#bottone_ricerca].onAction
 	@FXML
 	public void vaiARicerca(ActionEvent event) throws IOException {
-		mostraPrecedente();
+		RicercaPacchettoView view = new RicercaPacchettoView(getStage());
+		view.mostra();
 	}
 
 	// Event Listener on Button[#bottone_identifica_cliente].onAction

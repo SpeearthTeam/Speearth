@@ -97,7 +97,7 @@ public class RiepilogoAlloggioView extends View {
 	 */
 	public RiepilogoAlloggioView(Stage stage) throws IOException {
 		super(stage);
-		this.stage.setTitle(Costanti.TITOLO_RIEPILOGO);
+		getStage().setTitle(Costanti.TITOLO_RIEPILOGO);
 		this.impostaInfoAlloggio(
 				(Alloggio) AppFacadeController.getInstance().getPrenotaServizioController().getServizio());
 	}
@@ -127,7 +127,8 @@ public class RiepilogoAlloggioView extends View {
 	// Event Listener on Button[#bottone_ricerca].onAction
 	@FXML
 	public void vaiARicerca(ActionEvent event) throws IOException {
-		mostraPrecedente();
+		RicercaAlloggioView view = new RicercaAlloggioView(getStage());
+		view.mostra();
 	}
 
 	// Event Listener on Button[#bottone_identifica_cliente].onAction

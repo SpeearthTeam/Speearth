@@ -109,7 +109,7 @@ public class RisultatoBigliettoItem extends SubView {
 	public void confermaBiglietto(ActionEvent event) throws IOException {
 		EventoSelezionaServizio evento_seleziona_servizio = new EventoSelezionaServizio(
 				EventoSelezionaServizio.SERVIZIO_SELEZIONATO, biglietto);
-		getParentNode().fireEvent(evento_seleziona_servizio);
+		getRoot().fireEvent(evento_seleziona_servizio);
 	}
 
 	@Override

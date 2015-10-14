@@ -73,7 +73,7 @@ public class RicercaPacchettoView extends View {
 		super(stage);
 		AppFacadeController.getInstance().getPrenotaServizioController().setServizio(new PacchettoComposite());
 		getStage().setTitle(Costanti.TITOLO_PRENOTA_PACCHETTO);
-		getParentNode().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO,
+		getRoot().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO,
 				new EventHandler<EventoSelezionaServizio>() {
 
 					@Override
@@ -108,11 +108,11 @@ public class RicercaPacchettoView extends View {
 		try {
 			this.ricerca_biglietto_form = new RicercaBigliettoForm(getStage());
 			this.ricerca_biglietto_form.bind(lista_risultati_biglietti);
-			this.biglietto_form_container.getChildren().add(this.ricerca_biglietto_form.getParentNode());
+			this.biglietto_form_container.getChildren().add(this.ricerca_biglietto_form.getRoot());
 
 			this.ricerca_alloggio_form = new RicercaAlloggioForm(getStage());
 			this.ricerca_alloggio_form.bind(this.lista_risultati_alloggi);
-			this.alloggio_form_container.getChildren().add(this.ricerca_alloggio_form.getParentNode());
+			this.alloggio_form_container.getChildren().add(this.ricerca_alloggio_form.getRoot());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -193,13 +193,15 @@ public class RicercaPacchettoView extends View {
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
 	@FXML
 	public void vaiAScegliServizio(ActionEvent event) throws IOException {
-		if (this.ricerca_biglietto_form.getBiglietti().isEmpty() && this.ricerca_alloggio_form.getAlloggi().isEmpty())
-			mostraPrecedente();
-		else {
+		ScegliServizioView view = new ScegliServizioView(getStage());
+		if (this.ricerca_biglietto_form.getBiglietti().isEmpty() && this.ricerca_alloggio_form.getAlloggi().isEmpty()) {
+			view.mostra();
+		} else {
 			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
 					null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
-			if (result.get() == ButtonType.OK)
-				mostraPrecedente();
+			if (result.get() == ButtonType.OK) {
+				view.mostra();
+			}
 		}
 		AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
 	}
@@ -214,7 +216,6 @@ public class RicercaPacchettoView extends View {
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PACCHETTO_UN_ELEMENTO);
 		else {
 			RiepilogoPacchettoView view = new RiepilogoPacchettoView(getStage());
-			view.setPreviousView(this);
 			view.mostra();
 		}
 	}

@@ -25,7 +25,7 @@
       <ChoiceBox fx:id="input_adulti" layoutX="262.0" layoutY="270.0" prefHeight="25.0" prefWidth="77.0" />
       <ChoiceBox fx:id="input_bambini" layoutX="262.0" layoutY="319.0" prefHeight="25.0" prefWidth="77.0" />
       <ChoiceBox fx:id="input_mezzo" layoutX="262.0" layoutY="367.0" prefHeight="25.0" prefWidth="77.0" />
-      <Button layoutX="29.0" layoutY="445.0" mnemonicParsing="false" onAction="#ricercaBiglietti" prefHeight="45.0" prefWidth="316.0" text="Cerca">
+      <Button fx:id="bottone_ricerca" layoutX="29.0" layoutY="445.0" mnemonicParsing="false" onAction="#ricercaBiglietti" prefHeight="45.0" prefWidth="316.0" text="Cerca">
          <font>
             <Font size="20.0" />
          </font>

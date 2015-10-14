@@ -39,7 +39,7 @@ public class BigliettoListItem extends ListCell<Biglietto> {
 		if (biglietto != null) {
 			try {
 				RisultatoBigliettoItem biglietto_item = new RisultatoBigliettoItem(this.stage, biglietto);
-				setGraphic(biglietto_item.getParentNode());
+				setGraphic(biglietto_item.getRoot());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

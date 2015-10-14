@@ -35,7 +35,7 @@ public class RicercaAlloggioView extends View {
 	private ListView<Alloggio> lista_risultati;
 	@FXML
 	private AnchorPane form_container;
-	
+
 	private RicercaAlloggioForm ricerca_alloggio_form;
 
 	/**
@@ -47,7 +47,7 @@ public class RicercaAlloggioView extends View {
 	public RicercaAlloggioView(Stage stage) throws IOException {
 		super(stage);
 		getStage().setTitle(Costanti.TITOLO_PRENOTA_ALLOGGIO);
-		getParentNode().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO,
+		getRoot().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO,
 				new EventHandler<EventoSelezionaServizio>() {
 
 					@Override
@@ -82,7 +82,7 @@ public class RicercaAlloggioView extends View {
 		try {
 			this.ricerca_alloggio_form = new RicercaAlloggioForm(getStage());
 			this.ricerca_alloggio_form.bind(this.lista_risultati);
-			this.form_container.getChildren().add(this.ricerca_alloggio_form.getParentNode());
+			this.form_container.getChildren().add(this.ricerca_alloggio_form.getRoot());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -91,16 +91,15 @@ public class RicercaAlloggioView extends View {
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
 	@FXML
 	public void vaiAScegliServizio(ActionEvent event) throws IOException {
-		if (this.ricerca_alloggio_form.getAlloggi().isEmpty())
-			mostraPrecedente();
-		else {
+		if (!this.ricerca_alloggio_form.getAlloggi().isEmpty()) {
 			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
 					null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
 			if (result.get() == ButtonType.OK) {
 				AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
-				mostraPrecedente();
 			}
 		}
+		ScegliServizioView view = new ScegliServizioView(getStage());
+		view.mostra();
 	}
 
 	// Event Listener on Button[#bottone_riepilogo].onAction
@@ -119,7 +118,6 @@ public class RicercaAlloggioView extends View {
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null, Costanti.MESSAGGIO_NESSUN_SERVIZIO);
 		else {
 			RiepilogoAlloggioView view = new RiepilogoAlloggioView(getStage());
-			view.setPreviousView(this);
 			view.mostra();
 		}
 	}

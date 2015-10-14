@@ -3,8 +3,6 @@ package com.speearth.view;
 import java.io.IOException;
 import java.util.Optional;
 
-import com.speearth.utility.Costanti;
-
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -20,22 +18,23 @@ import javafx.stage.Stage;
 public abstract class View implements Initializable {
 
 	/**
-	 * Stage della View
+	 * Attributo che serve alla gestione del caricamento delle risorse di JavaFX
+	 */
+	private FXMLLoader loader;
+
+	/**
+	 * Attributo che contiene lo stage (che viene passato dal Main)
 	 */
 	protected Stage stage;
 
 	/**
-	 * View precedente
+	 * Attributo che sta a capo dell'albero con cui JavaFX gestisce gli elementi
+	 * grafici
 	 */
-	protected View previous_view;
+	protected Parent root;
 
 	/**
-	 * Nodo genitore della View
-	 */
-	protected Parent parent_node;
-
-	/**
-	 * Scena corrente
+	 * Attributo che associa la schermata di ogni view specifica
 	 */
 	protected Scene scene;
 
@@ -53,11 +52,51 @@ public abstract class View implements Initializable {
 	 * @throws IOException
 	 */
 	public View(Stage stage) throws IOException {
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource(getResourceName()));
+		loader = new FXMLLoader();
+		String path = getResourceName();
+		loader = new FXMLLoader(getClass().getResource(path));
 		loader.setController(this);
-		this.parent_node = loader.load();
 		this.stage = stage;
+		root = (Parent) loader.load();
+	}
+
+	/**
+	 * Ritorna lo stage
+	 * 
+	 * @return Stage stage
+	 */
+	public Stage getStage() {
+		return this.stage;
+	}
+
+	/**
+	 * Imposta la schermata (scene) contenuta nella finestra (stage)
+	 * 
+	 * (Se già esiste vuol dire che ci troviamo in una SubView e non la crea; non la
+	 * deve creare.)
+	 */
+	protected void setScene() {
+		if (scene == null) {
+			scene = new Scene(root, 1280, 720);
+		}
+		stage.setScene(scene);
+	}
+
+	/**
+	 * Mostra la view
+	 */
+	public void mostra() {
+		setScene();
+		stage.show();
+	}
+
+	/**
+	 * Ritorna l'oggetto root che sta a capo dell'albero
+	 * 
+	 * @return Parent root
+	 */
+	public Parent getRoot() {
+		return loader.getRoot();
 	}
 
 	/**
@@ -66,86 +105,6 @@ public abstract class View implements Initializable {
 	 * @return String
 	 */
 	public abstract String getResourceName();
-
-	/**
-	 * Mostra la view
-	 */
-	public void mostra() {
-		// se la scena non esiste la creo
-		if (this.scene == null)
-			this.scene = new Scene(this.parent_node);
-
-		this.stage.setScene(this.scene);
-		this.stage.show();
-	}
-
-	/**
-	 * Mostra la View precedente
-	 */
-	public void mostraPrecedente() {
-		// a livello di interazione questo alert non ha senso...
-		if (this.previous_view == null)
-			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, "Non esiste una view precedente", null);
-		else
-			this.previous_view.mostra();
-	}
-
-	/**
-	 * Restituisce lo Stage principale
-	 * 
-	 * @return Stage
-	 */
-	public Stage getStage() {
-		return stage;
-	}
-
-	/**
-	 * Imposta lo Stage principale
-	 * 
-	 * @param stage
-	 */
-	public void setStage(Stage stage) {
-		this.stage = stage;
-	}
-
-	/**
-	 * Restituisce la View precedente
-	 */
-	public View getPreviousView() {
-		return previous_view;
-	}
-
-	/**
-	 * Imposta la View precedente
-	 * 
-	 * @param previous_view
-	 */
-	public void setPreviousView(View previous_view) {
-		this.previous_view = previous_view;
-	}
-
-	/**
-	 * Restitusce il Nodo genitore
-	 */
-	public Parent getParentNode() {
-		return this.parent_node;
-	}
-
-	/**
-	 * Restituisce la Scena della View
-	 */
-	public Scene getScene() {
-		return this.scene;
-	}
-
-	/**
-	 * Imposta la Scena della View
-	 * 
-	 * @param scene
-	 */
-	public void setScene(Scene scene) {
-		this.scene = scene;
-	}
 
 	/**
 	 * Crea un Alert Dialog e rimane in attesa di essere consumato

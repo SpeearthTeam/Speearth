@@ -33,10 +33,10 @@ public class PacchettoListItem extends ListCell<IServizioComponent> {
 			try {
 				if (item instanceof Alloggio) {
 					RisultatoAlloggioItem alloggio_item = new RisultatoAlloggioItem(this.stage, (Alloggio) item);
-					setGraphic(alloggio_item.getParentNode());
+					setGraphic(alloggio_item.getRoot());
 				} else if (item instanceof Biglietto) {
 					RisultatoBigliettoItem biglietto_item = new RisultatoBigliettoItem(this.stage, (Biglietto) item);
-					setGraphic(biglietto_item.getParentNode());
+					setGraphic(biglietto_item.getRoot());
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
