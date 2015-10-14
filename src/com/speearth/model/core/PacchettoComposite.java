@@ -20,7 +20,7 @@ public class PacchettoComposite implements IServizioComponent {
 	/**
 	 * Servizi che compongono il pacchetto
 	 */
-	private ArrayList<IServizioComponent> lista_servizi;
+	private ArrayList<IServizioComponent> lista_servizi = new ArrayList<>();
 
 	/**
 	 * Costruttore di deafault

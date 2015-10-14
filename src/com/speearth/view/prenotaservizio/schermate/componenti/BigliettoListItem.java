@@ -11,12 +11,12 @@ import javafx.stage.Stage;
  * Classe che modella la Lista di risultati della ricerca di Alloggi
  */
 public class BigliettoListItem extends ListCell<Biglietto> {
-	
+
 	/**
 	 * Lo stage della finestra
 	 */
 	private Stage stage;
-	
+
 	/**
 	 * Costruttore di default
 	 * 
@@ -25,7 +25,7 @@ public class BigliettoListItem extends ListCell<Biglietto> {
 	public BigliettoListItem(Stage stage) {
 		this.stage = stage;
 	}
-	
+
 	/**
 	 * Aggiorna un elemento della Lista
 	 * 
@@ -35,7 +35,7 @@ public class BigliettoListItem extends ListCell<Biglietto> {
 	@Override
 	protected void updateItem(Biglietto biglietto, boolean empty) {
 		super.updateItem(biglietto, empty);
-		
+
 		if (biglietto != null) {
 			try {
 				RisultatoBigliettoItem biglietto_item = new RisultatoBigliettoItem(this.stage, biglietto);

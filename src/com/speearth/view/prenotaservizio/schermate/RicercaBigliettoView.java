@@ -58,13 +58,6 @@ public class RicercaBigliettoView extends View {
 			e.printStackTrace();
 		}
 	}
-	
-	public void setListaRisultati(){
-		ArrayList<Biglietto> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
-				.getPrenotaBigliettoController().getBiglietti();
-		ObservableList<Biglietto> list = FXCollections.observableArrayList(risultati);
-		lista_risultati = new ListView<Biglietto>(list);
-	}
 
 	/**
 	 * Costruttore di default
@@ -75,6 +68,7 @@ public class RicercaBigliettoView extends View {
 	public RicercaBigliettoView(Stage stage) throws IOException {
 		super(stage);
 		getStage().setTitle(Costanti.TITOLO_PRENOTA_BIGLIETTO);
+		impostaBiglietti();
 		getRoot().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO,
 				new EventHandler<EventoSelezionaServizio>() {
 
@@ -98,9 +92,28 @@ public class RicercaBigliettoView extends View {
 				});
 	}
 
+	/**
+	 * Metodo che serve a caricare i biglietti salvati nel controller alla view,
+	 * dalla schermata Riepilogo a Ricerca, altrimenti andrebbero persi
+	 */
+	private void impostaBiglietti() {
+		// ottengo i biglietti dal controller
+		ArrayList<Biglietto> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
+				.getPrenotaBigliettoController().getBiglietti();
+		// se il risultato contiene biglietti, allora...
+		if (!risultati.isEmpty()) {
+			this.lista_risultati.setCellFactory(param -> new BigliettoListItem(getStage()));
+			// converto l'ArrayList in observableArrayList
+			ObservableList<Biglietto> list = FXCollections.observableArrayList(risultati);
+			// setto la lista dei risultati, ListView, con la Observable
+			this.lista_risultati.setItems(list);
+		}
+	}
+
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
 	@FXML
 	public void vaiAScegliServizio(ActionEvent event) throws IOException {
+		ScegliServizioView view = new ScegliServizioView(getStage());
 		ArrayList<Biglietto> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getPrenotaBigliettoController().getBiglietti();
 		if (!risultati.isEmpty()) {
@@ -108,10 +121,12 @@ public class RicercaBigliettoView extends View {
 					null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
 			if (result.get() == ButtonType.OK) {
 				AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
+				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
+						.clearBiglietti();
+				view.mostra();
 			}
-		}
-		ScegliServizioView view = new ScegliServizioView(getStage());
-		view.mostra();
+		} else
+			view.mostra();
 	}
 
 	// Event Listener on Button[#bottone_riepilogo].onAction

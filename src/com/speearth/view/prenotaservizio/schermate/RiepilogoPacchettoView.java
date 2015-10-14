@@ -121,7 +121,11 @@ public class RiepilogoPacchettoView extends View {
 				Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO, null);
 		if (result.get() == ButtonType.OK) {
 			AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
-			ScegliServizioView view = new ScegliServizioView(this.getStage());
+			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
+					.clearBiglietti();
+			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController()
+					.clearAlloggi();
+			ScegliServizioView view = new ScegliServizioView(getStage());
 			view.mostra();
 		}
 	}

@@ -2,6 +2,7 @@ package com.speearth.view.prenotaservizio.schermate;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -78,19 +79,21 @@ public class RicercaPacchettoView extends View {
 
 					@Override
 					public void handle(EventoSelezionaServizio event) {
-						IServizioComponent servizio = AppFacadeController.getInstance().getPrenotaServizioController()
+						IServizioComponent pacchetto = AppFacadeController.getInstance().getPrenotaServizioController()
 								.getServizio();
-						if (servizio != null && servizio.getListaServizi().contains(event.getServizio()))
+						if (pacchetto != null && pacchetto.getListaServizi().contains(event.getServizio()))
 							mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_SERVIZIO_PRESENTE, null,
 									Costanti.MESSAGGIO_SERVIZIO_PRESENTE);
 						else {
+							IServizioComponent servizio = event.getServizio();
 							AppFacadeController.getInstance().getPrenotaServizioController().getServizio()
-									.aggiungi(event.getServizio());
-							lista_servizi.add(event.getServizio());
+									.aggiungi(servizio);
+							lista_servizi.add(servizio);
 						}
 					}
 				});
 
+		impostaRisultati();
 		initializeServiceTable();
 	}
 
@@ -115,6 +118,36 @@ public class RicercaPacchettoView extends View {
 			this.alloggio_form_container.getChildren().add(this.ricerca_alloggio_form.getRoot());
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Metodo che serve a caricare i biglietti e gli alloggi salvati nel
+	 * controller alla view, dalla schermata Riepilogo a Ricerca, altrimenti
+	 * andrebbero persi
+	 */
+	private void impostaRisultati() {
+		// ottengo i biglietti dal controller
+		ArrayList<Biglietto> risultati_biglietti = AppFacadeController.getInstance().getPrenotaServizioController()
+				.getPrenotaBigliettoController().getBiglietti();
+		// se il risultato contiene biglietti, allora...
+		if (!risultati_biglietti.isEmpty()) {
+			this.lista_risultati_biglietti.setCellFactory(param -> new BigliettoListItem(getStage()));
+			// converto l'ArrayList in observableArrayList
+			ObservableList<Biglietto> list_biglietti = FXCollections.observableArrayList(risultati_biglietti);
+			// setto la lista dei risultati, ListView, con la Observable
+			this.lista_risultati_biglietti.setItems(list_biglietti);
+		}
+		// ottengo i biglietti dal controller
+		ArrayList<Alloggio> risultati_alloggi = AppFacadeController.getInstance().getPrenotaServizioController()
+				.getPrenotaAlloggioController().getAlloggi();
+		// se il risultato contiene biglietti, allora...
+		if (!risultati_alloggi.isEmpty()) {
+			this.lista_risultati_alloggi.setCellFactory(param -> new AlloggioListItem(getStage()));
+			// converto l'ArrayList in observableArrayList
+			ObservableList<Alloggio> list_alloggi = FXCollections.observableArrayList(risultati_alloggi);
+			// setto la lista dei risultati, ListView, con la Observable
+			this.lista_risultati_alloggi.setItems(list_alloggi);
 		}
 	}
 
@@ -194,25 +227,35 @@ public class RicercaPacchettoView extends View {
 	@FXML
 	public void vaiAScegliServizio(ActionEvent event) throws IOException {
 		ScegliServizioView view = new ScegliServizioView(getStage());
-		if (this.ricerca_biglietto_form.getBiglietti().isEmpty() && this.ricerca_alloggio_form.getAlloggi().isEmpty()) {
-			view.mostra();
-		} else {
+		ArrayList<Biglietto> risultati_biglietti = AppFacadeController.getInstance().getPrenotaServizioController()
+				.getPrenotaBigliettoController().getBiglietti();
+		ArrayList<Alloggio> risultati_alloggi = AppFacadeController.getInstance().getPrenotaServizioController()
+				.getPrenotaAlloggioController().getAlloggi();
+		if (!risultati_biglietti.isEmpty() || !risultati_alloggi.isEmpty()) {
 			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
 					null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
 			if (result.get() == ButtonType.OK) {
+				AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
+				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
+						.clearBiglietti();
+				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController()
+						.clearAlloggi();
 				view.mostra();
 			}
+		} else {
+			AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
+			view.mostra();
 		}
-		AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
 	}
 
 	// Event Listener on Button[#bottone_ricerca].onAction
 	@FXML
 	public void vaiARiepilogo(ActionEvent event) throws IOException {
-		if (AppFacadeController.getInstance().getPrenotaServizioController().getServizio().getListaServizi().isEmpty())
+		ArrayList<IServizioComponent> pacchetto = AppFacadeController.getInstance().getPrenotaServizioController()
+				.getServizio().getListaServizi();
+		if (pacchetto.isEmpty())
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null, Costanti.MESSAGGIO_NESSUN_SERVIZIO);
-		else if (!(AppFacadeController.getInstance().getPrenotaServizioController().getServizio().getListaServizi()
-				.size() > 1))
+		else if (!(pacchetto.size() > 1))
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PACCHETTO_UN_ELEMENTO);
 		else {
 			RiepilogoPacchettoView view = new RiepilogoPacchettoView(getStage());

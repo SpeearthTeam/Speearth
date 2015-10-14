@@ -4,6 +4,7 @@ package com.speearth.controller;
  * Controller per l'Estensione PrenotaPacchetto
  */
 public class PrenotaPacchettoController implements IFrammentoController {
+
 	/**
 	 * Unica istanza del controller
 	 */

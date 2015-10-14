@@ -18,6 +18,12 @@ public class PrenotaAlloggioController implements IFrammentoController {
 	 * Unica istanza della classe
 	 */
 	private static PrenotaAlloggioController instance;
+	
+	/**
+	 * Memorizza gli alloggi cercati. Serve alla View per recuperarli quando si
+	 * torna indietro dalla schermata Riepilogo alla schermata Ricerca.
+	 */
+	private ArrayList<Alloggio> alloggi = new ArrayList<>();
 
 	/**
 	 * Costruttore di default
@@ -53,6 +59,21 @@ public class PrenotaAlloggioController implements IFrammentoController {
 		for (IServizioComponent risultato : risultati)
 			alloggi.add((Alloggio) risultato);
 
-		return alloggi;
+		return (this.alloggi = alloggi);
 	}
+	
+	/**
+	 * Serve alla View per recuperare gli alloggi quando si torna indietro dalla
+	 * schermata Riepilogo alla schermata Ricerca.
+	 * 
+	 * @return alloggi
+	 */
+	public ArrayList<Alloggio> getAlloggi() {
+		return this.alloggi;
+	}
+	
+	public void clearAlloggi(){
+		this.alloggi = new ArrayList<>();
+	}
+	
 }

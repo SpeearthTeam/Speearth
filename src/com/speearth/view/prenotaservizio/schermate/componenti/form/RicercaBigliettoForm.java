@@ -144,17 +144,8 @@ public class RicercaBigliettoForm extends FormView {
 
 	@Override
 	public void send(HashMap<String, String> parameters) throws IOException {
-		// ottengo i biglietti dal controller
-		ArrayList<Biglietto> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
-				.getPrenotaBigliettoController().getBiglietti();
-		// se il risultato non contiene biglietti, allora effettuo la ricerca
-		if (risultati == null || risultati.isEmpty()) {
-			risultati = AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
-					.ricerca(parameters);
-		}
-		// altrimenti ho ottenuto i biglietti da una ricerca precedente e procedo
-//		ArrayList<Biglietto> risultati = AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
-//				.ricerca(parameters);
+		ArrayList<Biglietto> risultati = AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
+				.ricerca(parameters);
 		this.biglietti.clear();
 		this.biglietti.setAll(risultati);
 

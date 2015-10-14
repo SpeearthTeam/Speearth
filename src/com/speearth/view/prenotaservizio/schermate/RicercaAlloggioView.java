@@ -2,6 +2,7 @@ package com.speearth.view.prenotaservizio.schermate;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -14,6 +15,8 @@ import com.speearth.view.prenotaservizio.eventi.EventoSelezionaServizio;
 import com.speearth.view.prenotaservizio.schermate.componenti.AlloggioListItem;
 import com.speearth.view.prenotaservizio.schermate.componenti.form.RicercaAlloggioForm;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -47,6 +50,7 @@ public class RicercaAlloggioView extends View {
 	public RicercaAlloggioView(Stage stage) throws IOException {
 		super(stage);
 		getStage().setTitle(Costanti.TITOLO_PRENOTA_ALLOGGIO);
+		impostaAlloggi();
 		getRoot().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO,
 				new EventHandler<EventoSelezionaServizio>() {
 
@@ -71,6 +75,24 @@ public class RicercaAlloggioView extends View {
 	}
 
 	/**
+	 * Metodo che serve a caricare gli alloggi salvati nel controller alla view,
+	 * dalla schermata Riepilogo a Ricerca, altrimenti andrebbero persi
+	 */
+	private void impostaAlloggi() {
+		// ottengo i biglietti dal controller
+		ArrayList<Alloggio> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
+				.getPrenotaAlloggioController().getAlloggi();
+		// se il risultato contiene biglietti, allora...
+		if (!risultati.isEmpty()) {
+			this.lista_risultati.setCellFactory(param -> new AlloggioListItem(getStage()));
+			// converto l'ArrayList in observableArrayList
+			ObservableList<Alloggio> list = FXCollections.observableArrayList(risultati);
+			// setto la lista dei risultati, ListView, con la Observable
+			this.lista_risultati.setItems(list);
+		}
+	}
+
+	/**
 	 * Inizializza la view
 	 * 
 	 * @param arg0
@@ -91,15 +113,20 @@ public class RicercaAlloggioView extends View {
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
 	@FXML
 	public void vaiAScegliServizio(ActionEvent event) throws IOException {
-		if (!this.ricerca_alloggio_form.getAlloggi().isEmpty()) {
+		ScegliServizioView view = new ScegliServizioView(getStage());
+		ArrayList<Alloggio> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
+				.getPrenotaAlloggioController().getAlloggi();
+		if (!risultati.isEmpty()) {
 			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
 					null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
 			if (result.get() == ButtonType.OK) {
 				AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
+				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController()
+						.clearAlloggi();
+				view.mostra();
 			}
-		}
-		ScegliServizioView view = new ScegliServizioView(getStage());
-		view.mostra();
+		} else
+			view.mostra();
 	}
 
 	// Event Listener on Button[#bottone_riepilogo].onAction

@@ -137,6 +137,8 @@ public class RiepilogoBigliettoView extends View {
 				Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO, null);
 		if (result.get() == ButtonType.OK) {
 			AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
+			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
+					.clearBiglietti();
 			ScegliServizioView view = new ScegliServizioView(getStage());
 			view.mostra();
 		}
@@ -146,9 +148,7 @@ public class RiepilogoBigliettoView extends View {
 	@FXML
 	public void vaiARicerca(ActionEvent event) throws IOException {
 		RicercaBigliettoView view = new RicercaBigliettoView(getStage());
-		//view.setListaRisultati();
 		view.mostra();
-		view.initialize(null, null);
 	}
 
 	// Event Listener on Button[#bottone_identifica_cliente].onAction
