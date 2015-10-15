@@ -125,6 +125,8 @@ public class RiepilogoPacchettoView extends View {
 					.clearBiglietti();
 			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController()
 					.clearAlloggi();
+			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
+					.clearPacchetto();
 			ScegliServizioView view = new ScegliServizioView(getStage());
 			view.mostra();
 		}

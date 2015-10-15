@@ -249,6 +249,8 @@ public class RicercaPacchettoView extends View {
 						.clearBiglietti();
 				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController()
 						.clearAlloggi();
+				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
+						.clearPacchetto();
 				view.mostra();
 			}
 		} else {
