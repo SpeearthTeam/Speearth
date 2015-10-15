@@ -149,6 +149,15 @@ public class RicercaPacchettoView extends View {
 			// setto la lista dei risultati, ListView, con la Observable
 			this.lista_risultati_alloggi.setItems(list_alloggi);
 		}
+		// ottengo i servizi del pacchetto dal controller
+		ArrayList<IServizioComponent> pacchetto = AppFacadeController.getInstance().getPrenotaServizioController()
+				.getPrenotaPacchettoController().getPacchetto();
+		// se il pacchetto contiene servizi, allora imposto la lista servizi del
+		// pacchetto e la ObservableList
+		if (!pacchetto.isEmpty()) {
+			AppFacadeController.getInstance().getPrenotaServizioController().getServizio().setListaServizi(pacchetto);
+			lista_servizi.addAll(pacchetto);
+		}
 	}
 
 	/**
@@ -277,6 +286,10 @@ public class RicercaPacchettoView extends View {
 	// Event Listener on Button[#bottone_conferma].onAction
 	@FXML
 	public void confermaPacchetto(ActionEvent event) throws IOException {
+		ArrayList<IServizioComponent> lista_servizi = AppFacadeController.getInstance().getPrenotaServizioController()
+				.getServizio().getListaServizi();
+		AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
+				.setPacchetto(lista_servizi);
 		vaiARiepilogo(event);
 	}
 
