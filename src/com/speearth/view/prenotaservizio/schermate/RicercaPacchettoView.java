@@ -269,6 +269,8 @@ public class RicercaPacchettoView extends View {
 		else if (!(pacchetto.size() > 1))
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PACCHETTO_UN_ELEMENTO);
 		else {
+			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
+					.setPacchetto(pacchetto);
 			RiepilogoPacchettoView view = new RiepilogoPacchettoView(getStage());
 			view.mostra();
 		}
@@ -288,10 +290,6 @@ public class RicercaPacchettoView extends View {
 	// Event Listener on Button[#bottone_conferma].onAction
 	@FXML
 	public void confermaPacchetto(ActionEvent event) throws IOException {
-		ArrayList<IServizioComponent> lista_servizi = AppFacadeController.getInstance().getPrenotaServizioController()
-				.getServizio().getListaServizi();
-		AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
-				.setPacchetto(lista_servizi);
 		vaiARiepilogo(event);
 	}
 
