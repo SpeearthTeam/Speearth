@@ -235,7 +235,6 @@ public class RicercaPacchettoView extends View {
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
 	@FXML
 	public void vaiAScegliServizio(ActionEvent event) throws IOException {
-		ScegliServizioView view = new ScegliServizioView(getStage());
 		ArrayList<Biglietto> risultati_biglietti = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getPrenotaBigliettoController().getBiglietti();
 		ArrayList<Alloggio> risultati_alloggi = AppFacadeController.getInstance().getPrenotaServizioController()
@@ -255,10 +254,12 @@ public class RicercaPacchettoView extends View {
 						.clearParametri();
 				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
 						.clearPacchetto();
+				ScegliServizioView view = new ScegliServizioView(getStage());
 				view.mostra();
 			}
 		} else {
 			AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
+			ScegliServizioView view = new ScegliServizioView(getStage());
 			view.mostra();
 		}
 	}
@@ -268,6 +269,8 @@ public class RicercaPacchettoView extends View {
 	public void vaiARiepilogo(ActionEvent event) throws IOException {
 		ArrayList<IServizioComponent> pacchetto = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getServizio().getListaServizi();
+		AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
+		.setPacchetto(pacchetto);
 		if (pacchetto.isEmpty())
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null, Costanti.MESSAGGIO_NESSUN_SERVIZIO);
 		else if (!(pacchetto.size() > 1))
@@ -292,10 +295,6 @@ public class RicercaPacchettoView extends View {
 	// Event Listener on Button[#bottone_conferma].onAction
 	@FXML
 	public void confermaPacchetto(ActionEvent event) throws IOException {
-		ArrayList<IServizioComponent> lista_servizi = AppFacadeController.getInstance().getPrenotaServizioController()
-				.getServizio().getListaServizi();
-		AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
-				.setPacchetto(lista_servizi);
 		vaiARiepilogo(event);
 	}
 

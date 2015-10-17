@@ -113,7 +113,6 @@ public class RicercaBigliettoView extends View {
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
 	@FXML
 	public void vaiAScegliServizio(ActionEvent event) throws IOException {
-		ScegliServizioView view = new ScegliServizioView(getStage());
 		ArrayList<Biglietto> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getPrenotaBigliettoController().getBiglietti();
 		if (!risultati.isEmpty()) {
@@ -125,10 +124,13 @@ public class RicercaBigliettoView extends View {
 						.clearBiglietti();
 				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
 						.clearParametri();
+				ScegliServizioView view = new ScegliServizioView(getStage());
 				view.mostra();
 			}
-		} else
+		} else {
+			ScegliServizioView view = new ScegliServizioView(getStage());
 			view.mostra();
+		}
 	}
 
 	// Event Listener on Button[#bottone_riepilogo].onAction

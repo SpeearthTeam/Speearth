@@ -5,6 +5,7 @@ import java.net.URL;
 import java.security.InvalidParameterException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -51,7 +52,7 @@ public class RicercaBigliettoForm extends FormView {
 
 	public RicercaBigliettoForm(Stage stage) throws IOException {
 		super(stage);
-		// impostaParametri();
+		impostaParametri();
 	}
 
 	@Override
@@ -81,17 +82,34 @@ public class RicercaBigliettoForm extends FormView {
 			this.input_destinazione.setText(destinazione);
 
 			String data_andata = parametri.get("data_andata");
-			LocalDate da = LocalDate.parse(data_andata, DateTimeFormatter.ISO_DATE_TIME);
-			this.input_data_andata.setValue(da);
+			LocalDateTime local_date_time_andata = LocalDateTime.parse(data_andata, DateTimeFormatter.ISO_DATE_TIME);
+			LocalDate local_date_andata = local_date_time_andata.toLocalDate();
+			this.input_data_andata.setValue(local_date_andata);
+			
+			LocalTime local_time_andata = local_date_time_andata.toLocalTime();
+			int index_ora_andata = local_time_andata.getHour();
+			this.input_ora_andata.getSelectionModel().select(index_ora_andata);
 
 			String data_ritorno = parametri.get("data_ritorno");
 			if (data_ritorno != null) {
-				LocalDate dr = LocalDate.parse(data_ritorno, DateTimeFormatter.ISO_DATE_TIME);
-				this.input_data_andata.setValue(dr);
+				LocalDateTime local_date_time_ritorno = LocalDateTime.parse(data_ritorno,
+						DateTimeFormatter.ISO_DATE_TIME);
+				LocalDate local_date_ritorno = local_date_time_ritorno.toLocalDate();
+				this.input_data_ritorno.setValue(local_date_ritorno);
+				
+				LocalTime local_time_ritorno = local_date_time_ritorno.toLocalTime();
+				int index_ora_ritorno = local_time_ritorno.getHour();
+				this.input_ora_ritorno.getSelectionModel().select(index_ora_ritorno);
 			}
-			
-			// int index = parametri.getItems().indexOf(data_andata);
-			// this.input_numero_singole.getSelectionModel().select(index);
+
+			int index_adulti = Integer.parseInt(parametri.get("numero_adulti")) - 1;
+			this.input_adulti.getSelectionModel().select(index_adulti);
+
+			int index_bambini = Integer.parseInt(parametri.get("numero_bambini"));
+			this.input_bambini.getSelectionModel().select(index_bambini);
+
+			// int index_mezzo = Integer.parseInt(parametri.get("mezzo"));
+			// this.input_mezzo.getSelectionModel().select(index_mezzo);
 
 		}
 

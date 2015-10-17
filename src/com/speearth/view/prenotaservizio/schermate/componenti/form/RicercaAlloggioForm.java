@@ -5,6 +5,7 @@ import java.net.URL;
 import java.security.InvalidParameterException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -91,18 +92,23 @@ public class RicercaAlloggioForm extends FormView {
 			this.input_localita.setText(input_localita);
 
 			String data_arrivo = parametri.get("data_arrivo");
-			LocalDate da = LocalDate.parse(data_arrivo, DateTimeFormatter.ISO_DATE_TIME);
-			this.input_data_arrivo.setValue(da);
+			LocalDateTime local_date_time_arrivo = LocalDateTime.parse(data_arrivo, DateTimeFormatter.ISO_DATE_TIME);
+			LocalDate local_date_arrivo = local_date_time_arrivo.toLocalDate();
+			this.input_data_arrivo.setValue(local_date_arrivo);
 
 			String data_partenza = parametri.get("data_partenza");
-			LocalDate dp = LocalDate.parse(data_partenza, DateTimeFormatter.ISO_DATE_TIME);
-			this.input_data_partenza.setValue(dp);
-			
-			int indexa = this.input_ora_arrivo.getItems().indexOf(data_arrivo);
-			this.input_ora_arrivo.getSelectionModel().select(indexa);
-			
-			int indexp = this.input_ora_partenza.getItems().indexOf(data_partenza);
-			this.input_ora_partenza.getSelectionModel().select(indexp);
+			LocalDateTime local_date_time_partenza = LocalDateTime.parse(data_partenza,
+					DateTimeFormatter.ISO_DATE_TIME);
+			LocalDate local_date_partenza = local_date_time_partenza.toLocalDate();
+			this.input_data_partenza.setValue(local_date_partenza);
+
+			LocalTime local_time_arrivo = local_date_time_arrivo.toLocalTime();
+			int index_ora_arrivo = local_time_arrivo.getHour();
+			this.input_ora_arrivo.getSelectionModel().select(index_ora_arrivo);
+
+			LocalTime local_time_partenza = local_date_time_partenza.toLocalTime();
+			int index_ora_partenza = local_time_partenza.getHour();
+			this.input_ora_partenza.getSelectionModel().select(index_ora_partenza);
 
 			String numero_singole = parametri.get("numero_singole");
 			if (numero_singole != null) {
@@ -131,7 +137,7 @@ public class RicercaAlloggioForm extends FormView {
 				int index = this.input_numero_quadruple.getItems().indexOf(numero_quadruple);
 				this.input_numero_quadruple.getSelectionModel().select(index);
 			}
-	
+
 		}
 	}
 
