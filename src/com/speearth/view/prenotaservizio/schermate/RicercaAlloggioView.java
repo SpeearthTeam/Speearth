@@ -123,6 +123,8 @@ public class RicercaAlloggioView extends View {
 				AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
 				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController()
 						.clearAlloggi();
+				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController()
+						.clearParametri();
 				view.mostra();
 			}
 		} else

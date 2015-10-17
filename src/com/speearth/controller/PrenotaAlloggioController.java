@@ -18,12 +18,14 @@ public class PrenotaAlloggioController implements IFrammentoController {
 	 * Unica istanza della classe
 	 */
 	private static PrenotaAlloggioController instance;
-	
+
 	/**
 	 * Memorizza gli alloggi cercati. Serve alla View per recuperarli quando si
 	 * torna indietro dalla schermata Riepilogo alla schermata Ricerca.
 	 */
 	private ArrayList<Alloggio> alloggi = new ArrayList<>();
+
+	private HashMap<String, String> parametri = new HashMap<>();
 
 	/**
 	 * Costruttore di default
@@ -47,7 +49,7 @@ public class PrenotaAlloggioController implements IFrammentoController {
 	 * 
 	 * @param parametri
 	 * @return ArrayList<Alloggio>
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	public ArrayList<Alloggio> ricerca(HashMap<String, String> parametri) throws IOException {
 		RicercaReceiver ricerca_receiver = RicercaReceiver.getInstance();
@@ -59,9 +61,11 @@ public class PrenotaAlloggioController implements IFrammentoController {
 		for (IServizioComponent risultato : risultati)
 			alloggi.add((Alloggio) risultato);
 
+		this.parametri = parametri;
+
 		return (this.alloggi = alloggi);
 	}
-	
+
 	/**
 	 * Serve alla View per recuperare gli alloggi quando si torna indietro dalla
 	 * schermata Riepilogo alla schermata Ricerca.
@@ -71,9 +75,17 @@ public class PrenotaAlloggioController implements IFrammentoController {
 	public ArrayList<Alloggio> getAlloggi() {
 		return this.alloggi;
 	}
-	
-	public void clearAlloggi(){
+
+	public void clearAlloggi() {
 		this.alloggi = new ArrayList<>();
 	}
-	
+
+	public HashMap<String, String> getParametri() {
+		return this.parametri;
+	}
+
+	public void clearParametri() {
+		this.parametri = new HashMap<>();
+	}
+
 }

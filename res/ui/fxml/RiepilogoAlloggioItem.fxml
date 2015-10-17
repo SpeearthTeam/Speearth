@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane fx:id="risultato_alloggio" prefHeight="178.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <GridPane prefHeight="150.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="186.0" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="353.0" minWidth="10.0" prefWidth="200.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="366.0" minWidth="10.0" prefWidth="200.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="223.0" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="136.0" minHeight="10.0" prefHeight="105.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+               <children>
+                  <Label alignment="CENTER" prefHeight="21.0" prefWidth="220.0" text="Arrivo" />
+                  <Label fx:id="output_data_arrivo" alignment="CENTER" prefHeight="21.0" prefWidth="236.0" />
+                  <Label fx:id="output_ora_arrivo" alignment="CENTER" prefHeight="21.0" prefWidth="197.0" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
+               <children>
+                  <Label alignment="CENTER" prefHeight="21.0" prefWidth="217.0" text="Partenza" />
+                  <Label fx:id="output_data_partenza" alignment="CENTER" prefHeight="21.0" prefWidth="211.0" />
+                  <Label fx:id="output_ora_partenza" alignment="CENTER" prefHeight="21.0" prefWidth="217.0" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3">
+               <children>
+                  <Label prefHeight="21.0" prefWidth="100.0" text="Stanze" />
+                  <ListView fx:id="output_stanze" prefHeight="63.0" prefWidth="100.0" />
+               </children>
+            </VBox>
+            <VBox prefHeight="99.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="21.0" prefWidth="100.0" text="Località" />
+                  <Label fx:id="output_localita" alignment="CENTER" prefHeight="21.0" prefWidth="100.0" />
+               </children>
+            </VBox>
+         </children>
+      </GridPane>
+   </center>
+   <top>
+      <HBox prefHeight="39.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Fornitore: " />
+            <Label fx:id="output_nome_fornitore" text="nome_fornitore" visible="false" />
+         </children>
+      </HBox>
+   </top>
+   <bottom>
+      <HBox alignment="CENTER_RIGHT" prefHeight="42.0" BorderPane.alignment="BOTTOM_RIGHT" />
+   </bottom>
+   <right>
+      <VBox prefHeight="164.0" prefWidth="125.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" prefHeight="21.0" prefWidth="125.0" text="Prezzo" />
+            <Label fx:id="output_prezzo" alignment="CENTER" prefHeight="21.0" prefWidth="125.0" />
+         </children>
+      </VBox>
+   </right>
+</BorderPane>

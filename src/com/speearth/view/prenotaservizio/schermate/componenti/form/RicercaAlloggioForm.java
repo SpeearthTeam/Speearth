@@ -18,12 +18,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class RicercaAlloggioForm extends FormView {
@@ -53,13 +53,14 @@ public class RicercaAlloggioForm extends FormView {
 	private ChoiceBox<String> input_numero_triple;
 	@FXML
 	private ChoiceBox<String> input_numero_quadruple;
-	
+
 	private ObservableList<Alloggio> alloggi = FXCollections.observableArrayList();
-	
+
 	private ListView<Alloggio> list_view = null;
 
 	public RicercaAlloggioForm(Stage stage) throws IOException {
 		super(stage);
+		impostaParametri();
 	}
 
 	@Override
@@ -77,6 +78,61 @@ public class RicercaAlloggioForm extends FormView {
 		this.input_numero_doppie.getSelectionModel().select(0);
 		this.input_numero_triple.getSelectionModel().select(0);
 		this.input_numero_quadruple.getSelectionModel().select(0);
+	}
+
+	private void impostaParametri() {
+		// ottengo i parametri di ricerca dal controller
+		HashMap<String, String> parametri = AppFacadeController.getInstance().getPrenotaServizioController()
+				.getPrenotaAlloggioController().getParametri();
+
+		// se i parametri non sono vuoti, allora li imposto nella view
+		if (!parametri.isEmpty()) {
+			String input_localita = parametri.get("zona");
+			this.input_localita.setText(input_localita);
+
+			String data_arrivo = parametri.get("data_arrivo");
+			LocalDate da = LocalDate.parse(data_arrivo, DateTimeFormatter.ISO_DATE_TIME);
+			this.input_data_arrivo.setValue(da);
+
+			String data_partenza = parametri.get("data_partenza");
+			LocalDate dp = LocalDate.parse(data_partenza, DateTimeFormatter.ISO_DATE_TIME);
+			this.input_data_partenza.setValue(dp);
+			
+			int indexa = this.input_ora_arrivo.getItems().indexOf(data_arrivo);
+			this.input_ora_arrivo.getSelectionModel().select(indexa);
+			
+			int indexp = this.input_ora_partenza.getItems().indexOf(data_partenza);
+			this.input_ora_partenza.getSelectionModel().select(indexp);
+
+			String numero_singole = parametri.get("numero_singole");
+			if (numero_singole != null) {
+				this.input_singola.setSelected(true);
+				int index = this.input_numero_singole.getItems().indexOf(numero_singole);
+				this.input_numero_singole.getSelectionModel().select(index);
+			}
+
+			String numero_doppie = parametri.get("numero_doppie");
+			if (numero_doppie != null) {
+				this.input_doppia.setSelected(true);
+				int index = this.input_numero_doppie.getItems().indexOf(numero_doppie);
+				this.input_numero_doppie.getSelectionModel().select(index);
+			}
+
+			String numero_triple = parametri.get("numero_triple");
+			if (numero_triple != null) {
+				this.input_tripla.setSelected(true);
+				int index = this.input_numero_triple.getItems().indexOf(numero_triple);
+				this.input_numero_triple.getSelectionModel().select(index);
+			}
+
+			String numero_quadruple = parametri.get("numero_quadruple");
+			if (numero_quadruple != null) {
+				this.input_quadrupla.setSelected(true);
+				int index = this.input_numero_quadruple.getItems().indexOf(numero_quadruple);
+				this.input_numero_quadruple.getSelectionModel().select(index);
+			}
+	
+		}
 	}
 
 	@Override
@@ -130,7 +186,7 @@ public class RicercaAlloggioForm extends FormView {
 		if (local_date_arrivo.isAfter(local_date_partenza)) {
 			throw new InvalidParameterException("Definire una data di partenza corretta");
 		}
-		
+
 		if (local_date_arrivo.isBefore(LocalDate.now())) {
 			throw new InvalidParameterException("Definire una data di arrivo corretta");
 		}
@@ -173,19 +229,19 @@ public class RicercaAlloggioForm extends FormView {
 
 		return parametri;
 	}
-	
+
 	@Override
 	public void send(HashMap<String, String> parameters) throws IOException {
 		ArrayList<Alloggio> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getPrenotaAlloggioController().ricerca(parameters);
 		this.alloggi.clear();
 		this.alloggi.setAll(risultati);
-		
+
 		if (this.list_view != null) {
 			this.list_view.setItems(this.alloggi);
 		}
 	}
-	
+
 	@FXML
 	public void ricercaAlloggi(ActionEvent event) {
 		try {
@@ -199,11 +255,11 @@ public class RicercaAlloggioForm extends FormView {
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE_HTTP, null, e.getMessage());
 		}
 	}
-	
+
 	public ObservableList<Alloggio> getAlloggi() {
 		return alloggi;
 	}
-	
+
 	public void bind(ListView<Alloggio> view) {
 		this.list_view = view;
 		this.list_view.setItems(this.alloggi);
@@ -211,7 +267,7 @@ public class RicercaAlloggioForm extends FormView {
 
 	@Override
 	public void updateUI() {
-		
+
 	}
 
 	@Override

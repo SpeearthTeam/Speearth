@@ -18,11 +18,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class RicercaBigliettoForm extends FormView {
@@ -51,6 +51,7 @@ public class RicercaBigliettoForm extends FormView {
 
 	public RicercaBigliettoForm(Stage stage) throws IOException {
 		super(stage);
+		// impostaParametri();
 	}
 
 	@Override
@@ -65,6 +66,35 @@ public class RicercaBigliettoForm extends FormView {
 		this.input_adulti.getSelectionModel().select(0);
 		this.input_bambini.getSelectionModel().select(0);
 		this.input_mezzo.getSelectionModel().select(0);
+	}
+
+	private void impostaParametri() {
+		// ottengo i parametri di ricerca dal controller
+		HashMap<String, String> parametri = AppFacadeController.getInstance().getPrenotaServizioController()
+				.getPrenotaBigliettoController().getParametri();
+
+		if (!parametri.isEmpty()) {
+			String partenza = parametri.get("partenza");
+			this.input_partenza.setText(partenza);
+
+			String destinazione = parametri.get("destinazione");
+			this.input_destinazione.setText(destinazione);
+
+			String data_andata = parametri.get("data_andata");
+			LocalDate da = LocalDate.parse(data_andata, DateTimeFormatter.ISO_DATE_TIME);
+			this.input_data_andata.setValue(da);
+
+			String data_ritorno = parametri.get("data_ritorno");
+			if (data_ritorno != null) {
+				LocalDate dr = LocalDate.parse(data_ritorno, DateTimeFormatter.ISO_DATE_TIME);
+				this.input_data_andata.setValue(dr);
+			}
+			
+			// int index = parametri.getItems().indexOf(data_andata);
+			// this.input_numero_singole.getSelectionModel().select(index);
+
+		}
+
 	}
 
 	@Override
@@ -144,8 +174,8 @@ public class RicercaBigliettoForm extends FormView {
 
 	@Override
 	public void send(HashMap<String, String> parameters) throws IOException {
-		ArrayList<Biglietto> risultati = AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
-				.ricerca(parameters);
+		ArrayList<Biglietto> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
+				.getPrenotaBigliettoController().ricerca(parameters);
 		this.biglietti.clear();
 		this.biglietti.setAll(risultati);
 

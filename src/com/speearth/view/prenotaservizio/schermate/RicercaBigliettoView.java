@@ -123,6 +123,8 @@ public class RicercaBigliettoView extends View {
 				AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
 				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
 						.clearBiglietti();
+				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
+						.clearParametri();
 				view.mostra();
 			}
 		} else

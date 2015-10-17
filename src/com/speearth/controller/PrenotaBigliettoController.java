@@ -25,7 +25,9 @@ public class PrenotaBigliettoController implements IFrammentoController {
 	 * torna indietro dalla schermata Riepilogo alla schermata Ricerca.
 	 */
 	private ArrayList<Biglietto> biglietti = new ArrayList<>();
-	
+
+	private HashMap<String, String> parametri = new HashMap<>();
+
 	/**
 	 * Costruttore di default
 	 */
@@ -58,6 +60,8 @@ public class PrenotaBigliettoController implements IFrammentoController {
 		for (IServizioComponent risultato : risultati)
 			biglietti.add((Biglietto) risultato);
 		
+		this.parametri = parametri;
+
 		return (this.biglietti = biglietti);
 	}
 
@@ -70,8 +74,17 @@ public class PrenotaBigliettoController implements IFrammentoController {
 	public ArrayList<Biglietto> getBiglietti() {
 		return this.biglietti;
 	}
-	
-	public void clearBiglietti(){
+
+	public void clearBiglietti() {
 		this.biglietti = new ArrayList<>();
 	}
+
+	public HashMap<String, String> getParametri() {
+		return this.parametri;
+	}
+
+	public void clearParametri() {
+		this.parametri = new HashMap<>();
+	}
+
 }
