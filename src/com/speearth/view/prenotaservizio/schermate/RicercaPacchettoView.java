@@ -276,6 +276,8 @@ public class RicercaPacchettoView extends View {
 		else if (!(pacchetto.size() > 1))
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PACCHETTO_UN_ELEMENTO);
 		else {
+			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
+					.setPacchetto(pacchetto);
 			RiepilogoPacchettoView view = new RiepilogoPacchettoView(getStage());
 			view.mostra();
 		}
