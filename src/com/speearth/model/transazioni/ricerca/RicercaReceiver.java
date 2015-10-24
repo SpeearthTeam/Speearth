@@ -55,28 +55,6 @@ public class RicercaReceiver {
 	}
 
 	/**
-	 * Imposta il risultato di un comando di Ricerca Alloggi
-	 * 
-	 * @param parametri
-	 * @throws IOException 
-	 */
-	private void setRisultatoRicercaAlloggi(HashMap<String, String> parametri) throws IOException {
-
-		ArrayList<ImpresaRicettivaAdapter> imprese_ricettive = SistemaEsternoFactory.getInstance()
-				.getImpreseRicettive();
-
-		for (ImpresaRicettivaAdapter impresa_ricettiva : imprese_ricettive) {
-
-			ArrayList<IServizioComponent> servizi;
-			servizi = impresa_ricettiva.ricerca(parametri);
-			
-			for (IServizioComponent servizio : servizi) {
-				this.risultato_ricerca.add((Alloggio) servizio);
-			}
-		}
-	}
-
-	/**
 	 * Effettua una ricerca di Alloggi secondo i parametri
 	 * 
 	 * @param parametri
@@ -85,30 +63,21 @@ public class RicercaReceiver {
 	 */
 	public ArrayList<IServizioComponent> ricercaAlloggi(HashMap<String, String> parametri) throws IOException {
 		this.svuotaRisultatiRicerca();
-		this.setRisultatoRicercaAlloggi(parametri);
-		return this.risultato_ricerca;
-	}
-
-	/**
-	 * Imposta il risultato di un comando di Ricerca Biglietti
-	 * 
-	 * @param parametri
-	 * @throws IOException 
-	 */
-	private void setRisultatoRicercaBiglietti(HashMap<String, String> parametri) throws IOException {
-
-		ArrayList<AziendaTrasportoAdapter> aziende_trasporto = SistemaEsternoFactory.getInstance()
-				.getAziendeDiTrasporto();
-
-		for (AziendaTrasportoAdapter azienda_trasporto : aziende_trasporto) {
-
+		
+		ArrayList<ImpresaRicettivaAdapter> imprese_ricettive = SistemaEsternoFactory.getInstance()
+				.getImpreseRicettive();
+		
+		for (ImpresaRicettivaAdapter impresa_ricettiva : imprese_ricettive) {
+			
 			ArrayList<IServizioComponent> servizi;
-			servizi = azienda_trasporto.ricerca(parametri);
+			servizi = impresa_ricettiva.ricerca(parametri);
 			
 			for (IServizioComponent servizio : servizi) {
-				this.risultato_ricerca.add((Biglietto) servizio);
+				this.risultato_ricerca.add((Alloggio) servizio);
 			}
 		}
+		
+		return this.risultato_ricerca;
 	}
 
 	/**
@@ -120,7 +89,20 @@ public class RicercaReceiver {
 	 */
 	public ArrayList<IServizioComponent> ricercaBiglietti(HashMap<String, String> parametri) throws IOException {
 		this.svuotaRisultatiRicerca();
-		this.setRisultatoRicercaBiglietti(parametri);
+		
+		ArrayList<AziendaTrasportoAdapter> aziende_trasporto = SistemaEsternoFactory.getInstance()
+				.getAziendeDiTrasporto();
+		
+		for (AziendaTrasportoAdapter azienda_trasporto : aziende_trasporto) {
+			
+			ArrayList<IServizioComponent> servizi;
+			servizi = azienda_trasporto.ricerca(parametri);
+			
+			for (IServizioComponent servizio : servizi) {
+				this.risultato_ricerca.add((Biglietto) servizio);
+			}
+		}
+		
 		return this.risultato_ricerca;
 	}
 
