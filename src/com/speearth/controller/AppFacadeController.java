@@ -1,6 +1,6 @@
 package com.speearth.controller;
 
-import com.speearth.model.core.Commesso;
+import com.speearth.model.core.Impiegato;
 
 /**
  * Classe di accesso alle funzionalità del layer Controller
@@ -14,7 +14,7 @@ public class AppFacadeController {
 	/**
 	 * Utente che sta utilizzando il Sistema
 	 */
-	private Commesso utente;
+	private Impiegato utente;
 
 	/**
 	 * Restituisce la singola istanza della classe
@@ -31,7 +31,7 @@ public class AppFacadeController {
 	 * Costruttore di default
 	 */
 	private AppFacadeController() {
-		this.utente = new Commesso("Tizio", "Caio", "tiziocaio85", "vbaybzvn");
+		this.utente = new Impiegato("Tizio", "Caio", "tiziocaio85", "vbaybzvn");
 	}
 
 	/**
@@ -39,7 +39,7 @@ public class AppFacadeController {
 	 * 
 	 * @return
 	 */
-	public Commesso getUtente() {
+	public Impiegato getUtente() {
 		return utente;
 	}
 
@@ -48,7 +48,7 @@ public class AppFacadeController {
 	 * 
 	 * @param utente
 	 */
-	public void setUtente(Commesso utente) {
+	public void setUtente(Impiegato utente) {
 		this.utente = utente;
 	}
 

@@ -17,22 +17,22 @@ public class AgenziaFacade {
 	/**
 	 * Registro delle Vendite
 	 */
-	private RegistroVendite registro_vendite;
+	private RegistroVendite registroVendite;
 
 	/**
 	 * Registro dei Clienti
 	 */
-	private RegistroClienti registro_clienti;
+	private RegistroClienti registroClienti;
 
 	/**
 	 * Registratore di Cassa
 	 */
-	private RegistratoreDiCassa registratore_cassa;
+	private RegistratoreDiCassa registratoreCassa;
 
 	/**
 	 * Registro degli Impiegati
 	 */
-	private RegistroImpiegati registro_impiegati;
+	private RegistroImpiegati registroImpiegati;
 
 	/**
 	 * Lista di Transazioni generiche da far eseguire ai Sistemi Esterni secondo le
@@ -44,10 +44,10 @@ public class AgenziaFacade {
 	 * Costruttore
 	 */
 	protected AgenziaFacade() {
-		this.registro_vendite = RegistroVendite.getInstance();
-		this.registro_clienti = RegistroClienti.getInstance();
-		this.registratore_cassa = RegistratoreDiCassa.getInstance();
-		this.registro_impiegati = RegistroImpiegati.getInstance();
+		this.registroVendite = RegistroVendite.getInstance();
+		this.registroClienti = RegistroClienti.getInstance();
+		this.registratoreCassa = RegistratoreDiCassa.getInstance();
+		this.registroImpiegati = RegistroImpiegati.getInstance();
 		this.comandi = new ArrayList<ITransazioniCommand>();
 	}
 
@@ -68,7 +68,7 @@ public class AgenziaFacade {
 	 * @return RegistratoreDiCassa
 	 */
 	public RegistratoreDiCassa getRegistratoreDiCassa() {
-		return this.registratore_cassa;
+		return this.registratoreCassa;
 	}
 
 	/**
@@ -77,7 +77,7 @@ public class AgenziaFacade {
 	 * @return RegistroClienti
 	 */
 	public RegistroClienti getRegistroClienti() {
-		return this.registro_clienti;
+		return this.registroClienti;
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class AgenziaFacade {
 	 * @return RegistroVendite
 	 */
 	public RegistroVendite getRegistroVendite() {
-		return this.registro_vendite;
+		return this.registroVendite;
 	}
 
 	/**
@@ -95,7 +95,7 @@ public class AgenziaFacade {
 	 * @return RegistroImpiegati
 	 */
 	public RegistroImpiegati getRegistroImpiegati() {
-		return this.registro_impiegati;
+		return this.registroImpiegati;
 	}
 
 	/**

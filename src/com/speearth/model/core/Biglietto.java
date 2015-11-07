@@ -31,32 +31,32 @@ public class Biglietto implements IServizioComponent {
 	/**
 	 * Data di andata
 	 */
-	private LocalDateTime data_partenza_andata;
+	private LocalDateTime dataPartenzaAndata;
 
 	/**
 	 * Data di ritorno
 	 */
-	private LocalDateTime data_partenza_ritorno;
+	private LocalDateTime dataPartenzaRitorno;
 
 	/**
 	 * Data di andata
 	 */
-	private LocalDateTime data_arrivo_andata;
+	private LocalDateTime dataArrivoAndata;
 
 	/**
 	 * Data di ritorno
 	 */
-	private LocalDateTime data_arrivo_ritorno;
+	private LocalDateTime dataArrivoRitorno;
 
 	/**
 	 * Numero di adulti
 	 */
-	private int numero_adulti = 0;
+	private int numeroAdulti = 0;
 
 	/**
 	 * Numero di bambini
 	 */
-	private int numero_bambini = 0;
+	private int numeroBambini = 0;
 
 	/**
 	 * Prezzo
@@ -167,16 +167,16 @@ public class Biglietto implements IServizioComponent {
 	 * @return LocalDateTime
 	 */
 	public LocalDateTime getDataPartenzaAndata() {
-		return this.data_partenza_andata;
+		return this.dataPartenzaAndata;
 	}
 
 	/**
 	 * Imposta la data di partenza nell'andata del Biglietto
 	 * 
-	 * @param data_partenza_andata
+	 * @param dataPartenzaAndata
 	 */
 	public void setDataPartenzaAndata(LocalDateTime data_andata) {
-		this.data_partenza_andata = data_andata;
+		this.dataPartenzaAndata = data_andata;
 	}
 
 	/**
@@ -185,16 +185,16 @@ public class Biglietto implements IServizioComponent {
 	 * @return LocalDateTime
 	 */
 	public LocalDateTime getDataPartenzaRitorno() {
-		return this.data_partenza_ritorno;
+		return this.dataPartenzaRitorno;
 	}
 
 	/**
 	 * Imposta la data di partenza nel ritorno del Biglietto
 	 * 
-	 * @param data_partenza_ritorno
+	 * @param dataPartenzaRitorno
 	 */
 	public void setDataPartenzaRitorno(LocalDateTime data_ritorno) {
-		this.data_partenza_ritorno = data_ritorno;
+		this.dataPartenzaRitorno = data_ritorno;
 	}
 
 	/**
@@ -203,7 +203,7 @@ public class Biglietto implements IServizioComponent {
 	 * @return LocalDateTime
 	 */
 	public LocalDateTime getDataArrivoAndata() {
-		return data_arrivo_andata;
+		return dataArrivoAndata;
 	}
 
 	/**
@@ -212,7 +212,7 @@ public class Biglietto implements IServizioComponent {
 	 * @param data_arrivo_andata
 	 */
 	public void setDataArrivoAndata(LocalDateTime data_arrivo_andata) {
-		this.data_arrivo_andata = data_arrivo_andata;
+		this.dataArrivoAndata = data_arrivo_andata;
 	}
 
 	/**
@@ -221,7 +221,7 @@ public class Biglietto implements IServizioComponent {
 	 * @return LocalDateTime
 	 */
 	public LocalDateTime getDataArrivoRitorno() {
-		return data_arrivo_ritorno;
+		return dataArrivoRitorno;
 	}
 
 	/**
@@ -230,7 +230,7 @@ public class Biglietto implements IServizioComponent {
 	 * @param data_arrivo_ritorno
 	 */
 	public void setDataArrivoRitorno(LocalDateTime data_arrivo_ritorno) {
-		this.data_arrivo_ritorno = data_arrivo_ritorno;
+		this.dataArrivoRitorno = data_arrivo_ritorno;
 	}
 
 	/**
@@ -239,7 +239,7 @@ public class Biglietto implements IServizioComponent {
 	 * @return int
 	 */
 	public int getNumeroAdulti() {
-		return this.numero_adulti;
+		return this.numeroAdulti;
 	}
 
 	/**
@@ -248,7 +248,7 @@ public class Biglietto implements IServizioComponent {
 	 * @param numero_adulti
 	 */
 	public void setNumeroAdulti(int numero_adulti) {
-		this.numero_adulti = numero_adulti;
+		this.numeroAdulti = numero_adulti;
 	}
 
 	/**
@@ -257,7 +257,7 @@ public class Biglietto implements IServizioComponent {
 	 * @return int
 	 */
 	public int getNumeroBambini() {
-		return this.numero_bambini;
+		return this.numeroBambini;
 	}
 
 	/**
@@ -266,7 +266,7 @@ public class Biglietto implements IServizioComponent {
 	 * @param numero_bambini
 	 */
 	public void setNumerBambini(int numero_bambini) {
-		this.numero_bambini = numero_bambini;
+		this.numeroBambini = numero_bambini;
 	}
 
 	/**

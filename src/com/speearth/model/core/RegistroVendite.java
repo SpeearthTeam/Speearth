@@ -38,7 +38,7 @@ public class RegistroVendite {
 	public ArrayList<Vendita> getVenditeDaCliente(Cliente cliente) {
 		// TODO - implement RegistroVendite.getVendite
 		ArrayList<Vendita> vendite = new ArrayList<>();
-		Commesso commesso = new Commesso();
+		Impiegato commesso = new Impiegato();
 		Pagamento pagamento = new Pagamento();
 		pagamento.setAmmontare(600);
 		Biglietto biglietto = new Biglietto();

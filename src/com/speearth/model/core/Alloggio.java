@@ -8,6 +8,7 @@ import java.util.HashMap;
  * Servizio alloggio
  */
 public class Alloggio implements IServizioComponent {
+	
 	/**
 	 * Id
 	 */
@@ -26,12 +27,12 @@ public class Alloggio implements IServizioComponent {
 	/**
 	 * Data di arrivo
 	 */
-	private LocalDateTime data_arrivo;
+	private LocalDateTime dataArrivo;
 
 	/**
 	 * Data di partenza
 	 */
-	private LocalDateTime data_partenza;
+	private LocalDateTime dataPartenza;
 
 	/**
 	 * Stanze dell'alloggio
@@ -122,7 +123,7 @@ public class Alloggio implements IServizioComponent {
 	 * @return LocalDateTime
 	 */
 	public LocalDateTime getDataArrivo() {
-		return this.data_arrivo;
+		return this.dataArrivo;
 	}
 
 	/**
@@ -131,7 +132,7 @@ public class Alloggio implements IServizioComponent {
 	 * @param data_arrivo
 	 */
 	public void setDataArrivo(LocalDateTime data_arrivo) {
-		this.data_arrivo = data_arrivo;
+		this.dataArrivo = data_arrivo;
 	}
 
 	/**
@@ -140,7 +141,7 @@ public class Alloggio implements IServizioComponent {
 	 * @return LocalDateTime
 	 */
 	public LocalDateTime getDataPartenza() {
-		return this.data_partenza;
+		return this.dataPartenza;
 	}
 
 	/**
@@ -149,7 +150,7 @@ public class Alloggio implements IServizioComponent {
 	 * @param data_partenza
 	 */
 	public void setDataPartenza(LocalDateTime data_partenza) {
-		this.data_partenza = data_partenza;
+		this.dataPartenza = data_partenza;
 	}
 
 	/**

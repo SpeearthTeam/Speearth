@@ -29,7 +29,7 @@ public class RegistratoreDiCassa {
 	 * @param commesso
 	 * @param metodo
 	 */
-	public String effettuaPagamento(IServizioComponent servizio, Cliente cliente, Commesso commesso, String metodo) {
+	public String effettuaPagamento(IServizioComponent servizio, Cliente cliente, Impiegato commesso, String metodo) {
 		float ammontare = servizio.getPrezzo();
 		Pagamento pagamento = new Pagamento(ammontare, metodo);
 		Vendita vendita = new Vendita(cliente, pagamento, commesso, servizio);

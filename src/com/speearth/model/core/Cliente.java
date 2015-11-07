@@ -25,17 +25,17 @@ public class Cliente {
 	/**
 	 * Data di nascita
 	 */
-	private Date data_nascita;
+	private Date dataNascita;
 
 	/**
 	 * Codice fiscale
 	 */
-	private String codice_fiscale;
+	private String codiceFiscale;
 
 	/**
 	 * Codice della tessera
 	 */
-	private int codice_tessera;
+	private int codiceTessera;
 
 	/**
 	 * Costruttore di default
@@ -55,9 +55,9 @@ public class Cliente {
 	public Cliente(String nome, String cognome, Date data_nascita, String codice_fiscale, int codice_tessera) {
 		this.nome = nome;
 		this.cognome = cognome;
-		this.data_nascita = data_nascita;
-		this.codice_fiscale = codice_fiscale;
-		this.codice_tessera = codice_tessera;
+		this.dataNascita = data_nascita;
+		this.codiceFiscale = codice_fiscale;
+		this.codiceTessera = codice_tessera;
 	}
 
 	/**
@@ -120,7 +120,7 @@ public class Cliente {
 	 * @return Date
 	 */
 	public Date getDataNascita() {
-		return this.data_nascita;
+		return this.dataNascita;
 	}
 
 	/**
@@ -129,7 +129,7 @@ public class Cliente {
 	 * @param data_nascita
 	 */
 	public void setDataNascita(Date data_nascita) {
-		this.data_nascita = data_nascita;
+		this.dataNascita = data_nascita;
 	}
 
 	/**
@@ -138,7 +138,7 @@ public class Cliente {
 	 * @return String
 	 */
 	public String getCodiceFiscale() {
-		return this.codice_fiscale;
+		return this.codiceFiscale;
 	}
 
 	/**
@@ -147,7 +147,7 @@ public class Cliente {
 	 * @param codice_fiscale
 	 */
 	public void setCodiceFiscale(String codice_fiscale) {
-		this.codice_fiscale = codice_fiscale;
+		this.codiceFiscale = codice_fiscale;
 	}
 
 	/**
@@ -156,7 +156,7 @@ public class Cliente {
 	 * @return String
 	 */
 	public int getCodiceTessera() {
-		return this.codice_tessera;
+		return this.codiceTessera;
 	}
 
 	/**
@@ -165,7 +165,7 @@ public class Cliente {
 	 * @param codice_tessera
 	 */
 	public void setCodiceTessera(int codice_tessera) {
-		this.codice_tessera = codice_tessera;
+		this.codiceTessera = codice_tessera;
 	}
 
 }

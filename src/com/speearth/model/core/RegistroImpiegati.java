@@ -32,7 +32,7 @@ public class RegistroImpiegati {
 	 * @param id
 	 * @return Commesso
 	 */
-	public Commesso getCommessoDaID(int id) {
+	public Impiegato getCommessoDaID(int id) {
 		//TODO
 		return null;
 	}
@@ -43,7 +43,7 @@ public class RegistroImpiegati {
 	 * @param username
 	 * @return Commesso
 	 */
-	public Commesso getCommessoDaUsername(String username) {
-		return new Commesso("Bu", "Bu", "bubu", "passbubu");
+	public Impiegato getCommessoDaUsername(String username) {
+		return new Impiegato("Bu", "Bu", "bubu", "passbubu");
 	}
 }

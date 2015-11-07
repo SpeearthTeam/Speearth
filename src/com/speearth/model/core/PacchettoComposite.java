@@ -20,13 +20,13 @@ public class PacchettoComposite implements IServizioComponent {
 	/**
 	 * Servizi che compongono il pacchetto
 	 */
-	private ArrayList<IServizioComponent> lista_servizi = new ArrayList<>();
+	private ArrayList<IServizioComponent> listaServizi = new ArrayList<>();
 
 	/**
 	 * Costruttore di deafault
 	 */
 	public PacchettoComposite() {
-		this.lista_servizi = new ArrayList<IServizioComponent>();
+		this.listaServizi = new ArrayList<IServizioComponent>();
 	}
 
 	/**
@@ -35,7 +35,7 @@ public class PacchettoComposite implements IServizioComponent {
 	 * @param servizi
 	 */
 	public PacchettoComposite(ArrayList<IServizioComponent> servizi) {
-		this.lista_servizi = servizi;
+		this.listaServizi = servizi;
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class PacchettoComposite implements IServizioComponent {
 	 */
 	@Override
 	public void aggiungi(IServizioComponent servizio) {
-		this.lista_servizi.add(servizio);
+		this.listaServizi.add(servizio);
 		this.prezzo += servizio.getPrezzo();
 	}
 
@@ -92,9 +92,9 @@ public class PacchettoComposite implements IServizioComponent {
 	 */
 	@Override
 	public void rimuovi(IServizioComponent servizio) {
-		if (this.lista_servizi.contains(servizio)) {
+		if (this.listaServizi.contains(servizio)) {
 			this.prezzo -= servizio.getPrezzo();
-			this.lista_servizi.remove(servizio);
+			this.listaServizi.remove(servizio);
 		}
 	}
 
@@ -105,7 +105,7 @@ public class PacchettoComposite implements IServizioComponent {
 	 */
 	@Override
 	public IServizioComponent getServizio(int i) {
-		return this.lista_servizi.get(i);
+		return this.listaServizi.get(i);
 	}
 
 	/**
@@ -115,10 +115,10 @@ public class PacchettoComposite implements IServizioComponent {
 	 */
 	@Override
 	public void setListaServizi(ArrayList<IServizioComponent> servizi) {
-		this.lista_servizi = servizi;
+		this.listaServizi = servizi;
 
 		float prezzo = 0;
-		for (IServizioComponent servizio : this.lista_servizi)
+		for (IServizioComponent servizio : this.listaServizi)
 			prezzo += servizio.getPrezzo();
 		this.setPrezzo(prezzo);
 	}
@@ -130,7 +130,7 @@ public class PacchettoComposite implements IServizioComponent {
 	 */
 	@Override
 	public ArrayList<IServizioComponent> getListaServizi() {
-		return this.lista_servizi;
+		return this.listaServizi;
 	}
 
 }

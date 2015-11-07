@@ -3,7 +3,7 @@ package com.speearth.model.core;
 /**
  * Classe che descrive il commesso
  */
-public class Commesso {
+public class Impiegato {
 
 	/**
 	 * Id
@@ -33,7 +33,7 @@ public class Commesso {
 	/**
 	 * Costruttore di default
 	 */
-	public Commesso() {
+	public Impiegato() {
 
 	}
 
@@ -45,7 +45,7 @@ public class Commesso {
 	 * @param username
 	 * @param password
 	 */
-	public Commesso(String nome, String cognome, String username, String password) {
+	public Impiegato(String nome, String cognome, String username, String password) {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.username = username;

@@ -30,7 +30,7 @@ public class Vendita {
 	/**
 	 * Commesso
 	 */
-	private Commesso commesso;
+	private Impiegato commesso;
 
 	/**
 	 * Servizio
@@ -51,7 +51,7 @@ public class Vendita {
 	 * @param commesso
 	 * @param servizio
 	 */
-	public Vendita(Cliente cliente, Pagamento pagamento, Commesso commesso,
+	public Vendita(Cliente cliente, Pagamento pagamento, Impiegato commesso,
 			IServizioComponent servizio) {
 		this.cliente = cliente;
 		this.pagamento = pagamento;
@@ -136,7 +136,7 @@ public class Vendita {
 	 * 
 	 * @return Commesso
 	 */
-	public Commesso getCommesso() {
+	public Impiegato getCommesso() {
 		return this.commesso;
 	}
 
@@ -145,7 +145,7 @@ public class Vendita {
 	 * 
 	 * @param commesso
 	 */
-	public void setCommesso(Commesso commesso) {
+	public void setCommesso(Impiegato commesso) {
 		this.commesso = commesso;
 	}
 
