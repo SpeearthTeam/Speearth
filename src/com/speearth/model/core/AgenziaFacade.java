@@ -25,11 +25,6 @@ public class AgenziaFacade {
 	private RegistroClienti registroClienti;
 
 	/**
-	 * Registratore di Cassa
-	 */
-	private RegistratoreDiCassa registratoreCassa;
-
-	/**
 	 * Registro degli Impiegati
 	 */
 	private RegistroImpiegati registroImpiegati;
@@ -46,7 +41,6 @@ public class AgenziaFacade {
 	protected AgenziaFacade() {
 		this.registroVendite = RegistroVendite.getInstance();
 		this.registroClienti = RegistroClienti.getInstance();
-		this.registratoreCassa = RegistratoreDiCassa.getInstance();
 		this.registroImpiegati = RegistroImpiegati.getInstance();
 		this.comandi = new ArrayList<ITransazioniCommand>();
 	}
@@ -60,15 +54,6 @@ public class AgenziaFacade {
 		if (instance == null)
 			instance = new AgenziaFacade();
 		return instance;
-	}
-
-	/**
-	 * Restituisce il Registratore di Cassa
-	 * 
-	 * @return RegistratoreDiCassa
-	 */
-	public RegistratoreDiCassa getRegistratoreDiCassa() {
-		return this.registratoreCassa;
 	}
 
 	/**

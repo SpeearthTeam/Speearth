@@ -106,8 +106,9 @@ public class PrenotaServizioController implements ICasoDUsoController {
 	 * @return String
 	 */
 	public String effettuaPagamento(String metodo) {
-		return AgenziaFacade.getInstance().getRegistratoreDiCassa().effettuaPagamento(this.servizio, this.cliente,
-				AppFacadeController.getInstance().getUtente(), metodo);
+//		return AgenziaFacade.getInstance().getRegistratoreDiCassa().effettuaPagamento(this.servizio, this.cliente,
+//				AppFacadeController.getInstance().getUtente(), metodo);
+		return "";
 	}
 
 	/**
