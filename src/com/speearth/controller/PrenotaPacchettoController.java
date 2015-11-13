@@ -2,7 +2,7 @@ package com.speearth.controller;
 
 import java.util.ArrayList;
 
-import com.speearth.model.core.IServizioComponent;
+import com.speearth.model.core.ServizioComponent;
 
 /**
  * Controller per l'Estensione PrenotaPacchetto
@@ -19,7 +19,7 @@ public class PrenotaPacchettoController implements IFrammentoController {
 	 * quando si torna indietro dalla schermata Riepilogo alla schermata
 	 * Ricerca.
 	 */
-	private ArrayList<IServizioComponent> pacchetto = new ArrayList<>();
+	private ArrayList<ServizioComponent> pacchetto = new ArrayList<>();
 
 	/**
 	 * Costruttore di default
@@ -56,11 +56,11 @@ public class PrenotaPacchettoController implements IFrammentoController {
 	 * 
 	 * @return biglietti
 	 */
-	public ArrayList<IServizioComponent> getPacchetto() {
+	public ArrayList<ServizioComponent> getPacchetto() {
 		return this.pacchetto;
 	}
 
-	public void setPacchetto(ArrayList<IServizioComponent> lista_servizi) {
+	public void setPacchetto(ArrayList<ServizioComponent> lista_servizi) {
 		this.pacchetto = lista_servizi;
 	}
 

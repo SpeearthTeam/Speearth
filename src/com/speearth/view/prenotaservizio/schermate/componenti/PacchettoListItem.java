@@ -4,12 +4,12 @@ import java.io.IOException;
 
 import com.speearth.model.core.Alloggio;
 import com.speearth.model.core.Biglietto;
-import com.speearth.model.core.IServizioComponent;
+import com.speearth.model.core.ServizioComponent;
 
 import javafx.scene.control.ListCell;
 import javafx.stage.Stage;
 
-public class PacchettoListItem extends ListCell<IServizioComponent> {
+public class PacchettoListItem extends ListCell<ServizioComponent> {
 
 	/**
 	 * Stage della list view
@@ -26,7 +26,7 @@ public class PacchettoListItem extends ListCell<IServizioComponent> {
 	}
 
 	@Override
-	protected void updateItem(IServizioComponent item, boolean empty) {
+	protected void updateItem(ServizioComponent item, boolean empty) {
 		super.updateItem(item, empty);
 
 		if (item != null) {

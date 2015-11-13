@@ -18,7 +18,7 @@ public class ItaloAdapter extends AziendaTrasportoAdapter {
 	 * Istanza della classe
 	 */
 	private static ItaloAdapter instance;
-	
+
 	/**
 	 * Restituisce la signola istanza della classe
 	 * 
@@ -34,6 +34,7 @@ public class ItaloAdapter extends AziendaTrasportoAdapter {
 	 * Costruttore di default
 	 */
 	protected ItaloAdapter() {
+
 	}
 
 	/**
@@ -45,25 +46,27 @@ public class ItaloAdapter extends AziendaTrasportoAdapter {
 	 */
 	@Override
 	protected Biglietto creaBigliettoDaJSON(JSONObject jsonBiglietto) throws JSONException {
-		
+
 		Biglietto biglietto = new Biglietto();
-		
-		DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;		
-		
+
+		DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
+
 		biglietto.setId(jsonBiglietto.optInt("id", 0));
 		biglietto.setFornitore(jsonBiglietto.optString("fornitore"));
 		biglietto.setPartenza(jsonBiglietto.optString("partenza"));
 		biglietto.setDestinazione(jsonBiglietto.optString("destinazione"));
-		biglietto.setDataPartenzaAndata(LocalDateTime.parse(jsonBiglietto.optString("data_partenza_andata"), formatter));
-		biglietto.setDataPartenzaRitorno(LocalDateTime.parse(jsonBiglietto.optString("data_partenza_andata"), formatter));
+		biglietto
+				.setDataPartenzaAndata(LocalDateTime.parse(jsonBiglietto.optString("data_partenza_andata"), formatter));
+		biglietto.setDataPartenzaRitorno(
+				LocalDateTime.parse(jsonBiglietto.optString("data_partenza_andata"), formatter));
 		biglietto.setDataArrivoAndata(LocalDateTime.parse(jsonBiglietto.optString("data_arrivo_andata"), formatter));
 		biglietto.setDataArrivoRitorno(LocalDateTime.parse(jsonBiglietto.optString("data_arrivo_andata"), formatter));
 		biglietto.setNumeroAdulti(jsonBiglietto.optInt("numero_adulti"));
 		biglietto.setNumerBambini(jsonBiglietto.optInt("numero_bambini"));
 		biglietto.setPrezzo((float) jsonBiglietto.optInt("prezzo"));
-		
+
 		return biglietto;
-		
+
 	}
 
 	/**
@@ -79,14 +82,14 @@ public class ItaloAdapter extends AziendaTrasportoAdapter {
 	protected String getSearchUrl() {
 		return Costanti.URL_ITALO;
 	}
-	
+
 	@Override
 	protected String serializeParameters(HashMap<String, String> parameters) {
 		String parametri_serializzati = super.serializeParameters(parameters);
-		
+
 		if (!parametri_serializzati.isEmpty())
 			parametri_serializzati += "&";
-		
+
 		return parametri_serializzati + "action=search&category=tickets&provider=Italo";
 	}
 }

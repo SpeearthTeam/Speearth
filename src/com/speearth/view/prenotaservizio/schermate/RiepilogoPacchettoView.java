@@ -7,8 +7,8 @@ import java.util.ResourceBundle;
 
 import com.speearth.controller.AppFacadeController;
 import com.speearth.model.core.Cliente;
-import com.speearth.model.core.IServizioComponent;
 import com.speearth.model.core.PacchettoComposite;
+import com.speearth.model.core.ServizioComponent;
 import com.speearth.model.core.bonus.IBonus;
 import com.speearth.model.core.bonus.ScontoConcreteStrategy;
 import com.speearth.utility.Costanti;
@@ -55,7 +55,7 @@ public class RiepilogoPacchettoView extends View {
 	@FXML
 	private Label input_metodo_pagamento;
 	@FXML
-	private ListView<IServizioComponent> riepilogo_servizi;
+	private ListView<ServizioComponent> riepilogo_servizi;
 	@FXML
 	private Label label_bonus;
 
@@ -64,7 +64,7 @@ public class RiepilogoPacchettoView extends View {
 	 */
 	private Cliente cliente = null;
 
-	private ObservableList<IServizioComponent> lista_servizi = FXCollections.observableArrayList();
+	private ObservableList<ServizioComponent> lista_servizi = FXCollections.observableArrayList();
 
 	/**
 	 * Imposta le informazioni del Cliente nella View

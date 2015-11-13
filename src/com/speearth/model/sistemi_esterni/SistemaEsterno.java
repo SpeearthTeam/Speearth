@@ -15,7 +15,7 @@ import java.util.Set;
 
 import org.json.JSONException;
 
-import com.speearth.model.core.IServizioComponent;
+import com.speearth.model.core.ServizioComponent;
 
 /**
  * Interfaccia rappresentante un sistema esterno che fornisce servizi per
@@ -35,18 +35,18 @@ public abstract class SistemaEsterno {
 	 * @return ArrayList<ServizioComponent>
 	 * @throws HttpRetryException
 	 */
-	public ArrayList<IServizioComponent> ricerca(HashMap<String, String> parametri) throws IOException {
+	public ArrayList<ServizioComponent> ricerca(HashMap<String, String> parametri) throws IOException {
 		String url = getSearchUrl();
 		String parameters = serializeParameters(parametri);
 		String response = sendRequest(url, parameters);
 		return processServicesFromResponse(response);
 	};
-	
+
 	/**
 	 * Restituisce l'url di ricerca del sistema esterno
 	 */
 	protected abstract String getSearchUrl();
-	
+
 	/**
 	 * Serializza i parametri per esseri inviati in una richiesta
 	 * 
@@ -56,10 +56,10 @@ public abstract class SistemaEsterno {
 	protected String serializeParameters(HashMap<String, String> parameters) {
 		StringBuffer parameters_buffer = new StringBuffer();
 		Set<String> parameters_name = parameters.keySet();
-		
+
 		for (String parameter_name : parameters_name) {
 			String value = parameters.get(parameter_name);
-			
+
 			if (value != null) {
 				try {
 					parameters_buffer.append(parameter_name + "=" + URLEncoder.encode(value, "UTF-8") + "&");
@@ -68,19 +68,21 @@ public abstract class SistemaEsterno {
 				}
 			}
 		}
-		
-		// Se ci sono parametri concatenati allora si elimina l'ultima concatenazione "&"
+
+		// Se ci sono parametri concatenati allora si elimina l'ultima
+		// concatenazione "&"
 		if (parameters_name.size() > 0)
 			parameters_buffer.deleteCharAt(parameters_buffer.length() - 1);
-		
+
 		return parameters_buffer.toString();
 	};
-	
+
 	/**
 	 * Invia una richiesta http ad un sistema esterno
 	 * 
 	 * @param url
-	 * @param parameters  Parametri serializzati
+	 * @param parameters
+	 *            Parametri serializzati
 	 * @return Restituisce la risposta del sistema esterno
 	 * @throws IOException
 	 */
@@ -88,11 +90,11 @@ public abstract class SistemaEsterno {
 		try {
 			URL uri = new URL(url);
 			HttpURLConnection connection = (HttpURLConnection) uri.openConnection();
-			
-			//add reuqest header
+
+			// add reuqest header
 			connection.setRequestMethod("POST");
-			//connection.setRequestProperty("Accept", "application/json");
-			
+			// connection.setRequestProperty("Accept", "application/json");
+
 			// Send post request
 			connection.setDoOutput(true);
 			DataOutputStream writer = new DataOutputStream(connection.getOutputStream());
@@ -101,34 +103,35 @@ public abstract class SistemaEsterno {
 			writer.close();
 
 			if (connection.getResponseCode() != 200) {
-				throw new HttpRetryException("Connection response: " + connection.getResponseMessage(), connection.getResponseCode());
+				throw new HttpRetryException("Connection response: " + connection.getResponseMessage(),
+						connection.getResponseCode());
 			}
-			
+
 			BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-			
+
 			String buffer;
 			StringBuffer response = new StringBuffer();
-			
+
 			while ((buffer = reader.readLine()) != null) {
 				response.append(buffer);
 			}
-			
+
 			reader.close();
-			
+
 			return response.toString();
 
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		
+
 		return null;
 	};
-	
+
 	/**
 	 * Processa i servizi da una risposta http
 	 * 
 	 * @param response
 	 * @return Lista di ServizioComponent
 	 */
-	protected abstract ArrayList<IServizioComponent> processServicesFromResponse(String response);
+	protected abstract ArrayList<ServizioComponent> processServicesFromResponse(String response);
 }

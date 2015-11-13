@@ -85,7 +85,7 @@ public class RicercaBigliettoForm extends FormView {
 			LocalDateTime local_date_time_andata = LocalDateTime.parse(data_andata, DateTimeFormatter.ISO_DATE_TIME);
 			LocalDate local_date_andata = local_date_time_andata.toLocalDate();
 			this.input_data_andata.setValue(local_date_andata);
-			
+
 			LocalTime local_time_andata = local_date_time_andata.toLocalTime();
 			int index_ora_andata = local_time_andata.getHour();
 			this.input_ora_andata.getSelectionModel().select(index_ora_andata);
@@ -96,7 +96,7 @@ public class RicercaBigliettoForm extends FormView {
 						DateTimeFormatter.ISO_DATE_TIME);
 				LocalDate local_date_ritorno = local_date_time_ritorno.toLocalDate();
 				this.input_data_ritorno.setValue(local_date_ritorno);
-				
+
 				LocalTime local_time_ritorno = local_date_time_ritorno.toLocalTime();
 				int index_ora_ritorno = local_time_ritorno.getHour();
 				this.input_ora_ritorno.getSelectionModel().select(index_ora_ritorno);

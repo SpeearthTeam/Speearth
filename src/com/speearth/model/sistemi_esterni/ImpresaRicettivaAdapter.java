@@ -7,7 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.speearth.model.core.Alloggio;
-import com.speearth.model.core.IServizioComponent;
+import com.speearth.model.core.ServizioComponent;
 
 /**
  * Interfaccia rappresentante un'Impresa Ricettiva che fornisce Alloggi per
@@ -23,16 +23,16 @@ public abstract class ImpresaRicettivaAdapter extends SistemaEsterno {
 	 * @throws JSONException
 	 */
 	protected abstract Alloggio creaAlloggioDaJSON(JSONObject jsonAlloggio) throws JSONException;
-	
+
 	@Override
-	protected ArrayList<IServizioComponent> processServicesFromResponse(String response) {
-		ArrayList<IServizioComponent> alloggi = new ArrayList<IServizioComponent>();
+	protected ArrayList<ServizioComponent> processServicesFromResponse(String response) {
+		ArrayList<ServizioComponent> alloggi = new ArrayList<ServizioComponent>();
 		JSONArray jsonArray = new JSONArray(response);
 
 		for (int i = 0; i < jsonArray.length(); i++) {
 			alloggi.add(creaAlloggioDaJSON(jsonArray.getJSONObject(i)));
 		}
-		
+
 		return alloggi;
 	}
 }

@@ -131,18 +131,19 @@ public class RisultatoBigliettoItem extends SubView {
 		this.output_data_destinazione_andata
 				.setText(biglietto.getDataArrivoAndata().format(DateTimeFormatter.ISO_DATE));
 		this.output_data_partenza_andata.setText(biglietto.getDataPartenzaAndata().format(DateTimeFormatter.ISO_DATE));
-		
+
 		if (biglietto.getDataArrivoRitorno() != null) {
 			this.output_data_destinazione_ritorno
-				.setText(biglietto.getDataArrivoRitorno().format(DateTimeFormatter.ISO_DATE));
+					.setText(biglietto.getDataArrivoRitorno().format(DateTimeFormatter.ISO_DATE));
 		}
-		
+
 		if (biglietto.getDataPartenzaRitorno() != null) {
 			this.output_data_partenza_ritorno
-				.setText(biglietto.getDataPartenzaRitorno().format(DateTimeFormatter.ISO_DATE));
+					.setText(biglietto.getDataPartenzaRitorno().format(DateTimeFormatter.ISO_DATE));
 		}
 		this.output_ora_partenza_ritorno.setText(biglietto.getDataPartenzaRitorno().format(DateTimeFormatter.ISO_TIME));
-		this.output_ora_destinazione_ritorno.setText(biglietto.getDataArrivoRitorno().format(DateTimeFormatter.ISO_TIME));
+		this.output_ora_destinazione_ritorno
+				.setText(biglietto.getDataArrivoRitorno().format(DateTimeFormatter.ISO_TIME));
 		this.output_ora_destinazione_andata.setText(biglietto.getDataArrivoAndata().format(DateTimeFormatter.ISO_TIME));
 		this.output_ora_partenza_andata.setText(biglietto.getDataPartenzaAndata().format(DateTimeFormatter.ISO_TIME));
 		this.output_partenza_andata.setText(biglietto.getPartenza());

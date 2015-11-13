@@ -6,7 +6,8 @@ import java.util.HashMap;
 import com.speearth.model.transazioni.ITransazioniCommand;
 
 /**
- * Classe rappresentante un comando di ricerca alloggi verso un'impresa ricettiva
+ * Classe rappresentante un comando di ricerca alloggi verso un'impresa
+ * ricettiva
  */
 public class RicercaAlloggiCommand implements ITransazioniCommand {
 	/**
@@ -29,7 +30,7 @@ public class RicercaAlloggiCommand implements ITransazioniCommand {
 		this.receiver = receiver;
 		this.parametri = parametri;
 	}
-	
+
 	/**
 	 * Restituisce il receiver
 	 * 
@@ -38,7 +39,7 @@ public class RicercaAlloggiCommand implements ITransazioniCommand {
 	public RicercaReceiver getReceiver() {
 		return this.receiver;
 	}
-	
+
 	/**
 	 * Imposta il receiver
 	 * 
@@ -47,7 +48,7 @@ public class RicercaAlloggiCommand implements ITransazioniCommand {
 	public void setReceiver(RicercaReceiver receiver) {
 		this.receiver = receiver;
 	}
-	
+
 	/**
 	 * Restituisce i parametri
 	 * 
@@ -56,7 +57,7 @@ public class RicercaAlloggiCommand implements ITransazioniCommand {
 	public HashMap<String, String> getParametri() {
 		return this.parametri;
 	}
-	
+
 	/**
 	 * Imposta i parametri
 	 * 

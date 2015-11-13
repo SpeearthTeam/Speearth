@@ -1,17 +1,11 @@
 package com.speearth.model.core;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 /**
  * Servizio biglietto
  */
-public class Biglietto implements IServizioComponent {
-
-	/**
-	 * Id
-	 */
-	private int id;
+public class Biglietto extends ServizioComponent {
 
 	/**
 	 * Fornitore
@@ -59,11 +53,6 @@ public class Biglietto implements IServizioComponent {
 	private int numeroBambini = 0;
 
 	/**
-	 * Prezzo
-	 */
-	private float prezzo = 0;
-
-	/**
 	 * Mezzo
 	 */
 	private String mezzo;
@@ -72,6 +61,7 @@ public class Biglietto implements IServizioComponent {
 	 * Costruttore di default
 	 */
 	public Biglietto() {
+
 	}
 
 	/**
@@ -285,63 +275,6 @@ public class Biglietto implements IServizioComponent {
 	 */
 	public void setMezzo(String mezzo) {
 		this.mezzo = mezzo;
-	}
-
-	/**
-	 * Restituisce il prezzo del Biglietto
-	 * 
-	 * @return float
-	 */
-	@Override
-	public float getPrezzo() {
-		return this.prezzo;
-	}
-
-	/**
-	 * Imposta il prezzo del Biglietto
-	 * 
-	 * @param prezzo
-	 */
-	@Override
-	public void setPrezzo(float prezzo) {
-		this.prezzo = prezzo;
-	}
-
-	/**
-	 * Il metodo non si applica in quanto questa classe non è composita
-	 */
-	@Override
-	public void aggiungi(IServizioComponent servizio) {
-	}
-
-	/**
-	 * Il metodo non si applica in quanto questa classe non è composita
-	 */
-	@Override
-	public void rimuovi(IServizioComponent servizio) {
-	}
-
-	/**
-	 * Il metodo non si applica in quanto questa classe non è composita
-	 */
-	@Override
-	public IServizioComponent getServizio(int i) {
-		return null;
-	}
-
-	/**
-	 * Il metodo non si applica in quanto questa classe non è composita
-	 */
-	@Override
-	public void setListaServizi(ArrayList<IServizioComponent> servizi) {
-	}
-
-	/**
-	 * Il metodo non si applica in quanto questa classe non è composita
-	 */
-	@Override
-	public ArrayList<IServizioComponent> getListaServizi() {
-		return null;
 	}
 
 }

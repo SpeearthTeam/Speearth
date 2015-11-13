@@ -8,7 +8,7 @@ import java.util.ResourceBundle;
 
 import com.speearth.controller.AppFacadeController;
 import com.speearth.model.core.Biglietto;
-import com.speearth.model.core.IServizioComponent;
+import com.speearth.model.core.ServizioComponent;
 import com.speearth.utility.Costanti;
 import com.speearth.view.View;
 import com.speearth.view.prenotaservizio.eventi.EventoSelezionaServizio;
@@ -75,7 +75,7 @@ public class RicercaBigliettoView extends View {
 					@Override
 					public void handle(EventoSelezionaServizio event) {
 						try {
-							IServizioComponent servizio = AppFacadeController.getInstance()
+							ServizioComponent servizio = AppFacadeController.getInstance()
 									.getPrenotaServizioController().getServizio();
 							if (servizio != null && servizio.equals(event.getServizio()))
 								mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_SERVIZIO_PRESENTE, null,

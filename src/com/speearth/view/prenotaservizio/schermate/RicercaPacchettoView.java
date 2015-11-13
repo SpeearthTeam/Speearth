@@ -9,8 +9,8 @@ import java.util.ResourceBundle;
 import com.speearth.controller.AppFacadeController;
 import com.speearth.model.core.Alloggio;
 import com.speearth.model.core.Biglietto;
-import com.speearth.model.core.IServizioComponent;
 import com.speearth.model.core.PacchettoComposite;
+import com.speearth.model.core.ServizioComponent;
 import com.speearth.utility.Costanti;
 import com.speearth.view.View;
 import com.speearth.view.prenotaservizio.eventi.EventoSelezionaServizio;
@@ -44,25 +44,25 @@ public class RicercaPacchettoView extends View {
 	@FXML
 	private ListView<Alloggio> lista_risultati_alloggi;
 	@FXML
-	private TableView<IServizioComponent> tabella_pacchetto;
+	private TableView<ServizioComponent> tabella_pacchetto;
 	@FXML
-	private TableColumn<IServizioComponent, String> tipo_servizio_col;
+	private TableColumn<ServizioComponent, String> tipo_servizio_col;
 	@FXML
-	private TableColumn<IServizioComponent, String> fornitore_servizio_col;
+	private TableColumn<ServizioComponent, String> fornitore_servizio_col;
 	@FXML
-	private TableColumn<IServizioComponent, String> prezzo_servizio_col;
+	private TableColumn<ServizioComponent, String> prezzo_servizio_col;
 	@FXML
 	private AnchorPane alloggio_form_container;
 	@FXML
 	private AnchorPane biglietto_form_container;
 
-	private ObservableList<IServizioComponent> lista_servizi = FXCollections.observableArrayList();
+	private ObservableList<ServizioComponent> lista_servizi = FXCollections.observableArrayList();
 
 	private RicercaAlloggioForm ricerca_alloggio_form;
 
 	private RicercaBigliettoForm ricerca_biglietto_form;
 
-	private TableColumn<IServizioComponent, Boolean> cancella_servizio_col = new TableColumn<>("Cancella");
+	private TableColumn<ServizioComponent, Boolean> cancella_servizio_col = new TableColumn<>("Cancella");
 
 	/**
 	 * Costruttore di default
@@ -79,13 +79,13 @@ public class RicercaPacchettoView extends View {
 
 					@Override
 					public void handle(EventoSelezionaServizio event) {
-						IServizioComponent pacchetto = AppFacadeController.getInstance().getPrenotaServizioController()
+						ServizioComponent pacchetto = AppFacadeController.getInstance().getPrenotaServizioController()
 								.getServizio();
 						if (pacchetto != null && pacchetto.getListaServizi().contains(event.getServizio()))
 							mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_SERVIZIO_PRESENTE, null,
 									Costanti.MESSAGGIO_SERVIZIO_PRESENTE);
 						else {
-							IServizioComponent servizio = event.getServizio();
+							ServizioComponent servizio = event.getServizio();
 							AppFacadeController.getInstance().getPrenotaServizioController().getServizio()
 									.aggiungi(servizio);
 							lista_servizi.add(servizio);
@@ -150,7 +150,7 @@ public class RicercaPacchettoView extends View {
 			this.lista_risultati_alloggi.setItems(list_alloggi);
 		}
 		// ottengo i servizi del pacchetto dal controller
-		ArrayList<IServizioComponent> pacchetto = AppFacadeController.getInstance().getPrenotaServizioController()
+		ArrayList<ServizioComponent> pacchetto = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getPrenotaPacchettoController().getPacchetto();
 		// se il pacchetto contiene servizi, allora imposto la lista servizi del
 		// pacchetto e la ObservableList
@@ -165,11 +165,11 @@ public class RicercaPacchettoView extends View {
 	 */
 	public void initializeServiceTable() {
 		this.tipo_servizio_col.setCellValueFactory(
-				new Callback<TableColumn.CellDataFeatures<IServizioComponent, String>, ObservableValue<String>>() {
+				new Callback<TableColumn.CellDataFeatures<ServizioComponent, String>, ObservableValue<String>>() {
 
 					@Override
-					public ObservableValue<String> call(CellDataFeatures<IServizioComponent, String> param) {
-						IServizioComponent servizio = param.getValue();
+					public ObservableValue<String> call(CellDataFeatures<ServizioComponent, String> param) {
+						ServizioComponent servizio = param.getValue();
 						SimpleStringProperty tipo = null;
 
 						if (servizio instanceof Alloggio)
@@ -182,11 +182,11 @@ public class RicercaPacchettoView extends View {
 				});
 
 		this.fornitore_servizio_col.setCellValueFactory(
-				new Callback<TableColumn.CellDataFeatures<IServizioComponent, String>, ObservableValue<String>>() {
+				new Callback<TableColumn.CellDataFeatures<ServizioComponent, String>, ObservableValue<String>>() {
 
 					@Override
-					public ObservableValue<String> call(CellDataFeatures<IServizioComponent, String> param) {
-						IServizioComponent servizio = param.getValue();
+					public ObservableValue<String> call(CellDataFeatures<ServizioComponent, String> param) {
+						ServizioComponent servizio = param.getValue();
 						SimpleStringProperty fornitore = null;
 
 						if (servizio instanceof Alloggio)
@@ -199,11 +199,11 @@ public class RicercaPacchettoView extends View {
 				});
 
 		this.prezzo_servizio_col.setCellValueFactory(
-				new Callback<TableColumn.CellDataFeatures<IServizioComponent, String>, ObservableValue<String>>() {
+				new Callback<TableColumn.CellDataFeatures<ServizioComponent, String>, ObservableValue<String>>() {
 
 					@Override
-					public ObservableValue<String> call(CellDataFeatures<IServizioComponent, String> param) {
-						IServizioComponent servizio = param.getValue();
+					public ObservableValue<String> call(CellDataFeatures<ServizioComponent, String> param) {
+						ServizioComponent servizio = param.getValue();
 						SimpleStringProperty prezzo = null;
 
 						if (servizio instanceof Alloggio)
@@ -219,10 +219,10 @@ public class RicercaPacchettoView extends View {
 		this.tabella_pacchetto.getColumns().add(this.cancella_servizio_col);
 		// aggiungo il pulsante alla tabella
 		this.cancella_servizio_col.setCellFactory(
-				new Callback<TableColumn<IServizioComponent, Boolean>, TableCell<IServizioComponent, Boolean>>() {
+				new Callback<TableColumn<ServizioComponent, Boolean>, TableCell<ServizioComponent, Boolean>>() {
 
 					@Override
-					public TableCell<IServizioComponent, Boolean> call(TableColumn<IServizioComponent, Boolean> p) {
+					public TableCell<ServizioComponent, Boolean> call(TableColumn<ServizioComponent, Boolean> p) {
 						return new ButtonCell();
 					}
 				});
@@ -267,10 +267,10 @@ public class RicercaPacchettoView extends View {
 	// Event Listener on Button[#bottone_ricerca].onAction
 	@FXML
 	public void vaiARiepilogo(ActionEvent event) throws IOException {
-		ArrayList<IServizioComponent> pacchetto = AppFacadeController.getInstance().getPrenotaServizioController()
+		ArrayList<ServizioComponent> pacchetto = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getServizio().getListaServizi();
 		AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
-		.setPacchetto(pacchetto);
+				.setPacchetto(pacchetto);
 		if (pacchetto.isEmpty())
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null, Costanti.MESSAGGIO_NESSUN_SERVIZIO);
 		else if (!(pacchetto.size() > 1))
@@ -311,7 +311,7 @@ public class RicercaPacchettoView extends View {
 	}
 
 	// Definisco la classe privata ButtonCell
-	private class ButtonCell extends TableCell<IServizioComponent, Boolean> {
+	private class ButtonCell extends TableCell<ServizioComponent, Boolean> {
 		final Button cellButton = new Button("Cancella");
 
 		ButtonCell() {
@@ -322,7 +322,7 @@ public class RicercaPacchettoView extends View {
 				@Override
 				public void handle(ActionEvent t) {
 					// Recupero il servizio relativo all'indice di riga
-					IServizioComponent servizio = ButtonCell.this.getTableView().getItems()
+					ServizioComponent servizio = ButtonCell.this.getTableView().getItems()
 							.get(ButtonCell.this.getIndex());
 
 					// Rimuovo il servizio dalla lista servizi

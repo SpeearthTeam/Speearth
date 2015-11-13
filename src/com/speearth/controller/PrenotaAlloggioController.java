@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 import com.speearth.model.core.AgenziaFacade;
 import com.speearth.model.core.Alloggio;
-import com.speearth.model.core.IServizioComponent;
+import com.speearth.model.core.ServizioComponent;
 import com.speearth.model.transazioni.ricerca.RicercaAlloggiCommand;
 import com.speearth.model.transazioni.ricerca.RicercaReceiver;
 
@@ -55,10 +55,10 @@ public class PrenotaAlloggioController implements IFrammentoController {
 		RicercaReceiver ricerca_receiver = RicercaReceiver.getInstance();
 		RicercaAlloggiCommand command = new RicercaAlloggiCommand(ricerca_receiver, parametri);
 		AgenziaFacade.getInstance().effettuaTransazione(command);
-		ArrayList<IServizioComponent> risultati = ricerca_receiver.getRisultatoRicerca();
+		ArrayList<ServizioComponent> risultati = ricerca_receiver.getRisultatoRicerca();
 		ArrayList<Alloggio> alloggi = new ArrayList<Alloggio>();
 
-		for (IServizioComponent risultato : risultati)
+		for (ServizioComponent risultato : risultati)
 			alloggi.add((Alloggio) risultato);
 
 		this.parametri = parametri;

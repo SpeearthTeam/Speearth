@@ -34,6 +34,7 @@ public class TrenitaliaAdapter extends AziendaTrasportoAdapter {
 	 * Costruttore di default
 	 */
 	protected TrenitaliaAdapter() {
+
 	}
 
 	/**
@@ -45,32 +46,35 @@ public class TrenitaliaAdapter extends AziendaTrasportoAdapter {
 	 */
 	@Override
 	protected Biglietto creaBigliettoDaJSON(JSONObject jsonBiglietto) throws JSONException {
-		
+
 		Biglietto biglietto = new Biglietto();
-		
+
 		DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
 		biglietto.setId(jsonBiglietto.optInt("id", 0));
 		biglietto.setFornitore(jsonBiglietto.optString("fornitore"));
 		biglietto.setPartenza(jsonBiglietto.optString("partenza"));
 		biglietto.setDestinazione(jsonBiglietto.optString("destinazione"));
-		biglietto.setDataPartenzaAndata(LocalDateTime.parse(jsonBiglietto.optString("data_partenza_andata"), formatter));
-		
+		biglietto
+				.setDataPartenzaAndata(LocalDateTime.parse(jsonBiglietto.optString("data_partenza_andata"), formatter));
+
 		if (!jsonBiglietto.optString("data_partenza_ritorno").isEmpty()) {
-			biglietto.setDataPartenzaRitorno(LocalDateTime.parse(jsonBiglietto.optString("data_partenza_ritorno"), formatter));
+			biglietto.setDataPartenzaRitorno(
+					LocalDateTime.parse(jsonBiglietto.optString("data_partenza_ritorno"), formatter));
 		}
-		
+
 		biglietto.setDataArrivoAndata(LocalDateTime.parse(jsonBiglietto.optString("data_arrivo_andata"), formatter));
-		
+
 		if (!jsonBiglietto.optString("data_arrivo_ritorno").isEmpty()) {
-			biglietto.setDataArrivoRitorno(LocalDateTime.parse(jsonBiglietto.optString("data_arrivo_ritorno"), formatter));
+			biglietto.setDataArrivoRitorno(
+					LocalDateTime.parse(jsonBiglietto.optString("data_arrivo_ritorno"), formatter));
 		}
-		
+
 		biglietto.setNumeroAdulti(jsonBiglietto.optInt("numero_adulti"));
 		biglietto.setNumerBambini(jsonBiglietto.optInt("numero_bambini"));
 		biglietto.setPrezzo((float) jsonBiglietto.optInt("prezzo"));
-		
+
 		return biglietto;
-		
+
 	}
 
 	/**
@@ -86,14 +90,14 @@ public class TrenitaliaAdapter extends AziendaTrasportoAdapter {
 	protected String getSearchUrl() {
 		return Costanti.URL_TRENITALIA;
 	}
-	
+
 	@Override
 	protected String serializeParameters(HashMap<String, String> parameters) {
 		String parametri_serializzati = super.serializeParameters(parameters);
-		
+
 		if (!parametri_serializzati.isEmpty())
 			parametri_serializzati += "&";
-		
+
 		return parametri_serializzati + "action=search&category=tickets&provider=Trenitalia";
 	}
 }

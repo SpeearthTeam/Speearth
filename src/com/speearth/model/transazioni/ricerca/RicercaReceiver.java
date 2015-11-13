@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 import com.speearth.model.core.Alloggio;
 import com.speearth.model.core.Biglietto;
-import com.speearth.model.core.IServizioComponent;
+import com.speearth.model.core.ServizioComponent;
 import com.speearth.model.sistemi_esterni.AziendaTrasportoAdapter;
 import com.speearth.model.sistemi_esterni.ImpresaRicettivaAdapter;
 import com.speearth.model.sistemi_esterni.SistemaEsternoFactory;
@@ -25,7 +25,7 @@ public class RicercaReceiver {
 	/**
 	 * Risultato del comando Ricerca
 	 */
-	private ArrayList<IServizioComponent> risultato_ricerca;
+	private ArrayList<ServizioComponent> risultato_ricerca;
 
 	/**
 	 * Restituisce la singola istanza della classe
@@ -42,7 +42,7 @@ public class RicercaReceiver {
 	 * Costruttore di default
 	 */
 	private RicercaReceiver() {
-		this.risultato_ricerca = new ArrayList<IServizioComponent>();
+		this.risultato_ricerca = new ArrayList<ServizioComponent>();
 	}
 
 	/**
@@ -50,7 +50,7 @@ public class RicercaReceiver {
 	 * 
 	 * @return ArrayList<IServizioComponent>
 	 */
-	public ArrayList<IServizioComponent> getRisultatoRicerca() {
+	public ArrayList<ServizioComponent> getRisultatoRicerca() {
 		return this.risultato_ricerca;
 	}
 
@@ -59,24 +59,24 @@ public class RicercaReceiver {
 	 * 
 	 * @param parametri
 	 * @return ArrayList<Alloggio>
-	 * @throws HttpRetryException 
+	 * @throws HttpRetryException
 	 */
-	public ArrayList<IServizioComponent> ricercaAlloggi(HashMap<String, String> parametri) throws IOException {
+	public ArrayList<ServizioComponent> ricercaAlloggi(HashMap<String, String> parametri) throws IOException {
 		this.svuotaRisultatiRicerca();
-		
+
 		ArrayList<ImpresaRicettivaAdapter> imprese_ricettive = SistemaEsternoFactory.getInstance()
 				.getImpreseRicettive();
-		
+
 		for (ImpresaRicettivaAdapter impresa_ricettiva : imprese_ricettive) {
-			
-			ArrayList<IServizioComponent> servizi;
+
+			ArrayList<ServizioComponent> servizi;
 			servizi = impresa_ricettiva.ricerca(parametri);
-			
-			for (IServizioComponent servizio : servizi) {
+
+			for (ServizioComponent servizio : servizi) {
 				this.risultato_ricerca.add((Alloggio) servizio);
 			}
 		}
-		
+
 		return this.risultato_ricerca;
 	}
 
@@ -85,24 +85,24 @@ public class RicercaReceiver {
 	 * 
 	 * @param parametri
 	 * @return ArrayList<Biglietto>
-	 * @throws HttpRetryException 
+	 * @throws HttpRetryException
 	 */
-	public ArrayList<IServizioComponent> ricercaBiglietti(HashMap<String, String> parametri) throws IOException {
+	public ArrayList<ServizioComponent> ricercaBiglietti(HashMap<String, String> parametri) throws IOException {
 		this.svuotaRisultatiRicerca();
-		
+
 		ArrayList<AziendaTrasportoAdapter> aziende_trasporto = SistemaEsternoFactory.getInstance()
 				.getAziendeDiTrasporto();
-		
+
 		for (AziendaTrasportoAdapter azienda_trasporto : aziende_trasporto) {
-			
-			ArrayList<IServizioComponent> servizi;
+
+			ArrayList<ServizioComponent> servizi;
 			servizi = azienda_trasporto.ricerca(parametri);
-			
-			for (IServizioComponent servizio : servizi) {
+
+			for (ServizioComponent servizio : servizi) {
 				this.risultato_ricerca.add((Biglietto) servizio);
 			}
 		}
-		
+
 		return this.risultato_ricerca;
 	}
 

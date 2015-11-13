@@ -2,7 +2,7 @@ package com.speearth.controller;
 
 import com.speearth.model.core.AgenziaFacade;
 import com.speearth.model.core.Cliente;
-import com.speearth.model.core.IServizioComponent;
+import com.speearth.model.core.ServizioComponent;
 import com.speearth.model.core.bonus.CalcolatoreBonus;
 import com.speearth.model.core.bonus.IBonus;
 import com.speearth.model.core.bonus.IBonusStrategy;
@@ -15,7 +15,7 @@ public class PrenotaServizioController implements ICasoDUsoController {
 	/**
 	 * Servizio in prenotazione
 	 */
-	private IServizioComponent servizio;
+	private ServizioComponent servizio;
 
 	/**
 	 * Cliente che sta per acquistare il Servizio
@@ -92,7 +92,7 @@ public class PrenotaServizioController implements ICasoDUsoController {
 	 * 
 	 * @param bonus
 	 */
-	public IServizioComponent applicaBonus(IBonus bonus, IBonusStrategy strategy) {
+	public ServizioComponent applicaBonus(IBonus bonus, IBonusStrategy strategy) {
 		CalcolatoreBonus calcolatore = new CalcolatoreBonus(strategy);
 		calcolatore.applicaBonus(this.servizio, bonus);
 		return this.servizio;
@@ -106,8 +106,10 @@ public class PrenotaServizioController implements ICasoDUsoController {
 	 * @return String
 	 */
 	public String effettuaPagamento(String metodo) {
-//		return AgenziaFacade.getInstance().getRegistratoreDiCassa().effettuaPagamento(this.servizio, this.cliente,
-//				AppFacadeController.getInstance().getUtente(), metodo);
+		// return
+		// AgenziaFacade.getInstance().getRegistratoreDiCassa().effettuaPagamento(this.servizio,
+		// this.cliente,
+		// AppFacadeController.getInstance().getUtente(), metodo);
 		return "";
 	}
 
@@ -116,7 +118,7 @@ public class PrenotaServizioController implements ICasoDUsoController {
 	 * 
 	 * @return ServizioComponent
 	 */
-	public IServizioComponent getServizio() {
+	public ServizioComponent getServizio() {
 		return this.servizio;
 	}
 
@@ -125,7 +127,7 @@ public class PrenotaServizioController implements ICasoDUsoController {
 	 * 
 	 * @param servizio
 	 */
-	public void setServizio(IServizioComponent servizio) {
+	public void setServizio(ServizioComponent servizio) {
 		this.servizio = servizio;
 	}
 
@@ -146,7 +148,7 @@ public class PrenotaServizioController implements ICasoDUsoController {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	
+
 	/**
 	 * Ristabilisce lo stato di partenza del Caso D'Uso
 	 */

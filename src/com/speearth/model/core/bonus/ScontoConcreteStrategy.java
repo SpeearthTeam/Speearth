@@ -2,7 +2,7 @@ package com.speearth.model.core.bonus;
 
 import java.util.ArrayList;
 
-import com.speearth.model.core.IServizioComponent;
+import com.speearth.model.core.ServizioComponent;
 import com.speearth.model.core.Vendita;
 
 /**
@@ -13,6 +13,7 @@ public class ScontoConcreteStrategy implements IBonusStrategy {
 	 * Metodo costruttore
 	 */
 	public ScontoConcreteStrategy() {
+
 	}
 
 	/**
@@ -62,7 +63,7 @@ public class ScontoConcreteStrategy implements IBonusStrategy {
 	 * @param servizio
 	 * @param bonus
 	 */
-	public void applica(IServizioComponent servizio, IBonus bonus) {
+	public void applica(ServizioComponent servizio, IBonus bonus) {
 		int sconto = ((ScontoBonus) bonus).getSconto();
 		float totale = servizio.getPrezzo();
 		servizio.setPrezzo(totale - (totale * sconto) / 100);

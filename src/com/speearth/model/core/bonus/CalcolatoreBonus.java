@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.speearth.model.core.AgenziaFacade;
 import com.speearth.model.core.Cliente;
-import com.speearth.model.core.IServizioComponent;
+import com.speearth.model.core.ServizioComponent;
 import com.speearth.model.core.Vendita;
 
 /**
@@ -42,7 +42,7 @@ public class CalcolatoreBonus {
 	 * @param servizio
 	 * @param bonus
 	 */
-	public void applicaBonus(IServizioComponent servizio, IBonus bonus) {
+	public void applicaBonus(ServizioComponent servizio, IBonus bonus) {
 		this.strategy.applica(servizio, bonus);
 	}
 

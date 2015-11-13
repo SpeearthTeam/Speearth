@@ -11,7 +11,6 @@ import org.json.JSONObject;
 import com.speearth.model.core.Alloggio;
 import com.speearth.utility.Costanti;
 
-
 public class BookingAdapter extends ImpresaRicettivaAdapter {
 	/**
 	 * Istanza della classe
@@ -33,6 +32,7 @@ public class BookingAdapter extends ImpresaRicettivaAdapter {
 	 * Costruttore di default
 	 */
 	protected BookingAdapter() {
+
 	}
 
 	/**
@@ -45,17 +45,17 @@ public class BookingAdapter extends ImpresaRicettivaAdapter {
 	@Override
 	protected Alloggio creaAlloggioDaJSON(JSONObject jsonBiglietto) throws JSONException {
 		Alloggio alloggio = new Alloggio();
-		
+
 		DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
-		
+
 		JSONObject rooms = jsonBiglietto.optJSONObject("rooms");
 		Set<String> roomTypes = rooms.keySet();
-		
+
 		HashMap<String, Integer> stanze = new HashMap<String, Integer>();
-		
+
 		for (String type : roomTypes)
 			stanze.put(type, jsonBiglietto.optInt(type));
-		
+
 		alloggio.setId(jsonBiglietto.optInt("id", 0));
 		alloggio.setFornitore(jsonBiglietto.optString("provider"));
 		alloggio.setLocalita(jsonBiglietto.optString("city"));
@@ -63,7 +63,7 @@ public class BookingAdapter extends ImpresaRicettivaAdapter {
 		alloggio.setDataArrivo(LocalDateTime.parse(jsonBiglietto.optString("arrival_date"), formatter));
 		alloggio.setStanze(stanze);
 		alloggio.setPrezzo((float) jsonBiglietto.optInt("price"));
-		
+
 		return alloggio;
 	}
 
@@ -80,14 +80,14 @@ public class BookingAdapter extends ImpresaRicettivaAdapter {
 	protected String getSearchUrl() {
 		return Costanti.URL_BOOKING;
 	}
-	
+
 	@Override
 	protected String serializeParameters(HashMap<String, String> parameters) {
 		String parametri_serializzati = super.serializeParameters(parameters);
-		
+
 		if (!parametri_serializzati.isEmpty())
 			parametri_serializzati += "&";
-		
+
 		return parametri_serializzati + "action=search&category=accomodations";
 	}
 }

@@ -2,13 +2,14 @@ package com.speearth.view.prenotaservizio.schermate;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 import com.speearth.controller.AppFacadeController;
 import com.speearth.model.core.Alloggio;
-import com.speearth.model.core.IServizioComponent;
+import com.speearth.model.core.ServizioComponent;
 import com.speearth.utility.Costanti;
 import com.speearth.view.View;
 import com.speearth.view.prenotaservizio.eventi.EventoSelezionaServizio;
@@ -57,7 +58,7 @@ public class RicercaAlloggioView extends View {
 					@Override
 					public void handle(EventoSelezionaServizio event) {
 						try {
-							IServizioComponent servizio = AppFacadeController.getInstance()
+							ServizioComponent servizio = AppFacadeController.getInstance()
 									.getPrenotaServizioController().getServizio();
 							if (servizio != null && servizio.equals(event.getServizio()))
 								mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_SERVIZIO_PRESENTE, null,
@@ -68,6 +69,8 @@ public class RicercaAlloggioView extends View {
 								vaiARiepilogo();
 							}
 						} catch (IOException e) {
+							e.printStackTrace();
+						} catch (ParseException e) {
 							e.printStackTrace();
 						}
 					}
@@ -135,7 +138,7 @@ public class RicercaAlloggioView extends View {
 
 	// Event Listener on Button[#bottone_riepilogo].onAction
 	@FXML
-	public void vaiARiepilogoButtonClick(ActionEvent event) throws IOException {
+	public void vaiARiepilogoButtonClick(ActionEvent event) throws IOException, ParseException {
 		vaiARiepilogo();
 	}
 
@@ -143,8 +146,9 @@ public class RicercaAlloggioView extends View {
 	 * Ridirige l'utente al riepilogo
 	 * 
 	 * @throws IOException
+	 * @throws ParseException 
 	 */
-	public void vaiARiepilogo() throws IOException {
+	public void vaiARiepilogo() throws IOException, ParseException {
 		if (AppFacadeController.getInstance().getPrenotaServizioController().getServizio() == null)
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null, Costanti.MESSAGGIO_NESSUN_SERVIZIO);
 		else {

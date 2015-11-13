@@ -35,12 +35,13 @@ public class Vendita {
 	/**
 	 * Servizio
 	 */
-	private IServizioComponent servizio;
+	private ServizioComponent servizio;
 
 	/**
 	 * Costruttore di default
 	 */
 	public Vendita() {
+
 	}
 
 	/**
@@ -51,8 +52,7 @@ public class Vendita {
 	 * @param commesso
 	 * @param servizio
 	 */
-	public Vendita(Cliente cliente, Pagamento pagamento, Impiegato commesso,
-			IServizioComponent servizio) {
+	public Vendita(Cliente cliente, Pagamento pagamento, Impiegato commesso, ServizioComponent servizio) {
 		this.cliente = cliente;
 		this.pagamento = pagamento;
 		this.commesso = commesso;
@@ -154,7 +154,7 @@ public class Vendita {
 	 * 
 	 * @return ServizioComponent
 	 */
-	public IServizioComponent getServizio() {
+	public ServizioComponent getServizio() {
 		return this.servizio;
 	}
 
@@ -163,7 +163,7 @@ public class Vendita {
 	 * 
 	 * @param servizio
 	 */
-	public void setServizio(IServizioComponent servizio) {
+	public void setServizio(ServizioComponent servizio) {
 		this.servizio = servizio;
 	}
 

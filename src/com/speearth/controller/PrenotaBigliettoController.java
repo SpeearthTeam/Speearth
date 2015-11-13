@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 import com.speearth.model.core.AgenziaFacade;
 import com.speearth.model.core.Biglietto;
-import com.speearth.model.core.IServizioComponent;
+import com.speearth.model.core.ServizioComponent;
 import com.speearth.model.transazioni.ricerca.RicercaBigliettiCommand;
 import com.speearth.model.transazioni.ricerca.RicercaReceiver;
 
@@ -54,12 +54,12 @@ public class PrenotaBigliettoController implements IFrammentoController {
 		RicercaReceiver ricerca_receiver = RicercaReceiver.getInstance();
 		RicercaBigliettiCommand command = new RicercaBigliettiCommand(ricerca_receiver, parametri);
 		AgenziaFacade.getInstance().effettuaTransazione(command);
-		ArrayList<IServizioComponent> risultati = ricerca_receiver.getRisultatoRicerca();
+		ArrayList<ServizioComponent> risultati = ricerca_receiver.getRisultatoRicerca();
 		ArrayList<Biglietto> biglietti = new ArrayList<Biglietto>();
 
-		for (IServizioComponent risultato : risultati)
+		for (ServizioComponent risultato : risultati)
 			biglietti.add((Biglietto) risultato);
-		
+
 		this.parametri = parametri;
 
 		return (this.biglietti = biglietti);

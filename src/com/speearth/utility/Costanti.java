@@ -1,5 +1,7 @@
 package com.speearth.utility;
 
+import java.text.SimpleDateFormat;
+
 import com.speearth.model.sistemi_esterni.AziendaTrasportoAdapter;
 import com.speearth.model.sistemi_esterni.BookingAdapter;
 import com.speearth.model.sistemi_esterni.ImpresaRicettivaAdapter;
@@ -7,6 +9,11 @@ import com.speearth.model.sistemi_esterni.ItaloAdapter;
 import com.speearth.model.sistemi_esterni.TrenitaliaAdapter;
 
 public final class Costanti {
+	
+	/**
+	 * Formato della Data
+	 */
+	public final static SimpleDateFormat FORMATO_DATA = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
 	/**
 	 * Titoli delle Schermate
@@ -41,7 +48,7 @@ public final class Costanti {
 	public final static String FXML_RIEPILOGO_PACCHETTO = "/ui/fxml/RiepilogoPacchetto.fxml";
 	public final static String FXML_RICERCA_ALLOGGIO_FORM = "/ui/fxml/RicercaAlloggioForm.fxml";
 	public final static String FXML_RICERCA_BIGLIETTO_FORM = "/ui/fxml/RicercaBigliettoForm.fxml";
-	public final static String FXML_RIEPILOGO_BIGLIETTO_ITEM = "/ui/fxml/RiepilogoBigliettoItem.fxml"; 
+	public final static String FXML_RIEPILOGO_BIGLIETTO_ITEM = "/ui/fxml/RiepilogoBigliettoItem.fxml";
 	public final static String FXML_RIEPILOGO_ALLOGGIO_ITEM = "/ui/fxml/RiepilogoAlloggioItem.fxml";
 
 	/**

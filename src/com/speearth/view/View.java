@@ -72,8 +72,8 @@ public abstract class View implements Initializable {
 	/**
 	 * Imposta la schermata (scene) contenuta nella finestra (stage)
 	 * 
-	 * (Se già esiste vuol dire che ci troviamo in una SubView e non la crea; non la
-	 * deve creare.)
+	 * (Se già esiste vuol dire che ci troviamo in una SubView e non la crea;
+	 * non la deve creare.)
 	 */
 	protected void setScene() {
 		if (scene == null) {

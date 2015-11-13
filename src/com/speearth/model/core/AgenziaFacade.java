@@ -30,8 +30,8 @@ public class AgenziaFacade {
 	private RegistroImpiegati registroImpiegati;
 
 	/**
-	 * Lista di Transazioni generiche da far eseguire ai Sistemi Esterni secondo le
-	 * richieste del Cliente
+	 * Lista di Transazioni generiche da far eseguire ai Sistemi Esterni secondo
+	 * le richieste del Cliente
 	 */
 	private ArrayList<ITransazioniCommand> comandi;
 
@@ -84,10 +84,11 @@ public class AgenziaFacade {
 	}
 
 	/**
-	 * Effettua una generica Transazione aggiungendo un nuovo Comando alla lista di Comandi
+	 * Effettua una generica Transazione aggiungendo un nuovo Comando alla lista
+	 * di Comandi
 	 * 
 	 * @param comando
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	public void effettuaTransazione(ITransazioniCommand comando) throws IOException {
 		this.comandi.add(comando);
