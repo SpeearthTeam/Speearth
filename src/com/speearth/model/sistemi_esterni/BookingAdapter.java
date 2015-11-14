@@ -1,13 +1,15 @@
 package com.speearth.model.sistemi_esterni;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Set;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.speearth.model.core.Alloggio;
+import com.speearth.model.core.Stanza;
 import com.speearth.utility.Costanti;
 
 public class BookingAdapter extends ImpresaRicettivaAdapter {
@@ -45,15 +47,16 @@ public class BookingAdapter extends ImpresaRicettivaAdapter {
 	protected Alloggio creaAlloggioDaJSON(JSONObject jsonBiglietto) throws JSONException {
 		Alloggio alloggio = new Alloggio();
 
-		// DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
+		ArrayList<Stanza> stanze = new ArrayList<>();
+		JSONArray rooms = jsonBiglietto.optJSONArray("rooms");
+		
+		System.out.println(rooms.toString());
 
-		JSONObject rooms = jsonBiglietto.optJSONObject("rooms");
-		Set<String> roomTypes = rooms.keySet();
-
-		HashMap<String, Integer> stanze = new HashMap<String, Integer>();
-
-		for (String type : roomTypes)
-			stanze.put(type, jsonBiglietto.optInt(type));
+		for (int i = 0; i < rooms.length(); ++i) {
+			JSONObject room = rooms.getJSONObject(i);
+			Stanza stanza = new Stanza(room.getString("type"));
+			stanze.add(stanza);
+		}
 
 		alloggio.setId(jsonBiglietto.optInt("id", 0));
 		alloggio.setFornitore(jsonBiglietto.optString("provider"));

@@ -1,7 +1,7 @@
 package com.speearth.model.core;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 
 /**
  * Servizio alloggio
@@ -31,7 +31,7 @@ public class Alloggio extends ServizioComponent {
 	/**
 	 * Stanze dell'alloggio
 	 */
-	private HashMap<String, Integer> stanze;
+	private ArrayList<Stanza> stanze = new ArrayList<>();
 
 	/**
 	 * Costruttore di default
@@ -47,7 +47,7 @@ public class Alloggio extends ServizioComponent {
 	 * @param localita
 	 * @param stanze
 	 */
-	public Alloggio(String fornitore, String localita, HashMap<String, Integer> stanze) {
+	public Alloggio(String fornitore, String localita, ArrayList<Stanza> stanze) {
 		this.fornitore = fornitore;
 		this.localita = localita;
 		this.stanze = stanze;
@@ -146,9 +146,9 @@ public class Alloggio extends ServizioComponent {
 	/**
 	 * Restituisce l'insieme di stanze dell'alloggio
 	 * 
-	 * @return HashMap<String, Integer>
+	 * @return ArrayList<Stanza>
 	 */
-	public HashMap<String, Integer> getStanze() {
+	public ArrayList<Stanza> getStanze() {
 		return this.stanze;
 	}
 
@@ -157,7 +157,7 @@ public class Alloggio extends ServizioComponent {
 	 * 
 	 * @param stanze
 	 */
-	public void setStanze(HashMap<String, Integer> stanze) {
+	public void setStanze(ArrayList<Stanza> stanze) {
 		this.stanze = stanze;
 	}
 

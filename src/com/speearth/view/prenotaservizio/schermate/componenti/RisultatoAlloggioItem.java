@@ -3,11 +3,10 @@ package com.speearth.view.prenotaservizio.schermate.componenti;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.ResourceBundle;
-import java.util.Set;
 
 import com.speearth.model.core.Alloggio;
+import com.speearth.model.core.Stanza;
 import com.speearth.utility.Costanti;
 import com.speearth.view.SubView;
 import com.speearth.view.prenotaservizio.eventi.EventoSelezionaServizio;
@@ -108,15 +107,15 @@ public class RisultatoAlloggioItem extends SubView {
 		this.output_prezzo.setText(Float.toString(alloggio.getPrezzo()));
 		this.output_prezzo.setText(Float.toString(alloggio.getPrezzo()) + " €");
 
-		HashMap<String, Integer> stanze = alloggio.getStanze();
-		Set<String> tipi_stanze = stanze.keySet();
-		ArrayList<String> rooms = new ArrayList<String>();
+		ArrayList<Stanza> stanze = alloggio.getStanze();
+		ArrayList<String> tipi_stanze = new ArrayList<String>();
 
-		for (String tipo : tipi_stanze)
-			rooms.add(tipo + ": " + stanze.get(tipo));
+		for (Stanza stanza : stanze) {
+			tipi_stanze.add(stanza.getTipologia());
+		}
 
 		ObservableList<String> observableRooms = FXCollections.observableArrayList();
-		observableRooms.setAll(rooms);
+		observableRooms.setAll(tipi_stanze);
 		this.output_stanze.setItems(observableRooms);
 	}
 
