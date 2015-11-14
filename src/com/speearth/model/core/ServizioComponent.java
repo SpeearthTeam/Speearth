@@ -84,6 +84,7 @@ public abstract class ServizioComponent {
 	 * Il metodo non si applica in quanto questa classe non è composita
 	 */
 	public void setListaServizi(ArrayList<ServizioComponent> servizi) {
+
 	}
 
 	/**

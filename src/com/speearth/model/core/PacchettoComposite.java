@@ -16,7 +16,7 @@ public class PacchettoComposite extends ServizioComponent {
 	 * Costruttore di deafault
 	 */
 	public PacchettoComposite() {
-		this.listaServizi = new ArrayList<ServizioComponent>();
+
 	}
 
 	/**

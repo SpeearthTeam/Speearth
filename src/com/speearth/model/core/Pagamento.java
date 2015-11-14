@@ -124,7 +124,6 @@ public class Pagamento {
 	 * @return String
 	 */
 	public String generaRicevuta() {
-		// TODO - implement Pagamento.generaRicevuta
 		String ricevuta = "Pagamento n°: " + this.id + "\n" + "Ammontare: " + this.ammontare + " €\n"
 				+ "Metodo di pagamento: " + this.metodo + "\n" + "Data: " + this.data.toString() + "\n";
 		return ricevuta;
