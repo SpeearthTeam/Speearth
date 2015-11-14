@@ -2,7 +2,6 @@ package com.speearth.view.prenotaservizio.schermate;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -96,15 +95,15 @@ public class RiepilogoBigliettoView extends View {
 	private void impostaInfoBiglietto(Biglietto biglietto) {
 		this.output_totale.setText(Float.toString(biglietto.getPrezzo()));
 		this.output_adulti.setText(Integer.toString(biglietto.getNumeroAdulti()));
-		this.output_arrivo_andata.setText(biglietto.getDataArrivoAndata().format(DateTimeFormatter.ISO_DATE_TIME));
-		this.output_arrivo_ritorno.setText(biglietto.getDataArrivoRitorno().format(DateTimeFormatter.ISO_DATE_TIME));
+		this.output_arrivo_andata.setText(Costanti.FORMATO_DATA.format(biglietto.getDataArrivoAndata()));
+		this.output_arrivo_ritorno.setText(Costanti.FORMATO_DATA.format(biglietto.getDataArrivoRitorno()));
+
 		this.output_bambini.setText(Integer.toString(biglietto.getNumeroBambini()));
 		this.output_destinazione.setText(biglietto.getDestinazione());
 		this.output_fornitore.setText(biglietto.getFornitore());
 		this.output_partenza.setText(biglietto.getPartenza());
-		this.output_partenza_andata.setText(biglietto.getDataPartenzaAndata().format(DateTimeFormatter.ISO_DATE_TIME));
-		this.output_partenza_ritorno
-				.setText(biglietto.getDataPartenzaRitorno().format(DateTimeFormatter.ISO_DATE_TIME));
+		this.output_partenza_andata.setText(Costanti.FORMATO_DATA.format(biglietto.getDataPartenzaAndata()));
+		this.output_partenza_ritorno.setText(Costanti.FORMATO_DATA.format(biglietto.getDataPartenzaRitorno()));
 	}
 
 	/**

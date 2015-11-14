@@ -1,7 +1,6 @@
 package com.speearth.model.sistemi_esterni;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.text.ParseException;
 import java.util.HashMap;
 
 import org.json.JSONException;
@@ -49,24 +48,27 @@ public class TrenitaliaAdapter extends AziendaTrasportoAdapter {
 
 		Biglietto biglietto = new Biglietto();
 
-		DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
 		biglietto.setId(jsonBiglietto.optInt("id", 0));
 		biglietto.setFornitore(jsonBiglietto.optString("fornitore"));
 		biglietto.setPartenza(jsonBiglietto.optString("partenza"));
 		biglietto.setDestinazione(jsonBiglietto.optString("destinazione"));
-		biglietto
-				.setDataPartenzaAndata(LocalDateTime.parse(jsonBiglietto.optString("data_partenza_andata"), formatter));
+		try {
+			biglietto.setDataPartenzaAndata(
+					Costanti.FORMATO_DATA.parse(jsonBiglietto.optString("data_partenza_andata")));
 
-		if (!jsonBiglietto.optString("data_partenza_ritorno").isEmpty()) {
-			biglietto.setDataPartenzaRitorno(
-					LocalDateTime.parse(jsonBiglietto.optString("data_partenza_ritorno"), formatter));
-		}
+			if (!jsonBiglietto.optString("data_partenza_ritorno").isEmpty()) {
+				biglietto.setDataPartenzaRitorno(
+						Costanti.FORMATO_DATA.parse(jsonBiglietto.optString("data_partenza_ritorno")));
+			}
 
-		biglietto.setDataArrivoAndata(LocalDateTime.parse(jsonBiglietto.optString("data_arrivo_andata"), formatter));
+			biglietto.setDataArrivoAndata(Costanti.FORMATO_DATA.parse(jsonBiglietto.optString("data_arrivo_andata")));
 
-		if (!jsonBiglietto.optString("data_arrivo_ritorno").isEmpty()) {
-			biglietto.setDataArrivoRitorno(
-					LocalDateTime.parse(jsonBiglietto.optString("data_arrivo_ritorno"), formatter));
+			if (!jsonBiglietto.optString("data_arrivo_ritorno").isEmpty()) {
+				biglietto.setDataArrivoRitorno(
+						Costanti.FORMATO_DATA.parse(jsonBiglietto.optString("data_arrivo_ritorno")));
+			}
+		} catch (ParseException e) {
+			e.printStackTrace();
 		}
 
 		biglietto.setNumeroAdulti(jsonBiglietto.optInt("numero_adulti"));

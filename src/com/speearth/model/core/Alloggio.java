@@ -1,6 +1,6 @@
 package com.speearth.model.core;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashMap;
 
 /**
@@ -21,12 +21,12 @@ public class Alloggio extends ServizioComponent {
 	/**
 	 * Data di arrivo
 	 */
-	private LocalDateTime dataArrivo;
+	private Date dataArrivo;
 
 	/**
 	 * Data di partenza
 	 */
-	private LocalDateTime dataPartenza;
+	private Date dataPartenza;
 
 	/**
 	 * Stanze dell'alloggio
@@ -110,9 +110,9 @@ public class Alloggio extends ServizioComponent {
 	/**
 	 * Restituisce la data di arrivo
 	 * 
-	 * @return LocalDateTime
+	 * @return Date
 	 */
-	public LocalDateTime getDataArrivo() {
+	public Date getDataArrivo() {
 		return this.dataArrivo;
 	}
 
@@ -121,16 +121,16 @@ public class Alloggio extends ServizioComponent {
 	 * 
 	 * @param data_arrivo
 	 */
-	public void setDataArrivo(LocalDateTime data_arrivo) {
+	public void setDataArrivo(Date data_arrivo) {
 		this.dataArrivo = data_arrivo;
 	}
 
 	/**
 	 * Restituisce la data di partenza
 	 * 
-	 * @return LocalDateTime
+	 * @return Date
 	 */
-	public LocalDateTime getDataPartenza() {
+	public Date getDataPartenza() {
 		return this.dataPartenza;
 	}
 
@@ -139,7 +139,7 @@ public class Alloggio extends ServizioComponent {
 	 * 
 	 * @param data_partenza
 	 */
-	public void setDataPartenza(LocalDateTime data_partenza) {
+	public void setDataPartenza(Date data_partenza) {
 		this.dataPartenza = data_partenza;
 	}
 

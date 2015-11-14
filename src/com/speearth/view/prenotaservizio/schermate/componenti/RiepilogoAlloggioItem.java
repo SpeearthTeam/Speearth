@@ -2,7 +2,6 @@ package com.speearth.view.prenotaservizio.schermate.componenti;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
@@ -95,10 +94,10 @@ public class RiepilogoAlloggioItem extends SubView {
 	 */
 	@Override
 	public void updateUI() {
-		this.output_data_arrivo.setText(alloggio.getDataArrivo().format(DateTimeFormatter.ISO_DATE));
-		this.output_ora_arrivo.setText(alloggio.getDataArrivo().format(DateTimeFormatter.ISO_TIME));
-		this.output_data_partenza.setText(alloggio.getDataPartenza().format(DateTimeFormatter.ISO_DATE));
-		this.output_ora_partenza.setText(alloggio.getDataPartenza().format(DateTimeFormatter.ISO_TIME));
+		this.output_data_arrivo.setText(Costanti.FORMATO_DATA.format(alloggio.getDataArrivo()));
+		this.output_ora_arrivo.setText(Costanti.FORMATO_DATA.format(alloggio.getDataArrivo()));
+		this.output_data_partenza.setText(Costanti.FORMATO_DATA.format(alloggio.getDataPartenza()));
+		this.output_ora_partenza.setText(Costanti.FORMATO_DATA.format(alloggio.getDataPartenza()));
 		this.output_localita.setText(alloggio.getLocalita().toString());
 		this.output_nome_fornitore.setText(alloggio.getFornitore().toString());
 		this.output_prezzo.setText(Float.toString(alloggio.getPrezzo()));

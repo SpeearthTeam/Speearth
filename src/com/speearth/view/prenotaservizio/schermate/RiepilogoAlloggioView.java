@@ -2,7 +2,6 @@ package com.speearth.view.prenotaservizio.schermate;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -85,8 +84,8 @@ public class RiepilogoAlloggioView extends View {
 		this.output_totale.setText(Float.toString(alloggio.getPrezzo()));
 		this.output_fonitore.setText(alloggio.getFornitore());
 		this.output_localita.setText(alloggio.getLocalita());
-		this.output_data_andata.setText(alloggio.getDataPartenza().format(DateTimeFormatter.ISO_TIME));
-		this.output_data_ritorno.setText(alloggio.getDataArrivo().format(DateTimeFormatter.ISO_TIME));
+		this.output_data_andata.setText(Costanti.FORMATO_DATA.format(alloggio.getDataPartenza()));
+		this.output_data_ritorno.setText(Costanti.FORMATO_DATA.format(alloggio.getDataArrivo()));
 	}
 
 	/**

@@ -2,7 +2,6 @@ package com.speearth.view.prenotaservizio.schermate.componenti;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import com.speearth.model.core.Biglietto;
@@ -123,24 +122,21 @@ public class RiepilogoBigliettoItem extends SubView {
 
 	@Override
 	public void updateUI() {
-		this.output_data_destinazione_andata
-				.setText(biglietto.getDataArrivoAndata().format(DateTimeFormatter.ISO_DATE));
-		this.output_data_partenza_andata.setText(biglietto.getDataPartenzaAndata().format(DateTimeFormatter.ISO_DATE));
+		this.output_data_destinazione_andata.setText(Costanti.FORMATO_DATA.format(biglietto.getDataArrivoAndata()));
+		this.output_data_partenza_andata.setText(Costanti.FORMATO_DATA.format(biglietto.getDataPartenzaAndata()));
 
 		if (biglietto.getDataArrivoRitorno() != null) {
 			this.output_data_destinazione_ritorno
-					.setText(biglietto.getDataArrivoRitorno().format(DateTimeFormatter.ISO_DATE));
+					.setText(Costanti.FORMATO_DATA.format(biglietto.getDataArrivoRitorno()));
 		}
 
 		if (biglietto.getDataPartenzaRitorno() != null) {
-			this.output_data_partenza_ritorno
-					.setText(biglietto.getDataPartenzaRitorno().format(DateTimeFormatter.ISO_DATE));
+			this.output_data_partenza_ritorno.setText(Costanti.FORMATO_DATA.format(biglietto.getDataPartenzaRitorno()));
 		}
-		this.output_ora_partenza_ritorno.setText(biglietto.getDataPartenzaRitorno().format(DateTimeFormatter.ISO_TIME));
-		this.output_ora_destinazione_ritorno
-				.setText(biglietto.getDataArrivoRitorno().format(DateTimeFormatter.ISO_TIME));
-		this.output_ora_destinazione_andata.setText(biglietto.getDataArrivoAndata().format(DateTimeFormatter.ISO_TIME));
-		this.output_ora_partenza_andata.setText(biglietto.getDataPartenzaAndata().format(DateTimeFormatter.ISO_TIME));
+		this.output_ora_partenza_ritorno.setText(Costanti.FORMATO_DATA.format(biglietto.getDataPartenzaRitorno()));
+		this.output_ora_destinazione_ritorno.setText(Costanti.FORMATO_DATA.format(biglietto.getDataArrivoRitorno()));
+		this.output_ora_destinazione_andata.setText(Costanti.FORMATO_DATA.format(biglietto.getDataArrivoAndata()));
+		this.output_ora_partenza_andata.setText(Costanti.FORMATO_DATA.format(biglietto.getDataPartenzaAndata()));
 		this.output_partenza_andata.setText(biglietto.getPartenza());
 		this.output_partenza_ritorno.setText(biglietto.getDestinazione());
 		this.output_destinazione_andata.setText(biglietto.getDestinazione());

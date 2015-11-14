@@ -1,7 +1,6 @@
 package com.speearth.model.sistemi_esterni;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.text.ParseException;
 import java.util.HashMap;
 
 import org.json.JSONException;
@@ -49,18 +48,20 @@ public class ItaloAdapter extends AziendaTrasportoAdapter {
 
 		Biglietto biglietto = new Biglietto();
 
-		DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
-
 		biglietto.setId(jsonBiglietto.optInt("id", 0));
 		biglietto.setFornitore(jsonBiglietto.optString("fornitore"));
 		biglietto.setPartenza(jsonBiglietto.optString("partenza"));
 		biglietto.setDestinazione(jsonBiglietto.optString("destinazione"));
-		biglietto
-				.setDataPartenzaAndata(LocalDateTime.parse(jsonBiglietto.optString("data_partenza_andata"), formatter));
-		biglietto.setDataPartenzaRitorno(
-				LocalDateTime.parse(jsonBiglietto.optString("data_partenza_andata"), formatter));
-		biglietto.setDataArrivoAndata(LocalDateTime.parse(jsonBiglietto.optString("data_arrivo_andata"), formatter));
-		biglietto.setDataArrivoRitorno(LocalDateTime.parse(jsonBiglietto.optString("data_arrivo_andata"), formatter));
+		try {
+			biglietto.setDataPartenzaAndata(
+					Costanti.FORMATO_DATA.parse(jsonBiglietto.optString("data_partenza_andata")));
+			biglietto.setDataPartenzaRitorno(
+					Costanti.FORMATO_DATA.parse(jsonBiglietto.optString("data_partenza_andata")));
+			biglietto.setDataArrivoAndata(Costanti.FORMATO_DATA.parse(jsonBiglietto.optString("data_arrivo_andata")));
+			biglietto.setDataArrivoRitorno(Costanti.FORMATO_DATA.parse(jsonBiglietto.optString("data_arrivo_andata")));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		biglietto.setNumeroAdulti(jsonBiglietto.optInt("numero_adulti"));
 		biglietto.setNumerBambini(jsonBiglietto.optInt("numero_bambini"));
 		biglietto.setPrezzo((float) jsonBiglietto.optInt("prezzo"));

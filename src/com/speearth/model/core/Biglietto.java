@@ -1,6 +1,6 @@
 package com.speearth.model.core;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * Servizio biglietto
@@ -25,22 +25,22 @@ public class Biglietto extends ServizioComponent {
 	/**
 	 * Data di andata
 	 */
-	private LocalDateTime dataPartenzaAndata;
+	private Date dataPartenzaAndata;
 
 	/**
 	 * Data di ritorno
 	 */
-	private LocalDateTime dataPartenzaRitorno;
+	private Date dataPartenzaRitorno;
 
 	/**
 	 * Data di andata
 	 */
-	private LocalDateTime dataArrivoAndata;
+	private Date dataArrivoAndata;
 
 	/**
 	 * Data di ritorno
 	 */
-	private LocalDateTime dataArrivoRitorno;
+	private Date dataArrivoRitorno;
 
 	/**
 	 * Numero di adulti
@@ -154,9 +154,9 @@ public class Biglietto extends ServizioComponent {
 	/**
 	 * Restituisce la data di partenza nell'andata del Biglietto
 	 * 
-	 * @return LocalDateTime
+	 * @return Date
 	 */
-	public LocalDateTime getDataPartenzaAndata() {
+	public Date getDataPartenzaAndata() {
 		return this.dataPartenzaAndata;
 	}
 
@@ -165,16 +165,16 @@ public class Biglietto extends ServizioComponent {
 	 * 
 	 * @param dataPartenzaAndata
 	 */
-	public void setDataPartenzaAndata(LocalDateTime data_andata) {
+	public void setDataPartenzaAndata(Date data_andata) {
 		this.dataPartenzaAndata = data_andata;
 	}
 
 	/**
 	 * Restituisce la data di partenza nel ritorno del Biglietto
 	 * 
-	 * @return LocalDateTime
+	 * @return Date
 	 */
-	public LocalDateTime getDataPartenzaRitorno() {
+	public Date getDataPartenzaRitorno() {
 		return this.dataPartenzaRitorno;
 	}
 
@@ -183,16 +183,16 @@ public class Biglietto extends ServizioComponent {
 	 * 
 	 * @param dataPartenzaRitorno
 	 */
-	public void setDataPartenzaRitorno(LocalDateTime data_ritorno) {
+	public void setDataPartenzaRitorno(Date data_ritorno) {
 		this.dataPartenzaRitorno = data_ritorno;
 	}
 
 	/**
 	 * Restituisce la data di arrivo nell'andata del Biglietto
 	 * 
-	 * @return LocalDateTime
+	 * @return Date
 	 */
-	public LocalDateTime getDataArrivoAndata() {
+	public Date getDataArrivoAndata() {
 		return dataArrivoAndata;
 	}
 
@@ -201,16 +201,16 @@ public class Biglietto extends ServizioComponent {
 	 * 
 	 * @param data_arrivo_andata
 	 */
-	public void setDataArrivoAndata(LocalDateTime data_arrivo_andata) {
+	public void setDataArrivoAndata(Date data_arrivo_andata) {
 		this.dataArrivoAndata = data_arrivo_andata;
 	}
 
 	/**
 	 * Restituisce la data di arrivo nel ritorno del Biglietto
 	 * 
-	 * @return LocalDateTime
+	 * @return Date
 	 */
-	public LocalDateTime getDataArrivoRitorno() {
+	public Date getDataArrivoRitorno() {
 		return dataArrivoRitorno;
 	}
 
@@ -219,7 +219,7 @@ public class Biglietto extends ServizioComponent {
 	 * 
 	 * @param data_arrivo_ritorno
 	 */
-	public void setDataArrivoRitorno(LocalDateTime data_arrivo_ritorno) {
+	public void setDataArrivoRitorno(Date data_arrivo_ritorno) {
 		this.dataArrivoRitorno = data_arrivo_ritorno;
 	}
 

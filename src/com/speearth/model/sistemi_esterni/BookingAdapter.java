@@ -1,7 +1,6 @@
 package com.speearth.model.sistemi_esterni;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Set;
 
@@ -46,7 +45,7 @@ public class BookingAdapter extends ImpresaRicettivaAdapter {
 	protected Alloggio creaAlloggioDaJSON(JSONObject jsonBiglietto) throws JSONException {
 		Alloggio alloggio = new Alloggio();
 
-		DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
+		// DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
 
 		JSONObject rooms = jsonBiglietto.optJSONObject("rooms");
 		Set<String> roomTypes = rooms.keySet();
@@ -59,8 +58,12 @@ public class BookingAdapter extends ImpresaRicettivaAdapter {
 		alloggio.setId(jsonBiglietto.optInt("id", 0));
 		alloggio.setFornitore(jsonBiglietto.optString("provider"));
 		alloggio.setLocalita(jsonBiglietto.optString("city"));
-		alloggio.setDataPartenza(LocalDateTime.parse(jsonBiglietto.optString("departure_date"), formatter));
-		alloggio.setDataArrivo(LocalDateTime.parse(jsonBiglietto.optString("arrival_date"), formatter));
+		try {
+			alloggio.setDataPartenza(Costanti.FORMATO_DATA.parse(jsonBiglietto.optString("departure_date")));
+			alloggio.setDataArrivo(Costanti.FORMATO_DATA.parse(jsonBiglietto.optString("arrival_date")));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		alloggio.setStanze(stanze);
 		alloggio.setPrezzo((float) jsonBiglietto.optInt("price"));
 
