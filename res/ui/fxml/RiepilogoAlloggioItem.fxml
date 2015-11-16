@@ -52,7 +52,7 @@
       <HBox prefHeight="39.0" BorderPane.alignment="CENTER">
          <children>
             <Label text="Fornitore: " />
-            <Label fx:id="output_nome_fornitore" text="nome_fornitore" visible="false" />
+            <Label fx:id="output_nome_fornitore" />
          </children>
       </HBox>
    </top>
