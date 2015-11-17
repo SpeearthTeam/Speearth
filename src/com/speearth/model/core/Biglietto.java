@@ -80,24 +80,6 @@ public class Biglietto extends ServizioComponent {
 	}
 
 	/**
-	 * Restituisce l'id del Biglietto
-	 * 
-	 * @return int
-	 */
-	public int getId() {
-		return id;
-	}
-
-	/**
-	 * Imposta l'id del Biglietto
-	 * 
-	 * @param id
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	/**
 	 * Restituisce il Fornitore del Biglietto
 	 * 
 	 * @return String

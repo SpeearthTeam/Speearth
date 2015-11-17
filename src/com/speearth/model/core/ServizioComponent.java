@@ -23,7 +23,7 @@ public abstract class ServizioComponent {
 	 * @return int
 	 */
 	public int getId() {
-		return this.id;
+		return id;
 	}
 
 	/**
@@ -41,7 +41,7 @@ public abstract class ServizioComponent {
 	 * @return float
 	 */
 	public float getPrezzo() {
-		return this.prezzo;
+		return prezzo;
 	}
 
 	/**

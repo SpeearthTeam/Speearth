@@ -32,7 +32,7 @@ public class Stanza {
 	/**
 	 * Costruttore con parametro tipologia. Imposta internamente la quantita a 1
 	 * 
-	 * (Da usare quando si vuole creare una tipologia di stanza con quantita 1
+	 * (Da usare quando si vuole creare una tipologia di stanza con quantita 1)
 	 * 
 	 * @param tipologia
 	 */

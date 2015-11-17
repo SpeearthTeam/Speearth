@@ -54,24 +54,6 @@ public class Alloggio extends ServizioComponent {
 	}
 
 	/**
-	 * Restituisce l'id dell'alloggio
-	 * 
-	 * @return int
-	 */
-	public int getId() {
-		return id;
-	}
-
-	/**
-	 * Imposta l'id dell'alloggio
-	 * 
-	 * @param id
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	/**
 	 * Restituisce il fornitore dell'alloggio
 	 * 
 	 * @return String
