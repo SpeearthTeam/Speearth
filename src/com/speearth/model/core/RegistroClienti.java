@@ -1,8 +1,10 @@
 package com.speearth.model.core;
 
-import java.util.ArrayList;
 import java.util.Date;
 
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Junction;
+import org.hibernate.criterion.Restrictions;
 import org.orm.PersistentException;
 
 /**
@@ -38,7 +40,13 @@ public class RegistroClienti {
 	 * @return Cliente
 	 */
 	public Cliente getClienteDaID(int id) {
-		// TODO
+		try {
+			ClienteCriteria cliente = new ClienteCriteria();
+			cliente.id.eq(id);
+			return cliente.uniqueCliente();
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
@@ -48,8 +56,19 @@ public class RegistroClienti {
 	 * @param valore
 	 * @return ArrayList<Cliente>
 	 */
-	public ArrayList<Cliente> getClientiDaValore(String valore) {
-		// TODO
+	public Cliente[] getClientiDaValore(String valore) {
+		try {
+			ClienteCriteria cliente = new ClienteCriteria();
+			Criterion nome = Restrictions.like("Nome", valore);
+			Criterion cognome = Restrictions.like("Cognome", valore);
+			Criterion codice_fiscale = Restrictions.like("CodiceFiscale", valore);
+			Junction condizioni = Restrictions.disjunction();
+			condizioni.add(nome).add(cognome).add(codice_fiscale);
+			cliente.add(condizioni);
+			return cliente.listCliente();
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
@@ -60,7 +79,13 @@ public class RegistroClienti {
 	 * @return Cliente
 	 */
 	public Cliente getClienteDaCodiceTessera(int codice) {
-		// TODO
+		try {
+			ClienteCriteria cliente = new ClienteCriteria();
+			cliente.codiceTessera.eq(codice);
+			return cliente.uniqueCliente();
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 

@@ -1,6 +1,5 @@
 package com.speearth.controller;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 import com.speearth.model.core.Cliente;
@@ -35,7 +34,7 @@ public class GestisciClientiController implements ICasoDUsoController {
 	 * @param valore
 	 * @return ArrayList<Cliente>
 	 */
-	public ArrayList<Cliente> cercaCliente(String valore) {
+	public Cliente[] cercaCliente(String valore) {
 		// TODO
 		return null;
 	}
