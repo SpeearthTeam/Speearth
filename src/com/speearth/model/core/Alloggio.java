@@ -1,146 +1,118 @@
-package com.speearth.model.core;
+/**
+ * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
+ * 
+ * This is an automatic generated file. It will be regenerated every time 
+ * you generate persistence class.
+ * 
+ * Modifying its content may cause the program not work, or your work may lost.
+ */
 
-import java.util.ArrayList;
-import java.util.Date;
+/**
+ * Licensee: Universita degli Studi dell'Aquila
+ * License Type: Academic
+ */
+package com.speearth.model.core;
 
 /**
  * Servizio alloggio
  */
-public class Alloggio extends ServizioComponent {
-
+@SuppressWarnings({ "all", "unchecked" })
+public class Alloggio extends com.speearth.model.core.ServizioComponent {
+	public Alloggio() {
+	}
+	
+	private String fornitore;
+	
+	private String localita;
+	
+	private java.util.Date dataArrivo;
+	
+	private java.util.Date dataPartenza;
+	
+	private java.util.ArrayList<Stanza> stanze = new java.util.ArrayList<>();
+	
 	/**
 	 * Fornitore
 	 */
-	private String fornitore;
-
-	/**
-	 * Localit‡
-	 */
-	private String localita;
-
-	/**
-	 * Data di arrivo
-	 */
-	private Date dataArrivo;
-
-	/**
-	 * Data di partenza
-	 */
-	private Date dataPartenza;
-
-	/**
-	 * Stanze dell'alloggio
-	 */
-	private ArrayList<Stanza> stanze = new ArrayList<>();
-
-	/**
-	 * Costruttore di default
-	 */
-	public Alloggio() {
-
+	public void setFornitore(String value) {
+		this.fornitore = value;
 	}
-
+	
 	/**
-	 * Costruttore
-	 * 
-	 * @param fornitore
-	 * @param localita
-	 * @param stanze
-	 */
-	public Alloggio(String fornitore, String localita, ArrayList<Stanza> stanze) {
-		this.fornitore = fornitore;
-		this.localita = localita;
-		this.stanze = stanze;
-	}
-
-	/**
-	 * Restituisce il fornitore dell'alloggio
-	 * 
-	 * @return String
+	 * Fornitore
 	 */
 	public String getFornitore() {
 		return fornitore;
 	}
-
+	
 	/**
-	 * Imposta il fornitore dell'alloggio
-	 * 
-	 * @param fornitore
+	 * Localit√†
 	 */
-	public void setFornitore(String fornitore) {
-		this.fornitore = fornitore;
+	public void setLocalita(String value) {
+		this.localita = value;
 	}
-
+	
 	/**
-	 * Restituisce la localit‡ dell'alloggio
-	 * 
-	 * @return Date
+	 * Localit√†
 	 */
 	public String getLocalita() {
-		return this.localita;
+		return localita;
 	}
-
+	
 	/**
-	 * Imposta la localit‡ dell'alloggio
-	 * 
-	 * @param localita
+	 * Data di arrivo
 	 */
-	public void setLocalita(String localita) {
+	public void setDataArrivo(java.util.Date value) {
+		this.dataArrivo = value;
+	}
+	
+	/**
+	 * Data di arrivo
+	 */
+	public java.util.Date getDataArrivo() {
+		return dataArrivo;
+	}
+	
+	/**
+	 * Data di partenza
+	 */
+	public void setDataPartenza(java.util.Date value) {
+		this.dataPartenza = value;
+	}
+	
+	/**
+	 * Data di partenza
+	 */
+	public java.util.Date getDataPartenza() {
+		return dataPartenza;
+	}
+	
+	/**
+	 * Stanze dell'alloggio
+	 */
+	public void setStanze(java.util.ArrayList<Stanza> value) {
+		this.stanze = value;
+	}
+	
+	/**
+	 * Stanze dell'alloggio
+	 */
+	public java.util.ArrayList<Stanza> getStanze() {
+		return stanze;
+	}
+	
+	
+	/**
+	 * Costruttore
+	 */
+	public Alloggio(String fornitore, String localita, java.util.ArrayList<Stanza> stanze) {
+		this.fornitore = fornitore;
 		this.localita = localita;
-	}
-
-	/**
-	 * Restituisce la data di arrivo
-	 * 
-	 * @return Date
-	 */
-	public Date getDataArrivo() {
-		return this.dataArrivo;
-	}
-
-	/**
-	 * Imposta la data di arrivo
-	 * 
-	 * @param data_arrivo
-	 */
-	public void setDataArrivo(Date data_arrivo) {
-		this.dataArrivo = data_arrivo;
-	}
-
-	/**
-	 * Restituisce la data di partenza
-	 * 
-	 * @return Date
-	 */
-	public Date getDataPartenza() {
-		return this.dataPartenza;
-	}
-
-	/**
-	 * Imposta la data di partenza
-	 * 
-	 * @param data_partenza
-	 */
-	public void setDataPartenza(Date data_partenza) {
-		this.dataPartenza = data_partenza;
-	}
-
-	/**
-	 * Restituisce l'insieme di stanze dell'alloggio
-	 * 
-	 * @return ArrayList<Stanza>
-	 */
-	public ArrayList<Stanza> getStanze() {
-		return this.stanze;
-	}
-
-	/**
-	 * Imposta l'insieme di stanze dell'alloggio
-	 * 
-	 * @param stanze
-	 */
-	public void setStanze(ArrayList<Stanza> stanze) {
 		this.stanze = stanze;
 	}
-
+	
+	public String toString() {
+		return super.toString();
+	}
+	
 }

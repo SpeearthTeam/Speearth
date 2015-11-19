@@ -122,21 +122,21 @@ public class RiepilogoBigliettoItem extends SubView {
 
 	@Override
 	public void updateUI() {
-		this.output_data_destinazione_andata.setText(Costanti.FORMATO_DATA.format(biglietto.getDataArrivoAndata()));
-		this.output_data_partenza_andata.setText(Costanti.FORMATO_DATA.format(biglietto.getDataPartenzaAndata()));
+		this.output_data_destinazione_andata.setText(Costanti.FORMATO_DATA_ORA.format(biglietto.getDataArrivoAndata()));
+		this.output_data_partenza_andata.setText(Costanti.FORMATO_DATA_ORA.format(biglietto.getDataPartenzaAndata()));
 
 		if (biglietto.getDataArrivoRitorno() != null) {
 			this.output_data_destinazione_ritorno
-					.setText(Costanti.FORMATO_DATA.format(biglietto.getDataArrivoRitorno()));
+					.setText(Costanti.FORMATO_DATA_ORA.format(biglietto.getDataArrivoRitorno()));
 		}
 
 		if (biglietto.getDataPartenzaRitorno() != null) {
-			this.output_data_partenza_ritorno.setText(Costanti.FORMATO_DATA.format(biglietto.getDataPartenzaRitorno()));
+			this.output_data_partenza_ritorno.setText(Costanti.FORMATO_DATA_ORA.format(biglietto.getDataPartenzaRitorno()));
 		}
-		this.output_ora_partenza_ritorno.setText(Costanti.FORMATO_DATA.format(biglietto.getDataPartenzaRitorno()));
-		this.output_ora_destinazione_ritorno.setText(Costanti.FORMATO_DATA.format(biglietto.getDataArrivoRitorno()));
-		this.output_ora_destinazione_andata.setText(Costanti.FORMATO_DATA.format(biglietto.getDataArrivoAndata()));
-		this.output_ora_partenza_andata.setText(Costanti.FORMATO_DATA.format(biglietto.getDataPartenzaAndata()));
+		this.output_ora_partenza_ritorno.setText(Costanti.FORMATO_DATA_ORA.format(biglietto.getDataPartenzaRitorno()));
+		this.output_ora_destinazione_ritorno.setText(Costanti.FORMATO_DATA_ORA.format(biglietto.getDataArrivoRitorno()));
+		this.output_ora_destinazione_andata.setText(Costanti.FORMATO_DATA_ORA.format(biglietto.getDataArrivoAndata()));
+		this.output_ora_partenza_andata.setText(Costanti.FORMATO_DATA_ORA.format(biglietto.getDataPartenzaAndata()));
 		this.output_partenza_andata.setText(biglietto.getPartenza());
 		this.output_partenza_ritorno.setText(biglietto.getDestinazione());
 		this.output_destinazione_andata.setText(biglietto.getDestinazione());

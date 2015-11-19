@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: Universita degli Studi dell'Aquila
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.speearth.model.core.Impiegato" table="Impiegato" lazy="false">
+		<meta attribute="class-description">
+			Classe che descrive il commesso
+		</meta>
+		<id name="id" column="Id" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="nome" column="Nome" type="string" length="255" not-null="false" lazy="false">
+			<meta attribute="field-description">
+				Nome
+			</meta>
+		</property>
+		<property name="cognome" column="Cognome" type="string" length="255" not-null="false" lazy="false">
+			<meta attribute="field-description">
+				Cognome
+			</meta>
+		</property>
+		<property name="username" column="Username" type="string" length="255" not-null="false" lazy="false">
+			<meta attribute="field-description">
+				Username
+			</meta>
+		</property>
+		<property name="password" column="Password" type="string" length="255" not-null="false" lazy="false">
+			<meta attribute="field-description">
+				Password
+			</meta>
+		</property>
+	</class>
+</hibernate-mapping>

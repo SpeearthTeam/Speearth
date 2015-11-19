@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: Universita degli Studi dell'Aquila
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.speearth.model.core.Cliente" table="Cliente" lazy="false">
+		<meta attribute="class-description">
+			Classe che descrive il cliente
+		</meta>
+		<id name="id" column="Id" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="nome" column="Nome" type="string" length="255" not-null="false" lazy="false">
+			<meta attribute="field-description">
+				Nome
+			</meta>
+		</property>
+		<property name="cognome" column="Cognome" type="string" length="255" not-null="false" lazy="false">
+			<meta attribute="field-description">
+				Cognome
+			</meta>
+		</property>
+		<property name="dataNascita" column="DataNascita" type="date" not-null="false" lazy="false">
+			<meta attribute="field-description">
+				Data di nascita
+			</meta>
+		</property>
+		<property name="codiceFiscale" column="CodiceFiscale" type="string" length="255" not-null="false" lazy="false">
+			<meta attribute="field-description">
+				Codice fiscale
+			</meta>
+		</property>
+		<property name="codiceTessera" column="CodiceTessera" type="integer" length="11" not-null="true" lazy="false">
+			<meta attribute="field-description">
+				Codice della tessera
+			</meta>
+		</property>
+	</class>
+</hibernate-mapping>

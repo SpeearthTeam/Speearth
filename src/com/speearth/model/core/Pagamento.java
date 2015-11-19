@@ -1,131 +1,115 @@
-package com.speearth.model.core;
+/**
+ * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
+ * 
+ * This is an automatic generated file. It will be regenerated every time 
+ * you generate persistence class.
+ * 
+ * Modifying its content may cause the program not work, or your work may lost.
+ */
 
-import java.util.Date;
+/**
+ * Licensee: Universita degli Studi dell'Aquila
+ * License Type: Academic
+ */
+package com.speearth.model.core;
 
 /**
  * Classe rappresentante un Pagamento per un Servizio offerto dall'Agenzia
  */
+@SuppressWarnings({ "all", "unchecked" })
 public class Pagamento {
-
+	public Pagamento() {
+	}
+	
+	private int id;
+	
+	private float ammontare;
+	
+	private String metodo;
+	
+	private java.util.Date data;
+	
 	/**
 	 * Id
 	 */
-	private int id;
-
+	private void setId(int value) {
+		this.id = value;
+	}
+	
+	/**
+	 * Id
+	 */
+	public int getId() {
+		return id;
+	}
+	
+	public int getORMID() {
+		return getId();
+	}
+	
 	/**
 	 * Ammontare
 	 */
-	private float ammontare;
-
+	public void setAmmontare(float value) {
+		this.ammontare = value;
+	}
+	
+	/**
+	 * Ammontare
+	 */
+	public float getAmmontare() {
+		return ammontare;
+	}
+	
 	/**
 	 * Metodo di Pagamento
 	 */
-	private String metodo;
-
+	public void setMetodo(String value) {
+		this.metodo = value;
+	}
+	
+	/**
+	 * Metodo di Pagamento
+	 */
+	public String getMetodo() {
+		return metodo;
+	}
+	
 	/**
 	 * Data
 	 */
-	private Date data;
-
-	/**
-	 * Costruttore di default
-	 */
-	public Pagamento() {
+	public void setData(java.util.Date value) {
+		this.data = value;
 	}
-
+	
+	/**
+	 * Data
+	 */
+	public java.util.Date getData() {
+		return data;
+	}
+	
 	/**
 	 * Costruttore con parametri
-	 * 
-	 * @param ammontare
-	 * @param metodo
 	 */
 	public Pagamento(float ammontare, String metodo) {
 		this.id = 0;
 		this.ammontare = ammontare;
 		this.metodo = metodo;
-		this.data = new Date();
+		this.data = new java.util.Date();
 	}
-
-	/**
-	 * Restituisce l'id del Pagamento
-	 * 
-	 * @return int
-	 */
-	public int getId() {
-		return this.id;
-	}
-
-	/**
-	 * Imposta l'id del Pagamento
-	 * 
-	 * @param id
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	/**
-	 * Restituisce l'Ammontare del Pagamento
-	 * 
-	 * @return float
-	 */
-	public float getAmmontare() {
-		return this.ammontare;
-	}
-
-	/**
-	 * Restituisce il metodo di Pagamento
-	 * 
-	 * @return String
-	 */
-	public String getMetodo() {
-		return metodo;
-	}
-
-	/**
-	 * Imposta il metodo di Pagamento
-	 * 
-	 * @param metodo
-	 */
-	public void setMetodo(String metodo) {
-		this.metodo = metodo;
-	}
-
-	/**
-	 * Imposta l'Ammontare del Pagamento
-	 * 
-	 * @param ammontare
-	 */
-	public void setAmmontare(float ammontare) {
-		this.ammontare = ammontare;
-	}
-
-	/**
-	 * Restituisce la Data del Pagamento
-	 * 
-	 * @return Date
-	 */
-	public Date getData() {
-		return this.data;
-	}
-
-	/**
-	 * Imposta la Data del Pagamento
-	 * 
-	 * @param data
-	 */
-	public void setData(Date data) {
-		this.data = data;
-	}
-
+	
 	/**
 	 * Restituisce la Ricevuta del Pagamento
-	 * 
-	 * @return String
 	 */
 	public String generaRicevuta() {
-		String ricevuta = "Pagamento n°: " + this.id + "\n" + "Ammontare: " + this.ammontare + " €\n"
-				+ "Metodo di pagamento: " + this.metodo + "\n" + "Data: " + this.data.toString() + "\n";
+		String ricevuta = "Pagamento nÂ°: " + this.id + "\n" + "Ammontare: " + this.ammontare + " â‚¬\n"
+			+ "Metodo di pagamento: " + this.metodo + "\n" + "Data: " + this.data.toString() + "\n";
 		return ricevuta;
 	}
+	
+	public String toString() {
+		return String.valueOf(getId());
+	}
+	
 }

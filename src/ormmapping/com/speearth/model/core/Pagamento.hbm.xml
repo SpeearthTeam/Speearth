@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: Universita degli Studi dell'Aquila
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.speearth.model.core.Pagamento" table="Pagamento" lazy="false">
+		<meta attribute="class-description">
+			Classe rappresentante un Pagamento per un Servizio offerto dall'Agenzia
+		</meta>
+		<id name="id" column="Id" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="ammontare" column="Ammontare" type="float" not-null="true" lazy="false">
+			<meta attribute="field-description">
+				Ammontare
+			</meta>
+		</property>
+		<property name="metodo" column="Metodo" type="string" length="255" not-null="false" lazy="false">
+			<meta attribute="field-description">
+				Metodo di Pagamento
+			</meta>
+		</property>
+		<property name="data" column="Data" type="date" not-null="false" lazy="false">
+			<meta attribute="field-description">
+				Data
+			</meta>
+		</property>
+	</class>
+</hibernate-mapping>

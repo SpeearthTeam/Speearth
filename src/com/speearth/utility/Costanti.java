@@ -2,6 +2,11 @@ package com.speearth.utility;
 
 import java.text.SimpleDateFormat;
 
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
+import org.hibernate.service.ServiceRegistryBuilder;
+
 import com.speearth.model.sistemi_esterni.AziendaTrasportoAdapter;
 import com.speearth.model.sistemi_esterni.BookingAdapter;
 import com.speearth.model.sistemi_esterni.ImpresaRicettivaAdapter;
@@ -9,11 +14,16 @@ import com.speearth.model.sistemi_esterni.ItaloAdapter;
 import com.speearth.model.sistemi_esterni.TrenitaliaAdapter;
 
 public final class Costanti {
-	
+
+	/**
+	 * Formato della Data con orario
+	 */
+	public final static SimpleDateFormat FORMATO_DATA_ORA = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+
 	/**
 	 * Formato della Data
 	 */
-	public final static SimpleDateFormat FORMATO_DATA = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+	public final static SimpleDateFormat FORMATO_DATA = new SimpleDateFormat("dd-MM-yyyy");
 
 	/**
 	 * Titoli delle Schermate
@@ -82,4 +92,19 @@ public final class Costanti {
 	public final static String URL_TRENITALIA = "http://h4ck1n6.altervista.org/";
 	public final static String URL_ITALO = "http://h4ck1n6.altervista.org/";
 	public final static String URL_BOOKING = "http://h4ck1n6.altervista.org/";
+
+	/**
+	 * Hibernate Session Factory
+	 */
+	public final static SessionFactory createSessionFactory() {
+		Configuration configuration = new Configuration();
+		SessionFactory sessionFactory;
+		ServiceRegistry serviceRegistry;
+		configuration.configure("ormmapping/Speearth.cfg.xml");
+		serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties())
+				.buildServiceRegistry();
+		sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+		return sessionFactory;
+	}
+
 }

@@ -32,9 +32,11 @@
 			<version>20141113</version>
 		</dependency>
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>5.0.2.Final</version>
+			<groupId>org.orm</groupId>
+			<artifactId>orm</artifactId>
+			<version>0.0.1</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/orm.jar</systemPath>
 		</dependency>
 	</dependencies>
 </project>

@@ -1,49 +1,112 @@
+/**
+ * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
+ * 
+ * This is an automatic generated file. It will be regenerated every time 
+ * you generate persistence class.
+ * 
+ * Modifying its content may cause the program not work, or your work may lost.
+ */
+
+/**
+ * Licensee: Universita degli Studi dell'Aquila
+ * License Type: Academic
+ */
 package com.speearth.model.core;
 
 /**
  * Classe che descrive il commesso
  */
+@SuppressWarnings({ "all", "unchecked" })
 public class Impiegato {
-
+	public Impiegato() {
+	}
+	
+	private int id;
+	
+	private String nome;
+	
+	private String cognome;
+	
+	private String username;
+	
+	private String password;
+	
 	/**
 	 * Id
 	 */
-	private int id;
-
+	private void setId(int value) {
+		this.id = value;
+	}
+	
+	/**
+	 * Id
+	 */
+	public int getId() {
+		return id;
+	}
+	
+	public int getORMID() {
+		return getId();
+	}
+	
 	/**
 	 * Nome
 	 */
-	private String nome;
-
+	public void setNome(String value) {
+		this.nome = value;
+	}
+	
+	/**
+	 * Nome
+	 */
+	public String getNome() {
+		return nome;
+	}
+	
 	/**
 	 * Cognome
 	 */
-	private String cognome;
-
+	public void setCognome(String value) {
+		this.cognome = value;
+	}
+	
+	/**
+	 * Cognome
+	 */
+	public String getCognome() {
+		return cognome;
+	}
+	
 	/**
 	 * Username
 	 */
-	private String username;
-
+	public void setUsername(String value) {
+		this.username = value;
+	}
+	
+	/**
+	 * Username
+	 */
+	public String getUsername() {
+		return username;
+	}
+	
 	/**
 	 * Password
 	 */
-	private String password;
-
-	/**
-	 * Costruttore di default
-	 */
-	public Impiegato() {
-
+	public void setPassword(String value) {
+		this.password = value;
 	}
-
+	
+	/**
+	 * Password
+	 */
+	public String getPassword() {
+		return password;
+	}
+	
 	/**
 	 * Costruttore completo
-	 * 
-	 * @param nome
-	 * @param cognome
-	 * @param username
-	 * @param password
 	 */
 	public Impiegato(String nome, String cognome, String username, String password) {
 		this.nome = nome;
@@ -51,95 +114,9 @@ public class Impiegato {
 		this.username = username;
 		this.password = password;
 	}
-
-	/**
-	 * Restituisce l'id del Commesso
-	 * 
-	 * @return int
-	 */
-	public int getId() {
-		return this.id;
+	
+	public String toString() {
+		return String.valueOf(getId());
 	}
-
-	/**
-	 * Imposta l'id del Commesso
-	 * 
-	 * @param id
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	/**
-	 * Restituisce il nome del Commesso
-	 * 
-	 * @return String
-	 */
-	public String getNome() {
-		return this.nome;
-	}
-
-	/**
-	 * Imposta il nome del Commesso
-	 * 
-	 * @param nome
-	 */
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	/**
-	 * Restituisce il cognome del Commesso
-	 * 
-	 * @return String
-	 */
-	public String getCognome() {
-		return this.cognome;
-	}
-
-	/**
-	 * Imposta il cognome del Commesso
-	 * 
-	 * @param cognome
-	 */
-	public void setCognome(String cognome) {
-		this.cognome = cognome;
-	}
-
-	/**
-	 * Restituisce lo username del Commesso
-	 * 
-	 * @return String
-	 */
-	public String getUsername() {
-		return this.username;
-	}
-
-	/**
-	 * Imposta lo username del Commesso
-	 * 
-	 * @param username
-	 */
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	/**
-	 * Restituisce la password del Commesso
-	 * 
-	 * @return String
-	 */
-	public String getPassword() {
-		return this.password;
-	}
-
-	/**
-	 * Imposta la password del Commesso
-	 * 
-	 * @param password
-	 */
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
+	
 }

@@ -38,7 +38,9 @@ public abstract class SistemaEsterno {
 	public ArrayList<ServizioComponent> ricerca(HashMap<String, String> parametri) throws IOException {
 		String url = getSearchUrl();
 		String parameters = serializeParameters(parametri);
+		// System.out.println(parameters);
 		String response = sendRequest(url, parameters);
+		// System.out.println(response);
 		return processServicesFromResponse(response);
 	};
 

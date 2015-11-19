@@ -49,8 +49,8 @@ public class BookingAdapter extends ImpresaRicettivaAdapter {
 
 		ArrayList<Stanza> stanze = new ArrayList<>();
 		JSONArray rooms = jsonBiglietto.optJSONArray("rooms");
-		
-		System.out.println(rooms.toString());
+
+		// System.out.println(rooms.toString());
 
 		for (int i = 0; i < rooms.length(); ++i) {
 			JSONObject room = rooms.getJSONObject(i);
@@ -58,12 +58,12 @@ public class BookingAdapter extends ImpresaRicettivaAdapter {
 			stanze.add(stanza);
 		}
 
-		alloggio.setId(jsonBiglietto.optInt("id", 0));
+		// alloggio.setId(jsonBiglietto.optInt("id", 0));
 		alloggio.setFornitore(jsonBiglietto.optString("provider"));
 		alloggio.setLocalita(jsonBiglietto.optString("city"));
 		try {
-			alloggio.setDataPartenza(Costanti.FORMATO_DATA.parse(jsonBiglietto.optString("departure_date")));
-			alloggio.setDataArrivo(Costanti.FORMATO_DATA.parse(jsonBiglietto.optString("arrival_date")));
+			alloggio.setDataPartenza(Costanti.FORMATO_DATA_ORA.parse(jsonBiglietto.optString("departure_date")));
+			alloggio.setDataArrivo(Costanti.FORMATO_DATA_ORA.parse(jsonBiglietto.optString("arrival_date")));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}

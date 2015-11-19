@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: Universita degli Studi dell'Aquila
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.speearth.model.core.ServizioComponent" table="ServizioComponent" lazy="false">
+		<meta attribute="class-description">
+			Interfaccia di un Servizio
+		</meta>
+		<id name="id" column="Id" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="prezzo" column="Prezzo" type="float" not-null="true" lazy="false">
+			<meta attribute="field-description">
+				Prezzo
+			</meta>
+		</property>
+		<joined-subclass name="com.speearth.model.core.Alloggio" table="Alloggio" lazy="false">
+			<key>
+				<column name="ServizioComponentId"/>
+			</key>
+			<property name="fornitore" column="Fornitore" type="string" length="255" not-null="false" lazy="false">
+				<meta attribute="field-description">
+					Fornitore
+				</meta>
+			</property>
+			<property name="localita" column="Localita" type="string" length="255" not-null="false" lazy="false">
+				<meta attribute="field-description">
+					Localit&#224;
+				</meta>
+			</property>
+			<property name="dataArrivo" column="DataArrivo" type="date" not-null="false" lazy="false">
+				<meta attribute="field-description">
+					Data di arrivo
+				</meta>
+			</property>
+			<property name="dataPartenza" column="DataPartenza" type="date" not-null="false" lazy="false">
+				<meta attribute="field-description">
+					Data di partenza
+				</meta>
+			</property>
+			<set name="stanze" lazy="true" cascade="save-update,lock" inverse="false">
+				<key column="AlloggioServizioComponentId" not-null="true"/>
+				<one-to-many class="com.speearth.model.core.Stanza"/>
+			</set>
+		</joined-subclass>
+		<joined-subclass name="com.speearth.model.core.Biglietto" table="Biglietto" lazy="false">
+			<key>
+				<column name="ServizioComponentId"/>
+			</key>
+			<property name="fornitore" column="Fornitore" type="string" length="255" not-null="false" lazy="false">
+				<meta attribute="field-description">
+					Fornitore
+				</meta>
+			</property>
+			<property name="partenza" column="Partenza" type="string" length="255" not-null="false" lazy="false">
+				<meta attribute="field-description">
+					Partenza
+				</meta>
+			</property>
+			<property name="destinazione" column="Destinazione" type="string" length="255" not-null="false" lazy="false">
+				<meta attribute="field-description">
+					Destinazione
+				</meta>
+			</property>
+			<property name="dataPartenzaAndata" column="DataPartenzaAndata" type="date" not-null="false" lazy="false">
+				<meta attribute="field-description">
+					Data di andata
+				</meta>
+			</property>
+			<property name="dataPartenzaRitorno" column="DataPartenzaRitorno" type="date" not-null="false" lazy="false">
+				<meta attribute="field-description">
+					Data di ritorno
+				</meta>
+			</property>
+			<property name="dataArrivoAndata" column="DataArrivoAndata" type="date" not-null="false" lazy="false">
+				<meta attribute="field-description">
+					Data di andata
+				</meta>
+			</property>
+			<property name="dataArrivoRitorno" column="DataArrivoRitorno" type="date" not-null="false" lazy="false">
+				<meta attribute="field-description">
+					Data di ritorno
+				</meta>
+			</property>
+			<property name="numeroAdulti" column="NumeroAdulti" type="integer" length="11" not-null="true" lazy="false">
+				<meta attribute="field-description">
+					Numero di adulti
+				</meta>
+			</property>
+			<property name="numeroBambini" column="NumeroBambini" type="integer" length="11" not-null="true" lazy="false">
+				<meta attribute="field-description">
+					Numero di bambini
+				</meta>
+			</property>
+			<property name="mezzo" column="Mezzo" type="string" length="255" not-null="false" lazy="false">
+				<meta attribute="field-description">
+					Mezzo
+				</meta>
+			</property>
+		</joined-subclass>
+		<joined-subclass name="com.speearth.model.core.PacchettoComposite" table="PacchettoComposite" lazy="false">
+			<key>
+				<column name="ServizioComponentId"/>
+			</key>
+			<set name="listaServizi" lazy="true" cascade="save-update,lock" inverse="false">
+				<key column="PacchettoCompositeServizioComponentId" not-null="true"/>
+				<one-to-many class="com.speearth.model.core.ServizioComponent"/>
+			</set>
+			<joined-subclass name="com.speearth.model.core.Offerta" table="Offerta" lazy="false">
+				<key>
+					<column name="ServizioComponentId"/>
+				</key>
+				<property name="dataInizio" column="DataInizio" type="date" not-null="false" lazy="false">
+					<meta attribute="field-description">
+						Data di inizio offerta
+					</meta>
+				</property>
+				<property name="dataFine" column="DataFine" type="date" not-null="false" lazy="false">
+					<meta attribute="field-description">
+						Data di fine offerta
+					</meta>
+				</property>
+			</joined-subclass>
+		</joined-subclass>
+	</class>
+</hibernate-mapping>

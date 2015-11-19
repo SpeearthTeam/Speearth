@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: Universita degli Studi dell'Aquila
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.speearth.model.core.Stanza" table="Stanza" lazy="false">
+		<meta attribute="class-description">
+			Classe che modella una Stanza tramite la tipologia e la relativa quantita
+		</meta>
+		<id name="id" column="Id" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="tipologia" column="Tipologia" type="string" length="255" not-null="false" lazy="false">
+			<meta attribute="field-description">
+				Tipologia di stanza: singola, doppia, tripla, quadrupla
+			</meta>
+		</property>
+		<property name="quantita" column="Quantita" type="integer" length="11" not-null="true" lazy="false">
+			<meta attribute="field-description">
+				Quantita di una tipologia di stanza
+			</meta>
+		</property>
+	</class>
+</hibernate-mapping>

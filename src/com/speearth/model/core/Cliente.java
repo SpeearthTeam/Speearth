@@ -1,171 +1,139 @@
-package com.speearth.model.core;
+/**
+ * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
+ * 
+ * This is an automatic generated file. It will be regenerated every time 
+ * you generate persistence class.
+ * 
+ * Modifying its content may cause the program not work, or your work may lost.
+ */
 
-import java.util.Date;
+/**
+ * Licensee: Universita degli Studi dell'Aquila
+ * License Type: Academic
+ */
+package com.speearth.model.core;
 
 /**
  * Classe che descrive il cliente
  */
+@SuppressWarnings({ "all", "unchecked" })
 public class Cliente {
-
+	public Cliente() {
+	}
+	
+	private int id;
+	
+	private String nome;
+	
+	private String cognome;
+	
+	private java.util.Date dataNascita;
+	
+	private String codiceFiscale;
+	
+	private int codiceTessera;
+	
 	/**
 	 * Id
 	 */
-	private int id;
-
+	private void setId(int value) {
+		this.id = value;
+	}
+	
+	/**
+	 * Id
+	 */
+	public int getId() {
+		return id;
+	}
+	
+	public int getORMID() {
+		return getId();
+	}
+	
 	/**
 	 * Nome
 	 */
-	private String nome;
-
+	public void setNome(String value) {
+		this.nome = value;
+	}
+	
+	/**
+	 * Nome
+	 */
+	public String getNome() {
+		return nome;
+	}
+	
 	/**
 	 * Cognome
 	 */
-	private String cognome;
-
+	public void setCognome(String value) {
+		this.cognome = value;
+	}
+	
+	/**
+	 * Cognome
+	 */
+	public String getCognome() {
+		return cognome;
+	}
+	
 	/**
 	 * Data di nascita
 	 */
-	private Date dataNascita;
-
+	public void setDataNascita(java.util.Date value) {
+		this.dataNascita = value;
+	}
+	
+	/**
+	 * Data di nascita
+	 */
+	public java.util.Date getDataNascita() {
+		return dataNascita;
+	}
+	
 	/**
 	 * Codice fiscale
 	 */
-	private String codiceFiscale;
-
+	public void setCodiceFiscale(String value) {
+		this.codiceFiscale = value;
+	}
+	
+	/**
+	 * Codice fiscale
+	 */
+	public String getCodiceFiscale() {
+		return codiceFiscale;
+	}
+	
 	/**
 	 * Codice della tessera
 	 */
-	private int codiceTessera;
-
-	/**
-	 * Costruttore di default
-	 */
-	public Cliente() {
+	public void setCodiceTessera(int value) {
+		this.codiceTessera = value;
 	}
-
+	
 	/**
-	 * Costruttore completo
-	 * 
-	 * @param nome
-	 * @param cognome
-	 * @param data_nascita
-	 * @param codice_fiscale
-	 * @param codice_tessera
-	 */
-	public Cliente(String nome, String cognome, Date data_nascita, String codice_fiscale, int codice_tessera) {
-		this.nome = nome;
-		this.cognome = cognome;
-		this.dataNascita = data_nascita;
-		this.codiceFiscale = codice_fiscale;
-		this.codiceTessera = codice_tessera;
-	}
-
-	/**
-	 * Restituisce l'id del Cliente
-	 * 
-	 * @return int
-	 */
-	public int getId() {
-		return this.id;
-	}
-
-	/**
-	 * Imposta l'id del Cliente
-	 * 
-	 * @param id
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	/**
-	 * Restituisce il nome del Cliente
-	 * 
-	 * @return String
-	 */
-	public String getNome() {
-		return this.nome;
-	}
-
-	/**
-	 * Imposta il nome del Cliente
-	 * 
-	 * @param nome
-	 */
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	/**
-	 * Restituisce il cognome del Cliente
-	 * 
-	 * @return String
-	 */
-	public String getCognome() {
-		return this.cognome;
-	}
-
-	/**
-	 * Imposta il cognome del Cliente
-	 * 
-	 * @param cognome
-	 */
-	public void setCognome(String cognome) {
-		this.cognome = cognome;
-	}
-
-	/**
-	 * Restituisce la data di nascita del Cliente
-	 * 
-	 * @return Date
-	 */
-	public Date getDataNascita() {
-		return this.dataNascita;
-	}
-
-	/**
-	 * Imposta la data di nascita del Cliente
-	 * 
-	 * @param data_nascita
-	 */
-	public void setDataNascita(Date data_nascita) {
-		this.dataNascita = data_nascita;
-	}
-
-	/**
-	 * Restituisce il codice fiscale del Cliente
-	 * 
-	 * @return String
-	 */
-	public String getCodiceFiscale() {
-		return this.codiceFiscale;
-	}
-
-	/**
-	 * Imposta il codice fiscale del Cliente
-	 * 
-	 * @param codice_fiscale
-	 */
-	public void setCodiceFiscale(String codice_fiscale) {
-		this.codiceFiscale = codice_fiscale;
-	}
-
-	/**
-	 * Restituisce il codice della tessera del Cliente
-	 * 
-	 * @return String
+	 * Codice della tessera
 	 */
 	public int getCodiceTessera() {
-		return this.codiceTessera;
+		return codiceTessera;
 	}
-
+	
 	/**
-	 * Imposta il codice della tessera del Cliente
-	 * 
-	 * @param codice_tessera
+	 * Costruttore completo
 	 */
-	public void setCodiceTessera(int codice_tessera) {
+	public Cliente(String nome, String cognome, java.util.Date data_nascita, String codice_fiscale, int codice_tessera) {
+		this.nome = nome;
+		this.cognome = cognome;
+		this.dataNascita = data_nascita;
+		this.codiceFiscale = codice_fiscale;
 		this.codiceTessera = codice_tessera;
 	}
-
+	
+	public String toString() {
+		return String.valueOf(getId());
+	}
+	
 }

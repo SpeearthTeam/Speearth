@@ -48,22 +48,22 @@ public class ItaloAdapter extends AziendaTrasportoAdapter {
 
 		Biglietto biglietto = new Biglietto();
 
-		biglietto.setId(jsonBiglietto.optInt("id", 0));
+		// biglietto.setId(jsonBiglietto.optInt("id", 0));
 		biglietto.setFornitore(jsonBiglietto.optString("fornitore"));
 		biglietto.setPartenza(jsonBiglietto.optString("partenza"));
 		biglietto.setDestinazione(jsonBiglietto.optString("destinazione"));
 		try {
 			biglietto.setDataPartenzaAndata(
-					Costanti.FORMATO_DATA.parse(jsonBiglietto.optString("data_partenza_andata")));
+					Costanti.FORMATO_DATA_ORA.parse(jsonBiglietto.optString("data_partenza_andata")));
 			biglietto.setDataPartenzaRitorno(
-					Costanti.FORMATO_DATA.parse(jsonBiglietto.optString("data_partenza_andata")));
-			biglietto.setDataArrivoAndata(Costanti.FORMATO_DATA.parse(jsonBiglietto.optString("data_arrivo_andata")));
-			biglietto.setDataArrivoRitorno(Costanti.FORMATO_DATA.parse(jsonBiglietto.optString("data_arrivo_andata")));
+					Costanti.FORMATO_DATA_ORA.parse(jsonBiglietto.optString("data_partenza_andata")));
+			biglietto.setDataArrivoAndata(Costanti.FORMATO_DATA_ORA.parse(jsonBiglietto.optString("data_arrivo_andata")));
+			biglietto.setDataArrivoRitorno(Costanti.FORMATO_DATA_ORA.parse(jsonBiglietto.optString("data_arrivo_andata")));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		biglietto.setNumeroAdulti(jsonBiglietto.optInt("numero_adulti"));
-		biglietto.setNumerBambini(jsonBiglietto.optInt("numero_bambini"));
+		biglietto.setNumeroBambini(jsonBiglietto.optInt("numero_bambini"));
 		biglietto.setPrezzo((float) jsonBiglietto.optInt("prezzo"));
 
 		return biglietto;
