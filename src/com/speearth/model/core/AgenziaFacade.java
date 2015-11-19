@@ -30,6 +30,11 @@ public class AgenziaFacade {
 	private RegistroImpiegati registroImpiegati;
 
 	/**
+	 * Catalogo delle Offerte
+	 */
+	private CatalogoOfferte catalogoOfferte;
+
+	/**
 	 * Lista di Transazioni generiche da far eseguire ai Sistemi Esterni secondo
 	 * le richieste del Cliente
 	 */
@@ -42,6 +47,7 @@ public class AgenziaFacade {
 		this.registroVendite = RegistroVendite.getInstance();
 		this.registroClienti = RegistroClienti.getInstance();
 		this.registroImpiegati = RegistroImpiegati.getInstance();
+		this.catalogoOfferte = CatalogoOfferte.getInstance();
 		this.comandi = new ArrayList<ITransazioniCommand>();
 	}
 
@@ -81,6 +87,15 @@ public class AgenziaFacade {
 	 */
 	public RegistroImpiegati getRegistroImpiegati() {
 		return this.registroImpiegati;
+	}
+
+	/**
+	 * Restituisce il Catalogo delle Offerte
+	 * 
+	 * @return RegistroImpiegati
+	 */
+	public CatalogoOfferte getCatalogoOfferte() {
+		return this.catalogoOfferte;
 	}
 
 	/**

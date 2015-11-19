@@ -1,5 +1,6 @@
 package com.speearth.controller;
 
+import com.speearth.model.core.AgenziaFacade;
 import com.speearth.model.core.Offerta;
 
 /**
@@ -60,8 +61,7 @@ public class CreaOffertaController implements ICasoDUsoController {
 	 * @return boolean
 	 */
 	public boolean confermaOfferta() {
-		// TODO
-		return false;
+		return AgenziaFacade.getInstance().getCatalogoOfferte().aggiungiOfferta(this.offerta);
 	}
 
 	/**

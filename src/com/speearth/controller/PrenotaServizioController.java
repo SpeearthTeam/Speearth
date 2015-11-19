@@ -71,7 +71,7 @@ public class PrenotaServizioController implements ICasoDUsoController {
 	 * @return Cliente
 	 */
 	public Cliente identificaCliente(int codice_tessera) {
-		this.setCliente(AgenziaFacade.getInstance().getRegistroClienti().getClienteDaCodiceTessera(codice_tessera));
+		this.setCliente(AgenziaFacade.getInstance().getRegistroClienti().cercaClienteDaCodiceTessera(codice_tessera));
 		return this.cliente;
 	}
 

@@ -2,6 +2,7 @@ package com.speearth.controller;
 
 import java.util.Date;
 
+import com.speearth.model.core.AgenziaFacade;
 import com.speearth.model.core.Cliente;
 
 /**
@@ -32,11 +33,10 @@ public class GestisciClientiController implements ICasoDUsoController {
 	 * Restituisce una lista di Clienti in base a un valore
 	 * 
 	 * @param valore
-	 * @return ArrayList<Cliente>
+	 * @return Cliente[]
 	 */
 	public Cliente[] cercaCliente(String valore) {
-		// TODO
-		return null;
+		return AgenziaFacade.getInstance().getRegistroClienti().cercaClientiDaValore(valore);
 	}
 
 	/**
@@ -49,8 +49,8 @@ public class GestisciClientiController implements ICasoDUsoController {
 	 * @return boolean
 	 */
 	public boolean aggiungiCliente(String nome, String cognome, Date data_nascita, String codice_fiscale) {
-		// TODO
-		return false;
+		return AgenziaFacade.getInstance().getRegistroClienti().aggiungiCliente(nome, cognome, data_nascita,
+				codice_fiscale);
 	}
 
 	/**
@@ -64,8 +64,8 @@ public class GestisciClientiController implements ICasoDUsoController {
 	 * @return boolean
 	 */
 	public boolean modificaCliente(int id, String nome, String cognome, Date data_nascita, String codice_fiscale) {
-		// TODO
-		return false;
+		return AgenziaFacade.getInstance().getRegistroClienti().modificaCliente(id, nome, cognome, data_nascita,
+				codice_fiscale);
 	}
 
 	/**
@@ -75,7 +75,6 @@ public class GestisciClientiController implements ICasoDUsoController {
 	 * @return boolean
 	 */
 	public boolean eliminaCliente(Cliente cliente) {
-		// TODO
-		return false;
+		return AgenziaFacade.getInstance().getRegistroClienti().eliminaCliente(cliente);
 	}
 }

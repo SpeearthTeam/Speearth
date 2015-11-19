@@ -39,7 +39,7 @@ public class RegistroClienti {
 	 * @param id
 	 * @return Cliente
 	 */
-	public Cliente getClienteDaID(int id) {
+	public Cliente cercaClienteDaID(int id) {
 		try {
 			ClienteCriteria cliente = new ClienteCriteria();
 			cliente.id.eq(id);
@@ -56,7 +56,7 @@ public class RegistroClienti {
 	 * @param valore
 	 * @return ArrayList<Cliente>
 	 */
-	public Cliente[] getClientiDaValore(String valore) {
+	public Cliente[] cercaClientiDaValore(String valore) {
 		try {
 			ClienteCriteria cliente = new ClienteCriteria();
 			Criterion nome = Restrictions.like("Nome", valore);
@@ -78,7 +78,7 @@ public class RegistroClienti {
 	 * @param codice
 	 * @return Cliente
 	 */
-	public Cliente getClienteDaCodiceTessera(int codice) {
+	public Cliente cercaClienteDaCodiceTessera(int codice) {
 		try {
 			ClienteCriteria cliente = new ClienteCriteria();
 			cliente.codiceTessera.eq(codice);
@@ -119,7 +119,7 @@ public class RegistroClienti {
 	 * @return boolean
 	 */
 	public boolean modificaCliente(int id, String nome, String cognome, Date data_nascita, String codice_fiscale) {
-		Cliente cliente = this.getClienteDaID(id);
+		Cliente cliente = this.cercaClienteDaID(id);
 		cliente.setNome(nome);
 		cliente.setCognome(cognome);
 		cliente.setDataNascita(data_nascita);
