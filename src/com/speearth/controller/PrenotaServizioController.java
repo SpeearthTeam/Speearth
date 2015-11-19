@@ -23,7 +23,7 @@ public class PrenotaServizioController implements ICasoDUsoController {
 	private Cliente cliente;
 
 	/**
-	 * Unica istanza del controller
+	 * Unica istanza del Controller
 	 */
 	private static PrenotaServizioController instance;
 
@@ -34,7 +34,7 @@ public class PrenotaServizioController implements ICasoDUsoController {
 	}
 
 	/**
-	 * Restituisce l'istanza del controller
+	 * Restituisce l'istanza del Controller
 	 */
 	public static PrenotaServizioController getInstance() {
 		if (instance == null)
@@ -106,6 +106,7 @@ public class PrenotaServizioController implements ICasoDUsoController {
 	 * @return String
 	 */
 	public String effettuaPagamento(String metodo) {
+		// TODO
 		// return
 		// AgenziaFacade.getInstance().getRegistratoreDiCassa().effettuaPagamento(this.servizio,
 		// this.cliente,

@@ -15,19 +15,6 @@ public class Main extends Application {
 	 * @throws Exception
 	 */
 	public static void main(String[] args) throws Exception {
-
-//		SessionFactory factory = Costanti.createSessionFactory();
-//		Session s = factory.openSession();
-//		Transaction tx = s.beginTransaction();
-//
-//		Date d = Costanti.FORMATO_DATA.parse("19-11-2015");
-//		Cliente c = new Cliente("lol", "lol", d, "lol123", 987654321);
-//
-//		s.save(c);
-//
-//		tx.commit();
-//		s.close();
-
 		launch(args);
 	}
 

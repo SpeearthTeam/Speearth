@@ -124,12 +124,23 @@ public class Cliente {
 	/**
 	 * Costruttore completo
 	 */
-	public Cliente(String nome, String cognome, java.util.Date data_nascita, String codice_fiscale, int codice_tessera) {
+	public Cliente(int id, String nome, String cognome, java.util.Date data_nascita, String codice_fiscale, int codice_tessera) {
+		this.id = id;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.dataNascita = data_nascita;
 		this.codiceFiscale = codice_fiscale;
 		this.codiceTessera = codice_tessera;
+	}
+	
+	/**
+	 * Costruttore ad hoc per l'inserimento di un nuovo Cliente
+	 */
+	public Cliente(String nome, String cognome, java.util.Date data_nascita, String codice_fiscale) {
+		this.nome = nome;
+		this.cognome = cognome;
+		this.dataNascita = data_nascita;
+		this.codiceFiscale = codice_fiscale;
 	}
 	
 	public String toString() {
