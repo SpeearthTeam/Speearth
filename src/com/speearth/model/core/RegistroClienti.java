@@ -1,5 +1,7 @@
 package com.speearth.model.core;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 import org.hibernate.criterion.Criterion;
@@ -56,7 +58,7 @@ public class RegistroClienti {
 	 * @param valore
 	 * @return ArrayList<Cliente>
 	 */
-	public Cliente[] cercaClientiDaValore(String valore) {
+	public ArrayList<Cliente> cercaClientiDaValore(String valore) {
 		try {
 			ClienteCriteria cliente = new ClienteCriteria();
 			Criterion nome = Restrictions.like("Nome", valore);
@@ -65,7 +67,7 @@ public class RegistroClienti {
 			Junction condizioni = Restrictions.disjunction();
 			condizioni.add(nome).add(cognome).add(codice_fiscale);
 			cliente.add(condizioni);
-			return cliente.listCliente();
+			return new ArrayList<>(Arrays.asList(cliente.listCliente()));
 		} catch (PersistentException e) {
 			e.printStackTrace();
 		}

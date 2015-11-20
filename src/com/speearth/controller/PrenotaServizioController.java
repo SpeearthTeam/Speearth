@@ -64,6 +64,13 @@ public class PrenotaServizioController implements ICasoDUsoController {
 	}
 
 	/**
+	 * Restituisce il Controller di GestisciClienti
+	 */
+	public GestisciClientiController getGestisciClientiController() {
+		return GestisciClientiController.getInstance();
+	}
+
+	/**
 	 * Identifica un Cliente dallo storico dell'Agenzia tramite il codice della
 	 * sua tessera
 	 * 
@@ -101,17 +108,12 @@ public class PrenotaServizioController implements ICasoDUsoController {
 	/**
 	 * Effettua il Pagamento per il Servizio verso l'Agenzia
 	 * 
-	 * @param cliente
 	 * @param metodo
 	 * @return String
 	 */
 	public String effettuaPagamento(String metodo) {
-		// TODO
-		// return
-		// AgenziaFacade.getInstance().getRegistratoreDiCassa().effettuaPagamento(this.servizio,
-		// this.cliente,
-		// AppFacadeController.getInstance().getUtente(), metodo);
-		return "";
+		return AgenziaFacade.getInstance().getRegistroVendite().registraVendita(metodo, this.getCliente(),
+				AppFacadeController.getInstance().getUtente(), this.getServizio());
 	}
 
 	/**

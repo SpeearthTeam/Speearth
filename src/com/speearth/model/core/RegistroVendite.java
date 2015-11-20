@@ -43,8 +43,7 @@ public class RegistroVendite {
 		try {
 			VenditaCriteria vendita = new VenditaCriteria();
 			vendita.clienteId.eq(cliente.getId());
-			ArrayList<Vendita> vendite = new ArrayList<>(Arrays.asList(vendita.listVendita()));
-			return vendite;
+			return new ArrayList<>(Arrays.asList(vendita.listVendita()));
 		} catch (PersistentException e) {
 			e.printStackTrace();
 		}
@@ -71,14 +70,21 @@ public class RegistroVendite {
 	/**
 	 * Registra una Vendita
 	 * 
-	 * @param vendita
+	 * @param metodo
+	 * @param cliente
+	 * @param commesso
+	 * @param servizio
+	 * @return String
 	 */
-	public void registraVendita(Vendita vendita) {
+	public String registraVendita(String metodo, Cliente cliente, Impiegato commesso, ServizioComponent servizio) {
 		try {
+			Vendita vendita = new Vendita(cliente, new Pagamento(servizio.getPrezzo(), metodo), commesso, servizio);
 			SpeearthPersistentManager.instance().saveObject(vendita);
+			return vendita.getPagamento().generaRicevuta();
 		} catch (PersistentException e) {
 			e.printStackTrace();
 		}
+		return null;
 	}
 
 }

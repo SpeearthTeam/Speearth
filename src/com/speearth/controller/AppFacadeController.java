@@ -53,23 +53,30 @@ public class AppFacadeController {
 	}
 
 	/**
-	 * Avvia l'Applicazione
-	 */
-	public void avvia() {
-		// TODO
-	}
-
-	/**
-	 * Chiude l'Applicazione
-	 */
-	public void chiudi() {
-		// TODO
-	}
-
-	/**
 	 * Restituisce il Controller di PrenotaServizio
 	 */
 	public PrenotaServizioController getPrenotaServizioController() {
 		return PrenotaServizioController.getInstance();
+	}
+	
+	/**
+	 * Restituisce il Controller di CreaOfferta
+	 */
+	public CreaOffertaController getCreaOffertaController() {
+		return CreaOffertaController.getInstance();
+	}
+	
+	/**
+	 * Restituisce il Controller di GestisciClienti
+	 */
+	public GestisciClientiController getGestisciClientiController() {
+		return GestisciClientiController.getInstance();
+	}
+	
+	/**
+	 * Restituisce il Controller del Caso d'Uso di Startup
+	 */
+	public StartupController getStartupController() {
+		return StartupController.getInstance();
 	}
 }

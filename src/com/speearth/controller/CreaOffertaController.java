@@ -26,7 +26,7 @@ public class CreaOffertaController implements ICasoDUsoController {
 	/**
 	 * Restituisce l'istanza del Controller
 	 */
-	public CreaOffertaController getInstance() {
+	public static CreaOffertaController getInstance() {
 		if (instance == null)
 			instance = new CreaOffertaController();
 		return instance;

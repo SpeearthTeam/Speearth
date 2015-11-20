@@ -1,5 +1,6 @@
 package com.speearth.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import com.speearth.model.core.AgenziaFacade;
@@ -23,7 +24,7 @@ public class GestisciClientiController implements ICasoDUsoController {
 	/**
 	 * Restituisce l'istanza del Controller
 	 */
-	public GestisciClientiController getInstance() {
+	public static GestisciClientiController getInstance() {
 		if (instance == null)
 			instance = new GestisciClientiController();
 		return instance;
@@ -33,9 +34,9 @@ public class GestisciClientiController implements ICasoDUsoController {
 	 * Restituisce una lista di Clienti in base a un valore
 	 * 
 	 * @param valore
-	 * @return Cliente[]
+	 * @return ArrayList<Cliente>
 	 */
-	public Cliente[] cercaCliente(String valore) {
+	public ArrayList<Cliente> cercaCliente(String valore) {
 		return AgenziaFacade.getInstance().getRegistroClienti().cercaClientiDaValore(valore);
 	}
 

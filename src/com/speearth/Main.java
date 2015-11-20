@@ -1,5 +1,6 @@
 package com.speearth;
 
+import com.speearth.controller.AppFacadeController;
 import com.speearth.view.prenotaservizio.schermate.ScegliServizioView;
 
 import javafx.application.Application;
@@ -15,6 +16,7 @@ public class Main extends Application {
 	 * @throws Exception
 	 */
 	public static void main(String[] args) throws Exception {
+		AppFacadeController.getInstance().getStartupController().generaPreCondizioni();
 		launch(args);
 	}
 

@@ -1,5 +1,8 @@
 package com.speearth.model.core;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import org.orm.PersistentException;
 
 /**
@@ -48,11 +51,11 @@ public class CatalogoOfferte {
 	/**
 	 * Restituisce tutte le Offerte disponibili
 	 * 
-	 * @return Offerta[]
+	 * @return ArrayList<Offerta>
 	 */
-	public Offerta[] getOfferte() {
+	public ArrayList<Offerta> getOfferte() {
 		try {
-			return new OffertaCriteria().listOfferta();
+			return new ArrayList<>(Arrays.asList(new OffertaCriteria().listOfferta()));
 		} catch (PersistentException e) {
 			e.printStackTrace();
 		}
