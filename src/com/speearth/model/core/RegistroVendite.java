@@ -1,6 +1,9 @@
 package com.speearth.model.core;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+
+import org.orm.PersistentException;
 
 /**
  * Classe addetta alla gestione delle Vendite
@@ -16,6 +19,7 @@ public class RegistroVendite {
 	 * Costruttore di default
 	 */
 	protected RegistroVendite() {
+
 	}
 
 	/**
@@ -36,16 +40,15 @@ public class RegistroVendite {
 	 * @return ArrayList<Vendita>
 	 */
 	public ArrayList<Vendita> getVenditeDaCliente(Cliente cliente) {
-		// TODO - implement RegistroVendite.getVendite
-		ArrayList<Vendita> vendite = new ArrayList<>();
-		Impiegato commesso = new Impiegato();
-		Pagamento pagamento = new Pagamento();
-		pagamento.setAmmontare(600);
-		Biglietto biglietto = new Biglietto();
-		vendite.add(new Vendita(cliente, pagamento, commesso, biglietto));
-		vendite.add(new Vendita(cliente, pagamento, commesso, biglietto));
-		vendite.add(new Vendita(cliente, pagamento, commesso, biglietto));
-		return vendite;
+		try {
+			VenditaCriteria vendita = new VenditaCriteria();
+			vendita.clienteId.eq(cliente.getId());
+			ArrayList<Vendita> vendite = new ArrayList<>(Arrays.asList(vendita.listVendita()));
+			return vendite;
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	/**
@@ -54,6 +57,14 @@ public class RegistroVendite {
 	 * @return Vendita
 	 */
 	public Vendita getVenditaDaID(int id) {
+		try {
+			VenditaCriteria vendita;
+			vendita = new VenditaCriteria();
+			vendita.id.eq(id);
+			return vendita.uniqueVendita();
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
@@ -63,7 +74,11 @@ public class RegistroVendite {
 	 * @param vendita
 	 */
 	public void registraVendita(Vendita vendita) {
-		// TODO - implement RegistroVendite.registraVendita
+		try {
+			SpeearthPersistentManager.instance().saveObject(vendita);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
