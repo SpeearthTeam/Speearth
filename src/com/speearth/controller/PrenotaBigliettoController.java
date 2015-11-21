@@ -76,19 +76,19 @@ public class PrenotaBigliettoController implements IFrammentoController {
 	}
 
 	/**
-	 * Cancella la lista di Biglietti trovati
-	 */
-	public void clearBiglietti() {
-		this.biglietti = new ArrayList<>();
-	}
-
-	/**
 	 * Restituisce i parametri di ricerca
 	 * 
 	 * @return HashMap<String, String> getParametri()
 	 */
 	public HashMap<String, String> getParametri() {
 		return this.parametri;
+	}
+
+	/**
+	 * Cancella la lista di Biglietti trovati
+	 */
+	public void clearBiglietti() {
+		this.biglietti = new ArrayList<>();
 	}
 
 	/**
@@ -102,8 +102,8 @@ public class PrenotaBigliettoController implements IFrammentoController {
 	 * Ristabilisce lo stato di partenza del Caso D'Uso
 	 */
 	public void reset() {
-		this.biglietti = null;
-		this.parametri = null;
+		clearBiglietti();
+		clearParametri();
 	}
 
 }

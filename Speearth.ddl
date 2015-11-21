@@ -4,7 +4,7 @@ CREATE TABLE Cliente (Id int(11) NOT NULL AUTO_INCREMENT, Nome varchar(255) NOT 
 CREATE TABLE Impiegato (Id int(11) NOT NULL AUTO_INCREMENT, Nome varchar(255) NOT NULL, Cognome varchar(255) NOT NULL, Username varchar(255) NOT NULL, Password varchar(255) NOT NULL, PRIMARY KEY (Id)) engine=InnoDB;
 CREATE TABLE PacchettoComposite (ServizioComponentId int(11) NOT NULL, PRIMARY KEY (ServizioComponentId)) engine=InnoDB;
 CREATE TABLE Pagamento (Id int(11) NOT NULL AUTO_INCREMENT, Ammontare float NOT NULL, Metodo varchar(255) NOT NULL, Data datetime NOT NULL, PRIMARY KEY (Id)) engine=InnoDB;
-CREATE TABLE Vendita (Id int(11) NOT NULL AUTO_INCREMENT, ImpiegatoId int(11) NOT NULL, ServizioComponentId int(11) NOT NULL, PagamentoId int(11) NOT NULL, ClienteId int(11) NOT NULL, Data datetime NOT NULL, PRIMARY KEY (Id)) engine=InnoDB;
+CREATE TABLE Vendita (Id int(11) NOT NULL AUTO_INCREMENT, ImpiegatoId int(11) NOT NULL, ServizioComponentId int(11) NOT NULL, PagamentoId int(11) NOT NULL, ClienteId int(11), Data datetime NOT NULL, PRIMARY KEY (Id)) engine=InnoDB;
 CREATE TABLE ServizioComponent (Id int(11) NOT NULL AUTO_INCREMENT, PacchettoCompositeServizioComponentId int(11), Prezzo float NOT NULL, PRIMARY KEY (Id)) engine=InnoDB;
 CREATE TABLE Offerta (DataInizio datetime NOT NULL, DataFine datetime NOT NULL, ServizioComponentId int(11) NOT NULL, PRIMARY KEY (ServizioComponentId)) engine=InnoDB;
 CREATE TABLE Stanza (Id int(11) NOT NULL AUTO_INCREMENT, Tipologia varchar(255) NOT NULL, Quantita int(11) NOT NULL, AlloggioServizioComponentId int(11) NOT NULL, PRIMARY KEY (Id)) engine=InnoDB;

@@ -118,8 +118,7 @@ public class RiepilogoAlloggioView extends View {
 				Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO, null);
 		if (result.get() == ButtonType.OK) {
 			AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
-			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController()
-					.clearAlloggi();
+			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController().reset();
 			ScegliServizioView view = new ScegliServizioView(getStage());
 			view.mostra();
 		}
