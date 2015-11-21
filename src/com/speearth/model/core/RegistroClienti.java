@@ -103,6 +103,7 @@ public class RegistroClienti {
 	public boolean aggiungiCliente(String nome, String cognome, Date data_nascita, String codice_fiscale) {
 		try {
 			SpeearthPersistentManager.instance().saveObject(new Cliente(nome, cognome, data_nascita, codice_fiscale));
+			SpeearthPersistentManager.instance().getSession().flush();
 			return true;
 		} catch (PersistentException e) {
 			e.printStackTrace();
@@ -127,8 +128,8 @@ public class RegistroClienti {
 		cliente.setDataNascita(data_nascita);
 		cliente.setCodiceFiscale(codice_fiscale);
 		try {
-			SpeearthPersistentManager.instance().getSession()
-					.saveOrUpdate(cliente);
+			SpeearthPersistentManager.instance().getSession().saveOrUpdate(cliente);
+			SpeearthPersistentManager.instance().getSession().flush();
 			return true;
 		} catch (PersistentException e) {
 			e.printStackTrace();
@@ -145,6 +146,7 @@ public class RegistroClienti {
 	public boolean eliminaCliente(Cliente cliente) {
 		try {
 			SpeearthPersistentManager.instance().deleteObject(cliente);
+			SpeearthPersistentManager.instance().getSession().flush();
 			return true;
 		} catch (PersistentException e) {
 			e.printStackTrace();
