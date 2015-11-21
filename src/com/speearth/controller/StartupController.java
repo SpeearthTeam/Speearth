@@ -47,7 +47,6 @@ public class StartupController implements ICasoDUsoController {
 				cl = new Cliente("Filippo", "Tirabassi", d, "TRBFPP90D07G878U", 123456);
 				SpeearthPersistentManager.instance().saveObject(cl);
 			}
-			AppFacadeController.getInstance().getPrenotaServizioController().setCliente(cl);
 
 		} catch (PersistentException e) {
 			e.printStackTrace();
