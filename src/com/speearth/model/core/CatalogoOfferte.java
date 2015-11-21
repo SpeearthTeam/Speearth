@@ -73,8 +73,7 @@ public class CatalogoOfferte {
 	 */
 	public boolean aggiungiOfferta(Offerta offerta) {
 		try {
-			SpeearthPersistentManager.instance().saveObject(offerta);
-			SpeearthPersistentManager.instance().getSession().flush();
+			SpeearthPersistentManager.instance().getSession().saveOrUpdate(offerta);
 			return true;
 		} catch (PersistentException e) {
 			e.printStackTrace();
@@ -91,7 +90,6 @@ public class CatalogoOfferte {
 	public boolean eliminaOfferta(Offerta offerta) {
 		try {
 			SpeearthPersistentManager.instance().deleteObject(offerta);
-			SpeearthPersistentManager.instance().getSession().flush();
 			return true;
 		} catch (PersistentException e) {
 			e.printStackTrace();
