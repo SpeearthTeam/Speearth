@@ -20,88 +20,87 @@ package com.speearth.model.core;
 public class Alloggio extends com.speearth.model.core.ServizioComponent {
 	public Alloggio() {
 	}
-	
+
 	private String fornitore;
-	
+
 	private String localita;
-	
+
 	private java.util.Date dataArrivo;
-	
+
 	private java.util.Date dataPartenza;
-	
+
 	private java.util.ArrayList<Stanza> stanze = new java.util.ArrayList<>();
-	
+
 	/**
 	 * Fornitore
 	 */
 	public void setFornitore(String value) {
 		this.fornitore = value;
 	}
-	
+
 	/**
 	 * Fornitore
 	 */
 	public String getFornitore() {
 		return fornitore;
 	}
-	
+
 	/**
 	 * Località
 	 */
 	public void setLocalita(String value) {
 		this.localita = value;
 	}
-	
+
 	/**
 	 * Località
 	 */
 	public String getLocalita() {
 		return localita;
 	}
-	
+
 	/**
 	 * Data di arrivo
 	 */
 	public void setDataArrivo(java.util.Date value) {
 		this.dataArrivo = value;
 	}
-	
+
 	/**
 	 * Data di arrivo
 	 */
 	public java.util.Date getDataArrivo() {
 		return dataArrivo;
 	}
-	
+
 	/**
 	 * Data di partenza
 	 */
 	public void setDataPartenza(java.util.Date value) {
 		this.dataPartenza = value;
 	}
-	
+
 	/**
 	 * Data di partenza
 	 */
 	public java.util.Date getDataPartenza() {
 		return dataPartenza;
 	}
-	
+
 	/**
 	 * Stanze dell'alloggio
 	 */
 	public void setStanze(java.util.ArrayList<Stanza> value) {
 		this.stanze = value;
 	}
-	
+
 	/**
 	 * Stanze dell'alloggio
 	 */
 	public java.util.ArrayList<Stanza> getStanze() {
 		return stanze;
 	}
-	
-	
+
 	/**
 	 * Costruttore
 	 */
@@ -110,9 +109,9 @@ public class Alloggio extends com.speearth.model.core.ServizioComponent {
 		this.localita = localita;
 		this.stanze = stanze;
 	}
-	
+
 	public String toString() {
 		return super.toString();
 	}
-	
+
 }

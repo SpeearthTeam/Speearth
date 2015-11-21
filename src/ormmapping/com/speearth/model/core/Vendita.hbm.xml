@@ -21,7 +21,7 @@ License Type: Academic
 		</many-to-one>
 		<many-to-one name="cliente" column="ClienteId" class="com.speearth.model.core.Cliente" cascade="save-update,lock" unique="true" not-null="true" lazy="proxy">
 		</many-to-one>
-		<property name="data" column="Data" type="date" not-null="false" lazy="false">
+		<property name="data" column="Data" type="timestamp" not-null="true" lazy="false">
 			<meta attribute="field-description">
 				Data
 			</meta>

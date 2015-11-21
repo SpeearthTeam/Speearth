@@ -13,12 +13,10 @@
  */
 package com.speearth.model.core;
 
-import java.util.Properties;
-
-import org.hibernate.FlushMode;
-import org.orm.PersistentException;
-import org.orm.PersistentManager;
+import org.orm.*;
 import org.orm.cfg.JDBCConnectionSetting;
+import org.hibernate.*;
+import java.util.Properties;
 
 @SuppressWarnings({ "all", "unchecked" })
 public class SpeearthPersistentManager extends PersistentManager {

@@ -9,7 +9,7 @@
 	<top>
 		<ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
 			<items>
-				<Button fx:id="bottone_torna_alla_home" mnemonicParsing="false" onAction="#vaiAScegliServizio" text="Torna alla Home" />
+				<Button fx:id="bottone_torna_alla_home" mnemonicParsing="false" onAction="#vaiAllaHome" text="Torna alla Home" />
 				<Button fx:id="bottone_ricerca" disable="true" mnemonicParsing="false" text="Ricerca" />
 				<Button fx:id="bottone_riepilogo" mnemonicParsing="false" onAction="#vaiARiepilogo" text="Riepilogo" />
 			</items>
@@ -20,7 +20,7 @@
 			<top>
 				<Accordion BorderPane.alignment="CENTER">
 					<panes>
-						<TitledPane animated="false" text="Pacchetto">
+						<TitledPane animated="false" text="Offerta">
 							<content>
 								<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
 									<children>
@@ -29,7 +29,7 @@
 												<VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
 													<children>
 														<Button fx:id="bottone_svuota" mnemonicParsing="false" onAction="#svuotaPacchetto" prefHeight="31.0" prefWidth="104.0" text="Svuota" />
-														<Button fx:id="bottone_conferma" mnemonicParsing="false" onAction="#confermaPacchetto" prefHeight="31.0" prefWidth="104.0" text="Conferma" />
+														<Button fx:id="bottone_conferma" mnemonicParsing="false" onAction="#confermaOfferta" prefHeight="31.0" prefWidth="104.0" text="Conferma" />
 													</children>
 												</VBox>
 											</right>

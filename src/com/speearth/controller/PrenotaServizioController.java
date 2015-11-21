@@ -2,6 +2,7 @@ package com.speearth.controller;
 
 import com.speearth.model.core.AgenziaFacade;
 import com.speearth.model.core.Cliente;
+import com.speearth.model.core.Impiegato;
 import com.speearth.model.core.ServizioComponent;
 import com.speearth.model.core.bonus.CalcolatoreBonus;
 import com.speearth.model.core.bonus.IBonus;
@@ -112,9 +113,12 @@ public class PrenotaServizioController implements ICasoDUsoController {
 	 * @return String
 	 */
 	public String effettuaPagamento(String metodo) {
-		System.out.println(AppFacadeController.getInstance().getUtente());
+		Impiegato i = AppFacadeController.getInstance().getUtente();
+		System.out.println(i.getId());
+		System.out.println(i.getCognome());
+		
 		return AgenziaFacade.getInstance().getRegistroVendite().registraVendita(metodo, this.getCliente(),
-				AppFacadeController.getInstance().getUtente(), this.getServizio());
+				i, this.getServizio());
 	}
 
 	/**

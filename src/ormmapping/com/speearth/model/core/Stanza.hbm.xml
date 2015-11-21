@@ -13,7 +13,7 @@ License Type: Academic
 			<generator class="native">
 			</generator>
 		</id>
-		<property name="tipologia" column="Tipologia" type="string" length="255" not-null="false" lazy="false">
+		<property name="tipologia" column="Tipologia" type="string" length="255" not-null="true" lazy="false">
 			<meta attribute="field-description">
 				Tipologia di stanza: singola, doppia, tripla, quadrupla
 			</meta>

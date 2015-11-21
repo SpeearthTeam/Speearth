@@ -74,6 +74,7 @@ public class TrenitaliaAdapter extends AziendaTrasportoAdapter {
 		biglietto.setNumeroAdulti(jsonBiglietto.optInt("numero_adulti"));
 		biglietto.setNumeroBambini(jsonBiglietto.optInt("numero_bambini"));
 		biglietto.setPrezzo((float) jsonBiglietto.optInt("prezzo"));
+		biglietto.setMezzo(jsonBiglietto.optString("mezzo"));
 
 		return biglietto;
 

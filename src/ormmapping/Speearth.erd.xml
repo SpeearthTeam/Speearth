@@ -7,7 +7,7 @@
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
       <Length>255</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -18,7 +18,7 @@
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
       <Length>255</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -27,9 +27,9 @@
     <Column name="DataArrivo">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
-      <Type>17</Type>
+      <Type>20</Type>
       <Length>0</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -38,9 +38,9 @@
     <Column name="DataPartenza">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
-      <Type>17</Type>
+      <Type>20</Type>
       <Length>0</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -65,7 +65,7 @@
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
       <Length>255</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -76,7 +76,7 @@
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
       <Length>255</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -87,7 +87,7 @@
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
       <Length>255</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -96,9 +96,9 @@
     <Column name="DataPartenzaAndata">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
-      <Type>17</Type>
+      <Type>20</Type>
       <Length>0</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -107,9 +107,9 @@
     <Column name="DataPartenzaRitorno">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
-      <Type>17</Type>
+      <Type>20</Type>
       <Length>0</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -118,9 +118,9 @@
     <Column name="DataArrivoAndata">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
-      <Type>17</Type>
+      <Type>20</Type>
       <Length>0</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -129,9 +129,9 @@
     <Column name="DataArrivoRitorno">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
-      <Type>17</Type>
+      <Type>20</Type>
       <Length>0</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -164,7 +164,7 @@
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
       <Length>255</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -200,7 +200,7 @@
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
       <Length>255</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -211,7 +211,7 @@
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
       <Length>255</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -220,9 +220,9 @@
     <Column name="DataNascita">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
-      <Type>17</Type>
+      <Type>20</Type>
       <Length>0</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -233,7 +233,7 @@
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
       <Length>255</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -268,7 +268,7 @@
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
       <Length>255</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -279,7 +279,7 @@
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
       <Length>255</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -290,7 +290,7 @@
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
       <Length>255</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -301,7 +301,7 @@
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
       <Length>255</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -350,7 +350,7 @@
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
       <Length>255</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -359,9 +359,9 @@
     <Column name="Data">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
-      <Type>17</Type>
+      <Type>20</Type>
       <Length>0</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -431,9 +431,9 @@
     <Column name="Data">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
-      <Type>17</Type>
+      <Type>20</Type>
       <Length>0</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -458,8 +458,8 @@
       <ReferencedColumn>com.speearth.model.core.PacchettoComposite.ServizioComponentId</ReferencedColumn>
       <Type>9</Type>
       <Length>11</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
+      <Nullable>true</Nullable>
+      <IDGenerator>assigned</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
       <UserTypes/>
@@ -480,9 +480,9 @@
     <Column name="DataInizio">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
-      <Type>17</Type>
+      <Type>20</Type>
       <Length>0</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -491,9 +491,9 @@
     <Column name="DataFine">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
-      <Type>17</Type>
+      <Type>20</Type>
       <Length>0</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -524,24 +524,12 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="AlloggioServizioComponentId">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>com.speearth.model.core.Alloggio.ServizioComponentId</ReferencedColumn>
-      <Type>9</Type>
-      <Length>11</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
     <Column name="Tipologia">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
       <Length>255</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -558,17 +546,19 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
+    <Column name="AlloggioServizioComponentId">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>com.speearth.model.core.Alloggio.ServizioComponentId</ReferencedColumn>
+      <Type>9</Type>
+      <Length>11</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
   </Entity>
-  <ForeignKey name="FKAlloggio21142">
-    <ReferenceTable>Alloggio</ReferenceTable>
-    <ReferencedTable>ServizioComponent</ReferencedTable>
-    <Columns>
-      <Column>ServizioComponentId</Column>
-    </Columns>
-    <RefColumns>
-      <Column>Id</Column>
-    </RefColumns>
-  </ForeignKey>
   <ForeignKey name="FKBiglietto61226">
     <ReferenceTable>Biglietto</ReferenceTable>
     <ReferencedTable>ServizioComponent</ReferencedTable>
@@ -639,6 +629,16 @@
       <Column>Id</Column>
     </RefColumns>
   </ForeignKey>
+  <ForeignKey name="FKVendita395400">
+    <ReferenceTable>Vendita</ReferenceTable>
+    <ReferencedTable>Impiegato</ReferencedTable>
+    <Columns>
+      <Column>ImpiegatoId</Column>
+    </Columns>
+    <RefColumns>
+      <Column>Id</Column>
+    </RefColumns>
+  </ForeignKey>
   <ForeignKey name="FKStanza543576">
     <ReferenceTable>Stanza</ReferenceTable>
     <ReferencedTable>Alloggio</ReferencedTable>
@@ -649,11 +649,11 @@
       <Column>ServizioComponentId</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="FKVendita395400">
-    <ReferenceTable>Vendita</ReferenceTable>
-    <ReferencedTable>Impiegato</ReferencedTable>
+  <ForeignKey name="FKAlloggio21142">
+    <ReferenceTable>Alloggio</ReferenceTable>
+    <ReferencedTable>ServizioComponent</ReferencedTable>
     <Columns>
-      <Column>ImpiegatoId</Column>
+      <Column>ServizioComponentId</Column>
     </Columns>
     <RefColumns>
       <Column>Id</Column>

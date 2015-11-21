@@ -16,10 +16,7 @@ package com.speearth.model.core;
 import org.hibernate.Criteria;
 import org.orm.PersistentException;
 import org.orm.PersistentSession;
-import org.orm.criteria.AbstractORMCriteria;
-import org.orm.criteria.CollectionExpression;
-import org.orm.criteria.FloatExpression;
-import org.orm.criteria.IntegerExpression;
+import org.orm.criteria.*;
 
 @SuppressWarnings({ "all", "unchecked" })
 public class PacchettoCompositeCriteria extends AbstractORMCriteria {

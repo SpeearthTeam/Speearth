@@ -22,22 +22,22 @@ License Type: Academic
 			<key>
 				<column name="ServizioComponentId"/>
 			</key>
-			<property name="fornitore" column="Fornitore" type="string" length="255" not-null="false" lazy="false">
+			<property name="fornitore" column="Fornitore" type="string" length="255" not-null="true" lazy="false">
 				<meta attribute="field-description">
 					Fornitore
 				</meta>
 			</property>
-			<property name="localita" column="Localita" type="string" length="255" not-null="false" lazy="false">
+			<property name="localita" column="Localita" type="string" length="255" not-null="true" lazy="false">
 				<meta attribute="field-description">
 					Localit&#224;
 				</meta>
 			</property>
-			<property name="dataArrivo" column="DataArrivo" type="date" not-null="false" lazy="false">
+			<property name="dataArrivo" column="DataArrivo" type="timestamp" not-null="true" lazy="false">
 				<meta attribute="field-description">
 					Data di arrivo
 				</meta>
 			</property>
-			<property name="dataPartenza" column="DataPartenza" type="date" not-null="false" lazy="false">
+			<property name="dataPartenza" column="DataPartenza" type="timestamp" not-null="true" lazy="false">
 				<meta attribute="field-description">
 					Data di partenza
 				</meta>
@@ -51,37 +51,37 @@ License Type: Academic
 			<key>
 				<column name="ServizioComponentId"/>
 			</key>
-			<property name="fornitore" column="Fornitore" type="string" length="255" not-null="false" lazy="false">
+			<property name="fornitore" column="Fornitore" type="string" length="255" not-null="true" lazy="false">
 				<meta attribute="field-description">
 					Fornitore
 				</meta>
 			</property>
-			<property name="partenza" column="Partenza" type="string" length="255" not-null="false" lazy="false">
+			<property name="partenza" column="Partenza" type="string" length="255" not-null="true" lazy="false">
 				<meta attribute="field-description">
 					Partenza
 				</meta>
 			</property>
-			<property name="destinazione" column="Destinazione" type="string" length="255" not-null="false" lazy="false">
+			<property name="destinazione" column="Destinazione" type="string" length="255" not-null="true" lazy="false">
 				<meta attribute="field-description">
 					Destinazione
 				</meta>
 			</property>
-			<property name="dataPartenzaAndata" column="DataPartenzaAndata" type="date" not-null="false" lazy="false">
+			<property name="dataPartenzaAndata" column="DataPartenzaAndata" type="timestamp" not-null="true" lazy="false">
 				<meta attribute="field-description">
 					Data di andata
 				</meta>
 			</property>
-			<property name="dataPartenzaRitorno" column="DataPartenzaRitorno" type="date" not-null="false" lazy="false">
+			<property name="dataPartenzaRitorno" column="DataPartenzaRitorno" type="timestamp" not-null="true" lazy="false">
 				<meta attribute="field-description">
 					Data di ritorno
 				</meta>
 			</property>
-			<property name="dataArrivoAndata" column="DataArrivoAndata" type="date" not-null="false" lazy="false">
+			<property name="dataArrivoAndata" column="DataArrivoAndata" type="timestamp" not-null="true" lazy="false">
 				<meta attribute="field-description">
 					Data di andata
 				</meta>
 			</property>
-			<property name="dataArrivoRitorno" column="DataArrivoRitorno" type="date" not-null="false" lazy="false">
+			<property name="dataArrivoRitorno" column="DataArrivoRitorno" type="timestamp" not-null="true" lazy="false">
 				<meta attribute="field-description">
 					Data di ritorno
 				</meta>
@@ -96,7 +96,7 @@ License Type: Academic
 					Numero di bambini
 				</meta>
 			</property>
-			<property name="mezzo" column="Mezzo" type="string" length="255" not-null="false" lazy="false">
+			<property name="mezzo" column="Mezzo" type="string" length="255" not-null="true" lazy="false">
 				<meta attribute="field-description">
 					Mezzo
 				</meta>
@@ -107,19 +107,19 @@ License Type: Academic
 				<column name="ServizioComponentId"/>
 			</key>
 			<set name="listaServizi" lazy="true" cascade="save-update,lock" inverse="false">
-				<key column="PacchettoCompositeServizioComponentId" not-null="true"/>
+				<key column="PacchettoCompositeServizioComponentId" not-null="false"/>
 				<one-to-many class="com.speearth.model.core.ServizioComponent"/>
 			</set>
 			<joined-subclass name="com.speearth.model.core.Offerta" table="Offerta" lazy="false">
 				<key>
 					<column name="ServizioComponentId"/>
 				</key>
-				<property name="dataInizio" column="DataInizio" type="date" not-null="false" lazy="false">
+				<property name="dataInizio" column="DataInizio" type="timestamp" not-null="true" lazy="false">
 					<meta attribute="field-description">
 						Data di inizio offerta
 					</meta>
 				</property>
-				<property name="dataFine" column="DataFine" type="date" not-null="false" lazy="false">
+				<property name="dataFine" column="DataFine" type="timestamp" not-null="true" lazy="false">
 					<meta attribute="field-description">
 						Data di fine offerta
 					</meta>

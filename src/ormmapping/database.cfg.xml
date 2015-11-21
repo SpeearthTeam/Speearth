@@ -18,7 +18,7 @@
   </Setting>
   <Setting type="2">
     <Driver>MySQL (Connector/J Driver)</Driver>
-    <DriverFiles>lib/mysql-connector-java-bin.jar</DriverFiles>
+    <DriverFiles>C:\Users\Marco\Documents\mysql-connector-java-5.0.8-bin.jar</DriverFiles>
     <Dialect>org.hibernate.dialect.MySQLInnoDBDialect</Dialect>
     <DriverClass>com.mysql.jdbc.Driver</DriverClass>
     <URL>jdbc:mysql://localhost:3306/Speearth</URL>

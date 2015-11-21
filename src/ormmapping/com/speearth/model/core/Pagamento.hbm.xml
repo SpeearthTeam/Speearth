@@ -18,12 +18,12 @@ License Type: Academic
 				Ammontare
 			</meta>
 		</property>
-		<property name="metodo" column="Metodo" type="string" length="255" not-null="false" lazy="false">
+		<property name="metodo" column="Metodo" type="string" length="255" not-null="true" lazy="false">
 			<meta attribute="field-description">
 				Metodo di Pagamento
 			</meta>
 		</property>
-		<property name="data" column="Data" type="date" not-null="false" lazy="false">
+		<property name="data" column="Data" type="timestamp" not-null="true" lazy="false">
 			<meta attribute="field-description">
 				Data
 			</meta>

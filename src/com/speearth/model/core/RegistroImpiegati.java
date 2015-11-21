@@ -1,5 +1,7 @@
 package com.speearth.model.core;
 
+import org.orm.PersistentException;
+
 /**
  * Classe addetta alla gestione del Personale dell'Agenzia
  */
@@ -33,7 +35,7 @@ public class RegistroImpiegati {
 	 * @return Commesso
 	 */
 	public Impiegato getCommessoDaID(int id) {
-		//TODO
+		// TODO
 		return null;
 	}
 
@@ -44,6 +46,14 @@ public class RegistroImpiegati {
 	 * @return Commesso
 	 */
 	public Impiegato getCommessoDaUsername(String username) {
-		return new Impiegato("Bu", "Bu", "bubu", "passbubu");
+		ImpiegatoCriteria criteria;
+		try {
+			criteria = new ImpiegatoCriteria();
+			criteria.username.eq(username);
+			return criteria.uniqueImpiegato();
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

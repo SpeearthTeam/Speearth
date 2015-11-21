@@ -13,22 +13,22 @@ License Type: Academic
 			<generator class="native">
 			</generator>
 		</id>
-		<property name="nome" column="Nome" type="string" length="255" not-null="false" lazy="false">
+		<property name="nome" column="Nome" type="string" length="255" not-null="true" lazy="false">
 			<meta attribute="field-description">
 				Nome
 			</meta>
 		</property>
-		<property name="cognome" column="Cognome" type="string" length="255" not-null="false" lazy="false">
+		<property name="cognome" column="Cognome" type="string" length="255" not-null="true" lazy="false">
 			<meta attribute="field-description">
 				Cognome
 			</meta>
 		</property>
-		<property name="username" column="Username" type="string" length="255" not-null="false" lazy="false">
+		<property name="username" column="Username" type="string" length="255" not-null="true" lazy="false">
 			<meta attribute="field-description">
 				Username
 			</meta>
 		</property>
-		<property name="password" column="Password" type="string" length="255" not-null="false" lazy="false">
+		<property name="password" column="Password" type="string" length="255" not-null="true" lazy="false">
 			<meta attribute="field-description">
 				Password
 			</meta>

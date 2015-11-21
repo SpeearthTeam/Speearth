@@ -14,12 +14,9 @@
 package com.speearth.model.core;
 
 import java.util.List;
-
 import org.hibernate.criterion.DetachedCriteria;
 import org.orm.PersistentSession;
-import org.orm.criteria.AbstractORMDetachedCriteria;
-import org.orm.criteria.IntegerExpression;
-import org.orm.criteria.StringExpression;
+import org.orm.criteria.*;
 
 @SuppressWarnings({ "all", "unchecked" })
 public class ImpiegatoDetachedCriteria extends AbstractORMDetachedCriteria {
