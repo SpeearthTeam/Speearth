@@ -112,6 +112,7 @@ public class PrenotaServizioController implements ICasoDUsoController {
 	 * @return String
 	 */
 	public String effettuaPagamento(String metodo) {
+		System.out.println(AppFacadeController.getInstance().getUtente());
 		return AgenziaFacade.getInstance().getRegistroVendite().registraVendita(metodo, this.getCliente(),
 				AppFacadeController.getInstance().getUtente(), this.getServizio());
 	}
