@@ -126,7 +126,7 @@ public class RiepilogoPacchettoView extends View {
 			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController()
 					.clearAlloggi();
 			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
-					.clearPacchetto();
+					.reset();
 			ScegliServizioView view = new ScegliServizioView(getStage());
 			view.mostra();
 		}
@@ -177,6 +177,8 @@ public class RiepilogoPacchettoView extends View {
 				.effettuaPagamento("contanti");
 		mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_PAGAMENTO_EFFETTUATO,
 				Costanti.MESSAGGIO_PAGAMENTO_EFFETTUATO, ricevuta);
+		AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
+				.reset();
 		AppFacadeController.getInstance().getPrenotaServizioController().reset();
 		ScegliServizioView view = new ScegliServizioView(getStage());
 		view.mostra();

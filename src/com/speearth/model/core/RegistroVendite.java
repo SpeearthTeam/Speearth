@@ -79,6 +79,7 @@ public class RegistroVendite {
 	public String registraVendita(String metodo, Cliente cliente, Impiegato commesso, ServizioComponent servizio) {
 		try {
 			Vendita vendita = new Vendita(cliente, new Pagamento(servizio.getPrezzo(), metodo), commesso, servizio);
+			SpeearthPersistentManager.instance().saveObject(servizio);
 			SpeearthPersistentManager.instance().saveObject(vendita);
 			return vendita.getPagamento().generaRicevuta();
 		} catch (PersistentException e) {

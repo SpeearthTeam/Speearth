@@ -60,11 +60,19 @@ public class PrenotaPacchettoController implements IFrammentoController {
 		return this.pacchetto;
 	}
 
+	/**
+	 * Imposta la lista di Servizi che compongono il Pacchetto
+	 * 
+	 * @param lista_servizi
+	 */
 	public void setPacchetto(ArrayList<ServizioComponent> lista_servizi) {
 		this.pacchetto = lista_servizi;
 	}
 
-	public void clearPacchetto() {
+	/**
+	 * Ristabilisce lo stato di partenza del Caso D'Uso
+	 */
+	public void reset() {
 		this.pacchetto = new ArrayList<>();
 	}
 

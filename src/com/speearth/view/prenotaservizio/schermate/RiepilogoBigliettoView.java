@@ -188,6 +188,7 @@ public class RiepilogoBigliettoView extends View {
 				.effettuaPagamento("contanti");
 		mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_PAGAMENTO_EFFETTUATO,
 				Costanti.MESSAGGIO_PAGAMENTO_EFFETTUATO, ricevuta);
+		AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController().reset();
 		AppFacadeController.getInstance().getPrenotaServizioController().reset();
 		ScegliServizioView view = new ScegliServizioView(getStage());
 		view.mostra();

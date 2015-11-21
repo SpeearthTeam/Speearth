@@ -76,16 +76,35 @@ public class PrenotaAlloggioController implements IFrammentoController {
 		return this.alloggi;
 	}
 
+	/**
+	 * Cancella la lista di Alloggi trovati
+	 */
 	public void clearAlloggi() {
 		this.alloggi = new ArrayList<>();
 	}
 
+	/**
+	 * Restituisce i parametri di ricerca
+	 * 
+	 * @return HashMap<String, String> getParametri()
+	 */
 	public HashMap<String, String> getParametri() {
 		return this.parametri;
 	}
 
+	/**
+	 * Cancella i parametri di ricerca
+	 */
 	public void clearParametri() {
 		this.parametri = new HashMap<>();
+	}
+	
+	/**
+	 * Ristabilisce lo stato di partenza del Caso D'Uso
+	 */
+	public void reset() {
+		this.alloggi = null;
+		this.parametri = null;
 	}
 
 }

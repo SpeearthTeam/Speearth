@@ -253,7 +253,7 @@ public class RicercaPacchettoView extends View {
 				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController()
 						.clearParametri();
 				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
-						.clearPacchetto();
+						.reset();
 				ScegliServizioView view = new ScegliServizioView(getStage());
 				view.mostra();
 			}
