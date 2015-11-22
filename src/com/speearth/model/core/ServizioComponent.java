@@ -93,7 +93,7 @@ public abstract class ServizioComponent {
 	/**
 	 * Il metodo non si applica in quanto questa classe non è composita
 	 */
-	public java.util.ArrayList<ServizioComponent> getListaServizi() {
+	public java.util.List<ServizioComponent> getListaServizi() {
 		return null;
 	}
 	

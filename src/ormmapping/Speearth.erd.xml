@@ -109,7 +109,7 @@
       <ForeignKey>false</ForeignKey>
       <Type>20</Type>
       <Length>0</Length>
-      <Nullable>false</Nullable>
+      <Nullable>true</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -131,7 +131,7 @@
       <ForeignKey>false</ForeignKey>
       <Type>20</Type>
       <Length>0</Length>
-      <Nullable>false</Nullable>
+      <Nullable>true</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -220,7 +220,7 @@
     <Column name="DataNascita">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
-      <Type>20</Type>
+      <Type>17</Type>
       <Length>0</Length>
       <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
@@ -422,7 +422,7 @@
       <ReferencedColumn>com.speearth.model.core.Cliente.Id</ReferencedColumn>
       <Type>9</Type>
       <Length>11</Length>
-      <Nullable>false</Nullable>
+      <Nullable>true</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -470,6 +470,17 @@
       <Type>4</Type>
       <Length>0</Length>
       <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="PacchettoCompositeIndex">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>9</Type>
+      <Length>11</Length>
+      <Nullable>true</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -524,6 +535,18 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
+    <Column name="AlloggioServizioComponentId">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>com.speearth.model.core.Alloggio.ServizioComponentId</ReferencedColumn>
+      <Type>9</Type>
+      <Length>11</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
     <Column name="Tipologia">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
@@ -546,22 +569,33 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="AlloggioServizioComponentId">
+    <Column name="AlloggioIndex">
       <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>com.speearth.model.core.Alloggio.ServizioComponentId</ReferencedColumn>
+      <ForeignKey>false</ForeignKey>
       <Type>9</Type>
       <Length>11</Length>
-      <Nullable>false</Nullable>
+      <Nullable>true</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
       <UserTypes/>
     </Column>
   </Entity>
+  <ForeignKey name="FKAlloggio21142">
+    <ReferenceTable>Alloggio</ReferenceTable>
+    <ReferencedTable>ServizioComponent</ReferencedTable>
+    <Columns>
+      <Column>ServizioComponentId</Column>
+    </Columns>
+    <RefColumns>
+      <Column>Id</Column>
+    </RefColumns>
+  </ForeignKey>
   <ForeignKey name="FKBiglietto61226">
     <ReferenceTable>Biglietto</ReferenceTable>
     <ReferencedTable>ServizioComponent</ReferencedTable>
+    <OnUpdate>Cascade</OnUpdate>
+    <OnDelete>Cascade</OnDelete>
     <Columns>
       <Column>ServizioComponentId</Column>
     </Columns>
@@ -572,6 +606,8 @@
   <ForeignKey name="FKPacchettoC745307">
     <ReferenceTable>PacchettoComposite</ReferenceTable>
     <ReferencedTable>ServizioComponent</ReferencedTable>
+    <OnUpdate>Cascade</OnUpdate>
+    <OnDelete>Cascade</OnDelete>
     <Columns>
       <Column>ServizioComponentId</Column>
     </Columns>
@@ -582,6 +618,8 @@
   <ForeignKey name="FKOfferta440950">
     <ReferenceTable>Offerta</ReferenceTable>
     <ReferencedTable>ServizioComponent</ReferencedTable>
+    <OnUpdate>Cascade</OnUpdate>
+    <OnDelete>Cascade</OnDelete>
     <Columns>
       <Column>ServizioComponentId</Column>
     </Columns>
@@ -592,6 +630,8 @@
   <ForeignKey name="FKServizioCo18358">
     <ReferenceTable>ServizioComponent</ReferenceTable>
     <ReferencedTable>PacchettoComposite</ReferencedTable>
+    <OnUpdate>Cascade</OnUpdate>
+    <OnDelete>Cascade</OnDelete>
     <Columns>
       <Column>PacchettoCompositeServizioComponentId</Column>
     </Columns>
@@ -602,6 +642,8 @@
   <ForeignKey name="FKVendita279857">
     <ReferenceTable>Vendita</ReferenceTable>
     <ReferencedTable>Cliente</ReferencedTable>
+    <OnUpdate>Cascade</OnUpdate>
+    <OnDelete>Cascade</OnDelete>
     <Columns>
       <Column>ClienteId</Column>
     </Columns>
@@ -612,6 +654,8 @@
   <ForeignKey name="FKVendita825127">
     <ReferenceTable>Vendita</ReferenceTable>
     <ReferencedTable>Pagamento</ReferencedTable>
+    <OnUpdate>Cascade</OnUpdate>
+    <OnDelete>Cascade</OnDelete>
     <Columns>
       <Column>PagamentoId</Column>
     </Columns>
@@ -622,18 +666,10 @@
   <ForeignKey name="FKVendita839993">
     <ReferenceTable>Vendita</ReferenceTable>
     <ReferencedTable>ServizioComponent</ReferencedTable>
+    <OnUpdate>Cascade</OnUpdate>
+    <OnDelete>Cascade</OnDelete>
     <Columns>
       <Column>ServizioComponentId</Column>
-    </Columns>
-    <RefColumns>
-      <Column>Id</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="FKVendita395400">
-    <ReferenceTable>Vendita</ReferenceTable>
-    <ReferencedTable>Impiegato</ReferencedTable>
-    <Columns>
-      <Column>ImpiegatoId</Column>
     </Columns>
     <RefColumns>
       <Column>Id</Column>
@@ -642,6 +678,8 @@
   <ForeignKey name="FKStanza543576">
     <ReferenceTable>Stanza</ReferenceTable>
     <ReferencedTable>Alloggio</ReferencedTable>
+    <OnUpdate>Cascade</OnUpdate>
+    <OnDelete>Cascade</OnDelete>
     <Columns>
       <Column>AlloggioServizioComponentId</Column>
     </Columns>
@@ -649,11 +687,13 @@
       <Column>ServizioComponentId</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="FKAlloggio21142">
-    <ReferenceTable>Alloggio</ReferenceTable>
-    <ReferencedTable>ServizioComponent</ReferencedTable>
+  <ForeignKey name="FKVendita395400">
+    <ReferenceTable>Vendita</ReferenceTable>
+    <ReferencedTable>Impiegato</ReferencedTable>
+    <OnUpdate>Cascade</OnUpdate>
+    <OnDelete>Cascade</OnDelete>
     <Columns>
-      <Column>ServizioComponentId</Column>
+      <Column>ImpiegatoId</Column>
     </Columns>
     <RefColumns>
       <Column>Id</Column>

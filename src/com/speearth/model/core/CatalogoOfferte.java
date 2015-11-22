@@ -73,7 +73,7 @@ public class CatalogoOfferte {
 	 */
 	public boolean aggiungiOfferta(Offerta offerta) {
 		try {
-			SpeearthPersistentManager.instance().getSession().saveOrUpdate(offerta);
+			SpeearthPersistentManager.instance().saveObject(offerta);
 			return true;
 		} catch (PersistentException e) {
 			e.printStackTrace();

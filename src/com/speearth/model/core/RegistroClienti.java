@@ -127,7 +127,7 @@ public class RegistroClienti {
 		cliente.setDataNascita(data_nascita);
 		cliente.setCodiceFiscale(codice_fiscale);
 		try {
-			SpeearthPersistentManager.instance().getSession().saveOrUpdate(cliente);
+			SpeearthPersistentManager.instance().getSession().update(cliente);
 			return true;
 		} catch (PersistentException e) {
 			e.printStackTrace();

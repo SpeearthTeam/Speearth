@@ -267,8 +267,8 @@ public class RicercaPacchettoView extends View {
 	// Event Listener on Button[#bottone_ricerca].onAction
 	@FXML
 	public void vaiARiepilogo(ActionEvent event) throws IOException {
-		ArrayList<ServizioComponent> pacchetto = AppFacadeController.getInstance().getPrenotaServizioController()
-				.getServizio().getListaServizi();
+		ArrayList<ServizioComponent> pacchetto = (ArrayList<ServizioComponent>) AppFacadeController.getInstance()
+				.getPrenotaServizioController().getServizio().getListaServizi();
 		AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
 				.setPacchetto(pacchetto);
 		if (pacchetto.isEmpty())

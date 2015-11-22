@@ -42,10 +42,11 @@ License Type: Academic
 					Data di partenza
 				</meta>
 			</property>
-			<set name="stanze" lazy="true" cascade="save-update,lock" inverse="false">
+			<list name="stanze" lazy="true" cascade="save-update,lock" inverse="false">
 				<key column="AlloggioServizioComponentId" not-null="true"/>
+				<index column="AlloggioIndex" type="integer"/>
 				<one-to-many class="com.speearth.model.core.Stanza"/>
-			</set>
+			</list>
 		</joined-subclass>
 		<joined-subclass name="com.speearth.model.core.Biglietto" table="Biglietto" lazy="false">
 			<key>
@@ -71,7 +72,7 @@ License Type: Academic
 					Data di andata
 				</meta>
 			</property>
-			<property name="dataPartenzaRitorno" column="DataPartenzaRitorno" type="timestamp" not-null="true" lazy="false">
+			<property name="dataPartenzaRitorno" column="DataPartenzaRitorno" type="timestamp" not-null="false" lazy="false">
 				<meta attribute="field-description">
 					Data di ritorno
 				</meta>
@@ -81,7 +82,7 @@ License Type: Academic
 					Data di andata
 				</meta>
 			</property>
-			<property name="dataArrivoRitorno" column="DataArrivoRitorno" type="timestamp" not-null="true" lazy="false">
+			<property name="dataArrivoRitorno" column="DataArrivoRitorno" type="timestamp" not-null="false" lazy="false">
 				<meta attribute="field-description">
 					Data di ritorno
 				</meta>
@@ -106,10 +107,11 @@ License Type: Academic
 			<key>
 				<column name="ServizioComponentId"/>
 			</key>
-			<set name="listaServizi" lazy="true" cascade="save-update,lock" inverse="false">
+			<list name="listaServizi" lazy="true" cascade="save-update,lock" inverse="false">
 				<key column="PacchettoCompositeServizioComponentId" not-null="false"/>
+				<index column="PacchettoCompositeIndex" type="integer"/>
 				<one-to-many class="com.speearth.model.core.ServizioComponent"/>
-			</set>
+			</list>
 			<joined-subclass name="com.speearth.model.core.Offerta" table="Offerta" lazy="false">
 				<key>
 					<column name="ServizioComponentId"/>
