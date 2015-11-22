@@ -38,6 +38,7 @@ public final class Costanti {
 	public final static String TITOLO_NESSUN_SERVIZIO = "Nessun Servizio prenotato.";
 	public final static String TITOLO_NESSUN_CLIENTE = "Nessun Cliente";
 	public final static String TITOLO_SERVIZIO_PRESENTE = "Servizio già presente";
+	public final static String TITOLO_GESTISCI_CLIENTE = "Gestione clienti";
 
 	/**
 	 * Path degli FXML
@@ -48,6 +49,7 @@ public final class Costanti {
 	public final static String FXML_RICERCA_PACCHETTO = "/ui/fxml/RicercaPacchetto.fxml";
 	public final static String FXML_RISULTATO_BIGLIETTO = "/ui/fxml/RisultatoBiglietto.fxml";
 	public final static String FXML_RISULTATO_ALLOGGIO = "/ui/fxml/RisultatoAlloggio.fxml";
+	public final static String FXML_RISULTATO_CLIENTE = "/ui/fxml/RisultatoCliente.fxml";
 	public final static String FXML_RIEPILOGO_BIGLIETTO = "/ui/fxml/RiepilogoBiglietto.fxml";
 	public final static String FXML_RIEPILOGO_ALLOGGIO = "/ui/fxml/RiepilogoAlloggio.fxml";
 	public final static String FXML_RIEPILOGO_PACCHETTO = "/ui/fxml/RiepilogoPacchetto.fxml";
@@ -55,6 +57,7 @@ public final class Costanti {
 	public final static String FXML_RICERCA_BIGLIETTO_FORM = "/ui/fxml/RicercaBigliettoForm.fxml";
 	public final static String FXML_RIEPILOGO_BIGLIETTO_ITEM = "/ui/fxml/RiepilogoBigliettoItem.fxml";
 	public final static String FXML_RIEPILOGO_ALLOGGIO_ITEM = "/ui/fxml/RiepilogoAlloggioItem.fxml";
+	public final static String FXML_GESTISCI_CLIENTI = "/ui/fxml/GestisciClienti.fxml";
 
 	/**
 	 * Messaggi dei Dialog

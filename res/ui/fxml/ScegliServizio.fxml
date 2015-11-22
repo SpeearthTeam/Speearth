@@ -11,8 +11,10 @@
       <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <items>
           <Button disable="true" mnemonicParsing="false" text="Scegli Servizio" />
-            <Button fx:id="bottone_ricerca" disable="true" mnemonicParsing="false" text="Ricerca" />
-            <Button fx:id="bottone_riepilogo" disable="true" mnemonicParsing="false" text="Riepilogo" />
+          <Button fx:id="bottone_ricerca" disable="true" mnemonicParsing="false" text="Ricerca" />
+          <Button fx:id="bottone_riepilogo" disable="true" mnemonicParsing="false" text="Riepilogo" />
+          <Pane HBox.hgrow="ALWAYS" />
+          <Button fx:id="bottone_gestione_clienti" mnemonicParsing="false" onAction="#gestisciClienti" text="Gestione Clienti" />
         </items>
       </ToolBar>
    </top>

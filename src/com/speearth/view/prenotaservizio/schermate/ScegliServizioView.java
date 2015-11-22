@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import com.speearth.utility.Costanti;
 import com.speearth.view.View;
+import com.speearth.view.gestisciclienti.schermate.GesticiClientiView;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,6 +24,8 @@ public class ScegliServizioView extends View {
 	private Button bottone_prenota_alloggio;
 	@FXML
 	private Button bottone_prenota_pacchetto;
+	@FXML
+	private Button bottone_gestione_clienti;
 
 	/**
 	 * Costruttore di default
@@ -63,6 +66,13 @@ public class ScegliServizioView extends View {
 	@FXML
 	public void prenotaPacchetto(ActionEvent event) throws IOException {
 		RicercaPacchettoView view = new RicercaPacchettoView(getStage());
+		view.mostra();
+	}
+	
+	// Event Listener on Button[#bottone_gestione_clienti].onAction
+	@FXML
+	public void gestisciClienti(ActionEvent event) throws IOException {
+		GesticiClientiView view = new GesticiClientiView(getStage());
 		view.mostra();
 	}
 

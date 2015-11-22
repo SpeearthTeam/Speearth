@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
-import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Junction;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.orm.PersistentException;
 
@@ -61,12 +61,22 @@ public class RegistroClienti {
 	public ArrayList<Cliente> cercaClientiDaValore(String valore) {
 		try {
 			ClienteCriteria cliente = new ClienteCriteria();
-			Criterion nome = Restrictions.like("Nome", valore);
-			Criterion cognome = Restrictions.like("Cognome", valore);
-			Criterion codice_fiscale = Restrictions.like("CodiceFiscale", valore);
-			Junction condizioni = Restrictions.disjunction();
-			condizioni.add(nome).add(cognome).add(codice_fiscale);
-			cliente.add(condizioni);
+			
+			if (valore != null && !valore.isEmpty()) {
+				
+				Junction condizioni = Restrictions.disjunction();
+				String[] valori = valore.split(" ");
+				
+				for(String stringa : valori) {
+					condizioni
+						.add(Restrictions.like("nome", stringa, MatchMode.START))
+						.add(Restrictions.like("cognome", stringa, MatchMode.START))
+						.add(Restrictions.like("codiceFiscale", stringa, MatchMode.ANYWHERE));
+				}
+				
+				cliente.add(condizioni);
+			}
+			
 			return new ArrayList<>(Arrays.asList(cliente.listCliente()));
 		} catch (PersistentException e) {
 			e.printStackTrace();
