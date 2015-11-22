@@ -2,16 +2,20 @@ package com.speearth.view.gestisciclienti.schermate.componenti;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import com.speearth.model.core.Cliente;
 import com.speearth.utility.Costanti;
 import com.speearth.view.SubView;
+import com.speearth.view.gestisciclienti.eventi.EventoGestioneCliente;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -30,6 +34,8 @@ public class RisultatoClienteItem extends SubView {
 	private Label codice_tessera;
 	@FXML
 	private Button bottone_modifica;
+	@FXML
+	private Button bottone_elimina;
 	
 	/**
 	 * Cliente contenuto nella subview
@@ -79,7 +85,19 @@ public class RisultatoClienteItem extends SubView {
 	// Event Listener on Button[#bottone_modifica].onAction
 	@FXML
 	public void modificaCliente(ActionEvent event) {
-		// TODO Andare sulla schermata di modifica del cliente 
+		EventoGestioneCliente evento = new EventoGestioneCliente(EventoGestioneCliente.MODIFICA_CLIENTE, cliente);
+		getRoot().fireEvent(evento);
+	}
+	
+	// Event Listener on Button[#bottone_elimina].onAction
+	@FXML
+	public void eliminaCliente(ActionEvent event) {
+		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_GESTISCI_CLIENTE,
+				null, Costanti.MESSAGGIO_ELIMINA_CLIENTE);
+		if (result.get() == ButtonType.OK) {
+			EventoGestioneCliente evento = new EventoGestioneCliente(EventoGestioneCliente.ELIMINA_CLIENTE, cliente);
+			getRoot().fireEvent(evento);
+		}
 	}
 
 	/**

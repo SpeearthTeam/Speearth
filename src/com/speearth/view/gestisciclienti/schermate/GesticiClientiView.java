@@ -14,6 +14,7 @@ import com.speearth.controller.GestisciClientiController;
 import com.speearth.model.core.Cliente;
 import com.speearth.utility.Costanti;
 import com.speearth.view.View;
+import com.speearth.view.gestisciclienti.eventi.EventoGestioneCliente;
 import com.speearth.view.gestisciclienti.schermate.componenti.ClienteListItem;
 import com.speearth.view.prenotaservizio.schermate.ScegliServizioView;
 
@@ -22,7 +23,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-
+import javafx.event.EventHandler;
 import javafx.stage.Stage;
 
 public class GesticiClientiView extends View {
@@ -52,6 +53,17 @@ public class GesticiClientiView extends View {
 	public GesticiClientiView(Stage stage) throws IOException {
 		super(stage);
 		getStage().setTitle(Costanti.TITOLO_GESTISCI_CLIENTE);
+		getRoot().addEventHandler(EventoGestioneCliente.ELIMINA_CLIENTE, new EventHandler<EventoGestioneCliente>() {
+			
+			@Override
+			public void handle(EventoGestioneCliente event) {
+				Cliente cliente = event.getCliente();
+				
+				if (clienti.remove(cliente)) {
+					controller.eliminaCliente(cliente);
+				}
+			}
+		});
 	}
 
 	/**

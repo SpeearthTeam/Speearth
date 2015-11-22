@@ -72,6 +72,7 @@ public final class Costanti {
 	public final static String MESSAGGIO_PACCHETTO_UN_ELEMENTO = "Il Pacchetto deve contenere almeno 2 Servizi.";
 	public final static String MESSAGGIO_NESSUN_CLIENTE = "Non è stato identificato nessun Cliente. Procedere?";
 	public final static String MESSAGGIO_SERVIZIO_PRESENTE = "Hai già selezionato questo Servizio.";
+	public final static String MESSAGGIO_ELIMINA_CLIENTE = "Il cliente verrà cancellato. Vuoi procedere?";
 
 	/**
 	 * Sistemi Esterni: Aziende di Trasporto
