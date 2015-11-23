@@ -47,9 +47,9 @@ public class GestisciClientiController implements ICasoDUsoController {
 	 * @param cognome
 	 * @param data_nascita
 	 * @param codice_fiscale
-	 * @return boolean
+	 * @return Cliente
 	 */
-	public boolean aggiungiCliente(String nome, String cognome, Date data_nascita, String codice_fiscale) {
+	public Cliente aggiungiCliente(String nome, String cognome, Date data_nascita, String codice_fiscale) {
 		return AgenziaFacade.getInstance().getRegistroClienti().aggiungiCliente(nome, cognome, data_nascita,
 				codice_fiscale);
 	}
@@ -62,9 +62,9 @@ public class GestisciClientiController implements ICasoDUsoController {
 	 * @param cognome
 	 * @param data_nascita
 	 * @param codice_fiscale
-	 * @return boolean
+	 * @return Cliente
 	 */
-	public boolean modificaCliente(int id, String nome, String cognome, Date data_nascita, String codice_fiscale) {
+	public Cliente modificaCliente(int id, String nome, String cognome, Date data_nascita, String codice_fiscale) {
 		return AgenziaFacade.getInstance().getRegistroClienti().modificaCliente(id, nome, cognome, data_nascita,
 				codice_fiscale);
 	}

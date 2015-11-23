@@ -18,9 +18,4 @@ public abstract class SubView extends View {
 	public SubView(Stage stage) throws IOException {
 		super(stage);
 	}
-
-	/**
-	 * Aggiorna l'interfaccia grafica della subview
-	 */
-	public abstract void updateUI();
 }

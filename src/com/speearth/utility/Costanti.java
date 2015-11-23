@@ -14,11 +14,13 @@ public final class Costanti {
 	 * Formato della Data con orario
 	 */
 	public final static SimpleDateFormat FORMATO_DATA_ORA = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+	public final static SimpleDateFormat FORMATO_DATA_ORA_STANDARD = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 	/**
 	 * Formato della Data
 	 */
 	public final static SimpleDateFormat FORMATO_DATA = new SimpleDateFormat("dd-MM-yyyy");
+	public final static SimpleDateFormat FORMATO_DATA_STANDARD = new SimpleDateFormat("yyyy-MM-dd");
 
 	/**
 	 * Titoli delle Schermate
@@ -39,6 +41,7 @@ public final class Costanti {
 	public final static String TITOLO_NESSUN_CLIENTE = "Nessun Cliente";
 	public final static String TITOLO_SERVIZIO_PRESENTE = "Servizio già presente";
 	public final static String TITOLO_GESTISCI_CLIENTE = "Gestione clienti";
+	public final static String TITOLO_TESSERA_ASSOCIATA = "Tessera";
 
 	/**
 	 * Path degli FXML
@@ -58,6 +61,8 @@ public final class Costanti {
 	public final static String FXML_RIEPILOGO_BIGLIETTO_ITEM = "/ui/fxml/RiepilogoBigliettoItem.fxml";
 	public final static String FXML_RIEPILOGO_ALLOGGIO_ITEM = "/ui/fxml/RiepilogoAlloggioItem.fxml";
 	public final static String FXML_GESTISCI_CLIENTI = "/ui/fxml/GestisciClienti.fxml";
+	public final static String FXML_SALVA_CLIENTE_FORM = "/ui/fxml/SalvaClienteForm.fxml";
+	public final static String FXML_SALVA_CLIENTE = "/ui/fxml/SalvaCliente.fxml";
 
 	/**
 	 * Messaggi dei Dialog
@@ -73,6 +78,7 @@ public final class Costanti {
 	public final static String MESSAGGIO_NESSUN_CLIENTE = "Non è stato identificato nessun Cliente. Procedere?";
 	public final static String MESSAGGIO_SERVIZIO_PRESENTE = "Hai già selezionato questo Servizio.";
 	public final static String MESSAGGIO_ELIMINA_CLIENTE = "Il cliente verrà cancellato. Vuoi procedere?";
+	public final static String MESSAGGIO_TESSERA_ASSOCIATA = "Il codice tessera associato al cliente è ";
 
 	/**
 	 * Sistemi Esterni: Aziende di Trasporto

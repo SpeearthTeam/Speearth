@@ -71,6 +71,7 @@ public class RegistroClienti {
 					condizioni
 						.add(Restrictions.like("nome", stringa, MatchMode.START))
 						.add(Restrictions.like("cognome", stringa, MatchMode.START))
+						.add(Restrictions.like("codiceTessera", Integer.parseInt(stringa)))
 						.add(Restrictions.like("codiceFiscale", stringa, MatchMode.ANYWHERE));
 				}
 				
@@ -108,16 +109,17 @@ public class RegistroClienti {
 	 * @param cognome
 	 * @param data_nascita
 	 * @param codice_fiscale
-	 * @return boolean
+	 * @return Cliente
 	 */
-	public boolean aggiungiCliente(String nome, String cognome, Date data_nascita, String codice_fiscale) {
+	public Cliente aggiungiCliente(String nome, String cognome, Date data_nascita, String codice_fiscale) {
 		try {
-			SpeearthPersistentManager.instance().saveObject(new Cliente(nome, cognome, data_nascita, codice_fiscale));
-			return true;
+			Cliente cliente = new Cliente(nome, cognome, data_nascita, codice_fiscale);
+			SpeearthPersistentManager.instance().saveObject(cliente);
+			return cliente;
 		} catch (PersistentException e) {
 			e.printStackTrace();
 		}
-		return false;
+		return null;
 	}
 
 	/**
@@ -128,21 +130,22 @@ public class RegistroClienti {
 	 * @param cognome
 	 * @param data_nascita
 	 * @param codice_fiscale
-	 * @return boolean
+	 * @return Cliente
 	 */
-	public boolean modificaCliente(int id, String nome, String cognome, Date data_nascita, String codice_fiscale) {
+	public Cliente modificaCliente(int id, String nome, String cognome, Date data_nascita, String codice_fiscale) {
 		Cliente cliente = this.cercaClienteDaID(id);
-		cliente.setNome(nome);
-		cliente.setCognome(cognome);
-		cliente.setDataNascita(data_nascita);
-		cliente.setCodiceFiscale(codice_fiscale);
-		try {
-			SpeearthPersistentManager.instance().getSession().update(cliente);
-			return true;
-		} catch (PersistentException e) {
-			e.printStackTrace();
+		if (cliente != null) {
+			cliente.setNome(nome);
+			cliente.setCognome(cognome);
+			cliente.setDataNascita(data_nascita);
+			cliente.setCodiceFiscale(codice_fiscale);
+			try {
+				SpeearthPersistentManager.instance().saveObject(cliente);
+			} catch (PersistentException e) {
+				e.printStackTrace();
+			}
 		}
-		return false;
+		return cliente;
 	}
 
 	/**
