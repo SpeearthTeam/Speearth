@@ -28,7 +28,7 @@
                         <Image url="@../img/icona_biglietto.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="bottone_scegli_servizio" mnemonicParsing="false" onAction="#scegliServizio" text="Scegli servizio" />
+                  <Button fx:id="bottone_prenota_servizio" mnemonicParsing="false" onAction="#prenotaServizio" text="Prenota Servizio" />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
@@ -38,7 +38,7 @@
                         <Image url="@../img/icona_alloggio.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="bottone_gestici_clienti" mnemonicParsing="false" onAction="#gesticiClienti" text="Gestici clienti" />
+                  <Button fx:id="bottone_gestici_clienti" mnemonicParsing="false" onAction="#gesticiClienti" text="Gestici Clienti" />
                </children>
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
@@ -48,7 +48,7 @@
                         <Image url="@../img/icona_pacchetto.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="bottone_crea_offerta" mnemonicParsing="false" onAction="#creaOfferta" text="Crea offerta" />
+                  <Button fx:id="bottone_crea_offerta" mnemonicParsing="false" onAction="#creaOfferta" text="Crea Offerta" />
                </children>
             </VBox>
          </children>

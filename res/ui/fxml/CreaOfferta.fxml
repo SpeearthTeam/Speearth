@@ -28,7 +28,7 @@
 											<right>
 												<VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
 													<children>
-														<Button fx:id="bottone_svuota" mnemonicParsing="false" onAction="#svuotaPacchetto" prefHeight="31.0" prefWidth="104.0" text="Svuota" />
+														<Button fx:id="bottone_svuota" mnemonicParsing="false" onAction="#svuotaOfferta" prefHeight="31.0" prefWidth="104.0" text="Svuota" />
 														<Button fx:id="bottone_conferma" mnemonicParsing="false" onAction="#confermaOfferta" prefHeight="31.0" prefWidth="104.0" text="Conferma" />
 													</children>
 												</VBox>

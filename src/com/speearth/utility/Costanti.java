@@ -38,7 +38,12 @@ public final class Costanti {
 	public final static String TITOLO_NESSUN_SERVIZIO = "Nessun Servizio prenotato.";
 	public final static String TITOLO_NESSUN_CLIENTE = "Nessun Cliente";
 	public final static String TITOLO_SERVIZIO_PRESENTE = "Servizio già presente";
-	public final static String TITOLO_GESTISCI_CLIENTE = "Gestione clienti";
+	public final static String TITOLO_GESTISCI_CLIENTE = "Gestione Clienti";
+	public final static String TITOLO_CREA_OFFERTA = "Crea Offerta - Speearth";
+	public final static String TITOLO_TORNA_ALLA_HOME = "Torna alla Home - Speearth";
+	public final static String TITOLO_SVUOTA_OFFERTA = " Svuota l'offerta - Speearth";
+	
+	
 
 	/**
 	 * Path degli FXML
@@ -58,6 +63,8 @@ public final class Costanti {
 	public final static String FXML_RIEPILOGO_BIGLIETTO_ITEM = "/ui/fxml/RiepilogoBigliettoItem.fxml";
 	public final static String FXML_RIEPILOGO_ALLOGGIO_ITEM = "/ui/fxml/RiepilogoAlloggioItem.fxml";
 	public final static String FXML_GESTISCI_CLIENTI = "/ui/fxml/GestisciClienti.fxml";
+	public final static String FXML_RIEPILOGO_OFFERTA = "/ui/fxml/RiepilogoOfferta.fxml";
+	public final static String FXML_CREA_OFFERTA = "/ui/fxml/CreaOfferta.fxml";
 
 	/**
 	 * Messaggi dei Dialog
@@ -72,8 +79,11 @@ public final class Costanti {
 	public final static String MESSAGGIO_PACCHETTO_UN_ELEMENTO = "Il Pacchetto deve contenere almeno 2 Servizi.";
 	public final static String MESSAGGIO_NESSUN_CLIENTE = "Non è stato identificato nessun Cliente. Procedere?";
 	public final static String MESSAGGIO_SERVIZIO_PRESENTE = "Hai già selezionato questo Servizio.";
-	public final static String MESSAGGIO_ELIMINA_CLIENTE = "Il cliente verrà cancellato. Vuoi procedere?";
-
+	public final static String MESSAGGIO_ELIMINA_CLIENTE = "Il Cliente verrà cancellato. Vuoi procedere?";
+	public final static String MESSAGGIO_TITOLO_TORNA_ALLA_HOME = "L'Offerta verrà cancellata. Vuoi procedere?";
+	public final static String MESSAGGIO_OFFERTA_SALVATA = "L'Offerta è stata salvata correttamente.";
+	public final static String MESSAGGIO_SVUOTA_OFFERTA= "Vuoi davvero rimuovere tutti i Servizi scelti per l'Offerta?";
+	
 	/**
 	 * Sistemi Esterni: Aziende di Trasporto
 	 */

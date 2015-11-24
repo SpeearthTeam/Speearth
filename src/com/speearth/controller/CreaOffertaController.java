@@ -81,4 +81,14 @@ public class CreaOffertaController implements ICasoDUsoController {
 	public void setOfferta(Offerta offerta) {
 		this.offerta = offerta;
 	}
+
+	/**
+	 * Ristabilisce lo stato di partenza del Caso D'Uso
+	 */
+
+	public void reset() {
+
+		this.offerta = null;
+	}
+
 }
