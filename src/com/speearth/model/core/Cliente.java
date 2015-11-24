@@ -13,6 +13,8 @@
  */
 package com.speearth.model.core;
 
+import java.util.Random;
+
 /**
  * Classe che descrive il cliente
  */
@@ -152,6 +154,9 @@ public class Cliente {
 		this.cognome = cognome;
 		this.dataNascita = data_nascita;
 		this.codiceFiscale = codice_fiscale;
+		
+		Random rn = new Random();
+		this.codiceTessera = (int) (100000 +  rn.nextFloat() * 900000);
 	}
 	
 	public String toString() {

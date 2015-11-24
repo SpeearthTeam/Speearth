@@ -14,6 +14,7 @@ public class EventoGestioneCliente extends Event {
 	
 	public static EventType<EventoGestioneCliente> ELIMINA_CLIENTE = new EventType<EventoGestioneCliente>("ELIMINA_CLIENTE");
 	public static EventType<EventoGestioneCliente> MODIFICA_CLIENTE = new EventType<EventoGestioneCliente>("MODIFICA_CLIENTE");
+	public static EventType<EventoGestioneCliente> SALVA_CLIENTE = new EventType<EventoGestioneCliente>("SALVA_CLIENTE");
 	
 	/**
 	 * Cliente associato all'evento

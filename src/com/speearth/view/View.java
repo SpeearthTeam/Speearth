@@ -121,5 +121,12 @@ public abstract class View implements Initializable {
 		alert.setContentText(content_text);
 		return alert.showAndWait();
 	}
+	
+	/**
+	 * Aggiorna l'interfaccia grafica della subview
+	 */
+	public void updateUI() {
+		
+	}
 
 }

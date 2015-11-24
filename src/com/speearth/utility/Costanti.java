@@ -14,11 +14,13 @@ public final class Costanti {
 	 * Formato della Data con orario
 	 */
 	public final static SimpleDateFormat FORMATO_DATA_ORA = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+	public final static SimpleDateFormat FORMATO_DATA_ORA_STANDARD = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 	/**
 	 * Formato della Data
 	 */
 	public final static SimpleDateFormat FORMATO_DATA = new SimpleDateFormat("dd-MM-yyyy");
+	public final static SimpleDateFormat FORMATO_DATA_STANDARD = new SimpleDateFormat("yyyy-MM-dd");
 
 	/**
 	 * Titoli delle Schermate
@@ -42,8 +44,7 @@ public final class Costanti {
 	public final static String TITOLO_CREA_OFFERTA = "Crea Offerta - Speearth";
 	public final static String TITOLO_TORNA_ALLA_HOME = "Torna alla Home - Speearth";
 	public final static String TITOLO_SVUOTA_OFFERTA = " Svuota l'offerta - Speearth";
-	
-	
+	public final static String TITOLO_TESSERA_ASSOCIATA = "Tessera";
 
 	/**
 	 * Path degli FXML
@@ -65,6 +66,8 @@ public final class Costanti {
 	public final static String FXML_GESTISCI_CLIENTI = "/ui/fxml/GestisciClienti.fxml";
 	public final static String FXML_RIEPILOGO_OFFERTA = "/ui/fxml/RiepilogoOfferta.fxml";
 	public final static String FXML_CREA_OFFERTA = "/ui/fxml/CreaOfferta.fxml";
+	public final static String FXML_SALVA_CLIENTE_FORM = "/ui/fxml/SalvaClienteForm.fxml";
+	public final static String FXML_SALVA_CLIENTE = "/ui/fxml/SalvaCliente.fxml";
 
 	/**
 	 * Messaggi dei Dialog
@@ -82,8 +85,9 @@ public final class Costanti {
 	public final static String MESSAGGIO_ELIMINA_CLIENTE = "Il Cliente verrà cancellato. Vuoi procedere?";
 	public final static String MESSAGGIO_TITOLO_TORNA_ALLA_HOME = "L'Offerta verrà cancellata. Vuoi procedere?";
 	public final static String MESSAGGIO_OFFERTA_SALVATA = "L'Offerta è stata salvata correttamente.";
-	public final static String MESSAGGIO_SVUOTA_OFFERTA= "Vuoi davvero rimuovere tutti i Servizi scelti per l'Offerta?";
-	
+	public final static String MESSAGGIO_SVUOTA_OFFERTA = "Vuoi davvero rimuovere tutti i Servizi scelti per l'Offerta?";
+	public final static String MESSAGGIO_TESSERA_ASSOCIATA = "Il codice tessera associato al cliente è ";
+
 	/**
 	 * Sistemi Esterni: Aziende di Trasporto
 	 */

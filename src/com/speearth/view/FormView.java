@@ -1,9 +1,7 @@
-package com.speearth.view.prenotaservizio.schermate.componenti.form;
+package com.speearth.view;
 
 import java.io.IOException;
 import java.util.HashMap;
-
-import com.speearth.view.SubView;
 
 import javafx.stage.Stage;
 

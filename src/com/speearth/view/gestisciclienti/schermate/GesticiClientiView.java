@@ -32,6 +32,8 @@ public class GesticiClientiView extends View {
 	@FXML
 	private Button bottone_torna_alla_home;
 	@FXML
+	private Button bottone_aggiungi;
+	@FXML
 	private ListView<Cliente> lista_risultati;
 	
 	/**
@@ -64,6 +66,19 @@ public class GesticiClientiView extends View {
 				}
 			}
 		});
+		
+		getRoot().addEventHandler(EventoGestioneCliente.MODIFICA_CLIENTE, new EventHandler<EventoGestioneCliente>() {
+			
+			@Override
+			public void handle(EventoGestioneCliente event) {
+				try {
+					SalvaClienteView view = new SalvaClienteView(getStage(), GesticiClientiView.this, event.getCliente());
+					view.mostra();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
 	/**
@@ -90,6 +105,22 @@ public class GesticiClientiView extends View {
 	public void vaiAllaHome(ActionEvent event) throws IOException {
 		ScegliServizioView view = new ScegliServizioView(getStage());
 		view.mostra();
+	}
+	
+	// Event Listener on Button[#bottone_aggiungi].onAction
+	@FXML
+	public void aggiungiCliente(ActionEvent event) throws IOException {
+		SalvaClienteView view = new SalvaClienteView(getStage(), this, null);
+		view.mostra();
+	}
+	
+	/**
+	 * Aggiorna la view
+	 */
+	@Override
+	public void updateUI() {
+		String valore = ricerca_cliente_input.getText();
+		clienti.setAll(controller.cercaCliente(valore));
 	}
 
 	/**
