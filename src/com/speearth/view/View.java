@@ -89,6 +89,14 @@ public abstract class View implements Initializable {
 		setScene();
 		stage.show();
 	}
+	
+	/**
+	 * Alternativa apposita per i Popup
+	 */
+	public void mostraEAspetta() {
+		setScene();
+		stage.showAndWait();
+	}
 
 	/**
 	 * Ritorna l'oggetto root che sta a capo dell'albero

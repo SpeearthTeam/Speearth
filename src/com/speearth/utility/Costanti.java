@@ -38,14 +38,17 @@ public final class Costanti {
 	public final static String TITOLO_SVUOTA_PACCHETTO = "Svuota il Pacchetto";
 	public final static String TITOLO_PAGAMENTO_EFFETTUATO = "Pagamento effettuato";
 	public final static String TITOLO_TORNA_A_SCEGLI_SERVIZIO = "Torna alla Scelta del Servizio";
-	public final static String TITOLO_NESSUN_SERVIZIO = "Nessun Servizio prenotato.";
+	public final static String TITOLO_NESSUN_SERVIZIO = "Nessun Servizio prenotato";
 	public final static String TITOLO_NESSUN_CLIENTE = "Nessun Cliente";
 	public final static String TITOLO_SERVIZIO_PRESENTE = "Servizio già presente";
-	public final static String TITOLO_GESTISCI_CLIENTE = "Gestisci Clienti - Speearth";
+	public final static String TITOLO_GESTISCI_CLIENTI = "Gestisci Clienti - Speearth";
+	public final static String TITOLO_AGGIUNGI_CLIENTE = "Aggiungi Cliente - Speearth";
+	public final static String TITOLO_MODIFICA_CLIENTE = "Modifica Cliente - Speearth";
+	public final static String TITOLO_ELIMINA_CLIENTE = "Elimina Cliente";
 	public final static String TITOLO_CREA_OFFERTA = "Crea Offerta - Speearth";
 	public final static String TITOLO_TORNA_ALLA_HOME = "Torna alla Home - Speearth";
 	public final static String TITOLO_SVUOTA_OFFERTA = " Svuota l'offerta - Speearth";
-	public final static String TITOLO_TESSERA_ASSOCIATA = "Tessera";
+	public final static String TITOLO_CLIENTE_AGGIUNTO = "Cliente aggiunto con successo";
 
 	/**
 	 * Path degli FXML
@@ -67,7 +70,8 @@ public final class Costanti {
 	public final static String FXML_GESTISCI_CLIENTI = "/ui/fxml/GestisciClienti.fxml";
 	public final static String FXML_RIEPILOGO_OFFERTA = "/ui/fxml/RiepilogoOfferta.fxml";
 	public final static String FXML_CREA_OFFERTA = "/ui/fxml/CreaOfferta.fxml";
-	public final static String FXML_CLIENTE_FORM = "/ui/fxml/ClienteForm.fxml";
+	public final static String FXML_AGGIUNGI_CLIENTE_FORM = "/ui/fxml/AggiungiClienteForm.fxml";
+	public final static String FXML_MODIFICA_CLIENTE_FORM = "/ui/fxml/ModificaClienteForm.fxml";
 	public final static String FXML_CLIENTE_POPUP = "/ui/fxml/ClientePopup.fxml";
 	public static final String FXML_HOME_RESPONSABILE_OFFERTE = "/ui/fxml/HomeResponsabileOfferte.fxml";
 
@@ -89,7 +93,7 @@ public final class Costanti {
 	public final static String MESSAGGIO_TORNA_ALLA_HOME = "L'Offerta verrà cancellata. Vuoi procedere?";
 	public final static String MESSAGGIO_OFFERTA_SALVATA = "L'Offerta è stata salvata correttamente.";
 	public final static String MESSAGGIO_SVUOTA_OFFERTA = "Vuoi davvero rimuovere tutti i Servizi scelti per l'Offerta?";
-	public final static String MESSAGGIO_TESSERA_ASSOCIATA = "Il Codice Tessera del nuovo Cliente è ";
+	public final static String MESSAGGIO_CLIENTE_AGGIUNTO = "Cliente aggiunto con successo! Codice Tessera del nuovo Cliente: ";
 	public final static String MESSAGGIO_PROBLEMA_DATABASE = "L'operazione su Database non è andata a buon fine.";
 	public final static String MESSAGGIO_DETTAGLI_MANCANTI = "Mancano alcuni dettagli.";
 

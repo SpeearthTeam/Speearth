@@ -36,17 +36,17 @@ public class GesticiClientiView extends View {
 	private Button bottone_aggiungi;
 	@FXML
 	private ListView<Cliente> lista_risultati;
-	
+
 	/**
 	 * Lista dei clienti gestiti
 	 */
 	private ObservableList<Cliente> clienti;
-	
+
 	/**
 	 * Controller per la gestione dei clienti
 	 */
 	private GestisciClientiController controller;
-	
+
 	/**
 	 * Costruttore di default
 	 * 
@@ -55,21 +55,17 @@ public class GesticiClientiView extends View {
 	 */
 	public GesticiClientiView(Stage stage) throws IOException {
 		super(stage);
-		getStage().setTitle(Costanti.TITOLO_GESTISCI_CLIENTE);
+		getStage().setTitle(Costanti.TITOLO_AGGIUNGI_CLIENTE);
 		getRoot().addEventHandler(EventoGestioneCliente.ELIMINA_CLIENTE, new EventHandler<EventoGestioneCliente>() {
-			
 			@Override
 			public void handle(EventoGestioneCliente event) {
 				Cliente cliente = event.getCliente();
-				
 				if (clienti.remove(cliente)) {
 					controller.eliminaCliente(cliente);
 				}
 			}
 		});
-		
 		getRoot().addEventHandler(EventoGestioneCliente.MODIFICA_CLIENTE, new EventHandler<EventoGestioneCliente>() {
-			
 			@Override
 			public void handle(EventoGestioneCliente event) {
 				try {
@@ -77,7 +73,7 @@ public class GesticiClientiView extends View {
 					stage.setScene(new Scene(FXMLLoader.load(getClass().getResource(Costanti.FXML_CLIENTE_POPUP))));
 					stage.initModality(Modality.APPLICATION_MODAL);
 					ClientePopupView view = new ClientePopupView(stage, event.getCliente());
-					view.mostra();
+					view.mostraEAspetta();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -96,21 +92,20 @@ public class GesticiClientiView extends View {
 		lista_risultati.setItems(clienti);
 		clienti.setAll(controller.cercaCliente(null));
 		ricerca_cliente_input.textProperty().addListener(new ChangeListener<String>() {
-
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 				clienti.setAll(controller.cercaCliente(newValue));
 			}
 		});
 	}
-	
+
 	// Event Listener on Button[#bottone_torna_alla_home].onAction
 	@FXML
 	public void vaiAllaHome(ActionEvent event) throws IOException {
 		HomeView view = new HomeView(getStage());
 		view.mostra();
 	}
-	
+
 	// Event Listener on Button[#bottone_aggiungi].onAction
 	@FXML
 	public void aggiungiCliente(ActionEvent event) throws IOException {
@@ -118,9 +113,10 @@ public class GesticiClientiView extends View {
 		stage.setScene(new Scene(FXMLLoader.load(getClass().getResource(Costanti.FXML_CLIENTE_POPUP))));
 		stage.initModality(Modality.APPLICATION_MODAL);
 		ClientePopupView view = new ClientePopupView(stage, null);
-		view.mostra();
+		view.mostraEAspetta();
+		this.updateUI();
 	}
-	
+
 	/**
 	 * Aggiorna la view
 	 */

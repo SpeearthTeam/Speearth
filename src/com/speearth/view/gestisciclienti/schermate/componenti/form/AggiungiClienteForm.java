@@ -27,7 +27,7 @@ import javafx.event.ActionEvent;
 
 import javafx.scene.control.DatePicker;
 
-public class ClienteForm extends FormView {
+public class AggiungiClienteForm extends FormView {
 	@FXML
 	private TextField input_nome;
 	@FXML
@@ -35,7 +35,7 @@ public class ClienteForm extends FormView {
 	@FXML
 	private DatePicker input_data_nascita;
 	@FXML
-	private Button bottone_salva;
+	private Button bottone_aggiungi;
 	@FXML
 	private TextField input_codice_fiscale;
 	
@@ -55,7 +55,7 @@ public class ClienteForm extends FormView {
 	 * @param stage
 	 * @throws IOException
 	 */
-	public ClienteForm(Stage stage) throws IOException {
+	public AggiungiClienteForm(Stage stage) throws IOException {
 		this(stage, null);
 	}
 	
@@ -66,7 +66,7 @@ public class ClienteForm extends FormView {
 	 * @param cliente
 	 * @throws IOException
 	 */
-	public ClienteForm(Stage stage, Cliente cliente) throws IOException {
+	public AggiungiClienteForm(Stage stage, Cliente cliente) throws IOException {
 		super(stage);
 		this.cliente = cliente;
 		this.controller = GestisciClientiController.getInstance();
@@ -91,7 +91,7 @@ public class ClienteForm extends FormView {
 	
 	// Event Listener on Button[#bottone_aggiungi].onAction
 	@FXML
-	public void salvaCliente(ActionEvent event) {
+	public void aggiungi(ActionEvent event) {
 		try {
 			this.validate();
 			this.send(null);
@@ -190,6 +190,6 @@ public class ClienteForm extends FormView {
 	 */
 	@Override
 	public String getResourceName() {
-		return Costanti.FXML_CLIENTE_FORM;
+		return Costanti.FXML_AGGIUNGI_CLIENTE_FORM;
 	}
 }

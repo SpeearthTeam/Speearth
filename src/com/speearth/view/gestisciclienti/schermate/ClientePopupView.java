@@ -6,9 +6,11 @@ import java.util.ResourceBundle;
 
 import com.speearth.model.core.Cliente;
 import com.speearth.utility.Costanti;
+import com.speearth.view.FormView;
 import com.speearth.view.View;
 import com.speearth.view.eventi.EventoGestioneCliente;
-import com.speearth.view.gestisciclienti.schermate.componenti.form.ClienteForm;
+import com.speearth.view.gestisciclienti.schermate.componenti.form.AggiungiClienteForm;
+import com.speearth.view.gestisciclienti.schermate.componenti.form.ModificaClienteForm;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -23,7 +25,7 @@ public class ClientePopupView extends View {
 	/**
 	 * Form di salvataggio del cliente
 	 */
-	private ClienteForm form;
+	private FormView form;
 
 	/**
 	 * Cliente
@@ -40,25 +42,36 @@ public class ClientePopupView extends View {
 	 */
 	public ClientePopupView(Stage stage, Cliente cliente) throws IOException {
 		super(stage);
-		getStage().setTitle(Costanti.TITOLO_GESTISCI_CLIENTE);
 		setCliente(cliente);
 		getRoot().addEventHandler(EventoGestioneCliente.AGGIUNGI_CLIENTE, new EventHandler<EventoGestioneCliente>() {
 			@Override
 			public void handle(EventoGestioneCliente event) {
 				setCliente(event.getCliente());
-				mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_TESSERA_ASSOCIATA, null,
-						Costanti.MESSAGGIO_TESSERA_ASSOCIATA + getCliente().getCodiceTessera());
+				mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_CLIENTE_AGGIUNTO, null,
+						Costanti.MESSAGGIO_CLIENTE_AGGIUNTO + getCliente().getCodiceTessera());
 			}
 		});
-		
+
 		getRoot().addEventHandler(EventoGestioneCliente.MODIFICA_CLIENTE, new EventHandler<EventoGestioneCliente>() {
 			@Override
 			public void handle(EventoGestioneCliente event) {
 				setCliente(event.getCliente());
-//				mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_TESSERA_ASSOCIATA, null,
-//						Costanti.MESSAGGIO_TESSERA_ASSOCIATA + getCliente().getCodiceTessera());
 			}
 		});
+
+		try {
+			if (cliente == null) {
+				form = new AggiungiClienteForm(getStage(), cliente);
+				form_container.getChildren().add(form.getRoot());
+				getStage().setTitle(Costanti.TITOLO_AGGIUNGI_CLIENTE);
+			} else {
+				form = new ModificaClienteForm(getStage(), cliente);
+				form_container.getChildren().add(form.getRoot());
+				getStage().setTitle(Costanti.TITOLO_MODIFICA_CLIENTE);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -66,12 +79,6 @@ public class ClientePopupView extends View {
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		try {
-			form = new ClienteForm(getStage(), cliente);
-			form_container.getChildren().add(form.getRoot());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 
 	/**
@@ -81,10 +88,6 @@ public class ClientePopupView extends View {
 	 */
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
-		if (form != null) {
-			form.setCliente(cliente);
-			form.updateUI();
-		}
 	}
 
 	/**
