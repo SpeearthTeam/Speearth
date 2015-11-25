@@ -1,7 +1,8 @@
 package com.speearth;
 
 import com.speearth.controller.AppFacadeController;
-import com.speearth.view.prenotaservizio.schermate.ScegliServizioView;
+import com.speearth.utility.Costanti;
+import com.speearth.view.HomeView;
 
 import javafx.application.Application;
 import javafx.scene.image.Image;
@@ -22,8 +23,8 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		ScegliServizioView view = new ScegliServizioView(primaryStage);
-		primaryStage.getIcons().add(new Image(this.getClass().getResourceAsStream("/ui/img/icona_app.png")));
+		primaryStage.getIcons().add(new Image(this.getClass().getResourceAsStream(Costanti.ICONA_SPEEARTH)));
+		HomeView view = new HomeView(primaryStage);
 		view.mostra();
 	}
 

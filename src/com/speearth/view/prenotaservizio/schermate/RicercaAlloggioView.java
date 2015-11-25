@@ -11,8 +11,9 @@ import com.speearth.controller.AppFacadeController;
 import com.speearth.model.core.Alloggio;
 import com.speearth.model.core.ServizioComponent;
 import com.speearth.utility.Costanti;
+import com.speearth.view.HomeView;
 import com.speearth.view.View;
-import com.speearth.view.prenotaservizio.eventi.EventoSelezionaServizio;
+import com.speearth.view.eventi.EventoSelezionaServizio;
 import com.speearth.view.prenotaservizio.schermate.componenti.AlloggioListItem;
 import com.speearth.view.prenotaservizio.schermate.componenti.form.RicercaAlloggioForm;
 
@@ -113,6 +114,29 @@ public class RicercaAlloggioView extends View {
 		}
 	}
 
+	// Event Listener on Button[#bottone_torna_alla_home].onAction
+	@FXML
+	public void vaiAllaHome(ActionEvent event) throws IOException {
+		ArrayList<Alloggio> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
+				.getPrenotaAlloggioController().getAlloggi();
+		if (!risultati.isEmpty()) {
+			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME, null,
+					Costanti.MESSAGGIO_TORNA_ALLA_HOME);
+			if (result.get() == ButtonType.OK) {
+				AppFacadeController.getInstance().getPrenotaServizioController().reset();
+				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController()
+						.clearAlloggi();
+				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController()
+						.clearParametri();
+				HomeView view = new HomeView(getStage());
+				view.mostra();
+			}
+		} else {
+			HomeView view = new HomeView(getStage());
+			view.mostra();
+		}
+	}
+
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
 	@FXML
 	public void vaiAScegliServizio(ActionEvent event) throws IOException {
@@ -122,7 +146,7 @@ public class RicercaAlloggioView extends View {
 			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
 					null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
 			if (result.get() == ButtonType.OK) {
-				AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
+				AppFacadeController.getInstance().getPrenotaServizioController().reset();
 				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController()
 						.clearAlloggi();
 				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController()
@@ -131,6 +155,7 @@ public class RicercaAlloggioView extends View {
 				view.mostra();
 			}
 		} else {
+			AppFacadeController.getInstance().getPrenotaServizioController().reset();
 			ScegliServizioView view = new ScegliServizioView(getStage());
 			view.mostra();
 		}
@@ -146,7 +171,7 @@ public class RicercaAlloggioView extends View {
 	 * Ridirige l'utente al riepilogo
 	 * 
 	 * @throws IOException
-	 * @throws ParseException 
+	 * @throws ParseException
 	 */
 	public void vaiARiepilogo() throws IOException, ParseException {
 		if (AppFacadeController.getInstance().getPrenotaServizioController().getServizio() == null)

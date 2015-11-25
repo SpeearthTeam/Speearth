@@ -9,7 +9,7 @@ import com.speearth.model.core.Alloggio;
 import com.speearth.model.core.Stanza;
 import com.speearth.utility.Costanti;
 import com.speearth.view.SubView;
-import com.speearth.view.prenotaservizio.eventi.EventoSelezionaServizio;
+import com.speearth.view.eventi.EventoSelezionaServizio;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

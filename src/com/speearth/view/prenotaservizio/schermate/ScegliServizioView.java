@@ -5,8 +5,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.speearth.utility.Costanti;
+import com.speearth.view.HomeView;
 import com.speearth.view.View;
-import com.speearth.view.gestisciclienti.schermate.GesticiClientiView;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +14,8 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class ScegliServizioView extends View {
+	@FXML
+	private Button bottone_torna_alla_home;
 	@FXML
 	private Button bottone_ricerca;
 	@FXML
@@ -24,8 +26,6 @@ public class ScegliServizioView extends View {
 	private Button bottone_prenota_alloggio;
 	@FXML
 	private Button bottone_prenota_pacchetto;
-	@FXML
-	private Button bottone_gestione_clienti;
 
 	/**
 	 * Costruttore di default
@@ -69,13 +69,18 @@ public class ScegliServizioView extends View {
 		view.mostra();
 	}
 	
-	// Event Listener on Button[#bottone_gestione_clienti].onAction
+	// Event Listener on Button[#bottone_torna_alla_home].onAction
 	@FXML
-	public void gestisciClienti(ActionEvent event) throws IOException {
-		GesticiClientiView view = new GesticiClientiView(getStage());
+	public void vaiAllaHome(ActionEvent event) throws IOException {
+		HomeView view = new HomeView(getStage());
 		view.mostra();
 	}
 
+	/**
+	 * Restituisce il nome della Risorsa associata alla View
+	 * 
+	 * @return String
+	 */
 	@Override
 	public String getResourceName() {
 		return Costanti.FXML_SCEGLI_SERVIZIO;

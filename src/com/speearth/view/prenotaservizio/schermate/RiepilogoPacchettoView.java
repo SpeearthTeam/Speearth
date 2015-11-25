@@ -12,6 +12,7 @@ import com.speearth.model.core.ServizioComponent;
 import com.speearth.model.core.bonus.IBonus;
 import com.speearth.model.core.bonus.ScontoConcreteStrategy;
 import com.speearth.utility.Costanti;
+import com.speearth.view.HomeView;
 import com.speearth.view.View;
 import com.speearth.view.prenotaservizio.schermate.componenti.PacchettoListItem;
 
@@ -28,6 +29,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class RiepilogoPacchettoView extends View {
+	@FXML
+	private Button bottone_torna_alla_home;
 	@FXML
 	private Button bottone_scegli_servizio;
 	@FXML
@@ -114,19 +117,35 @@ public class RiepilogoPacchettoView extends View {
 		this.riepilogo_servizi.setItems(this.lista_servizi);
 	}
 
+	// Event Listener on Button[#bottone_torna_alla_home].onAction
+	@FXML
+	public void vaiAllaHome(ActionEvent event) throws IOException {
+		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME,
+				Costanti.MESSAGGIO_TORNA_ALLA_HOME, null);
+		if (result.get() == ButtonType.OK) {
+			AppFacadeController.getInstance().getPrenotaServizioController().reset();
+			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
+					.clearBiglietti();
+			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController()
+					.clearAlloggi();
+			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController().reset();
+			HomeView view = new HomeView(getStage());
+			view.mostra();
+		}
+	}
+
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
 	@FXML
 	public void vaiAScegliServizio(ActionEvent event) throws IOException {
 		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
 				Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO, null);
 		if (result.get() == ButtonType.OK) {
-			AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
+			AppFacadeController.getInstance().getPrenotaServizioController().reset();
 			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
 					.clearBiglietti();
 			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController()
 					.clearAlloggi();
-			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
-					.reset();
+			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController().reset();
 			ScegliServizioView view = new ScegliServizioView(getStage());
 			view.mostra();
 		}
@@ -175,13 +194,15 @@ public class RiepilogoPacchettoView extends View {
 		}
 		String ricevuta = AppFacadeController.getInstance().getPrenotaServizioController()
 				.effettuaPagamento("contanti");
-		mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_PAGAMENTO_EFFETTUATO,
-				Costanti.MESSAGGIO_PAGAMENTO_EFFETTUATO, ricevuta);
-		AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
-				.reset();
-		AppFacadeController.getInstance().getPrenotaServizioController().reset();
-		ScegliServizioView view = new ScegliServizioView(getStage());
-		view.mostra();
+		if (ricevuta != null) {
+			mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_PAGAMENTO_EFFETTUATO,
+					Costanti.MESSAGGIO_PAGAMENTO_EFFETTUATO, ricevuta);
+			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController().reset();
+			AppFacadeController.getInstance().getPrenotaServizioController().reset();
+			ScegliServizioView view = new ScegliServizioView(getStage());
+			view.mostra();
+		} else
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, Costanti.MESSAGGIO_PROBLEMA_DATABASE, null);
 	}
 
 	/**

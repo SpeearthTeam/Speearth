@@ -7,7 +7,7 @@ import java.util.ResourceBundle;
 import com.speearth.model.core.Biglietto;
 import com.speearth.utility.Costanti;
 import com.speearth.view.SubView;
-import com.speearth.view.prenotaservizio.eventi.EventoSelezionaServizio;
+import com.speearth.view.eventi.EventoSelezionaServizio;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

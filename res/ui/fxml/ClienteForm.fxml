@@ -11,7 +11,7 @@
       <TextField fx:id="input_cognome" layoutX="82.0" layoutY="87.0" prefHeight="31.0" prefWidth="256.0" promptText="Cognome" />
       <TextField fx:id="input_codice_fiscale" layoutX="82.0" layoutY="140.0" prefHeight="31.0" prefWidth="256.0" promptText="Codice fiscale" />
       <DatePicker fx:id="input_data_nascita" layoutX="82.0" layoutY="192.0" prefHeight="31.0" prefWidth="256.0" promptText="Data di nascita" />
-      <Button fx:id="bottone_aggiungi" layoutX="82.0" layoutY="259.0" mnemonicParsing="false" onAction="#aggiungiCliente" prefHeight="31.0" prefWidth="256.0" text="Salva" textAlignment="CENTER">
+      <Button fx:id="bottone_salva" layoutX="82.0" layoutY="259.0" mnemonicParsing="false" onAction="#salvaCliente" prefHeight="31.0" prefWidth="256.0" text="Salva" textAlignment="CENTER">
          <font>
             <Font size="18.0" />
          </font>

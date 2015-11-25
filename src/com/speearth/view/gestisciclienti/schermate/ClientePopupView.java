@@ -1,10 +1,5 @@
 package com.speearth.view.gestisciclienti.schermate;
 
-import javafx.fxml.FXML;
-
-import javafx.scene.control.Button;
-import javafx.scene.control.Alert.AlertType;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -12,29 +7,23 @@ import java.util.ResourceBundle;
 import com.speearth.model.core.Cliente;
 import com.speearth.utility.Costanti;
 import com.speearth.view.View;
-import com.speearth.view.gestisciclienti.eventi.EventoGestioneCliente;
-import com.speearth.view.gestisciclienti.schermate.componenti.form.SalvaClienteForm;
+import com.speearth.view.eventi.EventoGestioneCliente;
+import com.speearth.view.gestisciclienti.schermate.componenti.form.ClienteForm;
 
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class SalvaClienteView extends View {
+public class ClientePopupView extends View {
 	@FXML
 	private AnchorPane form_container;
-	@FXML
-	private Button bottone_indietro;
-
-	/**
-	 * View precedente
-	 */
-	private View previousView;
 
 	/**
 	 * Form di salvataggio del cliente
 	 */
-	private SalvaClienteForm form;
+	private ClienteForm form;
 
 	/**
 	 * Cliente
@@ -49,34 +38,27 @@ public class SalvaClienteView extends View {
 	 * @param cliente
 	 * @throws IOException
 	 */
-	public SalvaClienteView(Stage stage, View previousView, Cliente cliente) throws IOException {
+	public ClientePopupView(Stage stage, Cliente cliente) throws IOException {
 		super(stage);
 		getStage().setTitle(Costanti.TITOLO_GESTISCI_CLIENTE);
-		this.previousView = previousView;
 		setCliente(cliente);
-
-		getRoot().addEventHandler(EventoGestioneCliente.SALVA_CLIENTE, new EventHandler<EventoGestioneCliente>() {
-
+		getRoot().addEventHandler(EventoGestioneCliente.AGGIUNGI_CLIENTE, new EventHandler<EventoGestioneCliente>() {
 			@Override
 			public void handle(EventoGestioneCliente event) {
 				setCliente(event.getCliente());
 				mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_TESSERA_ASSOCIATA, null,
 						Costanti.MESSAGGIO_TESSERA_ASSOCIATA + getCliente().getCodiceTessera());
-
-				if (previousView != null) {
-					previousView.updateUI();
-					previousView.mostra();
-				}
 			}
 		});
-	}
-
-	// Event Listener on Button[#bottone_indietro].onAction
-	@FXML
-	public void vaiIndietro(ActionEvent event) {
-		if (previousView != null) {
-			previousView.mostra();
-		}
+		
+		getRoot().addEventHandler(EventoGestioneCliente.MODIFICA_CLIENTE, new EventHandler<EventoGestioneCliente>() {
+			@Override
+			public void handle(EventoGestioneCliente event) {
+				setCliente(event.getCliente());
+//				mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_TESSERA_ASSOCIATA, null,
+//						Costanti.MESSAGGIO_TESSERA_ASSOCIATA + getCliente().getCodiceTessera());
+			}
+		});
 	}
 
 	/**
@@ -85,7 +67,7 @@ public class SalvaClienteView extends View {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
-			form = new SalvaClienteForm(getStage(), cliente);
+			form = new ClienteForm(getStage(), cliente);
 			form_container.getChildren().add(form.getRoot());
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -117,6 +99,6 @@ public class SalvaClienteView extends View {
 	 */
 	@Override
 	public String getResourceName() {
-		return Costanti.FXML_SALVA_CLIENTE;
+		return Costanti.FXML_CLIENTE_POPUP;
 	}
 }

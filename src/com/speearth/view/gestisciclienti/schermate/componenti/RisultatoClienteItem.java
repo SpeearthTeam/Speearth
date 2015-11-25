@@ -8,7 +8,7 @@ import java.util.ResourceBundle;
 import com.speearth.model.core.Cliente;
 import com.speearth.utility.Costanti;
 import com.speearth.view.SubView;
-import com.speearth.view.gestisciclienti.eventi.EventoGestioneCliente;
+import com.speearth.view.eventi.EventoGestioneCliente;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

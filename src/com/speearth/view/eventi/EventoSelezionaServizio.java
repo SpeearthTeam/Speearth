@@ -1,4 +1,4 @@
-package com.speearth.view.creaofferta.eventi;
+package com.speearth.view.eventi;
 
 import com.speearth.model.core.ServizioComponent;
 

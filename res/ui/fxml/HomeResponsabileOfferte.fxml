@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
@@ -7,48 +8,84 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <top>
-      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-   </top>
    <center>
-      <GridPane styleClass="grid" BorderPane.alignment="CENTER">
+      <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="VBox">
+            <GridPane alignment="CENTER" styleClass="grid" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
                <children>
-                  <ImageView fitHeight="146.0" fitWidth="188.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/icona_biglietto.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="bottone_prenota_servizio" mnemonicParsing="false" onAction="#prenotaServizio" text="Prenota Servizio" />
+                  <Button fx:id="bottone_prenota_servizio" mnemonicParsing="false" onAction="#prenotaServizio" text="Prenota Servizio">
+                     <graphic>
+                        <ImageView fitHeight="146.0" fitWidth="188.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/icona_prenota_servizio.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="bottone_gestici_clienti" mnemonicParsing="false" onAction="#gesticiClienti" text="Gestici Clienti" GridPane.rowIndex="1">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/icona_utenti.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="bottone_crea_offerta" mnemonicParsing="false" onAction="#creaOfferta" text="Crea Offerta" GridPane.rowIndex="2">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/icona_crea_offerta.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
-            </VBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+            </GridPane>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="360.0" fitWidth="454.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/icona_alloggio.png" />
+                        <Image url="@../img/icona_logo_speearth.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="bottone_gestici_clienti" mnemonicParsing="false" onAction="#gesticiClienti" text="Gestici Clienti" />
-               </children>
-            </VBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
-               <children>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/icona_pacchetto.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="bottone_crea_offerta" mnemonicParsing="false" onAction="#creaOfferta" text="Crea Offerta" />
+                  <Label text="Sei autenticato come:">
+                     <padding>
+                        <Insets top="50.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="label_utente" text="label_utente">
+                     <padding>
+                        <Insets bottom="30.0" top="10.0" />
+                     </padding>
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="Ruolo:" />
+                  <Label fx:id="label_ruole_utente" text="Responsabile Offerte">
+                     <padding>
+                        <Insets bottom="30.0" top="10.0" />
+                     </padding>
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
                </children>
             </VBox>
          </children>

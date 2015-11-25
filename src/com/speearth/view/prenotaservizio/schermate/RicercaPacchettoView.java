@@ -12,8 +12,9 @@ import com.speearth.model.core.Biglietto;
 import com.speearth.model.core.PacchettoComposite;
 import com.speearth.model.core.ServizioComponent;
 import com.speearth.utility.Costanti;
+import com.speearth.view.HomeView;
 import com.speearth.view.View;
-import com.speearth.view.prenotaservizio.eventi.EventoSelezionaServizio;
+import com.speearth.view.eventi.EventoSelezionaServizio;
 import com.speearth.view.prenotaservizio.schermate.componenti.AlloggioListItem;
 import com.speearth.view.prenotaservizio.schermate.componenti.BigliettoListItem;
 import com.speearth.view.prenotaservizio.schermate.componenti.form.RicercaAlloggioForm;
@@ -232,6 +233,38 @@ public class RicercaPacchettoView extends View {
 		this.tabella_pacchetto.setItems(this.lista_servizi);
 	}
 
+	// Event Listener on Button[#bottone_torna_alla_home].onAction
+	@FXML
+	public void vaiAllaHome(ActionEvent event) throws IOException {
+		ArrayList<Biglietto> risultati_biglietti = AppFacadeController.getInstance().getPrenotaServizioController()
+				.getPrenotaBigliettoController().getBiglietti();
+		ArrayList<Alloggio> risultati_alloggi = AppFacadeController.getInstance().getPrenotaServizioController()
+				.getPrenotaAlloggioController().getAlloggi();
+		if (!risultati_biglietti.isEmpty() || !risultati_alloggi.isEmpty()) {
+			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME, null,
+					Costanti.MESSAGGIO_TORNA_ALLA_HOME);
+			if (result.get() == ButtonType.OK) {
+				AppFacadeController.getInstance().getPrenotaServizioController().reset();
+				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
+						.clearParametri();
+				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController()
+						.clearParametri();
+				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
+						.clearBiglietti();
+				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController()
+						.clearAlloggi();
+				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
+						.reset();
+				HomeView view = new HomeView(getStage());
+				view.mostra();
+			}
+		} else {
+			AppFacadeController.getInstance().getPrenotaServizioController().reset();
+			HomeView view = new HomeView(getStage());
+			view.mostra();
+		}
+	}
+
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
 	@FXML
 	public void vaiAScegliServizio(ActionEvent event) throws IOException {
@@ -243,15 +276,15 @@ public class RicercaPacchettoView extends View {
 			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
 					null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
 			if (result.get() == ButtonType.OK) {
-				AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
+				AppFacadeController.getInstance().getPrenotaServizioController().reset();
+				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
+						.clearParametri();
+				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController()
+						.clearParametri();
 				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
 						.clearBiglietti();
 				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController()
 						.clearAlloggi();
-				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
-						.clearParametri();
-				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController()
-						.clearParametri();
 				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
 						.reset();
 				ScegliServizioView view = new ScegliServizioView(getStage());

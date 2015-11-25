@@ -21,13 +21,13 @@ import com.speearth.controller.GestisciClientiController;
 import com.speearth.model.core.Cliente;
 import com.speearth.utility.Costanti;
 import com.speearth.view.FormView;
-import com.speearth.view.gestisciclienti.eventi.EventoGestioneCliente;
+import com.speearth.view.eventi.EventoGestioneCliente;
 
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.DatePicker;
 
-public class SalvaClienteForm extends FormView {
+public class ClienteForm extends FormView {
 	@FXML
 	private TextField input_nome;
 	@FXML
@@ -35,7 +35,7 @@ public class SalvaClienteForm extends FormView {
 	@FXML
 	private DatePicker input_data_nascita;
 	@FXML
-	private Button bottone_aggiungi;
+	private Button bottone_salva;
 	@FXML
 	private TextField input_codice_fiscale;
 	
@@ -55,7 +55,7 @@ public class SalvaClienteForm extends FormView {
 	 * @param stage
 	 * @throws IOException
 	 */
-	public SalvaClienteForm(Stage stage) throws IOException {
+	public ClienteForm(Stage stage) throws IOException {
 		this(stage, null);
 	}
 	
@@ -66,7 +66,7 @@ public class SalvaClienteForm extends FormView {
 	 * @param cliente
 	 * @throws IOException
 	 */
-	public SalvaClienteForm(Stage stage, Cliente cliente) throws IOException {
+	public ClienteForm(Stage stage, Cliente cliente) throws IOException {
 		super(stage);
 		this.cliente = cliente;
 		this.controller = GestisciClientiController.getInstance();
@@ -91,18 +91,18 @@ public class SalvaClienteForm extends FormView {
 	
 	// Event Listener on Button[#bottone_aggiungi].onAction
 	@FXML
-	public void aggiungiCliente(ActionEvent event) {
+	public void salvaCliente(ActionEvent event) {
 		try {
-			validate();
-			send(null);
-			
-			EventoGestioneCliente evento = new EventoGestioneCliente(EventoGestioneCliente.SALVA_CLIENTE, cliente);
+			this.validate();
+			this.send(null);
+			EventoGestioneCliente evento = new EventoGestioneCliente(EventoGestioneCliente.AGGIUNGI_CLIENTE, cliente);
 			getRoot().fireEvent(evento);
 		} catch (InvalidParameterException e) {
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, e.getMessage());
 		} catch (IOException e) {
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, e.getMessage());
 		}
+		this.getStage().close();
 	}
 
 	/**
@@ -190,6 +190,6 @@ public class SalvaClienteForm extends FormView {
 	 */
 	@Override
 	public String getResourceName() {
-		return Costanti.FXML_SALVA_CLIENTE_FORM;
+		return Costanti.FXML_CLIENTE_FORM;
 	}
 }

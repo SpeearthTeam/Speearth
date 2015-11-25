@@ -10,8 +10,9 @@ import com.speearth.controller.AppFacadeController;
 import com.speearth.model.core.Biglietto;
 import com.speearth.model.core.ServizioComponent;
 import com.speearth.utility.Costanti;
+import com.speearth.view.HomeView;
 import com.speearth.view.View;
-import com.speearth.view.prenotaservizio.eventi.EventoSelezionaServizio;
+import com.speearth.view.eventi.EventoSelezionaServizio;
 import com.speearth.view.prenotaservizio.schermate.componenti.BigliettoListItem;
 import com.speearth.view.prenotaservizio.schermate.componenti.form.RicercaBigliettoForm;
 
@@ -107,6 +108,30 @@ public class RicercaBigliettoView extends View {
 			ObservableList<Biglietto> list = FXCollections.observableArrayList(risultati);
 			// setto la lista dei risultati, ListView, con la Observable
 			this.lista_risultati.setItems(list);
+		}
+	}
+
+	// Event Listener on Button[#bottone_torna_alla_home].onAction
+	@FXML
+	public void vaiAllaHome(ActionEvent event) throws IOException {
+		ArrayList<Biglietto> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
+				.getPrenotaBigliettoController().getBiglietti();
+		if (!risultati.isEmpty()) {
+			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME, null,
+					Costanti.MESSAGGIO_TORNA_ALLA_HOME);
+			if (result.get() == ButtonType.OK) {
+				AppFacadeController.getInstance().getPrenotaServizioController().reset();
+				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
+						.clearBiglietti();
+				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
+						.clearParametri();
+				HomeView view = new HomeView(getStage());
+				view.mostra();
+			}
+		} else {
+			AppFacadeController.getInstance().getPrenotaServizioController().reset();
+			HomeView view = new HomeView(getStage());
+			view.mostra();
 		}
 	}
 

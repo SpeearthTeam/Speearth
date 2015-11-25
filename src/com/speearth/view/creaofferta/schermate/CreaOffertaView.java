@@ -12,13 +12,13 @@ import com.speearth.model.core.Biglietto;
 import com.speearth.model.core.Offerta;
 import com.speearth.model.core.ServizioComponent;
 import com.speearth.utility.Costanti;
-import com.speearth.view.HomeResponsabileOfferteView;
+import com.speearth.view.HomeView;
 import com.speearth.view.View;
-import com.speearth.view.creaofferta.eventi.EventoSelezionaServizio;
 import com.speearth.view.creaofferta.schermate.componenti.AlloggioListItem;
 import com.speearth.view.creaofferta.schermate.componenti.BigliettoListItem;
 import com.speearth.view.creaofferta.schermate.componenti.form.RicercaAlloggioForm;
 import com.speearth.view.creaofferta.schermate.componenti.form.RicercaBigliettoForm;
+import com.speearth.view.eventi.EventoSelezionaServizio;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -39,7 +39,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-public class CreaOffertaView extends View{
+public class CreaOffertaView extends View {
 	@FXML
 	private Button bottone_torna_alla_home;
 	@FXML
@@ -51,11 +51,11 @@ public class CreaOffertaView extends View{
 	@FXML
 	private Button bottone_conferma;
 	@FXML
-	private TableView<ServizioComponent>  tabella_pacchetto;
+	private TableView<ServizioComponent> tabella_pacchetto;
 	@FXML
-	private TableColumn<ServizioComponent, String>  tipo_servizio_col;
+	private TableColumn<ServizioComponent, String> tipo_servizio_col;
 	@FXML
-	private TableColumn<ServizioComponent, String>  fornitore_servizio_col;
+	private TableColumn<ServizioComponent, String> fornitore_servizio_col;
 	@FXML
 	private TableColumn<ServizioComponent, String> prezzo_servizio_col;
 	@FXML
@@ -66,17 +66,15 @@ public class CreaOffertaView extends View{
 	private AnchorPane alloggio_form_container;
 	@FXML
 	private ListView<Alloggio> lista_risultati_alloggi;
-	
+
 	private ObservableList<ServizioComponent> lista_servizi = FXCollections.observableArrayList();
 
 	private RicercaBigliettoForm ricerca_biglietto_form;
-	
+
 	private RicercaAlloggioForm ricerca_alloggio_form;
-	
+
 	private TableColumn<ServizioComponent, Boolean> cancella_servizio_col = new TableColumn<>("Cancella");
 
-
-	
 	/**
 	 * Costruttore di default
 	 * 
@@ -89,11 +87,9 @@ public class CreaOffertaView extends View{
 		getStage().setTitle(Costanti.TITOLO_CREA_OFFERTA);
 		getRoot().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO,
 				new EventHandler<EventoSelezionaServizio>() {
-
 					@Override
 					public void handle(EventoSelezionaServizio event) {
-						Offerta offerta = AppFacadeController.getInstance().getCreaOffertaController()
-								.getOfferta();
+						Offerta offerta = AppFacadeController.getInstance().getCreaOffertaController().getOfferta();
 						if (offerta != null && offerta.getListaServizi().contains(event.getServizio()))
 							mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_SERVIZIO_PRESENTE, null,
 									Costanti.MESSAGGIO_SERVIZIO_PRESENTE);
@@ -105,10 +101,10 @@ public class CreaOffertaView extends View{
 						}
 					}
 				});
-
 		impostaRisultati();
 		initializeServiceTable();
 	}
+
 	/**
 	 * Inizializza la classe
 	 * 
@@ -132,6 +128,7 @@ public class CreaOffertaView extends View{
 			e.printStackTrace();
 		}
 	}
+
 	/**
 	 * Metodo che serve a caricare i biglietti e gli alloggi salvati nel
 	 * controller alla view, dalla schermata Riepilogo a Ricerca, altrimenti
@@ -139,7 +136,7 @@ public class CreaOffertaView extends View{
 	 */
 	private void impostaRisultati() {
 		// ottengo i biglietti dal controller
-		ArrayList<Biglietto> risultati_biglietti = AppFacadeController.getInstance().getPrenotaServizioController()
+		ArrayList<Biglietto> risultati_biglietti = AppFacadeController.getInstance().getCreaOffertaController()
 				.getPrenotaBigliettoController().getBiglietti();
 		// se il risultato contiene biglietti, allora...
 		if (!risultati_biglietti.isEmpty()) {
@@ -150,7 +147,7 @@ public class CreaOffertaView extends View{
 			this.lista_risultati_biglietti.setItems(list_biglietti);
 		}
 		// ottengo i biglietti dal controller
-		ArrayList<Alloggio> risultati_alloggi = AppFacadeController.getInstance().getPrenotaServizioController()
+		ArrayList<Alloggio> risultati_alloggi = AppFacadeController.getInstance().getCreaOffertaController()
 				.getPrenotaAlloggioController().getAlloggi();
 		// se il risultato contiene biglietti, allora...
 		if (!risultati_alloggi.isEmpty()) {
@@ -161,13 +158,13 @@ public class CreaOffertaView extends View{
 			this.lista_risultati_alloggi.setItems(list_alloggi);
 		}
 		// ottengo i servizi del pacchetto dal controller
-		ArrayList<ServizioComponent> pacchetto = AppFacadeController.getInstance().getPrenotaServizioController()
-				.getPrenotaPacchettoController().getPacchetto();
+		ArrayList<ServizioComponent> offerta = (ArrayList<ServizioComponent>) AppFacadeController.getInstance()
+				.getCreaOffertaController().getOfferta().getListaServizi();
 		// se il pacchetto contiene servizi, allora imposto la lista servizi del
 		// pacchetto e la ObservableList
-		if (!pacchetto.isEmpty()) {
-			AppFacadeController.getInstance().getPrenotaServizioController().getServizio().setListaServizi(pacchetto);
-			lista_servizi.addAll(pacchetto);
+		if (!offerta.isEmpty()) {
+			AppFacadeController.getInstance().getCreaOffertaController().getOfferta().setListaServizi(offerta);
+			lista_servizi.addAll(offerta);
 		}
 	}
 
@@ -238,106 +235,104 @@ public class CreaOffertaView extends View{
 					}
 				});
 
-		this.lista_servizi.setAll(
-				AppFacadeController.getInstance().getPrenotaServizioController().getServizio().getListaServizi());
+		this.lista_servizi
+				.setAll(AppFacadeController.getInstance().getCreaOffertaController().getOfferta().getListaServizi());
 		this.tabella_pacchetto.setItems(this.lista_servizi);
 	}
 
-
 	// Event Listener on Button[#bottone_torna_alla_home].onAction
-		@FXML
-		public void vaiAllaHome(ActionEvent event) throws IOException {
-			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME,
-					Costanti.MESSAGGIO_TITOLO_TORNA_ALLA_HOME, null);
-			if (result.get() == ButtonType.OK) {
-				AppFacadeController.getInstance().getCreaOffertaController().reset();
-				AppFacadeController.getInstance().getCreaOffertaController().getPrenotaBigliettoController()
-						.clearBiglietti();
-				AppFacadeController.getInstance().getCreaOffertaController().getPrenotaAlloggioController().clearAlloggi();
-				HomeResponsabileOfferteView view = new HomeResponsabileOfferteView(getStage());
-				view.mostra();
-			}
+	@FXML
+	public void vaiAllaHome(ActionEvent event) throws IOException {
+		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME,
+				Costanti.MESSAGGIO_TORNA_ALLA_HOME, null);
+		if (result.get() == ButtonType.OK) {
+			AppFacadeController.getInstance().getCreaOffertaController().reset();
+			AppFacadeController.getInstance().getCreaOffertaController().getPrenotaBigliettoController()
+					.clearBiglietti();
+			AppFacadeController.getInstance().getCreaOffertaController().getPrenotaAlloggioController().clearAlloggi();
+			HomeView view = new HomeView(getStage());
+			view.mostra();
 		}
-		
+	}
+
 	// Event Listener on Button[#bottone_riepilogo].onAction
 	@FXML
 	public void vaiARiepilogo(ActionEvent event) throws IOException {
-		ArrayList<ServizioComponent> pacchetto = (ArrayList<ServizioComponent>) AppFacadeController.getInstance()
-				.getPrenotaServizioController().getServizio().getListaServizi();
-		AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
-				.setPacchetto(pacchetto);
-		if (pacchetto.isEmpty())
+		ArrayList<ServizioComponent> offerta = (ArrayList<ServizioComponent>) AppFacadeController.getInstance()
+				.getCreaOffertaController().getOfferta().getListaServizi();
+		AppFacadeController.getInstance().getCreaOffertaController().getOfferta().setListaServizi(offerta);
+		if (offerta.isEmpty())
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null, Costanti.MESSAGGIO_NESSUN_SERVIZIO);
-		else if (!(pacchetto.size() > 1))
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PACCHETTO_UN_ELEMENTO);
+		else if (!(offerta.size() > 1))
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_OFFERTA_UN_ELEMENTO);
 		else {
-			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
-					.setPacchetto(pacchetto);
+			AppFacadeController.getInstance().getCreaOffertaController().getOfferta().setListaServizi(offerta);
 			RiepilogoOffertaView view = new RiepilogoOffertaView(getStage());
 			view.mostra();
 		}
 	}
-	
+
 	// Event Listener on Button[#bottone_svuota].onAction
-		@FXML
-		public void svuotaOfferta(ActionEvent event) {
-			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_SVUOTA_OFFERTA, null,
-					Costanti.MESSAGGIO_SVUOTA_OFFERTA);
-			if (result.get() == ButtonType.OK) {
-				AppFacadeController.getInstance().getPrenotaServizioController().getServizio().getListaServizi().clear();
-				this.lista_servizi.clear();
-			}
+	@FXML
+	public void svuotaOfferta(ActionEvent event) {
+		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_SVUOTA_OFFERTA, null,
+				Costanti.MESSAGGIO_SVUOTA_OFFERTA);
+		if (result.get() == ButtonType.OK) {
+			AppFacadeController.getInstance().getCreaOffertaController().getOfferta().getListaServizi().clear();
+			this.lista_servizi.clear();
 		}
-		// Event Listener on Button[#bottone_conferma].onAction
-		@FXML
-		public void confermaOfferta(ActionEvent event) throws IOException {
-			vaiARiepilogo(event);
-		}
-		
-		/**
-		 * Restituisce il nome della Risorsa associata alla View
-		 * 
-		 * @return String
-		 */
-		@Override
-		public String getResourceName() {
-			return Costanti.FXML_CREA_OFFERTA;
-		}
-
-		// Definisco la classe privata ButtonCell
-	private class ButtonCell extends TableCell<ServizioComponent, Boolean> {
-			final Button cellButton = new Button("Cancella");
-
-			ButtonCell() {
-				// Azione associata all'event handler della pressione del Button
-				// Cancella
-				cellButton.setOnAction(new EventHandler<ActionEvent>() {
-
-					@Override
-					public void handle(ActionEvent t) {
-						// Recupero il servizio relativo all'indice di riga
-						ServizioComponent servizio = ButtonCell.this.getTableView().getItems()
-								.get(ButtonCell.this.getIndex());
-
-						// Rimuovo il servizio dalla lista servizi
-						lista_servizi.remove(servizio);
-						// Rimuovo il servizio dal servizio in prenotazione
-						AppFacadeController.getInstance().getPrenotaServizioController().getServizio().rimuovi(servizio);
-
-					}
-				});
-			}
-
-			// Visualizzo il Button se la riga non è vuota
-			@Override
-			protected void updateItem(Boolean t, boolean empty) {
-				super.updateItem(t, empty);
-				if (!empty) {
-					setGraphic(cellButton);
-				} else {
-					setGraphic(null);
-				}
-			}
-		}
-
 	}
+
+	// Event Listener on Button[#bottone_conferma].onAction
+	@FXML
+	public void confermaOfferta(ActionEvent event) throws IOException {
+		vaiARiepilogo(event);
+	}
+
+	/**
+	 * Restituisce il nome della Risorsa associata alla View
+	 * 
+	 * @return String
+	 */
+	@Override
+	public String getResourceName() {
+		return Costanti.FXML_CREA_OFFERTA;
+	}
+
+	// Definisco la classe privata ButtonCell
+	private class ButtonCell extends TableCell<ServizioComponent, Boolean> {
+		final Button cellButton = new Button("Cancella");
+
+		ButtonCell() {
+			// Azione associata all'event handler della pressione del Button
+			// Cancella
+			cellButton.setOnAction(new EventHandler<ActionEvent>() {
+
+				@Override
+				public void handle(ActionEvent t) {
+					// Recupero il servizio relativo all'indice di riga
+					ServizioComponent servizio = ButtonCell.this.getTableView().getItems()
+							.get(ButtonCell.this.getIndex());
+
+					// Rimuovo il servizio dalla lista servizi
+					lista_servizi.remove(servizio);
+					// Rimuovo il servizio dal servizio in prenotazione
+					AppFacadeController.getInstance().getCreaOffertaController().getOfferta().rimuovi(servizio);
+
+				}
+			});
+		}
+
+		// Visualizzo il Button se la riga non è vuota
+		@Override
+		protected void updateItem(Boolean t, boolean empty) {
+			super.updateItem(t, empty);
+			if (!empty) {
+				setGraphic(cellButton);
+			} else {
+				setGraphic(null);
+			}
+		}
+	}
+
+}

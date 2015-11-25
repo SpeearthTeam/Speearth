@@ -2,6 +2,9 @@ package com.speearth.view.creaofferta.schermate;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -9,7 +12,7 @@ import com.speearth.controller.AppFacadeController;
 import com.speearth.model.core.Offerta;
 import com.speearth.model.core.ServizioComponent;
 import com.speearth.utility.Costanti;
-import com.speearth.view.HomeResponsabileOfferteView;
+import com.speearth.view.HomeView;
 import com.speearth.view.View;
 import com.speearth.view.creaofferta.schermate.componenti.OffertaListItem;
 
@@ -81,19 +84,21 @@ public class RiepilogoOffertaView extends View {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		this.riepilogo_servizi.setCellFactory(param -> new OffertaListItem(getStage()));
 		this.riepilogo_servizi.setItems(this.lista_servizi);
+		this.input_data_inizio_offerta.setValue(LocalDate.now());
+		this.input_sconto_offerta.setText("0");;
 	}
 
 	// Event Listener on Button[#bottone_torna_alla_home].onAction
 	@FXML
 	public void vaiAllaHome(ActionEvent event) throws IOException {
 		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME,
-				Costanti.MESSAGGIO_TITOLO_TORNA_ALLA_HOME, null);
+				Costanti.MESSAGGIO_TORNA_ALLA_HOME, null);
 		if (result.get() == ButtonType.OK) {
 			AppFacadeController.getInstance().getCreaOffertaController().reset();
 			AppFacadeController.getInstance().getCreaOffertaController().getPrenotaBigliettoController()
 					.clearBiglietti();
 			AppFacadeController.getInstance().getCreaOffertaController().getPrenotaAlloggioController().clearAlloggi();
-			HomeResponsabileOfferteView view = new HomeResponsabileOfferteView(getStage());
+			HomeView view = new HomeView(getStage());
 			view.mostra();
 		}
 	}
@@ -107,19 +112,30 @@ public class RiepilogoOffertaView extends View {
 
 	// Event Listener on Button[#bottone_salva_offerta].onAction
 	@FXML
-	public void salvaOfferta(ActionEvent event) {
-
-		AppFacadeController.getInstance().getCreaOffertaController().confermaOfferta();
-		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME,
-				Costanti.MESSAGGIO_OFFERTA_SALVATA, null);
-		if (result.get() == ButtonType.OK) {
-			AppFacadeController.getInstance().getCreaOffertaController().reset();
-			AppFacadeController.getInstance().getCreaOffertaController().getPrenotaBigliettoController()
-					.clearBiglietti();
-			AppFacadeController.getInstance().getCreaOffertaController().getPrenotaAlloggioController().clearAlloggi();
-			HomeResponsabileOfferteView view = new HomeResponsabileOfferteView(getStage());
-			view.mostra();
-		}
+	public void salvaOfferta(ActionEvent event) throws IOException {
+		if (this.input_data_fine_offerta.getValue() != null && this.input_data_inizio_offerta != null
+				&& this.input_sconto_offerta.getText() != null) {
+			AppFacadeController.getInstance().getCreaOffertaController().getOfferta()
+					.setDataInizio(Date.from(this.input_data_inizio_offerta.getValue().atStartOfDay()
+							.atZone(ZoneId.systemDefault()).toInstant()));
+			AppFacadeController.getInstance().getCreaOffertaController().getOfferta().setDataFine(Date.from(
+					this.input_data_fine_offerta.getValue().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()));
+			AppFacadeController.getInstance().getCreaOffertaController()
+					.applicaSconto(Float.parseFloat(this.input_sconto_offerta.getText()));
+			if (AppFacadeController.getInstance().getCreaOffertaController().confermaOfferta()) {
+				mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_TORNA_ALLA_HOME, Costanti.MESSAGGIO_OFFERTA_SALVATA,
+						null);
+				AppFacadeController.getInstance().getCreaOffertaController().reset();
+				AppFacadeController.getInstance().getCreaOffertaController().getPrenotaBigliettoController()
+						.clearBiglietti();
+				AppFacadeController.getInstance().getCreaOffertaController().getPrenotaAlloggioController()
+						.clearAlloggi();
+				HomeView view = new HomeView(getStage());
+				view.mostra();
+			} else
+				mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, Costanti.MESSAGGIO_PROBLEMA_DATABASE, null);
+		} else
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, Costanti.MESSAGGIO_DETTAGLI_MANCANTI, null);
 	}
 
 	/**

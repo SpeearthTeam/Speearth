@@ -11,6 +11,7 @@ import com.speearth.model.core.Cliente;
 import com.speearth.model.core.bonus.IBonus;
 import com.speearth.model.core.bonus.ScontoConcreteStrategy;
 import com.speearth.utility.Costanti;
+import com.speearth.view.HomeView;
 import com.speearth.view.View;
 
 import javafx.event.ActionEvent;
@@ -127,6 +128,19 @@ public class RiepilogoBigliettoView extends View {
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+	}
+
+	// Event Listener on Button[#bottone_torna_alla_home].onAction
+	@FXML
+	public void vaiAllaHome(ActionEvent event) throws IOException {
+		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME,
+				Costanti.MESSAGGIO_TORNA_ALLA_HOME, null);
+		if (result.get() == ButtonType.OK) {
+			AppFacadeController.getInstance().getPrenotaServizioController().reset();
+			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController().reset();
+			HomeView view = new HomeView(getStage());
+			view.mostra();
+		}
 	}
 
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
