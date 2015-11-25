@@ -13,14 +13,20 @@ import com.speearth.model.core.bonus.ScontoConcreteStrategy;
 import com.speearth.utility.Costanti;
 import com.speearth.view.HomeView;
 import com.speearth.view.View;
+import com.speearth.view.gestisciclienti.schermate.ClientePopupView;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class RiepilogoAlloggioView extends View {
@@ -58,7 +64,14 @@ public class RiepilogoAlloggioView extends View {
 	private Button bottone_conferma_pagamento;
 	@FXML
 	private Label label_bonus;
+	@FXML
+	private Button bottone_aggiungi_cliente;
+	@FXML
+	private RadioButton input_radio_contanti;
+	@FXML
+	private RadioButton input_radio_carta;
 
+	
 	/**
 	 * Cliente
 	 */
@@ -110,6 +123,9 @@ public class RiepilogoAlloggioView extends View {
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		ToggleGroup group = new ToggleGroup();
+		input_radio_contanti.setToggleGroup(group);
+		input_radio_carta.setToggleGroup(group);
 	}
 
 	// Event Listener on Button[#bottone_torna_alla_home].onAction
@@ -143,6 +159,17 @@ public class RiepilogoAlloggioView extends View {
 	public void vaiARicerca(ActionEvent event) throws IOException {
 		RicercaAlloggioView view = new RicercaAlloggioView(getStage());
 		view.mostra();
+	}
+
+	// Event Listener on Button[#bottone_aggiungi_cliente].onAction
+	@FXML
+	public void aggiungiCliente(ActionEvent event) throws IOException {
+		Stage stage = new Stage();
+		stage.setScene(new Scene(FXMLLoader.load(getClass().getResource(Costanti.FXML_CLIENTE_POPUP))));
+		stage.initModality(Modality.APPLICATION_MODAL);
+		ClientePopupView view = new ClientePopupView(stage, null);
+		view.mostraEAspetta();
+		this.updateUI();
 	}
 
 	// Event Listener on Button[#bottone_identifica_cliente].onAction

@@ -80,8 +80,8 @@
                   </HBox>
                   <VBox prefHeight="31.0" prefWidth="426.0">
                      <children>
-                        <RadioButton mnemonicParsing="false" prefHeight="21.0" prefWidth="429.0" text="in contanti" />
-                        <RadioButton alignment="CENTER_RIGHT" mnemonicParsing="false" text="con carta" />
+                        <RadioButton fx:id="input_radio_contanti" mnemonicParsing="false" prefHeight="21.0" prefWidth="429.0" text="in contanti" />
+                        <RadioButton fx:id="input_radio_carta" alignment="CENTER_RIGHT" mnemonicParsing="false" text="con carta" />
                      </children>
                   </VBox>
                   <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="108.0" prefWidth="312.0">
