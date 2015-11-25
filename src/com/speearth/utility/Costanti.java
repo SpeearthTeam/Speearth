@@ -49,6 +49,7 @@ public final class Costanti {
 	public final static String TITOLO_TORNA_ALLA_HOME = "Torna alla Home - Speearth";
 	public final static String TITOLO_SVUOTA_OFFERTA = " Svuota l'offerta - Speearth";
 	public final static String TITOLO_CLIENTE_AGGIUNTO = "Cliente aggiunto con successo";
+	public final static String TITOLO_RIEPILOGO_OFFERTA = "Riepilogo Offerta - Speearth";
 
 	/**
 	 * Path degli FXML

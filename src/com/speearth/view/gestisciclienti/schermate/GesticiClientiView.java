@@ -74,6 +74,7 @@ public class GesticiClientiView extends View {
 					stage.initModality(Modality.APPLICATION_MODAL);
 					ClientePopupView view = new ClientePopupView(stage, event.getCliente());
 					view.mostraEAspetta();
+					GesticiClientiView.this.updateUI();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

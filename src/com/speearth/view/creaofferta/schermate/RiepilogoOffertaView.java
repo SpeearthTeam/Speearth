@@ -59,7 +59,7 @@ public class RiepilogoOffertaView extends View {
 	 */
 	public RiepilogoOffertaView(Stage stage) throws IOException {
 		super(stage);
-		getStage().setTitle(Costanti.TITOLO_RIEPILOGO);
+		getStage().setTitle(Costanti.TITOLO_RIEPILOGO_OFFERTA );
 		this.impostaInfoOfferta(AppFacadeController.getInstance().getCreaOffertaController().getOfferta());
 	}
 
