@@ -64,6 +64,7 @@
                   <VBox alignment="CENTER" prefHeight="146.0" prefWidth="427.0">
                      <children>
                         <Label fx:id="label_bonus" text="Questo Cliente ha diritto ad un Bonus!" visible="false" />
+                        <Button fx:id="bottone_aggiungi_cliente" mnemonicParsing="false" onAction="#aggiungiCliente" text="Aggiungi Cliente" />
                      </children>
                   </VBox>
                </children>
@@ -71,13 +72,23 @@
             <VBox alignment="BASELINE_CENTER" prefHeight="675.0" prefWidth="401.0" GridPane.columnIndex="2">
                <children>
                   <Label text="Prezzo Totale" />
-                  <HBox alignment="CENTER" prefHeight="55.0" prefWidth="432.0">
+                  <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="426.0">
                      <children>
                         <Label fx:id="output_totale" alignment="CENTER" prefHeight="21.0" prefWidth="65.0" />
                         <Label prefHeight="21.0" prefWidth="25.0" text=" €" />
-                        <Button fx:id="bottone_conferma_pagamento" alignment="CENTER" mnemonicParsing="false" onAction="#effettuaPagamento" prefHeight="31.0" prefWidth="173.0" text="Conferma Pagamento" />
                      </children>
                   </HBox>
+                  <VBox prefHeight="31.0" prefWidth="426.0">
+                     <children>
+                        <RadioButton mnemonicParsing="false" prefHeight="21.0" prefWidth="429.0" text="in contanti" />
+                        <RadioButton alignment="CENTER_RIGHT" mnemonicParsing="false" text="con carta" />
+                     </children>
+                  </VBox>
+                  <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="108.0" prefWidth="312.0">
+                     <children>
+                        <Button fx:id="bottone_conferma_pagamento" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#effettuaPagamento" prefHeight="31.0" prefWidth="315.0" text="Conferma Pagamento" />
+                     </children>
+                  </VBox>
                </children>
             </VBox>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
