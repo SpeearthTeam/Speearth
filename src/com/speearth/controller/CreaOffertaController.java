@@ -85,10 +85,10 @@ public class CreaOffertaController implements ICasoDUsoController {
 	/**
 	 * Ristabilisce lo stato di partenza del Caso D'Uso
 	 */
-
 	public void reset() {
-
 		this.offerta = null;
+		getPrenotaAlloggioController().reset();
+		getPrenotaBigliettoController().reset();
 	}
 
 }

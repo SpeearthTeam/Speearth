@@ -245,14 +245,6 @@ public class RicercaPacchettoView extends View {
 					Costanti.MESSAGGIO_TORNA_ALLA_HOME);
 			if (result.get() == ButtonType.OK) {
 				AppFacadeController.getInstance().getPrenotaServizioController().reset();
-				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
-						.clearParametri();
-				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController()
-						.clearParametri();
-				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
-						.clearBiglietti();
-				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController()
-						.clearAlloggi();
 				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
 						.reset();
 				HomeView view = new HomeView(getStage());
@@ -277,14 +269,6 @@ public class RicercaPacchettoView extends View {
 					null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
 			if (result.get() == ButtonType.OK) {
 				AppFacadeController.getInstance().getPrenotaServizioController().reset();
-				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
-						.clearParametri();
-				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController()
-						.clearParametri();
-				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
-						.clearBiglietti();
-				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController()
-						.clearAlloggi();
 				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
 						.reset();
 				ScegliServizioView view = new ScegliServizioView(getStage());

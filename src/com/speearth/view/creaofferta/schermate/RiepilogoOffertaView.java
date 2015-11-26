@@ -97,9 +97,6 @@ public class RiepilogoOffertaView extends View {
 				Costanti.MESSAGGIO_TORNA_ALLA_HOME, null);
 		if (result.get() == ButtonType.OK) {
 			AppFacadeController.getInstance().getCreaOffertaController().reset();
-			AppFacadeController.getInstance().getCreaOffertaController().getPrenotaBigliettoController()
-					.clearBiglietti();
-			AppFacadeController.getInstance().getCreaOffertaController().getPrenotaAlloggioController().clearAlloggi();
 			HomeView view = new HomeView(getStage());
 			view.mostra();
 		}
@@ -112,11 +109,27 @@ public class RiepilogoOffertaView extends View {
 		view.mostra();
 	}
 
+	/**
+	 * Prende in input lo sconto inserito, controlla, e restituisce una stringa
+	 * valida parsificata
+	 * 
+	 * @param input
+	 * @return String
+	 */
+	private String validazioneEParsificazioneSconto(String input) {
+		input = input.replace(",", ".");
+
+		if (input.matches(Costanti.REG_EX_FLOAT) && Float.parseFloat(input) > 0 && Float.parseFloat(input) < 100)
+			return input;
+
+		return null;
+	}
+
 	// Event Listener on Button[#bottone_applica_sconto].onAction
 	@FXML
 	public void applicaSconto(ActionEvent event) throws IOException {
 		String input = this.input_sconto_offerta.getText();
-		if (input.matches(Costanti.REG_EX_FLOAT) && input.length() <= 4 && Float.parseFloat(input) < 100) {
+		if ((input = validazioneEParsificazioneSconto(input)) != null) {
 			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_CONFERMA_SCONTO,
 					Costanti.MESSAGGIO_CONFERMA_SCONTO, null);
 			if (result.get() == ButtonType.OK) {
@@ -134,22 +147,16 @@ public class RiepilogoOffertaView extends View {
 	@FXML
 	public void salvaOfferta(ActionEvent event) throws IOException {
 		if (this.input_data_fine_offerta.getValue() != null && this.input_data_inizio_offerta != null
-				&& this.input_sconto_offerta.getText() != null) {
+				&& validazioneEParsificazioneSconto(this.input_sconto_offerta.getText()) != null) {
 			AppFacadeController.getInstance().getCreaOffertaController().getOfferta()
 					.setDataInizio(Date.from(this.input_data_inizio_offerta.getValue().atStartOfDay()
 							.atZone(ZoneId.systemDefault()).toInstant()));
 			AppFacadeController.getInstance().getCreaOffertaController().getOfferta().setDataFine(Date.from(
 					this.input_data_fine_offerta.getValue().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()));
-			AppFacadeController.getInstance().getCreaOffertaController()
-					.applicaSconto(Float.parseFloat(this.input_sconto_offerta.getText()));
 			if (AppFacadeController.getInstance().getCreaOffertaController().confermaOfferta()) {
 				mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_TORNA_ALLA_HOME, Costanti.MESSAGGIO_OFFERTA_SALVATA,
 						null);
 				AppFacadeController.getInstance().getCreaOffertaController().reset();
-				AppFacadeController.getInstance().getCreaOffertaController().getPrenotaBigliettoController()
-						.clearBiglietti();
-				AppFacadeController.getInstance().getCreaOffertaController().getPrenotaAlloggioController()
-						.clearAlloggi();
 				HomeView view = new HomeView(getStage());
 				view.mostra();
 			} else

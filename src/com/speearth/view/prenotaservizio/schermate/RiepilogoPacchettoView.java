@@ -124,10 +124,6 @@ public class RiepilogoPacchettoView extends View {
 				Costanti.MESSAGGIO_TORNA_ALLA_HOME, null);
 		if (result.get() == ButtonType.OK) {
 			AppFacadeController.getInstance().getPrenotaServizioController().reset();
-			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
-					.clearBiglietti();
-			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController()
-					.clearAlloggi();
 			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController().reset();
 			HomeView view = new HomeView(getStage());
 			view.mostra();
@@ -141,10 +137,6 @@ public class RiepilogoPacchettoView extends View {
 				Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO, null);
 		if (result.get() == ButtonType.OK) {
 			AppFacadeController.getInstance().getPrenotaServizioController().reset();
-			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
-					.clearBiglietti();
-			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController()
-					.clearAlloggi();
 			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController().reset();
 			ScegliServizioView view = new ScegliServizioView(getStage());
 			view.mostra();
@@ -197,8 +189,8 @@ public class RiepilogoPacchettoView extends View {
 		if (ricevuta != null) {
 			mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_PAGAMENTO_EFFETTUATO,
 					Costanti.MESSAGGIO_PAGAMENTO_EFFETTUATO, ricevuta);
-			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController().reset();
 			AppFacadeController.getInstance().getPrenotaServizioController().reset();
+			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController().reset();
 			ScegliServizioView view = new ScegliServizioView(getStage());
 			view.mostra();
 		} else

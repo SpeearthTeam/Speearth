@@ -247,9 +247,6 @@ public class CreaOffertaView extends View {
 				Costanti.MESSAGGIO_TORNA_ALLA_HOME, null);
 		if (result.get() == ButtonType.OK) {
 			AppFacadeController.getInstance().getCreaOffertaController().reset();
-			AppFacadeController.getInstance().getCreaOffertaController().getPrenotaBigliettoController()
-					.clearBiglietti();
-			AppFacadeController.getInstance().getCreaOffertaController().getPrenotaAlloggioController().clearAlloggi();
 			HomeView view = new HomeView(getStage());
 			view.mostra();
 		}

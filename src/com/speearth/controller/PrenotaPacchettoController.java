@@ -74,6 +74,8 @@ public class PrenotaPacchettoController implements IFrammentoController {
 	 */
 	public void reset() {
 		this.pacchetto = new ArrayList<>();
+		getPrenotaAlloggioController().reset();
+		getPrenotaBigliettoController().reset();
 	}
 
 }
