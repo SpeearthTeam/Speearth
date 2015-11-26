@@ -66,7 +66,7 @@ public class Offerta extends com.speearth.model.core.PacchettoComposite {
 	 * Applica lo sconto
 	 */
 	public void applicaSconto(float percentuale) {
-		this.prezzo = this.prezzo * percentuale / 100;
+		this.prezzo = this.prezzo - (this.prezzo * percentuale / 100);
 	}
 	
 	public String toString() {

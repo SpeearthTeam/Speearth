@@ -39,6 +39,8 @@ public class RiepilogoOffertaView extends View {
 	@FXML
 	private Label output_totale_offerta;
 	@FXML
+	private Button bottone_applica_sconto;
+	@FXML
 	private Button bottone_salva_offerta;
 	@FXML
 	private ListView<ServizioComponent> riepilogo_servizi;
@@ -59,7 +61,7 @@ public class RiepilogoOffertaView extends View {
 	 */
 	public RiepilogoOffertaView(Stage stage) throws IOException {
 		super(stage);
-		getStage().setTitle(Costanti.TITOLO_RIEPILOGO_OFFERTA );
+		getStage().setTitle(Costanti.TITOLO_RIEPILOGO_OFFERTA);
 		this.impostaInfoOfferta(AppFacadeController.getInstance().getCreaOffertaController().getOfferta());
 	}
 
@@ -85,7 +87,7 @@ public class RiepilogoOffertaView extends View {
 		this.riepilogo_servizi.setCellFactory(param -> new OffertaListItem(getStage()));
 		this.riepilogo_servizi.setItems(this.lista_servizi);
 		this.input_data_inizio_offerta.setValue(LocalDate.now());
-		this.input_sconto_offerta.setText("0");;
+		this.input_sconto_offerta.setText("0");
 	}
 
 	// Event Listener on Button[#bottone_torna_alla_home].onAction
@@ -108,6 +110,24 @@ public class RiepilogoOffertaView extends View {
 	public void vaiARicerca(ActionEvent event) throws IOException {
 		CreaOffertaView view = new CreaOffertaView(getStage());
 		view.mostra();
+	}
+
+	// Event Listener on Button[#bottone_applica_sconto].onAction
+	@FXML
+	public void applicaSconto(ActionEvent event) throws IOException {
+		String input = this.input_sconto_offerta.getText();
+		if (input.matches(Costanti.REG_EX_FLOAT) && input.length() <= 4 && Float.parseFloat(input) < 100) {
+			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_CONFERMA_SCONTO,
+					Costanti.MESSAGGIO_CONFERMA_SCONTO, null);
+			if (result.get() == ButtonType.OK) {
+				float percentuale = Float.parseFloat(input);
+				AppFacadeController.getInstance().getCreaOffertaController().applicaSconto(percentuale);
+				float prezzo = AppFacadeController.getInstance().getCreaOffertaController().getOfferta().getPrezzo();
+				output_totale_offerta.setText(Float.toString(prezzo));
+			}
+		} else
+			mostraAlert(AlertType.ERROR, null, Costanti.TITOLO_ERRORE, Costanti.MESSAGGIO_SCONTO_INSERITO_ERRATO);
+
 	}
 
 	// Event Listener on Button[#bottone_salva_offerta].onAction

@@ -69,11 +69,16 @@
               </rowConstraints>
                <children>
                   <Label alignment="CENTER" prefHeight="21.0" prefWidth="322.0" text="Data di Inizio" />
-                  <TextField fx:id="input_sconto_offerta" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="324.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="input_sconto_offerta" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="204.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <DatePicker fx:id="input_data_inizio_offerta" prefHeight="31.0" prefWidth="379.0" GridPane.columnIndex="1" />
                   <DatePicker fx:id="input_data_fine_offerta" prefHeight="31.0" prefWidth="338.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label alignment="CENTER" prefHeight="21.0" prefWidth="322.0" text="Data di Scadenza" GridPane.rowIndex="1" />
                   <Label alignment="CENTER" prefHeight="21.0" prefWidth="322.0" text="Sconto in Percentuale" GridPane.rowIndex="2" />
+                  <Button fx:id="bottone_applica_sconto" mnemonicParsing="false" onAction="#applicaSconto" text="Applica Sconto" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Button>
                </children>
             </GridPane>
          </children>

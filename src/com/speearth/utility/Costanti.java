@@ -50,6 +50,7 @@ public final class Costanti {
 	public final static String TITOLO_SVUOTA_OFFERTA = " Svuota l'offerta - Speearth";
 	public final static String TITOLO_CLIENTE_AGGIUNTO = "Cliente aggiunto con successo";
 	public final static String TITOLO_RIEPILOGO_OFFERTA = "Riepilogo Offerta - Speearth";
+	public final static String TITOLO_CONFERMA_SCONTO = "Conferma Applica Sconto";
 
 	/**
 	 * Path degli FXML
@@ -97,6 +98,8 @@ public final class Costanti {
 	public final static String MESSAGGIO_CLIENTE_AGGIUNTO = "Cliente aggiunto con successo! Codice Tessera del nuovo Cliente: ";
 	public final static String MESSAGGIO_PROBLEMA_DATABASE = "L'operazione su Database non è andata a buon fine.";
 	public final static String MESSAGGIO_DETTAGLI_MANCANTI = "Mancano alcuni dettagli.";
+	public final static String MESSAGGIO_CONFERMA_SCONTO = "Vuoi applicare lo Sconto inserito?";
+	public final static String MESSAGGIO_SCONTO_INSERITO_ERRATO = "Lo Sconto inserito non è valido.";
 
 	/**
 	 * Icone
@@ -120,5 +123,10 @@ public final class Costanti {
 	public final static String URL_TRENITALIA = "http://h4ck1n6.altervista.org/";
 	public final static String URL_ITALO = "http://h4ck1n6.altervista.org/";
 	public final static String URL_BOOKING = "http://h4ck1n6.altervista.org/";
+
+	/**
+	 * Espressione regolare input float: (\d*[.,])?\d+
+	 */
+	public final static String REG_EX_FLOAT = "(\\d*[.,])?\\d+";
 
 }
