@@ -13,14 +13,18 @@ import com.speearth.model.core.bonus.ScontoConcreteStrategy;
 import com.speearth.utility.Costanti;
 import com.speearth.view.HomeView;
 import com.speearth.view.View;
+import com.speearth.view.gestisciclienti.schermate.ClientePopupView;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class RiepilogoBigliettoView extends View {
@@ -36,6 +40,8 @@ public class RiepilogoBigliettoView extends View {
 	private Button bottone_identifica_cliente;
 	@FXML
 	private Label input_metodo_pagamento;
+	@FXML
+	private Button bottone_aggiungi_cliente;
 	@FXML
 	private TextField input_codice_tessera;
 	@FXML
@@ -187,6 +193,17 @@ public class RiepilogoBigliettoView extends View {
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_NESSUN_CODICE);
 	}
 
+	// Event Listener on Button[#bottone_aggiungi_cliente].onAction
+	@FXML
+	public void aggiungiCliente(ActionEvent event) throws IOException {
+		Stage stage = new Stage();
+		stage.setScene(new Scene(FXMLLoader.load(getClass().getResource(Costanti.FXML_CLIENTE_POPUP))));
+		stage.initModality(Modality.APPLICATION_MODAL);
+		ClientePopupView view = new ClientePopupView(stage, null);
+		view.mostraEAspetta();
+		this.updateUI();
+	}
+
 	// Event Listener on Button[#bottone_conferma_pagamento].onAction
 	@FXML
 	public void effettuaPagamento(ActionEvent event) throws IOException {
@@ -204,7 +221,7 @@ public class RiepilogoBigliettoView extends View {
 				Costanti.MESSAGGIO_PAGAMENTO_EFFETTUATO, ricevuta);
 		AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController().reset();
 		AppFacadeController.getInstance().getPrenotaServizioController().reset();
-		ScegliServizioView view = new ScegliServizioView(getStage());
+		HomeView view = new HomeView(getStage());
 		view.mostra();
 	}
 

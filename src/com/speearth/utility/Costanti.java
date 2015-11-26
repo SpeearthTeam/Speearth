@@ -13,8 +13,8 @@ public final class Costanti {
 	/**
 	 * Formato della Data con orario
 	 */
-	public final static SimpleDateFormat FORMATO_DATA_ORA = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-	public final static SimpleDateFormat FORMATO_DATA_ORA_STANDARD = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	public final static SimpleDateFormat FORMATO_DATA_ORA = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+	public final static SimpleDateFormat FORMATO_DATA_ORA_STANDARD = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
 	/**
 	 * Formato della Data

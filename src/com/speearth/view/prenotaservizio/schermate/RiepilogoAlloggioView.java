@@ -71,7 +71,6 @@ public class RiepilogoAlloggioView extends View {
 	@FXML
 	private RadioButton input_radio_carta;
 
-	
 	/**
 	 * Cliente
 	 */
@@ -212,7 +211,7 @@ public class RiepilogoAlloggioView extends View {
 				Costanti.MESSAGGIO_PAGAMENTO_EFFETTUATO, ricevuta);
 		AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController().reset();
 		AppFacadeController.getInstance().getPrenotaServizioController().reset();
-		ScegliServizioView view = new ScegliServizioView(getStage());
+		HomeView view = new HomeView(getStage());
 		view.mostra();
 	}
 

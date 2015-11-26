@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import org.controlsfx.control.textfield.*?>
 <?import javafx.scene.text.*?>
@@ -31,8 +32,18 @@
          <children>
             <VBox alignment="CENTER" prefHeight="290.0" prefWidth="858.0" GridPane.rowIndex="1">
                <children>
-                  <Label text="Dati del Cliente" />
-                  <GridPane maxWidth="-Infinity" prefHeight="139.0" prefWidth="514.0">
+                  <Label text="Dati del Cliente">
+                     <graphic>
+                        <ImageView fitHeight="106.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/icona_utente.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin></Label>
+                  <GridPane maxWidth="-Infinity" prefHeight="136.0" prefWidth="514.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="10.0" prefWidth="122.0" />
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="305.0" minWidth="10.0" prefWidth="305.0" />
@@ -62,23 +73,46 @@
                         </HBox>
                      </children>
                   </GridPane>
-                  <VBox alignment="CENTER" prefHeight="137.0" prefWidth="837.0">
+                  <VBox alignment="CENTER" prefHeight="80.0" prefWidth="646.0">
                      <children>
                         <Label fx:id="label_bonus" text="Questo Cliente ha diritto ad un Bonus!" visible="false" />
+                        <Button fx:id="bottone_aggiungi_cliente" mnemonicParsing="false" onAction="#aggiungiCliente" text="Aggiungi Cliente" />
                      </children>
                   </VBox>
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="290.0" prefWidth="439.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <VBox alignment="TOP_CENTER" prefHeight="290.0" prefWidth="439.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <Label text="Prezzo Totale" />
+                  <Label text="Informazioni di Pagamento">
+                     <graphic>
+                        <ImageView fitHeight="106.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/icona_pagamento.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets bottom="20.0" />
+                     </padding>
+                  </Label>
                   <HBox alignment="CENTER" prefHeight="52.0" prefWidth="403.0">
                      <children>
-                        <Label fx:id="output_totale" prefHeight="21.0" prefWidth="70.0" />
-                        <Label prefHeight="21.0" prefWidth="19.0" text=" €" />
+                        <Label text="Totale: € ">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="output_totale">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
                      </children>
                   </HBox>
-                  <Button fx:id="bottone_conferma_pagamento" mnemonicParsing="false" onAction="#effettuaPagamento" text="Conferma Pagamento" />
+                  <Button fx:id="bottone_conferma_pagamento" mnemonicParsing="false" onAction="#effettuaPagamento" text="Conferma Pagamento">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Button>
                </children>
             </VBox>
             <VBox alignment="TOP_CENTER" prefHeight="353.0" prefWidth="1277.0">
