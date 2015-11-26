@@ -159,7 +159,7 @@ public class CreaOffertaView extends View {
 		}
 		// ottengo i servizi del pacchetto dal controller
 		ArrayList<ServizioComponent> offerta = (ArrayList<ServizioComponent>) AppFacadeController.getInstance()
-				.getCreaOffertaController().getOfferta().getListaServizi();
+				.getCreaOffertaController().getListaServizi();
 		// se il pacchetto contiene servizi, allora imposto la lista servizi del
 		// pacchetto e la ObservableList
 		if (!offerta.isEmpty()) {
@@ -243,10 +243,20 @@ public class CreaOffertaView extends View {
 	// Event Listener on Button[#bottone_torna_alla_home].onAction
 	@FXML
 	public void vaiAllaHome(ActionEvent event) throws IOException {
-		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME,
-				Costanti.MESSAGGIO_TORNA_ALLA_HOME, null);
-		if (result.get() == ButtonType.OK) {
-			AppFacadeController.getInstance().getCreaOffertaController().reset();
+		ArrayList<Biglietto> risultati_biglietti = AppFacadeController.getInstance().getPrenotaServizioController()
+				.getPrenotaBigliettoController().getBiglietti();
+		ArrayList<Alloggio> risultati_alloggi = AppFacadeController.getInstance().getPrenotaServizioController()
+				.getPrenotaAlloggioController().getAlloggi();
+		if (!risultati_biglietti.isEmpty() || !risultati_alloggi.isEmpty()) {
+			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME,
+					Costanti.MESSAGGIO_TORNA_ALLA_HOME, null);
+			if (result.get() == ButtonType.OK) {
+				AppFacadeController.getInstance().getCreaOffertaController().reset();
+				HomeView view = new HomeView(getStage());
+				view.mostra();
+			}
+		} else {
+			AppFacadeController.getInstance().getPrenotaServizioController().reset();
 			HomeView view = new HomeView(getStage());
 			view.mostra();
 		}
@@ -263,7 +273,7 @@ public class CreaOffertaView extends View {
 		else if (!(offerta.size() > 1))
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_OFFERTA_UN_ELEMENTO);
 		else {
-			AppFacadeController.getInstance().getCreaOffertaController().getOfferta().setListaServizi(offerta);
+			AppFacadeController.getInstance().getCreaOffertaController().setListaServizi(offerta);
 			RiepilogoOffertaView view = new RiepilogoOffertaView(getStage());
 			view.mostra();
 		}

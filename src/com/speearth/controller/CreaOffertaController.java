@@ -1,7 +1,10 @@
 package com.speearth.controller;
 
+import java.util.ArrayList;
+
 import com.speearth.model.core.AgenziaFacade;
 import com.speearth.model.core.Offerta;
+import com.speearth.model.core.ServizioComponent;
 
 /**
  * Controller per il Caso d'Uso Crea Offerta
@@ -15,7 +18,14 @@ public class CreaOffertaController implements ICasoDUsoController {
 	/**
 	 * Offerta in fase di creazione
 	 */
-	public Offerta offerta;
+	private Offerta offerta;
+
+	/**
+	 * Memorizza i servizi creati nell'offerta. Serve alla View per recuperarli
+	 * quando si torna indietro dalla schermata Riepilogo alla schermata
+	 * Ricerca.
+	 */
+	private ArrayList<ServizioComponent> lista_servizi = new ArrayList<>();
 
 	/**
 	 * Costruttore di default
@@ -44,6 +54,25 @@ public class CreaOffertaController implements ICasoDUsoController {
 	 */
 	public PrenotaAlloggioController getPrenotaAlloggioController() {
 		return PrenotaAlloggioController.getInstance();
+	}
+
+	/**
+	 * Serve alla View per recuperare i servizi contenuti nell'offerta quando si
+	 * torna indietro dalla schermata Riepilogo alla schermata Ricerca.
+	 * 
+	 * @return ArrayList<ServizioComponent>
+	 */
+	public ArrayList<ServizioComponent> getListaServizi() {
+		return lista_servizi;
+	}
+
+	/**
+	 * Imposta la lista di Servizi che compongono l'Offerta
+	 * 
+	 * @param lista_servizi
+	 */
+	public void setListaServizi(ArrayList<ServizioComponent> lista_servizi) {
+		this.lista_servizi = lista_servizi;
 	}
 
 	/**
@@ -87,6 +116,7 @@ public class CreaOffertaController implements ICasoDUsoController {
 	 */
 	public void reset() {
 		this.offerta = null;
+		this.lista_servizi = new ArrayList<>();
 		getPrenotaAlloggioController().reset();
 		getPrenotaBigliettoController().reset();
 	}

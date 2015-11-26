@@ -54,7 +54,7 @@ public class PrenotaPacchettoController implements IFrammentoController {
 	 * Serve alla View per recuperare i servizi contenuti nel pacchetto quando
 	 * si torna indietro dalla schermata Riepilogo alla schermata Ricerca.
 	 * 
-	 * @return biglietti
+	 * @return ArrayList<ServizioComponent>
 	 */
 	public ArrayList<ServizioComponent> getPacchetto() {
 		return this.pacchetto;
