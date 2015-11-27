@@ -13,8 +13,6 @@
  */
 package com.speearth.model.core;
 
-import java.util.Random;
-
 /**
  * Classe che descrive il cliente
  */
@@ -33,7 +31,7 @@ public class Cliente {
 	
 	private String codiceFiscale;
 	
-	private int codiceTessera;
+	private String codiceTessera;
 	
 	/**
 	 * Id
@@ -112,21 +110,21 @@ public class Cliente {
 	/**
 	 * Codice della tessera
 	 */
-	public void setCodiceTessera(int value) {
+	public void setCodiceTessera(String value) {
 		this.codiceTessera = value;
 	}
 	
 	/**
 	 * Codice della tessera
 	 */
-	public int getCodiceTessera() {
+	public String getCodiceTessera() {
 		return codiceTessera;
 	}
 	
 	/**
 	 * Costruttore completo
 	 */
-	public Cliente(int id, String nome, String cognome, java.util.Date data_nascita, String codice_fiscale, int codice_tessera) {
+	public Cliente(int id, String nome, String cognome, java.util.Date data_nascita, String codice_fiscale, String codice_tessera) {
 		this.id = id;
 		this.nome = nome;
 		this.cognome = cognome;
@@ -138,7 +136,7 @@ public class Cliente {
 	/**
 	 * Costruttore completo SENZA l'id
 	 */
-	public Cliente(String nome, String cognome, java.util.Date data_nascita, String codice_fiscale, int codice_tessera) {
+	public Cliente(String nome, String cognome, java.util.Date data_nascita, String codice_fiscale, String codice_tessera) {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.dataNascita = data_nascita;
@@ -155,8 +153,10 @@ public class Cliente {
 		this.dataNascita = data_nascita;
 		this.codiceFiscale = codice_fiscale;
 		
-		Random rn = new Random();
-		this.codiceTessera = (int) (100000 +  rn.nextFloat() * 900000);
+		java.util.Random rn = new java.util.Random();
+		float risultato_float = 100000 +  rn.nextFloat() * 900000;
+		int risultato_int = Math.round(risultato_float);
+		this.codiceTessera = Integer.toString(risultato_int);
 	}
 	
 	public String toString() {

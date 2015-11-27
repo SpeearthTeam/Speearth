@@ -36,7 +36,7 @@ public class StartupController implements ICasoDUsoController {
 			}
 			AppFacadeController.getInstance().setUtente(imp);
 
-			Cliente cl = RegistroClienti.getInstance().cercaClienteDaCodiceTessera(123456);
+			Cliente cl = RegistroClienti.getInstance().cercaClienteDaCodiceTessera("123456");
 			if (cl == null) {
 				Date d = null;
 				try {
@@ -44,7 +44,7 @@ public class StartupController implements ICasoDUsoController {
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}
-				cl = new Cliente("Filippo", "Tirabassi", d, "TRBFPP90D07G878U", 123456);
+				cl = new Cliente("Filippo", "Tirabassi", d, "TRBFPP90D07G878U", "123456");
 				SpeearthPersistentManager.instance().saveObject(cl);
 			}
 

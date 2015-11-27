@@ -71,7 +71,7 @@ public class RisultatoClienteItem extends SubView {
 		cognome.setText(cliente.getCognome());
 		codice_fiscale.setText(cliente.getCodiceFiscale());
 		data_nascita.setText(Costanti.FORMATO_DATA.format(cliente.getDataNascita()));
-		codice_tessera.setText(Integer.toString(cliente.getCodiceTessera()));
+		codice_tessera.setText(cliente.getCodiceTessera());
 	}
 
 	/**

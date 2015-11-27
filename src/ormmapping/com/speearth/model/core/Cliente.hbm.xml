@@ -33,7 +33,7 @@ License Type: Academic
 				Codice fiscale
 			</meta>
 		</property>
-		<property name="codiceTessera" column="CodiceTessera" type="integer" length="11" not-null="true" lazy="false">
+		<property name="codiceTessera" column="CodiceTessera" type="string" length="255" not-null="true" lazy="false">
 			<meta attribute="field-description">
 				Codice della tessera
 			</meta>

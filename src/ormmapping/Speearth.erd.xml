@@ -242,8 +242,8 @@
     <Column name="CodiceTessera">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
-      <Type>9</Type>
-      <Length>11</Length>
+      <Type>27</Type>
+      <Length>255</Length>
       <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>

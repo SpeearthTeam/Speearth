@@ -171,7 +171,7 @@ public class RiepilogoPacchettoView extends View {
 	public void identificaCliente(ActionEvent event) {
 		if (!this.input_codice_tessera.getText().isEmpty()) {
 			this.cliente = AppFacadeController.getInstance().getPrenotaServizioController()
-					.identificaCliente(Integer.parseInt(this.input_codice_tessera.getText()));
+					.identificaCliente(this.input_codice_tessera.getText());
 			if (cliente != null) {
 				this.impostaInfoCliente(cliente);
 				AppFacadeController.getInstance().getPrenotaServizioController().setCliente(cliente);

@@ -71,7 +71,7 @@ public class RegistroClienti {
 					condizioni
 						.add(Restrictions.like("nome", stringa, MatchMode.START))
 						.add(Restrictions.like("cognome", stringa, MatchMode.START))
-						.add(Restrictions.like("codiceTessera", Integer.parseInt(stringa)))
+						.add(Restrictions.like("codiceTessera", stringa, MatchMode.START))
 						.add(Restrictions.like("codiceFiscale", stringa, MatchMode.ANYWHERE));
 				}
 				
@@ -91,7 +91,7 @@ public class RegistroClienti {
 	 * @param codice
 	 * @return Cliente
 	 */
-	public Cliente cercaClienteDaCodiceTessera(int codice) {
+	public Cliente cercaClienteDaCodiceTessera(String codice) {
 		try {
 			ClienteCriteria cliente = new ClienteCriteria();
 			cliente.codiceTessera.eq(codice);

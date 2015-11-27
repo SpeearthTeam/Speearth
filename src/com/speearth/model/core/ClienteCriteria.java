@@ -25,7 +25,7 @@ public class ClienteCriteria extends AbstractORMCriteria {
 	public final StringExpression cognome;
 	public final DateExpression dataNascita;
 	public final StringExpression codiceFiscale;
-	public final IntegerExpression codiceTessera;
+	public final StringExpression codiceTessera;
 	
 	public ClienteCriteria(Criteria criteria) {
 		super(criteria);
@@ -34,7 +34,7 @@ public class ClienteCriteria extends AbstractORMCriteria {
 		cognome = new StringExpression("cognome", this);
 		dataNascita = new DateExpression("dataNascita", this);
 		codiceFiscale = new StringExpression("codiceFiscale", this);
-		codiceTessera = new IntegerExpression("codiceTessera", this);
+		codiceTessera = new StringExpression("codiceTessera", this);
 	}
 	
 	public ClienteCriteria(PersistentSession session) {

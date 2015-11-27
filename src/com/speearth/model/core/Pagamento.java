@@ -103,7 +103,7 @@ public class Pagamento {
 	 * Restituisce la Ricevuta del Pagamento
 	 */
 	public String generaRicevuta() {
-		String ricevuta = "Pagamento n°: " + this.id + "\n" + "Ammontare: " + this.ammontare + " €\n"
+		String ricevuta = "Pagamento n.: " + this.id + "\n" + "Ammontare: " + this.ammontare + " Euro\n"
 			+ "Metodo di pagamento: " + this.metodo + "\n" + "Data: " + this.data.toString() + "\n";
 		return ricevuta;
 	}

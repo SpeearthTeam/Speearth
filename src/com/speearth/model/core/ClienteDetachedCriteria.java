@@ -25,7 +25,7 @@ public class ClienteDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final StringExpression cognome;
 	public final DateExpression dataNascita;
 	public final StringExpression codiceFiscale;
-	public final IntegerExpression codiceTessera;
+	public final StringExpression codiceTessera;
 	
 	public ClienteDetachedCriteria() {
 		super(com.speearth.model.core.Cliente.class, com.speearth.model.core.ClienteCriteria.class);
@@ -34,7 +34,7 @@ public class ClienteDetachedCriteria extends AbstractORMDetachedCriteria {
 		cognome = new StringExpression("cognome", this.getDetachedCriteria());
 		dataNascita = new DateExpression("dataNascita", this.getDetachedCriteria());
 		codiceFiscale = new StringExpression("codiceFiscale", this.getDetachedCriteria());
-		codiceTessera = new IntegerExpression("codiceTessera", this.getDetachedCriteria());
+		codiceTessera = new StringExpression("codiceTessera", this.getDetachedCriteria());
 	}
 	
 	public ClienteDetachedCriteria(DetachedCriteria aDetachedCriteria) {
@@ -44,7 +44,7 @@ public class ClienteDetachedCriteria extends AbstractORMDetachedCriteria {
 		cognome = new StringExpression("cognome", this.getDetachedCriteria());
 		dataNascita = new DateExpression("dataNascita", this.getDetachedCriteria());
 		codiceFiscale = new StringExpression("codiceFiscale", this.getDetachedCriteria());
-		codiceTessera = new IntegerExpression("codiceTessera", this.getDetachedCriteria());
+		codiceTessera = new StringExpression("codiceTessera", this.getDetachedCriteria());
 	}
 	
 	public Cliente uniqueCliente(PersistentSession session) {
