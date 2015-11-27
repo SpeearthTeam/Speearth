@@ -38,6 +38,7 @@ public class HomeView extends View{
 	public HomeView(Stage stage) throws IOException {
 		super(stage);
 		stage.setTitle(Costanti.TITOLO_HOME);
+		massimizzaFinestra();
 	}
 	
 	// Event Listener on Button[#bottone_prenota_servizio].onAction

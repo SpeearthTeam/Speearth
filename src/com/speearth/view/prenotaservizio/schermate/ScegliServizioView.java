@@ -36,6 +36,7 @@ public class ScegliServizioView extends View {
 	public ScegliServizioView(Stage stage) throws IOException {
 		super(stage);
 		stage.setTitle(Costanti.TITOLO_SCEGLI_SERVIZIO);
+		massimizzaFinestra();
 	}
 
 	/**

@@ -69,6 +69,7 @@ public class RicercaBigliettoView extends View {
 	public RicercaBigliettoView(Stage stage) throws IOException {
 		super(stage);
 		getStage().setTitle(Costanti.TITOLO_PRENOTA_BIGLIETTO);
+		massimizzaFinestra();
 		impostaBiglietti();
 		getRoot().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO,
 				new EventHandler<EventoSelezionaServizio>() {

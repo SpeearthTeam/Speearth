@@ -8,11 +8,13 @@ import com.speearth.utility.Costanti;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -141,6 +143,21 @@ public abstract class View implements Initializable {
 		alert.setHeaderText(header_text);
 		alert.setContentText(content_text);
 		return alert.showAndWait();
+	}
+	
+	/**
+	 * Massimizza la finestra della view.
+	 */
+	public void massimizzaFinestra() {
+		Screen screen = Screen.getPrimary();
+		Rectangle2D bounds = screen.getVisualBounds();
+
+		stage.setX(bounds.getMinX());
+		stage.setY(bounds.getMinY());
+		stage.setWidth(bounds.getWidth());
+		stage.setHeight(bounds.getHeight());
+		
+		stage.setMaximized(true);
 	}
 	
 	/**
