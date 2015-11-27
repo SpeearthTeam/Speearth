@@ -139,8 +139,8 @@ public class RiepilogoBigliettoView extends View {
 	// Event Listener on Button[#bottone_torna_alla_home].onAction
 	@FXML
 	public void vaiAllaHome(ActionEvent event) throws IOException {
-		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME,
-				Costanti.MESSAGGIO_TORNA_ALLA_HOME, null);
+		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME, null,
+				Costanti.MESSAGGIO_TORNA_ALLA_HOME);
 		if (result.get() == ButtonType.OK) {
 			AppFacadeController.getInstance().getPrenotaServizioController().reset();
 			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController().reset();
@@ -152,8 +152,8 @@ public class RiepilogoBigliettoView extends View {
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
 	@FXML
 	public void vaiAScegliServizio(ActionEvent event) throws IOException {
-		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
-				Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO, null);
+		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO, null,
+				Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
 		if (result.get() == ButtonType.OK) {
 			AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
 			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()

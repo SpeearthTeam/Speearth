@@ -248,8 +248,8 @@ public class CreaOffertaView extends View {
 		ArrayList<Alloggio> risultati_alloggi = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getPrenotaAlloggioController().getAlloggi();
 		if (!risultati_biglietti.isEmpty() || !risultati_alloggi.isEmpty()) {
-			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME,
-					Costanti.MESSAGGIO_TORNA_ALLA_HOME, null);
+			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME, null,
+					Costanti.MESSAGGIO_TORNA_ALLA_HOME);
 			if (result.get() == ButtonType.OK) {
 				AppFacadeController.getInstance().getCreaOffertaController().reset();
 				HomeView view = new HomeView(getStage());

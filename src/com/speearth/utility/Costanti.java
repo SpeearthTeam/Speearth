@@ -92,7 +92,7 @@ public final class Costanti {
 	public final static String MESSAGGIO_NESSUN_CLIENTE = "Non è stato identificato nessun Cliente. Procedere?";
 	public final static String MESSAGGIO_SERVIZIO_PRESENTE = "Hai già selezionato questo Servizio.";
 	public final static String MESSAGGIO_ELIMINA_CLIENTE = "Il Cliente verrà cancellato. Vuoi procedere?";
-	public final static String MESSAGGIO_TORNA_ALLA_HOME = "L'Offerta verrà cancellata. Vuoi procedere?";
+	public final static String MESSAGGIO_TORNA_ALLA_HOME = "L'operazione in corso verrà cancellata. Vuoi procedere?";
 	public final static String MESSAGGIO_OFFERTA_SALVATA = "L'Offerta è stata salvata correttamente.";
 	public final static String MESSAGGIO_SVUOTA_OFFERTA = "Vuoi davvero rimuovere tutti i Servizi scelti per l'Offerta?";
 	public final static String MESSAGGIO_CLIENTE_AGGIUNTO = "Cliente aggiunto con successo! Codice Tessera del nuovo Cliente: ";
