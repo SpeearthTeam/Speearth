@@ -3,6 +3,9 @@ package com.speearth.view;
 import java.io.IOException;
 import java.util.Optional;
 
+import com.speearth.utility.Costanti;
+
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -11,6 +14,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 /**
  * Classe che rappresenta una schermata dell'Applicazione
@@ -58,6 +62,15 @@ public abstract class View implements Initializable {
 		loader.setController(this);
 		this.stage = stage;
 		root = (Parent) loader.load();
+		this.stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+			public void handle(WindowEvent we) {
+				Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_CHIUDI, Costanti.MESSAGGIO_CHIUDI,
+						Costanti.MESSAGGIO_CHIUSURA_SESSIONE);
+				if (result.get() == ButtonType.OK)
+					stage.close();
+				else we.consume();
+			}
+		});
 	}
 
 	/**

@@ -51,6 +51,7 @@ public final class Costanti {
 	public final static String TITOLO_CLIENTE_AGGIUNTO = "Cliente aggiunto con successo";
 	public final static String TITOLO_RIEPILOGO_OFFERTA = "Riepilogo Offerta - Speearth";
 	public final static String TITOLO_CONFERMA_SCONTO = "Conferma Applica Sconto";
+	public final static String TITOLO_CHIUDI = "Chiudi Applicazione - Speearth";
 
 	/**
 	 * Path degli FXML
@@ -100,6 +101,8 @@ public final class Costanti {
 	public final static String MESSAGGIO_DETTAGLI_MANCANTI = "Mancano alcuni dettagli.";
 	public final static String MESSAGGIO_CONFERMA_SCONTO = "Vuoi applicare lo Sconto inserito?";
 	public final static String MESSAGGIO_SCONTO_INSERITO_ERRATO = "Lo Sconto inserito non è valido.";
+	public final static String MESSAGGIO_CHIUDI = "Vuoi veramente chiudere Speearth?";
+	public final static String MESSAGGIO_CHIUSURA_SESSIONE = "Tutti i dati non salvati andranno persi. Continuare?";
 
 	/**
 	 * Icone
@@ -128,5 +131,17 @@ public final class Costanti {
 	 * Espressione regolare input float: (\d*[.,])?\d+
 	 */
 	public final static String REG_EX_FLOAT = "(\\d*[.,])?\\d+";
+
+	/**
+	 * Dimensioni
+	 */
+	public final static double DIMENSIONE_LARGHEZZA_POPUP = 420.0;
+	public final static double DIMENSIONE_ALTEZZA_POPUP = 350.0;
+
+	/**
+	 * Stringhe generiche
+	 */
+	public final static String STRINGA_CONTANTI = "Contanti";
+	public final static String STRINGA_CARTA = "Carta";
 
 }

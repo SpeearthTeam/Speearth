@@ -22,13 +22,15 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -67,6 +69,10 @@ public class RiepilogoPacchettoView extends View {
 	private ListView<ServizioComponent> riepilogo_servizi;
 	@FXML
 	private Label label_bonus;
+	@FXML
+	private RadioButton input_radio_contanti;
+	@FXML
+	private RadioButton input_radio_carta;
 
 	/**
 	 * Cliente
@@ -121,6 +127,10 @@ public class RiepilogoPacchettoView extends View {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		this.riepilogo_servizi.setCellFactory(param -> new PacchettoListItem(getStage()));
 		this.riepilogo_servizi.setItems(this.lista_servizi);
+		ToggleGroup group = new ToggleGroup();
+		this.input_radio_contanti.setToggleGroup(group);
+		this.input_radio_carta.setToggleGroup(group);
+		this.input_radio_contanti.setSelected(true);
 	}
 
 	// Event Listener on Button[#bottone_torna_alla_home].onAction
@@ -193,7 +203,6 @@ public class RiepilogoPacchettoView extends View {
 	// Event Listener on Button[#bottone_conferma_pagamento].onAction
 	@FXML
 	public void effettuaPagamento(ActionEvent event) throws IOException {
-		// TODO - Ipotesi semplificativa: pagamento in contanti
 		if (AppFacadeController.getInstance().getPrenotaServizioController().getCliente() == null) {
 			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_NESSUN_CLIENTE, null,
 					Costanti.MESSAGGIO_NESSUN_CLIENTE);
@@ -202,7 +211,7 @@ public class RiepilogoPacchettoView extends View {
 			}
 		}
 		String ricevuta = AppFacadeController.getInstance().getPrenotaServizioController()
-				.effettuaPagamento("contanti");
+				.effettuaPagamento(this.getModalitaPagamento());
 		if (ricevuta != null) {
 			mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_PAGAMENTO_EFFETTUATO,
 					Costanti.MESSAGGIO_PAGAMENTO_EFFETTUATO, ricevuta);
@@ -212,6 +221,19 @@ public class RiepilogoPacchettoView extends View {
 			view.mostra();
 		} else
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PROBLEMA_DATABASE);
+	}
+
+	/**
+	 * Restituisce la modalità di Pagamento
+	 * 
+	 * @return String
+	 */
+	public String getModalitaPagamento() {
+		if (this.input_radio_carta.isSelected())
+			return Costanti.STRINGA_CARTA;
+		if (this.input_radio_contanti.isSelected())
+			return Costanti.STRINGA_CONTANTI;
+		return null;
 	}
 
 	/**

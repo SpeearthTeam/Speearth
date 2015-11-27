@@ -95,6 +95,12 @@
                         <Insets bottom="20.0" />
                      </padding>
                   </Label>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <RadioButton fx:id="input_radio_contanti" alignment="CENTER_LEFT" mnemonicParsing="false" prefHeight="21.0" prefWidth="154.0" text="in contanti" />
+                        <RadioButton fx:id="input_radio_carta" alignment="CENTER_LEFT" mnemonicParsing="false" prefHeight="21.0" prefWidth="146.0" text="con carta" />
+                     </children>
+                  </HBox>
                   <HBox alignment="CENTER" prefHeight="52.0" prefWidth="403.0">
                      <children>
                         <Label text="Totale: € ">
