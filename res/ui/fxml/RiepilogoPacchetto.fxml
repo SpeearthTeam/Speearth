@@ -42,7 +42,10 @@
                      </graphic>
                      <VBox.margin>
                         <Insets bottom="20.0" />
-                     </VBox.margin></Label>
+                     </VBox.margin>
+                     <font>
+                        <Font size="24.0" />
+                     </font></Label>
                   <GridPane maxWidth="-Infinity" prefHeight="136.0" prefWidth="514.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="10.0" prefWidth="122.0" />
@@ -76,7 +79,10 @@
                   <VBox alignment="CENTER" prefHeight="80.0" prefWidth="646.0">
                      <children>
                         <Label fx:id="label_bonus" text="Questo Cliente ha diritto ad un Bonus!" visible="false" />
-                        <Button fx:id="bottone_aggiungi_cliente" mnemonicParsing="false" onAction="#aggiungiCliente" text="Aggiungi Cliente" />
+                        <Button fx:id="bottone_aggiungi_cliente" mnemonicParsing="false" onAction="#aggiungiCliente" prefHeight="40.0" prefWidth="178.0" text="Aggiungi Cliente">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Button>
                      </children>
                   </VBox>
                </children>
@@ -94,6 +100,9 @@
                      <padding>
                         <Insets bottom="20.0" />
                      </padding>
+                     <font>
+                        <Font size="24.0" />
+                     </font>
                   </Label>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
@@ -108,7 +117,7 @@
                               <Font size="36.0" />
                            </font>
                         </Label>
-                        <Label fx:id="output_totale">
+                        <Label fx:id="output_totale" prefHeight="53.0" prefWidth="41.0">
                            <font>
                               <Font size="36.0" />
                            </font>

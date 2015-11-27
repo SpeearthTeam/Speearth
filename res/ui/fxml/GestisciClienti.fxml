@@ -13,7 +13,10 @@
             <Pane prefHeight="63.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
                <children>
                   <TextField fx:id="ricerca_cliente_input" layoutX="14.0" layoutY="16.0" prefHeight="31.0" prefWidth="235.0" promptText="Cerca un Cliente...." />
-                  <Button fx:id="bottone_aggiungi" layoutX="1135.0" layoutY="16.0" mnemonicParsing="false" onAction="#aggiungiCliente" text="Aggiungi Cliente" />
+                  <Button fx:id="bottone_aggiungi" layoutX="1115.0" layoutY="12.0" mnemonicParsing="false" onAction="#aggiungiCliente" text="Aggiungi Cliente">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
                </children>
             </Pane>
          </top>
