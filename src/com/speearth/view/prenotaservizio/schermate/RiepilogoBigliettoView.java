@@ -165,9 +165,8 @@ public class RiepilogoBigliettoView extends View {
 		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO, null,
 				Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
 		if (result.get() == ButtonType.OK) {
-			AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
-			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
-					.clearBiglietti();
+			AppFacadeController.getInstance().getPrenotaServizioController().reset();
+			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController().reset();
 			ScegliServizioView view = new ScegliServizioView(getStage());
 			view.mostra();
 		}

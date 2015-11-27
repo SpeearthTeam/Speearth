@@ -64,11 +64,11 @@
    <top>
       <HBox prefHeight="39.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Fornitore: ">
+            <Label prefHeight="39.0" prefWidth="86.0" text="Fornitore: ">
                <font>
                   <Font size="18.0" />
                </font></Label>
-            <Label fx:id="output_nome_fornitore" prefHeight="21.0" prefWidth="89.0" />
+            <Label fx:id="output_nome_fornitore" prefHeight="39.0" prefWidth="165.0" />
          </children>
       </HBox>
    </top>
