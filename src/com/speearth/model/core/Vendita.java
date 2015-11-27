@@ -110,32 +110,6 @@ public class Vendita {
 	}
 	
 	/**
-	 * Commesso
-	 */
-	private com.speearth.model.core.Impiegato commesso;
-	
-	public com.speearth.model.core.Impiegato getCommesso() {
-		return commesso;
-	}
-	
-	public void setCommesso(com.speearth.model.core.Impiegato aCommesso) {
-		commesso = aCommesso;
-	}
-	
-	/**
-	 * Servizio
-	 */
-	private com.speearth.model.core.ServizioComponent servizio;
-	
-	public com.speearth.model.core.ServizioComponent getServizio() {
-		return servizio;
-	}
-	
-	public void setServizio(com.speearth.model.core.ServizioComponent aServizio) {
-		servizio = aServizio;
-	}
-	
-	/**
 	 * Costruttore con parametri
 	 */
 	public Vendita(com.speearth.model.core.Cliente cliente, com.speearth.model.core.Pagamento pagamento, com.speearth.model.core.Impiegato commesso, com.speearth.model.core.ServizioComponent servizio) {
