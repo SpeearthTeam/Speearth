@@ -210,6 +210,8 @@ public class RiepilogoBigliettoView extends View {
 		stage.initModality(Modality.APPLICATION_MODAL);
 		ClientePopupView view = new ClientePopupView(stage, null);
 		view.mostraEAspetta();
+		if (view.getCliente() != null)
+			this.input_codice_tessera.setText(view.getCliente().getCodiceTessera());
 		this.updateUI();
 	}
 
