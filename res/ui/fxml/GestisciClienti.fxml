@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.media.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
 	<center>
 		<BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <top>
-            <Pane prefHeight="63.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
-               <children>
-                  <TextField fx:id="ricerca_cliente_input" layoutX="14.0" layoutY="16.0" prefHeight="31.0" prefWidth="235.0" promptText="Cerca un Cliente...." />
-                  <Button fx:id="bottone_aggiungi" layoutX="1115.0" layoutY="12.0" mnemonicParsing="false" onAction="#aggiungiCliente" text="Aggiungi Cliente">
-                     <font>
-                        <Font size="18.0" />
-                     </font></Button>
-               </children>
-            </Pane>
-         </top>
          <center>
             <ListView fx:id="lista_risultati" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
          </center>
+         <top>
+            <BorderPane BorderPane.alignment="CENTER">
+               <right>
+                  <Button fx:id="bottone_aggiungi" mnemonicParsing="false" onAction="#aggiungiCliente" text="Aggiungi Cliente" BorderPane.alignment="CENTER" />
+               </right>
+               <left>
+                  <TextField fx:id="ricerca_cliente_input" prefHeight="31.0" prefWidth="235.0" promptText="Cerca un Cliente...." BorderPane.alignment="CENTER" />
+               </left>
+               <padding>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </padding>
+            </BorderPane>
+         </top>
 		</BorderPane>
 	</center>
 	<top>

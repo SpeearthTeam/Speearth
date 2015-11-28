@@ -136,7 +136,7 @@ public final class Costanti {
 	 * Dimensioni
 	 */
 	public final static double DIMENSIONE_LARGHEZZA_POPUP = 420.0;
-	public final static double DIMENSIONE_ALTEZZA_POPUP = 350.0;
+	public final static double DIMENSIONE_ALTEZZA_POPUP = 360.0;
 
 	/**
 	 * Stringhe generiche
