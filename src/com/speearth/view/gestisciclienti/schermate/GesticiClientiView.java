@@ -56,7 +56,7 @@ public class GesticiClientiView extends View {
 	public GesticiClientiView(Stage stage) throws IOException {
 		super(stage);
 		getStage().setTitle(Costanti.TITOLO_AGGIUNGI_CLIENTE);
-		massimizzaFinestra();
+		//massimizzaFinestra();
 		getRoot().addEventHandler(EventoGestioneCliente.ELIMINA_CLIENTE, new EventHandler<EventoGestioneCliente>() {
 			@Override
 			public void handle(EventoGestioneCliente event) {

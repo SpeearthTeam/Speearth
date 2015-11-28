@@ -83,7 +83,7 @@ public class CreaOffertaView extends View {
 	 */
 	public CreaOffertaView(Stage stage) throws IOException {
 		super(stage);
-		massimizzaFinestra();
+		//massimizzaFinestra();
 		AppFacadeController.getInstance().getCreaOffertaController().setOfferta(new Offerta());
 		getStage().setTitle(Costanti.TITOLO_CREA_OFFERTA);
 		getRoot().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO,

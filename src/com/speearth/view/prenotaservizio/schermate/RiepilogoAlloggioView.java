@@ -110,7 +110,7 @@ public class RiepilogoAlloggioView extends View {
 	public RiepilogoAlloggioView(Stage stage) throws IOException {
 		super(stage);
 		getStage().setTitle(Costanti.TITOLO_RIEPILOGO);
-		massimizzaFinestra();
+		//massimizzaFinestra();
 		this.impostaInfoAlloggio(
 				(Alloggio) AppFacadeController.getInstance().getPrenotaServizioController().getServizio());
 	}

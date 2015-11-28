@@ -52,7 +52,7 @@ public class RicercaAlloggioView extends View {
 	public RicercaAlloggioView(Stage stage) throws IOException {
 		super(stage);
 		getStage().setTitle(Costanti.TITOLO_PRENOTA_ALLOGGIO);
-		massimizzaFinestra();
+		//massimizzaFinestra();
 		impostaAlloggi();
 		getRoot().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO,
 				new EventHandler<EventoSelezionaServizio>() {

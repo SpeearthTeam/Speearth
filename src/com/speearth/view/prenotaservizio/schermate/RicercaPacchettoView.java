@@ -75,7 +75,7 @@ public class RicercaPacchettoView extends View {
 		super(stage);
 		AppFacadeController.getInstance().getPrenotaServizioController().setServizio(new PacchettoComposite());
 		getStage().setTitle(Costanti.TITOLO_PRENOTA_PACCHETTO);
-		massimizzaFinestra();
+		//massimizzaFinestra();
 		getRoot().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO,
 				new EventHandler<EventoSelezionaServizio>() {
 
