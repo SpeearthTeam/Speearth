@@ -45,6 +45,8 @@ public class RiepilogoOffertaView extends View {
 	@FXML
 	private ListView<ServizioComponent> riepilogo_servizi;
 	@FXML
+	private TextField input_nome_offerta;
+	@FXML
 	private TextField input_sconto_offerta;
 	@FXML
 	private DatePicker input_data_inizio_offerta;
@@ -62,7 +64,7 @@ public class RiepilogoOffertaView extends View {
 	public RiepilogoOffertaView(Stage stage) throws IOException {
 		super(stage);
 		getStage().setTitle(Costanti.TITOLO_RIEPILOGO_OFFERTA);
-		//massimizzaFinestra();
+		// massimizzaFinestra();
 		this.impostaInfoOfferta(AppFacadeController.getInstance().getCreaOffertaController().getOfferta());
 	}
 
@@ -147,8 +149,11 @@ public class RiepilogoOffertaView extends View {
 	// Event Listener on Button[#bottone_salva_offerta].onAction
 	@FXML
 	public void salvaOfferta(ActionEvent event) throws IOException {
-		if (this.input_data_fine_offerta.getValue() != null && this.input_data_inizio_offerta != null
+		if (this.input_nome_offerta.getText() != null && this.input_data_fine_offerta.getValue() != null
+				&& this.input_data_inizio_offerta != null
 				&& validazioneEParsificazioneSconto(this.input_sconto_offerta.getText()) != null) {
+			AppFacadeController.getInstance().getCreaOffertaController().getOfferta()
+					.setNome(this.input_nome_offerta.getText());
 			AppFacadeController.getInstance().getCreaOffertaController().getOfferta()
 					.setDataInizio(Date.from(this.input_data_inizio_offerta.getValue().atStartOfDay()
 							.atZone(ZoneId.systemDefault()).toInstant()));
