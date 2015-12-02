@@ -45,10 +45,15 @@ public final class Costanti {
 	public final static String TITOLO_AGGIUNGI_CLIENTE = "Aggiungi Cliente - Speearth";
 	public final static String TITOLO_MODIFICA_CLIENTE = "Modifica Cliente - Speearth";
 	public final static String TITOLO_ELIMINA_CLIENTE = "Elimina Cliente";
+	public final static String TITOLO_GESTISCI_IMPIEGATI = "Gestisci Impiegati - Speearth";
+	public final static String TITOLO_AGGIUNGI_IMPIEGATO = "Aggiungi Impiegato - Speearth";
+	public final static String TITOLO_MODIFICA_IMPIEGATO = "Modifica Impiegato - Speearth";
+	public final static String TITOLO_ELIMINA_IMPIEGATO = "Elimina Impiegato";
 	public final static String TITOLO_CREA_OFFERTA = "Crea Offerta - Speearth";
 	public final static String TITOLO_TORNA_ALLA_HOME = "Torna alla Home - Speearth";
 	public final static String TITOLO_SVUOTA_OFFERTA = " Svuota l'offerta - Speearth";
 	public final static String TITOLO_CLIENTE_AGGIUNTO = "Cliente aggiunto con successo";
+	public final static String TITOLO_IMPIEGATO_AGGIUNTO = "Impiegato aggiunto con successo";
 	public final static String TITOLO_RIEPILOGO_OFFERTA = "Riepilogo Offerta - Speearth";
 	public final static String TITOLO_CONFERMA_SCONTO = "Conferma Applica Sconto";
 	public final static String TITOLO_CHIUDI = "Chiudi Applicazione - Speearth";
@@ -63,6 +68,7 @@ public final class Costanti {
 	public final static String FXML_RISULTATO_BIGLIETTO = "/ui/fxml/RisultatoBiglietto.fxml";
 	public final static String FXML_RISULTATO_ALLOGGIO = "/ui/fxml/RisultatoAlloggio.fxml";
 	public final static String FXML_RISULTATO_CLIENTE = "/ui/fxml/RisultatoCliente.fxml";
+	public final static String FXML_RISULTATO_IMPIEGATO = "/ui/fxml/RisultatoImpiegato.fxml";
 	public final static String FXML_RIEPILOGO_BIGLIETTO = "/ui/fxml/RiepilogoBiglietto.fxml";
 	public final static String FXML_RIEPILOGO_ALLOGGIO = "/ui/fxml/RiepilogoAlloggio.fxml";
 	public final static String FXML_RIEPILOGO_PACCHETTO = "/ui/fxml/RiepilogoPacchetto.fxml";
@@ -71,11 +77,15 @@ public final class Costanti {
 	public final static String FXML_RIEPILOGO_BIGLIETTO_ITEM = "/ui/fxml/RiepilogoBigliettoItem.fxml";
 	public final static String FXML_RIEPILOGO_ALLOGGIO_ITEM = "/ui/fxml/RiepilogoAlloggioItem.fxml";
 	public final static String FXML_GESTISCI_CLIENTI = "/ui/fxml/GestisciClienti.fxml";
+	public final static String FXML_GESTISCI_IMPIEGATI = "/ui/fxml/GestisciClienti.fxml";
 	public final static String FXML_RIEPILOGO_OFFERTA = "/ui/fxml/RiepilogoOfferta.fxml";
 	public final static String FXML_CREA_OFFERTA = "/ui/fxml/CreaOfferta.fxml";
 	public final static String FXML_AGGIUNGI_CLIENTE_FORM = "/ui/fxml/AggiungiClienteForm.fxml";
 	public final static String FXML_MODIFICA_CLIENTE_FORM = "/ui/fxml/ModificaClienteForm.fxml";
+	public final static String FXML_AGGIUNGI_IMPIEGATO_FORM = "/ui/fxml/AggiungiImpiegatoForm.fxml";
+	public final static String FXML_MODIFICA_IMPIEGATO_FORM = "/ui/fxml/ModificaImpiegatoForm.fxml";
 	public final static String FXML_CLIENTE_POPUP = "/ui/fxml/ClientePopup.fxml";
+	public final static String FXML_IMPIEGATO_POPUP = "/ui/fxml/ImpiegatoPopup.fxml";
 	public static final String FXML_HOME_RESPONSABILE_OFFERTE = "/ui/fxml/HomeResponsabileOfferte.fxml";
 
 	/**
@@ -93,10 +103,12 @@ public final class Costanti {
 	public final static String MESSAGGIO_NESSUN_CLIENTE = "Non è stato identificato nessun Cliente. Procedere?";
 	public final static String MESSAGGIO_SERVIZIO_PRESENTE = "Hai già selezionato questo Servizio.";
 	public final static String MESSAGGIO_ELIMINA_CLIENTE = "Il Cliente verrà cancellato. Vuoi procedere?";
+	public final static String MESSAGGIO_ELIMINA_IMPIEGATO = "L'Impiegato verrà cancellato. Vuoi procedere?";
 	public final static String MESSAGGIO_TORNA_ALLA_HOME = "L'operazione in corso verrà cancellata. Vuoi procedere?";
 	public final static String MESSAGGIO_OFFERTA_SALVATA = "L'Offerta è stata salvata correttamente.";
 	public final static String MESSAGGIO_SVUOTA_OFFERTA = "Vuoi davvero rimuovere tutti i Servizi scelti per l'Offerta?";
 	public final static String MESSAGGIO_CLIENTE_AGGIUNTO = "Cliente aggiunto con successo! Codice Tessera del nuovo Cliente: ";
+	public final static String MESSAGGIO_IMPIEGATO_AGGIUNTO = "Impiegato aggiunto con successo!";
 	public final static String MESSAGGIO_PROBLEMA_DATABASE = "L'operazione su Database non è andata a buon fine.";
 	public final static String MESSAGGIO_DETTAGLI_MANCANTI = "Mancano alcuni dettagli.";
 	public final static String MESSAGGIO_CONFERMA_SCONTO = "Vuoi applicare lo Sconto inserito?";
@@ -135,8 +147,10 @@ public final class Costanti {
 	/**
 	 * Dimensioni
 	 */
-	public final static double DIMENSIONE_LARGHEZZA_POPUP = 420.0;
-	public final static double DIMENSIONE_ALTEZZA_POPUP = 360.0;
+	public final static double DIMENSIONE_LARGHEZZA_POPUP_CLIENTE = 420.0;
+	public final static double DIMENSIONE_ALTEZZA_POPUP_CLIENTE = 360.0;
+	public final static double DIMENSIONE_LARGHEZZA_POPUP_IMPIEGATO = 420.0;
+	public final static double DIMENSIONE_ALTEZZA_POPUP_IMPIEGATO = 360.0;
 
 	/**
 	 * Stringhe generiche

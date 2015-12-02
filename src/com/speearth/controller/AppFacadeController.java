@@ -57,21 +57,28 @@ public class AppFacadeController {
 	public PrenotaServizioController getPrenotaServizioController() {
 		return PrenotaServizioController.getInstance();
 	}
-	
+
 	/**
 	 * Restituisce il Controller di CreaOfferta
 	 */
 	public CreaOffertaController getCreaOffertaController() {
 		return CreaOffertaController.getInstance();
 	}
-	
+
 	/**
 	 * Restituisce il Controller di GestisciClienti
 	 */
 	public GestisciClientiController getGestisciClientiController() {
 		return GestisciClientiController.getInstance();
 	}
-	
+
+	/**
+	 * Restituisce il Controller di GestisciImpiegati
+	 */
+	public GestisciImpiegatiController getGestisciImpiegatiController() {
+		return GestisciImpiegatiController.getInstance();
+	}
+
 	/**
 	 * Restituisce il Controller del Caso d'Uso di Startup
 	 */

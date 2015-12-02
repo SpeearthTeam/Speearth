@@ -79,8 +79,8 @@ public class ClientePopupView extends View {
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		getStage().setHeight(Costanti.DIMENSIONE_ALTEZZA_POPUP);
-		getStage().setWidth(Costanti.DIMENSIONE_LARGHEZZA_POPUP);
+		getStage().setHeight(Costanti.DIMENSIONE_ALTEZZA_POPUP_CLIENTE);
+		getStage().setWidth(Costanti.DIMENSIONE_LARGHEZZA_POPUP_CLIENTE);
 		getStage().setResizable(false);
 	}
 
