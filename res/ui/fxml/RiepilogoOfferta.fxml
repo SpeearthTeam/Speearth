@@ -22,7 +22,7 @@
          <children>
             <Label text="Riepilogo Offerta creata" />
             <ListView fx:id="riepilogo_servizi" VBox.vgrow="ALWAYS" />
-            <HBox maxHeight="300.0" VBox.vgrow="ALWAYS">
+            <HBox maxHeight="350.0" VBox.vgrow="ALWAYS">
                <children>
                   <GridPane>
                     <columnConstraints>
@@ -30,22 +30,25 @@
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="307.0" />
                     </columnConstraints>
                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="322.0" text="Data di Inizio" />
-                        <TextField fx:id="input_sconto_offerta" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <DatePicker fx:id="input_data_inizio_offerta" prefWidth="307.0" GridPane.columnIndex="1" />
-                        <DatePicker fx:id="input_data_fine_offerta" prefWidth="307.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="322.0" text="Data di Scadenza" GridPane.rowIndex="1" />
-                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="322.0" text="Sconto in Percentuale" GridPane.rowIndex="2" />
-                        <Button fx:id="bottone_applica_sconto" mnemonicParsing="false" onAction="#applicaSconto" text="Applica Sconto" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="322.0" text="Data di Inizio" GridPane.rowIndex="1" />
+                        <TextField fx:id="input_sconto_offerta" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <DatePicker fx:id="input_data_inizio_offerta" prefWidth="307.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <DatePicker fx:id="input_data_fine_offerta" prefWidth="307.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="322.0" text="Data di Scadenza" GridPane.rowIndex="2" />
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="322.0" text="Sconto in Percentuale" GridPane.rowIndex="3" />
+                        <Button fx:id="bottone_applica_sconto" mnemonicParsing="false" onAction="#applicaSconto" text="Applica Sconto" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
                            <GridPane.margin>
                               <Insets />
                            </GridPane.margin>
                         </Button>
+                        <Label text="Nome" GridPane.halignment="CENTER" />
+                        <TextField fx:id="input_nome_offerta" GridPane.columnIndex="1" />
                      </children>
                   </GridPane>
                   <VBox alignment="CENTER" HBox.hgrow="ALWAYS">

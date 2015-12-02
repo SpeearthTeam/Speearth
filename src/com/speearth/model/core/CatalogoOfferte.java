@@ -65,10 +65,7 @@ public class CatalogoOfferte {
 	/**
 	 * Aggiunge una nuova Offerta nel Sistema
 	 * 
-	 * @param nome
-	 * @param cognome
-	 * @param data_nascita
-	 * @param codice_fiscale
+	 * @param offerta
 	 * @return boolean
 	 */
 	public boolean aggiungiOfferta(Offerta offerta) {
