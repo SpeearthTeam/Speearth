@@ -126,6 +126,7 @@ License Type: Academic
 						Data di fine offerta
 					</meta>
 				</property>
+				<property name="nome" column="Nome" type="string" length="255" not-null="true" lazy="false"/>
 			</joined-subclass>
 		</joined-subclass>
 	</class>

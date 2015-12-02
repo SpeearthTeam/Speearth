@@ -25,6 +25,7 @@ public class OffertaCriteria extends AbstractORMCriteria {
 	public final CollectionExpression listaServizi;
 	public final DateExpression dataInizio;
 	public final DateExpression dataFine;
+	public final StringExpression nome;
 	
 	public OffertaCriteria(Criteria criteria) {
 		super(criteria);
@@ -33,6 +34,7 @@ public class OffertaCriteria extends AbstractORMCriteria {
 		listaServizi = new CollectionExpression("listaServizi", this);
 		dataInizio = new DateExpression("dataInizio", this);
 		dataFine = new DateExpression("dataFine", this);
+		nome = new StringExpression("nome", this);
 	}
 	
 	public OffertaCriteria(PersistentSession session) {

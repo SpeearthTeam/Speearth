@@ -25,7 +25,7 @@ public class Vendita {
 	
 	private com.speearth.model.core.Impiegato impiegato;
 	
-	private com.speearth.model.core.ServizioComponent servizioComponent;
+	private com.speearth.model.core.ServizioComponent servizio;
 	
 	private com.speearth.model.core.Pagamento pagamento;
 	
@@ -93,12 +93,12 @@ public class Vendita {
 		return pagamento;
 	}
 	
-	public void setServizioComponent(com.speearth.model.core.ServizioComponent value) {
-		this.servizioComponent = value;
+	public void setServizio(com.speearth.model.core.ServizioComponent value) {
+		this.servizio = value;
 	}
 	
-	public com.speearth.model.core.ServizioComponent getServizioComponent() {
-		return servizioComponent;
+	public com.speearth.model.core.ServizioComponent getServizio() {
+		return servizio;
 	}
 	
 	public void setImpiegato(com.speearth.model.core.Impiegato value) {
@@ -112,11 +112,11 @@ public class Vendita {
 	/**
 	 * Costruttore con parametri
 	 */
-	public Vendita(com.speearth.model.core.Cliente cliente, com.speearth.model.core.Pagamento pagamento, com.speearth.model.core.Impiegato commesso, com.speearth.model.core.ServizioComponent servizio) {
+	public Vendita(com.speearth.model.core.Cliente cliente, com.speearth.model.core.Pagamento pagamento, com.speearth.model.core.Impiegato impiegato, com.speearth.model.core.ServizioComponent servizio) {
 		this.cliente = cliente;
 		this.pagamento = pagamento;
-		this.impiegato = commesso;
-		this.servizioComponent = servizio;
+		this.impiegato = impiegato;
+		this.servizio = servizio;
 		this.data = new java.util.Date();
 	}
 	

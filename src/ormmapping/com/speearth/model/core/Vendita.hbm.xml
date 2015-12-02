@@ -15,7 +15,7 @@ License Type: Academic
 		</id>
 		<many-to-one name="impiegato" column="ImpiegatoId" class="com.speearth.model.core.Impiegato" cascade="save-update,lock" unique="true" not-null="true" lazy="proxy">
 		</many-to-one>
-		<many-to-one name="servizioComponent" column="ServizioComponentId" class="com.speearth.model.core.ServizioComponent" cascade="save-update,lock" unique="true" not-null="true" lazy="proxy">
+		<many-to-one name="servizio" column="ServizioComponentId" class="com.speearth.model.core.ServizioComponent" cascade="save-update,lock" unique="true" not-null="true" lazy="proxy">
 		</many-to-one>
 		<many-to-one name="pagamento" column="PagamentoId" class="com.speearth.model.core.Pagamento" cascade="save-update,lock" unique="true" not-null="true" lazy="proxy">
 		</many-to-one>

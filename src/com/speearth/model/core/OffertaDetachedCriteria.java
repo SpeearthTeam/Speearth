@@ -25,6 +25,7 @@ public class OffertaDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final CollectionExpression listaServizi;
 	public final DateExpression dataInizio;
 	public final DateExpression dataFine;
+	public final StringExpression nome;
 	
 	public OffertaDetachedCriteria() {
 		super(com.speearth.model.core.Offerta.class, com.speearth.model.core.OffertaCriteria.class);
@@ -33,6 +34,7 @@ public class OffertaDetachedCriteria extends AbstractORMDetachedCriteria {
 		listaServizi = new CollectionExpression("listaServizi", this.getDetachedCriteria());
 		dataInizio = new DateExpression("dataInizio", this.getDetachedCriteria());
 		dataFine = new DateExpression("dataFine", this.getDetachedCriteria());
+		nome = new StringExpression("nome", this.getDetachedCriteria());
 	}
 	
 	public OffertaDetachedCriteria(DetachedCriteria aDetachedCriteria) {
@@ -42,6 +44,7 @@ public class OffertaDetachedCriteria extends AbstractORMDetachedCriteria {
 		listaServizi = new CollectionExpression("listaServizi", this.getDetachedCriteria());
 		dataInizio = new DateExpression("dataInizio", this.getDetachedCriteria());
 		dataFine = new DateExpression("dataFine", this.getDetachedCriteria());
+		nome = new StringExpression("nome", this.getDetachedCriteria());
 	}
 	
 	public ServizioComponentDetachedCriteria createListaServiziCriteria() {

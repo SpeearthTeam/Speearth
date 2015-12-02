@@ -23,8 +23,8 @@ public class VenditaDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression id;
 	public final IntegerExpression impiegatoId;
 	public final AssociationExpression impiegato;
-	public final IntegerExpression servizioComponentId;
-	public final AssociationExpression servizioComponent;
+	public final IntegerExpression servizioId;
+	public final AssociationExpression servizio;
 	public final IntegerExpression pagamentoId;
 	public final AssociationExpression pagamento;
 	public final IntegerExpression clienteId;
@@ -36,8 +36,8 @@ public class VenditaDetachedCriteria extends AbstractORMDetachedCriteria {
 		id = new IntegerExpression("id", this.getDetachedCriteria());
 		impiegatoId = new IntegerExpression("impiegato.id", this.getDetachedCriteria());
 		impiegato = new AssociationExpression("impiegato", this.getDetachedCriteria());
-		servizioComponentId = new IntegerExpression("servizioComponent.id", this.getDetachedCriteria());
-		servizioComponent = new AssociationExpression("servizioComponent", this.getDetachedCriteria());
+		servizioId = new IntegerExpression("servizio.id", this.getDetachedCriteria());
+		servizio = new AssociationExpression("servizio", this.getDetachedCriteria());
 		pagamentoId = new IntegerExpression("pagamento.id", this.getDetachedCriteria());
 		pagamento = new AssociationExpression("pagamento", this.getDetachedCriteria());
 		clienteId = new IntegerExpression("cliente.id", this.getDetachedCriteria());
@@ -50,8 +50,8 @@ public class VenditaDetachedCriteria extends AbstractORMDetachedCriteria {
 		id = new IntegerExpression("id", this.getDetachedCriteria());
 		impiegatoId = new IntegerExpression("impiegato.id", this.getDetachedCriteria());
 		impiegato = new AssociationExpression("impiegato", this.getDetachedCriteria());
-		servizioComponentId = new IntegerExpression("servizioComponent.id", this.getDetachedCriteria());
-		servizioComponent = new AssociationExpression("servizioComponent", this.getDetachedCriteria());
+		servizioId = new IntegerExpression("servizio.id", this.getDetachedCriteria());
+		servizio = new AssociationExpression("servizio", this.getDetachedCriteria());
 		pagamentoId = new IntegerExpression("pagamento.id", this.getDetachedCriteria());
 		pagamento = new AssociationExpression("pagamento", this.getDetachedCriteria());
 		clienteId = new IntegerExpression("cliente.id", this.getDetachedCriteria());
@@ -63,8 +63,8 @@ public class VenditaDetachedCriteria extends AbstractORMDetachedCriteria {
 		return new ImpiegatoDetachedCriteria(createCriteria("impiegato"));
 	}
 	
-	public ServizioComponentDetachedCriteria createServizioComponentCriteria() {
-		return new ServizioComponentDetachedCriteria(createCriteria("servizioComponent"));
+	public ServizioComponentDetachedCriteria createServizioCriteria() {
+		return new ServizioComponentDetachedCriteria(createCriteria("servizio"));
 	}
 	
 	public PagamentoDetachedCriteria createPagamentoCriteria() {

@@ -25,6 +25,8 @@ public class Offerta extends com.speearth.model.core.PacchettoComposite {
 	
 	private java.util.Date dataFine;
 	
+	private String nome;
+	
 	/**
 	 * Data di inizio offerta
 	 */
@@ -53,13 +55,22 @@ public class Offerta extends com.speearth.model.core.PacchettoComposite {
 		return dataFine;
 	}
 	
+	public void setNome(String value) {
+		this.nome = value;
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+	
 	/**
 	 * Costruttore con parametri
 	 */
-	public Offerta(java.util.Date dataInizio, java.util.Date dataFine) {
+	public Offerta(java.util.Date dataInizio, java.util.Date dataFine, String nome) {
 		super();
 		this.dataInizio = dataInizio;
 		this.dataFine = dataFine;
+		this.nome = nome;
 	}
 	
 	/**

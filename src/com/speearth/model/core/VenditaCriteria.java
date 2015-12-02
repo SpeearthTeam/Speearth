@@ -23,8 +23,8 @@ public class VenditaCriteria extends AbstractORMCriteria {
 	public final IntegerExpression id;
 	public final IntegerExpression impiegatoId;
 	public final AssociationExpression impiegato;
-	public final IntegerExpression servizioComponentId;
-	public final AssociationExpression servizioComponent;
+	public final IntegerExpression servizioId;
+	public final AssociationExpression servizio;
 	public final IntegerExpression pagamentoId;
 	public final AssociationExpression pagamento;
 	public final IntegerExpression clienteId;
@@ -36,8 +36,8 @@ public class VenditaCriteria extends AbstractORMCriteria {
 		id = new IntegerExpression("id", this);
 		impiegatoId = new IntegerExpression("impiegato.id", this);
 		impiegato = new AssociationExpression("impiegato", this);
-		servizioComponentId = new IntegerExpression("servizioComponent.id", this);
-		servizioComponent = new AssociationExpression("servizioComponent", this);
+		servizioId = new IntegerExpression("servizio.id", this);
+		servizio = new AssociationExpression("servizio", this);
 		pagamentoId = new IntegerExpression("pagamento.id", this);
 		pagamento = new AssociationExpression("pagamento", this);
 		clienteId = new IntegerExpression("cliente.id", this);
@@ -57,8 +57,8 @@ public class VenditaCriteria extends AbstractORMCriteria {
 		return new ImpiegatoCriteria(createCriteria("impiegato"));
 	}
 	
-	public ServizioComponentCriteria createServizioComponentCriteria() {
-		return new ServizioComponentCriteria(createCriteria("servizioComponent"));
+	public ServizioComponentCriteria createServizioCriteria() {
+		return new ServizioComponentCriteria(createCriteria("servizio"));
 	}
 	
 	public PagamentoCriteria createPagamentoCriteria() {
