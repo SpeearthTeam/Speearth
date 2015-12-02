@@ -31,6 +31,14 @@ public class Impiegato {
 	
 	private String password;
 	
+	private java.util.Date dataNascita;
+	
+	private String codiceFiscale;
+	
+	private String ruolo;
+	
+	private float stipendio;
+	
 	/**
 	 * Id
 	 */
@@ -105,14 +113,50 @@ public class Impiegato {
 		return password;
 	}
 	
+	public void setDataNascita(java.util.Date value) {
+		this.dataNascita = value;
+	}
+	
+	public java.util.Date getDataNascita() {
+		return dataNascita;
+	}
+	
+	public void setCodiceFiscale(String value) {
+		this.codiceFiscale = value;
+	}
+	
+	public String getCodiceFiscale() {
+		return codiceFiscale;
+	}
+	
+	public void setRuolo(String value) {
+		this.ruolo = value;
+	}
+	
+	public String getRuolo() {
+		return ruolo;
+	}
+	
+	public void setStipendio(float value) {
+		this.stipendio = value;
+	}
+	
+	public float getStipendio() {
+		return stipendio;
+	}
+	
 	/**
 	 * Costruttore completo
 	 */
-	public Impiegato(String nome, String cognome, String username, String password) {
-		this.nome = nome;
-		this.cognome = cognome;
+	public Impiegato(String username, String password, String nome, String cognome, java.util.Date data_nascita, String codice_fiscale, String ruolo, float stipendio) {
 		this.username = username;
 		this.password = password;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.dataNascita = data_nascita;
+		this.codiceFiscale = codice_fiscale;
+		this.ruolo = ruolo;
+		this.stipendio = stipendio;
 	}
 	
 	public String toString() {

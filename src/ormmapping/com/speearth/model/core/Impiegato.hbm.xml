@@ -33,5 +33,9 @@ License Type: Academic
 				Password
 			</meta>
 		</property>
+		<property name="dataNascita" column="DataNascita" type="date" not-null="true" lazy="false"/>
+		<property name="codiceFiscale" column="CodiceFiscale" type="string" length="255" not-null="true" lazy="false"/>
+		<property name="ruolo" column="Ruolo" type="string" length="255" not-null="true" lazy="false"/>
+		<property name="stipendio" column="Stipendio" type="float" not-null="true" lazy="false"/>
 	</class>
 </hibernate-mapping>

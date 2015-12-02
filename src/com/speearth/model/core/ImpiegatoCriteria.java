@@ -25,6 +25,10 @@ public class ImpiegatoCriteria extends AbstractORMCriteria {
 	public final StringExpression cognome;
 	public final StringExpression username;
 	public final StringExpression password;
+	public final DateExpression dataNascita;
+	public final StringExpression codiceFiscale;
+	public final StringExpression ruolo;
+	public final FloatExpression stipendio;
 	
 	public ImpiegatoCriteria(Criteria criteria) {
 		super(criteria);
@@ -33,6 +37,10 @@ public class ImpiegatoCriteria extends AbstractORMCriteria {
 		cognome = new StringExpression("cognome", this);
 		username = new StringExpression("username", this);
 		password = new StringExpression("password", this);
+		dataNascita = new DateExpression("dataNascita", this);
+		codiceFiscale = new StringExpression("codiceFiscale", this);
+		ruolo = new StringExpression("ruolo", this);
+		stipendio = new FloatExpression("stipendio", this);
 	}
 	
 	public ImpiegatoCriteria(PersistentSession session) {

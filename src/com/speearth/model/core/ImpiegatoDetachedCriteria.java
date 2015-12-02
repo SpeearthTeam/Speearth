@@ -25,6 +25,10 @@ public class ImpiegatoDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final StringExpression cognome;
 	public final StringExpression username;
 	public final StringExpression password;
+	public final DateExpression dataNascita;
+	public final StringExpression codiceFiscale;
+	public final StringExpression ruolo;
+	public final FloatExpression stipendio;
 	
 	public ImpiegatoDetachedCriteria() {
 		super(com.speearth.model.core.Impiegato.class, com.speearth.model.core.ImpiegatoCriteria.class);
@@ -33,6 +37,10 @@ public class ImpiegatoDetachedCriteria extends AbstractORMDetachedCriteria {
 		cognome = new StringExpression("cognome", this.getDetachedCriteria());
 		username = new StringExpression("username", this.getDetachedCriteria());
 		password = new StringExpression("password", this.getDetachedCriteria());
+		dataNascita = new DateExpression("dataNascita", this.getDetachedCriteria());
+		codiceFiscale = new StringExpression("codiceFiscale", this.getDetachedCriteria());
+		ruolo = new StringExpression("ruolo", this.getDetachedCriteria());
+		stipendio = new FloatExpression("stipendio", this.getDetachedCriteria());
 	}
 	
 	public ImpiegatoDetachedCriteria(DetachedCriteria aDetachedCriteria) {
@@ -42,6 +50,10 @@ public class ImpiegatoDetachedCriteria extends AbstractORMDetachedCriteria {
 		cognome = new StringExpression("cognome", this.getDetachedCriteria());
 		username = new StringExpression("username", this.getDetachedCriteria());
 		password = new StringExpression("password", this.getDetachedCriteria());
+		dataNascita = new DateExpression("dataNascita", this.getDetachedCriteria());
+		codiceFiscale = new StringExpression("codiceFiscale", this.getDetachedCriteria());
+		ruolo = new StringExpression("ruolo", this.getDetachedCriteria());
+		stipendio = new FloatExpression("stipendio", this.getDetachedCriteria());
 	}
 	
 	public Impiegato uniqueImpiegato(PersistentSession session) {

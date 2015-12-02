@@ -29,9 +29,16 @@ public class StartupController implements ICasoDUsoController {
 
 	public void generaPreCondizioni() {
 		try {
-			Impiegato imp = RegistroImpiegati.getInstance().getCommessoDaUsername("tiziocaio85");
+			Impiegato imp = RegistroImpiegati.getInstance().cercaImpiegatoDaUsername("tiziocaio85");
 			if (imp == null) {
-				imp = new Impiegato("Tizio", "Caio", "tiziocaio85", "vbaybzvn");
+				Date d = null;
+				try {
+					d = Costanti.FORMATO_DATA.parse("30-07-1985");
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+				imp = new Impiegato("tiziocaio85", "vbaybzvn", "Tizio", "Caio", d, "TZC123TZC123", "Commesso",
+						(float) 1234.50);
 				SpeearthPersistentManager.instance().saveObject(imp);
 			}
 			AppFacadeController.getInstance().setUtente(imp);

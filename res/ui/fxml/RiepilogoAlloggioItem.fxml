@@ -12,46 +12,46 @@
    <center>
       <GridPane hgap="10.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox GridPane.columnIndex="1">
+            <VBox prefWidth="150.0" GridPane.columnIndex="1">
                <children>
-                  <Label alignment="CENTER" prefWidth="200.0" text="Arrivo">
+                  <Label alignment="CENTER" prefWidth="150.0" text="Arrivo">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="output_data_arrivo" alignment="CENTER" prefWidth="200.0" />
-                  <Label fx:id="output_ora_arrivo" alignment="CENTER" prefWidth="200.0" />
+                  <Label fx:id="output_data_arrivo" alignment="CENTER" prefWidth="150.0" />
+                  <Label fx:id="output_ora_arrivo" alignment="CENTER" prefWidth="150.0" />
                </children>
             </VBox>
-            <VBox GridPane.columnIndex="2">
+            <VBox prefWidth="150.0" GridPane.columnIndex="2">
                <children>
-                  <Label alignment="CENTER" prefWidth="200.0" text="Partenza">
+                  <Label alignment="CENTER" prefWidth="150.0" text="Partenza">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="output_data_partenza" alignment="CENTER" prefWidth="200.0" />
-                  <Label fx:id="output_ora_partenza" alignment="CENTER" prefWidth="200.0" />
+                  <Label fx:id="output_data_partenza" alignment="CENTER" prefWidth="150.0" />
+                  <Label fx:id="output_ora_partenza" alignment="CENTER" prefWidth="150.0" />
                </children>
             </VBox>
-            <VBox GridPane.columnIndex="3">
+            <VBox prefWidth="150.0" GridPane.columnIndex="3">
                <children>
                   <Label prefWidth="150.0" text="         Stanze">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <ListView fx:id="output_stanze" maxWidth="150.0" prefWidth="150.0" />
+                  <ListView fx:id="output_stanze" maxWidth="-Infinity" prefWidth="150.0" />
                </children>
             </VBox>
-            <VBox>
+            <VBox prefWidth="150.0">
                <children>
-                  <Label alignment="CENTER" prefWidth="200.0" text="Località">
+                  <Label alignment="CENTER" prefWidth="150.0" text="Località">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="output_localita" alignment="CENTER" prefWidth="200.0" />
+                  <Label fx:id="output_localita" alignment="CENTER" prefWidth="150.0" />
                </children>
             </VBox>
          </children>
@@ -72,12 +72,12 @@
    <right>
       <VBox prefWidth="150.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" prefWidth="200.0" text="Prezzo">
+            <Label alignment="CENTER" prefWidth="150.0" text="Prezzo">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="output_prezzo" alignment="CENTER" prefWidth="200.0" />
+            <Label fx:id="output_prezzo" alignment="CENTER" prefWidth="150.0" />
          </children>
       </VBox>
    </right>

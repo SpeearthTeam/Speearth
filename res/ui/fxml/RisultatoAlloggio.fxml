@@ -37,7 +37,7 @@
    <right>
       <VBox prefWidth="150.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" prefWidth="200.0" text="Prezzo">
+            <Label alignment="CENTER" prefWidth="150.0" text="Prezzo">
                <font>
                   <Font size="18.0" />
                </font>
@@ -78,7 +78,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <ListView fx:id="output_stanze" maxWidth="150.0" prefWidth="150.0" />
+                  <ListView fx:id="output_stanze" maxWidth="-Infinity" prefWidth="150.0" />
                </children>
             </VBox>
             <VBox>
