@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane prefHeight="513.0" prefWidth="370.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField fx:id="input_ricerca_offerta" layoutX="23.0" layoutY="38.0" prefHeight="31.0" prefWidth="323.0" promptText="Cerca un'Offerta..." />
+      <ListView fx:id="output_lista_offerte" layoutX="23.0" layoutY="91.0" prefHeight="395.0" prefWidth="323.0" />
+   </children>
+</Pane>

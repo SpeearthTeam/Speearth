@@ -76,6 +76,9 @@ public final class Costanti {
 	public final static String FXML_RICERCA_BIGLIETTO_FORM = "/ui/fxml/RicercaBigliettoForm.fxml";
 	public final static String FXML_RIEPILOGO_BIGLIETTO_ITEM = "/ui/fxml/RiepilogoBigliettoItem.fxml";
 	public final static String FXML_RIEPILOGO_ALLOGGIO_ITEM = "/ui/fxml/RiepilogoAlloggioItem.fxml";
+	public final static String FXML_ALLOGGIO_OFFERTA_ITEM = "/ui/fxml/AlloggioOffertaItem.fxml";
+	public final static String FXML_RISULTATO_OFFERTA_ITEM = "/ui/fxml/RisultatoOffertaItem.fxml";
+	public final static String FXML_BIGLIETTO_OFFERTA_ITEM = "/ui/fxml/BigliettoOffertaItem.fxml";
 	public final static String FXML_GESTISCI_CLIENTI = "/ui/fxml/GestisciClienti.fxml";
 	public final static String FXML_GESTISCI_IMPIEGATI = "/ui/fxml/GestisciImpiegati.fxml";
 	public final static String FXML_RIEPILOGO_OFFERTA = "/ui/fxml/RiepilogoOfferta.fxml";
