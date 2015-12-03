@@ -16,7 +16,7 @@
          <top>
             <BorderPane BorderPane.alignment="CENTER">
                <right>
-                  <Button fx:id="bottone_aggiungi" mnemonicParsing="false" onAction="#aggiungiCliente" text="Aggiungi Impiegato" BorderPane.alignment="CENTER" />
+                  <Button fx:id="bottone_aggiungi" mnemonicParsing="false" onAction="#aggiungiImpiegato" text="Aggiungi Impiegato" BorderPane.alignment="CENTER" />
                </right>
                <left>
                   <TextField fx:id="ricerca_impiegato_input" prefHeight="31.0" prefWidth="235.0" promptText="Cerca un Impiegato...." BorderPane.alignment="CENTER" />

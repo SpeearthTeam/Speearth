@@ -5,16 +5,21 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane prefHeight="331.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-	<children>
+<Pane prefHeight="580.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
       <TextField fx:id="input_nome" layoutX="82.0" layoutY="33.0" prefHeight="31.0" prefWidth="256.0" promptText="Nome" />
       <TextField fx:id="input_cognome" layoutX="82.0" layoutY="87.0" prefHeight="31.0" prefWidth="256.0" promptText="Cognome" />
       <TextField fx:id="input_codice_fiscale" layoutX="82.0" layoutY="140.0" prefHeight="31.0" prefWidth="256.0" promptText="Codice fiscale" />
       <DatePicker fx:id="input_data_nascita" layoutX="82.0" layoutY="192.0" prefHeight="31.0" prefWidth="256.0" promptText="Data di nascita" />
-      <Button fx:id="bottone_modifica" layoutX="82.0" layoutY="259.0" mnemonicParsing="false" onAction="#modifica" prefHeight="31.0" prefWidth="256.0" text="Modifica" textAlignment="CENTER">
+      <Button fx:id="bottone_aggiungi" layoutX="82.0" layoutY="525.0" mnemonicParsing="false" onAction="#aggiungi" prefHeight="31.0" prefWidth="256.0" text="Aggiungi" textAlignment="CENTER">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
+      <TextField fx:id="input_username" layoutX="82.0" layoutY="247.0" prefWidth="256.0" promptText="Username" />
+      <TextField fx:id="input_password" layoutX="82.0" layoutY="301.0" prefWidth="256.0" promptText="Password" />
+      <TextField fx:id="input_ripeti_password" layoutX="82.0" layoutY="354.0" prefWidth="256.0" promptText="Ripeti password" />
+      <TextField fx:id="input_ruolo" layoutX="82.0" layoutY="406.0" prefWidth="256.0" promptText="Ruolo" />
+      <TextField fx:id="input_stipendio" layoutX="82.0" layoutY="459.0" prefWidth="256.0" promptText="Stipendio" />
    </children>
 </Pane>

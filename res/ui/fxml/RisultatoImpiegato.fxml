@@ -17,6 +17,8 @@
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="136.0" minHeight="10.0" prefHeight="105.0" vgrow="SOMETIMES" />
@@ -28,25 +30,25 @@
                      <font>
                         <Font size="18.0" />
                      </font></Label>
-                  <Label fx:id="cognome" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="220.0" />
+                  <Label fx:id="output_cognome" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="220.0" />
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3">
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="217.0" text="Codice fiscale">
                      <font>
                         <Font size="18.0" />
                      </font></Label>
-                  <Label fx:id="codice_fiscale" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="217.0" />
+                  <Label fx:id="output_codice_fiscale" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="217.0" />
                </children>
             </VBox>
-            <VBox prefHeight="97.0" prefWidth="137.0" GridPane.columnIndex="3">
+            <VBox prefHeight="97.0" prefWidth="137.0" GridPane.columnIndex="4">
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="149.0" text="Data di nascita">
                      <font>
                         <Font size="18.0" />
                      </font></Label>
-                  <Label fx:id="data_nascita" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="149.0" />
+                  <Label fx:id="output_data_nascita" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="149.0" />
                </children>
             </VBox>
             <VBox prefHeight="99.0">
@@ -55,16 +57,36 @@
                      <font>
                         <Font size="18.0" />
                      </font></Label>
-                  <Label fx:id="nome" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="200.0" />
+                  <Label fx:id="output_nome" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="200.0" />
                </children>
             </VBox>
-            <VBox prefHeight="164.0" prefWidth="125.0" GridPane.columnIndex="4">
+            <VBox prefHeight="164.0" prefWidth="125.0" GridPane.columnIndex="5">
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="213.0" text="Ruolo">
                      <font>
                         <Font size="18.0" />
                      </font></Label>
                   <Label fx:id="output_ruolo" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="213.0" />
+               </children>
+            </VBox>
+            <VBox GridPane.columnIndex="2">
+               <children>
+                  <Label alignment="CENTER" prefWidth="200.0" text="Username">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="output_username" alignment="CENTER" prefWidth="200.0" />
+               </children>
+            </VBox>
+            <VBox GridPane.columnIndex="6">
+               <children>
+                  <Label alignment="CENTER" prefWidth="200.0" text="Stipendio" GridPane.columnIndex="6">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="output_stipendio" alignment="CENTER" prefWidth="200.0" />
                </children>
             </VBox>
          </children>
