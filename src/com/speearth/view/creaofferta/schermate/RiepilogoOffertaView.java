@@ -121,10 +121,8 @@ public class RiepilogoOffertaView extends View {
 	 */
 	private String validazioneEParsificazioneSconto(String input) {
 		input = input.replace(",", ".");
-
 		if (input.matches(Costanti.REG_EX_FLOAT) && Float.parseFloat(input) > 0 && Float.parseFloat(input) < 100)
 			return input;
-
 		return null;
 	}
 

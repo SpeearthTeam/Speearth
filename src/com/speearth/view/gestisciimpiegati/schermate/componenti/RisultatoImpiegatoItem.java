@@ -23,22 +23,26 @@ public class RisultatoImpiegatoItem extends SubView {
 	@FXML
 	private BorderPane risultato_impiegato;
 	@FXML
-	private Label nome;
+	private Label output_username;
 	@FXML
-	private Label cognome;
+	private Label output_nome;
 	@FXML
-	private Label codice_fiscale;
+	private Label output_cognome;
 	@FXML
-	private Label data_nascita;
+	private Label output_codice_fiscale;
+	@FXML
+	private Label output_data_nascita;
 	@FXML
 	private Label output_ruolo;
+	@FXML
+	private Label output_stipendio;
 	@FXML
 	private Button bottone_modifica;
 	@FXML
 	private Button bottone_elimina;
 
 	/**
-	 * Impiegato contenuto nella subview
+	 * Impiegato contenuto nella SubView
 	 */
 	private Impiegato impiegato;
 
@@ -52,29 +56,32 @@ public class RisultatoImpiegatoItem extends SubView {
 	public RisultatoImpiegatoItem(Stage stage, Impiegato impiegato) throws IOException {
 		super(stage);
 		this.setImpiegato(impiegato);
-		updateUI();
+		this.updateUI();
 	}
 
 	/**
-	 * Inizializza la subview
+	 * Inizializza la SubView
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	}
 
 	/**
-	 * Aggiorna la subview
+	 * Aggiorna la SubView
 	 */
 	@Override
 	public void updateUI() {
-		nome.setText(impiegato.getNome());
-		cognome.setText(impiegato.getCognome());
-		codice_fiscale.setText(impiegato.getCodiceFiscale());
-		data_nascita.setText(Costanti.FORMATO_DATA.format(impiegato.getDataNascita()));
+		this.output_username.setText(impiegato.getUsername());
+		this.output_nome.setText(impiegato.getNome());
+		this.output_cognome.setText(impiegato.getCognome());
+		this.output_codice_fiscale.setText(impiegato.getCodiceFiscale());
+		this.output_data_nascita.setText(Costanti.FORMATO_DATA.format(impiegato.getDataNascita()));
+		this.output_ruolo.setText(impiegato.getRuolo());
+		this.output_stipendio.setText(String.valueOf(impiegato.getStipendio()));
 	}
 
 	/**
-	 * Restituisce la risorsa fxml della subview
+	 * Restituisce la risorsa fxml della SubView
 	 */
 	@Override
 	public String getResourceName() {

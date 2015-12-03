@@ -5,7 +5,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.speearth.controller.AppFacadeController;
-import com.speearth.controller.GestisciImpiegatiController;
 import com.speearth.model.core.Impiegato;
 import com.speearth.utility.Costanti;
 import com.speearth.view.HomeView;
@@ -30,23 +29,18 @@ import javafx.stage.Stage;
 
 public class GesticiImpiegatiView extends View {
 	@FXML
-	private TextField ricerca_impiegato_input;
+	private TextField input_ricerca_impiegato;
 	@FXML
 	private Button bottone_torna_alla_home;
 	@FXML
 	private Button bottone_aggiungi;
 	@FXML
-	private ListView<Impiegato> lista_risultati;
+	private ListView<Impiegato> output_lista_risultati;
 
 	/**
-	 * Lista dei clienti gestiti
+	 * Lista degli Impiegati gestiti
 	 */
-	private ObservableList<Impiegato> clienti;
-
-	/**
-	 * Controller per la gestione dei clienti
-	 */
-	private GestisciImpiegatiController controller;
+	private ObservableList<Impiegato> impiegati;
 
 	/**
 	 * Costruttore di default
@@ -56,14 +50,15 @@ public class GesticiImpiegatiView extends View {
 	 */
 	public GesticiImpiegatiView(Stage stage) throws IOException {
 		super(stage);
-		getStage().setTitle(Costanti.TITOLO_AGGIUNGI_IMPIEGATO);
+		getStage().setTitle(Costanti.TITOLO_GESTISCI_IMPIEGATI);
 		getRoot().addEventHandler(EventoGestioneImpiegato.ELIMINA_IMPIEGATO,
 				new EventHandler<EventoGestioneImpiegato>() {
 					@Override
 					public void handle(EventoGestioneImpiegato event) {
 						Impiegato impiegato = event.getImpiegato();
-						if (clienti.remove(impiegato)) {
-							controller.eliminaImpiegato(impiegato);
+						if (impiegati.remove(impiegato)) {
+							AppFacadeController.getInstance().getGestisciImpiegatiController()
+									.eliminaImpiegato(impiegato);
 						}
 					}
 				});
@@ -91,15 +86,16 @@ public class GesticiImpiegatiView extends View {
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		controller = AppFacadeController.getInstance().getGestisciImpiegatiController();
-		clienti = FXCollections.observableArrayList();
-		lista_risultati.setCellFactory(param -> new ImpiegatoListItem(getStage()));
-		lista_risultati.setItems(clienti);
-		clienti.setAll(controller.cercaImpiegato(null));
-		ricerca_impiegato_input.textProperty().addListener(new ChangeListener<String>() {
+		this.impiegati = FXCollections.observableArrayList();
+		this.output_lista_risultati.setCellFactory(param -> new ImpiegatoListItem(getStage()));
+		this.output_lista_risultati.setItems(this.impiegati);
+		this.impiegati.setAll(
+				AppFacadeController.getInstance().getGestisciImpiegatiController().cercaImpiegato(null));
+		this.input_ricerca_impiegato.textProperty().addListener(new ChangeListener<String>() {
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-				clienti.setAll(controller.cercaImpiegato(newValue));
+				impiegati.setAll(AppFacadeController.getInstance().getGestisciImpiegatiController()
+						.cercaImpiegato(newValue));
 			}
 		});
 	}
@@ -123,16 +119,17 @@ public class GesticiImpiegatiView extends View {
 	}
 
 	/**
-	 * Aggiorna la view
+	 * Aggiorna la View
 	 */
 	@Override
 	public void updateUI() {
-		String valore = ricerca_impiegato_input.getText();
-		clienti.setAll(controller.cercaImpiegato(valore));
+		String valore = this.input_ricerca_impiegato.getText();
+		this.impiegati
+				.setAll(AppFacadeController.getInstance().getGestisciImpiegatiController().cercaImpiegato(valore));
 	}
 
 	/**
-	 * Restituisce il nome della risorsa corrispondente alla view
+	 * Restituisce il nome della risorsa corrispondente alla View
 	 */
 	@Override
 	public String getResourceName() {

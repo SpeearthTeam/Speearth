@@ -1,5 +1,6 @@
 package com.speearth.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import com.speearth.model.core.AgenziaFacade;
@@ -35,8 +36,18 @@ public class GestisciImpiegatiController implements ICasoDUsoController {
 	 * @param username
 	 * @return ArrayList<Impiegato>
 	 */
-	public Impiegato cercaImpiegato(String username) {
+	public Impiegato cercaImpiegatoDaUsername(String username) {
 		return AgenziaFacade.getInstance().getRegistroImpiegati().cercaImpiegatoDaUsername(username);
+	}
+
+	/**
+	 * Restituisce una lista di Impiegati in base a un valore
+	 * 
+	 * @param valore
+	 * @return ArrayList<Impiegato>
+	 */
+	public ArrayList<Impiegato> cercaImpiegato(String valore) {
+		return AgenziaFacade.getInstance().getRegistroImpiegati().cercaImpiegatiDaValore(valore);
 	}
 
 	/**

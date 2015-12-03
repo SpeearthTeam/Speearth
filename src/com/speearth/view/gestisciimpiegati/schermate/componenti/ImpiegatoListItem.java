@@ -13,7 +13,7 @@ public class ImpiegatoListItem extends ListCell<Impiegato> {
 	 * Stage nella list view
 	 */
 	private Stage stage;
-	
+
 	/**
 	 * Costruttore di default
 	 * 
@@ -22,7 +22,7 @@ public class ImpiegatoListItem extends ListCell<Impiegato> {
 	public ImpiegatoListItem(Stage stage) {
 		this.stage = stage;
 	}
-	
+
 	/**
 	 * Aggiorna un elemento della lista
 	 * 
@@ -32,7 +32,6 @@ public class ImpiegatoListItem extends ListCell<Impiegato> {
 	@Override
 	protected void updateItem(Impiegato impiegato, boolean empty) {
 		super.updateItem(impiegato, empty);
-		
 		if (impiegato != null) {
 			try {
 				RisultatoImpiegatoItem impiegato_item = new RisultatoImpiegatoItem(stage, impiegato);

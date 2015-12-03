@@ -22,7 +22,6 @@ import javafx.stage.WindowEvent;
  * Classe che rappresenta una schermata dell'Applicazione
  */
 public abstract class View implements Initializable {
-
 	/**
 	 * Attributo che serve alla gestione del caricamento delle risorse di JavaFX
 	 */
@@ -66,11 +65,12 @@ public abstract class View implements Initializable {
 		root = (Parent) loader.load();
 		this.stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 			public void handle(WindowEvent we) {
-				Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_CHIUDI, Costanti.MESSAGGIO_CHIUDI,
-						Costanti.MESSAGGIO_CHIUSURA_SESSIONE);
+				Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_CHIUDI,
+						Costanti.MESSAGGIO_CHIUDI, Costanti.MESSAGGIO_CHIUSURA_SESSIONE);
 				if (result.get() == ButtonType.OK)
 					stage.close();
-				else we.consume();
+				else
+					we.consume();
 			}
 		});
 	}
@@ -104,7 +104,7 @@ public abstract class View implements Initializable {
 		setScene();
 		stage.show();
 	}
-	
+
 	/**
 	 * Alternativa apposita per i Popup
 	 */
@@ -144,7 +144,7 @@ public abstract class View implements Initializable {
 		alert.setContentText(content_text);
 		return alert.showAndWait();
 	}
-	
+
 	/**
 	 * Massimizza la finestra della view.
 	 */
@@ -156,15 +156,15 @@ public abstract class View implements Initializable {
 		stage.setY(bounds.getMinY());
 		stage.setWidth(bounds.getWidth());
 		stage.setHeight(bounds.getHeight());
-		
+
 		stage.setMaximized(true);
 	}
-	
+
 	/**
 	 * Aggiorna l'interfaccia grafica della subview
 	 */
 	public void updateUI() {
-		
+
 	}
 
 }

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <GridPane alignment="CENTER" styleClass="grid" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="bottone_prenota_servizio" mnemonicParsing="false" onAction="#prenotaServizio" prefHeight="166.0" prefWidth="294.0" text="Prenota Servizio">
+                     <graphic>
+                        <ImageView fitHeight="146.0" fitWidth="188.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/icona_prenota_servizio.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="bottone_gestisci_clienti" mnemonicParsing="false" onAction="#gestisciClienti" prefHeight="166.0" prefWidth="294.0" text="Gestici Clienti" GridPane.rowIndex="1">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/icona_utenti.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="bottone_crea_offerta" mnemonicParsing="false" onAction="#creaOfferta" prefHeight="166.0" prefWidth="294.0" text="Crea Offerta" GridPane.rowIndex="2">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="157.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/icona_crea_offerta.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="bottone_gestisci_impiegati" mnemonicParsing="false" onAction="#gestisciImpiegati" prefHeight="166.0" prefWidth="294.0" text="Gestisci Impiegati" GridPane.rowIndex="3">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="157.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/icona_impiegati.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </GridPane>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <ImageView fitHeight="360.0" fitWidth="454.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/icona_logo_speearth.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Sei autenticato come:">
+                     <padding>
+                        <Insets top="50.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="label_utente" text="label_utente">
+                     <padding>
+                        <Insets bottom="30.0" top="10.0" />
+                     </padding>
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="Ruolo:" />
+                  <Label fx:id="label_ruole_utente" text="Direttore">
+                     <padding>
+                        <Insets bottom="30.0" top="10.0" />
+                     </padding>
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </GridPane>
+   </center>
+</BorderPane>

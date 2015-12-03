@@ -23,7 +23,7 @@ public class ImpiegatoPopupView extends View {
 	private AnchorPane form_container;
 
 	/**
-	 * Form di salvataggio del Impiegato
+	 * Form di salvataggio dell'Impiegato
 	 */
 	private FormView form;
 
@@ -81,8 +81,8 @@ public class ImpiegatoPopupView extends View {
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		getStage().setHeight(Costanti.DIMENSIONE_ALTEZZA_POPUP_CLIENTE);
-		getStage().setWidth(Costanti.DIMENSIONE_LARGHEZZA_POPUP_CLIENTE);
+		getStage().setHeight(Costanti.DIMENSIONE_ALTEZZA_POPUP_IMPIEGATO);
+		getStage().setWidth(Costanti.DIMENSIONE_LARGHEZZA_POPUP_IMPIEGATO);
 		getStage().setResizable(false);
 	}
 

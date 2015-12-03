@@ -9,6 +9,7 @@ import com.speearth.model.core.Impiegato;
 import com.speearth.utility.Costanti;
 import com.speearth.view.creaofferta.schermate.CreaOffertaView;
 import com.speearth.view.gestisciclienti.schermate.GesticiClientiView;
+import com.speearth.view.gestisciimpiegati.schermate.GesticiImpiegatiView;
 import com.speearth.view.prenotaservizio.schermate.ScegliServizioView;
 
 import javafx.event.ActionEvent;
@@ -17,11 +18,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-public class HomeView extends View{
+public class HomeView extends View {
 	@FXML
 	private Button bottone_prenota_servizio;
 	@FXML
-	private Button bottone_gestici_clienti;
+	private Button bottone_gestisci_clienti;
+	@FXML
+	private Button bottone_gestici_impiegati;
 	@FXML
 	private Button bottone_crea_offerta;
 	@FXML
@@ -38,30 +41,36 @@ public class HomeView extends View{
 	public HomeView(Stage stage) throws IOException {
 		super(stage);
 		stage.setTitle(Costanti.TITOLO_HOME);
-		//massimizzaFinestra();
 	}
-	
+
 	// Event Listener on Button[#bottone_prenota_servizio].onAction
 	@FXML
 	public void prenotaServizio(ActionEvent event) throws IOException {
 		ScegliServizioView view = new ScegliServizioView(getStage());
 		view.mostra();
 	}
-	
+
 	// Event Listener on Button[#bottone_gestici_clienti].onAction
 	@FXML
-	public void gesticiClienti(ActionEvent event) throws IOException {
+	public void gestisciClienti(ActionEvent event) throws IOException {
 		GesticiClientiView view = new GesticiClientiView(getStage());
 		view.mostra();
 	}
-	
+
+	// Event Listener on Button[#bottone_gestici_impiegati].onAction
+	@FXML
+	public void gestisciImpiegati(ActionEvent event) throws IOException {
+		GesticiImpiegatiView view = new GesticiImpiegatiView(getStage());
+		view.mostra();
+	}
+
 	// Event Listener on Button[#bottone_crea_offerta].onAction
 	@FXML
 	public void creaOfferta(ActionEvent event) throws IOException {
 		CreaOffertaView view = new CreaOffertaView(getStage());
 		view.mostra();
 	}
-	
+
 	/**
 	 * Inizializza la classe
 	 * 
@@ -73,7 +82,7 @@ public class HomeView extends View{
 		Impiegato utente = AppFacadeController.getInstance().getUtente();
 		this.label_utente.setText(utente.getNome() + " " + utente.getCognome());
 	}
-	
+
 	/**
 	 * Restituisce il nome della Risorsa associata alla View
 	 * 
@@ -81,6 +90,14 @@ public class HomeView extends View{
 	 */
 	@Override
 	public String getResourceName() {
-		return Costanti.FXML_HOME_RESPONSABILE_OFFERTE;
+		switch (AppFacadeController.getInstance().getUtente().getRuolo()) {
+		case "Commesso":
+			return Costanti.FXML_HOME_COMMESSO;
+		case "Responsabile Offerte":
+			return Costanti.FXML_HOME_RESPONSABILE_OFFERTE;
+		case "Direttore":
+			return Costanti.FXML_HOME_DIRETTORE;
+		}
+		return null;
 	}
 }

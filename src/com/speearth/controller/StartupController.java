@@ -29,19 +29,43 @@ public class StartupController implements ICasoDUsoController {
 
 	public void generaPreCondizioni() {
 		try {
-			Impiegato imp = RegistroImpiegati.getInstance().cercaImpiegatoDaUsername("tiziocaio85");
-			if (imp == null) {
-				Date d = null;
+			Impiegato imp1 = RegistroImpiegati.getInstance().cercaImpiegatoDaUsername("tiziocaio85");
+			Impiegato imp2 = RegistroImpiegati.getInstance().cercaImpiegatoDaUsername("dariolampa220");
+			Impiegato imp3 = RegistroImpiegati.getInstance().cercaImpiegatoDaUsername("richardbenson666");
+			if (imp1 == null) {
+				Date d1 = null;
 				try {
-					d = Costanti.FORMATO_DATA.parse("30-07-1985");
+					d1 = Costanti.FORMATO_DATA.parse("30-07-1985");
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}
-				imp = new Impiegato("tiziocaio85", "vbaybzvn", "Tizio", "Caio", d, "TZC123TZC123", "Commesso",
+				imp1 = new Impiegato("tiziocaio85", "vbaybzvn", "Tizio", "Caio", d1, "TZC123TZC123", "Commesso",
 						(float) 1234.50);
-				SpeearthPersistentManager.instance().saveObject(imp);
+				SpeearthPersistentManager.instance().saveObject(imp1);
 			}
-			AppFacadeController.getInstance().setUtente(imp);
+			if (imp2 == null) {
+				Date d2 = null;
+				try {
+					d2 = Costanti.FORMATO_DATA.parse("01-01-1960");
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+				imp2 = new Impiegato("dariolampa220", "blablabla", "Dario", "Lampa", d2, "MLLMNDMMNS456",
+						"Responsabile Offerte", (float) 1234.50);
+				SpeearthPersistentManager.instance().saveObject(imp2);
+			}
+			if (imp3 == null) {
+				Date d3 = null;
+				try {
+					d3 = Costanti.FORMATO_DATA.parse("10-03-1955");
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+				imp3 = new Impiegato("richardbenson666", "unpolloh", "Richard", "Benson", d3, "TDVSPVNTR33333",
+						"Direttore", (float) 6666.66);
+				SpeearthPersistentManager.instance().saveObject(imp3);
+			}
+			AppFacadeController.getInstance().setUtente(imp3);
 
 			Cliente cl = RegistroClienti.getInstance().cercaClienteDaCodiceTessera("123456");
 			if (cl == null) {

@@ -9,7 +9,6 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-
 	/**
 	 * Avvia l'Applicazione
 	 * 
@@ -27,5 +26,4 @@ public class Main extends Application {
 		HomeView view = new HomeView(primaryStage);
 		view.mostra();
 	}
-
 }

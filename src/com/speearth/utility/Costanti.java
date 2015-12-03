@@ -77,7 +77,7 @@ public final class Costanti {
 	public final static String FXML_RIEPILOGO_BIGLIETTO_ITEM = "/ui/fxml/RiepilogoBigliettoItem.fxml";
 	public final static String FXML_RIEPILOGO_ALLOGGIO_ITEM = "/ui/fxml/RiepilogoAlloggioItem.fxml";
 	public final static String FXML_GESTISCI_CLIENTI = "/ui/fxml/GestisciClienti.fxml";
-	public final static String FXML_GESTISCI_IMPIEGATI = "/ui/fxml/GestisciClienti.fxml";
+	public final static String FXML_GESTISCI_IMPIEGATI = "/ui/fxml/GestisciImpiegati.fxml";
 	public final static String FXML_RIEPILOGO_OFFERTA = "/ui/fxml/RiepilogoOfferta.fxml";
 	public final static String FXML_CREA_OFFERTA = "/ui/fxml/CreaOfferta.fxml";
 	public final static String FXML_AGGIUNGI_CLIENTE_FORM = "/ui/fxml/AggiungiClienteForm.fxml";
@@ -86,7 +86,9 @@ public final class Costanti {
 	public final static String FXML_MODIFICA_IMPIEGATO_FORM = "/ui/fxml/ModificaImpiegatoForm.fxml";
 	public final static String FXML_CLIENTE_POPUP = "/ui/fxml/ClientePopup.fxml";
 	public final static String FXML_IMPIEGATO_POPUP = "/ui/fxml/ImpiegatoPopup.fxml";
+	public static final String FXML_HOME_COMMESSO = "/ui/fxml/HomeCommesso.fxml";
 	public static final String FXML_HOME_RESPONSABILE_OFFERTE = "/ui/fxml/HomeResponsabileOfferte.fxml";
+	public static final String FXML_HOME_DIRETTORE = "/ui/fxml/HomeDirettore.fxml";
 
 	/**
 	 * Messaggi dei Dialog
@@ -150,7 +152,7 @@ public final class Costanti {
 	public final static double DIMENSIONE_LARGHEZZA_POPUP_CLIENTE = 420.0;
 	public final static double DIMENSIONE_ALTEZZA_POPUP_CLIENTE = 360.0;
 	public final static double DIMENSIONE_LARGHEZZA_POPUP_IMPIEGATO = 420.0;
-	public final static double DIMENSIONE_ALTEZZA_POPUP_IMPIEGATO = 360.0;
+	public final static double DIMENSIONE_ALTEZZA_POPUP_IMPIEGATO = 620.0;
 
 	/**
 	 * Stringhe generiche

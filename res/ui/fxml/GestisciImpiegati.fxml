@@ -11,7 +11,7 @@
 	<center>
 		<BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <center>
-            <ListView fx:id="lista_risultati" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+            <ListView fx:id="output_lista_risultati" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
          </center>
          <top>
             <BorderPane BorderPane.alignment="CENTER">
@@ -19,7 +19,7 @@
                   <Button fx:id="bottone_aggiungi" mnemonicParsing="false" onAction="#aggiungiImpiegato" text="Aggiungi Impiegato" BorderPane.alignment="CENTER" />
                </right>
                <left>
-                  <TextField fx:id="ricerca_impiegato_input" prefHeight="31.0" prefWidth="235.0" promptText="Cerca un Impiegato...." BorderPane.alignment="CENTER" />
+                  <TextField fx:id="input_ricerca_impiegato" prefHeight="31.0" prefWidth="235.0" promptText="Cerca un Impiegato...." BorderPane.alignment="CENTER" />
                </left>
                <padding>
                   <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />

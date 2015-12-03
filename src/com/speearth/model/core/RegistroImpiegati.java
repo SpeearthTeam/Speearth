@@ -1,7 +1,12 @@
 package com.speearth.model.core;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
+import org.hibernate.criterion.Junction;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
 import org.orm.PersistentException;
 
 /**
@@ -66,6 +71,34 @@ public class RegistroImpiegati {
 	}
 
 	/**
+	 * Restituisce una lista di possibili Impiegati in base alla Stringa
+	 * inserita
+	 * 
+	 * @param valore
+	 * @return ArrayList<Impiegato>
+	 */
+	public ArrayList<Impiegato> cercaImpiegatiDaValore(String valore) {
+		try {
+			ImpiegatoCriteria impiegato = new ImpiegatoCriteria();
+			if (valore != null && !valore.isEmpty()) {
+				Junction condizioni = Restrictions.disjunction();
+				String[] valori = valore.split(" ");
+				for (String stringa : valori) {
+					condizioni.add(Restrictions.like("username", stringa, MatchMode.START))
+							.add(Restrictions.like("nome", stringa, MatchMode.START))
+							.add(Restrictions.like("cognome", stringa, MatchMode.START))
+							.add(Restrictions.like("codiceFiscale", stringa, MatchMode.ANYWHERE));
+				}
+				impiegato.add(condizioni);
+			}
+			return new ArrayList<>(Arrays.asList(impiegato.listImpiegato()));
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	/**
 	 * Aggiunge un nuovo Impiegato nel Sistema
 	 * 
 	 * @param username
@@ -94,11 +127,14 @@ public class RegistroImpiegati {
 	/**
 	 * Modifica i dati di un Impiegato
 	 * 
-	 * @param id
+	 * @param username
+	 * @param password
 	 * @param nome
 	 * @param cognome
 	 * @param data_nascita
 	 * @param codice_fiscale
+	 * @param ruolo
+	 * @param stipendio
 	 * @return Impiegato
 	 */
 	public Impiegato modificaImpiegato(String username, String password, String nome, String cognome, Date data_nascita,
@@ -107,6 +143,7 @@ public class RegistroImpiegati {
 		if (impiegato != null) {
 			impiegato.setNome(nome);
 			impiegato.setCognome(cognome);
+			impiegato.setPassword(password);
 			impiegato.setDataNascita(data_nascita);
 			impiegato.setCodiceFiscale(codice_fiscale);
 			impiegato.setRuolo(ruolo);
