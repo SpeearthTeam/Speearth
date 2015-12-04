@@ -19,7 +19,7 @@
                   <Button fx:id="bottone_aggiungi" mnemonicParsing="false" onAction="#aggiungiCliente" text="Aggiungi Cliente" BorderPane.alignment="CENTER" />
                </right>
                <left>
-                  <TextField fx:id="ricerca_cliente_input" prefHeight="31.0" prefWidth="235.0" promptText="Cerca un Cliente...." BorderPane.alignment="CENTER" />
+                  <TextField fx:id="input_ricerca_cliente" prefHeight="31.0" prefWidth="235.0" promptText="Cerca un Cliente...." BorderPane.alignment="CENTER" />
                </left>
                <padding>
                   <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />

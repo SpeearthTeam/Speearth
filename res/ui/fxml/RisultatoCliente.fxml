@@ -28,7 +28,7 @@
                      <font>
                         <Font size="18.0" />
                      </font></Label>
-                  <Label fx:id="cognome" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="220.0" />
+                  <Label fx:id="output_cognome" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="220.0" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
@@ -37,7 +37,7 @@
                      <font>
                         <Font size="18.0" />
                      </font></Label>
-                  <Label fx:id="codice_fiscale" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="217.0" />
+                  <Label fx:id="output_codice_fiscale" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="217.0" />
                </children>
             </VBox>
             <VBox prefHeight="97.0" prefWidth="137.0" GridPane.columnIndex="3">
@@ -46,7 +46,7 @@
                      <font>
                         <Font size="18.0" />
                      </font></Label>
-                  <Label fx:id="data_nascita" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="149.0" />
+                  <Label fx:id="output_data_nascita" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="149.0" />
                </children>
             </VBox>
             <VBox prefHeight="99.0">
@@ -55,7 +55,7 @@
                      <font>
                         <Font size="18.0" />
                      </font></Label>
-                  <Label fx:id="nome" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="200.0" />
+                  <Label fx:id="output_nome" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="200.0" />
                </children>
             </VBox>
             <VBox prefHeight="164.0" prefWidth="125.0" GridPane.columnIndex="4">
@@ -64,7 +64,7 @@
                      <font>
                         <Font size="18.0" />
                      </font></Label>
-                  <Label fx:id="codice_tessera" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="213.0" />
+                  <Label fx:id="output_codice_tessera" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="213.0" />
                </children>
             </VBox>
          </children>

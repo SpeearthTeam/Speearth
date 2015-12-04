@@ -29,7 +29,7 @@ import javafx.stage.Stage;
 
 public class GesticiClientiView extends View {
 	@FXML
-	private TextField ricerca_cliente_input;
+	private TextField input_ricerca_cliente;
 	@FXML
 	private Button bottone_torna_alla_home;
 	@FXML
@@ -93,7 +93,7 @@ public class GesticiClientiView extends View {
 		lista_risultati.setCellFactory(param -> new ClienteListItem(getStage()));
 		lista_risultati.setItems(clienti);
 		clienti.setAll(controller.cercaCliente(null));
-		ricerca_cliente_input.textProperty().addListener(new ChangeListener<String>() {
+		input_ricerca_cliente.textProperty().addListener(new ChangeListener<String>() {
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 				clienti.setAll(controller.cercaCliente(newValue));
@@ -124,7 +124,7 @@ public class GesticiClientiView extends View {
 	 */
 	@Override
 	public void updateUI() {
-		String valore = ricerca_cliente_input.getText();
+		String valore = input_ricerca_cliente.getText();
 		clienti.setAll(controller.cercaCliente(valore));
 	}
 

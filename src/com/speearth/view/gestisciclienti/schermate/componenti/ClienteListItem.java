@@ -13,7 +13,7 @@ public class ClienteListItem extends ListCell<Cliente> {
 	 * Stage nella list view
 	 */
 	private Stage stage;
-	
+
 	/**
 	 * Costruttore di default
 	 * 
@@ -22,7 +22,7 @@ public class ClienteListItem extends ListCell<Cliente> {
 	public ClienteListItem(Stage stage) {
 		this.stage = stage;
 	}
-	
+
 	/**
 	 * Aggiorna un elemento della lista
 	 * 
@@ -32,7 +32,6 @@ public class ClienteListItem extends ListCell<Cliente> {
 	@Override
 	protected void updateItem(Cliente cliente, boolean empty) {
 		super.updateItem(cliente, empty);
-		
 		if (cliente != null) {
 			try {
 				RisultatoClienteItem cliente_item = new RisultatoClienteItem(stage, cliente);

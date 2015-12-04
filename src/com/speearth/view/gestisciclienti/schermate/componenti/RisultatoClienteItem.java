@@ -23,15 +23,15 @@ public class RisultatoClienteItem extends SubView {
 	@FXML
 	private BorderPane risultato_cliente;
 	@FXML
-	private Label nome;
+	private Label output_nome;
 	@FXML
-	private Label cognome;
+	private Label output_cognome;
 	@FXML
-	private Label codice_fiscale;
+	private Label output_codice_fiscale;
 	@FXML
-	private Label data_nascita;
+	private Label output_data_nascita;
 	@FXML
-	private Label codice_tessera;
+	private Label output_codice_tessera;
 	@FXML
 	private Button bottone_modifica;
 	@FXML
@@ -67,11 +67,11 @@ public class RisultatoClienteItem extends SubView {
 	 */
 	@Override
 	public void updateUI() {
-		nome.setText(cliente.getNome());
-		cognome.setText(cliente.getCognome());
-		codice_fiscale.setText(cliente.getCodiceFiscale());
-		data_nascita.setText(Costanti.FORMATO_DATA.format(cliente.getDataNascita()));
-		codice_tessera.setText(cliente.getCodiceTessera());
+		output_nome.setText(cliente.getNome());
+		output_cognome.setText(cliente.getCognome());
+		output_codice_fiscale.setText(cliente.getCodiceFiscale());
+		output_data_nascita.setText(Costanti.FORMATO_DATA.format(cliente.getDataNascita()));
+		output_codice_tessera.setText(cliente.getCodiceTessera());
 	}
 
 	/**
