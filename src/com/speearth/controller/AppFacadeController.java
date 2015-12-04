@@ -50,6 +50,13 @@ public class AppFacadeController {
 	public void setUtente(Impiegato utente) {
 		this.utente = utente;
 	}
+	
+	/**
+	 * Restituisce il Controller di Login
+	 */
+	public LoginController getLoginController() {
+		return LoginController.getInstance();
+	}
 
 	/**
 	 * Restituisce il Controller di PrenotaServizio

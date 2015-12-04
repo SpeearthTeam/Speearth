@@ -2,7 +2,7 @@ package com.speearth;
 
 import com.speearth.controller.AppFacadeController;
 import com.speearth.utility.Costanti;
-import com.speearth.view.HomeView;
+import com.speearth.view.LoginView;
 
 import javafx.application.Application;
 import javafx.scene.image.Image;
@@ -23,7 +23,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.getIcons().add(new Image(this.getClass().getResourceAsStream(Costanti.ICONA_SPEEARTH)));
-		HomeView view = new HomeView(primaryStage);
+		LoginView view = new LoginView(primaryStage);
 		view.mostra();
 	}
 }

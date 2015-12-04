@@ -36,7 +36,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="bottone_gestici_clienti" mnemonicParsing="false" onAction="#gesticiClienti" prefHeight="166.0" prefWidth="286.0" text="Gestici Clienti" GridPane.rowIndex="1">
+                  <Button fx:id="bottone_gestisci_clienti" mnemonicParsing="false" onAction="#gestisciClienti" prefHeight="166.0" prefWidth="286.0" text="Gestici Clienti" GridPane.rowIndex="1">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -76,6 +76,11 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
+                  <Button fx:id="bottone_esci" mnemonicParsing="false" onAction="#esci" prefHeight="51.0" prefWidth="141.0" text="Esci">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
                </children>
             </VBox>
          </children>
