@@ -26,6 +26,8 @@ public class ScegliServizioView extends View {
 	private Button bottone_prenota_alloggio;
 	@FXML
 	private Button bottone_prenota_pacchetto;
+	@FXML
+	private Button bottone_acquista_offerta;
 
 	/**
 	 * Costruttore di default
@@ -36,7 +38,7 @@ public class ScegliServizioView extends View {
 	public ScegliServizioView(Stage stage) throws IOException {
 		super(stage);
 		stage.setTitle(Costanti.TITOLO_SCEGLI_SERVIZIO);
-		//massimizzaFinestra();
+		// massimizzaFinestra();
 	}
 
 	/**
@@ -69,7 +71,14 @@ public class ScegliServizioView extends View {
 		RicercaPacchettoView view = new RicercaPacchettoView(getStage());
 		view.mostra();
 	}
-	
+
+	// Event Listener on Button[#bottone_acquista_offerta].onAction
+	@FXML
+	public void acquistaOfferta(ActionEvent event) throws IOException {
+		RicercaOffertaView view = new RicercaOffertaView(getStage());
+		view.mostra();
+	}
+
 	// Event Listener on Button[#bottone_torna_alla_home].onAction
 	@FXML
 	public void vaiAllaHome(ActionEvent event) throws IOException {

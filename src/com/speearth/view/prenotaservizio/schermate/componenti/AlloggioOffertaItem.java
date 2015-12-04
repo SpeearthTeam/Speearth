@@ -100,7 +100,7 @@ public class AlloggioOffertaItem extends SubView {
 		this.output_prezzo.setText(Float.toString(alloggio.getPrezzo()));
 		this.output_prezzo.setText(Float.toString(alloggio.getPrezzo()) + " €");
 
-		ArrayList<Stanza> stanze = (ArrayList<Stanza>) alloggio.getStanze();
+		ArrayList<Stanza> stanze = new ArrayList<Stanza>(alloggio.getStanze());
 		ArrayList<String> tipi_stanze = new ArrayList<String>();
 
 		for (Stanza stanza : stanze) {

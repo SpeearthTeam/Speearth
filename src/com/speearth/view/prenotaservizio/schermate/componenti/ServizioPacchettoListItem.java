@@ -9,7 +9,7 @@ import com.speearth.model.core.ServizioComponent;
 import javafx.scene.control.ListCell;
 import javafx.stage.Stage;
 
-public class PacchettoListItem extends ListCell<ServizioComponent> {
+public class ServizioPacchettoListItem extends ListCell<ServizioComponent> {
 
 	/**
 	 * Stage della list view
@@ -21,7 +21,7 @@ public class PacchettoListItem extends ListCell<ServizioComponent> {
 	 * 
 	 * @param stage
 	 */
-	public PacchettoListItem(Stage stage) {
+	public ServizioPacchettoListItem(Stage stage) {
 		this.stage = stage;
 	}
 

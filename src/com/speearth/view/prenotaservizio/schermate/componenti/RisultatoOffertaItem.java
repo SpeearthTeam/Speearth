@@ -9,15 +9,13 @@ import com.speearth.utility.Costanti;
 import com.speearth.view.SubView;
 
 import javafx.fxml.FXML;
-
 import javafx.scene.control.Label;
-
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class RisultatoOffertaItem extends SubView {
 	@FXML
-	private BorderPane risultato_alloggio;
+	private BorderPane risultato_servizio;
 	@FXML
 	private Label output_nome;
 	@FXML
@@ -59,17 +57,25 @@ public class RisultatoOffertaItem extends SubView {
 	}
 
 	/**
-	 * Aggiorna il offerta
+	 * Aggiorna il Servizio
 	 * 
 	 * @param offerta
 	 */
 	public void updateOfferta(Offerta offerta) {
-		setOfferta(offerta);
+		this.setOfferta(offerta);
 		updateUI();
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+//		this.risultato_servizio.getParent().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+//			@Override
+//			public void handle(MouseEvent event) {
+//				EventoSelezionaOfferta evento = new EventoSelezionaOfferta(EventoSelezionaOfferta.OFFERTA_SELEZIONATA,
+//						RisultatoOffertaItem.this.offerta);
+//				getRoot().fireEvent(evento);
+//			}
+//		});
 	}
 
 	/**
@@ -82,8 +88,13 @@ public class RisultatoOffertaItem extends SubView {
 		return Costanti.FXML_RISULTATO_OFFERTA_ITEM;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void updateUI() {
-		// TODO
+		this.output_nome.setText(this.offerta.getNome());
+		this.output_data_inizio.setText(Costanti.FORMATO_DATA.format(this.offerta.getDataInizio()));
+		this.output_data_scadenza.setText(Costanti.FORMATO_DATA.format(this.offerta.getDataFine()));
 	}
 }

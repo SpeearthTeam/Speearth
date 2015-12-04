@@ -7,7 +7,7 @@ import java.util.ResourceBundle;
 
 import com.speearth.controller.AppFacadeController;
 import com.speearth.model.core.Cliente;
-import com.speearth.model.core.PacchettoComposite;
+import com.speearth.model.core.Offerta;
 import com.speearth.model.core.ServizioComponent;
 import com.speearth.model.core.bonus.IBonus;
 import com.speearth.model.core.bonus.ScontoConcreteStrategy;
@@ -15,7 +15,7 @@ import com.speearth.utility.Costanti;
 import com.speearth.view.HomeView;
 import com.speearth.view.View;
 import com.speearth.view.gestisciclienti.schermate.ClientePopupView;
-import com.speearth.view.prenotaservizio.schermate.componenti.ServizioPacchettoListItem;
+import com.speearth.view.prenotaservizio.schermate.componenti.ServizioOffertaListItem;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -34,7 +34,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class RiepilogoPacchettoView extends View {
+public class RiepilogoOffertaView extends View {
 	@FXML
 	private Button bottone_torna_alla_home;
 	@FXML
@@ -94,14 +94,14 @@ public class RiepilogoPacchettoView extends View {
 	}
 
 	/**
-	 * Imposta le informazioni del Pacchetto prenotato nella View
+	 * Imposta le informazioni dell'Offerta prenotata nella View
 	 * 
-	 * @param pacchetto
+	 * @param offerta
 	 */
-	private void impostaInfoPacchetto(PacchettoComposite pacchetto) {
-		this.lista_servizi.setAll(pacchetto.getListaServizi());
+	private void impostaInfoOfferta(Offerta offerta) {
+		this.lista_servizi.setAll(offerta.getListaServizi());
 		this.riepilogo_servizi.setItems(this.lista_servizi);
-		this.output_totale.setText(Float.toString(pacchetto.getPrezzo()));
+		this.output_totale.setText(Float.toString(offerta.getPrezzo()));
 	}
 
 	/**
@@ -110,12 +110,11 @@ public class RiepilogoPacchettoView extends View {
 	 * @param stage
 	 * @throws IOException
 	 */
-	public RiepilogoPacchettoView(Stage stage) throws IOException {
+	public RiepilogoOffertaView(Stage stage) throws IOException {
 		super(stage);
 		getStage().setTitle(Costanti.TITOLO_RIEPILOGO);
-		//massimizzaFinestra();
-		this.impostaInfoPacchetto(
-				(PacchettoComposite) AppFacadeController.getInstance().getPrenotaServizioController().getServizio());
+		this.impostaInfoOfferta(
+				(Offerta) AppFacadeController.getInstance().getPrenotaServizioController().getServizio());
 	}
 
 	/**
@@ -126,7 +125,7 @@ public class RiepilogoPacchettoView extends View {
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		this.riepilogo_servizi.setCellFactory(param -> new ServizioPacchettoListItem(getStage()));
+		this.riepilogo_servizi.setCellFactory(param -> new ServizioOffertaListItem(getStage()));
 		this.riepilogo_servizi.setItems(this.lista_servizi);
 		ToggleGroup group = new ToggleGroup();
 		this.input_radio_contanti.setToggleGroup(group);

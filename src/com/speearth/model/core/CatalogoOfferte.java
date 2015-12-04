@@ -3,6 +3,9 @@ package com.speearth.model.core;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import org.hibernate.criterion.Junction;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
 import org.orm.PersistentException;
 
 /**
@@ -56,6 +59,31 @@ public class CatalogoOfferte {
 	public ArrayList<Offerta> getOfferte() {
 		try {
 			return new ArrayList<>(Arrays.asList(new OffertaCriteria().listOfferta()));
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	/**
+	 * Restituisce una lista di possibili Offerte in base alla Stringa
+	 * inserita
+	 * 
+	 * @param valore
+	 * @return ArrayList<Offerta>
+	 */
+	public ArrayList<Offerta> cercaOfferta(String valore) {
+		try {
+			OffertaCriteria offerta = new OffertaCriteria();
+			if (valore != null && !valore.isEmpty()) {
+				Junction condizioni = Restrictions.disjunction();
+				String[] valori = valore.split(" ");
+				for (String stringa : valori) {
+					condizioni.add(Restrictions.like("nome", stringa, MatchMode.START));
+				}
+				offerta.add(condizioni);
+			}
+			return new ArrayList<>(Arrays.asList(offerta.listOfferta()));
 		} catch (PersistentException e) {
 			e.printStackTrace();
 		}

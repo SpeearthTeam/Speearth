@@ -38,7 +38,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="bottone_gestisci_clienti" mnemonicParsing="false" onAction="#gestisciClienti" prefHeight="166.0" prefWidth="294.0" text="Gestici Clienti" GridPane.rowIndex="1">
+                  <Button fx:id="bottone_gestisci_clienti" mnemonicParsing="false" onAction="#gestisciClienti" prefHeight="166.0" prefWidth="294.0" text="Gestici Clienti" GridPane.rowIndex="2">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -47,7 +47,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="bottone_crea_offerta" mnemonicParsing="false" onAction="#creaOfferta" prefHeight="166.0" prefWidth="294.0" text="Crea Offerta" GridPane.rowIndex="2">
+                  <Button fx:id="bottone_crea_offerta" mnemonicParsing="false" onAction="#creaOfferta" prefHeight="166.0" prefWidth="294.0" text="Crea Offerta" GridPane.rowIndex="1">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="157.0" pickOnBounds="true" preserveRatio="true">
                            <image>

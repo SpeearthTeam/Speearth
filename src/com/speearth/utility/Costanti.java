@@ -30,6 +30,7 @@ public final class Costanti {
 	public final static String TITOLO_PRENOTA_BIGLIETTO = "Prenota Biglietto - Speearth";
 	public final static String TITOLO_PRENOTA_ALLOGGIO = "Prenota Alloggio - Speearth";
 	public final static String TITOLO_PRENOTA_PACCHETTO = "Prenota Pacchetto - Speearth";
+	public final static String TITOLO_ACQUISTA_OFFERTA = "Acquista Offerta - Speearth";
 	public final static String TITOLO_RIEPILOGO = "Riepilogo Prenotazione - Speearth";
 	public final static String TITOLO_ERRORE = "Errore";
 	public final static String TITOLO_ERRORE_HTTP = "Errore Http";
@@ -65,6 +66,7 @@ public final class Costanti {
 	public final static String FXML_RICERCA_BIGLIETTO = "/ui/fxml/RicercaBiglietto.fxml";
 	public final static String FXML_RICERCA_ALLOGGIO = "/ui/fxml/RicercaAlloggio.fxml";
 	public final static String FXML_RICERCA_PACCHETTO = "/ui/fxml/RicercaPacchetto.fxml";
+	public final static String FXML_RICERCA_OFFERTA = "/ui/fxml/RicercaOfferta.fxml";
 	public final static String FXML_RISULTATO_BIGLIETTO = "/ui/fxml/RisultatoBiglietto.fxml";
 	public final static String FXML_RISULTATO_ALLOGGIO = "/ui/fxml/RisultatoAlloggio.fxml";
 	public final static String FXML_RISULTATO_CLIENTE = "/ui/fxml/RisultatoCliente.fxml";
@@ -74,6 +76,7 @@ public final class Costanti {
 	public final static String FXML_RIEPILOGO_PACCHETTO = "/ui/fxml/RiepilogoPacchetto.fxml";
 	public final static String FXML_RICERCA_ALLOGGIO_FORM = "/ui/fxml/RicercaAlloggioForm.fxml";
 	public final static String FXML_RICERCA_BIGLIETTO_FORM = "/ui/fxml/RicercaBigliettoForm.fxml";
+	public final static String FXML_RICERCA_OFFERTA_FORM = "/ui/fxml/RicercaOffertaForm.fxml";
 	public final static String FXML_RIEPILOGO_BIGLIETTO_ITEM = "/ui/fxml/RiepilogoBigliettoItem.fxml";
 	public final static String FXML_RIEPILOGO_ALLOGGIO_ITEM = "/ui/fxml/RiepilogoAlloggioItem.fxml";
 	public final static String FXML_ALLOGGIO_OFFERTA_ITEM = "/ui/fxml/AlloggioOffertaItem.fxml";

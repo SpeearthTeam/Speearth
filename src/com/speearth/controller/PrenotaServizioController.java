@@ -62,6 +62,13 @@ public class PrenotaServizioController implements ICasoDUsoController {
 	public PrenotaPacchettoController getPrenotaPacchettoController() {
 		return PrenotaPacchettoController.getInstance();
 	}
+	
+	/**
+	 * Restituisce il Controller di AcquistaOfferta
+	 */
+	public AcquistaOffertaController getAcquistaOffertaController() {
+		return AcquistaOffertaController.getInstance();
+	}
 
 	/**
 	 * Restituisce il Controller di GestisciClienti
