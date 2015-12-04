@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
 import com.speearth.controller.AppFacadeController;
 import com.speearth.model.core.Biglietto;
 import com.speearth.utility.Costanti;
+import com.speearth.view.FormView;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -116,41 +117,34 @@ public class RicercaBigliettoForm extends FormView {
 	}
 
 	@Override
-	public void validate() {
-
+	public boolean validate() {
 		// Controllo del luogo di partenza
 		if (input_partenza.getText() == null || input_partenza.getText().isEmpty()) {
 			throw new InvalidParameterException("Definire il luogo di partenza");
 		}
-
 		// Controllo del luogo di destinazione
 		if (input_destinazione.getText() == null || input_destinazione.getText().isEmpty()) {
 			throw new InvalidParameterException("Definire il luogo di destinazione");
 		}
-
 		// Controllo del mezzo
 		if (input_mezzo.getValue() == null) {
 			throw new InvalidParameterException("Definire il mezzo di trasporto");
 		}
-
 		// Controllo della data di andata
 		LocalDate local_date_andata = input_data_andata.getValue();
-
 		if (local_date_andata == null) {
 			throw new InvalidParameterException("Definire la data di partenza");
 		}
-
 		if (local_date_andata.isBefore(LocalDate.now())) {
 			throw new InvalidParameterException("Definire una data di partenza corretta");
 		}
-
 		// Controllo della data di ritorno
 		LocalDate local_date_ritorno = input_data_ritorno.getValue();
-
 		if (local_date_ritorno != null
 				&& (local_date_ritorno.isBefore(local_date_andata) || local_date_ritorno.isEqual(local_date_andata))) {
 			throw new InvalidParameterException("Definire una data di ritorno valida");
 		}
+		return true;
 	}
 
 	@Override
@@ -205,8 +199,8 @@ public class RicercaBigliettoForm extends FormView {
 	@FXML
 	public void ricercaBiglietti(ActionEvent event) {
 		try {
-			validate();
-			send(getParameters());
+			if (this.validate())
+				send(getParameters());
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PARAMETRI_MANCANTI);

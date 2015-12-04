@@ -14,7 +14,7 @@ public abstract class FormView extends SubView {
 	/**
 	 * Valida gli input della form
 	 */
-	public abstract void validate();
+	public abstract boolean validate();
 
 	/**
 	 * Resituisce i parametri della form

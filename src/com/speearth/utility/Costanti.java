@@ -129,6 +129,17 @@ public final class Costanti {
 	public final static String MESSAGGIO_CHIUDI = "Vuoi veramente chiudere Speearth?";
 	public final static String MESSAGGIO_CHIUSURA_SESSIONE = "Tutti i dati non salvati andranno persi. Continuare?";
 	public final static String MESSAGGIO_LOGOUT = "Vuoi davvero uscire dal Sistema?";
+	public final static String MESSAGGIO_DEFINIRE_USERNAME = "Definire uno Username.";
+	public final static String MESSAGGIO_DEFINIRE_PASSWORD = "Definire una Password.";
+	public final static String MESSAGGIO_RIPETERE_PASSWORD = "Ripetere la Password";
+	public final static String MESSAGGIO_PASSWORD_DIVERSE = "Le due Password non corrispondono.";
+	public final static String MESSAGGIO_DEFINIRE_NOME = "Definire un Nome.";
+	public final static String MESSAGGIO_DEFINIRE_COGNOME = "Definire un Cognome.";
+	public final static String MESSAGGIO_DEFINIRE_CF = "Definire un Codice Fiscale.";
+	public final static String MESSAGGIO_DEFINIRE_DATA_NASCITA = "Definire una Data di Nascita.";
+	public final static String MESSAGGIO_DATA_NON_VALIDA = "Data di Nascita non valida.";
+	public final static String MESSAGGIO_DEFINIRE_STIPENDIO = "Definire uno Stipendio.";
+	public final static String MESSAGGIO_STIPENDIO_NON_VALIDO = "Stipendio non valido.";
 
 	/**
 	 * Icone

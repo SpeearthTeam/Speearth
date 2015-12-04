@@ -109,17 +109,18 @@ public class AggiungiImpiegatoForm extends FormView {
 	@FXML
 	public void aggiungi(ActionEvent event) {
 		try {
-			this.validate();
-			this.send(null);
-			EventoGestioneImpiegato evento = new EventoGestioneImpiegato(EventoGestioneImpiegato.AGGIUNGI_IMPIEGATO,
-					impiegato);
-			getRoot().fireEvent(evento);
+			if (this.validate()) {
+				this.send(null);
+				EventoGestioneImpiegato evento = new EventoGestioneImpiegato(EventoGestioneImpiegato.AGGIUNGI_IMPIEGATO,
+						impiegato);
+				getRoot().fireEvent(evento);
+				this.getStage().close();
+			}
 		} catch (InvalidParameterException e) {
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, e.getMessage());
 		} catch (IOException e) {
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, e.getMessage());
 		}
-		this.getStage().close();
 	}
 
 	/**
@@ -135,41 +136,63 @@ public class AggiungiImpiegatoForm extends FormView {
 	 * Valida la Form
 	 */
 	@Override
-	public void validate() {
+	public boolean validate() {
 		// Controllo dello username
-		if (this.input_username.getText() == null || this.input_username.getText().isEmpty())
-			throw new InvalidParameterException("Definire il nome Utente");
+		if (this.input_username.getText() == null || this.input_username.getText().isEmpty()) {
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_USERNAME);
+			return false;
+		}
 		// Controllo della password
-		if (this.input_password.getText() == null || this.input_password.getText().isEmpty())
-			throw new InvalidParameterException("Definire la Password");
+		if (this.input_password.getText() == null || this.input_password.getText().isEmpty()) {
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_PASSWORD);
+			return false;
+		}
 		// Controllo della password ripetuta
-		if (this.input_ripeti_password.getText() == null || this.input_ripeti_password.getText().isEmpty())
-			throw new InvalidParameterException("Ripetere la Password");
+		if (this.input_ripeti_password.getText() == null || this.input_ripeti_password.getText().isEmpty()) {
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_RIPETERE_PASSWORD);
+			return false;
+		}
 		// Controllo dell'uguaglianza delle password
 		if (!(this.input_password.getText().equals(this.input_ripeti_password.getText()))) {
-			throw new InvalidParameterException("Le due Password non corrispondono");
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PASSWORD_DIVERSE);
+			return false;
 		}
 		// Controllo del nome
-		if (input_nome.getText() == null || input_nome.getText().isEmpty())
-			throw new InvalidParameterException("Definire il Nome");
+		if (input_nome.getText() == null || input_nome.getText().isEmpty()) {
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_NOME);
+			return false;
+		}
 		// Controllo del cognome
-		if (input_cognome.getText() == null || input_cognome.getText().isEmpty())
-			throw new InvalidParameterException("Definire il Cognome");
+		if (input_cognome.getText() == null || input_cognome.getText().isEmpty()) {
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_COGNOME);
+			return false;
+		}
 		// Controllo del codice fiscale
-		if (input_codice_fiscale.getText() == null || input_codice_fiscale.getText().isEmpty())
-			throw new InvalidParameterException("Definire il codice fiscale");
+		if (input_codice_fiscale.getText() == null || input_codice_fiscale.getText().isEmpty()) {
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_CF);
+			return false;
+		}
 		// Controllo della data di nascita
 		LocalDate data_nascita = this.input_data_nascita.getValue();
-		if (data_nascita == null)
-			throw new InvalidParameterException("Definire la Data di nascita");
-		if (data_nascita.isAfter(LocalDate.now()))
-			throw new InvalidParameterException("Definire una Data di nascita corretta");
+		if (data_nascita == null) {
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_DATA_NASCITA);
+			return false;
+		}
+		if (data_nascita.isAfter(LocalDate.now())) {
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DATA_NON_VALIDA);
+			return false;
+		}
 		// Controllo dello stipendio
-		if (this.input_stipendio.getText() == null || this.input_stipendio.getText().isEmpty())
-			throw new InvalidParameterException("Definire lo Stipendio");
+		if (this.input_stipendio.getText() == null || this.input_stipendio.getText().isEmpty()) {
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_STIPENDIO);
+			return false;
+		}
 		// Controllo della validità della stringa stipendio
-		if (this.validazioneEParsificazioneStipendio(this.input_stipendio.getText()) == null)
-			throw new InvalidParameterException("Stipendio non valido");
+		if (this.validazioneEParsificazioneStipendio(this.input_stipendio.getText()) == null) {
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_STIPENDIO_NON_VALIDO);
+			return false;
+		}
+		return true;
 	}
 
 	/**

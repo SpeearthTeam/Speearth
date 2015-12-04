@@ -143,7 +143,7 @@ public class RicercaAlloggioForm extends FormView {
 	}
 
 	@Override
-	public void validate() throws InvalidParameterException {
+	public boolean validate() throws InvalidParameterException {
 		// Controllo della zona
 		if (input_localita.getText() == null || input_localita.getText().isEmpty()) {
 			throw new InvalidParameterException("Definire la località");
@@ -197,6 +197,7 @@ public class RicercaAlloggioForm extends FormView {
 		if (local_date_arrivo.isBefore(LocalDate.now())) {
 			throw new InvalidParameterException("Definire una data di arrivo corretta");
 		}
+		return true;
 	}
 
 	@Override

@@ -73,7 +73,8 @@ public class RicercaOffertaForm extends FormView {
 	 * Non necessario
 	 */
 	@Override
-	public void validate() {
+	public boolean validate() {
+		return true;
 	}
 
 	/**

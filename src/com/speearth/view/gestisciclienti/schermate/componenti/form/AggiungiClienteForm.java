@@ -103,16 +103,18 @@ public class AggiungiClienteForm extends FormView {
 	@FXML
 	public void aggiungi(ActionEvent event) {
 		try {
-			this.validate();
-			this.send(null);
-			EventoGestioneCliente evento = new EventoGestioneCliente(EventoGestioneCliente.AGGIUNGI_CLIENTE, cliente);
-			getRoot().fireEvent(evento);
+			if (this.validate()) {
+				this.send(null);
+				EventoGestioneCliente evento = new EventoGestioneCliente(EventoGestioneCliente.AGGIUNGI_CLIENTE,
+						cliente);
+				getRoot().fireEvent(evento);
+				this.getStage().close();
+			}
 		} catch (InvalidParameterException e) {
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, e.getMessage());
 		} catch (IOException e) {
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, e.getMessage());
 		}
-		this.getStage().close();
 	}
 
 	/**
@@ -127,32 +129,33 @@ public class AggiungiClienteForm extends FormView {
 	 * Valida la form
 	 */
 	@Override
-	public void validate() {
+	public boolean validate() {
 		// Controllo del nome
 		if (input_nome.getText() == null || input_nome.getText().isEmpty()) {
-			throw new InvalidParameterException("Definire il nome");
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_NOME);
+			return false;
 		}
-
 		// Controllo del cognome
 		if (input_cognome.getText() == null || input_cognome.getText().isEmpty()) {
-			throw new InvalidParameterException("Definire il cognome");
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_COGNOME);
+			return false;
 		}
-
 		// Controllo del codice fiscale
 		if (input_codice_fiscale.getText() == null || input_codice_fiscale.getText().isEmpty()) {
-			throw new InvalidParameterException("Definire il codice fiscale");
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_CF);
+			return false;
 		}
-
 		// Controllo della data di nascita
 		LocalDate data_nascita = input_data_nascita.getValue();
-
 		if (data_nascita == null) {
-			throw new InvalidParameterException("Definire la data di nascita");
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_DATA_NASCITA);
+			return false;
 		}
-
 		if (data_nascita.isAfter(LocalDate.now())) {
-			throw new InvalidParameterException("Definire una data di nascita corretta");
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DATA_NON_VALIDA);
+			return false;
 		}
+		return true;
 	}
 
 	/**

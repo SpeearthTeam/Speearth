@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
 import com.speearth.controller.AppFacadeController;
 import com.speearth.model.core.Alloggio;
 import com.speearth.utility.Costanti;
+import com.speearth.view.FormView;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -142,60 +143,50 @@ public class RicercaAlloggioForm extends FormView {
 	}
 
 	@Override
-	public void validate() throws InvalidParameterException {
+	public boolean validate() throws InvalidParameterException {
 		// Controllo della zona
 		if (input_localita.getText() == null || input_localita.getText().isEmpty()) {
 			throw new InvalidParameterException("Definire la località");
 		}
-
 		// Controllo stanze
 		if (!input_singola.isSelected() && !input_doppia.isSelected() && !input_tripla.isSelected()
 				&& !input_quadrupla.isSelected()) {
 			throw new InvalidParameterException("Scegliere almeno una stanza");
 		}
-
 		// Controllo singola
 		if (input_singola.isSelected() && input_numero_singole.getValue().equals("0")) {
 			throw new InvalidParameterException("Selezionare almeno una singola");
 		}
-
 		// Controllo doppia
 		if (input_doppia.isSelected() && input_numero_doppie.getValue().equals("0")) {
 			throw new InvalidParameterException("Selezionare almeno una doppia");
 		}
-
 		// Controllo tripla
 		if (input_tripla.isSelected() && input_numero_triple.getValue().equals("0")) {
 			throw new InvalidParameterException("Selezionare almeno una tripla");
 		}
-
 		// Controllo quadrupla
 		if (input_quadrupla.isSelected() && input_numero_quadruple.getValue().equals("0")) {
 			throw new InvalidParameterException("Selezionare almeno una quadrupla");
 		}
-
 		// Controllo e calcolo della data di arrivo
 		LocalDate local_date_arrivo = input_data_arrivo.getValue();
-
 		if (local_date_arrivo == null) {
 			throw new InvalidParameterException("Definire la data di arrivo");
 		}
-
 		// Controllo e calcolo della data di partenza
 		LocalDate local_date_partenza = input_data_partenza.getValue();
-
 		if (local_date_partenza == null) {
 			throw new InvalidParameterException("Definire la data di partenza");
 		}
-
 		// Controllo validità delle date
 		if (local_date_arrivo.isAfter(local_date_partenza)) {
 			throw new InvalidParameterException("Definire una data di partenza corretta");
 		}
-
 		if (local_date_arrivo.isBefore(LocalDate.now())) {
 			throw new InvalidParameterException("Definire una data di arrivo corretta");
 		}
+		return true;
 	}
 
 	@Override
@@ -251,8 +242,8 @@ public class RicercaAlloggioForm extends FormView {
 	@FXML
 	public void ricercaAlloggi(ActionEvent event) {
 		try {
-			validate();
-			send(getParameters());
+			if (this.validate())
+				send(getParameters());
 		} catch (NullPointerException e) {
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PARAMETRI_MANCANTI);
 		} catch (InvalidParameterException e) {
