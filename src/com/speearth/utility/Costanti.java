@@ -137,9 +137,25 @@ public final class Costanti {
 	public final static String MESSAGGIO_DEFINIRE_COGNOME = "Definire un Cognome.";
 	public final static String MESSAGGIO_DEFINIRE_CF = "Definire un Codice Fiscale.";
 	public final static String MESSAGGIO_DEFINIRE_DATA_NASCITA = "Definire una Data di Nascita.";
-	public final static String MESSAGGIO_DATA_NON_VALIDA = "Data di Nascita non valida.";
+	public final static String MESSAGGIO_DATA_NASCITA_NON_VALIDA = "Data di Nascita non valida.";
 	public final static String MESSAGGIO_DEFINIRE_STIPENDIO = "Definire uno Stipendio.";
 	public final static String MESSAGGIO_STIPENDIO_NON_VALIDO = "Stipendio non valido.";
+	public final static String MESSAGGIO_DEFINIRE_PARTENZA = "Definire una località di Partenza.";
+	public final static String MESSAGGIO_DEFINIRE_DESTINAZIONE = "Definire una località di Arrivo.";
+	public final static String MESSAGGIO_DEFINIRE_MEZZO = "Definire un Mezzo di trasporto.";
+	public final static String MESSAGGIO_DEFINIRE_DATA_ANDATA = "Definire una Data per l'andata.";
+	public final static String MESSAGGIO_DEFINIRE_DATA_RITORNO = "Definire una Data per il ritorno.";
+	public final static String MESSAGGIO_DATA_PARTENZA_NON_VALIDA = "Data di Partenza non valida.";
+	public final static String MESSAGGIO_DATA_RITORNO_NON_VALIDA = "Data di Ritorno non valida.";
+	public final static String MESSAGGIO_DEFINIRE_LOCALITA = "Definire una Località.";
+	public final static String MESSAGGIO_SCEGLIERE_STANZA = "Scegliere almeno una Stanza.";
+	public final static String MESSAGGIO_SCEGLIERE_SINGOLA = "Scegliere almeno una Singola.";
+	public final static String MESSAGGIO_SCEGLIERE_DOPPIA = "Scegliere almeno una Doppia.";
+	public final static String MESSAGGIO_SCEGLIERE_TRIPLA = "Scegliere almeno una Tripla.";
+	public final static String MESSAGGIO_SCEGLIERE_QUADRUPLA = "Scegliere almeno una Quadrupla.";
+	public final static String MESSAGGIO_DEFINIRE_DATA_ARRIVO = "Definire una Data di Arrivo.";
+	public final static String MESSAGGIO_DEFINIRE_DATA_PARTENZA = "Definire una Data di Partenza.";
+	public final static String MESSAGGIO_DATA_ARRIVO_NON_VALIDA = "Data di Arrivo non valida.";
 
 	/**
 	 * Icone

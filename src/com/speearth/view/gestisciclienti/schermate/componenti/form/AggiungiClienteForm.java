@@ -152,7 +152,7 @@ public class AggiungiClienteForm extends FormView {
 			return false;
 		}
 		if (data_nascita.isAfter(LocalDate.now())) {
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DATA_NON_VALIDA);
+			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DATA_NASCITA_NON_VALIDA);
 			return false;
 		}
 		return true;

@@ -120,29 +120,29 @@ public class RicercaBigliettoForm extends FormView {
 	public boolean validate() {
 		// Controllo del luogo di partenza
 		if (input_partenza.getText() == null || input_partenza.getText().isEmpty()) {
-			throw new InvalidParameterException("Definire il luogo di partenza");
+			throw new InvalidParameterException(Costanti.MESSAGGIO_DEFINIRE_PARTENZA);
 		}
 		// Controllo del luogo di destinazione
 		if (input_destinazione.getText() == null || input_destinazione.getText().isEmpty()) {
-			throw new InvalidParameterException("Definire il luogo di destinazione");
+			throw new InvalidParameterException(Costanti.MESSAGGIO_DEFINIRE_DESTINAZIONE);
 		}
 		// Controllo del mezzo
 		if (input_mezzo.getValue() == null) {
-			throw new InvalidParameterException("Definire il mezzo di trasporto");
+			throw new InvalidParameterException(Costanti.MESSAGGIO_DEFINIRE_MEZZO);
 		}
 		// Controllo della data di andata
 		LocalDate local_date_andata = input_data_andata.getValue();
 		if (local_date_andata == null) {
-			throw new InvalidParameterException("Definire la data di partenza");
+			throw new InvalidParameterException(Costanti.MESSAGGIO_DEFINIRE_DATA_ANDATA);
 		}
 		if (local_date_andata.isBefore(LocalDate.now())) {
-			throw new InvalidParameterException("Definire una data di partenza corretta");
+			throw new InvalidParameterException(Costanti.MESSAGGIO_DATA_PARTENZA_NON_VALIDA);
 		}
 		// Controllo della data di ritorno
 		LocalDate local_date_ritorno = input_data_ritorno.getValue();
 		if (local_date_ritorno != null
 				&& (local_date_ritorno.isBefore(local_date_andata) || local_date_ritorno.isEqual(local_date_andata))) {
-			throw new InvalidParameterException("Definire una data di ritorno valida");
+			throw new InvalidParameterException(Costanti.MESSAGGIO_DATA_RITORNO_NON_VALIDA);
 		}
 		return true;
 	}

@@ -146,56 +146,45 @@ public class RicercaAlloggioForm extends FormView {
 	public boolean validate() throws InvalidParameterException {
 		// Controllo della zona
 		if (input_localita.getText() == null || input_localita.getText().isEmpty()) {
-			throw new InvalidParameterException("Definire la località");
+			throw new InvalidParameterException(Costanti.MESSAGGIO_DEFINIRE_LOCALITA);
 		}
-
 		// Controllo stanze
 		if (!input_singola.isSelected() && !input_doppia.isSelected() && !input_tripla.isSelected()
 				&& !input_quadrupla.isSelected()) {
-			throw new InvalidParameterException("Scegliere almeno una stanza");
+			throw new InvalidParameterException(Costanti.MESSAGGIO_SCEGLIERE_STANZA);
 		}
-
 		// Controllo singola
 		if (input_singola.isSelected() && input_numero_singole.getValue().equals("0")) {
-			throw new InvalidParameterException("Selezionare almeno una singola");
+			throw new InvalidParameterException(Costanti.MESSAGGIO_SCEGLIERE_SINGOLA);
 		}
-
 		// Controllo doppia
 		if (input_doppia.isSelected() && input_numero_doppie.getValue().equals("0")) {
-			throw new InvalidParameterException("Selezionare almeno una doppia");
+			throw new InvalidParameterException(Costanti.MESSAGGIO_SCEGLIERE_DOPPIA);
 		}
-
 		// Controllo tripla
 		if (input_tripla.isSelected() && input_numero_triple.getValue().equals("0")) {
-			throw new InvalidParameterException("Selezionare almeno una tripla");
+			throw new InvalidParameterException(Costanti.MESSAGGIO_SCEGLIERE_TRIPLA);
 		}
-
 		// Controllo quadrupla
 		if (input_quadrupla.isSelected() && input_numero_quadruple.getValue().equals("0")) {
-			throw new InvalidParameterException("Selezionare almeno una quadrupla");
+			throw new InvalidParameterException(Costanti.MESSAGGIO_SCEGLIERE_QUADRUPLA);
 		}
-
 		// Controllo e calcolo della data di arrivo
 		LocalDate local_date_arrivo = input_data_arrivo.getValue();
-
 		if (local_date_arrivo == null) {
-			throw new InvalidParameterException("Definire la data di arrivo");
+			throw new InvalidParameterException(Costanti.MESSAGGIO_DEFINIRE_DATA_ARRIVO);
 		}
-
 		// Controllo e calcolo della data di partenza
 		LocalDate local_date_partenza = input_data_partenza.getValue();
-
 		if (local_date_partenza == null) {
-			throw new InvalidParameterException("Definire la data di partenza");
+			throw new InvalidParameterException(Costanti.MESSAGGIO_DEFINIRE_DATA_PARTENZA);
 		}
-
 		// Controllo validità delle date
 		if (local_date_arrivo.isAfter(local_date_partenza)) {
-			throw new InvalidParameterException("Definire una data di partenza corretta");
+			throw new InvalidParameterException(Costanti.MESSAGGIO_DATA_PARTENZA_NON_VALIDA);
 		}
-
 		if (local_date_arrivo.isBefore(LocalDate.now())) {
-			throw new InvalidParameterException("Definire una data di arrivo corretta");
+			throw new InvalidParameterException(Costanti.MESSAGGIO_DATA_ARRIVO_NON_VALIDA);
 		}
 		return true;
 	}
