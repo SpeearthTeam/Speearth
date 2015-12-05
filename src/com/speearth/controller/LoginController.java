@@ -31,7 +31,7 @@ public class LoginController implements ICasoDUsoController {
 	 */
 	public Impiegato login(String username, String password) {
 		Impiegato utente = AgenziaFacade.getInstance().getRegistroImpiegati().cercaImpiegatoDaUsername(username);
-		if (utente.getPassword().equals(password)) {
+		if (utente != null && utente.getPassword().equals(password)) {
 			AppFacadeController.getInstance().setUtente(utente);
 			return utente;
 		}
