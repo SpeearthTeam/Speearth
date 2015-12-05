@@ -98,7 +98,7 @@
                   </Label>
                   <Button fx:id="bottone_esci" mnemonicParsing="false" onAction="#esci" prefHeight="51.0" prefWidth="141.0" text="Esci">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                   </Button>
                </children>

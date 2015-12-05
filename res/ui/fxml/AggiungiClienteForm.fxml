@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -13,7 +14,7 @@
       <DatePicker fx:id="input_data_nascita" layoutX="82.0" layoutY="192.0" prefHeight="31.0" prefWidth="256.0" promptText="Data di nascita" />
       <Button fx:id="bottone_aggiungi" layoutX="82.0" layoutY="259.0" mnemonicParsing="false" onAction="#aggiungi" prefHeight="31.0" prefWidth="256.0" text="Aggiungi" textAlignment="CENTER">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Button>
    </children>

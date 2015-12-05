@@ -11,9 +11,9 @@
       <TextField fx:id="input_cognome" layoutX="82.0" layoutY="87.0" prefHeight="31.0" prefWidth="256.0" promptText="Cognome" />
       <TextField fx:id="input_codice_fiscale" layoutX="82.0" layoutY="140.0" prefHeight="31.0" prefWidth="256.0" promptText="Codice fiscale" />
       <DatePicker fx:id="input_data_nascita" layoutX="82.0" layoutY="192.0" prefHeight="31.0" prefWidth="256.0" promptText="Data di nascita" />
-      <Button fx:id="bottone_modifica" layoutX="82.0" layoutY="259.0" mnemonicParsing="false" onAction="#modifica" prefHeight="31.0" prefWidth="256.0" text="Modifica" textAlignment="CENTER">
+      <Button fx:id="bottone_modifica" layoutX="82.0" layoutY="254.0" mnemonicParsing="false" onAction="#modifica" prefHeight="31.0" prefWidth="256.0" text="Modifica" textAlignment="CENTER">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Button>
    </children>
