@@ -5,7 +5,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.speearth.controller.AppFacadeController;
-import com.speearth.model.core.Impiegato;
 import com.speearth.utility.Costanti;
 
 import javafx.event.ActionEvent;
@@ -52,9 +51,8 @@ public class LoginView extends View {
 	@FXML
 	public void autentica(ActionEvent event) throws IOException {
 		if (!this.input_username.getText().isEmpty() && !this.input_password.getText().isEmpty()) {
-			Impiegato utente = AppFacadeController.getInstance().getLoginController()
-					.login(this.input_username.getText(), this.input_password.getText());
-			if (utente != null) {
+			if (AppFacadeController.getInstance().getLoginController().login(this.input_username.getText(),
+					this.input_password.getText()) != null) {
 				HomeView view = new HomeView(getStage());
 				view.mostra();
 			} else
@@ -63,10 +61,12 @@ public class LoginView extends View {
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_CREDENZIALI_MANCANTI);
 	}
 
+	/**
+	 * Inizializza la View
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		login_pane.setOnKeyPressed(new EventHandler<KeyEvent>() {
-
+		this.login_pane.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent event) {
 				if (event.getCode() == KeyCode.ENTER) {
@@ -77,10 +77,14 @@ public class LoginView extends View {
 					}
 				}
 			}
-			
 		});
 	}
 
+	/**
+	 * Restituisce il nome della Risorsa associata alla View
+	 * 
+	 * @return String
+	 */
 	@Override
 	public String getResourceName() {
 		return Costanti.FXML_LOGIN;

@@ -9,6 +9,8 @@ import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.orm.PersistentException;
 
+import com.speearth.controller.AppFacadeController;
+
 /**
  * Classe addetta alla gestione del Personale dell'Agenzia
  */
@@ -94,6 +96,22 @@ public class RegistroImpiegati {
 			return new ArrayList<>(Arrays.asList(impiegato.listImpiegato()));
 		} catch (PersistentException e) {
 			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	/**
+	 * Autentica l'Utente all'interno del Sistema
+	 * 
+	 * @param username
+	 * @param password
+	 * @return Impiegato
+	 */
+	public Impiegato autentica(String username, String password) {
+		Impiegato utente = this.cercaImpiegatoDaUsername(username);
+		if (utente != null && utente.getPassword().equals(password)) {
+			AppFacadeController.getInstance().setUtente(utente);
+			return utente;
 		}
 		return null;
 	}

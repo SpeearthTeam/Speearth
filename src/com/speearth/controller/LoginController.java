@@ -30,14 +30,9 @@ public class LoginController implements ICasoDUsoController {
 	 * @return boolean
 	 */
 	public Impiegato login(String username, String password) {
-		Impiegato utente = AgenziaFacade.getInstance().getRegistroImpiegati().cercaImpiegatoDaUsername(username);
-		if (utente != null && utente.getPassword().equals(password)) {
-			AppFacadeController.getInstance().setUtente(utente);
-			return utente;
-		}
-		return null;
+		return AgenziaFacade.getInstance().getRegistroImpiegati().autentica(username, password);
 	}
-	
+
 	/**
 	 * Effettua la disconnessione dell'Utente dal Sistema
 	 */
