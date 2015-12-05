@@ -38,7 +38,7 @@
                            <children>
                               <ImageView fitHeight="120.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../img/icona_prenota_servizio.png" />
+                                    <Image url="@../img/icona_bianca_prenota_servizio.png" />
                                  </image>
                               </ImageView>
                               <Label id="labelHomeDir" alignment="CENTER" prefHeight="21.0" prefWidth="277.0" text="Prenota Servizio">
@@ -58,7 +58,7 @@
                            <children>
                               <ImageView fitHeight="120.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../img/icona_utenti.png" />
+                                    <Image url="@../img/icona_bianca_utenti.png" />
                                  </image>
                               </ImageView>
                               <Label id="labelHomeDir" alignment="CENTER" prefHeight="21.0" prefWidth="256.0" text="Gestici Clienti">
@@ -79,7 +79,7 @@
                            <children>
                               <ImageView fitHeight="120.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../img/icona_crea_offerta.png" />
+                                    <Image url="@../img/icona_bianca_crea_offerta.png" />
                                  </image>
                               </ImageView>
                               <Label id="labelHomeDir" alignment="CENTER" prefHeight="21.0" prefWidth="263.0" text="Crea Offerta">
@@ -99,7 +99,7 @@
                            <children>
                               <ImageView fitHeight="120.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../img/icona_impiegati.png" />
+                                    <Image url="@../img/icona_bianca_impiegati.png" />
                                  </image>
                               </ImageView>
                               <Label id="labelHomeDir" text="Gestisci Impiegati">

@@ -36,7 +36,7 @@
                      <graphic>
                         <ImageView fitHeight="122.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/icona_utente.png" />
+                              <Image url="@../img/icona_blu_utente.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -109,7 +109,7 @@
                      <graphic>
                         <ImageView fitHeight="122.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/icona_riepilogo.png" />
+                              <Image url="@../img/icona_blu_riepilogo.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -191,7 +191,7 @@
                      <graphic>
                         <ImageView fitHeight="122.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/icona_pagamento.png" />
+                              <Image url="@../img/icona_blu_pagamento.png" />
                            </image>
                         </ImageView>
                      </graphic>

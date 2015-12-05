@@ -33,7 +33,7 @@
                            <children>
                               <ImageView fitHeight="135.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../img/icona_prenota_servizio.png" />
+                                    <Image url="@../img/icona_bianca_prenota_servizio.png" />
                                  </image>
                               </ImageView>
                               <Label id="labelHomeDir" text="Prenota Servizio">
@@ -51,7 +51,7 @@
                            <children>
                               <ImageView fitHeight="122.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../img/icona_utenti.png" />
+                                    <Image url="@../img/icona_bianca_utenti.png" />
                                  </image>
                               </ImageView>
                               <Label id="labelHomeDir" alignment="CENTER" prefHeight="21.0" prefWidth="128.0" text="Gestici Clienti">

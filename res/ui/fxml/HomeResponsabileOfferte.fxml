@@ -34,7 +34,7 @@
                            <children>
                               <ImageView fitHeight="138.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../img/icona_prenota_servizio.png" />
+                                    <Image url="@../img/icona_bianca_prenota_servizio.png" />
                                  </image>
                               </ImageView>
                               <Label id="labelHomeDir" alignment="CENTER" prefHeight="21.0" prefWidth="262.0" text="Prenota Servizio">
@@ -52,7 +52,7 @@
                            <children>
                               <ImageView fitHeight="118.0" fitWidth="136.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../img/icona_utenti.png" />
+                                    <Image url="@../img/icona_bianca_utenti.png" />
                                  </image>
                               </ImageView>
                               <Label id="labelHomeDir" alignment="CENTER" prefHeight="21.0" prefWidth="284.0" text="Gestici Clienti">
@@ -69,7 +69,7 @@
                            <children>
                               <ImageView fitHeight="126.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../img/icona_crea_offerta.png" />
+                                    <Image url="@../img/icona_bianca_crea_offerta.png" />
                                  </image>
                               </ImageView>
                               <Label id="labelHomeDir" prefHeight="26.0" prefWidth="87.0" text="Crea Offerta">

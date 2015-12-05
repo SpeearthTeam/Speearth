@@ -36,7 +36,7 @@
                      <graphic>
                         <ImageView fitHeight="122.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/icona_utente.png" />
+                              <Image url="@../img/icona_blu_utente.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -109,7 +109,7 @@
                      <graphic>
                         <ImageView fitHeight="122.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/icona_pagamento.png" />
+                              <Image url="@../img/icona_blu_pagamento.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -154,7 +154,7 @@
                      <graphic>
                         <ImageView fitHeight="122.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/icona_riepilogo.png" />
+                              <Image url="@../img/icona_blu_riepilogo.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -173,8 +173,8 @@
                       <RowConstraints maxHeight="141.0" minHeight="10.0" prefHeight="79.0" vgrow="SOMETIMES" />
                       <RowConstraints maxHeight="202.0" minHeight="10.0" prefHeight="91.0" vgrow="SOMETIMES" />
                       <RowConstraints maxHeight="199.0" minHeight="10.0" prefHeight="73.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="190.0" minHeight="10.0" prefHeight="127.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="163.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="190.0" minHeight="10.0" prefHeight="74.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="163.0" minHeight="10.0" prefHeight="153.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
                         <Label alignment="BOTTOM_CENTER" prefHeight="36.0" prefWidth="214.0" text="Fornitore">
@@ -189,23 +189,14 @@
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font></Label>
-                        <Label alignment="TOP_CENTER" prefHeight="65.0" prefWidth="210.0" text="Al" GridPane.rowIndex="3">
+                        <Label alignment="CENTER" prefHeight="65.0" prefWidth="210.0" text="Al" GridPane.rowIndex="3">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font></Label>
-                        <Label fx:id="output_fonitore" GridPane.columnIndex="1">
-                           <font>
-                              <Font name="System Bold" size="15.0" />
-                           </font></Label>
-                        <Label fx:id="output_localita" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <font>
-                              <Font name="System Bold" size="15.0" />
-                           </font></Label>
-                        <Label fx:id="output_data_andata" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                           <font>
-                              <Font name="System Bold" size="15.0" />
-                           </font></Label>
-                        <Label fx:id="output_data_ritorno" prefHeight="74.0" prefWidth="213.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="output_fonitore" GridPane.columnIndex="1" />
+                        <Label fx:id="output_localita" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="output_data_andata" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="output_data_ritorno" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                </children>

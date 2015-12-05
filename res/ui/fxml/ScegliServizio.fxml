@@ -43,7 +43,7 @@
                      <graphic>
                         <ImageView fitHeight="146.0" fitWidth="188.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/icona_biglietto.png" />
+                              <Image url="@../img/icona_bianca_biglietto.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -55,7 +55,7 @@
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/icona_alloggio.png" />
+                              <Image url="@../img/icona_bianca_alloggio.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -67,7 +67,7 @@
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/icona_pacchetto.png" />
+                              <Image url="@../img/icona_bianca_pacchetto.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -79,7 +79,7 @@
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/icona_offerta.png" />
+                              <Image url="@../img/icona_bianca_offerta.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -93,7 +93,7 @@
                <children>
                   <ImageView fitHeight="282.0" fitWidth="313.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/icona_prenota_servizio.png" />
+                        <Image url="@../img/icona_blu_prenota_servizio_grande.png" />
                      </image>
                   </ImageView>
                   <Label text="Prenota Servizio">
