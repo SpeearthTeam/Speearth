@@ -59,15 +59,30 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label text="Codice Tessera" />
-                        <Label prefHeight="21.0" prefWidth="116.0" text="Nome" GridPane.rowIndex="1" />
-                        <Label prefHeight="21.0" prefWidth="121.0" text="Codice Fiscale" GridPane.rowIndex="4" />
-                        <Label prefHeight="21.0" prefWidth="118.0" text="Data di Nascita" GridPane.rowIndex="3" />
-                        <Label prefHeight="21.0" prefWidth="111.0" text="Cognome" GridPane.rowIndex="2" />
-                        <Label fx:id="output_nome_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="303.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label fx:id="output_cognome_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="304.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label fx:id="output_data_nascita_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="299.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label fx:id="output_cf_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="299.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label text="Codice Tessera">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
+                        <Label prefHeight="21.0" prefWidth="116.0" text="Nome" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
+                        <Label prefHeight="21.0" prefWidth="121.0" text="Codice Fiscale" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
+                        <Label prefHeight="21.0" prefWidth="118.0" text="Data di Nascita" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
+                        <Label prefHeight="21.0" prefWidth="111.0" text="Cognome" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
+                        <Label fx:id="output_nome_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="303.0" text="-" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="output_cognome_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="304.0" text="-" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="output_data_nascita_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="299.0" text="-" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="output_cf_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="299.0" text="-" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <HBox alignment="CENTER" prefHeight="60.0" prefWidth="313.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <children>
                               <TextField fx:id="input_codice_tessera" prefHeight="31.0" prefWidth="237.0" />
@@ -162,13 +177,34 @@
                         <RowConstraints maxHeight="163.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label alignment="BOTTOM_CENTER" prefHeight="36.0" prefWidth="214.0" text="Fornitore" />
-                        <Label alignment="CENTER" prefHeight="42.0" prefWidth="211.0" text="Città" GridPane.rowIndex="1" />
-                        <Label alignment="CENTER" contentDisplay="TOP" prefHeight="55.0" prefWidth="214.0" text="Dal" GridPane.rowIndex="2" />
-                        <Label alignment="TOP_CENTER" prefHeight="65.0" prefWidth="210.0" text="Al" GridPane.rowIndex="3" />
-                        <Label fx:id="output_fonitore" GridPane.columnIndex="1" />
-                        <Label fx:id="output_localita" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label fx:id="output_data_andata" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label alignment="BOTTOM_CENTER" prefHeight="36.0" prefWidth="214.0" text="Fornitore">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
+                        <Label alignment="CENTER" prefHeight="42.0" prefWidth="211.0" text="Città" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
+                        <Label alignment="CENTER" contentDisplay="TOP" prefHeight="55.0" prefWidth="214.0" text="Dal" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
+                        <Label alignment="TOP_CENTER" prefHeight="65.0" prefWidth="210.0" text="Al" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
+                        <Label fx:id="output_fonitore" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
+                        <Label fx:id="output_localita" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
+                        <Label fx:id="output_data_andata" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
                         <Label fx:id="output_data_ritorno" prefHeight="74.0" prefWidth="213.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>

@@ -26,7 +26,7 @@
                <children>
                   <Label alignment="CENTER" prefWidth="150.0" text="Partenza">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font></Label>
                   <Label fx:id="output_partenza_andata" alignment="CENTER" prefWidth="150.0" />
                   <Label fx:id="output_data_partenza_andata" alignment="CENTER" prefWidth="150.0" />
@@ -37,7 +37,7 @@
                <children>
                   <Label alignment="CENTER" prefWidth="150.0" text="Destinazione">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font></Label>
                   <Label fx:id="output_destinazione_andata" alignment="CENTER" prefWidth="150.0" />
                   <Label fx:id="output_data_destinazione_andata" alignment="CENTER" prefWidth="150.0" />
@@ -48,7 +48,7 @@
                <children>
                   <Label alignment="CENTER" prefWidth="150.0" text="Passeggeri">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font></Label>
                   <HBox alignment="CENTER_LEFT">
                      <children>
@@ -62,13 +62,14 @@
                         <Label prefWidth="90.0" text=" bambini" />
                      </children>
                   </HBox>
+                  <Label />
                </children>
             </VBox>
             <VBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
                   <Label alignment="CENTER" prefWidth="150.0" text="Partenza">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font></Label>
                   <Label fx:id="output_partenza_ritorno" alignment="CENTER" prefWidth="150.0" />
                   <Label fx:id="output_data_partenza_ritorno" alignment="CENTER" prefWidth="150.0" />
@@ -79,7 +80,7 @@
                <children>
                   <Label alignment="CENTER" prefWidth="150.0" text="Destinazione">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font></Label>
                   <Label fx:id="output_destinazione_ritorno" alignment="CENTER" prefWidth="150.0" />
                   <Label fx:id="output_data_destinazione_ritorno" alignment="CENTER" prefWidth="150.0" />
@@ -90,7 +91,7 @@
                <children>
                   <Label alignment="CENTER" prefWidth="150.0" text="Passeggeri">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font></Label>
                   <HBox>
                      <children>
@@ -104,16 +105,17 @@
                         <Label prefHeight="21.0" prefWidth="90.0" text=" bambini" />
                      </children>
                   </HBox>
+                  <Label />
                </children>
             </VBox>
             <Label text="Andata">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
             <Label text="Ritorno" GridPane.rowIndex="1">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font></Label>
          </children>
       </GridPane>
@@ -123,7 +125,7 @@
          <children>
             <Label text="Fornitore: ">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font></Label>
             <Label fx:id="output_nome_fornitore">
                <padding>
@@ -140,7 +142,7 @@
          <children>
             <Label text="Prezzo">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font></Label>
             <Label fx:id="output_prezzo" />
          </children>

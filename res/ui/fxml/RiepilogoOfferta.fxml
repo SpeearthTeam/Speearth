@@ -36,18 +36,30 @@
                       <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="322.0" text="Data di Inizio" GridPane.rowIndex="1" />
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="322.0" text="Data di Inizio" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
                         <TextField fx:id="input_sconto_offerta" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <DatePicker fx:id="input_data_inizio_offerta" prefWidth="307.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <DatePicker fx:id="input_data_fine_offerta" prefWidth="307.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="322.0" text="Data di Scadenza" GridPane.rowIndex="2" />
-                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="322.0" text="Sconto in Percentuale" GridPane.rowIndex="3" />
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="322.0" text="Data di Scadenza" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="322.0" text="Sconto in Percentuale" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
                         <Button fx:id="bottone_applica_sconto" mnemonicParsing="false" onAction="#applicaSconto" text="Applica Sconto" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
                            <GridPane.margin>
                               <Insets />
                            </GridPane.margin>
                         </Button>
-                        <Label text="Nome" GridPane.halignment="CENTER" />
+                        <Label text="Nome" GridPane.halignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
                         <TextField fx:id="input_nome_offerta" GridPane.columnIndex="1" />
                      </children>
                   </GridPane>

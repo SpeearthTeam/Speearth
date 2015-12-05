@@ -59,15 +59,30 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label text="Codice Tessera" />
-                        <Label text="Nome" GridPane.rowIndex="1" />
-                        <Label text="Codice Fiscale" GridPane.rowIndex="4" />
-                        <Label text="Data di Nascita" GridPane.rowIndex="3" />
-                        <Label text="Cognome" GridPane.rowIndex="2" />
-                        <Label fx:id="output_nome_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="299.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label fx:id="output_cognome_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="298.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label fx:id="output_data_nascita_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="299.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label fx:id="output_cf_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="298.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label text="Codice Tessera">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
+                        <Label text="Nome" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
+                        <Label text="Codice Fiscale" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
+                        <Label text="Data di Nascita" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
+                        <Label text="Cognome" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
+                        <Label fx:id="output_nome_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="299.0" text="-" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="output_cognome_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="298.0" text="-" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="output_data_nascita_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="299.0" text="-" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="output_cf_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="298.0" text="-" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <children>
                               <TextField fx:id="input_codice_tessera" prefHeight="31.0" prefWidth="237.0" />
@@ -121,15 +136,42 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="205.0" text="Fornitore" />
-                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="209.0" text="Partenza" GridPane.rowIndex="1" />
-                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="208.0" text="Orario Partenza Andata" GridPane.rowIndex="3" />
-                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="207.0" text="Destinazione" GridPane.rowIndex="2" />
-                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="205.0" text="Orario Arrivo Andata" GridPane.rowIndex="4" />
-                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="209.0" text="Orario Partenza Ritorno" GridPane.rowIndex="5" />
-                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="211.0" text="Orario Arrivo Ritorno" GridPane.rowIndex="6" />
-                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="205.0" text="Adulti" GridPane.rowIndex="7" />
-                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="206.0" text="Bambini" GridPane.rowIndex="8" />
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="205.0" text="Fornitore">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="209.0" text="Partenza" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="208.0" text="Orario Partenza Andata" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="207.0" text="Destinazione" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="205.0" text="Orario Arrivo Andata" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="209.0" text="Orario Partenza Ritorno" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="211.0" text="Orario Arrivo Ritorno" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="205.0" text="Adulti" GridPane.rowIndex="7">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="206.0" text="Bambini" GridPane.rowIndex="8">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Label>
                         <Label fx:id="output_arrivo_andata" alignment="CENTER" prefHeight="21.0" prefWidth="212.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <Label fx:id="output_partenza_ritorno" alignment="CENTER" prefHeight="21.0" prefWidth="208.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                         <Label fx:id="output_fornitore" alignment="CENTER" prefHeight="21.0" prefWidth="206.0" GridPane.columnIndex="1" />

@@ -73,11 +73,26 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Label text="Codice Tessera" />
-                              <Label text="Nome" GridPane.rowIndex="1" />
-                              <Label text="Codice Fiscale" GridPane.rowIndex="4" />
-                              <Label text="Data di Nascita" GridPane.rowIndex="3" />
-                              <Label text="Cognome" GridPane.rowIndex="2" />
+                              <Label text="Codice Tessera">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font></Label>
+                              <Label text="Nome" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font></Label>
+                              <Label text="Codice Fiscale" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font></Label>
+                              <Label text="Data di Nascita" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font></Label>
+                              <Label text="Cognome" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font></Label>
                               <Label fx:id="output_nome_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="306.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <Label fx:id="output_cognome_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="306.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                               <Label fx:id="output_data_nascita_cliente" alignment="CENTER" prefHeight="21.0" prefWidth="307.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />

@@ -28,16 +28,16 @@
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="220.0" text="Cognome">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font></Label>
                   <Label fx:id="output_cognome" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="220.0" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="217.0" text="Codice fiscale">
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="217.0" text="Codice Fiscale">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font></Label>
                   <Label fx:id="output_codice_fiscale" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="217.0" />
                </children>
@@ -46,7 +46,7 @@
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="149.0" text="Data di nascita">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font></Label>
                   <Label fx:id="output_data_nascita" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="149.0" />
                </children>
@@ -55,7 +55,7 @@
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="200.0" text="Nome">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font></Label>
                   <Label fx:id="output_nome" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="200.0" />
                </children>
@@ -64,7 +64,7 @@
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="213.0" text="Ruolo">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font></Label>
                   <Label fx:id="output_ruolo" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="213.0" />
                </children>
@@ -73,7 +73,7 @@
                <children>
                   <Label alignment="CENTER" prefWidth="200.0" text="Username">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
                   <Label fx:id="output_username" alignment="CENTER" prefWidth="200.0" />
@@ -83,7 +83,7 @@
                <children>
                   <Label alignment="CENTER" prefWidth="200.0" text="Stipendio" GridPane.columnIndex="6">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
                   <Label fx:id="output_stipendio" alignment="CENTER" prefWidth="200.0" />
