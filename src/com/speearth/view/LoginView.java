@@ -15,10 +15,15 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 public class LoginView extends View {
+	@FXML
+	private BorderPane login_pane;
 	@FXML
 	private TextField input_username;
 	@FXML
@@ -60,6 +65,20 @@ public class LoginView extends View {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		login_pane.setOnKeyPressed(new EventHandler<KeyEvent>() {
+
+			@Override
+			public void handle(KeyEvent event) {
+				if (event.getCode() == KeyCode.ENTER) {
+					try {
+						autentica(null);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+			
+		});
 	}
 
 	@Override
