@@ -21,38 +21,63 @@
             <GridPane alignment="CENTER" styleClass="grid" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
               <columnConstraints>
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="bottone_prenota_servizio" mnemonicParsing="false" onAction="#prenotaServizio" prefHeight="166.0" prefWidth="286.0" text="Prenota Servizio">
+                  <Button fx:id="bottone_prenota_servizio" mnemonicParsing="false" onAction="#prenotaServizio" prefHeight="166.0" prefWidth="286.0">
                      <graphic>
-                        <ImageView fitHeight="146.0" fitWidth="188.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/icona_prenota_servizio.png" />
-                           </image>
-                        </ImageView>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <ImageView fitHeight="138.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/icona_prenota_servizio.png" />
+                                 </image>
+                              </ImageView>
+                              <Label id="labelHomeDir" alignment="CENTER" prefHeight="21.0" prefWidth="262.0" text="Prenota Servizio">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
                      </graphic>
                   </Button>
-                  <Button fx:id="bottone_gestisci_clienti" mnemonicParsing="false" onAction="#gestisciClienti" prefHeight="166.0" prefWidth="286.0" text="Gestici Clienti" GridPane.rowIndex="2">
+                  <Button fx:id="bottone_gestisci_clienti" mnemonicParsing="false" onAction="#gestisciClienti" prefHeight="166.0" prefWidth="286.0" GridPane.rowIndex="1">
                      <graphic>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/icona_utenti.png" />
-                           </image>
-                        </ImageView>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <ImageView fitHeight="118.0" fitWidth="136.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/icona_utenti.png" />
+                                 </image>
+                              </ImageView>
+                              <Label id="labelHomeDir" alignment="CENTER" prefHeight="21.0" prefWidth="284.0" text="Gestici Clienti">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font></Label>
+                           </children>
+                        </VBox>
                      </graphic>
                   </Button>
-                  <Button fx:id="bottone_crea_offerta" mnemonicParsing="false" onAction="#creaOfferta" prefHeight="166.0" prefWidth="286.0" text="Crea Offerta" GridPane.rowIndex="1">
+                  <Button fx:id="bottone_crea_offerta" mnemonicParsing="false" onAction="#creaOfferta" prefHeight="166.0" prefWidth="286.0" GridPane.columnIndex="1">
                      <graphic>
-                        <ImageView fitHeight="150.0" fitWidth="157.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/icona_crea_offerta.png" />
-                           </image>
-                        </ImageView>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <ImageView fitHeight="126.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/icona_crea_offerta.png" />
+                                 </image>
+                              </ImageView>
+                              <Label id="labelHomeDir" prefHeight="26.0" prefWidth="87.0" text="Crea Offerta">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font></Label>
+                           </children>
+                        </VBox>
                      </graphic>
                   </Button>
                </children>

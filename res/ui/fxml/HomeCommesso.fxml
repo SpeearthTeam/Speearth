@@ -27,22 +27,40 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="bottone_prenota_servizio" mnemonicParsing="false" onAction="#prenotaServizio" prefHeight="166.0" prefWidth="286.0" text="Prenota Servizio">
+                  <Button fx:id="bottone_prenota_servizio" mnemonicParsing="false" onAction="#prenotaServizio" prefHeight="166.0" prefWidth="286.0">
                      <graphic>
-                        <ImageView fitHeight="146.0" fitWidth="188.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/icona_prenota_servizio.png" />
-                           </image>
-                        </ImageView>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <ImageView fitHeight="135.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/icona_prenota_servizio.png" />
+                                 </image>
+                              </ImageView>
+                              <Label id="labelHomeDir" text="Prenota Servizio">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
                      </graphic>
                   </Button>
-                  <Button fx:id="bottone_gestisci_clienti" mnemonicParsing="false" onAction="#gestisciClienti" prefHeight="166.0" prefWidth="286.0" text="Gestici Clienti" GridPane.rowIndex="1">
+                  <Button fx:id="bottone_gestisci_clienti" mnemonicParsing="false" onAction="#gestisciClienti" prefHeight="166.0" prefWidth="286.0" GridPane.rowIndex="1">
                      <graphic>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/icona_utenti.png" />
-                           </image>
-                        </ImageView>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <ImageView fitHeight="122.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/icona_utenti.png" />
+                                 </image>
+                              </ImageView>
+                              <Label id="labelHomeDir" alignment="CENTER" prefHeight="21.0" prefWidth="128.0" text="Gestici Clienti">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
                      </graphic>
                   </Button>
                </children>

@@ -1,3 +1,14 @@
-.BorderPane{
-	-fx-background-color: #99F5FB;
+.background{
+	-fx-background-color: #006ABC;
+}
+	
+
+.button{
+	-fx-background-color: #006ABC;
+	-fx-text-fill: #E4F2F4;
 	}
+
+#labelHomeDir{ 
+	-fx-text-fill: #E4F2F4;
+	-fx-font-style: bold;
+}

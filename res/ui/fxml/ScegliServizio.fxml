@@ -39,7 +39,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="bottone_prenota_biglietto" mnemonicParsing="false" onAction="#prenotaBiglietto" prefHeight="157.0" prefWidth="386.0" text="Prenota un Biglietto">
+                  <Button fx:id="bottone_prenota_biglietto" mnemonicParsing="false" onAction="#prenotaBiglietto" prefHeight="157.0" prefWidth="386.0" text="Prenota Biglietto">
                      <graphic>
                         <ImageView fitHeight="146.0" fitWidth="188.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -47,8 +47,11 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
                   </Button>
-                  <Button fx:id="bottone_prenota_alloggio" mnemonicParsing="false" onAction="#prenotaAlloggio" prefHeight="157.0" prefWidth="386.0" text="Prenota un Alloggio" GridPane.rowIndex="1">
+                  <Button fx:id="bottone_prenota_alloggio" mnemonicParsing="false" onAction="#prenotaAlloggio" prefHeight="157.0" prefWidth="386.0" text="Prenota Alloggio" GridPane.rowIndex="1">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -56,8 +59,11 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
                   </Button>
-                  <Button fx:id="bottone_prenota_pacchetto" mnemonicParsing="false" onAction="#prenotaPacchetto" prefHeight="156.0" prefWidth="386.0" text="Prenota un Pacchetto di Servizi" GridPane.rowIndex="2">
+                  <Button fx:id="bottone_prenota_pacchetto" mnemonicParsing="false" onAction="#prenotaPacchetto" prefHeight="156.0" prefWidth="386.0" text="Prenota Pacchetto" GridPane.rowIndex="2">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -65,8 +71,11 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
                   </Button>
-                  <Button fx:id="bottone_acquista_offerta" mnemonicParsing="false" onAction="#acquistaOfferta" prefHeight="156.0" prefWidth="386.0" text="Acquista un'Offerta" GridPane.rowIndex="3">
+                  <Button fx:id="bottone_acquista_offerta" mnemonicParsing="false" onAction="#acquistaOfferta" prefHeight="156.0" prefWidth="386.0" text="Acquista Offerta" GridPane.rowIndex="3">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -74,6 +83,9 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
                   </Button>
                </children>
             </GridPane>
