@@ -26,9 +26,9 @@
       <CheckBox fx:id="input_doppia" layoutX="93.0" layoutY="246.0" mnemonicParsing="false" text="Doppia" />
       <CheckBox fx:id="input_tripla" layoutX="93.0" layoutY="298.0" mnemonicParsing="false" text="Tripla" />
       <CheckBox fx:id="input_quadrupla" layoutX="93.0" layoutY="349.0" mnemonicParsing="false" text="Quadrupla" />
-      <Button layoutX="29.0" layoutY="445.0" mnemonicParsing="false" onAction="#ricercaAlloggi" prefHeight="45.0" prefWidth="316.0" text="Cerca">
+      <Button layoutX="33.0" layoutY="454.0" mnemonicParsing="false" onAction="#ricercaAlloggi" prefHeight="45.0" prefWidth="316.0" text="Cerca">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Button>
    </children>

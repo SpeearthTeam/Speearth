@@ -16,7 +16,7 @@
                <children>
                   <Label alignment="CENTER" prefWidth="150.0" text="Arrivo">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
                   <Label fx:id="output_data_arrivo" alignment="CENTER" prefWidth="150.0" />
@@ -27,7 +27,7 @@
                <children>
                   <Label alignment="CENTER" prefWidth="150.0" text="Partenza">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
                   <Label fx:id="output_data_partenza" alignment="CENTER" prefWidth="150.0" />
@@ -38,7 +38,7 @@
                <children>
                   <Label prefWidth="150.0" text="         Stanze">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
                   <ListView fx:id="output_stanze" maxWidth="-Infinity" prefWidth="150.0" />
@@ -48,7 +48,7 @@
                <children>
                   <Label alignment="CENTER" prefWidth="150.0" text="Località">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
                   <Label fx:id="output_localita" alignment="CENTER" prefWidth="150.0" />
@@ -74,7 +74,7 @@
          <children>
             <Label alignment="CENTER" prefWidth="150.0" text="Prezzo">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
             <Label fx:id="output_prezzo" alignment="CENTER" prefWidth="150.0" />
@@ -86,7 +86,7 @@
          <children>
             <Label text="Fornitore: ">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
                <HBox.margin>
                   <Insets />
