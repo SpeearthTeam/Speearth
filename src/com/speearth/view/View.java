@@ -95,6 +95,7 @@ public abstract class View implements Initializable {
 			scene = new Scene(root, 1280, 720);
 		}
 		stage.setScene(scene);
+		scene.getStylesheets().add("ui/css/Custom.css");
 	}
 
 	/**

@@ -5,7 +5,10 @@ import com.speearth.utility.Costanti;
 import com.speearth.view.LoginView;
 
 import javafx.application.Application;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {

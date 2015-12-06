@@ -8,7 +8,11 @@
 	-fx-text-fill: #E4F2F4;
 	}
 
-#labelHomeDir{ 
+#labelHome{ 
 	-fx-text-fill: #E4F2F4;
-	-fx-font-style: bold;
+	-fx-font-weight: bold;
+}
+
+#sfondoHome{
+	-fx-background-color: #CFFCFE;
 }

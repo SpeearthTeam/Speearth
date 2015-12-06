@@ -6,9 +6,8 @@
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
- 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane id="sfondoHome" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -41,7 +40,7 @@
                                     <Image url="@../img/icona_bianca_prenota_servizio.png" />
                                  </image>
                               </ImageView>
-                              <Label id="labelHomeDir" alignment="CENTER" prefHeight="21.0" prefWidth="277.0" text="Prenota Servizio">
+                              <Label id="labelHome" alignment="CENTER" prefHeight="21.0" prefWidth="277.0" text="Prenota Servizio">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font></Label>
@@ -61,7 +60,7 @@
                                     <Image url="@../img/icona_bianca_utenti.png" />
                                  </image>
                               </ImageView>
-                              <Label id="labelHomeDir" alignment="CENTER" prefHeight="21.0" prefWidth="256.0" text="Gestici Clienti">
+                              <Label id="labelHome" alignment="CENTER" prefHeight="21.0" prefWidth="256.0" text="Gestici Clienti">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
@@ -82,7 +81,7 @@
                                     <Image url="@../img/icona_bianca_crea_offerta.png" />
                                  </image>
                               </ImageView>
-                              <Label id="labelHomeDir" alignment="CENTER" prefHeight="21.0" prefWidth="263.0" text="Crea Offerta">
+                              <Label id="labelHome" alignment="CENTER" prefHeight="21.0" prefWidth="263.0" text="Crea Offerta">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font></Label>
@@ -102,7 +101,7 @@
                                     <Image url="@../img/icona_bianca_impiegati.png" />
                                  </image>
                               </ImageView>
-                              <Label id="labelHomeDir" text="Gestisci Impiegati">
+                              <Label id="labelHome" text="Gestisci Impiegati">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
