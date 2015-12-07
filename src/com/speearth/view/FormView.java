@@ -21,15 +21,17 @@ public abstract class FormView extends SubView {
 
 	/**
 	 * Valida gli input della Form
+	 * 
+	 * @return boolean
 	 */
-	public abstract boolean validate();
+	public abstract boolean valida();
 
 	/**
 	 * Resituisce i parametri della Form
 	 * 
 	 * @return HashMap<String, String>
 	 */
-	public abstract HashMap<String, String> getParameters();
+	public abstract HashMap<String, String> getParametri();
 
 	/**
 	 * Invia la richiesta
@@ -37,5 +39,5 @@ public abstract class FormView extends SubView {
 	 * @param parameters
 	 * @throws IOException
 	 */
-	public abstract void send(HashMap<String, String> parameters) throws IOException;
+	public abstract void invia(HashMap<String, String> parameters) throws IOException;
 }

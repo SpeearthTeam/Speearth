@@ -56,7 +56,7 @@ public abstract class View implements Initializable {
 	 * @throws IOException
 	 */
 	public View(Stage stage) throws IOException {
-		String path = getResourceName();
+		String path = getNomeRisorsa();
 		this.loader = new FXMLLoader(getClass().getResource(path));
 		this.loader.setController(this);
 		this.stage = stage;
@@ -124,7 +124,7 @@ public abstract class View implements Initializable {
 	 * 
 	 * @return String
 	 */
-	public abstract String getResourceName();
+	public abstract String getNomeRisorsa();
 
 	/**
 	 * Crea un Alert Dialog e rimane in attesa di essere consumato
@@ -158,6 +158,6 @@ public abstract class View implements Initializable {
 	/**
 	 * Aggiorna le informazioni mostrate dall'Interfaccia
 	 */
-	public void updateUI() {
+	public void aggiornaUI() {
 	}
 }

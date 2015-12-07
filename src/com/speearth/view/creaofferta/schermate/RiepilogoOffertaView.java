@@ -94,7 +94,7 @@ public class RiepilogoOffertaView extends View {
 	 */
 	public RiepilogoOffertaView(Stage stage) throws IOException {
 		super(stage);
-		getStage().setTitle(Costanti.TITOLO_RIEPILOGO_OFFERTA);
+		this.getStage().setTitle(Costanti.TITOLO_RIEPILOGO_OFFERTA);
 		this.impostaInfoOfferta(AppFacadeController.getInstance().getCreaOffertaController().getOfferta());
 	}
 
@@ -106,7 +106,7 @@ public class RiepilogoOffertaView extends View {
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		this.riepilogo_servizi.setCellFactory(param -> new OffertaListItem(getStage()));
+		this.riepilogo_servizi.setCellFactory(param -> new OffertaListItem(this.getStage()));
 		this.riepilogo_servizi.setItems(this.lista_servizi);
 		this.input_data_inizio_offerta.setValue(LocalDate.now());
 		this.input_sconto_offerta.setText("0");
@@ -119,7 +119,7 @@ public class RiepilogoOffertaView extends View {
 				Costanti.MESSAGGIO_TORNA_ALLA_HOME);
 		if (result.get() == ButtonType.OK) {
 			AppFacadeController.getInstance().getCreaOffertaController().reset();
-			HomeView view = new HomeView(getStage());
+			HomeView view = new HomeView(this.getStage());
 			view.mostra();
 		}
 	}
@@ -127,7 +127,7 @@ public class RiepilogoOffertaView extends View {
 	// Event Listener on Button[#bottone_ricerca].onAction
 	@FXML
 	public void vaiARicerca(ActionEvent event) throws IOException {
-		CreaOffertaView view = new CreaOffertaView(getStage());
+		CreaOffertaView view = new CreaOffertaView(this.getStage());
 		view.mostra();
 	}
 
@@ -142,11 +142,10 @@ public class RiepilogoOffertaView extends View {
 				float percentuale = Float.parseFloat(input);
 				AppFacadeController.getInstance().getCreaOffertaController().applicaSconto(percentuale);
 				float prezzo = AppFacadeController.getInstance().getCreaOffertaController().getOfferta().getPrezzo();
-				output_totale_offerta.setText(Float.toString(prezzo));
+				this.output_totale_offerta.setText(Float.toString(prezzo));
 			}
 		} else
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_SCONTO_INSERITO_ERRATO);
-
 	}
 
 	// Event Listener on Button[#bottone_salva_offerta].onAction
@@ -166,7 +165,7 @@ public class RiepilogoOffertaView extends View {
 				mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_TORNA_ALLA_HOME, null,
 						Costanti.MESSAGGIO_OFFERTA_SALVATA);
 				AppFacadeController.getInstance().getCreaOffertaController().reset();
-				HomeView view = new HomeView(getStage());
+				HomeView view = new HomeView(this.getStage());
 				view.mostra();
 			} else
 				mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PROBLEMA_DATABASE);
@@ -180,7 +179,7 @@ public class RiepilogoOffertaView extends View {
 	 * @return String
 	 */
 	@Override
-	public String getResourceName() {
+	public String getNomeRisorsa() {
 		return Costanti.FXML_RIEPILOGO_OFFERTA;
 	}
 }

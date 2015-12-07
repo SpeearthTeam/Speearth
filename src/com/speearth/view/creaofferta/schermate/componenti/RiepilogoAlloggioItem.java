@@ -58,7 +58,7 @@ public class RiepilogoAlloggioItem extends SubView {
 	public RiepilogoAlloggioItem(Stage stage, Alloggio alloggio) throws IOException {
 		super(stage);
 		this.alloggio = alloggio;
-		this.updateUI();
+		this.aggiornaUI();
 	}
 
 	/**
@@ -96,14 +96,14 @@ public class RiepilogoAlloggioItem extends SubView {
 	 */
 	public void updateAlloggio(Alloggio alloggio) {
 		this.setAlloggio(alloggio);
-		this.updateUI();
+		this.aggiornaUI();
 	}
 
 	/**
 	 * Aggiorna le informazioni mostrate dall'Interfaccia
 	 */
 	@Override
-	public void updateUI() {
+	public void aggiornaUI() {
 		this.output_data_arrivo.setText(Costanti.FORMATO_DATA_ORA.format(this.alloggio.getDataArrivo()));
 		this.output_ora_arrivo.setText(Costanti.FORMATO_DATA_ORA.format(this.alloggio.getDataArrivo()));
 		this.output_data_partenza.setText(Costanti.FORMATO_DATA_ORA.format(this.alloggio.getDataPartenza()));
@@ -136,7 +136,7 @@ public class RiepilogoAlloggioItem extends SubView {
 	 * @return String
 	 */
 	@Override
-	public String getResourceName() {
+	public String getNomeRisorsa() {
 		return Costanti.FXML_RIEPILOGO_ALLOGGIO_ITEM;
 	}
 }

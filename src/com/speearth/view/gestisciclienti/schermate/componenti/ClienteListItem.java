@@ -7,15 +7,17 @@ import com.speearth.model.core.Cliente;
 import javafx.scene.control.ListCell;
 import javafx.stage.Stage;
 
+/**
+ * Classe che rifinisce una ListCell per adattarla a contenere un Cliente
+ */
 public class ClienteListItem extends ListCell<Cliente> {
-
 	/**
-	 * Stage nella list view
+	 * Stage
 	 */
 	private Stage stage;
 
 	/**
-	 * Costruttore di default
+	 * Costruttore
 	 * 
 	 * @param stage
 	 */
@@ -24,7 +26,7 @@ public class ClienteListItem extends ListCell<Cliente> {
 	}
 
 	/**
-	 * Aggiorna un elemento della lista
+	 * Aggiorna un elemento della Lista
 	 * 
 	 * @param cliente
 	 * @param empty
@@ -34,13 +36,13 @@ public class ClienteListItem extends ListCell<Cliente> {
 		super.updateItem(cliente, empty);
 		if (cliente != null) {
 			try {
-				RisultatoClienteItem cliente_item = new RisultatoClienteItem(stage, cliente);
-				setGraphic(cliente_item.getRoot());
+				RisultatoClienteItem cliente_item = new RisultatoClienteItem(this.stage, cliente);
+				this.setGraphic(cliente_item.getRoot());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		} else {
-			setGraphic(null);
+			this.setGraphic(null);
 		}
 	}
 }

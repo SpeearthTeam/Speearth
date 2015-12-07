@@ -109,7 +109,7 @@ public class HomeView extends View {
 	 * @return String
 	 */
 	@Override
-	public String getResourceName() {
+	public String getNomeRisorsa() {
 		switch (AppFacadeController.getInstance().getUtente().getRuolo()) {
 		case "Commesso":
 			return Costanti.FXML_HOME_COMMESSO;

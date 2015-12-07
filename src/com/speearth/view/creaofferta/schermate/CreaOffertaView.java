@@ -341,7 +341,7 @@ public class CreaOffertaView extends View {
 	 * @return String
 	 */
 	@Override
-	public String getResourceName() {
+	public String getNomeRisorsa() {
 		return Costanti.FXML_CREA_OFFERTA;
 	}
 }

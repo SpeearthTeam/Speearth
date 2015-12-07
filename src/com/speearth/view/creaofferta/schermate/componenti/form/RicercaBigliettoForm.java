@@ -50,65 +50,83 @@ public class RicercaBigliettoForm extends FormView {
 	@FXML
 	private ChoiceBox<String> input_ora_andata;
 
+	/**
+	 * ObservableList di Biglietti da incorporare nella Listview
+	 */
 	private ObservableList<Biglietto> biglietti = FXCollections.observableArrayList();
 
+	/**
+	 * Lista dei risultati della Ricerca
+	 */
 	private ListView<Biglietto> list_view = null;
 
 	/**
-	 * Carica gli Alloggi salvati nel Controller all'interno View per
-	 * evitarne la perdita durante un cambio di Schermata
+	 * Carica gli Alloggi salvati nel Controller all'interno View per evitarne
+	 * la perdita durante un cambio di Schermata
 	 */
 	private void impostaParametri() {
 		// ottengo i parametri di ricerca dal controller
 		HashMap<String, String> parametri = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getPrenotaBigliettoController().getParametri();
-	
+
 		if (!parametri.isEmpty()) {
 			String partenza = parametri.get("partenza");
 			this.input_partenza.setText(partenza);
-	
+
 			String destinazione = parametri.get("destinazione");
 			this.input_destinazione.setText(destinazione);
-	
+
 			String data_andata = parametri.get("data_andata");
 			LocalDateTime local_date_time_andata = LocalDateTime.parse(data_andata, DateTimeFormatter.ISO_DATE_TIME);
 			LocalDate local_date_andata = local_date_time_andata.toLocalDate();
 			this.input_data_andata.setValue(local_date_andata);
-	
+
 			LocalTime local_time_andata = local_date_time_andata.toLocalTime();
 			int index_ora_andata = local_time_andata.getHour();
 			this.input_ora_andata.getSelectionModel().select(index_ora_andata);
-	
+
 			String data_ritorno = parametri.get("data_ritorno");
 			if (data_ritorno != null) {
 				LocalDateTime local_date_time_ritorno = LocalDateTime.parse(data_ritorno,
 						DateTimeFormatter.ISO_DATE_TIME);
 				LocalDate local_date_ritorno = local_date_time_ritorno.toLocalDate();
 				this.input_data_ritorno.setValue(local_date_ritorno);
-	
+
 				LocalTime local_time_ritorno = local_date_time_ritorno.toLocalTime();
 				int index_ora_ritorno = local_time_ritorno.getHour();
 				this.input_ora_ritorno.getSelectionModel().select(index_ora_ritorno);
 			}
-	
+
 			int index_adulti = Integer.parseInt(parametri.get("numero_adulti")) - 1;
 			this.input_adulti.getSelectionModel().select(index_adulti);
-	
+
 			int index_bambini = Integer.parseInt(parametri.get("numero_bambini"));
 			this.input_bambini.getSelectionModel().select(index_bambini);
-	
+
 			// int index_mezzo = Integer.parseInt(parametri.get("mezzo"));
 			// this.input_mezzo.getSelectionModel().select(index_mezzo);
-	
+
 		}
-	
+
 	}
 
+	/**
+	 * Costruttore
+	 * 
+	 * @param stage
+	 * @throws IOException
+	 */
 	public RicercaBigliettoForm(Stage stage) throws IOException {
 		super(stage);
 		impostaParametri();
 	}
 
+	/**
+	 * Inizializza la SubView
+	 * 
+	 * @param location
+	 * @param resources
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		this.input_ora_andata.setItems(FXCollections.observableArrayList(Costanti.LISTA_ORE));
@@ -121,22 +139,27 @@ public class RicercaBigliettoForm extends FormView {
 		this.input_mezzo.getSelectionModel().select(0);
 	}
 
+	/**
+	 * Valida gli input della Form
+	 * 
+	 * @return boolean
+	 */
 	@Override
-	public boolean validate() {
+	public boolean valida() {
 		// Controllo del luogo di partenza
-		if (input_partenza.getText() == null || input_partenza.getText().isEmpty()) {
+		if (this.input_partenza.getText() == null || this.input_partenza.getText().isEmpty()) {
 			throw new InvalidParameterException(Costanti.MESSAGGIO_DEFINIRE_PARTENZA);
 		}
 		// Controllo del luogo di destinazione
-		if (input_destinazione.getText() == null || input_destinazione.getText().isEmpty()) {
+		if (this.input_destinazione.getText() == null || this.input_destinazione.getText().isEmpty()) {
 			throw new InvalidParameterException(Costanti.MESSAGGIO_DEFINIRE_DESTINAZIONE);
 		}
 		// Controllo del mezzo
-		if (input_mezzo.getValue() == null) {
+		if (this.input_mezzo.getValue() == null) {
 			throw new InvalidParameterException(Costanti.MESSAGGIO_DEFINIRE_MEZZO);
 		}
 		// Controllo della data di andata
-		LocalDate local_date_andata = input_data_andata.getValue();
+		LocalDate local_date_andata = this.input_data_andata.getValue();
 		if (local_date_andata == null) {
 			throw new InvalidParameterException(Costanti.MESSAGGIO_DEFINIRE_DATA_ANDATA);
 		}
@@ -144,7 +167,7 @@ public class RicercaBigliettoForm extends FormView {
 			throw new InvalidParameterException(Costanti.MESSAGGIO_DATA_PARTENZA_NON_VALIDA);
 		}
 		// Controllo della data di ritorno
-		LocalDate local_date_ritorno = input_data_ritorno.getValue();
+		LocalDate local_date_ritorno = this.input_data_ritorno.getValue();
 		if (local_date_ritorno != null
 				&& (local_date_ritorno.isBefore(local_date_andata) || local_date_ritorno.isEqual(local_date_andata))) {
 			throw new InvalidParameterException(Costanti.MESSAGGIO_DATA_RITORNO_NON_VALIDA);
@@ -158,59 +181,66 @@ public class RicercaBigliettoForm extends FormView {
 	 * @return HashMap<String, String>
 	 */
 	@Override
-	public HashMap<String, String> getParameters() {
+	public HashMap<String, String> getParametri() {
 		// Calcolo della data di andata
 		int hour = 0;
-		LocalDate local_date_andata = input_data_andata.getValue();
-		hour = (input_ora_andata.getValue() != null) ? Integer.parseInt(input_ora_andata.getValue()) : 0;
+		LocalDate local_date_andata = this.input_data_andata.getValue();
+		hour = (this.input_ora_andata.getValue() != null) ? Integer.parseInt(this.input_ora_andata.getValue()) : 0;
 		LocalDateTime local_date_time_andata = local_date_andata.atTime(hour, 0, 0);
 		String data_andata = local_date_time_andata.format(DateTimeFormatter.ISO_DATE_TIME);
 
 		// Calcolo della data di ritorno
 		String data_ritorno = null;
-		LocalDate local_date_ritorno = input_data_ritorno.getValue();
+		LocalDate local_date_ritorno = this.input_data_ritorno.getValue();
 
 		if (local_date_ritorno != null) {
-			hour = (input_ora_ritorno.getValue() != null) ? Integer.parseInt(input_ora_ritorno.getValue()) : 0;
+			hour = (this.input_ora_ritorno.getValue() != null) ? Integer.parseInt(this.input_ora_ritorno.getValue())
+					: 0;
 			LocalDateTime local_date_time_ritorno = local_date_ritorno.atTime(hour, 0, 0);
 			data_ritorno = local_date_time_ritorno.format(DateTimeFormatter.ISO_DATE_TIME);
 		}
 
 		// Calcolo numero adulti
-		String numero_adulti = (input_adulti.getValue() != null) ? input_adulti.getValue() : "0";
+		String numero_adulti = (this.input_adulti.getValue() != null) ? this.input_adulti.getValue() : "0";
 
 		// Calcolo numero bambini
-		String numero_bambini = (input_bambini.getValue() != null) ? input_bambini.getValue() : "0";
+		String numero_bambini = (this.input_bambini.getValue() != null) ? this.input_bambini.getValue() : "0";
 
 		// Costruzione dei parametri
 		HashMap<String, String> parametri = new HashMap<String, String>();
 		parametri.put("numero_adulti", numero_adulti);
 		parametri.put("numero_bambini", numero_bambini);
-		parametri.put("partenza", input_partenza.getText());
-		parametri.put("destinazione", input_destinazione.getText());
+		parametri.put("partenza", this.input_partenza.getText());
+		parametri.put("destinazione", this.input_destinazione.getText());
 		parametri.put("data_andata", data_andata);
 		parametri.put("data_ritorno", data_ritorno);
-		parametri.put("mezzo", input_mezzo.getValue());
+		parametri.put("mezzo", this.input_mezzo.getValue());
 		return parametri;
 	}
 
+	/**
+	 * Invia la richiesta
+	 * 
+	 * @param parameters
+	 * @throws IOException
+	 */
 	@Override
-	public void send(HashMap<String, String> parameters) throws IOException {
+	public void invia(HashMap<String, String> parameters) throws IOException {
 		ArrayList<Biglietto> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getPrenotaBigliettoController().ricerca(parameters);
 		this.biglietti.clear();
 		this.biglietti.setAll(risultati);
-
 		if (this.list_view != null) {
 			this.list_view.setItems(this.biglietti);
 		}
 	}
 
+	// Event Listener on Button[#bottone_cerca].onAction
 	@FXML
 	public void ricercaBiglietti(ActionEvent event) {
 		try {
-			if (this.validate())
-				send(getParameters());
+			if (this.valida())
+				this.invia(getParametri());
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PARAMETRI_MANCANTI);
@@ -221,23 +251,39 @@ public class RicercaBigliettoForm extends FormView {
 		}
 	}
 
+	/**
+	 * Restituisce l'ObservableList di Alloggi
+	 * 
+	 * @return ObservableList<Alloggio>
+	 */
 	public ObservableList<Biglietto> getBiglietti() {
 		return biglietti;
 	}
 
+	/**
+	 * Lega la ListView al suo contenuto
+	 * 
+	 * @param view
+	 */
 	public void bind(ListView<Biglietto> view) {
 		this.list_view = view;
 		this.list_view.setItems(this.biglietti);
 	}
 
+	/**
+	 * Aggiorna le informazioni mostrate dall'Interfaccia
+	 */
 	@Override
-	public void updateUI() {
-
+	public void aggiornaUI() {
 	}
 
+	/**
+	 * Restituisce il nome della Risorsa associata alla View
+	 * 
+	 * @return String
+	 */
 	@Override
-	public String getResourceName() {
+	public String getNomeRisorsa() {
 		return Costanti.FXML_RICERCA_BIGLIETTO_FORM;
 	}
-
 }

@@ -180,7 +180,7 @@ public class RicercaBigliettoView extends View {
 	}
 
 	@Override
-	public String getResourceName() {
+	public String getNomeRisorsa() {
 		return Costanti.FXML_RICERCA_BIGLIETTO;
 	}
 }

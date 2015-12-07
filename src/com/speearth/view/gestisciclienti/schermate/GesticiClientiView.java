@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.speearth.controller.GestisciClientiController;
+import com.speearth.controller.AppFacadeController;
 import com.speearth.model.core.Cliente;
 import com.speearth.utility.Costanti;
 import com.speearth.view.HomeView;
@@ -27,6 +27,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * Schermata di Gestione dei Clienti
+ */
 public class GesticiClientiView extends View {
 	@FXML
 	private TextField input_ricerca_cliente;
@@ -38,34 +41,29 @@ public class GesticiClientiView extends View {
 	private ListView<Cliente> lista_risultati;
 
 	/**
-	 * Lista dei clienti gestiti
+	 * Lista dei Clienti
 	 */
 	private ObservableList<Cliente> clienti;
 
 	/**
-	 * Controller per la gestione dei clienti
-	 */
-	private GestisciClientiController controller;
-
-	/**
-	 * Costruttore di default
+	 * Costruttore
 	 * 
 	 * @param stage
 	 * @throws IOException
 	 */
 	public GesticiClientiView(Stage stage) throws IOException {
 		super(stage);
-		getStage().setTitle(Costanti.TITOLO_AGGIUNGI_CLIENTE);
-		//massimizzaFinestra();
-		getRoot().addEventHandler(EventoGestioneCliente.ELIMINA_CLIENTE, new EventHandler<EventoGestioneCliente>() {
-			@Override
-			public void handle(EventoGestioneCliente event) {
-				Cliente cliente = event.getCliente();
-				if (clienti.remove(cliente)) {
-					controller.eliminaCliente(cliente);
-				}
-			}
-		});
+		this.getStage().setTitle(Costanti.TITOLO_AGGIUNGI_CLIENTE);
+		this.getRoot().addEventHandler(EventoGestioneCliente.ELIMINA_CLIENTE,
+				new EventHandler<EventoGestioneCliente>() {
+					@Override
+					public void handle(EventoGestioneCliente event) {
+						Cliente cliente = event.getCliente();
+						if (GesticiClientiView.this.clienti.remove(cliente)) {
+							AppFacadeController.getInstance().getGestisciClientiController().eliminaCliente(cliente);
+						}
+					}
+				});
 		getRoot().addEventHandler(EventoGestioneCliente.MODIFICA_CLIENTE, new EventHandler<EventoGestioneCliente>() {
 			@Override
 			public void handle(EventoGestioneCliente event) {
@@ -75,7 +73,7 @@ public class GesticiClientiView extends View {
 					stage.initModality(Modality.APPLICATION_MODAL);
 					ClientePopupView view = new ClientePopupView(stage, event.getCliente());
 					view.mostraEAspetta();
-					GesticiClientiView.this.updateUI();
+					GesticiClientiView.this.aggiornaUI();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -88,15 +86,15 @@ public class GesticiClientiView extends View {
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		controller = GestisciClientiController.getInstance();
-		clienti = FXCollections.observableArrayList();
-		lista_risultati.setCellFactory(param -> new ClienteListItem(getStage()));
-		lista_risultati.setItems(clienti);
-		clienti.setAll(controller.cercaCliente(null));
-		input_ricerca_cliente.textProperty().addListener(new ChangeListener<String>() {
+		this.clienti = FXCollections.observableArrayList();
+		this.lista_risultati.setCellFactory(param -> new ClienteListItem(getStage()));
+		this.lista_risultati.setItems(this.clienti);
+		this.clienti.setAll(AppFacadeController.getInstance().getGestisciClientiController().cercaCliente(null));
+		this.input_ricerca_cliente.textProperty().addListener(new ChangeListener<String>() {
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-				clienti.setAll(controller.cercaCliente(newValue));
+				GesticiClientiView.this.clienti.setAll(
+						AppFacadeController.getInstance().getGestisciClientiController().cercaCliente(newValue));
 			}
 		});
 	}
@@ -104,7 +102,7 @@ public class GesticiClientiView extends View {
 	// Event Listener on Button[#bottone_torna_alla_home].onAction
 	@FXML
 	public void vaiAllaHome(ActionEvent event) throws IOException {
-		HomeView view = new HomeView(getStage());
+		HomeView view = new HomeView(this.getStage());
 		view.mostra();
 	}
 
@@ -116,23 +114,25 @@ public class GesticiClientiView extends View {
 		stage.initModality(Modality.APPLICATION_MODAL);
 		ClientePopupView view = new ClientePopupView(stage, null);
 		view.mostraEAspetta();
-		this.updateUI();
+		this.aggiornaUI();
 	}
 
 	/**
-	 * Aggiorna la view
+	 * Aggiorna le informazioni mostrate dall'Interfaccia
 	 */
 	@Override
-	public void updateUI() {
+	public void aggiornaUI() {
 		String valore = input_ricerca_cliente.getText();
-		clienti.setAll(controller.cercaCliente(valore));
+		this.clienti.setAll(AppFacadeController.getInstance().getGestisciClientiController().cercaCliente(valore));
 	}
 
 	/**
-	 * Restituisce il nome della risorsa corrispondente alla view
+	 * Restituisce il nome della Risorsa associata alla View
+	 * 
+	 * @return String
 	 */
 	@Override
-	public String getResourceName() {
+	public String getNomeRisorsa() {
 		return Costanti.FXML_GESTISCI_CLIENTI;
 	}
 }

@@ -109,8 +109,8 @@ public class AggiungiImpiegatoForm extends FormView {
 	@FXML
 	public void aggiungi(ActionEvent event) {
 		try {
-			if (this.validate()) {
-				this.send(null);
+			if (this.valida()) {
+				this.invia(null);
 				EventoGestioneImpiegato evento = new EventoGestioneImpiegato(EventoGestioneImpiegato.AGGIUNGI_IMPIEGATO,
 						impiegato);
 				getRoot().fireEvent(evento);
@@ -136,7 +136,7 @@ public class AggiungiImpiegatoForm extends FormView {
 	 * Valida la Form
 	 */
 	@Override
-	public boolean validate() {
+	public boolean valida() {
 		// Controllo dello username
 		if (this.input_username.getText() == null || this.input_username.getText().isEmpty()) {
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_USERNAME);
@@ -213,7 +213,7 @@ public class AggiungiImpiegatoForm extends FormView {
 	 * Restituisce i parametri
 	 */
 	@Override
-	public HashMap<String, String> getParameters() {
+	public HashMap<String, String> getParametri() {
 		return null;
 	}
 
@@ -221,7 +221,7 @@ public class AggiungiImpiegatoForm extends FormView {
 	 * Invia i parametri della Form
 	 */
 	@Override
-	public void send(HashMap<String, String> parameters) throws IOException {
+	public void invia(HashMap<String, String> parameters) throws IOException {
 		String username = this.input_username.getText();
 		String password = this.input_password.getText();
 		String nome = this.input_nome.getText();
@@ -245,14 +245,14 @@ public class AggiungiImpiegatoForm extends FormView {
 	 * Aggiorna la FormView
 	 */
 	@Override
-	public void updateUI() {
+	public void aggiornaUI() {
 	}
 
 	/**
 	 * Restituisce il nome della risorsa associata alla view
 	 */
 	@Override
-	public String getResourceName() {
+	public String getNomeRisorsa() {
 		return Costanti.FXML_AGGIUNGI_IMPIEGATO_FORM;
 	}
 }

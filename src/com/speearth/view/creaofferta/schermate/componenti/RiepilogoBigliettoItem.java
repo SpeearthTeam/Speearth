@@ -74,7 +74,7 @@ public class RiepilogoBigliettoItem extends SubView {
 	public RiepilogoBigliettoItem(Stage stage, Biglietto biglietto) throws IOException {
 		super(stage);
 		this.biglietto = biglietto;
-		this.updateUI();
+		this.aggiornaUI();
 	}
 
 	/**
@@ -102,7 +102,7 @@ public class RiepilogoBigliettoItem extends SubView {
 	 */
 	public void updateBiglietto(Biglietto biglietto) {
 		this.setBiglietto(biglietto);
-		this.updateUI();
+		this.aggiornaUI();
 	}
 
 	// Event Listener on Button[#bottone_conferma].onAction
@@ -129,12 +129,12 @@ public class RiepilogoBigliettoItem extends SubView {
 	 * @return String
 	 */
 	@Override
-	public String getResourceName() {
+	public String getNomeRisorsa() {
 		return Costanti.FXML_RIEPILOGO_BIGLIETTO_ITEM;
 	}
 
 	@Override
-	public void updateUI() {
+	public void aggiornaUI() {
 		this.output_data_destinazione_andata
 				.setText(Costanti.FORMATO_DATA_ORA.format(this.biglietto.getDataArrivoAndata()));
 		this.output_data_partenza_andata

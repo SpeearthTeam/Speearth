@@ -58,7 +58,7 @@ public class RisultatoAlloggioItem extends SubView {
 	public RisultatoAlloggioItem(Stage stage, Alloggio alloggio) throws IOException {
 		super(stage);
 		this.alloggio = alloggio;
-		updateUI();
+		aggiornaUI();
 	}
 
 	@Override
@@ -88,7 +88,7 @@ public class RisultatoAlloggioItem extends SubView {
 	 */
 	public void updateAlloggio(Alloggio alloggio) {
 		setAlloggio(alloggio);
-		updateUI();
+		aggiornaUI();
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class RisultatoAlloggioItem extends SubView {
 	 * @param alloggio
 	 */
 	@Override
-	public void updateUI() {
+	public void aggiornaUI() {
 		this.output_data_arrivo.setText(Costanti.FORMATO_DATA_ORA.format(alloggio.getDataArrivo()));
 		this.output_ora_arrivo.setText(Costanti.FORMATO_DATA_ORA.format(alloggio.getDataArrivo()));
 		this.output_data_partenza.setText(Costanti.FORMATO_DATA_ORA.format(alloggio.getDataPartenza()));
@@ -133,7 +133,7 @@ public class RisultatoAlloggioItem extends SubView {
 	 * @return String
 	 */
 	@Override
-	public String getResourceName() {
+	public String getNomeRisorsa() {
 		return Costanti.FXML_RISULTATO_ALLOGGIO;
 	}
 }

@@ -56,7 +56,7 @@ public class RisultatoImpiegatoItem extends SubView {
 	public RisultatoImpiegatoItem(Stage stage, Impiegato impiegato) throws IOException {
 		super(stage);
 		this.setImpiegato(impiegato);
-		this.updateUI();
+		this.aggiornaUI();
 	}
 
 	/**
@@ -70,7 +70,7 @@ public class RisultatoImpiegatoItem extends SubView {
 	 * Aggiorna la SubView
 	 */
 	@Override
-	public void updateUI() {
+	public void aggiornaUI() {
 		this.output_username.setText(impiegato.getUsername());
 		this.output_nome.setText(impiegato.getNome());
 		this.output_cognome.setText(impiegato.getCognome());
@@ -84,7 +84,7 @@ public class RisultatoImpiegatoItem extends SubView {
 	 * Restituisce la risorsa fxml della SubView
 	 */
 	@Override
-	public String getResourceName() {
+	public String getNomeRisorsa() {
 		return Costanti.FXML_RISULTATO_IMPIEGATO;
 	}
 
@@ -131,6 +131,6 @@ public class RisultatoImpiegatoItem extends SubView {
 	 */
 	public void updateImpiegato(Impiegato impiegato) {
 		setImpiegato(impiegato);
-		updateUI();
+		aggiornaUI();
 	}
 }

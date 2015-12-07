@@ -92,7 +92,7 @@ public class ScegliServizioView extends View {
 	 * @return String
 	 */
 	@Override
-	public String getResourceName() {
+	public String getNomeRisorsa() {
 		return Costanti.FXML_SCEGLI_SERVIZIO;
 	}
 }

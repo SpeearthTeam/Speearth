@@ -89,7 +89,7 @@ public class LoginView extends View {
 	 * @return String
 	 */
 	@Override
-	public String getResourceName() {
+	public String getNomeRisorsa() {
 		return Costanti.FXML_LOGIN;
 	}
 }

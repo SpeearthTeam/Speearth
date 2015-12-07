@@ -184,7 +184,7 @@ public class RicercaAlloggioView extends View {
 	}
 
 	@Override
-	public String getResourceName() {
+	public String getNomeRisorsa() {
 		return Costanti.FXML_RICERCA_ALLOGGIO;
 	}
 }

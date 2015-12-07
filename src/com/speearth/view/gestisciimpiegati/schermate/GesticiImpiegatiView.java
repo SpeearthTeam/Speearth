@@ -73,7 +73,7 @@ public class GesticiImpiegatiView extends View {
 							stage.initModality(Modality.APPLICATION_MODAL);
 							ImpiegatoPopupView view = new ImpiegatoPopupView(stage, event.getImpiegato());
 							view.mostraEAspetta();
-							GesticiImpiegatiView.this.updateUI();
+							GesticiImpiegatiView.this.aggiornaUI();
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
@@ -115,14 +115,14 @@ public class GesticiImpiegatiView extends View {
 		stage.initModality(Modality.APPLICATION_MODAL);
 		ImpiegatoPopupView view = new ImpiegatoPopupView(stage, null);
 		view.mostraEAspetta();
-		this.updateUI();
+		this.aggiornaUI();
 	}
 
 	/**
 	 * Aggiorna la View
 	 */
 	@Override
-	public void updateUI() {
+	public void aggiornaUI() {
 		String valore = this.input_ricerca_impiegato.getText();
 		this.impiegati
 				.setAll(AppFacadeController.getInstance().getGestisciImpiegatiController().cercaImpiegato(valore));
@@ -132,7 +132,7 @@ public class GesticiImpiegatiView extends View {
 	 * Restituisce il nome della risorsa corrispondente alla View
 	 */
 	@Override
-	public String getResourceName() {
+	public String getNomeRisorsa() {
 		return Costanti.FXML_GESTISCI_IMPIEGATI;
 	}
 }

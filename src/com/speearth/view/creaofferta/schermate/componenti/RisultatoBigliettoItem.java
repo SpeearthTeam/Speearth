@@ -79,7 +79,7 @@ public class RisultatoBigliettoItem extends SubView {
 	public RisultatoBigliettoItem(Stage stage, Biglietto biglietto) throws IOException {
 		super(stage);
 		this.biglietto = biglietto;
-		this.updateUI();
+		this.aggiornaUI();
 	}
 
 	/**
@@ -107,7 +107,7 @@ public class RisultatoBigliettoItem extends SubView {
 	 */
 	public void updateBiglietto(Biglietto biglietto) {
 		this.setBiglietto(biglietto);
-		this.updateUI();
+		this.aggiornaUI();
 	}
 
 	// Event Listener on Button[#bottone_conferma].onAction
@@ -134,7 +134,7 @@ public class RisultatoBigliettoItem extends SubView {
 	 * @return String
 	 */
 	@Override
-	public String getResourceName() {
+	public String getNomeRisorsa() {
 		return Costanti.FXML_RISULTATO_BIGLIETTO;
 	}
 
@@ -142,7 +142,7 @@ public class RisultatoBigliettoItem extends SubView {
 	 * Aggiorna le informazioni mostrate dall'Interfaccia
 	 */
 	@Override
-	public void updateUI() {
+	public void aggiornaUI() {
 		this.output_data_destinazione_andata.setText(Costanti.FORMATO_DATA_ORA.format(this.biglietto.getDataArrivoAndata()));
 		this.output_data_partenza_andata.setText(Costanti.FORMATO_DATA_ORA.format(this.biglietto.getDataPartenzaAndata()));
 		if (this.biglietto.getDataArrivoRitorno() != null) {

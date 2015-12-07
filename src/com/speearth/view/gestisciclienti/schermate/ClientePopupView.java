@@ -18,12 +18,15 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+/**
+ * Popup per l'aggiunta o modifica di un Cliente
+ */
 public class ClientePopupView extends View {
 	@FXML
 	private AnchorPane form_container;
 
 	/**
-	 * Form di salvataggio del cliente
+	 * Form
 	 */
 	private FormView form;
 
@@ -33,7 +36,7 @@ public class ClientePopupView extends View {
 	private Cliente cliente;
 
 	/**
-	 * Costruttore di default
+	 * Costruttore
 	 * 
 	 * @param stage
 	 * @param previousView
@@ -42,32 +45,35 @@ public class ClientePopupView extends View {
 	 */
 	public ClientePopupView(Stage stage, Cliente cliente) throws IOException {
 		super(stage);
-		setCliente(cliente);
-		getRoot().addEventHandler(EventoGestioneCliente.AGGIUNGI_CLIENTE, new EventHandler<EventoGestioneCliente>() {
-			@Override
-			public void handle(EventoGestioneCliente event) {
-				setCliente(event.getCliente());
-				mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_CLIENTE_AGGIUNTO, null,
-						Costanti.MESSAGGIO_CLIENTE_AGGIUNTO + getCliente().getCodiceTessera());
-			}
-		});
+		this.setCliente(cliente);
+		this.getRoot().addEventHandler(EventoGestioneCliente.AGGIUNGI_CLIENTE,
+				new EventHandler<EventoGestioneCliente>() {
+					@Override
+					public void handle(EventoGestioneCliente event) {
+						setCliente(event.getCliente());
+						mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_CLIENTE_AGGIUNTO, null,
+								Costanti.MESSAGGIO_CLIENTE_AGGIUNTO
+										+ ClientePopupView.this.getCliente().getCodiceTessera());
+					}
+				});
 
-		getRoot().addEventHandler(EventoGestioneCliente.MODIFICA_CLIENTE, new EventHandler<EventoGestioneCliente>() {
-			@Override
-			public void handle(EventoGestioneCliente event) {
-				setCliente(event.getCliente());
-			}
-		});
+		this.getRoot().addEventHandler(EventoGestioneCliente.MODIFICA_CLIENTE,
+				new EventHandler<EventoGestioneCliente>() {
+					@Override
+					public void handle(EventoGestioneCliente event) {
+						ClientePopupView.this.setCliente(event.getCliente());
+					}
+				});
 
 		try {
 			if (cliente == null) {
-				form = new AggiungiClienteForm(getStage(), cliente);
-				form_container.getChildren().add(form.getRoot());
-				getStage().setTitle(Costanti.TITOLO_AGGIUNGI_CLIENTE);
+				this.form = new AggiungiClienteForm(this.getStage(), cliente);
+				this.form_container.getChildren().add(this.form.getRoot());
+				this.getStage().setTitle(Costanti.TITOLO_AGGIUNGI_CLIENTE);
 			} else {
-				form = new ModificaClienteForm(getStage(), cliente);
-				form_container.getChildren().add(form.getRoot());
-				getStage().setTitle(Costanti.TITOLO_MODIFICA_CLIENTE);
+				this.form = new ModificaClienteForm(this.getStage(), cliente);
+				this.form_container.getChildren().add(this.form.getRoot());
+				this.getStage().setTitle(Costanti.TITOLO_MODIFICA_CLIENTE);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -75,17 +81,17 @@ public class ClientePopupView extends View {
 	}
 
 	/**
-	 * Inizializza la view
+	 * Inizializza la View
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		getStage().setHeight(Costanti.DIMENSIONE_ALTEZZA_POPUP_CLIENTE);
-		getStage().setWidth(Costanti.DIMENSIONE_LARGHEZZA_POPUP_CLIENTE);
-		getStage().setResizable(false);
+		this.getStage().setHeight(Costanti.DIMENSIONE_ALTEZZA_POPUP_CLIENTE);
+		this.getStage().setWidth(Costanti.DIMENSIONE_LARGHEZZA_POPUP_CLIENTE);
+		this.getStage().setResizable(false);
 	}
 
 	/**
-	 * Imposta il cliente
+	 * Imposta il Cliente
 	 * 
 	 * @param cliente
 	 */
@@ -94,17 +100,19 @@ public class ClientePopupView extends View {
 	}
 
 	/**
-	 * Restituisce il cliente
+	 * Restituisce il Cliente
 	 */
 	public Cliente getCliente() {
-		return cliente;
+		return this.cliente;
 	}
 
 	/**
-	 * Restituisce la risorsa associata alla view
+	 * Restituisce il nome della Risorsa associata alla View
+	 * 
+	 * @return String
 	 */
 	@Override
-	public String getResourceName() {
+	public String getNomeRisorsa() {
 		return Costanti.FXML_CLIENTE_POPUP;
 	}
 }

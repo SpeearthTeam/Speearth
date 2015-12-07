@@ -37,7 +37,7 @@ public class RisultatoOffertaItem extends SubView {
 	public RisultatoOffertaItem(Stage stage, Offerta offerta) throws IOException {
 		super(stage);
 		this.offerta = offerta;
-		updateUI();
+		aggiornaUI();
 	}
 
 	/**
@@ -63,7 +63,7 @@ public class RisultatoOffertaItem extends SubView {
 	 */
 	public void updateOfferta(Offerta offerta) {
 		this.setOfferta(offerta);
-		updateUI();
+		aggiornaUI();
 	}
 
 	@Override
@@ -84,7 +84,7 @@ public class RisultatoOffertaItem extends SubView {
 	 * @return String
 	 */
 	@Override
-	public String getResourceName() {
+	public String getNomeRisorsa() {
 		return Costanti.FXML_RISULTATO_OFFERTA_ITEM;
 	}
 
@@ -92,7 +92,7 @@ public class RisultatoOffertaItem extends SubView {
 	 * 
 	 */
 	@Override
-	public void updateUI() {
+	public void aggiornaUI() {
 		this.output_nome.setText(this.offerta.getNome());
 		this.output_data_inizio.setText(Costanti.FORMATO_DATA.format(this.offerta.getDataInizio()));
 		this.output_data_scadenza.setText(Costanti.FORMATO_DATA.format(this.offerta.getDataFine()));

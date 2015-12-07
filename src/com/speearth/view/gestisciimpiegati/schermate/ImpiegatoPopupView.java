@@ -106,7 +106,7 @@ public class ImpiegatoPopupView extends View {
 	 * Restituisce la risorsa associata alla view
 	 */
 	@Override
-	public String getResourceName() {
+	public String getNomeRisorsa() {
 		return Costanti.FXML_IMPIEGATO_POPUP;
 	}
 }

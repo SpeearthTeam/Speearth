@@ -324,7 +324,7 @@ public class RicercaPacchettoView extends View {
 	 * @return String
 	 */
 	@Override
-	public String getResourceName() {
+	public String getNomeRisorsa() {
 		return Costanti.FXML_RICERCA_PACCHETTO;
 	}
 

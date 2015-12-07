@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
-import com.speearth.controller.GestisciClientiController;
+import com.speearth.controller.AppFacadeController;
 import com.speearth.model.core.Cliente;
 import com.speearth.utility.Costanti;
 import com.speearth.view.FormView;
@@ -25,6 +25,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+/**
+ * Form per l'aggiunta di un nuovo Cliente
+ */
 public class AggiungiClienteForm extends FormView {
 	@FXML
 	private TextField input_nome;
@@ -38,14 +41,9 @@ public class AggiungiClienteForm extends FormView {
 	private TextField input_codice_fiscale;
 
 	/**
-	 * Cliente associato alla form
+	 * Cliente
 	 */
 	private Cliente cliente;
-
-	/**
-	 * Controllore di gestione dei clienti
-	 */
-	GestisciClientiController controller;
 
 	/**
 	 * Costruttore di default usato per la creazione del cliente
@@ -58,13 +56,13 @@ public class AggiungiClienteForm extends FormView {
 		this.stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 			@Override
 			public void handle(WindowEvent we) {
-				stage.close();
+				AggiungiClienteForm.this.stage.close();
 			}
 		});
 	}
 
 	/**
-	 * Costruttore con cliente usato per la modifica del cliente
+	 * Costruttore
 	 * 
 	 * @param stage
 	 * @param cliente
@@ -75,12 +73,11 @@ public class AggiungiClienteForm extends FormView {
 		this.stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 			@Override
 			public void handle(WindowEvent we) {
-				stage.close();
+				AggiungiClienteForm.this.stage.close();
 			}
 		});
 		this.cliente = cliente;
-		this.controller = GestisciClientiController.getInstance();
-		updateUI();
+		this.aggiornaUI();
 	}
 
 	/**
@@ -103,8 +100,8 @@ public class AggiungiClienteForm extends FormView {
 	@FXML
 	public void aggiungi(ActionEvent event) {
 		try {
-			if (this.validate()) {
-				this.send(null);
+			if (this.valida()) {
+				this.invia(null);
 				EventoGestioneCliente evento = new EventoGestioneCliente(EventoGestioneCliente.AGGIUNGI_CLIENTE,
 						cliente);
 				getRoot().fireEvent(evento);
@@ -126,27 +123,29 @@ public class AggiungiClienteForm extends FormView {
 	}
 
 	/**
-	 * Valida la form
+	 * Valida gli input della Form
+	 * 
+	 * @return boolean
 	 */
 	@Override
-	public boolean validate() {
+	public boolean valida() {
 		// Controllo del nome
-		if (input_nome.getText() == null || input_nome.getText().isEmpty()) {
+		if (this.input_nome.getText() == null || this.input_nome.getText().isEmpty()) {
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_NOME);
 			return false;
 		}
 		// Controllo del cognome
-		if (input_cognome.getText() == null || input_cognome.getText().isEmpty()) {
+		if (this.input_cognome.getText() == null || this.input_cognome.getText().isEmpty()) {
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_COGNOME);
 			return false;
 		}
 		// Controllo del codice fiscale
-		if (input_codice_fiscale.getText() == null || input_codice_fiscale.getText().isEmpty()) {
+		if (this.input_codice_fiscale.getText() == null || this.input_codice_fiscale.getText().isEmpty()) {
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_CF);
 			return false;
 		}
 		// Controllo della data di nascita
-		LocalDate data_nascita = input_data_nascita.getValue();
+		LocalDate data_nascita = this.input_data_nascita.getValue();
 		if (data_nascita == null) {
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_DATA_NASCITA);
 			return false;
@@ -159,51 +158,61 @@ public class AggiungiClienteForm extends FormView {
 	}
 
 	/**
-	 * Restituisce i parametri
+	 * Resituisce i parametri della Form
+	 * 
+	 * @return HashMap<String, String>
 	 */
 	@Override
-	public HashMap<String, String> getParameters() {
+	public HashMap<String, String> getParametri() {
 		return null;
 	}
 
 	/**
-	 * Invia i parametri della form
+	 * Invia la richiesta
+	 * 
+	 * @param parameters
+	 * @throws IOException
 	 */
 	@Override
-	public void send(HashMap<String, String> parameters) throws IOException {
-		String nome = input_nome.getText();
-		String cognome = input_cognome.getText();
-		String codice_fiscale = input_codice_fiscale.getText();
-		Date data_nascita = Date.from(input_data_nascita.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+	public void invia(HashMap<String, String> parameters) throws IOException {
+		String nome = this.input_nome.getText();
+		String cognome = this.input_cognome.getText();
+		String codice_fiscale = this.input_codice_fiscale.getText();
+		Date data_nascita = Date
+				.from(this.input_data_nascita.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
 
-		if (cliente == null) {
+		if (this.cliente == null) {
 			// creo un nuovo cliente
-			cliente = controller.aggiungiCliente(nome, cognome, data_nascita, codice_fiscale);
+			this.cliente = AppFacadeController.getInstance().getGestisciClientiController().aggiungiCliente(nome,
+					cognome, data_nascita, codice_fiscale);
 		} else {
 			// modifico il cliente
-			cliente = controller.modificaCliente(cliente.getId(), nome, cognome, data_nascita, codice_fiscale);
+			this.cliente = AppFacadeController.getInstance().getGestisciClientiController()
+					.modificaCliente(this.cliente.getId(), nome, cognome, data_nascita, codice_fiscale);
 		}
 	}
 
 	/**
-	 * Aggiorna la form view
+	 * Aggiorna le informazioni mostrate dall'Interfaccia
 	 */
 	@Override
-	public void updateUI() {
-		if (cliente != null) {
-			input_nome.setText(cliente.getNome());
-			input_cognome.setText(cliente.getCognome());
-			input_codice_fiscale.setText(cliente.getCodiceFiscale());
-			input_data_nascita
-					.setValue(LocalDate.parse(Costanti.FORMATO_DATA_STANDARD.format(cliente.getDataNascita())));
+	public void aggiornaUI() {
+		if (this.cliente != null) {
+			this.input_nome.setText(this.cliente.getNome());
+			this.input_cognome.setText(this.cliente.getCognome());
+			this.input_codice_fiscale.setText(this.cliente.getCodiceFiscale());
+			this.input_data_nascita
+					.setValue(LocalDate.parse(Costanti.FORMATO_DATA_STANDARD.format(this.cliente.getDataNascita())));
 		}
 	}
 
 	/**
-	 * Restituisce il nome della risorsa associata alla view
+	 * Restituisce il nome della Risorsa associata alla View
+	 * 
+	 * @return String
 	 */
 	@Override
-	public String getResourceName() {
+	public String getNomeRisorsa() {
 		return Costanti.FXML_AGGIUNGI_CLIENTE_FORM;
 	}
 }

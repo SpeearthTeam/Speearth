@@ -199,7 +199,7 @@ public class RiepilogoPacchettoView extends View {
 		view.mostraEAspetta();
 		if (view.getCliente() != null)
 			this.input_codice_tessera.setText(view.getCliente().getCodiceTessera());
-		this.updateUI();
+		this.aggiornaUI();
 	}
 
 	// Event Listener on Button[#bottone_conferma_pagamento].onAction
@@ -244,7 +244,7 @@ public class RiepilogoPacchettoView extends View {
 	 * @return String
 	 */
 	@Override
-	public String getResourceName() {
+	public String getNomeRisorsa() {
 		return Costanti.FXML_RIEPILOGO_PACCHETTO;
 	}
 }

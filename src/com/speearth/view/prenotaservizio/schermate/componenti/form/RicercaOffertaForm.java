@@ -27,16 +27,31 @@ public class RicercaOffertaForm extends FormView {
 	@FXML
 	private ListView<Offerta> output_lista_offerte;
 
+	/**
+	 * ObservableList di Offerte da incorporare nella Listview
+	 */
 	private ObservableList<Offerta> offerte = FXCollections.observableArrayList();
 
+	/**
+	 * Lista dei Servizi di un'Offerta
+	 */
 	private ListView<ServizioComponent> output_lista_servizi;
 
+	/**
+	 * Costruttore
+	 * 
+	 * @param stage
+	 * @throws IOException
+	 */
 	public RicercaOffertaForm(Stage stage) throws IOException {
 		super(stage);
 	}
 
 	/**
 	 * Inizializza la View
+	 * 
+	 * @param location
+	 * @param resources
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -54,18 +69,30 @@ public class RicercaOffertaForm extends FormView {
 		});
 	}
 
+	/**
+	 * Aggiorna le informazioni mostrate dall'Interfaccia
+	 */
 	@Override
-	public void updateUI() {
-
+	public void aggiornaUI() {
 	}
 
+	/**
+	 * Lega la ListView al suo contenuto
+	 * 
+	 * @param view
+	 */
 	public void bind(ListView<ServizioComponent> view, Offerta offerta) {
 		this.output_lista_servizi = view;
 		this.output_lista_servizi.setItems((ObservableList<ServizioComponent>) offerta.getListaServizi());
 	}
 
+	/**
+	 * Restituisce il nome della Risorsa associata alla View
+	 * 
+	 * @return String
+	 */
 	@Override
-	public String getResourceName() {
+	public String getNomeRisorsa() {
 		return Costanti.FXML_RICERCA_OFFERTA_FORM;
 	}
 
@@ -73,7 +100,7 @@ public class RicercaOffertaForm extends FormView {
 	 * Non necessario
 	 */
 	@Override
-	public boolean validate() {
+	public boolean valida() {
 		return true;
 	}
 
@@ -81,7 +108,7 @@ public class RicercaOffertaForm extends FormView {
 	 * Non necessario
 	 */
 	@Override
-	public HashMap<String, String> getParameters() {
+	public HashMap<String, String> getParametri() {
 		return null;
 	}
 
@@ -89,7 +116,6 @@ public class RicercaOffertaForm extends FormView {
 	 * Non necessario
 	 */
 	@Override
-	public void send(HashMap<String, String> parameters) throws IOException {
+	public void invia(HashMap<String, String> parameters) throws IOException {
 	}
-
 }
