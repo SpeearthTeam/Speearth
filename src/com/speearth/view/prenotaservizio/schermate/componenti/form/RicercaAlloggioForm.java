@@ -60,6 +60,66 @@ public class RicercaAlloggioForm extends FormView {
 
 	private ListView<Alloggio> list_view = null;
 
+	private void impostaParametri() {
+		// ottengo i parametri di ricerca dal controller
+		HashMap<String, String> parametri = AppFacadeController.getInstance().getPrenotaServizioController()
+				.getPrenotaAlloggioController().getParametri();
+	
+		// se i parametri non sono vuoti, allora li imposto nella view
+		if (!parametri.isEmpty()) {
+			String input_localita = parametri.get("zona");
+			this.input_localita.setText(input_localita);
+	
+			String data_arrivo = parametri.get("data_arrivo");
+			LocalDateTime local_date_time_arrivo = LocalDateTime.parse(data_arrivo, DateTimeFormatter.ISO_DATE_TIME);
+			LocalDate local_date_arrivo = local_date_time_arrivo.toLocalDate();
+			this.input_data_arrivo.setValue(local_date_arrivo);
+	
+			String data_partenza = parametri.get("data_partenza");
+			LocalDateTime local_date_time_partenza = LocalDateTime.parse(data_partenza,
+					DateTimeFormatter.ISO_DATE_TIME);
+			LocalDate local_date_partenza = local_date_time_partenza.toLocalDate();
+			this.input_data_partenza.setValue(local_date_partenza);
+	
+			LocalTime local_time_arrivo = local_date_time_arrivo.toLocalTime();
+			int index_ora_arrivo = local_time_arrivo.getHour();
+			this.input_ora_arrivo.getSelectionModel().select(index_ora_arrivo);
+	
+			LocalTime local_time_partenza = local_date_time_partenza.toLocalTime();
+			int index_ora_partenza = local_time_partenza.getHour();
+			this.input_ora_partenza.getSelectionModel().select(index_ora_partenza);
+	
+			String numero_singole = parametri.get("numero_singole");
+			if (numero_singole != null) {
+				this.input_singola.setSelected(true);
+				int index = this.input_numero_singole.getItems().indexOf(numero_singole);
+				this.input_numero_singole.getSelectionModel().select(index);
+			}
+	
+			String numero_doppie = parametri.get("numero_doppie");
+			if (numero_doppie != null) {
+				this.input_doppia.setSelected(true);
+				int index = this.input_numero_doppie.getItems().indexOf(numero_doppie);
+				this.input_numero_doppie.getSelectionModel().select(index);
+			}
+	
+			String numero_triple = parametri.get("numero_triple");
+			if (numero_triple != null) {
+				this.input_tripla.setSelected(true);
+				int index = this.input_numero_triple.getItems().indexOf(numero_triple);
+				this.input_numero_triple.getSelectionModel().select(index);
+			}
+	
+			String numero_quadruple = parametri.get("numero_quadruple");
+			if (numero_quadruple != null) {
+				this.input_quadrupla.setSelected(true);
+				int index = this.input_numero_quadruple.getItems().indexOf(numero_quadruple);
+				this.input_numero_quadruple.getSelectionModel().select(index);
+			}
+	
+		}
+	}
+
 	public RicercaAlloggioForm(Stage stage) throws IOException {
 		super(stage);
 		impostaParametri();
@@ -67,79 +127,17 @@ public class RicercaAlloggioForm extends FormView {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		this.input_ora_arrivo.setItems(FXCollections.observableArrayList("00", "01", "02", "03", "04", "05", "06", "07",
-				"08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"));
-		this.input_ora_partenza.setItems(FXCollections.observableArrayList("00", "01", "02", "03", "04", "05", "06",
-				"07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"));
-		this.input_numero_singole.setItems(FXCollections.observableArrayList("0", "1", "2"));
-		this.input_numero_doppie.setItems(FXCollections.observableArrayList("0", "1", "2"));
-		this.input_numero_triple.setItems(FXCollections.observableArrayList("0", "1", "2"));
-		this.input_numero_quadruple.setItems(FXCollections.observableArrayList("0", "1", "2"));
+		this.input_ora_arrivo.setItems(FXCollections.observableArrayList(Costanti.LISTA_ORE));
+		this.input_ora_partenza.setItems(FXCollections.observableArrayList(Costanti.LISTA_ORE));
+		this.input_numero_singole.setItems(FXCollections.observableArrayList(Costanti.LISTA_NUMERO_STANZE));
+		this.input_numero_doppie.setItems(FXCollections.observableArrayList(Costanti.LISTA_NUMERO_STANZE));
+		this.input_numero_triple.setItems(FXCollections.observableArrayList(Costanti.LISTA_NUMERO_STANZE));
+		this.input_numero_quadruple.setItems(FXCollections.observableArrayList(Costanti.LISTA_NUMERO_STANZE));
 		this.input_singola.setSelected(true);
 		this.input_numero_singole.getSelectionModel().select(1);
 		this.input_numero_doppie.getSelectionModel().select(0);
 		this.input_numero_triple.getSelectionModel().select(0);
 		this.input_numero_quadruple.getSelectionModel().select(0);
-	}
-
-	private void impostaParametri() {
-		// ottengo i parametri di ricerca dal controller
-		HashMap<String, String> parametri = AppFacadeController.getInstance().getPrenotaServizioController()
-				.getPrenotaAlloggioController().getParametri();
-
-		// se i parametri non sono vuoti, allora li imposto nella view
-		if (!parametri.isEmpty()) {
-			String input_localita = parametri.get("zona");
-			this.input_localita.setText(input_localita);
-
-			String data_arrivo = parametri.get("data_arrivo");
-			LocalDateTime local_date_time_arrivo = LocalDateTime.parse(data_arrivo, DateTimeFormatter.ISO_DATE_TIME);
-			LocalDate local_date_arrivo = local_date_time_arrivo.toLocalDate();
-			this.input_data_arrivo.setValue(local_date_arrivo);
-
-			String data_partenza = parametri.get("data_partenza");
-			LocalDateTime local_date_time_partenza = LocalDateTime.parse(data_partenza,
-					DateTimeFormatter.ISO_DATE_TIME);
-			LocalDate local_date_partenza = local_date_time_partenza.toLocalDate();
-			this.input_data_partenza.setValue(local_date_partenza);
-
-			LocalTime local_time_arrivo = local_date_time_arrivo.toLocalTime();
-			int index_ora_arrivo = local_time_arrivo.getHour();
-			this.input_ora_arrivo.getSelectionModel().select(index_ora_arrivo);
-
-			LocalTime local_time_partenza = local_date_time_partenza.toLocalTime();
-			int index_ora_partenza = local_time_partenza.getHour();
-			this.input_ora_partenza.getSelectionModel().select(index_ora_partenza);
-
-			String numero_singole = parametri.get("numero_singole");
-			if (numero_singole != null) {
-				this.input_singola.setSelected(true);
-				int index = this.input_numero_singole.getItems().indexOf(numero_singole);
-				this.input_numero_singole.getSelectionModel().select(index);
-			}
-
-			String numero_doppie = parametri.get("numero_doppie");
-			if (numero_doppie != null) {
-				this.input_doppia.setSelected(true);
-				int index = this.input_numero_doppie.getItems().indexOf(numero_doppie);
-				this.input_numero_doppie.getSelectionModel().select(index);
-			}
-
-			String numero_triple = parametri.get("numero_triple");
-			if (numero_triple != null) {
-				this.input_tripla.setSelected(true);
-				int index = this.input_numero_triple.getItems().indexOf(numero_triple);
-				this.input_numero_triple.getSelectionModel().select(index);
-			}
-
-			String numero_quadruple = parametri.get("numero_quadruple");
-			if (numero_quadruple != null) {
-				this.input_quadrupla.setSelected(true);
-				int index = this.input_numero_quadruple.getItems().indexOf(numero_quadruple);
-				this.input_numero_quadruple.getSelectionModel().select(index);
-			}
-
-		}
 	}
 
 	@Override
@@ -189,6 +187,11 @@ public class RicercaAlloggioForm extends FormView {
 		return true;
 	}
 
+	/**
+	 * Resituisce i parametri della Form
+	 * 
+	 * @return HashMap<String, String>
+	 */
 	@Override
 	public HashMap<String, String> getParameters() {
 		// Calcolo della data di arrivo

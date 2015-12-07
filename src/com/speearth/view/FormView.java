@@ -26,6 +26,8 @@ public abstract class FormView extends SubView {
 
 	/**
 	 * Resituisce i parametri della Form
+	 * 
+	 * @return HashMap<String, String>
 	 */
 	public abstract HashMap<String, String> getParameters();
 

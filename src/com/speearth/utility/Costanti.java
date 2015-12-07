@@ -158,7 +158,7 @@ public final class Costanti {
 	public final static String MESSAGGIO_DEFINIRE_DATA_ARRIVO = "Definire una Data di Arrivo.";
 	public final static String MESSAGGIO_DEFINIRE_DATA_PARTENZA = "Definire una Data di Partenza.";
 	public final static String MESSAGGIO_DATA_ARRIVO_NON_VALIDA = "Data di Arrivo non valida.";
-	
+
 	/**
 	 * Fogli di Stile
 	 */
@@ -208,4 +208,13 @@ public final class Costanti {
 	public final static String STRINGA_CONTANTI = "Contanti";
 	public final static String STRINGA_CARTA = "Carta";
 
+	/**
+	 * Contenuti delle ObservableList
+	 */
+	public final static String[] LISTA_ORE = { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11",
+			"12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" };
+	public final static String[] LISTA_NUMERO_ADULTI = { "1", "2", "3", "4" };
+	public final static String[] LISTA_NUMERO_BAMBINI = { "0", "1", "2", "3", "4" };
+	public final static String[] LISTA_NUMERO_STANZE = { "0", "1", "2" };
+	public final static String[] LISTA_MEZZI = { "treno", "aereo" };
 }

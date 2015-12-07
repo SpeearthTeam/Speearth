@@ -66,28 +66,28 @@ public class HomeView extends View {
 	// Event Listener on Button[#bottone_prenota_servizio].onAction
 	@FXML
 	public void prenotaServizio(ActionEvent event) throws IOException {
-		ScegliServizioView view = new ScegliServizioView(getStage());
+		ScegliServizioView view = new ScegliServizioView(this.getStage());
 		view.mostra();
 	}
 
 	// Event Listener on Button[#bottone_gestisci_clienti].onAction
 	@FXML
 	public void gestisciClienti(ActionEvent event) throws IOException {
-		GesticiClientiView view = new GesticiClientiView(getStage());
+		GesticiClientiView view = new GesticiClientiView(this.getStage());
 		view.mostra();
 	}
 
 	// Event Listener on Button[#bottone_gestisci_impiegati].onAction
 	@FXML
 	public void gestisciImpiegati(ActionEvent event) throws IOException {
-		GesticiImpiegatiView view = new GesticiImpiegatiView(getStage());
+		GesticiImpiegatiView view = new GesticiImpiegatiView(this.getStage());
 		view.mostra();
 	}
 
 	// Event Listener on Button[#bottone_crea_offerta].onAction
 	@FXML
 	public void creaOfferta(ActionEvent event) throws IOException {
-		CreaOffertaView view = new CreaOffertaView(getStage());
+		CreaOffertaView view = new CreaOffertaView(this.getStage());
 		view.mostra();
 	}
 

@@ -56,7 +56,7 @@ public class LoginView extends View {
 		if (!this.input_username.getText().isEmpty() && !this.input_password.getText().isEmpty()) {
 			if (AppFacadeController.getInstance().getLoginController().login(this.input_username.getText(),
 					this.input_password.getText()) != null) {
-				HomeView view = new HomeView(getStage());
+				HomeView view = new HomeView(this.getStage());
 				view.mostra();
 			} else
 				mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_UTENTE_NON_TROVATO);
@@ -74,7 +74,7 @@ public class LoginView extends View {
 			public void handle(KeyEvent event) {
 				if (event.getCode() == KeyCode.ENTER) {
 					try {
-						autentica(null);
+						LoginView.this.autentica(null);
 					} catch (IOException e) {
 						e.printStackTrace();
 					}

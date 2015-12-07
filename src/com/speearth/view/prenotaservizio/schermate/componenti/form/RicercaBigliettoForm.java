@@ -58,13 +58,11 @@ public class RicercaBigliettoForm extends FormView {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		this.input_ora_andata.setItems(FXCollections.observableArrayList("00", "01", "02", "03", "04", "05", "06", "07",
-				"08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"));
-		this.input_ora_ritorno.setItems(FXCollections.observableArrayList("00", "01", "02", "03", "04", "05", "06",
-				"07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"));
-		this.input_adulti.setItems(FXCollections.observableArrayList("1", "2", "3", "4"));
-		this.input_bambini.setItems(FXCollections.observableArrayList("0", "1", "2", "3", "4"));
-		this.input_mezzo.setItems(FXCollections.observableArrayList("treno", "aereo"));
+		this.input_ora_andata.setItems(FXCollections.observableArrayList(Costanti.LISTA_ORE));
+		this.input_ora_ritorno.setItems(FXCollections.observableArrayList(Costanti.LISTA_ORE));
+		this.input_adulti.setItems(FXCollections.observableArrayList(Costanti.LISTA_NUMERO_ADULTI));
+		this.input_bambini.setItems(FXCollections.observableArrayList(Costanti.LISTA_NUMERO_BAMBINI));
+		this.input_mezzo.setItems(FXCollections.observableArrayList(Costanti.LISTA_MEZZI));
 		this.input_adulti.getSelectionModel().select(0);
 		this.input_bambini.getSelectionModel().select(0);
 		this.input_mezzo.getSelectionModel().select(0);
@@ -147,6 +145,11 @@ public class RicercaBigliettoForm extends FormView {
 		return true;
 	}
 
+	/**
+	 * Resituisce i parametri della Form
+	 * 
+	 * @return HashMap<String, String>
+	 */
 	@Override
 	public HashMap<String, String> getParameters() {
 		// Calcolo della data di andata

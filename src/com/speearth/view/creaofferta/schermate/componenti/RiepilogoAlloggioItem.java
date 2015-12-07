@@ -20,6 +20,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+/**
+ * Componente che rappresenta un Alloggio nel Riepilogo dei Servizi che
+ * compongono un Pacchetto
+ */
 public class RiepilogoAlloggioItem extends SubView {
 	@FXML
 	private BorderPane risultato_alloggio;
@@ -41,34 +45,43 @@ public class RiepilogoAlloggioItem extends SubView {
 	private Label output_prezzo;
 
 	/**
-	 * Alloggio contenuto nella SubView
+	 * Alloggio contenuto
 	 */
 	private Alloggio alloggio;
 
 	/**
-	 * Costruttore con parametro
+	 * Costruttore
 	 * 
+	 * @param stage
 	 * @param alloggio
 	 */
 	public RiepilogoAlloggioItem(Stage stage, Alloggio alloggio) throws IOException {
 		super(stage);
 		this.alloggio = alloggio;
-		updateUI();
+		this.updateUI();
 	}
 
+	/**
+	 * Inizializza la SubView
+	 * 
+	 * @param location
+	 * @param resources
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	}
 
 	/**
-	 * Restituisce l'alloggio
+	 * Restituisce l'Alloggio
+	 * 
+	 * @return Alloggio
 	 */
 	public Alloggio getAlloggio() {
 		return alloggio;
 	}
 
 	/**
-	 * Imposta l'alloggio
+	 * Imposta l'Alloggio
 	 * 
 	 * @param alloggio
 	 */
@@ -77,38 +90,33 @@ public class RiepilogoAlloggioItem extends SubView {
 	}
 
 	/**
-	 * Aggiorna l'alloggio
+	 * Aggiorna l'Alloggio
 	 * 
 	 * @param alloggio
 	 */
 	public void updateAlloggio(Alloggio alloggio) {
-		setAlloggio(alloggio);
-		updateUI();
+		this.setAlloggio(alloggio);
+		this.updateUI();
 	}
 
 	/**
-	 * Imposta nelle Label i dati dell'alloggio
-	 * 
-	 * @param alloggio
+	 * Aggiorna le informazioni mostrate dall'Interfaccia
 	 */
 	@Override
 	public void updateUI() {
-		this.output_data_arrivo.setText(Costanti.FORMATO_DATA_ORA.format(alloggio.getDataArrivo()));
-		this.output_ora_arrivo.setText(Costanti.FORMATO_DATA_ORA.format(alloggio.getDataArrivo()));
-		this.output_data_partenza.setText(Costanti.FORMATO_DATA_ORA.format(alloggio.getDataPartenza()));
-		this.output_ora_partenza.setText(Costanti.FORMATO_DATA_ORA.format(alloggio.getDataPartenza()));
-		this.output_localita.setText(alloggio.getLocalita().toString());
-		this.output_nome_fornitore.setText(alloggio.getFornitore().toString());
+		this.output_data_arrivo.setText(Costanti.FORMATO_DATA_ORA.format(this.alloggio.getDataArrivo()));
+		this.output_ora_arrivo.setText(Costanti.FORMATO_DATA_ORA.format(this.alloggio.getDataArrivo()));
+		this.output_data_partenza.setText(Costanti.FORMATO_DATA_ORA.format(this.alloggio.getDataPartenza()));
+		this.output_ora_partenza.setText(Costanti.FORMATO_DATA_ORA.format(this.alloggio.getDataPartenza()));
+		this.output_localita.setText(this.alloggio.getLocalita().toString());
+		this.output_nome_fornitore.setText(this.alloggio.getFornitore().toString());
 		this.output_prezzo.setText(Float.toString(alloggio.getPrezzo()));
-		this.output_prezzo.setText(Float.toString(alloggio.getPrezzo()) + " €");
-
-		ArrayList<Stanza> stanze = (ArrayList<Stanza>) alloggio.getStanze();
+		this.output_prezzo.setText(Float.toString(this.alloggio.getPrezzo()) + " €");
+		ArrayList<Stanza> stanze = (ArrayList<Stanza>) this.alloggio.getStanze();
 		ArrayList<String> tipi_stanze = new ArrayList<String>();
-
 		for (Stanza stanza : stanze) {
 			tipi_stanze.add(stanza.getTipologia());
 		}
-
 		ObservableList<String> observableRooms = FXCollections.observableArrayList();
 		observableRooms.setAll(tipi_stanze);
 		this.output_stanze.setItems(observableRooms);
@@ -118,8 +126,8 @@ public class RiepilogoAlloggioItem extends SubView {
 	@FXML
 	public void confermaAlloggio(ActionEvent event) throws IOException {
 		EventoSelezionaServizio evento_seleziona_servizio = new EventoSelezionaServizio(
-				EventoSelezionaServizio.SERVIZIO_SELEZIONATO, alloggio);
-		getRoot().fireEvent(evento_seleziona_servizio);
+				EventoSelezionaServizio.SERVIZIO_SELEZIONATO, this.alloggio);
+		this.getRoot().fireEvent(evento_seleziona_servizio);
 	}
 
 	/**
@@ -131,5 +139,4 @@ public class RiepilogoAlloggioItem extends SubView {
 	public String getResourceName() {
 		return Costanti.FXML_RIEPILOGO_ALLOGGIO_ITEM;
 	}
-
 }

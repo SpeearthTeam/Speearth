@@ -62,6 +62,31 @@ public class RiepilogoOffertaView extends View {
 	private ObservableList<ServizioComponent> lista_servizi = FXCollections.observableArrayList();
 
 	/**
+	 * Imposta le informazioni dell'Offerta nella View
+	 * 
+	 * @param offerta
+	 */
+	private void impostaInfoOfferta(Offerta offerta) {
+		this.lista_servizi.setAll(offerta.getListaServizi());
+		this.riepilogo_servizi.setItems(this.lista_servizi);
+		this.output_totale_offerta.setText(Float.toString(offerta.getPrezzo()));
+	}
+
+	/**
+	 * Prende in input lo sconto inserito, controlla, e restituisce una stringa
+	 * valida parsificata
+	 * 
+	 * @param input
+	 * @return String
+	 */
+	private String validazioneEParsificazioneSconto(String input) {
+		input = input.replace(",", ".");
+		if (input.matches(Costanti.REG_EX_FLOAT) && Float.parseFloat(input) > 0 && Float.parseFloat(input) < 100)
+			return input;
+		return null;
+	}
+
+	/**
 	 * Costruttore
 	 * 
 	 * @param stage
@@ -71,17 +96,6 @@ public class RiepilogoOffertaView extends View {
 		super(stage);
 		getStage().setTitle(Costanti.TITOLO_RIEPILOGO_OFFERTA);
 		this.impostaInfoOfferta(AppFacadeController.getInstance().getCreaOffertaController().getOfferta());
-	}
-
-	/**
-	 * Imposta le informazioni dell'Offerta nella View
-	 * 
-	 * @param pacchetto
-	 */
-	private void impostaInfoOfferta(Offerta offerta) {
-		this.lista_servizi.setAll(offerta.getListaServizi());
-		this.riepilogo_servizi.setItems(this.lista_servizi);
-		this.output_totale_offerta.setText(Float.toString(offerta.getPrezzo()));
 	}
 
 	/**
@@ -115,20 +129,6 @@ public class RiepilogoOffertaView extends View {
 	public void vaiARicerca(ActionEvent event) throws IOException {
 		CreaOffertaView view = new CreaOffertaView(getStage());
 		view.mostra();
-	}
-
-	/**
-	 * Prende in input lo sconto inserito, controlla, e restituisce una stringa
-	 * valida parsificata
-	 * 
-	 * @param input
-	 * @return String
-	 */
-	private String validazioneEParsificazioneSconto(String input) {
-		input = input.replace(",", ".");
-		if (input.matches(Costanti.REG_EX_FLOAT) && Float.parseFloat(input) > 0 && Float.parseFloat(input) < 100)
-			return input;
-		return null;
 	}
 
 	// Event Listener on Button[#bottone_applica_sconto].onAction

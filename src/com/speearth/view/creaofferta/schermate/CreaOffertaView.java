@@ -92,6 +92,84 @@ public class CreaOffertaView extends View {
 	private TableColumn<ServizioComponent, Boolean> cancella_servizio_col = new TableColumn<>("Cancella");
 
 	/**
+	 * Carica i Biglietti e gli Alloggi salvati nel Controller nella View per
+	 * evitarne la perdita durante un cambio di Schermata
+	 */
+	private void impostaRisultati() {
+		// ottengo i biglietti dal controller
+		ArrayList<Biglietto> risultati_biglietti = AppFacadeController.getInstance().getCreaOffertaController()
+				.getPrenotaBigliettoController().getBiglietti();
+		// se il risultato contiene biglietti, allora...
+		if (!risultati_biglietti.isEmpty()) {
+			this.lista_risultati_biglietti.setCellFactory(param -> new BigliettoListItem(getStage()));
+			// converto l'ArrayList in observableArrayList
+			ObservableList<Biglietto> list_biglietti = FXCollections.observableArrayList(risultati_biglietti);
+			// setto la lista dei risultati, ListView, con la Observable
+			this.lista_risultati_biglietti.setItems(list_biglietti);
+		}
+		// ottengo i biglietti dal controller
+		ArrayList<Alloggio> risultati_alloggi = AppFacadeController.getInstance().getCreaOffertaController()
+				.getPrenotaAlloggioController().getAlloggi();
+		// se il risultato contiene biglietti, allora...
+		if (!risultati_alloggi.isEmpty()) {
+			this.lista_risultati_alloggi.setCellFactory(param -> new AlloggioListItem(getStage()));
+			// converto l'ArrayList in observableArrayList
+			ObservableList<Alloggio> list_alloggi = FXCollections.observableArrayList(risultati_alloggi);
+			// setto la lista dei risultati, ListView, con la Observable
+			this.lista_risultati_alloggi.setItems(list_alloggi);
+		}
+		// ottengo i servizi del pacchetto dal controller
+		ArrayList<ServizioComponent> offerta = (ArrayList<ServizioComponent>) AppFacadeController.getInstance()
+				.getCreaOffertaController().getListaServizi();
+		// se il pacchetto contiene servizi, allora imposto la lista servizi del
+		// pacchetto e la ObservableList
+		if (!offerta.isEmpty()) {
+			AppFacadeController.getInstance().getCreaOffertaController().getOfferta().setListaServizi(offerta);
+			this.lista_servizi.addAll(offerta);
+		}
+	}
+
+	/**
+	 * Classe privata ButtonCell
+	 */
+	private class ButtonCell extends TableCell<ServizioComponent, Boolean> {
+		final Button cellButton = new Button("Cancella");
+
+		/**
+		 * Costruttore
+		 */
+		ButtonCell() {
+			// Azione associata all'event handler della pressione del Button
+			// Cancella
+			this.cellButton.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent t) {
+					// Recupero il servizio relativo all'indice di riga
+					ServizioComponent servizio = ButtonCell.this.getTableView().getItems()
+							.get(ButtonCell.this.getIndex());
+					// Rimuovo il servizio dalla lista servizi
+					CreaOffertaView.this.lista_servizi.remove(servizio);
+					// Rimuovo il servizio dal servizio in prenotazione
+					AppFacadeController.getInstance().getCreaOffertaController().getOfferta().rimuovi(servizio);
+				}
+			});
+		}
+
+		/**
+		 * Mostra il Button se la riga non è vuota
+		 */
+		@Override
+		protected void updateItem(Boolean t, boolean empty) {
+			super.updateItem(t, empty);
+			if (!empty) {
+				setGraphic(cellButton);
+			} else {
+				setGraphic(null);
+			}
+		}
+	}
+
+	/**
 	 * Costruttore di default
 	 * 
 	 * @param stage
@@ -140,44 +218,6 @@ public class CreaOffertaView extends View {
 			this.alloggio_form_container.getChildren().add(this.ricerca_alloggio_form.getRoot());
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * Carica i Biglietti e gli Alloggi salvati nel Controller nella View per
-	 * evitarne la perdita durante un cambio di Schermata
-	 */
-	private void impostaRisultati() {
-		// ottengo i biglietti dal controller
-		ArrayList<Biglietto> risultati_biglietti = AppFacadeController.getInstance().getCreaOffertaController()
-				.getPrenotaBigliettoController().getBiglietti();
-		// se il risultato contiene biglietti, allora...
-		if (!risultati_biglietti.isEmpty()) {
-			this.lista_risultati_biglietti.setCellFactory(param -> new BigliettoListItem(getStage()));
-			// converto l'ArrayList in observableArrayList
-			ObservableList<Biglietto> list_biglietti = FXCollections.observableArrayList(risultati_biglietti);
-			// setto la lista dei risultati, ListView, con la Observable
-			this.lista_risultati_biglietti.setItems(list_biglietti);
-		}
-		// ottengo i biglietti dal controller
-		ArrayList<Alloggio> risultati_alloggi = AppFacadeController.getInstance().getCreaOffertaController()
-				.getPrenotaAlloggioController().getAlloggi();
-		// se il risultato contiene biglietti, allora...
-		if (!risultati_alloggi.isEmpty()) {
-			this.lista_risultati_alloggi.setCellFactory(param -> new AlloggioListItem(getStage()));
-			// converto l'ArrayList in observableArrayList
-			ObservableList<Alloggio> list_alloggi = FXCollections.observableArrayList(risultati_alloggi);
-			// setto la lista dei risultati, ListView, con la Observable
-			this.lista_risultati_alloggi.setItems(list_alloggi);
-		}
-		// ottengo i servizi del pacchetto dal controller
-		ArrayList<ServizioComponent> offerta = (ArrayList<ServizioComponent>) AppFacadeController.getInstance()
-				.getCreaOffertaController().getListaServizi();
-		// se il pacchetto contiene servizi, allora imposto la lista servizi del
-		// pacchetto e la ObservableList
-		if (!offerta.isEmpty()) {
-			AppFacadeController.getInstance().getCreaOffertaController().getOfferta().setListaServizi(offerta);
-			this.lista_servizi.addAll(offerta);
 		}
 	}
 
@@ -251,12 +291,12 @@ public class CreaOffertaView extends View {
 					Costanti.MESSAGGIO_TORNA_ALLA_HOME);
 			if (result.get() == ButtonType.OK) {
 				AppFacadeController.getInstance().getCreaOffertaController().reset();
-				HomeView view = new HomeView(getStage());
+				HomeView view = new HomeView(this.getStage());
 				view.mostra();
 			}
 		} else {
 			AppFacadeController.getInstance().getPrenotaServizioController().reset();
-			HomeView view = new HomeView(getStage());
+			HomeView view = new HomeView(this.getStage());
 			view.mostra();
 		}
 	}
@@ -273,7 +313,7 @@ public class CreaOffertaView extends View {
 			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_OFFERTA_UN_ELEMENTO);
 		else {
 			AppFacadeController.getInstance().getCreaOffertaController().setListaServizi(offerta);
-			RiepilogoOffertaView view = new RiepilogoOffertaView(getStage());
+			RiepilogoOffertaView view = new RiepilogoOffertaView(this.getStage());
 			view.mostra();
 		}
 	}
@@ -292,7 +332,7 @@ public class CreaOffertaView extends View {
 	// Event Listener on Button[#bottone_conferma].onAction
 	@FXML
 	public void confermaOfferta(ActionEvent event) throws IOException {
-		vaiARiepilogo(event);
+		this.vaiARiepilogo(event);
 	}
 
 	/**
@@ -303,45 +343,5 @@ public class CreaOffertaView extends View {
 	@Override
 	public String getResourceName() {
 		return Costanti.FXML_CREA_OFFERTA;
-	}
-
-	/**
-	 * Classe privata ButtonCell
-	 */
-	private class ButtonCell extends TableCell<ServizioComponent, Boolean> {
-		final Button cellButton = new Button("Cancella");
-
-		/**
-		 * Costruttore
-		 */
-		ButtonCell() {
-			// Azione associata all'event handler della pressione del Button
-			// Cancella
-			this.cellButton.setOnAction(new EventHandler<ActionEvent>() {
-				@Override
-				public void handle(ActionEvent t) {
-					// Recupero il servizio relativo all'indice di riga
-					ServizioComponent servizio = ButtonCell.this.getTableView().getItems()
-							.get(ButtonCell.this.getIndex());
-					// Rimuovo il servizio dalla lista servizi
-					CreaOffertaView.this.lista_servizi.remove(servizio);
-					// Rimuovo il servizio dal servizio in prenotazione
-					AppFacadeController.getInstance().getCreaOffertaController().getOfferta().rimuovi(servizio);
-				}
-			});
-		}
-
-		/**
-		 * Mostra il Button se la riga non è vuota
-		 */
-		@Override
-		protected void updateItem(Boolean t, boolean empty) {
-			super.updateItem(t, empty);
-			if (!empty) {
-				setGraphic(cellButton);
-			} else {
-				setGraphic(null);
-			}
-		}
 	}
 }

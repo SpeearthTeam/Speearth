@@ -8,17 +8,16 @@ import javafx.scene.control.ListCell;
 import javafx.stage.Stage;
 
 /**
- * Classe che modella la Lista di risultati della ricerca di Alloggi
+ * Classe che rifinisce una ListCell per adattarla a contenere un Alloggio
  */
 public class AlloggioListItem extends ListCell<Alloggio> {
-
 	/**
-	 * Stage della list view
+	 * Stage
 	 */
 	private Stage stage;
 
 	/**
-	 * Costruttore di default
+	 * Costruttore
 	 * 
 	 * @param stage
 	 */
@@ -27,15 +26,14 @@ public class AlloggioListItem extends ListCell<Alloggio> {
 	}
 
 	/**
-	 * Aggiorna un elemento della Lista
+	 * Aggiorna le informazioni mostrate dall'Interfaccia
 	 * 
-	 * @param alloggio
+	 * @param item
 	 * @param empty
 	 */
 	@Override
 	protected void updateItem(Alloggio alloggio, boolean empty) {
 		super.updateItem(alloggio, empty);
-
 		if (alloggio != null) {
 			try {
 				RisultatoAlloggioItem alloggio_item = new RisultatoAlloggioItem(this.stage, alloggio);
@@ -45,5 +43,4 @@ public class AlloggioListItem extends ListCell<Alloggio> {
 			}
 		}
 	}
-
 }
