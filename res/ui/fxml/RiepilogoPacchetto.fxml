@@ -20,11 +20,11 @@
       </ToolBar>
    </top>
    <center>
-      <VBox BorderPane.alignment="CENTER">
+      <VBox id="gridRiepilogo" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER">
                <children>
-                  <Label text="Riepilogo Prenotazione" />
+                  <Label id="labelRiep" text="Riepilogo Prenotazione" />
                </children>
             </HBox>
             <ListView fx:id="riepilogo_servizi" VBox.vgrow="ALWAYS" />
@@ -148,7 +148,7 @@
                         </HBox>
                         <HBox alignment="CENTER">
                            <children>
-                              <Label text="Totale: € ">
+                              <Label prefHeight="130.0" prefWidth="145.0" text="Totale: € ">
                                  <font>
                                     <Font size="36.0" />
                                  </font>

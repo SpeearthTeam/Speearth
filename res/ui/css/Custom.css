@@ -6,6 +6,7 @@
 .button{
 	-fx-background-color: #006ABC;
 	-fx-text-fill: #E4F2F4;
+	
 	}
 
 #labelHome{ 
@@ -16,3 +17,41 @@
 #sfondoHome{
 	-fx-background-color: #CFFCFE;
 }
+.first-titled-pane:expanded .title, .first-titled-pane:collapsed .title{
+	-fx-background-color: #006ABC;
+	-fx-text-fill: #E4F2F4;
+}
+
+.first-titled-pane:collapsed .title .text{
+	-fx-text-fill: #E4F2F4;
+}
+
+
+.table-view:row-selection .column-header-background .nested-column-header .table-column .label,.table-view:row-selection .column-header-background .filler{
+	-fx-background-color: #006ABC;
+	-fx-text-fill: #E4F2F4;
+}
+
+.tab-pane:top .tab-header-area .headers-region .tab:top:selected{
+	-fx-background-color: #006ABC;
+	-fx-font-weight: bold;
+	
+}
+.tab-pane:top .tab-header-area .headers-region .tab:top{
+	-fx-font-weight: bold;
+	-fx-text-fill: #E4F2F4;
+}
+
+.tab:top:selected .tab-container .tab-label{
+	-fx-text-fill: #E4F2F4;
+}
+
+#gridRiepilogo{
+	-fx-background-color: #ffffff;
+}
+
+#labelRiep{
+	-fx-text-fill: #006ABC;
+	-fx-font-weight: bold;
+}
+

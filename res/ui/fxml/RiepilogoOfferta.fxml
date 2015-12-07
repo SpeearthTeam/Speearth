@@ -18,9 +18,9 @@
       </ToolBar>
    </top>
    <center>
-      <VBox alignment="TOP_CENTER" BorderPane.alignment="CENTER">
+      <VBox id="gridRiepilogo" alignment="TOP_CENTER" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Riepilogo Offerta creata" />
+            <Label id="labelRiep" text="Riepilogo Offerta creata" />
             <ListView fx:id="riepilogo_servizi" VBox.vgrow="ALWAYS" />
             <HBox maxHeight="350.0" VBox.vgrow="ALWAYS">
                <children>

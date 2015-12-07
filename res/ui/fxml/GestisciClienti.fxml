@@ -18,7 +18,7 @@
                <right>
                   <Button fx:id="bottone_aggiungi" mnemonicParsing="false" onAction="#aggiungiCliente" text="Aggiungi Cliente" BorderPane.alignment="CENTER">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="System Bold" size="15.0" />
                      </font></Button>
                </right>
                <left>

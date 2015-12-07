@@ -31,11 +31,10 @@
             <GridPane styleClass="grid" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
               <columnConstraints>
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
@@ -51,7 +50,7 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="bottone_prenota_alloggio" mnemonicParsing="false" onAction="#prenotaAlloggio" prefHeight="157.0" prefWidth="386.0" text="Prenota Alloggio" GridPane.rowIndex="1">
+                  <Button fx:id="bottone_prenota_alloggio" mnemonicParsing="false" onAction="#prenotaAlloggio" prefHeight="157.0" prefWidth="386.0" text="Prenota Alloggio" GridPane.columnIndex="1">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -63,7 +62,7 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="bottone_prenota_pacchetto" mnemonicParsing="false" onAction="#prenotaPacchetto" prefHeight="156.0" prefWidth="386.0" text="Prenota Pacchetto" GridPane.rowIndex="2">
+                  <Button fx:id="bottone_prenota_pacchetto" mnemonicParsing="false" onAction="#prenotaPacchetto" prefHeight="156.0" prefWidth="386.0" text="Prenota Pacchetto" GridPane.rowIndex="1">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -75,7 +74,7 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="bottone_acquista_offerta" mnemonicParsing="false" onAction="#acquistaOfferta" prefHeight="156.0" prefWidth="386.0" text="Acquista Offerta" GridPane.rowIndex="3">
+                  <Button fx:id="bottone_acquista_offerta" mnemonicParsing="false" onAction="#acquistaOfferta" prefHeight="156.0" prefWidth="386.0" text="Acquista Offerta" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
