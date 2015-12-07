@@ -39,6 +39,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
+/**
+ * Schermata di ricerca Biglietti e/o Alloggi per un Pacchetto
+ */
 public class RicercaPacchettoView extends View {
 	@FXML
 	private ListView<Biglietto> lista_risultati_biglietti;
@@ -66,7 +69,7 @@ public class RicercaPacchettoView extends View {
 	private TableColumn<ServizioComponent, Boolean> cancella_servizio_col = new TableColumn<>("Cancella");
 
 	/**
-	 * Costruttore di default
+	 * Costruttore
 	 * 
 	 * @param stage
 	 * @throws IOException
@@ -74,48 +77,44 @@ public class RicercaPacchettoView extends View {
 	public RicercaPacchettoView(Stage stage) throws IOException {
 		super(stage);
 		AppFacadeController.getInstance().getPrenotaServizioController().setServizio(new PacchettoComposite());
-		getStage().setTitle(Costanti.TITOLO_PRENOTA_PACCHETTO);
-		//massimizzaFinestra();
-		getRoot().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO,
+		this.getStage().setTitle(Costanti.TITOLO_PRENOTA_PACCHETTO);
+		this.getRoot().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO,
 				new EventHandler<EventoSelezionaServizio>() {
-
 					@Override
 					public void handle(EventoSelezionaServizio event) {
 						ServizioComponent pacchetto = AppFacadeController.getInstance().getPrenotaServizioController()
 								.getServizio();
 						if (pacchetto != null && pacchetto.getListaServizi().contains(event.getServizio()))
-							mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_SERVIZIO_PRESENTE, null,
+							RicercaPacchettoView.this.mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_SERVIZIO_PRESENTE, null,
 									Costanti.MESSAGGIO_SERVIZIO_PRESENTE);
 						else {
 							ServizioComponent servizio = event.getServizio();
 							AppFacadeController.getInstance().getPrenotaServizioController().getServizio()
 									.aggiungi(servizio);
-							lista_servizi.add(servizio);
+							RicercaPacchettoView.this.lista_servizi.add(servizio);
 						}
 					}
 				});
-
-		impostaRisultati();
-		initializeServiceTable();
+		this.impostaRisultati();
+		this.initializeServiceTable();
 	}
 
 	/**
-	 * Inizializza la classe
+	 * Inizializza la View
 	 * 
 	 * @param arg0
 	 * @param arg1
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		this.lista_risultati_biglietti.setCellFactory(param -> new BigliettoListItem(getStage()));
-		this.lista_risultati_alloggi.setCellFactory(param -> new AlloggioListItem(getStage()));
-
+		this.lista_risultati_biglietti.setCellFactory(param -> new BigliettoListItem(this.getStage()));
+		this.lista_risultati_alloggi.setCellFactory(param -> new AlloggioListItem(this.getStage()));
 		try {
-			this.ricerca_biglietto_form = new RicercaBigliettoForm(getStage());
+			this.ricerca_biglietto_form = new RicercaBigliettoForm(this.getStage());
 			this.ricerca_biglietto_form.bind(lista_risultati_biglietti);
 			this.biglietto_form_container.getChildren().add(this.ricerca_biglietto_form.getRoot());
 
-			this.ricerca_alloggio_form = new RicercaAlloggioForm(getStage());
+			this.ricerca_alloggio_form = new RicercaAlloggioForm(this.getStage());
 			this.ricerca_alloggio_form.bind(this.lista_risultati_alloggi);
 			this.alloggio_form_container.getChildren().add(this.ricerca_alloggio_form.getRoot());
 		} catch (IOException e) {
@@ -124,9 +123,8 @@ public class RicercaPacchettoView extends View {
 	}
 
 	/**
-	 * Metodo che serve a caricare i biglietti e gli alloggi salvati nel
-	 * controller alla view, dalla schermata Riepilogo a Ricerca, altrimenti
-	 * andrebbero persi
+	 * Carica Biglietti e Alloggi salvati nel Controller all'interno View per evitarne
+	 * la perdita durante un cambio di Schermata
 	 */
 	private void impostaRisultati() {
 		// ottengo i biglietti dal controller
@@ -134,7 +132,7 @@ public class RicercaPacchettoView extends View {
 				.getPrenotaBigliettoController().getBiglietti();
 		// se il risultato contiene biglietti, allora...
 		if (!risultati_biglietti.isEmpty()) {
-			this.lista_risultati_biglietti.setCellFactory(param -> new BigliettoListItem(getStage()));
+			this.lista_risultati_biglietti.setCellFactory(param -> new BigliettoListItem(this.getStage()));
 			// converto l'ArrayList in observableArrayList
 			ObservableList<Biglietto> list_biglietti = FXCollections.observableArrayList(risultati_biglietti);
 			// setto la lista dei risultati, ListView, con la Observable
@@ -145,7 +143,7 @@ public class RicercaPacchettoView extends View {
 				.getPrenotaAlloggioController().getAlloggi();
 		// se il risultato contiene biglietti, allora...
 		if (!risultati_alloggi.isEmpty()) {
-			this.lista_risultati_alloggi.setCellFactory(param -> new AlloggioListItem(getStage()));
+			this.lista_risultati_alloggi.setCellFactory(param -> new AlloggioListItem(this.getStage()));
 			// converto l'ArrayList in observableArrayList
 			ObservableList<Alloggio> list_alloggi = FXCollections.observableArrayList(risultati_alloggi);
 			// setto la lista dei risultati, ListView, con la Observable
@@ -158,7 +156,7 @@ public class RicercaPacchettoView extends View {
 		// pacchetto e la ObservableList
 		if (!pacchetto.isEmpty()) {
 			AppFacadeController.getInstance().getPrenotaServizioController().getServizio().setListaServizi(pacchetto);
-			lista_servizi.addAll(pacchetto);
+			this.lista_servizi.addAll(pacchetto);
 		}
 	}
 
@@ -168,67 +166,53 @@ public class RicercaPacchettoView extends View {
 	public void initializeServiceTable() {
 		this.tipo_servizio_col.setCellValueFactory(
 				new Callback<TableColumn.CellDataFeatures<ServizioComponent, String>, ObservableValue<String>>() {
-
 					@Override
 					public ObservableValue<String> call(CellDataFeatures<ServizioComponent, String> param) {
 						ServizioComponent servizio = param.getValue();
 						SimpleStringProperty tipo = null;
-
 						if (servizio instanceof Alloggio)
 							tipo = new SimpleStringProperty("Alloggio");
 						else if (servizio instanceof Biglietto)
 							tipo = new SimpleStringProperty("Biglietto");
-
 						return tipo;
 					}
 				});
-
 		this.fornitore_servizio_col.setCellValueFactory(
 				new Callback<TableColumn.CellDataFeatures<ServizioComponent, String>, ObservableValue<String>>() {
-
 					@Override
 					public ObservableValue<String> call(CellDataFeatures<ServizioComponent, String> param) {
 						ServizioComponent servizio = param.getValue();
 						SimpleStringProperty fornitore = null;
-
 						if (servizio instanceof Alloggio)
 							fornitore = new SimpleStringProperty(((Alloggio) servizio).getFornitore());
 						else if (servizio instanceof Biglietto)
 							fornitore = new SimpleStringProperty(((Biglietto) servizio).getFornitore());
-
 						return fornitore;
 					}
 				});
-
 		this.prezzo_servizio_col.setCellValueFactory(
 				new Callback<TableColumn.CellDataFeatures<ServizioComponent, String>, ObservableValue<String>>() {
-
 					@Override
 					public ObservableValue<String> call(CellDataFeatures<ServizioComponent, String> param) {
 						ServizioComponent servizio = param.getValue();
 						SimpleStringProperty prezzo = null;
-
 						if (servizio instanceof Alloggio)
 							prezzo = new SimpleStringProperty(Float.toString(((Alloggio) servizio).getPrezzo()));
 						else if (servizio instanceof Biglietto)
 							prezzo = new SimpleStringProperty(Float.toString(((Biglietto) servizio).getPrezzo()));
-
 						return prezzo;
 					}
 				});
-
 		// aggiungo la colonna per i pulsanti Cancella
 		this.tabella_pacchetto.getColumns().add(this.cancella_servizio_col);
 		// aggiungo il pulsante alla tabella
 		this.cancella_servizio_col.setCellFactory(
 				new Callback<TableColumn<ServizioComponent, Boolean>, TableCell<ServizioComponent, Boolean>>() {
-
 					@Override
 					public TableCell<ServizioComponent, Boolean> call(TableColumn<ServizioComponent, Boolean> p) {
 						return new ButtonCell();
 					}
 				});
-
 		this.lista_servizi.setAll(
 				AppFacadeController.getInstance().getPrenotaServizioController().getServizio().getListaServizi());
 		this.tabella_pacchetto.setItems(this.lista_servizi);
@@ -242,18 +226,18 @@ public class RicercaPacchettoView extends View {
 		ArrayList<Alloggio> risultati_alloggi = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getPrenotaAlloggioController().getAlloggi();
 		if (!risultati_biglietti.isEmpty() || !risultati_alloggi.isEmpty()) {
-			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME, null,
+			Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME, null,
 					Costanti.MESSAGGIO_TORNA_ALLA_HOME);
 			if (result.get() == ButtonType.OK) {
 				AppFacadeController.getInstance().getPrenotaServizioController().reset();
 				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
 						.reset();
-				HomeView view = new HomeView(getStage());
+				HomeView view = new HomeView(this.getStage());
 				view.mostra();
 			}
 		} else {
 			AppFacadeController.getInstance().getPrenotaServizioController().reset();
-			HomeView view = new HomeView(getStage());
+			HomeView view = new HomeView(this.getStage());
 			view.mostra();
 		}
 	}
@@ -266,18 +250,18 @@ public class RicercaPacchettoView extends View {
 		ArrayList<Alloggio> risultati_alloggi = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getPrenotaAlloggioController().getAlloggi();
 		if (!risultati_biglietti.isEmpty() || !risultati_alloggi.isEmpty()) {
-			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
+			Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
 					null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
 			if (result.get() == ButtonType.OK) {
 				AppFacadeController.getInstance().getPrenotaServizioController().reset();
 				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
 						.reset();
-				ScegliServizioView view = new ScegliServizioView(getStage());
+				ScegliServizioView view = new ScegliServizioView(this.getStage());
 				view.mostra();
 			}
 		} else {
 			AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
-			ScegliServizioView view = new ScegliServizioView(getStage());
+			ScegliServizioView view = new ScegliServizioView(this.getStage());
 			view.mostra();
 		}
 	}
@@ -290,13 +274,13 @@ public class RicercaPacchettoView extends View {
 		AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
 				.setPacchetto(pacchetto);
 		if (pacchetto.isEmpty())
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null, Costanti.MESSAGGIO_NESSUN_SERVIZIO);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null, Costanti.MESSAGGIO_NESSUN_SERVIZIO);
 		else if (!(pacchetto.size() > 1))
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PACCHETTO_UN_ELEMENTO);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PACCHETTO_UN_ELEMENTO);
 		else {
 			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
 					.setPacchetto(pacchetto);
-			RiepilogoPacchettoView view = new RiepilogoPacchettoView(getStage());
+			RiepilogoPacchettoView view = new RiepilogoPacchettoView(this.getStage());
 			view.mostra();
 		}
 	}
@@ -304,7 +288,7 @@ public class RicercaPacchettoView extends View {
 	// Event Listener on Button[#bottone_svuota].onAction
 	@FXML
 	public void svuotaPacchetto(ActionEvent event) {
-		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_SVUOTA_PACCHETTO, null,
+		Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_SVUOTA_PACCHETTO, null,
 				Costanti.MESSAGGIO_SVUOTA_PACCHETTO);
 		if (result.get() == ButtonType.OK) {
 			AppFacadeController.getInstance().getPrenotaServizioController().getServizio().getListaServizi().clear();
@@ -315,7 +299,7 @@ public class RicercaPacchettoView extends View {
 	// Event Listener on Button[#bottone_conferma].onAction
 	@FXML
 	public void confermaPacchetto(ActionEvent event) throws IOException {
-		vaiARiepilogo(event);
+		this.vaiARiepilogo(event);
 	}
 
 	/**
@@ -335,19 +319,16 @@ public class RicercaPacchettoView extends View {
 		ButtonCell() {
 			// Azione associata all'event handler della pressione del Button
 			// Cancella
-			cellButton.setOnAction(new EventHandler<ActionEvent>() {
-
+			this.cellButton.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				public void handle(ActionEvent t) {
 					// Recupero il servizio relativo all'indice di riga
 					ServizioComponent servizio = ButtonCell.this.getTableView().getItems()
 							.get(ButtonCell.this.getIndex());
-
 					// Rimuovo il servizio dalla lista servizi
-					lista_servizi.remove(servizio);
+					RicercaPacchettoView.this.lista_servizi.remove(servizio);
 					// Rimuovo il servizio dal servizio in prenotazione
 					AppFacadeController.getInstance().getPrenotaServizioController().getServizio().rimuovi(servizio);
-
 				}
 			});
 		}
@@ -357,9 +338,9 @@ public class RicercaPacchettoView extends View {
 		protected void updateItem(Boolean t, boolean empty) {
 			super.updateItem(t, empty);
 			if (!empty) {
-				setGraphic(cellButton);
+				this.setGraphic(cellButton);
 			} else {
-				setGraphic(null);
+				this.setGraphic(null);
 			}
 		}
 	}

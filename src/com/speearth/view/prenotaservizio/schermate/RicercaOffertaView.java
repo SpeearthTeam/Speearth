@@ -28,6 +28,9 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+/**
+ * Schermata di ricerca di Offerte
+ */
 public class RicercaOffertaView extends View {
 	@FXML
 	private ListView<ServizioComponent> output_lista_servizi;
@@ -55,16 +58,16 @@ public class RicercaOffertaView extends View {
 	private Offerta offerta_selezionata;
 
 	/**
-	 * Inizializza la classe
+	 * Inizializza la View
 	 * 
 	 * @param arg0
 	 * @param arg1
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		this.output_lista_servizi.setCellFactory(param -> new ServizioOffertaListItem(getStage()));
+		this.output_lista_servizi.setCellFactory(param -> new ServizioOffertaListItem(this.getStage()));
 		try {
-			this.form_ricerca_offerta = new RicercaOffertaForm(getStage());
+			this.form_ricerca_offerta = new RicercaOffertaForm(this.getStage());
 			this.form_container.getChildren().add(this.form_ricerca_offerta.getRoot());
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -72,15 +75,15 @@ public class RicercaOffertaView extends View {
 	}
 
 	/**
-	 * Costruttore di default
+	 * Costruttore
 	 * 
 	 * @param stage
 	 * @throws IOException
 	 */
 	public RicercaOffertaView(Stage stage) throws IOException {
 		super(stage);
-		getStage().setTitle(Costanti.TITOLO_ACQUISTA_OFFERTA);
-		getRoot().addEventHandler(EventoSelezionaOfferta.OFFERTA_SELEZIONATA,
+		this.getStage().setTitle(Costanti.TITOLO_ACQUISTA_OFFERTA);
+		this.getRoot().addEventHandler(EventoSelezionaOfferta.OFFERTA_SELEZIONATA,
 				new EventHandler<EventoSelezionaOfferta>() {
 					@Override
 					public void handle(EventoSelezionaOfferta event) {
@@ -97,20 +100,20 @@ public class RicercaOffertaView extends View {
 		ArrayList<Biglietto> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getPrenotaBigliettoController().getBiglietti();
 		if (!risultati.isEmpty()) {
-			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME, null,
-					Costanti.MESSAGGIO_TORNA_ALLA_HOME);
+			Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME,
+					null, Costanti.MESSAGGIO_TORNA_ALLA_HOME);
 			if (result.get() == ButtonType.OK) {
 				AppFacadeController.getInstance().getPrenotaServizioController().reset();
 				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
 						.clearBiglietti();
 				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
 						.clearParametri();
-				HomeView view = new HomeView(getStage());
+				HomeView view = new HomeView(this.getStage());
 				view.mostra();
 			}
 		} else {
 			AppFacadeController.getInstance().getPrenotaServizioController().reset();
-			HomeView view = new HomeView(getStage());
+			HomeView view = new HomeView(this.getStage());
 			view.mostra();
 		}
 	}
@@ -121,19 +124,19 @@ public class RicercaOffertaView extends View {
 		ArrayList<Biglietto> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getPrenotaBigliettoController().getBiglietti();
 		if (!risultati.isEmpty()) {
-			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
-					null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
+			Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION,
+					Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO, null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
 			if (result.get() == ButtonType.OK) {
 				AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
 				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
 						.clearBiglietti();
 				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
 						.clearParametri();
-				ScegliServizioView view = new ScegliServizioView(getStage());
+				ScegliServizioView view = new ScegliServizioView(this.getStage());
 				view.mostra();
 			}
 		} else {
-			ScegliServizioView view = new ScegliServizioView(getStage());
+			ScegliServizioView view = new ScegliServizioView(this.getStage());
 			view.mostra();
 		}
 	}
@@ -142,13 +145,13 @@ public class RicercaOffertaView extends View {
 	@FXML
 	public void conferma(ActionEvent event) throws IOException {
 		AppFacadeController.getInstance().getPrenotaServizioController().setServizio(this.offerta_selezionata);
-		vaiARiepilogo();
+		this.vaiARiepilogo();
 	}
 
 	// Event Listener on Button[#bottone_riepilogo].onAction
 	@FXML
 	public void vaiARiepilogoButtonClick(ActionEvent event) throws IOException {
-		vaiARiepilogo();
+		this.vaiARiepilogo();
 	}
 
 	/**
@@ -158,13 +161,19 @@ public class RicercaOffertaView extends View {
 	 */
 	public void vaiARiepilogo() throws IOException {
 		if (AppFacadeController.getInstance().getPrenotaServizioController().getServizio() == null)
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null, Costanti.MESSAGGIO_NESSUN_SERVIZIO);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null,
+					Costanti.MESSAGGIO_NESSUN_SERVIZIO);
 		else {
-			RiepilogoOffertaView view = new RiepilogoOffertaView(getStage());
+			RiepilogoOffertaView view = new RiepilogoOffertaView(this.getStage());
 			view.mostra();
 		}
 	}
 
+	/**
+	 * Restituisce il nome della Risorsa associata alla View
+	 * 
+	 * @return String
+	 */
 	@Override
 	public String getNomeRisorsa() {
 		return Costanti.FXML_RICERCA_OFFERTA;

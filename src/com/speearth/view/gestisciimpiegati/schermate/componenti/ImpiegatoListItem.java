@@ -7,15 +7,17 @@ import com.speearth.model.core.Impiegato;
 import javafx.scene.control.ListCell;
 import javafx.stage.Stage;
 
+/**
+ * Classe che rifinisce una ListCell per adattarla a contenere un Impiegato
+ */
 public class ImpiegatoListItem extends ListCell<Impiegato> {
-
 	/**
-	 * Stage nella list view
+	 * Stage
 	 */
 	private Stage stage;
 
 	/**
-	 * Costruttore di default
+	 * Costruttore
 	 * 
 	 * @param stage
 	 */
@@ -24,7 +26,7 @@ public class ImpiegatoListItem extends ListCell<Impiegato> {
 	}
 
 	/**
-	 * Aggiorna un elemento della lista
+	 * Aggiorna un elemento della Lista
 	 * 
 	 * @param impiegato
 	 * @param empty
@@ -34,13 +36,13 @@ public class ImpiegatoListItem extends ListCell<Impiegato> {
 		super.updateItem(impiegato, empty);
 		if (impiegato != null) {
 			try {
-				RisultatoImpiegatoItem impiegato_item = new RisultatoImpiegatoItem(stage, impiegato);
-				setGraphic(impiegato_item.getRoot());
+				RisultatoImpiegatoItem impiegato_item = new RisultatoImpiegatoItem(this.stage, impiegato);
+				this.setGraphic(impiegato_item.getRoot());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		} else {
-			setGraphic(null);
+			this.setGraphic(null);
 		}
 	}
 }

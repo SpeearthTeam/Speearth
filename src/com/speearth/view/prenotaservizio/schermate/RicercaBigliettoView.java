@@ -28,6 +28,9 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+/**
+ * Schermata di ricerca di Biglietti
+ */
 public class RicercaBigliettoView extends View {
 	@FXML
 	private Button bottone_scegli_servizio;
@@ -40,19 +43,22 @@ public class RicercaBigliettoView extends View {
 	@FXML
 	private AnchorPane form_container;
 
+	/**
+	 * Form di ricerca
+	 */
 	private RicercaBigliettoForm ricerca_biglietto_form;
 
 	/**
-	 * Inizializza la classe
+	 * Inizializza la View
 	 * 
 	 * @param arg0
 	 * @param arg1
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		this.lista_risultati.setCellFactory(param -> new BigliettoListItem(getStage()));
+		this.lista_risultati.setCellFactory(param -> new BigliettoListItem(this.getStage()));
 		try {
-			this.ricerca_biglietto_form = new RicercaBigliettoForm(getStage());
+			this.ricerca_biglietto_form = new RicercaBigliettoForm(this.getStage());
 			this.ricerca_biglietto_form.bind(this.lista_risultati);
 			this.form_container.getChildren().add(this.ricerca_biglietto_form.getRoot());
 		} catch (IOException e) {
@@ -61,31 +67,29 @@ public class RicercaBigliettoView extends View {
 	}
 
 	/**
-	 * Costruttore di default
+	 * Costruttore
 	 * 
 	 * @param stage
 	 * @throws IOException
 	 */
 	public RicercaBigliettoView(Stage stage) throws IOException {
 		super(stage);
-		getStage().setTitle(Costanti.TITOLO_PRENOTA_BIGLIETTO);
-		//massimizzaFinestra();
-		impostaBiglietti();
-		getRoot().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO,
+		this.getStage().setTitle(Costanti.TITOLO_PRENOTA_BIGLIETTO);
+		this.impostaBiglietti();
+		this.getRoot().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO,
 				new EventHandler<EventoSelezionaServizio>() {
-
 					@Override
 					public void handle(EventoSelezionaServizio event) {
 						try {
 							ServizioComponent servizio = AppFacadeController.getInstance()
 									.getPrenotaServizioController().getServizio();
 							if (servizio != null && servizio.equals(event.getServizio()))
-								mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_SERVIZIO_PRESENTE, null,
-										Costanti.MESSAGGIO_SERVIZIO_PRESENTE);
+								RicercaBigliettoView.this.mostraAlert(AlertType.INFORMATION,
+										Costanti.TITOLO_SERVIZIO_PRESENTE, null, Costanti.MESSAGGIO_SERVIZIO_PRESENTE);
 							else {
 								AppFacadeController.getInstance().getPrenotaServizioController()
 										.setServizio(event.getServizio());
-								vaiARiepilogo();
+								RicercaBigliettoView.this.vaiARiepilogo();
 							}
 						} catch (IOException e) {
 							e.printStackTrace();
@@ -95,8 +99,8 @@ public class RicercaBigliettoView extends View {
 	}
 
 	/**
-	 * Metodo che serve a caricare i biglietti salvati nel controller alla view,
-	 * dalla schermata Riepilogo a Ricerca, altrimenti andrebbero persi
+	 * Carica i Biglietti salvati nel Controller all'interno View per evitarne
+	 * la perdita durante un cambio di Schermata
 	 */
 	private void impostaBiglietti() {
 		// ottengo i biglietti dal controller
@@ -104,7 +108,7 @@ public class RicercaBigliettoView extends View {
 				.getPrenotaBigliettoController().getBiglietti();
 		// se il risultato contiene biglietti, allora...
 		if (!risultati.isEmpty()) {
-			this.lista_risultati.setCellFactory(param -> new BigliettoListItem(getStage()));
+			this.lista_risultati.setCellFactory(param -> new BigliettoListItem(this.getStage()));
 			// converto l'ArrayList in observableArrayList
 			ObservableList<Biglietto> list = FXCollections.observableArrayList(risultati);
 			// setto la lista dei risultati, ListView, con la Observable
@@ -118,20 +122,20 @@ public class RicercaBigliettoView extends View {
 		ArrayList<Biglietto> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getPrenotaBigliettoController().getBiglietti();
 		if (!risultati.isEmpty()) {
-			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME, null,
-					Costanti.MESSAGGIO_TORNA_ALLA_HOME);
+			Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME,
+					null, Costanti.MESSAGGIO_TORNA_ALLA_HOME);
 			if (result.get() == ButtonType.OK) {
 				AppFacadeController.getInstance().getPrenotaServizioController().reset();
 				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
 						.clearBiglietti();
 				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
 						.clearParametri();
-				HomeView view = new HomeView(getStage());
+				HomeView view = new HomeView(this.getStage());
 				view.mostra();
 			}
 		} else {
 			AppFacadeController.getInstance().getPrenotaServizioController().reset();
-			HomeView view = new HomeView(getStage());
+			HomeView view = new HomeView(this.getStage());
 			view.mostra();
 		}
 	}
@@ -142,19 +146,19 @@ public class RicercaBigliettoView extends View {
 		ArrayList<Biglietto> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getPrenotaBigliettoController().getBiglietti();
 		if (!risultati.isEmpty()) {
-			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
-					null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
+			Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION,
+					Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO, null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
 			if (result.get() == ButtonType.OK) {
 				AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
 				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
 						.clearBiglietti();
 				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
 						.clearParametri();
-				ScegliServizioView view = new ScegliServizioView(getStage());
+				ScegliServizioView view = new ScegliServizioView(this.getStage());
 				view.mostra();
 			}
 		} else {
-			ScegliServizioView view = new ScegliServizioView(getStage());
+			ScegliServizioView view = new ScegliServizioView(this.getStage());
 			view.mostra();
 		}
 	}
@@ -162,23 +166,29 @@ public class RicercaBigliettoView extends View {
 	// Event Listener on Button[#bottone_riepilogo].onAction
 	@FXML
 	public void vaiARiepilogoButtonClick(ActionEvent event) throws IOException {
-		vaiARiepilogo();
+		this.vaiARiepilogo();
 	}
 
 	/**
-	 * Ridirige l'utente al riepilogo
+	 * Ridirige l'Utente alla Schermata di Riepilogo
 	 * 
 	 * @throws IOException
 	 */
 	public void vaiARiepilogo() throws IOException {
 		if (AppFacadeController.getInstance().getPrenotaServizioController().getServizio() == null)
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null, Costanti.MESSAGGIO_NESSUN_SERVIZIO);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null,
+					Costanti.MESSAGGIO_NESSUN_SERVIZIO);
 		else {
-			RiepilogoBigliettoView view = new RiepilogoBigliettoView(getStage());
+			RiepilogoBigliettoView view = new RiepilogoBigliettoView(this.getStage());
 			view.mostra();
 		}
 	}
 
+	/**
+	 * Restituisce il nome della Risorsa associata alla View
+	 * 
+	 * @return String
+	 */
 	@Override
 	public String getNomeRisorsa() {
 		return Costanti.FXML_RICERCA_BIGLIETTO;

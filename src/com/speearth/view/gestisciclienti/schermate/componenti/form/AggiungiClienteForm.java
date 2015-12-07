@@ -46,7 +46,7 @@ public class AggiungiClienteForm extends FormView {
 	private Cliente cliente;
 
 	/**
-	 * Costruttore di default usato per la creazione del cliente
+	 * Costruttore
 	 * 
 	 * @param stage
 	 * @throws IOException
@@ -62,7 +62,7 @@ public class AggiungiClienteForm extends FormView {
 	}
 
 	/**
-	 * Costruttore
+	 * Costruttore con Cliente
 	 * 
 	 * @param stage
 	 * @param cliente
@@ -108,14 +108,17 @@ public class AggiungiClienteForm extends FormView {
 				this.getStage().close();
 			}
 		} catch (InvalidParameterException e) {
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, e.getMessage());
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, e.getMessage());
 		} catch (IOException e) {
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, e.getMessage());
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, e.getMessage());
 		}
 	}
 
 	/**
-	 * Inizializza la view
+	 * Inizializza la SubView
+	 * 
+	 * @param location
+	 * @param resources
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -131,27 +134,27 @@ public class AggiungiClienteForm extends FormView {
 	public boolean valida() {
 		// Controllo del nome
 		if (this.input_nome.getText() == null || this.input_nome.getText().isEmpty()) {
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_NOME);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_NOME);
 			return false;
 		}
 		// Controllo del cognome
 		if (this.input_cognome.getText() == null || this.input_cognome.getText().isEmpty()) {
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_COGNOME);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_COGNOME);
 			return false;
 		}
 		// Controllo del codice fiscale
 		if (this.input_codice_fiscale.getText() == null || this.input_codice_fiscale.getText().isEmpty()) {
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_CF);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_CF);
 			return false;
 		}
 		// Controllo della data di nascita
 		LocalDate data_nascita = this.input_data_nascita.getValue();
 		if (data_nascita == null) {
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_DATA_NASCITA);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_DATA_NASCITA);
 			return false;
 		}
 		if (data_nascita.isAfter(LocalDate.now())) {
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DATA_NASCITA_NON_VALIDA);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DATA_NASCITA_NON_VALIDA);
 			return false;
 		}
 		return true;

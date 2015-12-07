@@ -13,6 +13,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+/**
+ * Schermata di selezione del Servizio da prenotare
+ */
 public class ScegliServizioView extends View {
 	@FXML
 	private Button bottone_torna_alla_home;
@@ -30,7 +33,7 @@ public class ScegliServizioView extends View {
 	private Button bottone_acquista_offerta;
 
 	/**
-	 * Costruttore di default
+	 * Costruttore
 	 * 
 	 * @param stage
 	 * @throws IOException
@@ -38,11 +41,10 @@ public class ScegliServizioView extends View {
 	public ScegliServizioView(Stage stage) throws IOException {
 		super(stage);
 		stage.setTitle(Costanti.TITOLO_SCEGLI_SERVIZIO);
-		// massimizzaFinestra();
 	}
 
 	/**
-	 * Inizializza la classe
+	 * Inizializza la View
 	 * 
 	 * @param arg0
 	 * @param arg1
@@ -54,35 +56,35 @@ public class ScegliServizioView extends View {
 	// Event Listener on Button[#bottone_prenota_biglietto].onAction
 	@FXML
 	public void prenotaBiglietto(ActionEvent event) throws IOException {
-		RicercaBigliettoView view = new RicercaBigliettoView(getStage());
+		RicercaBigliettoView view = new RicercaBigliettoView(this.getStage());
 		view.mostra();
 	}
 
 	// Event Listener on Button[#bottone_prenota_alloggio].onAction
 	@FXML
 	public void prenotaAlloggio(ActionEvent event) throws IOException {
-		RicercaAlloggioView view = new RicercaAlloggioView(getStage());
+		RicercaAlloggioView view = new RicercaAlloggioView(this.getStage());
 		view.mostra();
 	}
 
 	// Event Listener on Button[#bottone_prenota_pacchetto].onAction
 	@FXML
 	public void prenotaPacchetto(ActionEvent event) throws IOException {
-		RicercaPacchettoView view = new RicercaPacchettoView(getStage());
+		RicercaPacchettoView view = new RicercaPacchettoView(this.getStage());
 		view.mostra();
 	}
 
 	// Event Listener on Button[#bottone_acquista_offerta].onAction
 	@FXML
 	public void acquistaOfferta(ActionEvent event) throws IOException {
-		RicercaOffertaView view = new RicercaOffertaView(getStage());
+		RicercaOffertaView view = new RicercaOffertaView(this.getStage());
 		view.mostra();
 	}
 
 	// Event Listener on Button[#bottone_torna_alla_home].onAction
 	@FXML
 	public void vaiAllaHome(ActionEvent event) throws IOException {
-		HomeView view = new HomeView(getStage());
+		HomeView view = new HomeView(this.getStage());
 		view.mostra();
 	}
 

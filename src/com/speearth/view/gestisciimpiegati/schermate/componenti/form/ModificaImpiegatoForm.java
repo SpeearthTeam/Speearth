@@ -28,6 +28,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+/**
+ * Form per la modifica delle informazioni di un Impiegato
+ */
 public class ModificaImpiegatoForm extends FormView {
 	@FXML
 	private TextField input_username;
@@ -56,7 +59,7 @@ public class ModificaImpiegatoForm extends FormView {
 	private Impiegato impiegato;
 
 	/**
-	 * Costruttore con impiegato usato per la modifica del impiegato
+	 * Costruttore
 	 * 
 	 * @param stage
 	 * @param impiegato
@@ -102,14 +105,17 @@ public class ModificaImpiegatoForm extends FormView {
 				this.getStage().close();
 			}
 		} catch (InvalidParameterException e) {
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, e.getMessage());
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, e.getMessage());
 		} catch (IOException e) {
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, e.getMessage());
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, e.getMessage());
 		}
 	}
 
 	/**
-	 * Inizializza la view
+	 * Inizializza la SubView
+	 * 
+	 * @param location
+	 * @param resources
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -117,63 +123,65 @@ public class ModificaImpiegatoForm extends FormView {
 	}
 
 	/**
-	 * Valida la form
+	 * Valida gli input della Form
+	 * 
+	 * @return boolean
 	 */
 	@Override
 	public boolean valida() {
 		// Controllo dello username
 		if (this.input_username.getText() == null || this.input_username.getText().isEmpty()) {
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_USERNAME);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_USERNAME);
 			return false;
 		}
 		// Controllo della password
 		if (this.input_password.getText() == null || this.input_password.getText().isEmpty()) {
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_PASSWORD);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_PASSWORD);
 			return false;
 		}
 		// Controllo della password ripetuta
 		if (this.input_ripeti_password.getText() == null || this.input_ripeti_password.getText().isEmpty()) {
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_RIPETERE_PASSWORD);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_RIPETERE_PASSWORD);
 			return false;
 		}
 		// Controllo dell'uguaglianza delle password
 		if (!(this.input_password.getText().equals(this.input_ripeti_password.getText()))) {
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PASSWORD_DIVERSE);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PASSWORD_DIVERSE);
 			return false;
 		}
 		// Controllo del nome
 		if (input_nome.getText() == null || input_nome.getText().isEmpty()) {
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_NOME);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_NOME);
 			return false;
 		}
 		// Controllo del cognome
 		if (input_cognome.getText() == null || input_cognome.getText().isEmpty()) {
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_COGNOME);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_COGNOME);
 			return false;
 		}
 		// Controllo del codice fiscale
 		if (input_codice_fiscale.getText() == null || input_codice_fiscale.getText().isEmpty()) {
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_CF);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_CF);
 			return false;
 		}
 		// Controllo della data di nascita
 		LocalDate data_nascita = this.input_data_nascita.getValue();
 		if (data_nascita == null) {
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_DATA_NASCITA);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_DATA_NASCITA);
 			return false;
 		}
 		if (data_nascita.isAfter(LocalDate.now())) {
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DATA_NASCITA_NON_VALIDA);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DATA_NASCITA_NON_VALIDA);
 			return false;
 		}
 		// Controllo dello stipendio
 		if (this.input_stipendio.getText() == null || this.input_stipendio.getText().isEmpty()) {
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_STIPENDIO);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DEFINIRE_STIPENDIO);
 			return false;
 		}
 		// Controllo della validità della stringa stipendio
 		if (this.validazioneEParsificazioneStipendio(this.input_stipendio.getText()) == null) {
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_STIPENDIO_NON_VALIDO);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_STIPENDIO_NON_VALIDO);
 			return false;
 		}
 		return true;
@@ -194,7 +202,9 @@ public class ModificaImpiegatoForm extends FormView {
 	}
 
 	/**
-	 * Restituisce i parametri
+	 * Resituisce i parametri della Form
+	 * 
+	 * @return HashMap<String, String>
 	 */
 	@Override
 	public HashMap<String, String> getParametri() {
@@ -202,7 +212,10 @@ public class ModificaImpiegatoForm extends FormView {
 	}
 
 	/**
-	 * Invia i parametri della form
+	 * Invia la richiesta
+	 * 
+	 * @param parameters
+	 * @throws IOException
 	 */
 	@Override
 	public void invia(HashMap<String, String> parameters) throws IOException {
@@ -229,7 +242,7 @@ public class ModificaImpiegatoForm extends FormView {
 	}
 
 	/**
-	 * Aggiorna la form view
+	 * Aggiorna le informazioni mostrate dall'Interfaccia
 	 */
 	@Override
 	public void aggiornaUI() {
@@ -248,7 +261,9 @@ public class ModificaImpiegatoForm extends FormView {
 	}
 
 	/**
-	 * Restituisce il nome della risorsa associata alla view
+	 * Restituisce il nome della Risorsa associata alla View
+	 * 
+	 * @return String
 	 */
 	@Override
 	public String getNomeRisorsa() {

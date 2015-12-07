@@ -18,12 +18,15 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+/**
+ * Popup per l'aggiunta o modifica dei dati di un Impiegato
+ */
 public class ImpiegatoPopupView extends View {
 	@FXML
 	private AnchorPane form_container;
 
 	/**
-	 * Form di salvataggio dell'Impiegato
+	 * Form
 	 */
 	private FormView form;
 
@@ -33,7 +36,7 @@ public class ImpiegatoPopupView extends View {
 	private Impiegato impiegato;
 
 	/**
-	 * Costruttore di default
+	 * Costruttore
 	 * 
 	 * @param stage
 	 * @param previousView
@@ -42,34 +45,33 @@ public class ImpiegatoPopupView extends View {
 	 */
 	public ImpiegatoPopupView(Stage stage, Impiegato impiegato) throws IOException {
 		super(stage);
-		setImpiegato(impiegato);
-		getRoot().addEventHandler(EventoGestioneImpiegato.AGGIUNGI_IMPIEGATO,
+		this.setImpiegato(impiegato);
+		this.getRoot().addEventHandler(EventoGestioneImpiegato.AGGIUNGI_IMPIEGATO,
 				new EventHandler<EventoGestioneImpiegato>() {
 					@Override
 					public void handle(EventoGestioneImpiegato event) {
-						setImpiegato(event.getImpiegato());
+						ImpiegatoPopupView.this.setImpiegato(event.getImpiegato());
 						mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_IMPIEGATO_AGGIUNTO, null,
 								Costanti.MESSAGGIO_IMPIEGATO_AGGIUNTO);
 					}
 				});
 
-		getRoot().addEventHandler(EventoGestioneImpiegato.MODIFICA_IMPIEGATO,
+		this.getRoot().addEventHandler(EventoGestioneImpiegato.MODIFICA_IMPIEGATO,
 				new EventHandler<EventoGestioneImpiegato>() {
 					@Override
 					public void handle(EventoGestioneImpiegato event) {
-						setImpiegato(event.getImpiegato());
+						ImpiegatoPopupView.this.setImpiegato(event.getImpiegato());
 					}
 				});
-
 		try {
 			if (impiegato == null) {
-				form = new AggiungiImpiegatoForm(getStage(), impiegato);
-				form_container.getChildren().add(form.getRoot());
-				getStage().setTitle(Costanti.TITOLO_AGGIUNGI_IMPIEGATO);
+				this.form = new AggiungiImpiegatoForm(this.getStage(), impiegato);
+				this.form_container.getChildren().add(this.form.getRoot());
+				this.getStage().setTitle(Costanti.TITOLO_AGGIUNGI_IMPIEGATO);
 			} else {
-				form = new ModificaImpiegatoForm(getStage(), impiegato);
-				form_container.getChildren().add(form.getRoot());
-				getStage().setTitle(Costanti.TITOLO_MODIFICA_IMPIEGATO);
+				this.form = new ModificaImpiegatoForm(this.getStage(), impiegato);
+				this.form_container.getChildren().add(this.form.getRoot());
+				this.getStage().setTitle(Costanti.TITOLO_MODIFICA_IMPIEGATO);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -77,17 +79,20 @@ public class ImpiegatoPopupView extends View {
 	}
 
 	/**
-	 * Inizializza la view
+	 * Inizializza la View
+	 * 
+	 * @param location
+	 * @param resources
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		getStage().setHeight(Costanti.DIMENSIONE_ALTEZZA_POPUP_IMPIEGATO);
-		getStage().setWidth(Costanti.DIMENSIONE_LARGHEZZA_POPUP_IMPIEGATO);
-		getStage().setResizable(false);
+		this.getStage().setHeight(Costanti.DIMENSIONE_ALTEZZA_POPUP_IMPIEGATO);
+		this.getStage().setWidth(Costanti.DIMENSIONE_LARGHEZZA_POPUP_IMPIEGATO);
+		this.getStage().setResizable(false);
 	}
 
 	/**
-	 * Imposta il Impiegato
+	 * Imposta l'Impiegato
 	 * 
 	 * @param impiegato
 	 */
@@ -99,11 +104,13 @@ public class ImpiegatoPopupView extends View {
 	 * Restituisce il Impiegato
 	 */
 	public Impiegato getImpiegato() {
-		return impiegato;
+		return this.impiegato;
 	}
 
 	/**
-	 * Restituisce la risorsa associata alla view
+	 * Restituisce il nome della Risorsa associata alla View
+	 * 
+	 * @return String
 	 */
 	@Override
 	public String getNomeRisorsa() {

@@ -29,6 +29,9 @@ import javafx.scene.control.ToggleGroup;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * Schermata di Riepilogo della prenotazione di un Alloggio
+ */
 public class RiepilogoBigliettoView extends View {
 	@FXML
 	private Button bottone_scegli_servizio;

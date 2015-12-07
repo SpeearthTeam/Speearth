@@ -19,6 +19,9 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+/**
+ * Componente che rappresenta un Impiegato nella Lista di Impiegati
+ */
 public class RisultatoImpiegatoItem extends SubView {
 	@FXML
 	private BorderPane risultato_impiegato;
@@ -42,12 +45,12 @@ public class RisultatoImpiegatoItem extends SubView {
 	private Button bottone_elimina;
 
 	/**
-	 * Impiegato contenuto nella SubView
+	 * Impiegato
 	 */
 	private Impiegato impiegato;
 
 	/**
-	 * Costruttore con parametro
+	 * Costruttore
 	 * 
 	 * @param stage
 	 * @param impiegato
@@ -61,27 +64,32 @@ public class RisultatoImpiegatoItem extends SubView {
 
 	/**
 	 * Inizializza la SubView
+	 * 
+	 * @param location
+	 * @param resources
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	}
 
 	/**
-	 * Aggiorna la SubView
+	 * Aggiorna le informazioni mostrate dall'Interfaccia
 	 */
 	@Override
 	public void aggiornaUI() {
-		this.output_username.setText(impiegato.getUsername());
-		this.output_nome.setText(impiegato.getNome());
-		this.output_cognome.setText(impiegato.getCognome());
-		this.output_codice_fiscale.setText(impiegato.getCodiceFiscale());
-		this.output_data_nascita.setText(Costanti.FORMATO_DATA.format(impiegato.getDataNascita()));
-		this.output_ruolo.setText(impiegato.getRuolo());
-		this.output_stipendio.setText(String.valueOf(impiegato.getStipendio()));
+		this.output_username.setText(this.impiegato.getUsername());
+		this.output_nome.setText(this.impiegato.getNome());
+		this.output_cognome.setText(this.impiegato.getCognome());
+		this.output_codice_fiscale.setText(this.impiegato.getCodiceFiscale());
+		this.output_data_nascita.setText(Costanti.FORMATO_DATA.format(this.impiegato.getDataNascita()));
+		this.output_ruolo.setText(this.impiegato.getRuolo());
+		this.output_stipendio.setText(String.valueOf(this.impiegato.getStipendio()));
 	}
 
 	/**
-	 * Restituisce la risorsa fxml della SubView
+	 * Restituisce il nome della Risorsa associata alla View
+	 * 
+	 * @return String
 	 */
 	@Override
 	public String getNomeRisorsa() {
@@ -92,8 +100,8 @@ public class RisultatoImpiegatoItem extends SubView {
 	@FXML
 	public void modificaImpiegato(ActionEvent event) {
 		EventoGestioneImpiegato evento = new EventoGestioneImpiegato(EventoGestioneImpiegato.MODIFICA_IMPIEGATO,
-				impiegato);
-		getRoot().fireEvent(evento);
+				this.impiegato);
+		this.getRoot().fireEvent(evento);
 	}
 
 	// Event Listener on Button[#bottone_elimina].onAction
@@ -103,20 +111,22 @@ public class RisultatoImpiegatoItem extends SubView {
 				Costanti.MESSAGGIO_ELIMINA_IMPIEGATO);
 		if (result.get() == ButtonType.OK) {
 			EventoGestioneImpiegato evento = new EventoGestioneImpiegato(EventoGestioneImpiegato.ELIMINA_IMPIEGATO,
-					impiegato);
-			getRoot().fireEvent(evento);
+					this.impiegato);
+			this.getRoot().fireEvent(evento);
 		}
 	}
 
 	/**
-	 * Restituisce l'impiegato
+	 * Restituisce l'Impiegato
+	 * 
+	 * @return Impiegato
 	 */
 	public Impiegato getImpiegato() {
-		return impiegato;
+		return this.impiegato;
 	}
 
 	/**
-	 * Imposta l'impiegato
+	 * Imposta l'Impiegato
 	 * 
 	 * @param impiegato
 	 */
@@ -125,12 +135,12 @@ public class RisultatoImpiegatoItem extends SubView {
 	}
 
 	/**
-	 * Imposta l'impiegato ed aggiorna la view
+	 * Imposta l'Impiegato ed aggiorna la View
 	 * 
 	 * @param impiegato
 	 */
 	public void updateImpiegato(Impiegato impiegato) {
-		setImpiegato(impiegato);
-		aggiornaUI();
+		this.setImpiegato(impiegato);
+		this.aggiornaUI();
 	}
 }

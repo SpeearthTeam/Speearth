@@ -79,6 +79,9 @@ public class RiepilogoOffertaView extends View {
 	 */
 	private Cliente cliente = null;
 
+	/**
+	 * ObservableList di Servizi da incorporare nella Listview
+	 */
 	private ObservableList<ServizioComponent> lista_servizi = FXCollections.observableArrayList();
 
 	/**
@@ -112,7 +115,7 @@ public class RiepilogoOffertaView extends View {
 	 */
 	public RiepilogoOffertaView(Stage stage) throws IOException {
 		super(stage);
-		getStage().setTitle(Costanti.TITOLO_RIEPILOGO);
+		this.getStage().setTitle(Costanti.TITOLO_RIEPILOGO);
 		this.impostaInfoOfferta(
 				(Offerta) AppFacadeController.getInstance().getPrenotaServizioController().getServizio());
 	}
@@ -125,7 +128,7 @@ public class RiepilogoOffertaView extends View {
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		this.riepilogo_servizi.setCellFactory(param -> new ServizioOffertaListItem(getStage()));
+		this.riepilogo_servizi.setCellFactory(param -> new ServizioOffertaListItem(this.getStage()));
 		this.riepilogo_servizi.setItems(this.lista_servizi);
 		ToggleGroup group = new ToggleGroup();
 		this.input_radio_contanti.setToggleGroup(group);
@@ -136,12 +139,12 @@ public class RiepilogoOffertaView extends View {
 	// Event Listener on Button[#bottone_torna_alla_home].onAction
 	@FXML
 	public void vaiAllaHome(ActionEvent event) throws IOException {
-		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME, null,
+		Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME, null,
 				Costanti.MESSAGGIO_TORNA_ALLA_HOME);
 		if (result.get() == ButtonType.OK) {
 			AppFacadeController.getInstance().getPrenotaServizioController().reset();
 			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController().reset();
-			HomeView view = new HomeView(getStage());
+			HomeView view = new HomeView(this.getStage());
 			view.mostra();
 		}
 	}
@@ -149,12 +152,12 @@ public class RiepilogoOffertaView extends View {
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
 	@FXML
 	public void vaiAScegliServizio(ActionEvent event) throws IOException {
-		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO, null,
-				Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
+		Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
+				null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
 		if (result.get() == ButtonType.OK) {
 			AppFacadeController.getInstance().getPrenotaServizioController().reset();
 			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController().reset();
-			ScegliServizioView view = new ScegliServizioView(getStage());
+			ScegliServizioView view = new ScegliServizioView(this.getStage());
 			view.mostra();
 		}
 	}
@@ -162,7 +165,7 @@ public class RiepilogoOffertaView extends View {
 	// Event Listener on Button[#bottone_ricerca].onAction
 	@FXML
 	public void vaiARicerca(ActionEvent event) throws IOException {
-		RicercaPacchettoView view = new RicercaPacchettoView(getStage());
+		RicercaPacchettoView view = new RicercaPacchettoView(this.getStage());
 		view.mostra();
 	}
 
@@ -172,10 +175,11 @@ public class RiepilogoOffertaView extends View {
 		if (!this.input_codice_tessera.getText().isEmpty()) {
 			this.cliente = AppFacadeController.getInstance().getPrenotaServizioController()
 					.identificaCliente(this.input_codice_tessera.getText());
-			if (cliente != null) {
-				this.impostaInfoCliente(cliente);
-				AppFacadeController.getInstance().getPrenotaServizioController().setCliente(cliente);
-				IBonus bonus = AppFacadeController.getInstance().getPrenotaServizioController().calcolaBonus(cliente);
+			if (this.cliente != null) {
+				this.impostaInfoCliente(this.cliente);
+				AppFacadeController.getInstance().getPrenotaServizioController().setCliente(this.cliente);
+				IBonus bonus = AppFacadeController.getInstance().getPrenotaServizioController()
+						.calcolaBonus(this.cliente);
 				if (bonus != null) {
 					this.label_bonus.setVisible(true);
 					this.output_totale
@@ -183,10 +187,10 @@ public class RiepilogoOffertaView extends View {
 									.applicaBonus(bonus, new ScontoConcreteStrategy()).getPrezzo()));
 				}
 			} else
-				mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_NON_TROVATO, null,
+				this.mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_NON_TROVATO, null,
 						Costanti.MESSAGGIO_CLIENTE_NON_TROVATO);
 		} else
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_NESSUN_CODICE);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_NESSUN_CODICE);
 	}
 
 	// Event Listener on Button[#bottone_aggiungi_cliente].onAction
@@ -206,7 +210,7 @@ public class RiepilogoOffertaView extends View {
 	@FXML
 	public void effettuaPagamento(ActionEvent event) throws IOException {
 		if (AppFacadeController.getInstance().getPrenotaServizioController().getCliente() == null) {
-			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_NESSUN_CLIENTE, null,
+			Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_NESSUN_CLIENTE, null,
 					Costanti.MESSAGGIO_NESSUN_CLIENTE);
 			if (result.get() == ButtonType.CANCEL) {
 				return;
@@ -215,14 +219,14 @@ public class RiepilogoOffertaView extends View {
 		String ricevuta = AppFacadeController.getInstance().getPrenotaServizioController()
 				.effettuaPagamento(this.getModalitaPagamento());
 		if (ricevuta != null) {
-			mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_PAGAMENTO_EFFETTUATO,
+			this.mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_PAGAMENTO_EFFETTUATO,
 					Costanti.MESSAGGIO_PAGAMENTO_EFFETTUATO, ricevuta);
 			AppFacadeController.getInstance().getPrenotaServizioController().reset();
 			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController().reset();
-			HomeView view = new HomeView(getStage());
+			HomeView view = new HomeView(this.getStage());
 			view.mostra();
 		} else
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PROBLEMA_DATABASE);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PROBLEMA_DATABASE);
 	}
 
 	/**
