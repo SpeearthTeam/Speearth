@@ -21,7 +21,7 @@ public class CreaOffertaController implements ICasoDUsoController {
 	private Offerta offerta;
 
 	/**
-	 * Memorizza i servizi creati nell'offerta. Serve alla View per recuperarli
+	 * Memorizza i Servizi aggiunti all'Offerta. Serve alla View per recuperarli
 	 * quando si torna indietro dalla schermata Riepilogo alla schermata
 	 * Ricerca.
 	 */
@@ -35,6 +35,8 @@ public class CreaOffertaController implements ICasoDUsoController {
 
 	/**
 	 * Restituisce l'istanza del Controller
+	 * 
+	 * @return CreaOffertaController
 	 */
 	public static CreaOffertaController getInstance() {
 		if (instance == null)
@@ -51,13 +53,15 @@ public class CreaOffertaController implements ICasoDUsoController {
 
 	/**
 	 * Restituisce il Controller di PrenotaAlloggio
+	 * 
+	 * @return PrenotaAlloggioController
 	 */
 	public PrenotaAlloggioController getPrenotaAlloggioController() {
 		return PrenotaAlloggioController.getInstance();
 	}
 
 	/**
-	 * Serve alla View per recuperare i servizi contenuti nell'offerta quando si
+	 * Serve alla View per recuperare i Servizi contenuti nell'Offerta quando si
 	 * torna indietro dalla schermata Riepilogo alla schermata Ricerca.
 	 * 
 	 * @return ArrayList<ServizioComponent>
@@ -120,5 +124,4 @@ public class CreaOffertaController implements ICasoDUsoController {
 		getPrenotaAlloggioController().reset();
 		getPrenotaBigliettoController().reset();
 	}
-
 }

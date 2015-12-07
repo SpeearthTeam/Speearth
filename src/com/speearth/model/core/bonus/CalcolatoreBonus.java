@@ -12,7 +12,7 @@ import com.speearth.model.core.Vendita;
  */
 public class CalcolatoreBonus {
 	/**
-	 * Strategia di bonus: BonusSconto o Servizio
+	 * Strategia di calcolo del Bonus
 	 */
 	private IBonusStrategy strategy;
 
@@ -45,5 +45,4 @@ public class CalcolatoreBonus {
 	public void applicaBonus(ServizioComponent servizio, IBonus bonus) {
 		this.strategy.applica(servizio, bonus);
 	}
-
 }

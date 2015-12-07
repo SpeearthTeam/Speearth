@@ -3,17 +3,13 @@ package com.speearth.model.transazioni;
 import java.io.IOException;
 
 /**
- * 
- * Interfaccia rappresentante una generica Transazione che l'Agenzia deve effettuare
- * 
+ * Interfaccia rappresentante una generica Transazione effettuata dall'Agenzia
  */
 public interface ITransazioniCommand {
-	
 	/**
+	 * Fa eseguire il Command al rispettivo Receiver
 	 * 
-	 * Fa eseguire il comando al receiver
-	 * 
+	 * @throws IOException
 	 */
 	public void esegui() throws IOException;
-
 }

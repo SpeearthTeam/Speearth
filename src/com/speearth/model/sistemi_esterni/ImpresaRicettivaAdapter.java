@@ -14,7 +14,6 @@ import com.speearth.model.core.ServizioComponent;
  * l'Agenzia
  */
 public abstract class ImpresaRicettivaAdapter extends SistemaEsterno {
-
 	/**
 	 * Crea un Alloggio da un oggetto JSON
 	 * 
@@ -24,8 +23,14 @@ public abstract class ImpresaRicettivaAdapter extends SistemaEsterno {
 	 */
 	protected abstract Alloggio creaAlloggioDaJSON(JSONObject jsonAlloggio) throws JSONException;
 
+	/**
+	 * Processa i Servizi da una risposta http
+	 * 
+	 * @param response
+	 * @return ArrayList<ServizioComponent>
+	 */
 	@Override
-	protected ArrayList<ServizioComponent> processServicesFromResponse(String response) {
+	protected ArrayList<ServizioComponent> processaServiziDaRisposta(String response) {
 		ArrayList<ServizioComponent> alloggi = new ArrayList<ServizioComponent>();
 		JSONArray jsonArray = new JSONArray(response);
 

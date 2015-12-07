@@ -29,6 +29,9 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * Schermata di Riepilogo della creazione di una nuova Offerta
+ */
 public class RiepilogoOffertaView extends View {
 	@FXML
 	private Button bottone_torna_alla_home;
@@ -53,6 +56,9 @@ public class RiepilogoOffertaView extends View {
 	@FXML
 	private DatePicker input_data_fine_offerta;
 
+	/**
+	 * ObservableList di Servizi da incorporare nella Listview
+	 */
 	private ObservableList<ServizioComponent> lista_servizi = FXCollections.observableArrayList();
 
 	/**
@@ -64,12 +70,11 @@ public class RiepilogoOffertaView extends View {
 	public RiepilogoOffertaView(Stage stage) throws IOException {
 		super(stage);
 		getStage().setTitle(Costanti.TITOLO_RIEPILOGO_OFFERTA);
-		// massimizzaFinestra();
 		this.impostaInfoOfferta(AppFacadeController.getInstance().getCreaOffertaController().getOfferta());
 	}
 
 	/**
-	 * Imposta le informazioni dell'offerta nella View
+	 * Imposta le informazioni dell'Offerta nella View
 	 * 
 	 * @param pacchetto
 	 */
@@ -178,5 +183,4 @@ public class RiepilogoOffertaView extends View {
 	public String getResourceName() {
 		return Costanti.FXML_RIEPILOGO_OFFERTA;
 	}
-
 }

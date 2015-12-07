@@ -1,23 +1,22 @@
 package com.speearth.model.core.bonus;
 
 /**
- * Bonus di tipologia sconto
+ * Bonus di tipologia Sconto
  */
 public class ScontoBonus implements IBonus {
-	
 	/**
 	 * Sconto in percentuale
 	 */
 	private int sconto;
 
 	/**
-	 * Costruttore
+	 * Costruttore di default
 	 */
 	public ScontoBonus() {
 	}
 
 	/**
-	 * Ritorna lo sconto
+	 * Restituisce lo sconto
 	 * 
 	 * @return int
 	 */
@@ -33,5 +32,4 @@ public class ScontoBonus implements IBonus {
 	public void setSconto(int sconto) {
 		this.sconto = sconto;
 	}
-
 }

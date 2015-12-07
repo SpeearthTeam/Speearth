@@ -16,17 +16,32 @@ import com.speearth.utility.Costanti;
  * Controller di utilità per il Caso d'Uso di Startup
  */
 public class StartupController implements ICasoDUsoController {
+	/**
+	 * Unica istanza del Controller
+	 */
 	private static StartupController instance;
 
+	/**
+	 * Costruttore di default
+	 */
 	private StartupController() {
 	}
 
+	/**
+	 * Restituisce l'istanza del Controller
+	 * 
+	 * @return StartupController
+	 */
 	public static StartupController getInstance() {
 		if (instance == null)
 			instance = new StartupController();
 		return instance;
 	}
 
+	/**
+	 * Crea le condizioni necessarie per la buona riuscita dei Casi d'Uso
+	 * previsti per l'iterazione
+	 */
 	public void generaPreCondizioni() {
 		try {
 			Impiegato imp1 = RegistroImpiegati.getInstance().cercaImpiegatoDaUsername("tiziocaio85");
@@ -66,7 +81,6 @@ public class StartupController implements ICasoDUsoController {
 				SpeearthPersistentManager.instance().saveObject(imp3);
 			}
 			AppFacadeController.getInstance().setUtente(imp3);
-
 			Cliente cl = RegistroClienti.getInstance().cercaClienteDaCodiceTessera("123456");
 			if (cl == null) {
 				Date d = null;

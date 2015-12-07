@@ -17,6 +17,8 @@ public class LoginController implements ICasoDUsoController {
 
 	/**
 	 * Restituisce l'istanza del Controller
+	 * 
+	 * @return LoginController
 	 */
 	public static LoginController getInstance() {
 		if (instance == null)

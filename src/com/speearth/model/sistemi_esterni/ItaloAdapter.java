@@ -10,7 +10,7 @@ import com.speearth.model.core.Biglietto;
 import com.speearth.utility.Costanti;
 
 /**
- * Adapter per l'azienda di trasporto Italo
+ * Adapter per l'Azienda di Trasporto Italo
  */
 public class ItaloAdapter extends AziendaTrasportoAdapter {
 	/**
@@ -19,7 +19,7 @@ public class ItaloAdapter extends AziendaTrasportoAdapter {
 	private static ItaloAdapter instance;
 
 	/**
-	 * Restituisce la signola istanza della classe
+	 * Restituisce la singola istanza della Classe
 	 * 
 	 * @return ItaloAdapter
 	 */
@@ -33,7 +33,6 @@ public class ItaloAdapter extends AziendaTrasportoAdapter {
 	 * Costruttore di default
 	 */
 	protected ItaloAdapter() {
-
 	}
 
 	/**
@@ -45,10 +44,7 @@ public class ItaloAdapter extends AziendaTrasportoAdapter {
 	 */
 	@Override
 	protected Biglietto creaBigliettoDaJSON(JSONObject jsonBiglietto) throws JSONException {
-
 		Biglietto biglietto = new Biglietto();
-
-		// biglietto.setId(jsonBiglietto.optInt("id", 0));
 		biglietto.setFornitore(jsonBiglietto.optString("fornitore"));
 		biglietto.setPartenza(jsonBiglietto.optString("partenza"));
 		biglietto.setDestinazione(jsonBiglietto.optString("destinazione"));
@@ -57,8 +53,10 @@ public class ItaloAdapter extends AziendaTrasportoAdapter {
 					Costanti.FORMATO_DATA_ORA.parse(jsonBiglietto.optString("data_partenza_andata")));
 			biglietto.setDataPartenzaRitorno(
 					Costanti.FORMATO_DATA_ORA.parse(jsonBiglietto.optString("data_partenza_andata")));
-			biglietto.setDataArrivoAndata(Costanti.FORMATO_DATA_ORA.parse(jsonBiglietto.optString("data_arrivo_andata")));
-			biglietto.setDataArrivoRitorno(Costanti.FORMATO_DATA_ORA.parse(jsonBiglietto.optString("data_arrivo_andata")));
+			biglietto.setDataArrivoAndata(
+					Costanti.FORMATO_DATA_ORA.parse(jsonBiglietto.optString("data_arrivo_andata")));
+			biglietto.setDataArrivoRitorno(
+					Costanti.FORMATO_DATA_ORA.parse(jsonBiglietto.optString("data_arrivo_andata")));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -66,28 +64,28 @@ public class ItaloAdapter extends AziendaTrasportoAdapter {
 		biglietto.setNumeroBambini(jsonBiglietto.optInt("numero_bambini"));
 		biglietto.setPrezzo((float) jsonBiglietto.optInt("prezzo"));
 		biglietto.setMezzo(jsonBiglietto.optString("mezzo"));
-
 		return biglietto;
-
 	}
 
 	/**
-	 * Effettua l'autenticazione da parte dell'agenzia verso il sistema
+	 * Restituisce l'url di ricerca del Sistema Esterno
+	 * 
+	 * @return String
 	 */
 	@Override
-	public boolean autentica() {
-		// effettua il login sul sistema con le credenziali dell'agenzia
-		return true;
-	}
-
-	@Override
-	protected String getSearchUrl() {
+	protected String getUrlRicerca() {
 		return Costanti.URL_ITALO;
 	}
 
+	/**
+	 * Serializza i parametri per esseri inviati in una richiesta
+	 * 
+	 * @param parameters
+	 * @return String
+	 */
 	@Override
-	protected String serializeParameters(HashMap<String, String> parameters) {
-		String parametri_serializzati = super.serializeParameters(parameters);
+	protected String serializzaParametri(HashMap<String, String> parameters) {
+		String parametri_serializzati = super.serializzaParametri(parameters);
 
 		if (!parametri_serializzati.isEmpty())
 			parametri_serializzati += "&";

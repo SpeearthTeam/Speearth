@@ -19,27 +19,26 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 /**
- * Classe che rappresenta una schermata dell'Applicazione
+ * Classe che rappresenta una Schermata dell'Applicazione
  */
 public abstract class View implements Initializable {
 	/**
-	 * Attributo che serve alla gestione del caricamento delle risorse di JavaFX
+	 * Gestore del caricamento delle risorse di JavaFX
 	 */
 	private FXMLLoader loader;
 
 	/**
-	 * Attributo che contiene lo stage (che viene passato dal Main)
+	 * Stage (contenuto globale della Finestra)
 	 */
 	protected Stage stage;
 
 	/**
-	 * Attributo che sta a capo dell'albero con cui JavaFX gestisce gli elementi
-	 * grafici
+	 * Radice dell'albero degli elementi grafici
 	 */
 	protected Parent root;
 
 	/**
-	 * Attributo che associa la schermata di ogni view specifica
+	 * Scena (Schermata)
 	 */
 	protected Scene scene;
 
@@ -57,12 +56,11 @@ public abstract class View implements Initializable {
 	 * @throws IOException
 	 */
 	public View(Stage stage) throws IOException {
-		loader = new FXMLLoader();
 		String path = getResourceName();
-		loader = new FXMLLoader(getClass().getResource(path));
-		loader.setController(this);
+		this.loader = new FXMLLoader(getClass().getResource(path));
+		this.loader.setController(this);
 		this.stage = stage;
-		root = (Parent) loader.load();
+		this.root = (Parent) this.loader.load();
 		this.stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 			public void handle(WindowEvent we) {
 				Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_CHIUDI,
@@ -76,34 +74,32 @@ public abstract class View implements Initializable {
 	}
 
 	/**
-	 * Ritorna lo stage
+	 * Restituisce lo stage
 	 * 
-	 * @return Stage stage
+	 * @return Stage
 	 */
 	public Stage getStage() {
 		return this.stage;
 	}
 
 	/**
-	 * Imposta la schermata (scene) contenuta nella finestra (stage)
-	 * 
-	 * (Se già esiste vuol dire che ci troviamo in una SubView e non la crea;
-	 * non la deve creare.)
+	 * Imposta la Scena nello Stage. Nel caso in cui sia già presente (Subview)
+	 * non ne crea una nuova
 	 */
 	protected void setScene() {
-		if (scene == null) {
-			scene = new Scene(root, 1280, 720);
-		}
-		stage.setScene(scene);
-		scene.getStylesheets().add("ui/css/Custom.css");
+		if (this.scene == null)
+			this.scene = new Scene(this.root, Costanti.DIMENSIONE_LARGHEZZA_FINESTRA,
+					Costanti.DIMENSIONE_ALTEZZA_FINESTRA);
+		this.stage.setScene(this.scene);
+		this.scene.getStylesheets().add(Costanti.URL_STILE);
 	}
 
 	/**
-	 * Mostra la view
+	 * Mostra la View
 	 */
 	public void mostra() {
 		setScene();
-		stage.show();
+		this.stage.show();
 	}
 
 	/**
@@ -111,16 +107,16 @@ public abstract class View implements Initializable {
 	 */
 	public void mostraEAspetta() {
 		setScene();
-		stage.showAndWait();
+		this.stage.showAndWait();
 	}
 
 	/**
-	 * Ritorna l'oggetto root che sta a capo dell'albero
+	 * Restituisce la Root
 	 * 
-	 * @return Parent root
+	 * @return Parent
 	 */
 	public Parent getRoot() {
-		return loader.getRoot();
+		return this.loader.getRoot();
 	}
 
 	/**
@@ -147,25 +143,21 @@ public abstract class View implements Initializable {
 	}
 
 	/**
-	 * Massimizza la finestra della view.
+	 * Massimizza la Finestra della View
 	 */
 	public void massimizzaFinestra() {
 		Screen screen = Screen.getPrimary();
 		Rectangle2D bounds = screen.getVisualBounds();
-
-		stage.setX(bounds.getMinX());
-		stage.setY(bounds.getMinY());
-		stage.setWidth(bounds.getWidth());
-		stage.setHeight(bounds.getHeight());
-
-		stage.setMaximized(true);
+		this.stage.setX(bounds.getMinX());
+		this.stage.setY(bounds.getMinY());
+		this.stage.setWidth(bounds.getWidth());
+		this.stage.setHeight(bounds.getHeight());
+		this.stage.setMaximized(true);
 	}
 
 	/**
-	 * Aggiorna l'interfaccia grafica della subview
+	 * Aggiorna le informazioni mostrate dall'Interfaccia
 	 */
 	public void updateUI() {
-
 	}
-
 }

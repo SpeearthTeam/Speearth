@@ -21,6 +21,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
+/**
+ * Schermata della Homepage dell'Applicazione
+ */
 public class HomeView extends View {
 	@FXML
 	private Button bottone_prenota_servizio;
@@ -38,7 +41,7 @@ public class HomeView extends View {
 	private Label label_ruolo_utente;
 
 	/**
-	 * Costruttore di default
+	 * Costruttore
 	 * 
 	 * @param stage
 	 * @throws IOException

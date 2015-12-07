@@ -6,12 +6,12 @@ import java.util.HashMap;
 import com.speearth.model.transazioni.ITransazioniCommand;
 
 /**
- * Classe rappresentante un comando di ricerca alloggi verso un'impresa
- * ricettiva
+ * Classe rappresentante un comando di ricerca Alloggi verso un'Impresa
+ * Ricettiva
  */
 public class RicercaAlloggiCommand implements ITransazioniCommand {
 	/**
-	 * Oggetto che deve eseguire il comando
+	 * Receiver del Command
 	 */
 	private RicercaReceiver receiver;
 
@@ -32,7 +32,7 @@ public class RicercaAlloggiCommand implements ITransazioniCommand {
 	}
 
 	/**
-	 * Restituisce il receiver
+	 * Restituisce il Receiver
 	 * 
 	 * @return RicercaReceiver
 	 */
@@ -41,7 +41,7 @@ public class RicercaAlloggiCommand implements ITransazioniCommand {
 	}
 
 	/**
-	 * Imposta il receiver
+	 * Imposta il Receiver
 	 * 
 	 * @param receiver
 	 */
@@ -67,6 +67,11 @@ public class RicercaAlloggiCommand implements ITransazioniCommand {
 		this.parametri = parametri;
 	}
 
+	/**
+	 * Fa eseguire il Command al rispettivo Receiver
+	 * 
+	 * @throws IOException
+	 */
 	@Override
 	public void esegui() throws IOException {
 		this.receiver.ricercaAlloggi(this.parametri);

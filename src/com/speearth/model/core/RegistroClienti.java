@@ -14,7 +14,7 @@ import org.orm.PersistentException;
  */
 public class RegistroClienti {
 	/**
-	 * Istanza della classe
+	 * Unica istanza della Classe
 	 */
 	private static RegistroClienti instance;
 
@@ -25,7 +25,7 @@ public class RegistroClienti {
 	}
 
 	/**
-	 * Restituisce la singola istanza della classe
+	 * Restituisce la singola istanza della Classe
 	 * 
 	 * @return RegistroClienti
 	 */
@@ -61,23 +61,22 @@ public class RegistroClienti {
 	public ArrayList<Cliente> cercaClientiDaValore(String valore) {
 		try {
 			ClienteCriteria cliente = new ClienteCriteria();
-			
+
 			if (valore != null && !valore.isEmpty()) {
-				
+
 				Junction condizioni = Restrictions.disjunction();
 				String[] valori = valore.split(" ");
-				
-				for(String stringa : valori) {
-					condizioni
-						.add(Restrictions.like("nome", stringa, MatchMode.START))
-						.add(Restrictions.like("cognome", stringa, MatchMode.START))
-						.add(Restrictions.like("codiceTessera", stringa, MatchMode.START))
-						.add(Restrictions.like("codiceFiscale", stringa, MatchMode.ANYWHERE));
+
+				for (String stringa : valori) {
+					condizioni.add(Restrictions.like("nome", stringa, MatchMode.START))
+							.add(Restrictions.like("cognome", stringa, MatchMode.START))
+							.add(Restrictions.like("codiceTessera", stringa, MatchMode.START))
+							.add(Restrictions.like("codiceFiscale", stringa, MatchMode.ANYWHERE));
 				}
-				
+
 				cliente.add(condizioni);
 			}
-			
+
 			return new ArrayList<>(Arrays.asList(cliente.listCliente()));
 		} catch (PersistentException e) {
 			e.printStackTrace();
@@ -123,7 +122,7 @@ public class RegistroClienti {
 	}
 
 	/**
-	 * Modifica i dati di un Cliente
+	 * Modifica i dati di un Cliente già registrato nel Sistema
 	 * 
 	 * @param id
 	 * @param nome

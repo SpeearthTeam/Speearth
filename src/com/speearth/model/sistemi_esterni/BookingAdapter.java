@@ -12,14 +12,17 @@ import com.speearth.model.core.Alloggio;
 import com.speearth.model.core.Stanza;
 import com.speearth.utility.Costanti;
 
+/**
+ * Adapter per l'Impresa Ricettiva Booking
+ */
 public class BookingAdapter extends ImpresaRicettivaAdapter {
 	/**
-	 * Istanza della classe
+	 * Unica istanza della Classe
 	 */
 	private static BookingAdapter instance;
 
 	/**
-	 * Restituisce la signola istanza della classe
+	 * Restituisce la singola istanza della Classe
 	 * 
 	 * @return BookingAdapter
 	 */
@@ -33,7 +36,6 @@ public class BookingAdapter extends ImpresaRicettivaAdapter {
 	 * Costruttore di default
 	 */
 	protected BookingAdapter() {
-
 	}
 
 	/**
@@ -46,19 +48,13 @@ public class BookingAdapter extends ImpresaRicettivaAdapter {
 	@Override
 	protected Alloggio creaAlloggioDaJSON(JSONObject jsonBiglietto) throws JSONException {
 		Alloggio alloggio = new Alloggio();
-
 		ArrayList<Stanza> stanze = new ArrayList<>();
 		JSONArray rooms = jsonBiglietto.optJSONArray("rooms");
-
-		// System.out.println(rooms.toString());
-
 		for (int i = 0; i < rooms.length(); ++i) {
 			JSONObject room = rooms.getJSONObject(i);
 			Stanza stanza = new Stanza(room.getString("type"));
 			stanze.add(stanza);
 		}
-
-		// alloggio.setId(jsonBiglietto.optInt("id", 0));
 		alloggio.setFornitore(jsonBiglietto.optString("provider"));
 		alloggio.setLocalita(jsonBiglietto.optString("city"));
 		try {
@@ -69,31 +65,28 @@ public class BookingAdapter extends ImpresaRicettivaAdapter {
 		}
 		alloggio.setStanze(stanze);
 		alloggio.setPrezzo((float) jsonBiglietto.optInt("price"));
-
 		return alloggio;
 	}
 
 	/**
-	 * Effettua l'autenticazione da parte dell'agenzia verso il sistema
+	 * Restituisce l'url di ricerca del Sistema Esterno
 	 */
 	@Override
-	public boolean autentica() {
-		// effettua il login sul sistema con le credenziali dell'agenzia
-		return true;
-	}
-
-	@Override
-	protected String getSearchUrl() {
+	protected String getUrlRicerca() {
 		return Costanti.URL_BOOKING;
 	}
 
+	/**
+	 * Serializza i parametri per esseri inviati in una richiesta
+	 * 
+	 * @param parameters
+	 * @return String
+	 */
 	@Override
-	protected String serializeParameters(HashMap<String, String> parameters) {
-		String parametri_serializzati = super.serializeParameters(parameters);
-
+	protected String serializzaParametri(HashMap<String, String> parameters) {
+		String parametri_serializzati = super.serializzaParametri(parameters);
 		if (!parametri_serializzati.isEmpty())
 			parametri_serializzati += "&";
-
 		return parametri_serializzati + "action=search&category=accomodations";
 	}
 }

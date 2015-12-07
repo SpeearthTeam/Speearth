@@ -14,18 +14,22 @@ import com.speearth.model.transazioni.ricerca.RicercaReceiver;
  * Controller per l'estensione PrenotaBiglietto
  */
 public class PrenotaBigliettoController implements IFrammentoController {
-
 	/**
-	 * Unica istanza del controller
+	 * Unica istanza del Controller
 	 */
 	private static PrenotaBigliettoController instance;
 
 	/**
-	 * Memorizza i biglietti cercati. Serve alla View per recuperarli quando si
+	 * Memorizza i Biglietti cercati. Serve alla View per recuperarli quando si
 	 * torna indietro dalla schermata Riepilogo alla schermata Ricerca.
 	 */
 	private ArrayList<Biglietto> biglietti = new ArrayList<>();
 
+	/**
+	 * Memorizza i parametri di ricerca usati l'ultima volta. Serve alla View
+	 * per recuperarli quando si torna indietro dalla schermata Riepilogo alla
+	 * schermata Ricerca.
+	 */
 	private HashMap<String, String> parametri = new HashMap<>();
 
 	/**
@@ -36,6 +40,8 @@ public class PrenotaBigliettoController implements IFrammentoController {
 
 	/**
 	 * Restituisce l'istanza del controller
+	 * 
+	 * @return PrenotaBigliettoController
 	 */
 	public static PrenotaBigliettoController getInstance() {
 		if (instance == null)
@@ -97,7 +103,7 @@ public class PrenotaBigliettoController implements IFrammentoController {
 	public void clearParametri() {
 		this.parametri = new HashMap<>();
 	}
-	
+
 	/**
 	 * Ristabilisce lo stato di partenza del Caso D'Uso
 	 */
@@ -105,5 +111,4 @@ public class PrenotaBigliettoController implements IFrammentoController {
 		clearBiglietti();
 		clearParametri();
 	}
-
 }

@@ -13,6 +13,11 @@ import com.speearth.model.core.bonus.ScontoConcreteStrategy;
  */
 public class PrenotaServizioController implements ICasoDUsoController {
 	/**
+	 * Unica istanza del Controller
+	 */
+	private static PrenotaServizioController instance;
+
+	/**
 	 * Servizio in prenotazione
 	 */
 	private ServizioComponent servizio;
@@ -23,11 +28,6 @@ public class PrenotaServizioController implements ICasoDUsoController {
 	private Cliente cliente;
 
 	/**
-	 * Unica istanza del Controller
-	 */
-	private static PrenotaServizioController instance;
-
-	/**
 	 * Costruttore di default
 	 */
 	private PrenotaServizioController() {
@@ -35,6 +35,8 @@ public class PrenotaServizioController implements ICasoDUsoController {
 
 	/**
 	 * Restituisce l'istanza del Controller
+	 * 
+	 * @return PrenotaServizioController
 	 */
 	public static PrenotaServizioController getInstance() {
 		if (instance == null)
@@ -51,6 +53,8 @@ public class PrenotaServizioController implements ICasoDUsoController {
 
 	/**
 	 * Restituisce il Controller di PrenotaAlloggio
+	 * 
+	 * @return PrenotaAlloggioController
 	 */
 	public PrenotaAlloggioController getPrenotaAlloggioController() {
 		return PrenotaAlloggioController.getInstance();
@@ -58,6 +62,8 @@ public class PrenotaServizioController implements ICasoDUsoController {
 
 	/**
 	 * Restituisce il Controller di PrenotaPacchetto
+	 * 
+	 * @return PrenotaPacchettoController
 	 */
 	public PrenotaPacchettoController getPrenotaPacchettoController() {
 		return PrenotaPacchettoController.getInstance();
@@ -65,6 +71,8 @@ public class PrenotaServizioController implements ICasoDUsoController {
 	
 	/**
 	 * Restituisce il Controller di AcquistaOfferta
+	 * 
+	 * @return AcquistaOffertaController
 	 */
 	public AcquistaOffertaController getAcquistaOffertaController() {
 		return AcquistaOffertaController.getInstance();
@@ -72,6 +80,8 @@ public class PrenotaServizioController implements ICasoDUsoController {
 
 	/**
 	 * Restituisce il Controller di GestisciClienti
+	 * 
+	 * @return GestisciClientiController
 	 */
 	public GestisciClientiController getGestisciClientiController() {
 		return GestisciClientiController.getInstance();
@@ -79,7 +89,7 @@ public class PrenotaServizioController implements ICasoDUsoController {
 
 	/**
 	 * Identifica un Cliente dallo storico dell'Agenzia tramite il codice della
-	 * sua tessera
+	 * sua Tessera
 	 * 
 	 * @param i
 	 * @return Cliente

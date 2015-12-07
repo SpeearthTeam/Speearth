@@ -9,9 +9,8 @@ import org.orm.PersistentException;
  * Classe addetta alla gestione delle Vendite
  */
 public class RegistroVendite {
-
 	/**
-	 * Istanza della classe
+	 * Unica istanza della Classe
 	 */
 	private static RegistroVendite instance;
 
@@ -19,11 +18,10 @@ public class RegistroVendite {
 	 * Costruttore di default
 	 */
 	protected RegistroVendite() {
-
 	}
 
 	/**
-	 * Restituisce la singola istanza della classe
+	 * Restituisce la singola istanza della Classe
 	 * 
 	 * @return RegistroVendite
 	 */
@@ -87,5 +85,4 @@ public class RegistroVendite {
 		}
 		return null;
 	}
-
 }

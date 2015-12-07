@@ -8,14 +8,14 @@ import com.speearth.model.core.ServizioComponent;
 
 public class AcquistaOffertaController implements IFrammentoController {
 	/**
-	 * Unica istanza del controller
+	 * Unica istanza del Controller
 	 */
 	private static AcquistaOffertaController instance;
 
 	/**
-	 * Memorizza i servizi creati nel pacchetto. Serve alla View per recuperarli
-	 * quando si torna indietro dalla schermata Riepilogo alla schermata
-	 * Ricerca.
+	 * Memorizza i Servizi aggiunti al Pacchetto. Serve alla View per
+	 * recuperarli quando si torna indietro dalla schermata Riepilogo alla
+	 * schermata Ricerca.
 	 */
 	private ArrayList<ServizioComponent> pacchetto = new ArrayList<>();
 
@@ -26,7 +26,9 @@ public class AcquistaOffertaController implements IFrammentoController {
 	}
 
 	/**
-	 * Restituisce l'istanza del controller
+	 * Restituisce l'istanza del Controller
+	 * 
+	 * @return AcquistaOffertaController
 	 */
 	public static AcquistaOffertaController getInstance() {
 		if (instance == null)
@@ -34,12 +36,18 @@ public class AcquistaOffertaController implements IFrammentoController {
 		return instance;
 	}
 
+	/**
+	 * Cerca un'Offerta all'interno del Catalogo dell'Agenzia secondo un valore
+	 * 
+	 * @param valore
+	 * @return ArrayList<Offerta>
+	 */
 	public ArrayList<Offerta> cercaOfferta(String valore) {
 		return AgenziaFacade.getInstance().getCatalogoOfferte().cercaOfferta(valore);
 	}
 
 	/**
-	 * Serve alla View per recuperare i servizi contenuti nell'Offerta quando si
+	 * Serve alla View per recuperare i Servizi contenuti nell'Offerta quando si
 	 * torna indietro dalla schermata Riepilogo alla schermata Ricerca.
 	 * 
 	 * @return ArrayList<ServizioComponent>

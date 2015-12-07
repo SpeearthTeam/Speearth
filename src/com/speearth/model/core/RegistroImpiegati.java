@@ -16,7 +16,7 @@ import com.speearth.controller.AppFacadeController;
  */
 public class RegistroImpiegati {
 	/**
-	 * Istanza della classe
+	 * Unica istanza della Classe
 	 */
 	private static RegistroImpiegati instance;
 
@@ -27,7 +27,7 @@ public class RegistroImpiegati {
 	}
 
 	/**
-	 * Restituisce la singola istanza della classe
+	 * Restituisce la singola istanza della Classe
 	 * 
 	 * @return RegistroClienti
 	 */
@@ -99,7 +99,7 @@ public class RegistroImpiegati {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Autentica l'Utente all'interno del Sistema
 	 * 
@@ -143,7 +143,7 @@ public class RegistroImpiegati {
 	}
 
 	/**
-	 * Modifica i dati di un Impiegato
+	 * Modifica i dati di un Impiegato già registrato nel Sistema
 	 * 
 	 * @param username
 	 * @param password
@@ -190,5 +190,4 @@ public class RegistroImpiegati {
 		}
 		return false;
 	}
-
 }

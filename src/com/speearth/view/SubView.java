@@ -10,7 +10,7 @@ import javafx.stage.Stage;
  */
 public abstract class SubView extends View {
 	/**
-	 * Costruttore della SubView
+	 * Costruttore
 	 * 
 	 * @param stage
 	 * @throws IOException

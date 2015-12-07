@@ -5,12 +5,12 @@ import com.speearth.utility.Costanti;
 import com.speearth.view.LoginView;
 
 import javafx.application.Application;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+/**
+ * Classe di lancio dell'Applicazione
+ */
 public class Main extends Application {
 	/**
 	 * Avvia l'Applicazione
@@ -23,6 +23,11 @@ public class Main extends Application {
 		launch(args);
 	}
 
+	/**
+	 * Lancia l'Interfaccia grafica
+	 * 
+	 * @param primaryStage
+	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.getIcons().add(new Image(this.getClass().getResourceAsStream(Costanti.ICONA_SPEEARTH)));

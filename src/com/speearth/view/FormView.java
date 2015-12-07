@@ -5,19 +5,27 @@ import java.util.HashMap;
 
 import javafx.stage.Stage;
 
+/**
+ * Classe che modella una generica Form
+ */
 public abstract class FormView extends SubView {
-
+	/**
+	 * Costruttore
+	 * 
+	 * @param stage
+	 * @throws IOException
+	 */
 	public FormView(Stage stage) throws IOException {
 		super(stage);
 	}
 
 	/**
-	 * Valida gli input della form
+	 * Valida gli input della Form
 	 */
 	public abstract boolean validate();
 
 	/**
-	 * Resituisce i parametri della form
+	 * Resituisce i parametri della Form
 	 */
 	public abstract HashMap<String, String> getParameters();
 
@@ -28,5 +36,4 @@ public abstract class FormView extends SubView {
 	 * @throws IOException
 	 */
 	public abstract void send(HashMap<String, String> parameters) throws IOException;
-
 }

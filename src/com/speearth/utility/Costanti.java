@@ -8,8 +8,10 @@ import com.speearth.model.sistemi_esterni.ImpresaRicettivaAdapter;
 import com.speearth.model.sistemi_esterni.ItaloAdapter;
 import com.speearth.model.sistemi_esterni.TrenitaliaAdapter;
 
+/**
+ * Classe che raccoglie tutte le informazioni costanti usate dall'Applicazione
+ */
 public final class Costanti {
-
 	/**
 	 * Formato della Data con orario
 	 */
@@ -156,6 +158,11 @@ public final class Costanti {
 	public final static String MESSAGGIO_DEFINIRE_DATA_ARRIVO = "Definire una Data di Arrivo.";
 	public final static String MESSAGGIO_DEFINIRE_DATA_PARTENZA = "Definire una Data di Partenza.";
 	public final static String MESSAGGIO_DATA_ARRIVO_NON_VALIDA = "Data di Arrivo non valida.";
+	
+	/**
+	 * Fogli di Stile
+	 */
+	public final static String URL_STILE = "ui/css/Custom.css";
 
 	/**
 	 * Icone
@@ -192,6 +199,8 @@ public final class Costanti {
 	public final static double DIMENSIONE_ALTEZZA_POPUP_CLIENTE = 360.0;
 	public final static double DIMENSIONE_LARGHEZZA_POPUP_IMPIEGATO = 420.0;
 	public final static double DIMENSIONE_ALTEZZA_POPUP_IMPIEGATO = 620.0;
+	public final static double DIMENSIONE_LARGHEZZA_FINESTRA = 1280;
+	public final static double DIMENSIONE_ALTEZZA_FINESTRA = 720;
 
 	/**
 	 * Stringhe generiche

@@ -20,6 +20,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+/**
+ * Schermata iniziale dell'Applicazione
+ */
 public class LoginView extends View {
 	@FXML
 	private BorderPane login_pane;
@@ -31,7 +34,7 @@ public class LoginView extends View {
 	private Button bottone_entra;
 
 	/**
-	 * Costruttore di default
+	 * Costruttore
 	 * 
 	 * @param stage
 	 * @throws IOException

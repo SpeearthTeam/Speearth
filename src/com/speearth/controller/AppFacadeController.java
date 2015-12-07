@@ -7,7 +7,7 @@ import com.speearth.model.core.Impiegato;
  */
 public class AppFacadeController {
 	/**
-	 * Istanza della Classe
+	 * Unica istanza del Controller
 	 */
 	private static AppFacadeController instance;
 
@@ -17,7 +17,13 @@ public class AppFacadeController {
 	private Impiegato utente;
 
 	/**
-	 * Restituisce la singola istanza della classe
+	 * Costruttore di default
+	 */
+	private AppFacadeController() {
+	}
+
+	/**
+	 * Restituisce la singola istanza del Controller
 	 * 
 	 * @return AppFacadeController
 	 */
@@ -25,12 +31,6 @@ public class AppFacadeController {
 		if (instance == null)
 			instance = new AppFacadeController();
 		return instance;
-	}
-
-	/**
-	 * Costruttore di default
-	 */
-	private AppFacadeController() {
 	}
 
 	/**
@@ -50,9 +50,11 @@ public class AppFacadeController {
 	public void setUtente(Impiegato utente) {
 		this.utente = utente;
 	}
-	
+
 	/**
 	 * Restituisce il Controller di Login
+	 * 
+	 * @return LoginController
 	 */
 	public LoginController getLoginController() {
 		return LoginController.getInstance();
@@ -60,6 +62,8 @@ public class AppFacadeController {
 
 	/**
 	 * Restituisce il Controller di PrenotaServizio
+	 * 
+	 * @return PrenotaServizioController
 	 */
 	public PrenotaServizioController getPrenotaServizioController() {
 		return PrenotaServizioController.getInstance();
@@ -67,6 +71,8 @@ public class AppFacadeController {
 
 	/**
 	 * Restituisce il Controller di CreaOfferta
+	 * 
+	 * @return CreaOffertaController
 	 */
 	public CreaOffertaController getCreaOffertaController() {
 		return CreaOffertaController.getInstance();
@@ -74,6 +80,8 @@ public class AppFacadeController {
 
 	/**
 	 * Restituisce il Controller di GestisciClienti
+	 * 
+	 * @return GestisciClientiController
 	 */
 	public GestisciClientiController getGestisciClientiController() {
 		return GestisciClientiController.getInstance();
@@ -81,6 +89,8 @@ public class AppFacadeController {
 
 	/**
 	 * Restituisce il Controller di GestisciImpiegati
+	 * 
+	 * @return GestisciImpiegatiController
 	 */
 	public GestisciImpiegatiController getGestisciImpiegatiController() {
 		return GestisciImpiegatiController.getInstance();
@@ -88,6 +98,8 @@ public class AppFacadeController {
 
 	/**
 	 * Restituisce il Controller del Caso d'Uso di Startup
+	 * 
+	 * @return StartupController
 	 */
 	public StartupController getStartupController() {
 		return StartupController.getInstance();

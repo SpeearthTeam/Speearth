@@ -10,7 +10,7 @@ import com.speearth.model.transazioni.ITransazioniCommand;
  */
 public class AgenziaFacade {
 	/**
-	 * Istanza della classe
+	 * Unica istanza della Classe
 	 */
 	private static AgenziaFacade instance;
 
@@ -52,7 +52,7 @@ public class AgenziaFacade {
 	}
 
 	/**
-	 * Restituisce la singola istanza della classe
+	 * Restituisce la singola istanza della Classe
 	 * 
 	 * @return AgenziaFacade
 	 */
@@ -109,5 +109,4 @@ public class AgenziaFacade {
 		this.comandi.add(comando);
 		this.comandi.remove(0).esegui();
 	}
-
 }

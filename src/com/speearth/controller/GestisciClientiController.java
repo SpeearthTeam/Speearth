@@ -23,6 +23,8 @@ public class GestisciClientiController implements ICasoDUsoController {
 
 	/**
 	 * Restituisce l'istanza del Controller
+	 * 
+	 * @return GestisciClientiController
 	 */
 	public static GestisciClientiController getInstance() {
 		if (instance == null)
@@ -55,7 +57,7 @@ public class GestisciClientiController implements ICasoDUsoController {
 	}
 
 	/**
-	 * Modifica i dati di un Cliente
+	 * Modifica i dati di un Cliente già registrato nel Sistema
 	 * 
 	 * @param id
 	 * @param nome

@@ -6,7 +6,7 @@ import com.speearth.model.core.ServizioComponent;
 import com.speearth.model.core.Vendita;
 
 /**
- * Strategy per il bonus
+ * Interfaccia che rappresenta una Strategy per il Bonus
  */
 public interface IBonusStrategy {
 	/**
@@ -23,5 +23,4 @@ public interface IBonusStrategy {
 	 * @param bonus
 	 */
 	public void applica(ServizioComponent servizio, IBonus bonus);
-
 }

@@ -14,7 +14,6 @@ import com.speearth.model.core.ServizioComponent;
  * l'Agenzia
  */
 public abstract class AziendaTrasportoAdapter extends SistemaEsterno {
-
 	/**
 	 * Crea un Biglietto da un oggetto JSON
 	 * 
@@ -24,17 +23,21 @@ public abstract class AziendaTrasportoAdapter extends SistemaEsterno {
 	 */
 	protected abstract Biglietto creaBigliettoDaJSON(JSONObject jsonBiglietto) throws JSONException;
 
+	/**
+	 * Processa i Servizi da una risposta http
+	 * 
+	 * @param response
+	 * @return ArrayList<ServizioComponent>
+	 */
 	@Override
-	protected ArrayList<ServizioComponent> processServicesFromResponse(String response) {
+	protected ArrayList<ServizioComponent> processaServiziDaRisposta(String response) {
 		ArrayList<ServizioComponent> biglietti = new ArrayList<ServizioComponent>();
 		if (response != null) {
 			JSONArray jsonArray = new JSONArray(response);
-
 			for (int i = 0; i < jsonArray.length(); i++) {
 				biglietti.add(creaBigliettoDaJSON(jsonArray.getJSONObject(i)));
 			}
 		}
-
 		return biglietti;
 	}
 }

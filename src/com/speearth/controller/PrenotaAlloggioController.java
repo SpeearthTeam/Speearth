@@ -25,6 +25,11 @@ public class PrenotaAlloggioController implements IFrammentoController {
 	 */
 	private ArrayList<Alloggio> alloggi = new ArrayList<>();
 
+	/**
+	 * Memorizza i parametri di ricerca usati l'ultima volta. Serve alla View
+	 * per recuperarli quando si torna indietro dalla schermata Riepilogo alla
+	 * schermata Ricerca.
+	 */
 	private HashMap<String, String> parametri = new HashMap<>();
 
 	/**
@@ -67,7 +72,7 @@ public class PrenotaAlloggioController implements IFrammentoController {
 	}
 
 	/**
-	 * Serve alla View per recuperare gli alloggi quando si torna indietro dalla
+	 * Serve alla View per recuperare gli Alloggi quando si torna indietro dalla
 	 * schermata Riepilogo alla schermata Ricerca.
 	 * 
 	 * @return alloggi
@@ -106,5 +111,4 @@ public class PrenotaAlloggioController implements IFrammentoController {
 		clearAlloggi();
 		clearParametri();
 	}
-
 }

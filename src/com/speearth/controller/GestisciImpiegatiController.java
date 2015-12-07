@@ -23,6 +23,8 @@ public class GestisciImpiegatiController implements ICasoDUsoController {
 
 	/**
 	 * Restituisce l'istanza del Controller
+	 * 
+	 * @return GestisciImpiegatiController
 	 */
 	public static GestisciImpiegatiController getInstance() {
 		if (instance == null)
@@ -70,7 +72,7 @@ public class GestisciImpiegatiController implements ICasoDUsoController {
 	}
 
 	/**
-	 * Modifica i dati di un Impiegato
+	 * Modifica i dati di un Impiegato già registrato nel Sistema
 	 * 
 	 * @param username
 	 * @param password

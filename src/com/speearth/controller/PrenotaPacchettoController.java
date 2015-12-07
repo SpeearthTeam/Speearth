@@ -8,14 +8,13 @@ import com.speearth.model.core.ServizioComponent;
  * Controller per l'Estensione PrenotaPacchetto
  */
 public class PrenotaPacchettoController implements IFrammentoController {
-
 	/**
 	 * Unica istanza del controller
 	 */
 	private static PrenotaPacchettoController instance;
 
 	/**
-	 * Memorizza i servizi creati nel pacchetto. Serve alla View per recuperarli
+	 * Memorizza i Servizi creati nel Pacchetto. Serve alla View per recuperarli
 	 * quando si torna indietro dalla schermata Riepilogo alla schermata
 	 * Ricerca.
 	 */
@@ -28,7 +27,9 @@ public class PrenotaPacchettoController implements IFrammentoController {
 	}
 
 	/**
-	 * Restituisce l'istanza del controller
+	 * Restituisce l'istanza del Controller
+	 * 
+	 * @return PrenotaPacchettoController
 	 */
 	public static PrenotaPacchettoController getInstance() {
 		if (instance == null)
@@ -38,6 +39,8 @@ public class PrenotaPacchettoController implements IFrammentoController {
 
 	/**
 	 * Restituisce il Controller di PrenotaBiglietto
+	 * 
+	 * @return PrenotaBigliettoController
 	 */
 	public PrenotaBigliettoController getPrenotaBigliettoController() {
 		return PrenotaBigliettoController.getInstance();
@@ -45,13 +48,15 @@ public class PrenotaPacchettoController implements IFrammentoController {
 
 	/**
 	 * Restituisce il Controller di PrenotaAlloggio
+	 * 
+	 * @return PrenotaAlloggioController
 	 */
 	public PrenotaAlloggioController getPrenotaAlloggioController() {
 		return PrenotaAlloggioController.getInstance();
 	}
 
 	/**
-	 * Serve alla View per recuperare i servizi contenuti nel pacchetto quando
+	 * Serve alla View per recuperare i servizi contenuti nel Pacchetto quando
 	 * si torna indietro dalla schermata Riepilogo alla schermata Ricerca.
 	 * 
 	 * @return ArrayList<ServizioComponent>
@@ -77,5 +82,4 @@ public class PrenotaPacchettoController implements IFrammentoController {
 		getPrenotaAlloggioController().reset();
 		getPrenotaBigliettoController().reset();
 	}
-
 }

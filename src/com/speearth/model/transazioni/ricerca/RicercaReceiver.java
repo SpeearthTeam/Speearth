@@ -13,22 +13,21 @@ import com.speearth.model.sistemi_esterni.ImpresaRicettivaAdapter;
 import com.speearth.model.sistemi_esterni.SistemaEsternoFactory;
 
 /**
- * Receiver del sistema di ricerca
+ * Receiver dei Command di ricerca
  */
 public class RicercaReceiver {
-
 	/**
-	 * Istanza della classe
+	 * Unica istanza della Classe
 	 */
 	private static RicercaReceiver instance;
 
 	/**
-	 * Risultato del comando Ricerca
+	 * Risultato del comando di Ricerca
 	 */
 	private ArrayList<ServizioComponent> risultato_ricerca;
 
 	/**
-	 * Restituisce la singola istanza della classe
+	 * Restituisce la singola istanza della Classe
 	 * 
 	 * @return RicercaReceiver
 	 */
@@ -63,25 +62,20 @@ public class RicercaReceiver {
 	 */
 	public ArrayList<ServizioComponent> ricercaAlloggi(HashMap<String, String> parametri) throws IOException {
 		this.svuotaRisultatiRicerca();
-
 		ArrayList<ImpresaRicettivaAdapter> imprese_ricettive = SistemaEsternoFactory.getInstance()
 				.getImpreseRicettive();
-
 		for (ImpresaRicettivaAdapter impresa_ricettiva : imprese_ricettive) {
-
 			ArrayList<ServizioComponent> servizi;
 			servizi = impresa_ricettiva.ricerca(parametri);
-
 			for (ServizioComponent servizio : servizi) {
 				this.risultato_ricerca.add((Alloggio) servizio);
 			}
 		}
-
 		return this.risultato_ricerca;
 	}
 
 	/**
-	 * Effettua una ricerca di biglietti secondo i parametri
+	 * Effettua una ricerca di Biglietti secondo i parametri
 	 * 
 	 * @param parametri
 	 * @return ArrayList<Biglietto>
@@ -89,20 +83,15 @@ public class RicercaReceiver {
 	 */
 	public ArrayList<ServizioComponent> ricercaBiglietti(HashMap<String, String> parametri) throws IOException {
 		this.svuotaRisultatiRicerca();
-
 		ArrayList<AziendaTrasportoAdapter> aziende_trasporto = SistemaEsternoFactory.getInstance()
 				.getAziendeDiTrasporto();
-
 		for (AziendaTrasportoAdapter azienda_trasporto : aziende_trasporto) {
-
 			ArrayList<ServizioComponent> servizi;
 			servizi = azienda_trasporto.ricerca(parametri);
-
 			for (ServizioComponent servizio : servizi) {
 				this.risultato_ricerca.add((Biglietto) servizio);
 			}
 		}
-
 		return this.risultato_ricerca;
 	}
 
@@ -112,5 +101,4 @@ public class RicercaReceiver {
 	private void svuotaRisultatiRicerca() {
 		this.risultato_ricerca.clear();
 	}
-
 }

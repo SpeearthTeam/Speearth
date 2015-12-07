@@ -39,6 +39,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
+/**
+ * Schermata di creazione di una nuova Offerta
+ */
 public class CreaOffertaView extends View {
 	@FXML
 	private Button bottone_torna_alla_home;
@@ -67,12 +70,25 @@ public class CreaOffertaView extends View {
 	@FXML
 	private ListView<Alloggio> lista_risultati_alloggi;
 
+	/**
+	 * ObservableList di Servizi da incorporare nella Listview
+	 */
 	private ObservableList<ServizioComponent> lista_servizi = FXCollections.observableArrayList();
 
+	/**
+	 * Form di ricerca di Biglietti
+	 */
 	private RicercaBigliettoForm ricerca_biglietto_form;
 
+	/**
+	 * Form di ricerca di Alloggi
+	 */
 	private RicercaAlloggioForm ricerca_alloggio_form;
 
+	/**
+	 * TableColumn contenente i bottoni per la cancellazione di Servizi
+	 * dall'Offerta
+	 */
 	private TableColumn<ServizioComponent, Boolean> cancella_servizio_col = new TableColumn<>("Cancella");
 
 	/**
@@ -83,10 +99,9 @@ public class CreaOffertaView extends View {
 	 */
 	public CreaOffertaView(Stage stage) throws IOException {
 		super(stage);
-		//massimizzaFinestra();
 		AppFacadeController.getInstance().getCreaOffertaController().setOfferta(new Offerta());
-		getStage().setTitle(Costanti.TITOLO_CREA_OFFERTA);
-		getRoot().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO,
+		this.getStage().setTitle(Costanti.TITOLO_CREA_OFFERTA);
+		this.getRoot().addEventHandler(EventoSelezionaServizio.SERVIZIO_SELEZIONATO,
 				new EventHandler<EventoSelezionaServizio>() {
 					@Override
 					public void handle(EventoSelezionaServizio event) {
@@ -98,16 +113,16 @@ public class CreaOffertaView extends View {
 							ServizioComponent servizio = event.getServizio();
 							AppFacadeController.getInstance().getCreaOffertaController().getOfferta()
 									.aggiungi(servizio);
-							lista_servizi.add(servizio);
+							CreaOffertaView.this.lista_servizi.add(servizio);
 						}
 					}
 				});
-		impostaRisultati();
-		initializeServiceTable();
+		this.impostaRisultati();
+		this.initializeServiceTable();
 	}
 
 	/**
-	 * Inizializza la classe
+	 * Inizializza la View
 	 * 
 	 * @param arg0
 	 * @param arg1
@@ -116,12 +131,10 @@ public class CreaOffertaView extends View {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		this.lista_risultati_biglietti.setCellFactory(param -> new BigliettoListItem(getStage()));
 		this.lista_risultati_alloggi.setCellFactory(param -> new AlloggioListItem(getStage()));
-
 		try {
 			this.ricerca_biglietto_form = new RicercaBigliettoForm(getStage());
 			this.ricerca_biglietto_form.bind(lista_risultati_biglietti);
 			this.biglietto_form_container.getChildren().add(this.ricerca_biglietto_form.getRoot());
-
 			this.ricerca_alloggio_form = new RicercaAlloggioForm(getStage());
 			this.ricerca_alloggio_form.bind(this.lista_risultati_alloggi);
 			this.alloggio_form_container.getChildren().add(this.ricerca_alloggio_form.getRoot());
@@ -131,9 +144,8 @@ public class CreaOffertaView extends View {
 	}
 
 	/**
-	 * Metodo che serve a caricare i biglietti e gli alloggi salvati nel
-	 * controller alla view, dalla schermata Riepilogo a Ricerca, altrimenti
-	 * andrebbero persi
+	 * Carica i Biglietti e gli Alloggi salvati nel Controller nella View per
+	 * evitarne la perdita durante un cambio di Schermata
 	 */
 	private void impostaRisultati() {
 		// ottengo i biglietti dal controller
@@ -165,77 +177,63 @@ public class CreaOffertaView extends View {
 		// pacchetto e la ObservableList
 		if (!offerta.isEmpty()) {
 			AppFacadeController.getInstance().getCreaOffertaController().getOfferta().setListaServizi(offerta);
-			lista_servizi.addAll(offerta);
+			this.lista_servizi.addAll(offerta);
 		}
 	}
 
 	/**
-	 * Inizializza la tabella dei servizi scelti
+	 * Inizializza la Tabella dei Servizi scelti
 	 */
 	public void initializeServiceTable() {
 		this.tipo_servizio_col.setCellValueFactory(
 				new Callback<TableColumn.CellDataFeatures<ServizioComponent, String>, ObservableValue<String>>() {
-
 					@Override
 					public ObservableValue<String> call(CellDataFeatures<ServizioComponent, String> param) {
 						ServizioComponent servizio = param.getValue();
 						SimpleStringProperty tipo = null;
-
 						if (servizio instanceof Alloggio)
 							tipo = new SimpleStringProperty("Alloggio");
 						else if (servizio instanceof Biglietto)
 							tipo = new SimpleStringProperty("Biglietto");
-
 						return tipo;
 					}
 				});
-
 		this.fornitore_servizio_col.setCellValueFactory(
 				new Callback<TableColumn.CellDataFeatures<ServizioComponent, String>, ObservableValue<String>>() {
-
 					@Override
 					public ObservableValue<String> call(CellDataFeatures<ServizioComponent, String> param) {
 						ServizioComponent servizio = param.getValue();
 						SimpleStringProperty fornitore = null;
-
 						if (servizio instanceof Alloggio)
 							fornitore = new SimpleStringProperty(((Alloggio) servizio).getFornitore());
 						else if (servizio instanceof Biglietto)
 							fornitore = new SimpleStringProperty(((Biglietto) servizio).getFornitore());
-
 						return fornitore;
 					}
 				});
-
 		this.prezzo_servizio_col.setCellValueFactory(
 				new Callback<TableColumn.CellDataFeatures<ServizioComponent, String>, ObservableValue<String>>() {
-
 					@Override
 					public ObservableValue<String> call(CellDataFeatures<ServizioComponent, String> param) {
 						ServizioComponent servizio = param.getValue();
 						SimpleStringProperty prezzo = null;
-
 						if (servizio instanceof Alloggio)
 							prezzo = new SimpleStringProperty(Float.toString(((Alloggio) servizio).getPrezzo()));
 						else if (servizio instanceof Biglietto)
 							prezzo = new SimpleStringProperty(Float.toString(((Biglietto) servizio).getPrezzo()));
-
 						return prezzo;
 					}
 				});
-
 		// aggiungo la colonna per i pulsanti Cancella
 		this.tabella_pacchetto.getColumns().add(this.cancella_servizio_col);
 		// aggiungo il pulsante alla tabella
 		this.cancella_servizio_col.setCellFactory(
 				new Callback<TableColumn<ServizioComponent, Boolean>, TableCell<ServizioComponent, Boolean>>() {
-
 					@Override
 					public TableCell<ServizioComponent, Boolean> call(TableColumn<ServizioComponent, Boolean> p) {
 						return new ButtonCell();
 					}
 				});
-
 		this.lista_servizi
 				.setAll(AppFacadeController.getInstance().getCreaOffertaController().getOfferta().getListaServizi());
 		this.tabella_pacchetto.setItems(this.lista_servizi);
@@ -307,31 +305,35 @@ public class CreaOffertaView extends View {
 		return Costanti.FXML_CREA_OFFERTA;
 	}
 
-	// Definisco la classe privata ButtonCell
+	/**
+	 * Classe privata ButtonCell
+	 */
 	private class ButtonCell extends TableCell<ServizioComponent, Boolean> {
 		final Button cellButton = new Button("Cancella");
 
+		/**
+		 * Costruttore
+		 */
 		ButtonCell() {
 			// Azione associata all'event handler della pressione del Button
 			// Cancella
-			cellButton.setOnAction(new EventHandler<ActionEvent>() {
-
+			this.cellButton.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				public void handle(ActionEvent t) {
 					// Recupero il servizio relativo all'indice di riga
 					ServizioComponent servizio = ButtonCell.this.getTableView().getItems()
 							.get(ButtonCell.this.getIndex());
-
 					// Rimuovo il servizio dalla lista servizi
-					lista_servizi.remove(servizio);
+					CreaOffertaView.this.lista_servizi.remove(servizio);
 					// Rimuovo il servizio dal servizio in prenotazione
 					AppFacadeController.getInstance().getCreaOffertaController().getOfferta().rimuovi(servizio);
-
 				}
 			});
 		}
 
-		// Visualizzo il Button se la riga non è vuota
+		/**
+		 * Mostra il Button se la riga non è vuota
+		 */
 		@Override
 		protected void updateItem(Boolean t, boolean empty) {
 			super.updateItem(t, empty);
@@ -342,5 +344,4 @@ public class CreaOffertaView extends View {
 			}
 		}
 	}
-
 }
