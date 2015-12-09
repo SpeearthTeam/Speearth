@@ -1,19 +1,17 @@
-.background{
-	-fx-background-color: #006ABC;
-}
-	
-
+/* .background{
+	-fx-background-color: #e4f2f4;
+}*/
 .button{
-	-fx-background-color: #06376D;
+	-fx-background-color: #1859A1;
 	-fx-text-fill: #E4F2F4;
-	
 	}
 .button:hover{
 	-fx-background-color: #006ABC;
 	}
-/*#ButtonConf:focused{
-	-fx-background-color: #99F5FB;
-	} */	
+/*.button:pressed{
+	-fx-background-color: #ffffff;
+	-fx-text-fill:#006ABC;
+	} 	 */
  
 
 #labelHome{ 
@@ -22,8 +20,9 @@
 }
 
 #sfondoHome{
-	-fx-background-color: #CFFCFE;
-}
+	-fx-background-color: #e4f2f4;
+} 
+
 .first-titled-pane:expanded .title, .first-titled-pane:collapsed .title{
 	-fx-background-color: #006ABC;
 	-fx-text-fill: #E4F2F4;
@@ -32,7 +31,9 @@
 .first-titled-pane:collapsed .title .text{
 	-fx-text-fill: #E4F2F4;
 }
-
+.table-view:row-selection .column-header-background{ 
+	-fx-background-color: #006ABC;
+	-fx-text-fill: #E4F2F4;}
 
 .table-view:row-selection .column-header-background .nested-column-header .table-column .label,.table-view:row-selection .column-header-background .filler{
 	-fx-background-color: #006ABC;
@@ -62,3 +63,21 @@
 	-fx-font-weight: bold;
 }
 
+.choice-box{
+	-fx-background-color: #1859A1;	
+}
+
+.choice-box > .label{
+	-fx-text-fill: #ffffff ;
+}
+
+.choice-box .open-button .arrow{
+	-fx-background-color: #ffffff ;
+}
+.date-picker:editable .arrow-button{
+	-fx-background-color: #1859A1;
+}
+
+.date-picker:editable .arrow-button .arrow{
+	-fx-background-color: #ffffff ;
+}
