@@ -59,6 +59,8 @@ public abstract class View implements Initializable {
 		this.loader = new FXMLLoader(getClass().getResource(path));
 		this.loader.setController(this);
 		this.stage = stage;
+		if (this.stage.isMaximized())
+			this.massimizzaFinestra();
 		this.root = (Parent) this.loader.load();
 		this.stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 			public void handle(WindowEvent we) {
@@ -144,14 +146,13 @@ public abstract class View implements Initializable {
 	/**
 	 * Massimizza la Finestra della View
 	 */
-	public void massimizzaFinestra() {
+	private void massimizzaFinestra() {
 		Screen screen = Screen.getPrimary();
 		Rectangle2D bounds = screen.getVisualBounds();
 		this.stage.setX(bounds.getMinX());
 		this.stage.setY(bounds.getMinY());
 		this.stage.setWidth(bounds.getWidth());
 		this.stage.setHeight(bounds.getHeight());
-		this.stage.setMaximized(true);
 	}
 
 	/**
