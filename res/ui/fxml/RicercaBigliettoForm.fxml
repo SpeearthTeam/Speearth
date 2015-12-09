@@ -13,7 +13,7 @@
             <GridPane hgap="15.0" layoutX="13.0" layoutY="38.0" vgap="25.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="91.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="214.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="217.0" />
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
@@ -25,13 +25,13 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="input_partenza" layoutX="104.0" layoutY="38.0" prefHeight="25.0" prefWidth="235.0" GridPane.columnIndex="1" />
+                  <TextField fx:id="input_partenza" layoutX="104.0" layoutY="38.0" GridPane.columnIndex="1" />
                   <Label layoutX="13.0" layoutY="91.0" text="Destinazione" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="input_destinazione" layoutX="104.0" layoutY="92.0" prefHeight="25.0" prefWidth="235.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="input_destinazione" layoutX="104.0" layoutY="92.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <GridPane hgap="15.0" layoutX="13.0" layoutY="144.0" vgap="25.0">
