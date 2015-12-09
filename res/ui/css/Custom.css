@@ -8,6 +8,13 @@
 	-fx-text-fill: #E4F2F4;
 	
 	}
+.button:hover{
+	-fx-background-color: #7AFF00;
+	}
+/*#ButtonConf:focused{
+	-fx-background-color: #99F5FB;
+	} */	
+ 
 
 #labelHome{ 
 	-fx-text-fill: #E4F2F4;
