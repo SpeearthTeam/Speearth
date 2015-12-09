@@ -21,7 +21,7 @@
 			<top>
 				<Accordion BorderPane.alignment="CENTER">
 					<panes>
-						<TitledPane animated="false" text="Pacchetto">
+						<TitledPane animated="false" text="Pacchetto" textFill="WHITE">
 							<content>
 								<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
 									<children>
@@ -47,6 +47,9 @@
 									</children>
 								</AnchorPane>
 							</content>
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
 						</TitledPane>
 					</panes>
 				</Accordion>
