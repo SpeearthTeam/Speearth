@@ -54,9 +54,23 @@ public class ModificaImpiegatoForm extends FormView {
 	private TextField input_stipendio;
 
 	/**
-	 * Impiegato associato alla form
+	 * Impiegato
 	 */
 	private Impiegato impiegato;
+
+	/**
+	 * Prende in input lo Stipendio inserito, controlla, e restituisce una
+	 * stringa valida parsificata
+	 * 
+	 * @param input
+	 * @return String
+	 */
+	private String validazioneEParsificazioneStipendio(String input) {
+		input = input.replace(",", ".");
+		if (input.matches(Costanti.REG_EX_FLOAT) && Float.parseFloat(input) > 0 && Float.parseFloat(input) < 100)
+			return input;
+		return null;
+	}
 
 	/**
 	 * Costruttore
@@ -100,8 +114,8 @@ public class ModificaImpiegatoForm extends FormView {
 			if (this.valida()) {
 				this.invia(null);
 				EventoGestioneImpiegato evento = new EventoGestioneImpiegato(EventoGestioneImpiegato.MODIFICA_IMPIEGATO,
-						impiegato);
-				getRoot().fireEvent(evento);
+						this.impiegato);
+				this.getRoot().fireEvent(evento);
 				this.getStage().close();
 			}
 		} catch (InvalidParameterException e) {
@@ -188,20 +202,6 @@ public class ModificaImpiegatoForm extends FormView {
 	}
 
 	/**
-	 * Prende in input lo Stipendio inserito, controlla, e restituisce una
-	 * stringa valida parsificata
-	 * 
-	 * @param input
-	 * @return String
-	 */
-	private String validazioneEParsificazioneStipendio(String input) {
-		input = input.replace(",", ".");
-		if (input.matches(Costanti.REG_EX_FLOAT) && Float.parseFloat(input) > 0 && Float.parseFloat(input) < 100)
-			return input;
-		return null;
-	}
-
-	/**
 	 * Resituisce i parametri della Form
 	 * 
 	 * @return HashMap<String, String>
@@ -219,7 +219,6 @@ public class ModificaImpiegatoForm extends FormView {
 	 */
 	@Override
 	public void invia(HashMap<String, String> parameters) throws IOException {
-		// TODO
 		String username = this.input_username.getText();
 		String password = this.input_password.getText();
 		String nome = this.input_nome.getText();
@@ -229,16 +228,14 @@ public class ModificaImpiegatoForm extends FormView {
 				.from(this.input_data_nascita.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
 		String ruolo = this.input_ruolo.getValue();
 		float stipendio = Float.parseFloat(this.input_stipendio.getText());
-
-		if (this.impiegato == null) {
+		if (this.impiegato == null)
 			// creo un nuovo impiegato
 			this.impiegato = AppFacadeController.getInstance().getGestisciImpiegatiController().aggiungiImpiegato(
 					username, password, nome, cognome, data_nascita, codice_fiscale, ruolo, stipendio);
-		} else {
+		else
 			// modifico l'Impiegato
 			this.impiegato = AppFacadeController.getInstance().getGestisciImpiegatiController().modificaImpiegato(
 					username, password, nome, cognome, data_nascita, codice_fiscale, ruolo, stipendio);
-		}
 	}
 
 	/**

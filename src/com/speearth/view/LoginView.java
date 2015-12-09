@@ -59,9 +59,9 @@ public class LoginView extends View {
 				HomeView view = new HomeView(this.getStage());
 				view.mostra();
 			} else
-				mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_UTENTE_NON_TROVATO);
+				this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_UTENTE_NON_TROVATO);
 		} else
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_CREDENZIALI_MANCANTI);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_CREDENZIALI_MANCANTI);
 	}
 
 	/**

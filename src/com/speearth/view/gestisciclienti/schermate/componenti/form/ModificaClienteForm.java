@@ -61,7 +61,7 @@ public class ModificaClienteForm extends FormView {
 			}
 		});
 		this.cliente = cliente;
-		aggiornaUI();
+		this.aggiornaUI();
 	}
 
 	/**
@@ -77,7 +77,7 @@ public class ModificaClienteForm extends FormView {
 	 * Restituisce il cliente
 	 */
 	public Cliente getCliente() {
-		return cliente;
+		return this.cliente;
 	}
 
 	// Event Listener on Button[#bottone_modifica].onAction
@@ -87,8 +87,8 @@ public class ModificaClienteForm extends FormView {
 			if (this.valida()) {
 				this.invia(null);
 				EventoGestioneCliente evento = new EventoGestioneCliente(EventoGestioneCliente.MODIFICA_CLIENTE,
-						cliente);
-				getRoot().fireEvent(evento);
+						this.cliente);
+				this.getRoot().fireEvent(evento);
 				this.getStage().close();
 			}
 		} catch (InvalidParameterException e) {
@@ -106,7 +106,6 @@ public class ModificaClienteForm extends FormView {
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
 	}
 
 	/**
@@ -167,16 +166,14 @@ public class ModificaClienteForm extends FormView {
 		String codice_fiscale = this.input_codice_fiscale.getText();
 		Date data_nascita = Date
 				.from(this.input_data_nascita.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-
-		if (this.cliente == null) {
+		if (this.cliente == null)
 			// creo un nuovo cliente
 			this.cliente = AppFacadeController.getInstance().getGestisciClientiController().aggiungiCliente(nome,
 					cognome, data_nascita, codice_fiscale);
-		} else {
+		else
 			// modifico il cliente
 			this.cliente = AppFacadeController.getInstance().getGestisciClientiController()
 					.modificaCliente(this.cliente.getId(), nome, cognome, data_nascita, codice_fiscale);
-		}
 	}
 
 	/**

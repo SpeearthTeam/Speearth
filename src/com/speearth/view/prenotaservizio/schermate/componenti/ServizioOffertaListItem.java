@@ -10,16 +10,17 @@ import javafx.scene.control.ListCell;
 import javafx.stage.Stage;
 
 /**
- * Classe che modella la Lista di risultati della ricerca di Offerte
+ * Classe che rifinisce una ListCell per adattarla a contenere un Servizio
+ * contenuto in un'Offerta
  */
 public class ServizioOffertaListItem extends ListCell<ServizioComponent> {
 	/**
-	 * Stage della finestra
+	 * Stage
 	 */
 	private Stage stage;
 
 	/**
-	 * Costruttore di default
+	 * Costruttore
 	 * 
 	 * @param stage
 	 */
@@ -28,7 +29,7 @@ public class ServizioOffertaListItem extends ListCell<ServizioComponent> {
 	}
 
 	/**
-	 * Aggiorna un elemento della Lista
+	 * Aggiorna l'elemento della Lista
 	 * 
 	 * @param servizio
 	 * @param empty
@@ -48,7 +49,6 @@ public class ServizioOffertaListItem extends ListCell<ServizioComponent> {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-
 		}
 	}
 }

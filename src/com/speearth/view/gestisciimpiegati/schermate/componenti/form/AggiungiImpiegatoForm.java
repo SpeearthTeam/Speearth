@@ -59,6 +59,20 @@ public class AggiungiImpiegatoForm extends FormView {
 	private Impiegato impiegato;
 
 	/**
+	 * Prende in input lo Stipendio inserito, controlla, e restituisce una
+	 * stringa valida parsificata
+	 * 
+	 * @param input
+	 * @return String
+	 */
+	private String validazioneEParsificazioneStipendio(String input) {
+		input = input.replace(",", ".");
+		if (input.matches(Costanti.REG_EX_FLOAT) && Float.parseFloat(input) > 0 && Float.parseFloat(input) < 100)
+			return input;
+		return null;
+	}
+
+	/**
 	 * Costruttore
 	 * 
 	 * @param stage
@@ -115,7 +129,7 @@ public class AggiungiImpiegatoForm extends FormView {
 			if (this.valida()) {
 				this.invia(null);
 				EventoGestioneImpiegato evento = new EventoGestioneImpiegato(EventoGestioneImpiegato.AGGIUNGI_IMPIEGATO,
-						impiegato);
+						this.impiegato);
 				this.getRoot().fireEvent(evento);
 				this.getStage().close();
 			}
@@ -204,20 +218,6 @@ public class AggiungiImpiegatoForm extends FormView {
 	}
 
 	/**
-	 * Prende in input lo Stipendio inserito, controlla, e restituisce una
-	 * stringa valida parsificata
-	 * 
-	 * @param input
-	 * @return String
-	 */
-	private String validazioneEParsificazioneStipendio(String input) {
-		input = input.replace(",", ".");
-		if (input.matches(Costanti.REG_EX_FLOAT) && Float.parseFloat(input) > 0 && Float.parseFloat(input) < 100)
-			return input;
-		return null;
-	}
-
-	/**
 	 * Resituisce i parametri della Form
 	 * 
 	 * @return HashMap<String, String>
@@ -244,14 +244,12 @@ public class AggiungiImpiegatoForm extends FormView {
 				.from(this.input_data_nascita.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
 		String ruolo = this.input_ruolo.getValue();
 		float stipendio = Float.parseFloat(this.input_stipendio.getText());
-
-		if (this.impiegato == null) {
-			this.impiegato = AppFacadeController.getInstance().getGestisciImpiegatiController().aggiungiImpiegato(username,
-					password, nome, cognome, data_nascita, codice_fiscale, ruolo, stipendio);
-		} else {
-			this.impiegato = AppFacadeController.getInstance().getGestisciImpiegatiController().modificaImpiegato(username,
-					password, nome, cognome, data_nascita, codice_fiscale, ruolo, stipendio);
-		}
+		if (this.impiegato == null)
+			this.impiegato = AppFacadeController.getInstance().getGestisciImpiegatiController().aggiungiImpiegato(
+					username, password, nome, cognome, data_nascita, codice_fiscale, ruolo, stipendio);
+		else
+			this.impiegato = AppFacadeController.getInstance().getGestisciImpiegatiController().modificaImpiegato(
+					username, password, nome, cognome, data_nascita, codice_fiscale, ruolo, stipendio);
 	}
 
 	/**

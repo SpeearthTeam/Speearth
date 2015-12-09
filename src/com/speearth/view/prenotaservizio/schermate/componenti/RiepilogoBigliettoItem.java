@@ -15,6 +15,10 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+/**
+ * Componente che rappresenta un Biglietto nel Riepilogo dei Servizi che
+ * compongono un Pacchetto
+ */
 public class RiepilogoBigliettoItem extends SubView {
 	@FXML
 	private BorderPane risultato_biglietto;
@@ -61,9 +65,10 @@ public class RiepilogoBigliettoItem extends SubView {
 	private Biglietto biglietto;
 
 	/**
-	 * Costruttore di default
+	 * Costruttore
 	 * 
 	 * @param stage
+	 * @param biglietto
 	 * @throws IOException
 	 */
 	public RiepilogoBigliettoItem(Stage stage, Biglietto biglietto) throws IOException {
@@ -73,14 +78,14 @@ public class RiepilogoBigliettoItem extends SubView {
 	}
 
 	/**
-	 * Restituisce il biglietto
+	 * Restituisce il Biglietto
 	 */
 	public Biglietto getBiglietto() {
-		return biglietto;
+		return this.biglietto;
 	}
 
 	/**
-	 * Imposta il biglietto
+	 * Imposta il Biglietto
 	 * 
 	 * @param biglietto
 	 */
@@ -89,23 +94,29 @@ public class RiepilogoBigliettoItem extends SubView {
 	}
 
 	/**
-	 * Aggiorna il biglietto
+	 * Aggiorna il Biglietto
 	 * 
 	 * @param biglietto
 	 */
 	public void updateBiglietto(Biglietto biglietto) {
-		setBiglietto(biglietto);
-		aggiornaUI();
+		this.setBiglietto(biglietto);
+		this.aggiornaUI();
 	}
 
 	// Event Listener on Button[#bottone_conferma].onAction
 	@FXML
 	public void confermaBiglietto(ActionEvent event) throws IOException {
 		EventoSelezionaServizio evento_seleziona_servizio = new EventoSelezionaServizio(
-				EventoSelezionaServizio.SERVIZIO_SELEZIONATO, biglietto);
-		getRoot().fireEvent(evento_seleziona_servizio);
+				EventoSelezionaServizio.SERVIZIO_SELEZIONATO, this.biglietto);
+		this.getRoot().fireEvent(evento_seleziona_servizio);
 	}
 
+	/**
+	 * Inizializza la SubView
+	 * 
+	 * @param location
+	 * @param resources
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	}
@@ -120,33 +131,38 @@ public class RiepilogoBigliettoItem extends SubView {
 		return Costanti.FXML_RIEPILOGO_BIGLIETTO_ITEM;
 	}
 
+	/**
+	 * Aggiorna le informazioni mostrate dall'Interfaccia
+	 */
 	@Override
 	public void aggiornaUI() {
-		this.output_data_destinazione_andata.setText(Costanti.FORMATO_DATA_ORA.format(biglietto.getDataArrivoAndata()));
-		this.output_data_partenza_andata.setText(Costanti.FORMATO_DATA_ORA.format(biglietto.getDataPartenzaAndata()));
-
-		if (biglietto.getDataArrivoRitorno() != null) {
+		this.output_data_destinazione_andata
+				.setText(Costanti.FORMATO_DATA_ORA.format(this.biglietto.getDataArrivoAndata()));
+		this.output_data_partenza_andata
+				.setText(Costanti.FORMATO_DATA_ORA.format(this.biglietto.getDataPartenzaAndata()));
+		if (this.biglietto.getDataArrivoRitorno() != null)
 			this.output_data_destinazione_ritorno
-					.setText(Costanti.FORMATO_DATA_ORA.format(biglietto.getDataArrivoRitorno()));
-		}
-
-		if (biglietto.getDataPartenzaRitorno() != null) {
-			this.output_data_partenza_ritorno.setText(Costanti.FORMATO_DATA_ORA.format(biglietto.getDataPartenzaRitorno()));
-		}
-		this.output_ora_partenza_ritorno.setText(Costanti.FORMATO_DATA_ORA.format(biglietto.getDataPartenzaRitorno()));
-		this.output_ora_destinazione_ritorno.setText(Costanti.FORMATO_DATA_ORA.format(biglietto.getDataArrivoRitorno()));
-		this.output_ora_destinazione_andata.setText(Costanti.FORMATO_DATA_ORA.format(biglietto.getDataArrivoAndata()));
-		this.output_ora_partenza_andata.setText(Costanti.FORMATO_DATA_ORA.format(biglietto.getDataPartenzaAndata()));
-		this.output_partenza_andata.setText(biglietto.getPartenza());
-		this.output_partenza_ritorno.setText(biglietto.getDestinazione());
-		this.output_destinazione_andata.setText(biglietto.getDestinazione());
-		this.output_destinazione_ritorno.setText(biglietto.getPartenza());
-		this.output_n_adulti_andata.setText(Integer.toString(biglietto.getNumeroAdulti()));
-		this.output_n_adulti_ritorno.setText(Integer.toString(biglietto.getNumeroAdulti()));
-		this.output_n_bambini_andata.setText(Integer.toString(biglietto.getNumeroBambini()));
-		this.output_n_bambini_ritorno.setText(Integer.toString(biglietto.getNumeroBambini()));
-		this.output_nome_fornitore.setText(biglietto.getFornitore());
-		this.output_prezzo.setText(biglietto.getPrezzo() + " €");
+					.setText(Costanti.FORMATO_DATA_ORA.format(this.biglietto.getDataArrivoRitorno()));
+		if (this.biglietto.getDataPartenzaRitorno() != null)
+			this.output_data_partenza_ritorno
+					.setText(Costanti.FORMATO_DATA_ORA.format(this.biglietto.getDataPartenzaRitorno()));
+		this.output_ora_partenza_ritorno
+				.setText(Costanti.FORMATO_DATA_ORA.format(this.biglietto.getDataPartenzaRitorno()));
+		this.output_ora_destinazione_ritorno
+				.setText(Costanti.FORMATO_DATA_ORA.format(this.biglietto.getDataArrivoRitorno()));
+		this.output_ora_destinazione_andata
+				.setText(Costanti.FORMATO_DATA_ORA.format(this.biglietto.getDataArrivoAndata()));
+		this.output_ora_partenza_andata
+				.setText(Costanti.FORMATO_DATA_ORA.format(this.biglietto.getDataPartenzaAndata()));
+		this.output_partenza_andata.setText(this.biglietto.getPartenza());
+		this.output_partenza_ritorno.setText(this.biglietto.getDestinazione());
+		this.output_destinazione_andata.setText(this.biglietto.getDestinazione());
+		this.output_destinazione_ritorno.setText(this.biglietto.getPartenza());
+		this.output_n_adulti_andata.setText(Integer.toString(this.biglietto.getNumeroAdulti()));
+		this.output_n_adulti_ritorno.setText(Integer.toString(this.biglietto.getNumeroAdulti()));
+		this.output_n_bambini_andata.setText(Integer.toString(this.biglietto.getNumeroBambini()));
+		this.output_n_bambini_ritorno.setText(Integer.toString(this.biglietto.getNumeroBambini()));
+		this.output_nome_fornitore.setText(this.biglietto.getFornitore());
+		this.output_prezzo.setText(this.biglietto.getPrezzo() + " €");
 	}
-
 }

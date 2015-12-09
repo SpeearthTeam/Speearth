@@ -217,5 +217,5 @@ public final class Costanti {
 	public final static String[] LISTA_NUMERO_BAMBINI = { "0", "1", "2", "3", "4" };
 	public final static String[] LISTA_NUMERO_STANZE = { "0", "1", "2" };
 	public final static String[] LISTA_MEZZI = { "treno", "aereo" };
-	public final static String[] LISTA_RUOLI = { "Commesso", "Responsabile Offerte" };
+	public final static String[] LISTA_RUOLI = { "Commesso", "Responsabile Offerte", "Direttore" };
 }

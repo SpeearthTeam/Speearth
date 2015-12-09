@@ -13,6 +13,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+/**
+ * Componente che rappresenta un'Offerta nella Lista delle Offerte trovate
+ */
 public class RisultatoOffertaItem extends SubView {
 	@FXML
 	private BorderPane risultato_servizio;
@@ -24,31 +27,32 @@ public class RisultatoOffertaItem extends SubView {
 	private Label output_data_scadenza;
 
 	/**
-	 * Offerta contenuto nella SubView
+	 * Offerta contenuta nella SubView
 	 */
 	private Offerta offerta;
 
 	/**
-	 * Costruttore di default
+	 * Costruttore
 	 * 
 	 * @param stage
+	 * @param offerta
 	 * @throws IOException
 	 */
 	public RisultatoOffertaItem(Stage stage, Offerta offerta) throws IOException {
 		super(stage);
 		this.offerta = offerta;
-		aggiornaUI();
+		this.aggiornaUI();
 	}
 
 	/**
-	 * Restituisce il offerta
+	 * Restituisce l'Offerta
 	 */
 	public Offerta getOfferta() {
-		return offerta;
+		return this.offerta;
 	}
 
 	/**
-	 * Imposta il offerta
+	 * Imposta l'Offerta
 	 * 
 	 * @param offerta
 	 */
@@ -57,25 +61,23 @@ public class RisultatoOffertaItem extends SubView {
 	}
 
 	/**
-	 * Aggiorna il Servizio
+	 * Aggiorna l'Offerta
 	 * 
 	 * @param offerta
 	 */
 	public void updateOfferta(Offerta offerta) {
 		this.setOfferta(offerta);
-		aggiornaUI();
+		this.aggiornaUI();
 	}
 
+	/**
+	 * Inizializza la SubView
+	 * 
+	 * @param location
+	 * @param resources
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-//		this.risultato_servizio.getParent().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-//			@Override
-//			public void handle(MouseEvent event) {
-//				EventoSelezionaOfferta evento = new EventoSelezionaOfferta(EventoSelezionaOfferta.OFFERTA_SELEZIONATA,
-//						RisultatoOffertaItem.this.offerta);
-//				getRoot().fireEvent(evento);
-//			}
-//		});
 	}
 
 	/**
@@ -89,7 +91,7 @@ public class RisultatoOffertaItem extends SubView {
 	}
 
 	/**
-	 * 
+	 * Aggiorna le informazioni mostrate dall'Interfaccia
 	 */
 	@Override
 	public void aggiornaUI() {

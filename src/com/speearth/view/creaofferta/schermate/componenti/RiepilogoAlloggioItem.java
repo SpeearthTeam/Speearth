@@ -45,7 +45,7 @@ public class RiepilogoAlloggioItem extends SubView {
 	private Label output_prezzo;
 
 	/**
-	 * Alloggio contenuto
+	 * Alloggio contenuto nella SubView
 	 */
 	private Alloggio alloggio;
 
@@ -54,6 +54,7 @@ public class RiepilogoAlloggioItem extends SubView {
 	 * 
 	 * @param stage
 	 * @param alloggio
+	 * @throws IOException
 	 */
 	public RiepilogoAlloggioItem(Stage stage, Alloggio alloggio) throws IOException {
 		super(stage);
@@ -77,7 +78,7 @@ public class RiepilogoAlloggioItem extends SubView {
 	 * @return Alloggio
 	 */
 	public Alloggio getAlloggio() {
-		return alloggio;
+		return this.alloggio;
 	}
 
 	/**
@@ -114,9 +115,8 @@ public class RiepilogoAlloggioItem extends SubView {
 		this.output_prezzo.setText(Float.toString(this.alloggio.getPrezzo()) + " €");
 		ArrayList<Stanza> stanze = (ArrayList<Stanza>) this.alloggio.getStanze();
 		ArrayList<String> tipi_stanze = new ArrayList<String>();
-		for (Stanza stanza : stanze) {
+		for (Stanza stanza : stanze)
 			tipi_stanze.add(stanza.getTipologia());
-		}
 		ObservableList<String> observableRooms = FXCollections.observableArrayList();
 		observableRooms.setAll(tipi_stanze);
 		this.output_stanze.setItems(observableRooms);

@@ -239,11 +239,11 @@ public class RicercaBigliettoForm extends FormView {
 			this.invia(getParametri());
 		} catch (NullPointerException e) {
 			e.printStackTrace();
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PARAMETRI_MANCANTI);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PARAMETRI_MANCANTI);
 		} catch (IOException e) {
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE_HTTP, null, e.getMessage());
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE_HTTP, null, e.getMessage());
 		} catch (InvalidParameterException e) {
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, e.getMessage());
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, e.getMessage());
 		}
 	}
 

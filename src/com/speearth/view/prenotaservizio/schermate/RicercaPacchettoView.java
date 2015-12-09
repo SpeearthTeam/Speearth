@@ -85,8 +85,8 @@ public class RicercaPacchettoView extends View {
 						ServizioComponent pacchetto = AppFacadeController.getInstance().getPrenotaServizioController()
 								.getServizio();
 						if (pacchetto != null && pacchetto.getListaServizi().contains(event.getServizio()))
-							RicercaPacchettoView.this.mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_SERVIZIO_PRESENTE, null,
-									Costanti.MESSAGGIO_SERVIZIO_PRESENTE);
+							RicercaPacchettoView.this.mostraAlert(AlertType.INFORMATION,
+									Costanti.TITOLO_SERVIZIO_PRESENTE, null, Costanti.MESSAGGIO_SERVIZIO_PRESENTE);
 						else {
 							ServizioComponent servizio = event.getServizio();
 							AppFacadeController.getInstance().getPrenotaServizioController().getServizio()
@@ -123,8 +123,8 @@ public class RicercaPacchettoView extends View {
 	}
 
 	/**
-	 * Carica Biglietti e Alloggi salvati nel Controller all'interno View per evitarne
-	 * la perdita durante un cambio di Schermata
+	 * Carica Biglietti e Alloggi salvati nel Controller all'interno View per
+	 * evitarne la perdita durante un cambio di Schermata
 	 */
 	private void impostaRisultati() {
 		// ottengo i biglietti dal controller
@@ -161,7 +161,7 @@ public class RicercaPacchettoView extends View {
 	}
 
 	/**
-	 * Inizializza la tabella dei servizi scelti
+	 * Inizializza la tabella dei Servizi scelti
 	 */
 	public void initializeServiceTable() {
 		this.tipo_servizio_col.setCellValueFactory(
@@ -226,8 +226,8 @@ public class RicercaPacchettoView extends View {
 		ArrayList<Alloggio> risultati_alloggi = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getPrenotaAlloggioController().getAlloggi();
 		if (!risultati_biglietti.isEmpty() || !risultati_alloggi.isEmpty()) {
-			Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME, null,
-					Costanti.MESSAGGIO_TORNA_ALLA_HOME);
+			Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME,
+					null, Costanti.MESSAGGIO_TORNA_ALLA_HOME);
 			if (result.get() == ButtonType.OK) {
 				AppFacadeController.getInstance().getPrenotaServizioController().reset();
 				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
@@ -250,8 +250,8 @@ public class RicercaPacchettoView extends View {
 		ArrayList<Alloggio> risultati_alloggi = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getPrenotaAlloggioController().getAlloggi();
 		if (!risultati_biglietti.isEmpty() || !risultati_alloggi.isEmpty()) {
-			Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
-					null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
+			Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION,
+					Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO, null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
 			if (result.get() == ButtonType.OK) {
 				AppFacadeController.getInstance().getPrenotaServizioController().reset();
 				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
@@ -274,7 +274,8 @@ public class RicercaPacchettoView extends View {
 		AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController()
 				.setPacchetto(pacchetto);
 		if (pacchetto.isEmpty())
-			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null, Costanti.MESSAGGIO_NESSUN_SERVIZIO);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null,
+					Costanti.MESSAGGIO_NESSUN_SERVIZIO);
 		else if (!(pacchetto.size() > 1))
 			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PACCHETTO_UN_ELEMENTO);
 		else {
@@ -344,5 +345,4 @@ public class RicercaPacchettoView extends View {
 			}
 		}
 	}
-
 }

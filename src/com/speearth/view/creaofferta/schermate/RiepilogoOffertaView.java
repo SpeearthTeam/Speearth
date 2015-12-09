@@ -115,7 +115,7 @@ public class RiepilogoOffertaView extends View {
 	// Event Listener on Button[#bottone_torna_alla_home].onAction
 	@FXML
 	public void vaiAllaHome(ActionEvent event) throws IOException {
-		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME, null,
+		Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME, null,
 				Costanti.MESSAGGIO_TORNA_ALLA_HOME);
 		if (result.get() == ButtonType.OK) {
 			AppFacadeController.getInstance().getCreaOffertaController().reset();
@@ -136,8 +136,8 @@ public class RiepilogoOffertaView extends View {
 	public void applicaSconto(ActionEvent event) throws IOException {
 		String input = this.input_sconto_offerta.getText();
 		if ((input = validazioneEParsificazioneSconto(input)) != null) {
-			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_CONFERMA_SCONTO, null,
-					Costanti.MESSAGGIO_CONFERMA_SCONTO);
+			Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_CONFERMA_SCONTO,
+					null, Costanti.MESSAGGIO_CONFERMA_SCONTO);
 			if (result.get() == ButtonType.OK) {
 				float percentuale = Float.parseFloat(input);
 				AppFacadeController.getInstance().getCreaOffertaController().applicaSconto(percentuale);
@@ -145,7 +145,7 @@ public class RiepilogoOffertaView extends View {
 				this.output_totale_offerta.setText(Float.toString(prezzo));
 			}
 		} else
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_SCONTO_INSERITO_ERRATO);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_SCONTO_INSERITO_ERRATO);
 	}
 
 	// Event Listener on Button[#bottone_salva_offerta].onAction
@@ -162,15 +162,15 @@ public class RiepilogoOffertaView extends View {
 			AppFacadeController.getInstance().getCreaOffertaController().getOfferta().setDataFine(Date.from(
 					this.input_data_fine_offerta.getValue().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()));
 			if (AppFacadeController.getInstance().getCreaOffertaController().confermaOfferta()) {
-				mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_TORNA_ALLA_HOME, null,
+				this.mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_TORNA_ALLA_HOME, null,
 						Costanti.MESSAGGIO_OFFERTA_SALVATA);
 				AppFacadeController.getInstance().getCreaOffertaController().reset();
 				HomeView view = new HomeView(this.getStage());
 				view.mostra();
 			} else
-				mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PROBLEMA_DATABASE);
+				this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PROBLEMA_DATABASE);
 		} else
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DETTAGLI_MANCANTI);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_DETTAGLI_MANCANTI);
 	}
 
 	/**

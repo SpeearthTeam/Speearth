@@ -116,9 +116,8 @@ public class RisultatoAlloggioItem extends SubView {
 		this.output_prezzo.setText(Float.toString(this.alloggio.getPrezzo()) + " €");
 		ArrayList<Stanza> stanze = (ArrayList<Stanza>) this.alloggio.getStanze();
 		ArrayList<String> tipi_stanze = new ArrayList<String>();
-		for (Stanza stanza : stanze) {
+		for (Stanza stanza : stanze)
 			tipi_stanze.add(stanza.getTipologia());
-		}
 		ObservableList<String> observableRooms = FXCollections.observableArrayList();
 		observableRooms.setAll(tipi_stanze);
 		this.output_stanze.setItems(observableRooms);

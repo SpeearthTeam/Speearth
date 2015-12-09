@@ -77,7 +77,6 @@ public class RicercaAlloggioForm extends FormView {
 		// ottengo i parametri di ricerca dal controller
 		HashMap<String, String> parametri = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getPrenotaAlloggioController().getParametri();
-
 		// se i parametri non sono vuoti, allora li imposto nella view
 		if (!parametri.isEmpty()) {
 			String input_localita = parametri.get("zona");
@@ -108,28 +107,24 @@ public class RicercaAlloggioForm extends FormView {
 				int index = this.input_numero_singole.getItems().indexOf(numero_singole);
 				this.input_numero_singole.getSelectionModel().select(index);
 			}
-
 			String numero_doppie = parametri.get("numero_doppie");
 			if (numero_doppie != null) {
 				this.input_doppia.setSelected(true);
 				int index = this.input_numero_doppie.getItems().indexOf(numero_doppie);
 				this.input_numero_doppie.getSelectionModel().select(index);
 			}
-
 			String numero_triple = parametri.get("numero_triple");
 			if (numero_triple != null) {
 				this.input_tripla.setSelected(true);
 				int index = this.input_numero_triple.getItems().indexOf(numero_triple);
 				this.input_numero_triple.getSelectionModel().select(index);
 			}
-
 			String numero_quadruple = parametri.get("numero_quadruple");
 			if (numero_quadruple != null) {
 				this.input_quadrupla.setSelected(true);
 				int index = this.input_numero_quadruple.getItems().indexOf(numero_quadruple);
 				this.input_numero_quadruple.getSelectionModel().select(index);
 			}
-
 		}
 	}
 
@@ -283,11 +278,11 @@ public class RicercaAlloggioForm extends FormView {
 			this.valida();
 			this.invia(getParametri());
 		} catch (NullPointerException e) {
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PARAMETRI_MANCANTI);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PARAMETRI_MANCANTI);
 		} catch (InvalidParameterException e) {
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, e.getMessage());
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, e.getMessage());
 		} catch (IOException e) {
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE_HTTP, null, e.getMessage());
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE_HTTP, null, e.getMessage());
 		}
 	}
 

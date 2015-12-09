@@ -8,17 +8,16 @@ import javafx.scene.control.ListCell;
 import javafx.stage.Stage;
 
 /**
- * Classe che modella la Lista di risultati della ricerca di Alloggi
+ * Classe che rifinisce una ListCell per adattarla a contenere un Biglietto
  */
 public class BigliettoListItem extends ListCell<Biglietto> {
-
 	/**
-	 * Lo stage della finestra
+	 * Stage
 	 */
 	private Stage stage;
 
 	/**
-	 * Costruttore di default
+	 * Costruttore
 	 * 
 	 * @param stage
 	 */
@@ -27,7 +26,7 @@ public class BigliettoListItem extends ListCell<Biglietto> {
 	}
 
 	/**
-	 * Aggiorna un elemento della Lista
+	 * Aggiorna l'elemento della Lista
 	 * 
 	 * @param biglietto
 	 * @param empty
@@ -35,7 +34,6 @@ public class BigliettoListItem extends ListCell<Biglietto> {
 	@Override
 	protected void updateItem(Biglietto biglietto, boolean empty) {
 		super.updateItem(biglietto, empty);
-
 		if (biglietto != null) {
 			try {
 				RisultatoBigliettoItem biglietto_item = new RisultatoBigliettoItem(this.stage, biglietto);

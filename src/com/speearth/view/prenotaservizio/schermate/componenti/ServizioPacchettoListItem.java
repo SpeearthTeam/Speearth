@@ -9,15 +9,18 @@ import com.speearth.model.core.ServizioComponent;
 import javafx.scene.control.ListCell;
 import javafx.stage.Stage;
 
+/**
+ * Classe che rifinisce una ListCell per adattarla a contenere un Servizio
+ * contenuto in un Pacchetto
+ */
 public class ServizioPacchettoListItem extends ListCell<ServizioComponent> {
-
 	/**
-	 * Stage della list view
+	 * Stage
 	 */
 	private Stage stage;
 
 	/**
-	 * Costruttore di default
+	 * Costruttore
 	 * 
 	 * @param stage
 	 */
@@ -25,10 +28,15 @@ public class ServizioPacchettoListItem extends ListCell<ServizioComponent> {
 		this.stage = stage;
 	}
 
+	/**
+	 * Aggiorna l'elemento della Lista
+	 * 
+	 * @param item
+	 * @param empty
+	 */
 	@Override
 	protected void updateItem(ServizioComponent item, boolean empty) {
 		super.updateItem(item, empty);
-
 		if (item != null) {
 			try {
 				if (item instanceof Alloggio) {
@@ -41,8 +49,6 @@ public class ServizioPacchettoListItem extends ListCell<ServizioComponent> {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-
 		}
 	}
-
 }

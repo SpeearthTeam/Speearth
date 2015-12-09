@@ -64,21 +64,23 @@ public class GesticiClientiView extends View {
 						}
 					}
 				});
-		getRoot().addEventHandler(EventoGestioneCliente.MODIFICA_CLIENTE, new EventHandler<EventoGestioneCliente>() {
-			@Override
-			public void handle(EventoGestioneCliente event) {
-				try {
-					Stage stage = new Stage();
-					stage.setScene(new Scene(FXMLLoader.load(getClass().getResource(Costanti.FXML_CLIENTE_POPUP))));
-					stage.initModality(Modality.APPLICATION_MODAL);
-					ClientePopupView view = new ClientePopupView(stage, event.getCliente());
-					view.mostraEAspetta();
-					GesticiClientiView.this.aggiornaUI();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		this.getRoot().addEventHandler(EventoGestioneCliente.MODIFICA_CLIENTE,
+				new EventHandler<EventoGestioneCliente>() {
+					@Override
+					public void handle(EventoGestioneCliente event) {
+						try {
+							Stage stage = new Stage();
+							stage.setScene(
+									new Scene(FXMLLoader.load(getClass().getResource(Costanti.FXML_CLIENTE_POPUP))));
+							stage.initModality(Modality.APPLICATION_MODAL);
+							ClientePopupView view = new ClientePopupView(stage, event.getCliente());
+							view.mostraEAspetta();
+							GesticiClientiView.this.aggiornaUI();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
+				});
 	}
 
 	/**
@@ -87,7 +89,7 @@ public class GesticiClientiView extends View {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		this.clienti = FXCollections.observableArrayList();
-		this.lista_risultati.setCellFactory(param -> new ClienteListItem(getStage()));
+		this.lista_risultati.setCellFactory(param -> new ClienteListItem(this.getStage()));
 		this.lista_risultati.setItems(this.clienti);
 		this.clienti.setAll(AppFacadeController.getInstance().getGestisciClientiController().cercaCliente(null));
 		this.input_ricerca_cliente.textProperty().addListener(new ChangeListener<String>() {

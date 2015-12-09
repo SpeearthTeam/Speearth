@@ -46,7 +46,6 @@ public abstract class View implements Initializable {
 	 * Costruttore di default
 	 */
 	public View() {
-
 	}
 
 	/**
@@ -63,7 +62,7 @@ public abstract class View implements Initializable {
 		this.root = (Parent) this.loader.load();
 		this.stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 			public void handle(WindowEvent we) {
-				Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_CHIUDI,
+				Optional<ButtonType> result = View.this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_CHIUDI,
 						Costanti.MESSAGGIO_CHIUDI, Costanti.MESSAGGIO_CHIUSURA_SESSIONE);
 				if (result.get() == ButtonType.OK)
 					stage.close();
@@ -74,7 +73,7 @@ public abstract class View implements Initializable {
 	}
 
 	/**
-	 * Restituisce lo stage
+	 * Restituisce lo Stage
 	 * 
 	 * @return Stage
 	 */
@@ -98,7 +97,7 @@ public abstract class View implements Initializable {
 	 * Mostra la View
 	 */
 	public void mostra() {
-		setScene();
+		this.setScene();
 		this.stage.show();
 	}
 
@@ -106,7 +105,7 @@ public abstract class View implements Initializable {
 	 * Alternativa apposita per i Popup
 	 */
 	public void mostraEAspetta() {
-		setScene();
+		this.setScene();
 		this.stage.showAndWait();
 	}
 

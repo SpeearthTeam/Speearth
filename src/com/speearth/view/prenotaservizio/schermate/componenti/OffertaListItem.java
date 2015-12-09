@@ -11,16 +11,16 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
- * Classe che modella la Lista di risultati della ricerca di Alloggi
+ * Classe che rifinisce una ListCell per adattarla a contenere un'Offerta
  */
 public class OffertaListItem extends ListCell<Offerta> {
 	/**
-	 * Stage della list view
+	 * Stage
 	 */
 	private Stage stage;
 
 	/**
-	 * Costruttore di default
+	 * Costruttore
 	 * 
 	 * @param stage
 	 */
@@ -29,7 +29,7 @@ public class OffertaListItem extends ListCell<Offerta> {
 	}
 
 	/**
-	 * Aggiorna un elemento della Lista
+	 * Aggiorna l'elemento della Lista
 	 * 
 	 * @param offerta
 	 * @param empty
@@ -40,13 +40,13 @@ public class OffertaListItem extends ListCell<Offerta> {
 		if (offerta != null) {
 			try {
 				RisultatoOffertaItem offerta_item = new RisultatoOffertaItem(this.stage, offerta);
-				setGraphic(offerta_item.getRoot());
+				this.setGraphic(offerta_item.getRoot());
 				offerta_item.getRoot().addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 					@Override
 					public void handle(MouseEvent event) {
 						EventoSelezionaOfferta evento = new EventoSelezionaOfferta(
 								EventoSelezionaOfferta.OFFERTA_SELEZIONATA, offerta);
-						fireEvent(evento);
+						OffertaListItem.this.fireEvent(evento);
 					}
 				});
 			} catch (IOException e) {
@@ -54,5 +54,4 @@ public class OffertaListItem extends ListCell<Offerta> {
 			}
 		}
 	}
-
 }

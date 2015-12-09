@@ -107,7 +107,7 @@ public class RisultatoImpiegatoItem extends SubView {
 	// Event Listener on Button[#bottone_elimina].onAction
 	@FXML
 	public void eliminaImpiegato(ActionEvent event) {
-		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_ELIMINA_IMPIEGATO, null,
+		Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_ELIMINA_IMPIEGATO, null,
 				Costanti.MESSAGGIO_ELIMINA_IMPIEGATO);
 		if (result.get() == ButtonType.OK) {
 			EventoGestioneImpiegato evento = new EventoGestioneImpiegato(EventoGestioneImpiegato.ELIMINA_IMPIEGATO,

@@ -67,8 +67,8 @@ public class RicercaAlloggioView extends View {
 							ServizioComponent servizio = AppFacadeController.getInstance()
 									.getPrenotaServizioController().getServizio();
 							if (servizio != null && servizio.equals(event.getServizio()))
-								RicercaAlloggioView.this.mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_SERVIZIO_PRESENTE, null,
-										Costanti.MESSAGGIO_SERVIZIO_PRESENTE);
+								RicercaAlloggioView.this.mostraAlert(AlertType.INFORMATION,
+										Costanti.TITOLO_SERVIZIO_PRESENTE, null, Costanti.MESSAGGIO_SERVIZIO_PRESENTE);
 							else {
 								AppFacadeController.getInstance().getPrenotaServizioController()
 										.setServizio(event.getServizio());
@@ -125,8 +125,8 @@ public class RicercaAlloggioView extends View {
 		ArrayList<Alloggio> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getPrenotaAlloggioController().getAlloggi();
 		if (!risultati.isEmpty()) {
-			Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME, null,
-					Costanti.MESSAGGIO_TORNA_ALLA_HOME);
+			Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME,
+					null, Costanti.MESSAGGIO_TORNA_ALLA_HOME);
 			if (result.get() == ButtonType.OK) {
 				AppFacadeController.getInstance().getPrenotaServizioController().reset();
 				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController()
@@ -148,8 +148,8 @@ public class RicercaAlloggioView extends View {
 		ArrayList<Alloggio> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getPrenotaAlloggioController().getAlloggi();
 		if (!risultati.isEmpty()) {
-			Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
-					null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
+			Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION,
+					Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO, null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
 			if (result.get() == ButtonType.OK) {
 				AppFacadeController.getInstance().getPrenotaServizioController().reset();
 				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaAlloggioController()
@@ -180,7 +180,8 @@ public class RicercaAlloggioView extends View {
 	 */
 	public void vaiARiepilogo() throws IOException, ParseException {
 		if (AppFacadeController.getInstance().getPrenotaServizioController().getServizio() == null)
-			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null, Costanti.MESSAGGIO_NESSUN_SERVIZIO);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null,
+					Costanti.MESSAGGIO_NESSUN_SERVIZIO);
 		else {
 			RiepilogoAlloggioView view = new RiepilogoAlloggioView(this.getStage());
 			view.mostra();

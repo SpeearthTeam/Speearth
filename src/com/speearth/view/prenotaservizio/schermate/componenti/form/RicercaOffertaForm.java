@@ -21,6 +21,9 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * Classe che gestisce la Form di ricerca di Offerte
+ */
 public class RicercaOffertaForm extends FormView {
 	@FXML
 	private TextField input_ricerca_offerta;

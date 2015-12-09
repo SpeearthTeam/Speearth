@@ -101,7 +101,7 @@ public class CreaOffertaView extends View {
 				.getPrenotaBigliettoController().getBiglietti();
 		// se il risultato contiene biglietti, allora...
 		if (!risultati_biglietti.isEmpty()) {
-			this.lista_risultati_biglietti.setCellFactory(param -> new BigliettoListItem(getStage()));
+			this.lista_risultati_biglietti.setCellFactory(param -> new BigliettoListItem(this.getStage()));
 			// converto l'ArrayList in observableArrayList
 			ObservableList<Biglietto> list_biglietti = FXCollections.observableArrayList(risultati_biglietti);
 			// setto la lista dei risultati, ListView, con la Observable
@@ -112,7 +112,7 @@ public class CreaOffertaView extends View {
 				.getPrenotaAlloggioController().getAlloggi();
 		// se il risultato contiene biglietti, allora...
 		if (!risultati_alloggi.isEmpty()) {
-			this.lista_risultati_alloggi.setCellFactory(param -> new AlloggioListItem(getStage()));
+			this.lista_risultati_alloggi.setCellFactory(param -> new AlloggioListItem(this.getStage()));
 			// converto l'ArrayList in observableArrayList
 			ObservableList<Alloggio> list_alloggi = FXCollections.observableArrayList(risultati_alloggi);
 			// setto la lista dei risultati, ListView, con la Observable
@@ -162,9 +162,9 @@ public class CreaOffertaView extends View {
 		protected void updateItem(Boolean t, boolean empty) {
 			super.updateItem(t, empty);
 			if (!empty) {
-				setGraphic(cellButton);
+				this.setGraphic(cellButton);
 			} else {
-				setGraphic(null);
+				this.setGraphic(null);
 			}
 		}
 	}
@@ -185,7 +185,7 @@ public class CreaOffertaView extends View {
 					public void handle(EventoSelezionaServizio event) {
 						Offerta offerta = AppFacadeController.getInstance().getCreaOffertaController().getOfferta();
 						if (offerta != null && offerta.getListaServizi().contains(event.getServizio()))
-							mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_SERVIZIO_PRESENTE, null,
+							CreaOffertaView.this.mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_SERVIZIO_PRESENTE, null,
 									Costanti.MESSAGGIO_SERVIZIO_PRESENTE);
 						else {
 							ServizioComponent servizio = event.getServizio();
@@ -207,13 +207,13 @@ public class CreaOffertaView extends View {
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		this.lista_risultati_biglietti.setCellFactory(param -> new BigliettoListItem(getStage()));
-		this.lista_risultati_alloggi.setCellFactory(param -> new AlloggioListItem(getStage()));
+		this.lista_risultati_biglietti.setCellFactory(param -> new BigliettoListItem(this.getStage()));
+		this.lista_risultati_alloggi.setCellFactory(param -> new AlloggioListItem(this.getStage()));
 		try {
-			this.ricerca_biglietto_form = new RicercaBigliettoForm(getStage());
+			this.ricerca_biglietto_form = new RicercaBigliettoForm(this.getStage());
 			this.ricerca_biglietto_form.bind(lista_risultati_biglietti);
 			this.biglietto_form_container.getChildren().add(this.ricerca_biglietto_form.getRoot());
-			this.ricerca_alloggio_form = new RicercaAlloggioForm(getStage());
+			this.ricerca_alloggio_form = new RicercaAlloggioForm(this.getStage());
 			this.ricerca_alloggio_form.bind(this.lista_risultati_alloggi);
 			this.alloggio_form_container.getChildren().add(this.ricerca_alloggio_form.getRoot());
 		} catch (IOException e) {
@@ -287,7 +287,7 @@ public class CreaOffertaView extends View {
 		ArrayList<Alloggio> risultati_alloggi = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getPrenotaAlloggioController().getAlloggi();
 		if (!risultati_biglietti.isEmpty() || !risultati_alloggi.isEmpty()) {
-			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME, null,
+			Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME, null,
 					Costanti.MESSAGGIO_TORNA_ALLA_HOME);
 			if (result.get() == ButtonType.OK) {
 				AppFacadeController.getInstance().getCreaOffertaController().reset();
@@ -308,9 +308,9 @@ public class CreaOffertaView extends View {
 				.getCreaOffertaController().getOfferta().getListaServizi();
 		AppFacadeController.getInstance().getCreaOffertaController().getOfferta().setListaServizi(offerta);
 		if (offerta.isEmpty())
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null, Costanti.MESSAGGIO_NESSUN_SERVIZIO);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null, Costanti.MESSAGGIO_NESSUN_SERVIZIO);
 		else if (!(offerta.size() > 1))
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_OFFERTA_UN_ELEMENTO);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_OFFERTA_UN_ELEMENTO);
 		else {
 			AppFacadeController.getInstance().getCreaOffertaController().setListaServizi(offerta);
 			RiepilogoOffertaView view = new RiepilogoOffertaView(this.getStage());
@@ -321,7 +321,7 @@ public class CreaOffertaView extends View {
 	// Event Listener on Button[#bottone_svuota].onAction
 	@FXML
 	public void svuotaOfferta(ActionEvent event) {
-		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_SVUOTA_OFFERTA, null,
+		Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_SVUOTA_OFFERTA, null,
 				Costanti.MESSAGGIO_SVUOTA_OFFERTA);
 		if (result.get() == ButtonType.OK) {
 			AppFacadeController.getInstance().getCreaOffertaController().getOfferta().getListaServizi().clear();

@@ -68,7 +68,6 @@ public class RicercaBigliettoForm extends FormView {
 		// ottengo i parametri di ricerca dal controller
 		HashMap<String, String> parametri = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getPrenotaBigliettoController().getParametri();
-
 		if (!parametri.isEmpty()) {
 			String partenza = parametri.get("partenza");
 			this.input_partenza.setText(partenza);
@@ -96,18 +95,12 @@ public class RicercaBigliettoForm extends FormView {
 				int index_ora_ritorno = local_time_ritorno.getHour();
 				this.input_ora_ritorno.getSelectionModel().select(index_ora_ritorno);
 			}
-
 			int index_adulti = Integer.parseInt(parametri.get("numero_adulti")) - 1;
 			this.input_adulti.getSelectionModel().select(index_adulti);
 
 			int index_bambini = Integer.parseInt(parametri.get("numero_bambini"));
 			this.input_bambini.getSelectionModel().select(index_bambini);
-
-			// int index_mezzo = Integer.parseInt(parametri.get("mezzo"));
-			// this.input_mezzo.getSelectionModel().select(index_mezzo);
-
 		}
-
 	}
 
 	/**
@@ -118,7 +111,7 @@ public class RicercaBigliettoForm extends FormView {
 	 */
 	public RicercaBigliettoForm(Stage stage) throws IOException {
 		super(stage);
-		impostaParametri();
+		this.impostaParametri();
 	}
 
 	/**
@@ -243,11 +236,11 @@ public class RicercaBigliettoForm extends FormView {
 				this.invia(getParametri());
 		} catch (NullPointerException e) {
 			e.printStackTrace();
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PARAMETRI_MANCANTI);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PARAMETRI_MANCANTI);
 		} catch (IOException e) {
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE_HTTP, null, e.getMessage());
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE_HTTP, null, e.getMessage());
 		} catch (InvalidParameterException e) {
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, e.getMessage());
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, e.getMessage());
 		}
 	}
 
@@ -257,7 +250,7 @@ public class RicercaBigliettoForm extends FormView {
 	 * @return ObservableList<Alloggio>
 	 */
 	public ObservableList<Biglietto> getBiglietti() {
-		return biglietti;
+		return this.biglietti;
 	}
 
 	/**

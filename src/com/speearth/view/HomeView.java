@@ -54,11 +54,11 @@ public class HomeView extends View {
 	// Event Listener on Button[#bottone_prenota_servizio].onAction
 	@FXML
 	public void esci(ActionEvent event) throws IOException {
-		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_LOGOUT, null,
+		Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_LOGOUT, null,
 				Costanti.MESSAGGIO_LOGOUT);
 		if (result.get() == ButtonType.OK) {
 			AppFacadeController.getInstance().getLoginController().logout();
-			LoginView view = new LoginView(getStage());
+			LoginView view = new LoginView(this.getStage());
 			view.mostra();
 		}
 	}

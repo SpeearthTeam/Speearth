@@ -77,7 +77,6 @@ public class RicercaAlloggioForm extends FormView {
 		// ottengo i parametri di ricerca dal controller
 		HashMap<String, String> parametri = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getPrenotaAlloggioController().getParametri();
-
 		// se i parametri non sono vuoti, allora li imposto nella view
 		if (!parametri.isEmpty()) {
 			String input_localita = parametri.get("zona");
@@ -279,11 +278,11 @@ public class RicercaAlloggioForm extends FormView {
 			if (this.valida())
 				this.invia(getParametri());
 		} catch (NullPointerException e) {
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PARAMETRI_MANCANTI);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_PARAMETRI_MANCANTI);
 		} catch (InvalidParameterException e) {
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, e.getMessage());
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, e.getMessage());
 		} catch (IOException e) {
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE_HTTP, null, e.getMessage());
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE_HTTP, null, e.getMessage());
 		}
 	}
 

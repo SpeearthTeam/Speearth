@@ -65,7 +65,7 @@ public class RisultatoBigliettoItem extends SubView {
 	private Label output_prezzo;
 
 	/**
-	 * Biglietto contenuto
+	 * Biglietto contenuto nella SubView
 	 */
 	private Biglietto biglietto;
 
@@ -143,21 +143,24 @@ public class RisultatoBigliettoItem extends SubView {
 	 */
 	@Override
 	public void aggiornaUI() {
-		this.output_data_destinazione_andata.setText(Costanti.FORMATO_DATA_ORA.format(this.biglietto.getDataArrivoAndata()));
-		this.output_data_partenza_andata.setText(Costanti.FORMATO_DATA_ORA.format(this.biglietto.getDataPartenzaAndata()));
-		if (this.biglietto.getDataArrivoRitorno() != null) {
+		this.output_data_destinazione_andata
+				.setText(Costanti.FORMATO_DATA_ORA.format(this.biglietto.getDataArrivoAndata()));
+		this.output_data_partenza_andata
+				.setText(Costanti.FORMATO_DATA_ORA.format(this.biglietto.getDataPartenzaAndata()));
+		if (this.biglietto.getDataArrivoRitorno() != null)
 			this.output_data_destinazione_ritorno
 					.setText(Costanti.FORMATO_DATA_ORA.format(this.biglietto.getDataArrivoRitorno()));
-		}
-		if (this.biglietto.getDataPartenzaRitorno() != null) {
+		if (this.biglietto.getDataPartenzaRitorno() != null)
 			this.output_data_partenza_ritorno
 					.setText(Costanti.FORMATO_DATA_ORA.format(this.biglietto.getDataPartenzaRitorno()));
-		}
-		this.output_ora_partenza_ritorno.setText(Costanti.FORMATO_DATA_ORA.format(this.biglietto.getDataPartenzaRitorno()));
+		this.output_ora_partenza_ritorno
+				.setText(Costanti.FORMATO_DATA_ORA.format(this.biglietto.getDataPartenzaRitorno()));
 		this.output_ora_destinazione_ritorno
 				.setText(Costanti.FORMATO_DATA_ORA.format(this.biglietto.getDataArrivoRitorno()));
-		this.output_ora_destinazione_andata.setText(Costanti.FORMATO_DATA_ORA.format(this.biglietto.getDataArrivoAndata()));
-		this.output_ora_partenza_andata.setText(Costanti.FORMATO_DATA_ORA.format(this.biglietto.getDataPartenzaAndata()));
+		this.output_ora_destinazione_andata
+				.setText(Costanti.FORMATO_DATA_ORA.format(this.biglietto.getDataArrivoAndata()));
+		this.output_ora_partenza_andata
+				.setText(Costanti.FORMATO_DATA_ORA.format(this.biglietto.getDataPartenzaAndata()));
 		this.output_partenza_andata.setText(this.biglietto.getPartenza());
 		this.output_partenza_ritorno.setText(this.biglietto.getDestinazione());
 		this.output_destinazione_andata.setText(this.biglietto.getDestinazione());

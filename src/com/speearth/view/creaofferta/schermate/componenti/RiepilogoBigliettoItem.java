@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 
 /**
  * Componente che rappresenta un Biglietto nel Riepilogo dei Servizi che
- * compongono un Pacchetto
+ * compongono un'Offerta
  */
 public class RiepilogoBigliettoItem extends SubView {
 	@FXML
@@ -60,7 +60,7 @@ public class RiepilogoBigliettoItem extends SubView {
 	private Label output_prezzo;
 
 	/**
-	 * Biglietto contenuto
+	 * Biglietto contenuto nella SubView
 	 */
 	private Biglietto biglietto;
 
@@ -133,20 +133,21 @@ public class RiepilogoBigliettoItem extends SubView {
 		return Costanti.FXML_RIEPILOGO_BIGLIETTO_ITEM;
 	}
 
+	/**
+	 * Aggiorna le informazioni mostrate dall'Interfaccia
+	 */
 	@Override
 	public void aggiornaUI() {
 		this.output_data_destinazione_andata
 				.setText(Costanti.FORMATO_DATA_ORA.format(this.biglietto.getDataArrivoAndata()));
 		this.output_data_partenza_andata
 				.setText(Costanti.FORMATO_DATA_ORA.format(this.biglietto.getDataPartenzaAndata()));
-		if (this.biglietto.getDataArrivoRitorno() != null) {
+		if (this.biglietto.getDataArrivoRitorno() != null)
 			this.output_data_destinazione_ritorno
 					.setText(Costanti.FORMATO_DATA_ORA.format(this.biglietto.getDataArrivoRitorno()));
-		}
-		if (this.biglietto.getDataPartenzaRitorno() != null) {
+		if (this.biglietto.getDataPartenzaRitorno() != null)
 			this.output_data_partenza_ritorno
 					.setText(Costanti.FORMATO_DATA_ORA.format(this.biglietto.getDataPartenzaRitorno()));
-		}
 		this.output_ora_partenza_ritorno
 				.setText(Costanti.FORMATO_DATA_ORA.format(this.biglietto.getDataPartenzaRitorno()));
 		this.output_ora_destinazione_ritorno

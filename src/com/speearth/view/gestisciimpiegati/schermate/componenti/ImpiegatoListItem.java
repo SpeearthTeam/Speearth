@@ -26,7 +26,7 @@ public class ImpiegatoListItem extends ListCell<Impiegato> {
 	}
 
 	/**
-	 * Aggiorna un elemento della Lista
+	 * Aggiorna l'elemento della Lista
 	 * 
 	 * @param impiegato
 	 * @param empty

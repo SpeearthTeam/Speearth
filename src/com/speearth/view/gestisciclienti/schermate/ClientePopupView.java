@@ -39,7 +39,6 @@ public class ClientePopupView extends View {
 	 * Costruttore
 	 * 
 	 * @param stage
-	 * @param previousView
 	 * @param cliente
 	 * @throws IOException
 	 */
@@ -50,13 +49,12 @@ public class ClientePopupView extends View {
 				new EventHandler<EventoGestioneCliente>() {
 					@Override
 					public void handle(EventoGestioneCliente event) {
-						setCliente(event.getCliente());
-						mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_CLIENTE_AGGIUNTO, null,
+						ClientePopupView.this.setCliente(event.getCliente());
+						ClientePopupView.this.mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_CLIENTE_AGGIUNTO, null,
 								Costanti.MESSAGGIO_CLIENTE_AGGIUNTO
 										+ ClientePopupView.this.getCliente().getCodiceTessera());
 					}
 				});
-
 		this.getRoot().addEventHandler(EventoGestioneCliente.MODIFICA_CLIENTE,
 				new EventHandler<EventoGestioneCliente>() {
 					@Override
@@ -64,7 +62,6 @@ public class ClientePopupView extends View {
 						ClientePopupView.this.setCliente(event.getCliente());
 					}
 				});
-
 		try {
 			if (cliente == null) {
 				this.form = new AggiungiClienteForm(this.getStage(), cliente);

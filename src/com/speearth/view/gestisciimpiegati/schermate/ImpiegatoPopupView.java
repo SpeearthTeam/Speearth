@@ -39,7 +39,6 @@ public class ImpiegatoPopupView extends View {
 	 * Costruttore
 	 * 
 	 * @param stage
-	 * @param previousView
 	 * @param impiegato
 	 * @throws IOException
 	 */
@@ -51,11 +50,10 @@ public class ImpiegatoPopupView extends View {
 					@Override
 					public void handle(EventoGestioneImpiegato event) {
 						ImpiegatoPopupView.this.setImpiegato(event.getImpiegato());
-						mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_IMPIEGATO_AGGIUNTO, null,
+						ImpiegatoPopupView.this.mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_IMPIEGATO_AGGIUNTO, null,
 								Costanti.MESSAGGIO_IMPIEGATO_AGGIUNTO);
 					}
 				});
-
 		this.getRoot().addEventHandler(EventoGestioneImpiegato.MODIFICA_IMPIEGATO,
 				new EventHandler<EventoGestioneImpiegato>() {
 					@Override

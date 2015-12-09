@@ -113,7 +113,6 @@ public class RiepilogoBigliettoView extends View {
 		this.output_adulti.setText(Integer.toString(biglietto.getNumeroAdulti()));
 		this.output_arrivo_andata.setText(Costanti.FORMATO_DATA_ORA.format(biglietto.getDataArrivoAndata()));
 		this.output_arrivo_ritorno.setText(Costanti.FORMATO_DATA_ORA.format(biglietto.getDataArrivoRitorno()));
-
 		this.output_bambini.setText(Integer.toString(biglietto.getNumeroBambini()));
 		this.output_destinazione.setText(biglietto.getDestinazione());
 		this.output_fornitore.setText(biglietto.getFornitore());
@@ -131,7 +130,6 @@ public class RiepilogoBigliettoView extends View {
 	public RiepilogoBigliettoView(Stage stage) throws IOException {
 		super(stage);
 		getStage().setTitle(Costanti.TITOLO_RIEPILOGO);
-		//massimizzaFinestra();
 		this.impostaInfoBiglietto(
 				(Biglietto) AppFacadeController.getInstance().getPrenotaServizioController().getServizio());
 	}
@@ -153,12 +151,12 @@ public class RiepilogoBigliettoView extends View {
 	// Event Listener on Button[#bottone_torna_alla_home].onAction
 	@FXML
 	public void vaiAllaHome(ActionEvent event) throws IOException {
-		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME, null,
+		Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME, null,
 				Costanti.MESSAGGIO_TORNA_ALLA_HOME);
 		if (result.get() == ButtonType.OK) {
 			AppFacadeController.getInstance().getPrenotaServizioController().reset();
 			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController().reset();
-			HomeView view = new HomeView(getStage());
+			HomeView view = new HomeView(this.getStage());
 			view.mostra();
 		}
 	}
@@ -166,12 +164,12 @@ public class RiepilogoBigliettoView extends View {
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
 	@FXML
 	public void vaiAScegliServizio(ActionEvent event) throws IOException {
-		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO, null,
-				Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
+		Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
+				null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
 		if (result.get() == ButtonType.OK) {
 			AppFacadeController.getInstance().getPrenotaServizioController().reset();
 			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController().reset();
-			ScegliServizioView view = new ScegliServizioView(getStage());
+			ScegliServizioView view = new ScegliServizioView(this.getStage());
 			view.mostra();
 		}
 	}
@@ -179,7 +177,7 @@ public class RiepilogoBigliettoView extends View {
 	// Event Listener on Button[#bottone_ricerca].onAction
 	@FXML
 	public void vaiARicerca(ActionEvent event) throws IOException {
-		RicercaBigliettoView view = new RicercaBigliettoView(getStage());
+		RicercaBigliettoView view = new RicercaBigliettoView(this.getStage());
 		view.mostra();
 	}
 
@@ -189,10 +187,11 @@ public class RiepilogoBigliettoView extends View {
 		if (!this.input_codice_tessera.getText().isEmpty()) {
 			this.cliente = AppFacadeController.getInstance().getPrenotaServizioController()
 					.identificaCliente(this.input_codice_tessera.getText());
-			if (cliente != null) {
-				this.impostaInfoCliente(cliente);
-				AppFacadeController.getInstance().getPrenotaServizioController().setCliente(cliente);
-				IBonus bonus = AppFacadeController.getInstance().getPrenotaServizioController().calcolaBonus(cliente);
+			if (this.cliente != null) {
+				this.impostaInfoCliente(this.cliente);
+				AppFacadeController.getInstance().getPrenotaServizioController().setCliente(this.cliente);
+				IBonus bonus = AppFacadeController.getInstance().getPrenotaServizioController()
+						.calcolaBonus(this.cliente);
 				if (bonus != null) {
 					this.label_bonus.setVisible(true);
 					this.output_totale
@@ -200,10 +199,10 @@ public class RiepilogoBigliettoView extends View {
 									.applicaBonus(bonus, new ScontoConcreteStrategy()).getPrezzo()));
 				}
 			} else
-				mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_NON_TROVATO, null,
+				this.mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_NON_TROVATO, null,
 						Costanti.MESSAGGIO_CLIENTE_NON_TROVATO);
 		} else
-			mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_NESSUN_CODICE);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_NESSUN_CODICE);
 	}
 
 	// Event Listener on Button[#bottone_aggiungi_cliente].onAction
@@ -225,17 +224,16 @@ public class RiepilogoBigliettoView extends View {
 		if (AppFacadeController.getInstance().getPrenotaServizioController().getCliente() == null) {
 			Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_NESSUN_CLIENTE, null,
 					Costanti.MESSAGGIO_NESSUN_CLIENTE);
-			if (result.get() == ButtonType.CANCEL) {
+			if (result.get() == ButtonType.CANCEL)
 				return;
-			}
 		}
 		String ricevuta = AppFacadeController.getInstance().getPrenotaServizioController()
 				.effettuaPagamento(this.getModalitaPagamento());
-		mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_PAGAMENTO_EFFETTUATO,
+		this.mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_PAGAMENTO_EFFETTUATO,
 				Costanti.MESSAGGIO_PAGAMENTO_EFFETTUATO, ricevuta);
 		AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController().reset();
 		AppFacadeController.getInstance().getPrenotaServizioController().reset();
-		HomeView view = new HomeView(getStage());
+		HomeView view = new HomeView(this.getStage());
 		view.mostra();
 	}
 

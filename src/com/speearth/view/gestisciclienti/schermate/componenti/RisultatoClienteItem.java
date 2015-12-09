@@ -100,7 +100,7 @@ public class RisultatoClienteItem extends SubView {
 	// Event Listener on Button[#bottone_elimina].onAction
 	@FXML
 	public void eliminaCliente(ActionEvent event) {
-		Optional<ButtonType> result = mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_ELIMINA_CLIENTE,
+		Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_ELIMINA_CLIENTE,
 				null, Costanti.MESSAGGIO_ELIMINA_CLIENTE);
 		if (result.get() == ButtonType.OK) {
 			EventoGestioneCliente evento = new EventoGestioneCliente(EventoGestioneCliente.ELIMINA_CLIENTE, this.cliente);
