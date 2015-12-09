@@ -98,8 +98,14 @@
    <right>
       <VBox BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="bottone_modifica" alignment="CENTER" mnemonicParsing="false" onAction="#modificaImpiegato" prefWidth="93.0" text="Modifica" />
-            <Button fx:id="bottone_elimina" alignment="CENTER" mnemonicParsing="false" onAction="#eliminaImpiegato" prefWidth="93.0" text="Elimina" />
+            <Button fx:id="bottone_modifica" alignment="CENTER" mnemonicParsing="false" onAction="#modificaImpiegato" prefWidth="93.0" text="Modifica">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+            <Button fx:id="bottone_elimina" alignment="CENTER" mnemonicParsing="false" onAction="#eliminaImpiegato" prefWidth="93.0" text="Elimina">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
          </children>
       </VBox>
    </right>

@@ -165,6 +165,9 @@
       </HBox>
    </top>
    <bottom>
-      <Button fx:id="bottone_conferma" mnemonicParsing="false" onAction="#confermaBiglietto" text="Conferma" BorderPane.alignment="BOTTOM_RIGHT" />
+      <Button fx:id="bottone_conferma" mnemonicParsing="false" onAction="#confermaBiglietto" text="Conferma" BorderPane.alignment="BOTTOM_RIGHT">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
    </bottom>
 </BorderPane>

@@ -4,12 +4,12 @@
 	
 
 .button{
-	-fx-background-color: #006ABC;
+	-fx-background-color: #06376D;
 	-fx-text-fill: #E4F2F4;
 	
 	}
 .button:hover{
-	-fx-background-color: #7AFF00;
+	-fx-background-color: #006ABC;
 	}
 /*#ButtonConf:focused{
 	-fx-background-color: #99F5FB;

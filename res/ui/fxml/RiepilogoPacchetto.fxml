@@ -12,10 +12,22 @@
    <top>
       <ToolBar BorderPane.alignment="CENTER">
         <items>
-            <Button fx:id="bottone_torna_alla_home" mnemonicParsing="false" onAction="#vaiAllaHome" text="Torna alla Home" />
-          <Button fx:id="bottone_scegli_servizio" mnemonicParsing="false" onAction="#vaiAScegliServizio" text="Scegli Servizio" />
-            <Button fx:id="bottone_ricerca" mnemonicParsing="false" onAction="#vaiARicerca" text="Ricerca" />
-            <Button fx:id="bottone_riepilogo" disable="true" mnemonicParsing="false" text="Riepilogo" />
+            <Button fx:id="bottone_torna_alla_home" mnemonicParsing="false" onAction="#vaiAllaHome" text="Torna alla Home">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+          <Button fx:id="bottone_scegli_servizio" mnemonicParsing="false" onAction="#vaiAScegliServizio" text="Scegli Servizio">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+            <Button fx:id="bottone_ricerca" mnemonicParsing="false" onAction="#vaiARicerca" text="Ricerca">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+            <Button fx:id="bottone_riepilogo" disable="true" mnemonicParsing="false" text="Riepilogo">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
         </items>
       </ToolBar>
    </top>
@@ -110,7 +122,7 @@
                               <Label fx:id="label_bonus" />
                               <Button fx:id="bottone_aggiungi_cliente" mnemonicParsing="false" onAction="#aggiungiCliente" text="Aggiungi Cliente">
                                  <font>
-                                    <Font size="24.0" />
+                                    <Font name="System Bold" size="24.0" />
                                  </font>
                               </Button>
                            </children>
@@ -162,7 +174,7 @@
                         </HBox>
                         <Button fx:id="bottone_conferma_pagamento" mnemonicParsing="false" onAction="#effettuaPagamento" text="Conferma Pagamento">
                            <font>
-                              <Font size="24.0" />
+                              <Font name="System Bold" size="24.0" />
                            </font>
                         </Button>
                      </children>

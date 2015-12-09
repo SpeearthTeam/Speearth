@@ -12,10 +12,22 @@
    <top>
       <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <items>
-            <Button fx:id="bottone_torna_alla_home" mnemonicParsing="false" onAction="#vaiAllaHome" text="Torna alla Home" />
-          <Button fx:id="bottone_scegli_servizio" mnemonicParsing="false" onAction="#vaiAScegliServizio" text="Scegli Servizio" />
-            <Button fx:id="bottone_ricerca" mnemonicParsing="false" onAction="#vaiARicerca" text="Ricerca" />
-            <Button fx:id="bottone_riepilogo" disable="true" mnemonicParsing="false" text="Riepilogo" />
+            <Button fx:id="bottone_torna_alla_home" mnemonicParsing="false" onAction="#vaiAllaHome" text="Torna alla Home">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+          <Button fx:id="bottone_scegli_servizio" mnemonicParsing="false" onAction="#vaiAScegliServizio" text="Scegli Servizio">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+            <Button fx:id="bottone_ricerca" mnemonicParsing="false" onAction="#vaiARicerca" text="Ricerca">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+            <Button fx:id="bottone_riepilogo" disable="true" mnemonicParsing="false" text="Riepilogo">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
         </items>
       </ToolBar>
    </top>
@@ -95,7 +107,7 @@
                      <children>
                         <Button fx:id="bottone_aggiungi_cliente" mnemonicParsing="false" onAction="#aggiungiCliente" prefHeight="54.0" prefWidth="272.0" text="Aggiungi Cliente">
                            <font>
-                              <Font size="24.0" />
+                              <Font name="System Bold" size="24.0" />
                            </font>
                         </Button>
                         <Label fx:id="label_bonus" text="Questo Cliente ha diritto ad un Bonus!" visible="false" />
@@ -143,7 +155,7 @@
                   <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="289.0" prefWidth="312.0" />
                   <Button fx:id="bottone_conferma_pagamento" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#effettuaPagamento" prefHeight="54.0" prefWidth="272.0" text="Conferma Pagamento">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                   </Button>
                </children>

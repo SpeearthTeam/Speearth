@@ -16,7 +16,10 @@
          <top>
             <BorderPane BorderPane.alignment="CENTER">
                <right>
-                  <Button fx:id="bottone_aggiungi" mnemonicParsing="false" onAction="#aggiungiCliente" text="Aggiungi Cliente" BorderPane.alignment="CENTER" />
+                  <Button fx:id="bottone_aggiungi" mnemonicParsing="false" onAction="#aggiungiCliente" text="Aggiungi Cliente" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font></Button>
                </right>
                <left>
                   <TextField fx:id="input_ricerca_cliente" prefHeight="31.0" prefWidth="235.0" promptText="Cerca un Cliente...." BorderPane.alignment="CENTER" />
@@ -31,7 +34,10 @@
 	<top>
 		<ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
 			<items>
-				<Button fx:id="bottone_torna_alla_home" mnemonicParsing="false" onAction="#vaiAllaHome" text="Torna alla Home" />
+				<Button fx:id="bottone_torna_alla_home" mnemonicParsing="false" onAction="#vaiAllaHome" text="Torna alla Home">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
 			</items>
 		</ToolBar>
 	</top>
