@@ -16,15 +16,15 @@
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
-          <Button fx:id="bottone_scegli_servizio" mnemonicParsing="false" onAction="#vaiAScegliServizio" text="Scegli Servizio">
+          <Button fx:id="bottone_scegli_servizio" mnemonicParsing="false" onAction="#vaiAScegliServizio" text="1. Scegli Servizio">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
-            <Button fx:id="bottone_ricerca" mnemonicParsing="false" onAction="#vaiARicerca" text="Ricerca">
+            <Button fx:id="bottone_ricerca" mnemonicParsing="false" onAction="#vaiARicerca" text="2. Ricerca">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
-            <Button fx:id="bottone_riepilogo" disable="true" mnemonicParsing="false" text="Riepilogo">
+            <Button fx:id="bottone_riepilogo" disable="true" mnemonicParsing="false" text="3. Riepilogo">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
@@ -69,7 +69,7 @@
                               <Insets bottom="20.0" />
                            </VBox.margin>
                            <font>
-                              <Font size="24.0" />
+                              <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
                         <GridPane maxWidth="-Infinity">
@@ -120,7 +120,7 @@
                         <VBox alignment="CENTER">
                            <children>
                               <Label fx:id="label_bonus" />
-                              <Button fx:id="bottone_aggiungi_cliente" mnemonicParsing="false" onAction="#aggiungiCliente" text="Aggiungi Cliente">
+                              <Button fx:id="bottone_aggiungi_cliente" mnemonicParsing="false" onAction="#aggiungiCliente" prefWidth="279.0" text="Aggiungi Cliente">
                                  <font>
                                     <Font name="System Bold" size="24.0" />
                                  </font>
@@ -146,7 +146,7 @@
                               <Insets bottom="25.0" />
                            </padding>
                            <font>
-                              <Font size="24.0" />
+                              <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
                         <HBox alignment="CENTER">
@@ -172,7 +172,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <Button fx:id="bottone_conferma_pagamento" mnemonicParsing="false" onAction="#effettuaPagamento" text="Conferma Pagamento">
+                        <Button fx:id="bottone_conferma_pagamento" mnemonicParsing="false" onAction="#effettuaPagamento" prefWidth="279.0" text="Conferma Pagamento">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>

@@ -56,7 +56,7 @@
                         <Insets bottom="20.0" top="20.0" />
                      </VBox.margin>
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font></Label>
                   <GridPane alignment="CENTER" prefHeight="284.0" prefWidth="427.0">
                     <columnConstraints>
@@ -106,7 +106,7 @@
                   <VBox alignment="CENTER" prefHeight="276.0" prefWidth="427.0">
                      <children>
                         <Label fx:id="label_bonus" text="Questo Cliente ha diritto ad un Bonus!" visible="false" />
-                        <Button fx:id="bottone_aggiungi_cliente" mnemonicParsing="false" onAction="#aggiungiCliente" prefHeight="54.0" prefWidth="272.0" text="Aggiungi Cliente">
+                        <Button fx:id="bottone_aggiungi_cliente" mnemonicParsing="false" onAction="#aggiungiCliente" prefHeight="54.0" prefWidth="279.0" text="Aggiungi Cliente">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
@@ -129,7 +129,7 @@
                         <Insets bottom="20.0" top="20.0" />
                      </VBox.margin>
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font></Label>
                   <GridPane prefHeight="509.0" prefWidth="427.0">
                     <columnConstraints>
@@ -211,7 +211,7 @@
                         <Insets bottom="20.0" top="20.0" />
                      </VBox.margin>
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
@@ -235,7 +235,7 @@
                      </children>
                   </HBox>
                   <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="251.0" prefWidth="312.0" />
-                  <Button fx:id="bottone_conferma_pagamento" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#effettuaPagamento" prefHeight="54.0" prefWidth="281.0" text="Conferma Pagamento">
+                  <Button fx:id="bottone_conferma_pagamento" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#effettuaPagamento" prefHeight="54.0" prefWidth="279.0" text="Conferma Pagamento">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>

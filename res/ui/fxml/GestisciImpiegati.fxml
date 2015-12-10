@@ -14,7 +14,7 @@
             <ListView fx:id="output_lista_risultati" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
          </center>
          <top>
-            <BorderPane BorderPane.alignment="CENTER">
+            <BorderPane id="background" BorderPane.alignment="CENTER">
                <right>
                   <Button fx:id="bottone_aggiungi" mnemonicParsing="false" onAction="#aggiungiImpiegato" text="Aggiungi Impiegato" BorderPane.alignment="CENTER">
                      <font>

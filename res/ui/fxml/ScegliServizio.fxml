@@ -15,15 +15,15 @@
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
-          <Button disable="true" mnemonicParsing="false" text="Scegli Servizio">
+          <Button disable="true" mnemonicParsing="false" text="1. Scegli Servizio">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
-          <Button fx:id="bottone_ricerca" disable="true" mnemonicParsing="false" text="Ricerca">
+          <Button fx:id="bottone_ricerca" disable="true" mnemonicParsing="false" text="2. Ricerca">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
-          <Button fx:id="bottone_riepilogo" disable="true" mnemonicParsing="false" text="Riepilogo">
+          <Button fx:id="bottone_riepilogo" disable="true" mnemonicParsing="false" text="3. Riepilogo">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
@@ -146,10 +146,13 @@
                      <image>
                         <Image url="@../img/icona_blu_prenota_servizio_grande.png" />
                      </image>
+                     <VBox.margin>
+                        <Insets left="27.0" />
+                     </VBox.margin>
                   </ImageView>
                   <Label text="Prenota Servizio">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
                   <Label text="Scegli la tipologia di Servizio da prenotare" />

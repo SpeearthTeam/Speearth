@@ -13,11 +13,11 @@
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
-				<Button fx:id="bottone_ricerca" disable="true" mnemonicParsing="false" text="Ricerca">
+				<Button fx:id="bottone_ricerca" disable="true" mnemonicParsing="false" text="1. Ricerca">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
-				<Button fx:id="bottone_riepilogo" mnemonicParsing="false" onAction="#vaiARiepilogo" text="Riepilogo">
+				<Button fx:id="bottone_riepilogo" mnemonicParsing="false" onAction="#vaiARiepilogo" text="2. Riepilogo">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
@@ -75,7 +75,7 @@
 							<content>
 								<BorderPane>
 									<left>
-										<AnchorPane fx:id="biglietto_form_container" BorderPane.alignment="CENTER" />
+										<AnchorPane id="background" fx:id="biglietto_form_container" BorderPane.alignment="CENTER" />
 									</left>
 									<center>
 										<ListView fx:id="lista_risultati_biglietti" BorderPane.alignment="CENTER" />
@@ -87,7 +87,7 @@
 							<content>
 								<BorderPane>
 									<left>
-										<AnchorPane fx:id="alloggio_form_container" BorderPane.alignment="CENTER" />
+										<AnchorPane id="background" fx:id="alloggio_form_container" BorderPane.alignment="CENTER" />
 									</left>
 									<center>
 										<ListView fx:id="lista_risultati_alloggi" BorderPane.alignment="CENTER" />

@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane id="sfondoHome" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -27,7 +27,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="bottone_prenota_servizio" mnemonicParsing="false" onAction="#prenotaServizio" prefHeight="166.0" prefWidth="286.0">
+                  <Button fx:id="bottone_prenota_servizio" mnemonicParsing="false" onAction="#prenotaServizio" prefHeight="180.0" prefWidth="240.0">
                      <graphic>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
@@ -45,7 +45,7 @@
                         </VBox>
                      </graphic>
                   </Button>
-                  <Button fx:id="bottone_gestisci_clienti" mnemonicParsing="false" onAction="#gestisciClienti" prefHeight="166.0" prefWidth="286.0" GridPane.rowIndex="1">
+                  <Button fx:id="bottone_gestisci_clienti" mnemonicParsing="false" onAction="#gestisciClienti" prefHeight="180.0" prefWidth="240.0" GridPane.rowIndex="1">
                      <graphic>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
@@ -64,6 +64,9 @@
                      </graphic>
                   </Button>
                </children>
+               <GridPane.margin>
+                  <Insets bottom="150.0" top="150.0" />
+               </GridPane.margin>
             </GridPane>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
@@ -79,19 +82,19 @@
                   </Label>
                   <Label fx:id="label_utente" text="label_utente">
                      <padding>
-                        <Insets bottom="30.0" top="10.0" />
+                        <Insets bottom="20.0" />
                      </padding>
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
                   <Label text="Ruolo:" />
                   <Label fx:id="label_ruole_utente" text="Commesso">
                      <padding>
-                        <Insets bottom="30.0" top="10.0" />
+                        <Insets bottom="20.0" />
                      </padding>
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
                   <Button fx:id="bottone_esci" mnemonicParsing="false" onAction="#esci" prefHeight="51.0" prefWidth="141.0" text="Esci">

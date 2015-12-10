@@ -13,7 +13,7 @@
 				<ListView fx:id="lista_risultati" minWidth="854.0" prefHeight="200.0" prefWidth="854.0" BorderPane.alignment="CENTER" />
 			</center>
 			<left>
-				<AnchorPane fx:id="form_container" styleClass="AnchorPane" BorderPane.alignment="CENTER" />
+				<AnchorPane id="background" fx:id="form_container" styleClass="AnchorPane" BorderPane.alignment="CENTER" />
 			</left>
 		</BorderPane>
 	</center>
@@ -24,15 +24,15 @@
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
-				<Button fx:id="bottone_scegli_servizio" mnemonicParsing="false" onAction="#vaiAScegliServizio" text="Scegli Servizio">
+				<Button fx:id="bottone_scegli_servizio" mnemonicParsing="false" onAction="#vaiAScegliServizio" text="1. Scegli Servizio">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
-				<Button fx:id="bottone_ricerca" disable="true" mnemonicParsing="false" text="Ricerca">
+				<Button fx:id="bottone_ricerca" disable="true" mnemonicParsing="false" text="2. Ricerca">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
-				<Button fx:id="bottone_riepilogo" mnemonicParsing="false" onAction="#vaiARiepilogoButtonClick" text="Riepilogo">
+				<Button fx:id="bottone_riepilogo" mnemonicParsing="false" onAction="#vaiARiepilogoButtonClick" text="3. Riepilogo">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>

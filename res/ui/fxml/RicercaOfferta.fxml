@@ -11,10 +11,10 @@
 	<center>
 		<BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
 			<left>
-				<AnchorPane fx:id="form_container" styleClass="AnchorPane" BorderPane.alignment="CENTER" />
+				<AnchorPane id="background" fx:id="form_container" styleClass="AnchorPane" BorderPane.alignment="CENTER" />
 			</left>
          <center>
-            <VBox alignment="TOP_CENTER" BorderPane.alignment="CENTER">
+            <VBox id="background" alignment="TOP_CENTER" BorderPane.alignment="CENTER">
                <children>
       				<ListView fx:id="output_lista_servizi" prefHeight="578.0" prefWidth="1280.0" />
                   <Button fx:id="bottone_conferma" alignment="CENTER" mnemonicParsing="false" onAction="#conferma" prefHeight="58.0" prefWidth="159.0" text="Conferma">
@@ -37,15 +37,15 @@
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
-				<Button fx:id="bottone_scegli_servizio" mnemonicParsing="false" onAction="#vaiAScegliServizio" text="Scegli Servizio">
+				<Button fx:id="bottone_scegli_servizio" mnemonicParsing="false" onAction="#vaiAScegliServizio" text="1. Scegli Servizio">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
-				<Button fx:id="bottone_ricerca" disable="true" mnemonicParsing="false" text="Ricerca">
+				<Button fx:id="bottone_ricerca" disable="true" mnemonicParsing="false" text="2. Ricerca">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
-				<Button fx:id="bottone_riepilogo" mnemonicParsing="false" onAction="#vaiARiepilogoButtonClick" text="Riepilogo">
+				<Button fx:id="bottone_riepilogo" mnemonicParsing="false" onAction="#vaiARiepilogoButtonClick" text="3. Riepilogo">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
