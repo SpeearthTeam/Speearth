@@ -69,7 +69,7 @@
 			<center>
 				<TabPane tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
 					<tabs>
-						<Tab text="Biglietti">
+						<Tab text="             Biglietti             ">
 							<content>
 								<BorderPane>
 									<left>
@@ -81,7 +81,7 @@
 								</BorderPane>
 							</content>
 						</Tab>
-						<Tab text="Alloggi">
+						<Tab text="             Alloggi             ">
 							<content>
 								<BorderPane>
 									<left>

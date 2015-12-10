@@ -1,36 +1,49 @@
-/* .background{
+/* Sfondo delle schermate */
+#background{
 	-fx-background-color: #e4f2f4;
-}*/
-.button{
-	-fx-background-color: #1859A1;
-	-fx-text-fill: #E4F2F4;
-	}
-.button:hover{
-	-fx-background-color: #006ABC;
-	}
-/*.button:pressed{
-	-fx-background-color: #ffffff;
-	-fx-text-fill:#006ABC;
-	} 	 */
- 
-
-#labelHome{ 
-	-fx-text-fill: #E4F2F4;
-	-fx-font-weight: bold;
 }
 
-#sfondoHome{
-	-fx-background-color: #e4f2f4;
-} 
+/* Button */
+.button{
+	-fx-background-color: #1859A1;
+	-fx-text-fill: white;
+	-fx-background-radius: 0px;
+}
 
+.button .label{
+	-fx-text-fill: white;
+}
+	
+.button:hover{
+	-fx-background-color: #00aeff;
+}
+
+/* Text field */
+.text-field{
+	-fx-background-radius: 0px;
+}
+
+/* Breadcrumb */
+.tool-bar{
+	-fx-background-color: #006ABC !important;
+	-fx-border-color: transparent transparent #E4F2F4 transparent;
+}
+
+/* Pacchetto */
 .first-titled-pane:expanded .title, .first-titled-pane:collapsed .title{
 	-fx-background-color: #006ABC;
 	-fx-text-fill: #E4F2F4;
 }
 
+.first-titled-pane:expanded .title:hover, .first-titled-pane:collapsed .title:hover{
+	-fx-background-color: #00aeff;
+}
+
 .first-titled-pane:collapsed .title .text{
 	-fx-text-fill: #E4F2F4;
 }
+
+/*  */
 .table-view:row-selection .column-header-background{ 
 	-fx-background-color: #006ABC;
 	-fx-text-fill: #E4F2F4;}
@@ -40,44 +53,68 @@
 	-fx-text-fill: #E4F2F4;
 }
 
-.tab-pane:top .tab-header-area .headers-region .tab:top:selected{
-	-fx-background-color: #006ABC;
-	-fx-font-weight: bold;
-	
+/* Tab pane, pacchetto schede: biglietto-alloggio */
+.tab-pane:top .tab-header-area .tab-header-background{
+	-fx-background-color: #E4F2F4;
 }
+
 .tab-pane:top .tab-header-area .headers-region .tab:top{
 	-fx-font-weight: bold;
-	-fx-text-fill: #E4F2F4;
+	/*-fx-text-fill: white;*/
+	-fx-background-radius: 0px;
+	-fx-background-color: #006ABC;
+	-fx-border-color: lightgray;
+}
+.tab-pane:top .tab-header-area .headers-region .tab:top:hover{
+	-fx-background-color: #00aeff;
+}
+ 
+.tab-pane:top .tab-header-area .headers-region .tab:top:selected{
+	/*-fx-text-fill: white;*/
+	-fx-background-color: #E4F2F4;
+	-fx-border-color: lightgray lightgray transparent lightgray;
 }
 
-.tab:top:selected .tab-container .tab-label{
-	-fx-text-fill: #E4F2F4;
+.tab-pane:top .tab-header-area .headers-region .tab:top .tab-container .tab-label .text{
+	-fx-fill: white;
 }
 
-#gridRiepilogo{
-	-fx-background-color: #ffffff;
+.tab-pane:top .tab-header-area .headers-region .tab:top:selected .tab-container .tab-label .text{
+	-fx-fill: black;
 }
 
-#labelRiep{
-	-fx-text-fill: #006ABC;
-	-fx-font-weight: bold;
-}
-
+/* Menu a tendina */
 .choice-box{
-	-fx-background-color: #1859A1;	
+	-fx-background-color: #1859A1;
+	-fx-background-radius: 0px;
+}
+
+.choice-box:hover{
+	-fx-background-color: #00aeff;	
 }
 
 .choice-box > .label{
-	-fx-text-fill: #ffffff ;
+	-fx-text-fill: #ffffff;
 }
 
 .choice-box .open-button .arrow{
-	-fx-background-color: #ffffff ;
+	-fx-background-color: #ffffff;
 }
+
+/* Date picker */
+.date-picker:editable{
+	-fx-background-radius: 0px;
+}
+
 .date-picker:editable .arrow-button{
 	-fx-background-color: #1859A1;
+	-fx-background-radius: 0px;
+}
+
+.date-picker:editable .arrow-button:hover{
+	-fx-background-color: #00aeff;	
 }
 
 .date-picker:editable .arrow-button .arrow{
-	-fx-background-color: #ffffff ;
+	-fx-background-color: #ffffff;
 }
