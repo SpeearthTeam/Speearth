@@ -17,7 +17,7 @@
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
-				<Button fx:id="bottone_riepilogo" mnemonicParsing="false" onAction="#vaiARiepilogo" text="2. Riepilogo">
+				<Button id="buttBarra" fx:id="bottone_riepilogo" mnemonicParsing="false" onAction="#vaiARiepilogo" text="2. Riepilogo">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
@@ -71,7 +71,7 @@
 			<center>
 				<TabPane tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
 					<tabs>
-						<Tab text="Biglietti">
+						<Tab text="             Biglietti             ">
 							<content>
 								<BorderPane>
 									<left>
@@ -83,7 +83,7 @@
 								</BorderPane>
 							</content>
 						</Tab>
-						<Tab text="Alloggi">
+						<Tab text="             Alloggi             ">
 							<content>
 								<BorderPane>
 									<left>

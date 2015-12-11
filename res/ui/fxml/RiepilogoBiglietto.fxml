@@ -16,15 +16,15 @@
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
-          <Button fx:id="bottone_scegli_servizio" mnemonicParsing="false" onAction="#vaiAScegliServizio" text="Scegli Servizio">
+          <Button fx:id="bottone_scegli_servizio" mnemonicParsing="false" onAction="#vaiAScegliServizio" text="1.Scegli Servizio">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
-            <Button fx:id="bottone_ricerca" mnemonicParsing="false" onAction="#vaiARicerca" text="Ricerca">
+            <Button fx:id="bottone_ricerca" mnemonicParsing="false" onAction="#vaiARicerca" text="2.Ricerca">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
-            <Button fx:id="bottone_riepilogo" disable="true" mnemonicParsing="false" text="Riepilogo">
+            <Button fx:id="bottone_riepilogo" disable="true" mnemonicParsing="false" text="3.Riepilogo">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>

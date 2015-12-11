@@ -13,15 +13,15 @@
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
-				<Button fx:id="bottone_scegli_servizio" mnemonicParsing="false" onAction="#vaiAScegliServizio" text="1. Scegli Servizio">
+				<Button id="bBarra" fx:id="bottone_scegli_servizio" mnemonicParsing="false" onAction="#vaiAScegliServizio" text="1. Scegli Servizio">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
-				<Button fx:id="bottone_ricerca" disable="true" mnemonicParsing="false" text="2. Ricerca">
+				<Button id="bBarra" fx:id="bottone_ricerca" disable="true" mnemonicParsing="false" text="2. Ricerca">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
-				<Button fx:id="bottone_riepilogo" mnemonicParsing="false" onAction="#vaiARiepilogo" text="3. Riepilogo">
+				<Button id="bBarra" fx:id="bottone_riepilogo" mnemonicParsing="false" onAction="#vaiARiepilogo" text="3. Riepilogo">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
@@ -50,8 +50,14 @@
                                  <bottom>
                                     <HBox alignment="CENTER_RIGHT" BorderPane.alignment="CENTER">
                                        <children>
-														<Button fx:id="bottone_svuota" mnemonicParsing="false" onAction="#svuotaPacchetto" prefHeight="31.0" prefWidth="104.0" text="Svuota" />
-														<Button fx:id="bottone_conferma" mnemonicParsing="false" onAction="#confermaPacchetto" prefHeight="31.0" prefWidth="104.0" text="Conferma" />
+														<Button fx:id="bottone_svuota" mnemonicParsing="false" onAction="#svuotaPacchetto" prefHeight="31.0" prefWidth="104.0" text="Svuota">
+                                             <font>
+                                                <Font name="System Bold" size="15.0" />
+                                             </font></Button>
+														<Button fx:id="bottone_conferma" mnemonicParsing="false" onAction="#confermaPacchetto" prefHeight="31.0" prefWidth="104.0" text="Conferma">
+                                             <font>
+                                                <Font name="System Bold" size="15.0" />
+                                             </font></Button>
                                        </children>
                                     </HBox>
                                  </bottom>

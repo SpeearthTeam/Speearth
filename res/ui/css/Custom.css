@@ -41,12 +41,19 @@
 
 .first-titled-pane:collapsed .title .text{
 	-fx-text-fill: #E4F2F4;
+	
+}
+/*deve essere centrata anche la freccia */
+.first-titled-pane:collapsed .title, .first-titled-pane:expanded .title, .first-titled-pane:expanded .title .arrow-button .arrow, .first-titled-pane:collapsed .title .arrow-button .arrow {
+	-fx-alignment:  center ; 
 }
 
-/*  */
+/* tableview pacchetto-offerta */
 .table-view:row-selection .column-header-background{ 
 	-fx-background-color: #006ABC;
-	-fx-text-fill: #E4F2F4;}
+	-fx-text-fill: #E4F2F4;
+	-fx-padding: 0;
+	}
 
 .table-view:row-selection .column-header-background .nested-column-header .table-column .label,.table-view:row-selection .column-header-background .filler{
 	-fx-background-color: #006ABC;
@@ -118,3 +125,9 @@
 .date-picker:editable .arrow-button .arrow{
 	-fx-background-color: #ffffff;
 }
+.tool-bar:horizontal .container{
+	-fx-alignment:  center ; 
+} 
+/**/
+
+
