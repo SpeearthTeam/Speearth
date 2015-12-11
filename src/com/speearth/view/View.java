@@ -140,6 +140,7 @@ public abstract class View implements Initializable {
 		alert.setTitle(title);
 		alert.setHeaderText(header_text);
 		alert.setContentText(content_text);
+		alert.getDialogPane().getStylesheets().add(Costanti.URL_STILE);
 		return alert.showAndWait();
 	}
 

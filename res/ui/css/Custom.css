@@ -39,25 +39,28 @@
 	-fx-background-color: #00aeff;
 }
 
-.first-titled-pane:collapsed .title .text{
-	-fx-text-fill: #E4F2F4;
-	
+.first-titled-pane .title .arrow-button .arrow{
+	-fx-background-color: white;
 }
-/*deve essere centrata anche la freccia */
-.first-titled-pane:collapsed .title, .first-titled-pane:expanded .title, .first-titled-pane:expanded .title .arrow-button .arrow, .first-titled-pane:collapsed .title .arrow-button .arrow {
-	-fx-alignment:  center ; 
+/* "Pacchetto" e "Offerta" centrati */
+.first-titled-pane:collapsed .title, .first-titled-pane:expanded .title{
+	-fx-alignment: center; 
 }
 
 /* tableview pacchetto-offerta */
 .table-view .column-header{ 
 	-fx-background-color: #006ABC;
-	-fx-text-fill: white;
-	
-	}
+	-fx-text-fill: white;	
+}
 
 .table-view:row-selection .column-header-background .nested-column-header .table-column .label,.table-view:row-selection .column-header-background .filler{
 	-fx-background-color: #006ABC;
-	-fx-text-fill: #E4F2F4;
+	-fx-text-fill: white;
+	-fx-border-color: transparent #E4F2F4 transparent transparent;
+}
+
+.table-view:row-selection .column-header-background .filler{
+	-fx-background-color: #006ABC;
 }
 
 /* Tab pane, pacchetto schede: biglietto-alloggio */
@@ -125,9 +128,22 @@
 .date-picker:editable .arrow-button .arrow{
 	-fx-background-color: #ffffff;
 }
-.tool-bar:horizontal .container{
-	-fx-alignment:  center ; 
-} 
-/**/
 
 
+/* Dialog */
+.dialog-pane {
+	-fx-background-color: #e4f2f4;
+}
+
+.dialog-pane:header .header-panel {
+	-fx-background-color: #00aeff;
+}
+
+.dialog-pane:header .header-panel .label {
+	-fx-background-color: #00aeff;
+	-fx-text-fill: white;
+}
+
+.dialog-pane .button {
+	-fx-font-weight: bold;
+}

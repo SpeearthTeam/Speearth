@@ -96,7 +96,7 @@
       <HBox prefHeight="18.0" prefWidth="755.0" BorderPane.alignment="CENTER" />
    </top>
    <right>
-      <VBox BorderPane.alignment="CENTER">
+      <VBox spacing="5.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="bottone_modifica" alignment="CENTER" mnemonicParsing="false" onAction="#modificaImpiegato" prefWidth="93.0" text="Modifica">
                <font>
@@ -112,4 +112,7 @@
    <padding>
       <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
    </padding>
+   <bottom>
+      <HBox prefHeight="18.0" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>

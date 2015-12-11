@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -12,19 +13,27 @@
             <Button fx:id="bottone_torna_alla_home" mnemonicParsing="false" onAction="#vaiAllaHome" text="Torna alla Home">
                <font>
                   <Font name="System Bold" size="15.0" />
-               </font></Button>
-				<Button id="bBarra" fx:id="bottone_scegli_servizio" mnemonicParsing="false" onAction="#vaiAScegliServizio" text="1. Scegli Servizio">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font></Button>
-				<Button id="bBarra" fx:id="bottone_ricerca" disable="true" mnemonicParsing="false" text="2. Ricerca">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font></Button>
-				<Button id="bBarra" fx:id="bottone_riepilogo" mnemonicParsing="false" onAction="#vaiARiepilogo" text="3. Riepilogo">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font></Button>
+               </font>
+            </Button>
+            <HBox alignment="CENTER" prefWidth="984.0" spacing="10.0">
+               <children>
+      				<Button id="bBarra" fx:id="bottone_scegli_servizio" mnemonicParsing="false" onAction="#vaiAScegliServizio" prefWidth="140.0" text="1. Scegli Servizio">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+      				<Button id="bBarra" fx:id="bottone_ricerca" disable="true" layoutX="144.0" mnemonicParsing="false" prefWidth="140.0" text="2. Ricerca" GridPane.columnIndex="1">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+      				<Button id="bBarra" fx:id="bottone_riepilogo" layoutX="288.0" mnemonicParsing="false" onAction="#vaiARiepilogo" prefWidth="140.0" text="3. Riepilogo" GridPane.columnIndex="2">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
 			</items>
 		</ToolBar>
 	</top>
@@ -33,13 +42,13 @@
 			<top>
 				<Accordion BorderPane.alignment="CENTER">
 					<panes>
-						<TitledPane animated="false" text="Pacchetto" textFill="WHITE">
+						<TitledPane id="background" animated="false" text="Pacchetto" textFill="WHITE">
 							<content>
-								<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+								<AnchorPane id="background" prefHeight="180.0" prefWidth="200.0">
 									<children>
 										<BorderPane layoutX="168.0" layoutY="29.0" prefHeight="180.0" prefWidth="1279.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 											<center>
-												<TableView id="tableView" fx:id="tabella_pacchetto" BorderPane.alignment="CENTER">
+												<TableView fx:id="tabella_pacchetto" BorderPane.alignment="CENTER">
 													<columns>
 														<TableColumn fx:id="tipo_servizio_col" prefWidth="318.0" text="Tipo" />
 														<TableColumn fx:id="fornitore_servizio_col" prefWidth="318.0" text="Fornitore" />
@@ -48,7 +57,7 @@
 												</TableView>
 											</center>
                                  <bottom>
-                                    <HBox alignment="CENTER_RIGHT" BorderPane.alignment="CENTER">
+                                    <HBox alignment="CENTER_RIGHT" spacing="5.0" BorderPane.alignment="CENTER">
                                        <children>
 														<Button fx:id="bottone_svuota" mnemonicParsing="false" onAction="#svuotaPacchetto" prefHeight="31.0" prefWidth="104.0" text="Svuota">
                                              <font>
