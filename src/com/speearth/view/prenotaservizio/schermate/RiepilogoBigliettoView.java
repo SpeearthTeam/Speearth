@@ -99,7 +99,7 @@ public class RiepilogoBigliettoView extends View {
 	private void impostaInfoCliente(Cliente cliente) {
 		this.output_cf_cliente.setText(cliente.getCodiceFiscale());
 		this.output_cognome_cliente.setText(cliente.getCognome());
-		this.output_data_nascita_cliente.setText(cliente.getDataNascita().toString());
+		this.output_data_nascita_cliente.setText(Costanti.FORMATO_DATA.format(cliente.getDataNascita()));
 		this.output_nome_cliente.setText(cliente.getNome());
 	}
 

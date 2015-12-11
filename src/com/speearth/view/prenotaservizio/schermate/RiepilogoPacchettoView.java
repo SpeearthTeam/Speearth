@@ -95,7 +95,7 @@ public class RiepilogoPacchettoView extends View {
 	private void impostaInfoCliente(Cliente cliente) {
 		this.output_cf_cliente.setText(cliente.getCodiceFiscale());
 		this.output_cognome_cliente.setText(cliente.getCognome());
-		this.output_data_nascita_cliente.setText(cliente.getDataNascita().toString());
+		this.output_data_nascita_cliente.setText(Costanti.FORMATO_DATA.format(cliente.getDataNascita()));
 		this.output_nome_cliente.setText(cliente.getNome());
 	}
 
@@ -155,8 +155,8 @@ public class RiepilogoPacchettoView extends View {
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
 	@FXML
 	public void vaiAScegliServizio(ActionEvent event) throws IOException {
-		Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO, null,
-				Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
+		Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO,
+				null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
 		if (result.get() == ButtonType.OK) {
 			AppFacadeController.getInstance().getPrenotaServizioController().reset();
 			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController().reset();
@@ -181,7 +181,8 @@ public class RiepilogoPacchettoView extends View {
 			if (this.cliente != null) {
 				this.impostaInfoCliente(this.cliente);
 				AppFacadeController.getInstance().getPrenotaServizioController().setCliente(this.cliente);
-				IBonus bonus = AppFacadeController.getInstance().getPrenotaServizioController().calcolaBonus(this.cliente);
+				IBonus bonus = AppFacadeController.getInstance().getPrenotaServizioController()
+						.calcolaBonus(this.cliente);
 				if (bonus != null) {
 					this.label_bonus.setVisible(true);
 					this.output_totale

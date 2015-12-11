@@ -64,7 +64,7 @@ public class ClientePopupView extends View {
 				});
 		try {
 			if (cliente == null) {
-				this.form = new AggiungiClienteForm(this.getStage(), cliente);
+				this.form = new AggiungiClienteForm(this.getStage());
 				this.form_container.getChildren().add(this.form.getRoot());
 				this.getStage().setTitle(Costanti.TITOLO_AGGIUNGI_CLIENTE);
 			} else {

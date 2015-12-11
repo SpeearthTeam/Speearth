@@ -52,23 +52,6 @@ public class AggiungiClienteForm extends FormView {
 	 * @throws IOException
 	 */
 	public AggiungiClienteForm(Stage stage) throws IOException {
-		this(stage, null);
-		this.stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-			@Override
-			public void handle(WindowEvent we) {
-				AggiungiClienteForm.this.stage.close();
-			}
-		});
-	}
-
-	/**
-	 * Costruttore con Cliente
-	 * 
-	 * @param stage
-	 * @param cliente
-	 * @throws IOException
-	 */
-	public AggiungiClienteForm(Stage stage, Cliente cliente) throws IOException {
 		super(stage);
 		this.stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 			@Override
@@ -76,8 +59,6 @@ public class AggiungiClienteForm extends FormView {
 				AggiungiClienteForm.this.stage.close();
 			}
 		});
-		this.cliente = cliente;
-		this.aggiornaUI();
 	}
 
 	/**
@@ -182,28 +163,15 @@ public class AggiungiClienteForm extends FormView {
 		String codice_fiscale = this.input_codice_fiscale.getText();
 		Date data_nascita = Date
 				.from(this.input_data_nascita.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-		if (this.cliente == null)
-			// creo un nuovo cliente
-			this.cliente = AppFacadeController.getInstance().getGestisciClientiController().aggiungiCliente(nome,
-					cognome, data_nascita, codice_fiscale);
-		else
-			// modifico il cliente
-			this.cliente = AppFacadeController.getInstance().getGestisciClientiController()
-					.modificaCliente(this.cliente.getId(), nome, cognome, data_nascita, codice_fiscale);
+		this.cliente = AppFacadeController.getInstance().getGestisciClientiController().aggiungiCliente(nome, cognome,
+				data_nascita, codice_fiscale);
 	}
 
 	/**
-	 * Aggiorna le informazioni mostrate dall'Interfaccia
+	 * Non necessario
 	 */
 	@Override
 	public void aggiornaUI() {
-		if (this.cliente != null) {
-			this.input_nome.setText(this.cliente.getNome());
-			this.input_cognome.setText(this.cliente.getCognome());
-			this.input_codice_fiscale.setText(this.cliente.getCodiceFiscale());
-			this.input_data_nascita
-					.setValue(LocalDate.parse(Costanti.FORMATO_DATA_STANDARD.format(this.cliente.getDataNascita())));
-		}
 	}
 
 	/**

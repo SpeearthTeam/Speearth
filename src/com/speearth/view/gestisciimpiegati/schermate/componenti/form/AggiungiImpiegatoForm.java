@@ -67,7 +67,7 @@ public class AggiungiImpiegatoForm extends FormView {
 	 */
 	private String validazioneEParsificazioneStipendio(String input) {
 		input = input.replace(",", ".");
-		if (input.matches(Costanti.REG_EX_FLOAT) && Float.parseFloat(input) > 0 && Float.parseFloat(input) < 100)
+		if (input.matches(Costanti.REG_EX_FLOAT))
 			return input;
 		return null;
 	}
@@ -79,23 +79,6 @@ public class AggiungiImpiegatoForm extends FormView {
 	 * @throws IOException
 	 */
 	public AggiungiImpiegatoForm(Stage stage) throws IOException {
-		this(stage, null);
-		this.stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-			@Override
-			public void handle(WindowEvent we) {
-				stage.close();
-			}
-		});
-	}
-
-	/**
-	 * Costruttore con Impiegato
-	 * 
-	 * @param stage
-	 * @param impiegato
-	 * @throws IOException
-	 */
-	public AggiungiImpiegatoForm(Stage stage, Impiegato impiegato) throws IOException {
 		super(stage);
 		this.stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 			@Override
@@ -103,7 +86,6 @@ public class AggiungiImpiegatoForm extends FormView {
 				stage.close();
 			}
 		});
-		this.impiegato = impiegato;
 	}
 
 	/**
@@ -244,12 +226,8 @@ public class AggiungiImpiegatoForm extends FormView {
 				.from(this.input_data_nascita.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
 		String ruolo = this.input_ruolo.getValue();
 		float stipendio = Float.parseFloat(this.input_stipendio.getText());
-		if (this.impiegato == null)
-			this.impiegato = AppFacadeController.getInstance().getGestisciImpiegatiController().aggiungiImpiegato(
-					username, password, nome, cognome, data_nascita, codice_fiscale, ruolo, stipendio);
-		else
-			this.impiegato = AppFacadeController.getInstance().getGestisciImpiegatiController().modificaImpiegato(
-					username, password, nome, cognome, data_nascita, codice_fiscale, ruolo, stipendio);
+		this.impiegato = AppFacadeController.getInstance().getGestisciImpiegatiController().aggiungiImpiegato(username,
+				password, nome, cognome, data_nascita, codice_fiscale, ruolo, stipendio);
 	}
 
 	/**

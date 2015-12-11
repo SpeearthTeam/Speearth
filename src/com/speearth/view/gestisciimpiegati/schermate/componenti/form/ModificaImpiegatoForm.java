@@ -67,7 +67,7 @@ public class ModificaImpiegatoForm extends FormView {
 	 */
 	private String validazioneEParsificazioneStipendio(String input) {
 		input = input.replace(",", ".");
-		if (input.matches(Costanti.REG_EX_FLOAT) && Float.parseFloat(input) > 0 && Float.parseFloat(input) < 100)
+		if (input.matches(Costanti.REG_EX_FLOAT))
 			return input;
 		return null;
 	}
@@ -133,7 +133,7 @@ public class ModificaImpiegatoForm extends FormView {
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		this.input_ruolo.setItems(FXCollections.observableArrayList("Commesso", "Responsabile Offerte"));
+		this.input_ruolo.setItems(FXCollections.observableArrayList(Costanti.LISTA_RUOLI));
 	}
 
 	/**
@@ -228,14 +228,8 @@ public class ModificaImpiegatoForm extends FormView {
 				.from(this.input_data_nascita.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
 		String ruolo = this.input_ruolo.getValue();
 		float stipendio = Float.parseFloat(this.input_stipendio.getText());
-		if (this.impiegato == null)
-			// creo un nuovo impiegato
-			this.impiegato = AppFacadeController.getInstance().getGestisciImpiegatiController().aggiungiImpiegato(
-					username, password, nome, cognome, data_nascita, codice_fiscale, ruolo, stipendio);
-		else
-			// modifico l'Impiegato
-			this.impiegato = AppFacadeController.getInstance().getGestisciImpiegatiController().modificaImpiegato(
-					username, password, nome, cognome, data_nascita, codice_fiscale, ruolo, stipendio);
+		this.impiegato = AppFacadeController.getInstance().getGestisciImpiegatiController().modificaImpiegato(username,
+				password, nome, cognome, data_nascita, codice_fiscale, ruolo, stipendio);
 	}
 
 	/**

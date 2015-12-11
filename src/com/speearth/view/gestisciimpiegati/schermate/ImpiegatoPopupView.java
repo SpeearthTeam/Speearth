@@ -63,7 +63,7 @@ public class ImpiegatoPopupView extends View {
 				});
 		try {
 			if (impiegato == null) {
-				this.form = new AggiungiImpiegatoForm(this.getStage(), impiegato);
+				this.form = new AggiungiImpiegatoForm(this.getStage());
 				this.form_container.getChildren().add(this.form.getRoot());
 				this.getStage().setTitle(Costanti.TITOLO_AGGIUNGI_IMPIEGATO);
 			} else {
