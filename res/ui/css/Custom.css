@@ -49,10 +49,10 @@
 }
 
 /* tableview pacchetto-offerta */
-.table-view:row-selection .column-header-background{ 
+.table-view .column-header{ 
 	-fx-background-color: #006ABC;
-	-fx-text-fill: #E4F2F4;
-	-fx-padding: 0;
+	-fx-text-fill: white;
+	
 	}
 
 .table-view:row-selection .column-header-background .nested-column-header .table-column .label,.table-view:row-selection .column-header-background .filler{
