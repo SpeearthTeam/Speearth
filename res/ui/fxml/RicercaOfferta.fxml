@@ -33,7 +33,15 @@
             </VBox>
          </center>
          <left>
-				<AnchorPane fx:id="form_container" prefWidth="370.0" BorderPane.alignment="CENTER" />
+            <BorderPane prefWidth="370.0" BorderPane.alignment="CENTER">
+               <center>
+                  <HBox fx:id="form_container" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets bottom="88.0" />
+                     </BorderPane.margin>
+                  </HBox>
+               </center>
+            </BorderPane>
          </left>
 		</BorderPane>
 	</center>

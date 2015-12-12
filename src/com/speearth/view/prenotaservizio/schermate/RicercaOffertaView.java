@@ -25,7 +25,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 /**
@@ -35,7 +35,7 @@ public class RicercaOffertaView extends View {
 	@FXML
 	private ListView<ServizioComponent> output_lista_servizi;
 	@FXML
-	private AnchorPane form_container;
+	private HBox form_container;
 	@FXML
 	private Button bottone_torna_alla_home;
 	@FXML
