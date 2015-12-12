@@ -29,6 +29,11 @@
 	-fx-border-color: transparent transparent #E4F2F4 transparent;
 }
 
+#toolbar{
+	-fx-background-color: #006ABC;
+	-fx-border-color: transparent transparent #E4F2F4 transparent;
+}
+
 /* Pacchetto */
 .first-titled-pane:expanded .title, .first-titled-pane:collapsed .title{
 	-fx-background-color: #006ABC;

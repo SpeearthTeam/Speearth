@@ -67,7 +67,7 @@ public class ModificaImpiegatoForm extends FormView {
 	 */
 	private String validazioneEParsificazioneStipendio(String input) {
 		input = input.replace(",", ".");
-		if (input.matches(Costanti.REG_EX_FLOAT))
+		if (input.matches(Costanti.REG_EX_FLOAT) && Float.parseFloat(input) > 0)
 			return input;
 		return null;
 	}

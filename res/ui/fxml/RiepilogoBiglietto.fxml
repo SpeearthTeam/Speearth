@@ -10,33 +10,46 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <top>
-      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-        <items>
-            <Button fx:id="bottone_torna_alla_home" mnemonicParsing="false" onAction="#vaiAllaHome" text="Torna alla Home">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font></Button>
-            <HBox alignment="CENTER" prefWidth="984.0" spacing="10.0">
+      <BorderPane id="toolbar" prefHeight="40.0" BorderPane.alignment="CENTER">
+         <left>
+            <HBox alignment="CENTER" BorderPane.alignment="CENTER">
                <children>
-                <Button fx:id="bottone_scegli_servizio" mnemonicParsing="false" onAction="#vaiAScegliServizio" text="1.Scegli Servizio">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="bottone_ricerca" mnemonicParsing="false" onAction="#vaiARicerca" text="2.Ricerca">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="bottone_riepilogo" disable="true" mnemonicParsing="false" text="3.Riepilogo">
+                  <Button fx:id="bottone_torna_alla_home" mnemonicParsing="false" onAction="#vaiAllaHome" text="Torna alla Home" BorderPane.alignment="CENTER">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Button>
                </children>
             </HBox>
-        </items>
-      </ToolBar>
+         </left>
+         <center>
+            <HBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+               <children>
+                <Button fx:id="bottone_scegli_servizio" mnemonicParsing="false" onAction="#vaiAScegliServizio" prefWidth="140.0" text="1. Scegli Servizio">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                <Button fx:id="bottone_ricerca" mnemonicParsing="false" onAction="#vaiARicerca" prefWidth="140.0" text="2. Ricerca">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                <Button fx:id="bottone_riepilogo" disable="true" mnemonicParsing="false" prefWidth="140.0" text="3. Riepilogo">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </center>
+         <right>
+            <Pane prefWidth="137.0" BorderPane.alignment="CENTER" />
+         </right>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="3.0" />
+         </padding>
+      </BorderPane>
    </top>
    <center>
       <GridPane id="gridRiepilogo" BorderPane.alignment="CENTER">
