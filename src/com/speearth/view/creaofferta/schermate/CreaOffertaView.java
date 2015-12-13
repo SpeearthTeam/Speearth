@@ -185,8 +185,8 @@ public class CreaOffertaView extends View {
 					public void handle(EventoSelezionaServizio event) {
 						Offerta offerta = AppFacadeController.getInstance().getCreaOffertaController().getOfferta();
 						if (offerta != null && offerta.getListaServizi().contains(event.getServizio()))
-							CreaOffertaView.this.mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_SERVIZIO_PRESENTE, null,
-									Costanti.MESSAGGIO_SERVIZIO_PRESENTE);
+							CreaOffertaView.this.mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_SERVIZIO_PRESENTE,
+									null, Costanti.MESSAGGIO_SERVIZIO_PRESENTE);
 						else {
 							ServizioComponent servizio = event.getServizio();
 							AppFacadeController.getInstance().getCreaOffertaController().getOfferta()
@@ -287,8 +287,8 @@ public class CreaOffertaView extends View {
 		ArrayList<Alloggio> risultati_alloggi = AppFacadeController.getInstance().getPrenotaServizioController()
 				.getPrenotaAlloggioController().getAlloggi();
 		if (!risultati_biglietti.isEmpty() || !risultati_alloggi.isEmpty()) {
-			Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME, null,
-					Costanti.MESSAGGIO_TORNA_ALLA_HOME);
+			Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME,
+					null, Costanti.MESSAGGIO_TORNA_ALLA_HOME);
 			if (result.get() == ButtonType.OK) {
 				AppFacadeController.getInstance().getCreaOffertaController().reset();
 				HomeView view = new HomeView(this.getStage());
@@ -308,7 +308,8 @@ public class CreaOffertaView extends View {
 				.getCreaOffertaController().getOfferta().getListaServizi();
 		AppFacadeController.getInstance().getCreaOffertaController().getOfferta().setListaServizi(offerta);
 		if (offerta.isEmpty())
-			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null, Costanti.MESSAGGIO_NESSUN_SERVIZIO);
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null,
+					Costanti.MESSAGGIO_NESSUN_SERVIZIO);
 		else if (!(offerta.size() > 1))
 			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_ERRORE, null, Costanti.MESSAGGIO_OFFERTA_UN_ELEMENTO);
 		else {
@@ -321,12 +322,18 @@ public class CreaOffertaView extends View {
 	// Event Listener on Button[#bottone_svuota].onAction
 	@FXML
 	public void svuotaOfferta(ActionEvent event) {
-		Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_SVUOTA_OFFERTA, null,
-				Costanti.MESSAGGIO_SVUOTA_OFFERTA);
-		if (result.get() == ButtonType.OK) {
-			AppFacadeController.getInstance().getCreaOffertaController().getOfferta().getListaServizi().clear();
-			this.lista_servizi.clear();
-		}
+		ArrayList<ServizioComponent> lista_servizi = (ArrayList<ServizioComponent>) AppFacadeController.getInstance()
+				.getCreaOffertaController().getOfferta().getListaServizi();
+		if (!lista_servizi.isEmpty()) {
+			Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_SVUOTA_OFFERTA, null,
+					Costanti.MESSAGGIO_SVUOTA_OFFERTA);
+			if (result.get() == ButtonType.OK) {
+				lista_servizi.clear();
+				this.lista_servizi.clear();
+			}
+		} else
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_SVUOTA_OFFERTA, null,
+					Costanti.MESSAGGIO_NESSUN_SERVIZIO);
 	}
 
 	// Event Listener on Button[#bottone_conferma].onAction

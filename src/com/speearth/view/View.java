@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -140,6 +141,8 @@ public abstract class View implements Initializable {
 		alert.setTitle(title);
 		alert.setHeaderText(header_text);
 		alert.setContentText(content_text);
+		Stage alert_stage = (Stage) alert.getDialogPane().getScene().getWindow();
+		alert_stage.getIcons().add(new Image(this.getClass().getResourceAsStream(Costanti.ICONA_SPEEARTH)));
 		alert.getDialogPane().getStylesheets().add(Costanti.URL_STILE);
 		return alert.showAndWait();
 	}

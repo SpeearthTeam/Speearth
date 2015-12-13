@@ -289,12 +289,18 @@ public class RicercaPacchettoView extends View {
 	// Event Listener on Button[#bottone_svuota].onAction
 	@FXML
 	public void svuotaPacchetto(ActionEvent event) {
-		Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_SVUOTA_PACCHETTO, null,
-				Costanti.MESSAGGIO_SVUOTA_PACCHETTO);
-		if (result.get() == ButtonType.OK) {
-			AppFacadeController.getInstance().getPrenotaServizioController().getServizio().getListaServizi().clear();
-			this.lista_servizi.clear();
-		}
+		ArrayList<ServizioComponent> lista_servizi = (ArrayList<ServizioComponent>) AppFacadeController.getInstance()
+				.getPrenotaServizioController().getServizio().getListaServizi();
+		if (!lista_servizi.isEmpty()) {
+			Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_SVUOTA_PACCHETTO,
+					null, Costanti.MESSAGGIO_SVUOTA_PACCHETTO);
+			if (result.get() == ButtonType.OK) {
+				lista_servizi.clear();
+				this.lista_servizi.clear();
+			}
+		} else
+			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_SVUOTA_PACCHETTO, null,
+					Costanti.MESSAGGIO_NESSUN_SERVIZIO);
 	}
 
 	// Event Listener on Button[#bottone_conferma].onAction
