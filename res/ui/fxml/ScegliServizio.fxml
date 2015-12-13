@@ -154,7 +154,7 @@
          <center>
             <HBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
                <children>
-                <Button disable="true" mnemonicParsing="false" prefWidth="140.0" style="-fx-background-color: #00aeff;" text="1. Scegli Servizio">
+                <Button disable="true" mnemonicParsing="false" prefWidth="140.0" text="1. Scegli Servizio">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>

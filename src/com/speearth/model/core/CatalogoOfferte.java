@@ -79,7 +79,7 @@ public class CatalogoOfferte {
 				Junction condizioni = Restrictions.disjunction();
 				String[] valori = valore.split(" ");
 				for (String stringa : valori) {
-					condizioni.add(Restrictions.like("nome", stringa, MatchMode.START));
+					condizioni.add(Restrictions.like("nome", stringa, MatchMode.ANYWHERE));
 				}
 				offerta.add(condizioni);
 			}

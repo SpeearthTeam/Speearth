@@ -68,6 +68,7 @@ public class RicercaOffertaForm extends FormView {
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 				RicercaOffertaForm.this.offerte.setAll(AppFacadeController.getInstance().getPrenotaServizioController()
 						.getAcquistaOffertaController().cercaOfferta(newValue));
+				RicercaOffertaForm.this.aggiornaUI();
 			}
 		});
 	}
@@ -77,6 +78,8 @@ public class RicercaOffertaForm extends FormView {
 	 */
 	@Override
 	public void aggiornaUI() {
+		this.output_lista_offerte.setCellFactory(param -> new OffertaListItem(getStage()));
+		this.output_lista_offerte.setItems(this.offerte);
 	}
 
 	/**
