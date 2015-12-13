@@ -225,7 +225,9 @@ public class AggiungiImpiegatoForm extends FormView {
 		Date data_nascita = Date
 				.from(this.input_data_nascita.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
 		String ruolo = this.input_ruolo.getValue();
-		float stipendio = Float.parseFloat(this.input_stipendio.getText());
+		String input_stipendio = this.input_stipendio.getText();
+		String output_stipendio = this.validazioneEParsificazioneStipendio(input_stipendio);
+		float stipendio = Float.parseFloat(output_stipendio);
 		this.impiegato = AppFacadeController.getInstance().getGestisciImpiegatiController().aggiungiImpiegato(username,
 				password, nome, cognome, data_nascita, codice_fiscale, ruolo, stipendio);
 	}

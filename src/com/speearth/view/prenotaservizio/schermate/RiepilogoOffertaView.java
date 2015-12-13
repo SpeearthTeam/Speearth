@@ -222,7 +222,7 @@ public class RiepilogoOffertaView extends View {
 			this.mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_PAGAMENTO_EFFETTUATO,
 					Costanti.MESSAGGIO_PAGAMENTO_EFFETTUATO, ricevuta);
 			AppFacadeController.getInstance().getPrenotaServizioController().reset();
-			AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaPacchettoController().reset();
+			AppFacadeController.getInstance().getPrenotaServizioController().getAcquistaOffertaController().reset();
 			HomeView view = new HomeView(this.getStage());
 			view.mostra();
 		} else

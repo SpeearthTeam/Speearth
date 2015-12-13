@@ -2,12 +2,11 @@ package com.speearth.view.prenotaservizio.schermate;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 import com.speearth.controller.AppFacadeController;
-import com.speearth.model.core.Biglietto;
 import com.speearth.model.core.Offerta;
 import com.speearth.model.core.ServizioComponent;
 import com.speearth.utility.Costanti;
@@ -18,6 +17,7 @@ import com.speearth.view.prenotaservizio.schermate.componenti.ServizioOffertaLis
 import com.speearth.view.prenotaservizio.schermate.componenti.form.RicercaOffertaForm;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -72,6 +72,22 @@ public class RicercaOffertaView extends View {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		this.impostaRisultati();
+	}
+
+	/**
+	 * Carica la lista di servizi contenuti nell'Offerta, salvata nel
+	 * Controller, all'interno della View per evitarne la perdita durante un
+	 * cambio di Schermata
+	 */
+	private void impostaRisultati() {
+		List<ServizioComponent> lista_servizi = AppFacadeController.getInstance().getPrenotaServizioController()
+				.getAcquistaOffertaController().getListaServizi();
+		if (!lista_servizi.isEmpty() && lista_servizi != null) {
+			ObservableList<ServizioComponent> lista_servizi_observable = FXCollections
+					.observableArrayList(lista_servizi);
+			this.output_lista_servizi.setItems(lista_servizi_observable);
+		}
 	}
 
 	/**
@@ -97,22 +113,17 @@ public class RicercaOffertaView extends View {
 	// Event Listener on Button[#bottone_torna_alla_home].onAction
 	@FXML
 	public void vaiAllaHome(ActionEvent event) throws IOException {
-		ArrayList<Biglietto> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
-				.getPrenotaBigliettoController().getBiglietti();
-		if (!risultati.isEmpty()) {
+		ServizioComponent servizio = AppFacadeController.getInstance().getPrenotaServizioController().getServizio();
+		if (servizio != null) {
 			Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION, Costanti.TITOLO_TORNA_ALLA_HOME,
 					null, Costanti.MESSAGGIO_TORNA_ALLA_HOME);
 			if (result.get() == ButtonType.OK) {
 				AppFacadeController.getInstance().getPrenotaServizioController().reset();
-				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
-						.clearBiglietti();
-				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
-						.clearParametri();
+				AppFacadeController.getInstance().getPrenotaServizioController().getAcquistaOffertaController().reset();
 				HomeView view = new HomeView(this.getStage());
 				view.mostra();
 			}
 		} else {
-			AppFacadeController.getInstance().getPrenotaServizioController().reset();
 			HomeView view = new HomeView(this.getStage());
 			view.mostra();
 		}
@@ -121,17 +132,13 @@ public class RicercaOffertaView extends View {
 	// Event Listener on Button[#bottone_scegli_servizio].onAction
 	@FXML
 	public void vaiAScegliServizio(ActionEvent event) throws IOException {
-		ArrayList<Biglietto> risultati = AppFacadeController.getInstance().getPrenotaServizioController()
-				.getPrenotaBigliettoController().getBiglietti();
-		if (!risultati.isEmpty()) {
+		ServizioComponent servizio = AppFacadeController.getInstance().getPrenotaServizioController().getServizio();
+		if (servizio != null) {
 			Optional<ButtonType> result = this.mostraAlert(AlertType.CONFIRMATION,
 					Costanti.TITOLO_TORNA_A_SCEGLI_SERVIZIO, null, Costanti.MESSAGGIO_TORNA_A_SCELTA_SERVIZIO);
 			if (result.get() == ButtonType.OK) {
-				AppFacadeController.getInstance().getPrenotaServizioController().setServizio(null);
-				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
-						.clearBiglietti();
-				AppFacadeController.getInstance().getPrenotaServizioController().getPrenotaBigliettoController()
-						.clearParametri();
+				AppFacadeController.getInstance().getPrenotaServizioController().reset();
+				AppFacadeController.getInstance().getPrenotaServizioController().getAcquistaOffertaController().reset();
 				ScegliServizioView view = new ScegliServizioView(this.getStage());
 				view.mostra();
 			}
@@ -144,28 +151,26 @@ public class RicercaOffertaView extends View {
 	// Event Listener on Button[#bottone_conferma].onAction
 	@FXML
 	public void conferma(ActionEvent event) throws IOException {
-		AppFacadeController.getInstance().getPrenotaServizioController().setServizio(this.offerta_selezionata);
-		this.vaiARiepilogo();
+		this.vaiARiepilogo(event);
 	}
 
 	// Event Listener on Button[#bottone_riepilogo].onAction
 	@FXML
-	public void vaiARiepilogoButtonClick(ActionEvent event) throws IOException {
-		this.vaiARiepilogo();
-	}
-
-	/**
-	 * Ridirige l'Utente al Riepilogo
-	 * 
-	 * @throws IOException
-	 */
-	public void vaiARiepilogo() throws IOException {
-		if (AppFacadeController.getInstance().getPrenotaServizioController().getServizio() == null)
-			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null,
-					Costanti.MESSAGGIO_NESSUN_SERVIZIO);
-		else {
+	public void vaiARiepilogo(ActionEvent event) throws IOException {
+		if (this.offerta_selezionata != null) {
+			AppFacadeController.getInstance().getPrenotaServizioController().setServizio(this.offerta_selezionata);
+			AppFacadeController.getInstance().getPrenotaServizioController().getAcquistaOffertaController()
+					.setListaServizi(this.offerta_selezionata.getListaServizi());
 			RiepilogoOffertaView view = new RiepilogoOffertaView(this.getStage());
 			view.mostra();
+		} else {
+			ServizioComponent servizio = AppFacadeController.getInstance().getPrenotaServizioController().getServizio();
+			if (servizio != null) {
+				RiepilogoOffertaView view = new RiepilogoOffertaView(this.getStage());
+				view.mostra();
+			} else
+				this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_NESSUN_SERVIZIO, null,
+						Costanti.MESSAGGIO_NESSUN_SERVIZIO);
 		}
 	}
 

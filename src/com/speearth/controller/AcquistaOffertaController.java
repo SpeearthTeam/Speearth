@@ -1,6 +1,7 @@
 package com.speearth.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.speearth.model.core.AgenziaFacade;
 import com.speearth.model.core.Offerta;
@@ -13,11 +14,11 @@ public class AcquistaOffertaController implements IFrammentoController {
 	private static AcquistaOffertaController instance;
 
 	/**
-	 * Memorizza i Servizi aggiunti al Pacchetto. Serve alla View per
+	 * Memorizza i Servizi contenuti nell'Offerta. Serve alla View per
 	 * recuperarli quando si torna indietro dalla schermata Riepilogo alla
 	 * schermata Ricerca.
 	 */
-	private ArrayList<ServizioComponent> pacchetto = new ArrayList<>();
+	private List<ServizioComponent> lista_servizi = new ArrayList<>();
 
 	/**
 	 * Costruttore di default
@@ -50,10 +51,10 @@ public class AcquistaOffertaController implements IFrammentoController {
 	 * Serve alla View per recuperare i Servizi contenuti nell'Offerta quando si
 	 * torna indietro dalla schermata Riepilogo alla schermata Ricerca.
 	 * 
-	 * @return ArrayList<ServizioComponent>
+	 * @return List<ServizioComponent>
 	 */
-	public ArrayList<ServizioComponent> getPacchetto() {
-		return this.pacchetto;
+	public List<ServizioComponent> getListaServizi() {
+		return this.lista_servizi;
 	}
 
 	/**
@@ -61,14 +62,14 @@ public class AcquistaOffertaController implements IFrammentoController {
 	 * 
 	 * @param lista_servizi
 	 */
-	public void setPacchetto(ArrayList<ServizioComponent> lista_servizi) {
-		this.pacchetto = lista_servizi;
+	public void setListaServizi(List<ServizioComponent> lista_servizi) {
+		this.lista_servizi = lista_servizi;
 	}
 
 	/**
 	 * Ristabilisce lo stato di partenza del Caso D'Uso
 	 */
 	public void reset() {
-		this.pacchetto = new ArrayList<>();
+		this.lista_servizi = new ArrayList<>();
 	}
 }
