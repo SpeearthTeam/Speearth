@@ -204,6 +204,7 @@ public class RicercaPacchettoView extends View {
 					}
 				});
 		// aggiungo la colonna per i pulsanti Cancella
+		this.cancella_servizio_col.setPrefWidth(Costanti.DIMENSIONE_LARGHEZZA_COLONNA_CANCELLA);
 		this.tabella_pacchetto.getColumns().add(this.cancella_servizio_col);
 		// aggiungo il pulsante alla tabella
 		this.cancella_servizio_col.setCellFactory(
@@ -299,8 +300,8 @@ public class RicercaPacchettoView extends View {
 				this.lista_servizi.clear();
 			}
 		} else
-			this.mostraAlert(AlertType.ERROR, Costanti.TITOLO_SVUOTA_PACCHETTO, null,
-					Costanti.MESSAGGIO_NESSUN_SERVIZIO);
+			this.mostraAlert(AlertType.INFORMATION, Costanti.TITOLO_SVUOTA_PACCHETTO, null,
+					Costanti.MESSAGGIO_PACCHETTO_VUOTO);
 	}
 
 	// Event Listener on Button[#bottone_conferma].onAction

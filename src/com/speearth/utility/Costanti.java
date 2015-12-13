@@ -113,7 +113,9 @@ public final class Costanti {
 	public final static String MESSAGGIO_PAGAMENTO_EFFETTUATO = "Il Pagamento è andato a buon fine!";
 	public final static String MESSAGGIO_TORNA_A_SCELTA_SERVIZIO = "La tua prenotazione verrà cancellata. Vuoi procedere?";
 	public final static String MESSAGGIO_NESSUN_SERVIZIO = "Non è stato scelto nessun Servizio.";
+	public final static String MESSAGGIO_PACCHETTO_VUOTO = "Il Pacchetto è già vuoto.";
 	public final static String MESSAGGIO_PACCHETTO_UN_ELEMENTO = "Il Pacchetto deve contenere almeno 2 Servizi.";
+	public final static String MESSAGGIO_OFFERTA_VUOTA = "L'Offerta è già vuota.";
 	public final static String MESSAGGIO_OFFERTA_UN_ELEMENTO = "L'Offerta deve contenere almeno 2 Servizi.";
 	public final static String MESSAGGIO_NESSUN_CLIENTE = "Non è stato identificato nessun Cliente. Procedere?";
 	public final static String MESSAGGIO_SERVIZIO_PRESENTE = "Hai già selezionato questo Servizio.";
@@ -201,6 +203,7 @@ public final class Costanti {
 	public final static double DIMENSIONE_ALTEZZA_POPUP_IMPIEGATO = 620.0;
 	public final static double DIMENSIONE_LARGHEZZA_FINESTRA = 1280;
 	public final static double DIMENSIONE_ALTEZZA_FINESTRA = 720;
+	public final static double DIMENSIONE_LARGHEZZA_COLONNA_CANCELLA = 100;
 
 	/**
 	 * Stringhe generiche

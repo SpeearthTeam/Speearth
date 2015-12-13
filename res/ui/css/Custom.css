@@ -53,19 +53,17 @@
 }
 
 /* tableview pacchetto-offerta */
-.table-view .column-header{ 
+.table-view:row-selection .column-header-background .nested-column-header .table-column,.table-view:row-selection .column-header-background .filler{
 	-fx-background-color: #006ABC;
-	-fx-text-fill: white;	
-}
-
-.table-view:row-selection .column-header-background .nested-column-header .table-column .label,.table-view:row-selection .column-header-background .filler{
-	-fx-background-color: #006ABC;
-	-fx-text-fill: white;
 	-fx-border-color: transparent #E4F2F4 transparent transparent;
 }
 
-.table-view:row-selection .column-header-background .filler{
-	-fx-background-color: #006ABC;
+.table-view:row-selection .column-header-background .nested-column-header .table-column .label .text{
+	-fx-fill: white;
+}
+
+.table-view:row-selection .column-header-background .nested-column-header .table-column .arrow{
+	-fx-background-color: white;
 }
 
 /* Tab pane, pacchetto schede: biglietto-alloggio */
